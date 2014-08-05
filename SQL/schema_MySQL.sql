@@ -1,3 +1,4 @@
+-- Schema for PHPRecipeBook 5.0
 CREATE TABLE users (
 	id INT NOT NULL AUTO_INCREMENT,
 	username VARCHAR(32) NOT NULL UNIQUE,
