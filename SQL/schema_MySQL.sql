@@ -120,7 +120,6 @@ CREATE TABLE ingredients (
         UNIQUE KEY (name, user_id)
 );
 
-
 CREATE TABLE sources (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(64),
