@@ -1,3 +1,19 @@
+<div class="actions">
+	<ul>
+            <li><?php echo $this->Html->link(__('Add Ingredient'), array('action' => 'add'), array('class' => 'ajaxLink', 'targetId' => 'content'));?></li>
+            <li><button id="moreActionLinks">More Actions...</button></li>
+	</ul>
+        <div style="display: none;">
+            <ul id="moreActionLinksContent">
+                <li><?php echo $this->Html->link(__('List Core Ingredients'), array('controller' => 'core_ingredients', 'action' => 'index'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Core Ingredient'), array('controller' => 'core_ingredients', 'action' => 'add'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Locations'), array('controller' => 'locations', 'action' => 'index'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Location'), array('controller' => 'locations', 'action' => 'add'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Units'), array('controller' => 'units', 'action' => 'index'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Unit'), array('controller' => 'units', 'action' => 'add'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?> </li>
+            </ul>
+        </div> 
+</div>
 <div class="ingredients index">
 	<h2><?php echo __('Ingredients'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -17,7 +33,7 @@
 	<tr>
 		<td><?php echo h($ingredient['Ingredient']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($ingredient['CoreIngredient']['description'], array('controller' => 'core_ingredients', 'action' => 'view', $ingredient['CoreIngredient']['id'])); ?>
+			<?php echo $this->Html->link($ingredient['CoreIngredient']['name'], array('controller' => 'core_ingredients', 'action' => 'view', $ingredient['CoreIngredient']['id'])); ?>
 		</td>
 		<td><?php echo h($ingredient['Ingredient']['name']); ?>&nbsp;</td>
 		<td><?php echo h($ingredient['Ingredient']['description']); ?>&nbsp;</td>
@@ -53,18 +69,4 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Ingredient'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Core Ingredients'), array('controller' => 'core_ingredients', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Core Ingredient'), array('controller' => 'core_ingredients', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Locations'), array('controller' => 'locations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Location'), array('controller' => 'locations', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Units'), array('controller' => 'units', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Unit'), array('controller' => 'units', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-	</ul>
 </div>

@@ -91,8 +91,8 @@ CREATE TABLE difficulties (
 
 CREATE TABLE core_ingredients (
 	id INT NOT NULL,
-	group_id INT NOT NULL,
-	description VARCHAR(200) NOT NULL,
+	groupId INT NOT NULL,
+	name VARCHAR(200) NOT NULL,
 	short_description VARCHAR(60) NOT NULL,
 	PRIMARY KEY (id)
 );

@@ -66,6 +66,8 @@ ALTER TABLE difficulties CHANGE difficult_id id INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE difficulties CHANGE difficult_desc name VARCHAR(64);
 
 RENAME TABLE recipe_core_ingredients TO core_ingredients;
+ALTER TABLE core_ingredients CHANGE groupNumber group INT NOT NULL;
+ALTER TABLE core_ingredients CHANGE description name VARCHAR(200) NOT NULL;
 
 RENAME TABLE recipe_core_weights TO core_weights;
 
