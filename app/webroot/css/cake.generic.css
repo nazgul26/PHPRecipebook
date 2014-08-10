@@ -119,13 +119,12 @@ div.index,
 div.view {
     float:left;
     width:100%;
-    border-top:1px solid #666;
-    padding:10px 2%;
 }
 div.actions {
     float:left;
     width:100%;
     padding:10px 1.5%;
+    border-bottom:1px solid #666;
 }
 div.actions h3 {
     float: left;

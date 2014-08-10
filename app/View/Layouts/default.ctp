@@ -29,14 +29,14 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
 	<?php
 		echo $this->Html->meta('icon');
 		
-                echo $this->Html->css("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/start/jquery-ui.css");
-                echo $this->Html->css("http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.css");
+                echo $this->Html->css("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css");
+                echo $this->Html->css("jquery.qtip");
                 echo $this->Html->css('cake.generic');
                 echo $this->Html->css('default');
                 
                 echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js");
                 echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js");
-                echo $this->Html->script("http://cdn.jsdelivr.net/qtip2/2.2.0/jquery.qtip.js");
+                echo $this->Html->script("jquery.qtip.js");
                 echo $this->Html->script("default");
                 
 		echo $this->fetch('meta');
@@ -94,5 +94,6 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
             </div>
         </div>
     </div>
+    <div id="addIngredientDialog" class="dialog" width="600" height="550" title="Add Ingredient"/>    
 </body>
 </html>

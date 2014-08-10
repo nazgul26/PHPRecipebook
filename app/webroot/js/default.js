@@ -1,6 +1,7 @@
 function initApplication() {
     initAjaxHRef("container");
     initNavigationHRef("container");
+    initDialogs();
     setupSearchBox();
     if ($(window).width() >= 1480) {
       ajaxGet("RecipeLinkBox/Index", "recipeLinkBoxContainer");
@@ -63,6 +64,12 @@ function initAjaxHRef(targetId) {
         $targetItem.click(function() {
             //console.log("getting " + $(this).attr('href') + ", target: " + $(this).attr('targetId'));
             $("#moreActionLinks").qtip('destroy', true);
+            
+            var $targetItem = $("#" + $(this).attr('targetId'));
+            if ($targetItem.hasClass('ui-dialog-content')) {
+                $targetItem.dialog('open');
+            }
+            
             ajaxGet($(this).attr('href'), $(this).attr('targetId'));
             return false;
         });
@@ -72,7 +79,6 @@ function initAjaxHRef(targetId) {
 function initAjaxForms(targetId) {
     var findQuery = (targetId === undefined) ? "#content form" : "#" + targetId + " form";
     $(findQuery).each(function(event) {
-        console.log($(this).attr('action'));
         $(this).bind("submit", function (event) {
             $.ajax({
                 async:true, 
@@ -130,6 +136,25 @@ function initMoreActionsLink(targetId)
             }
         }
     }).click(function() { return false; });
+}
+
+function initDialogs() {
+    var findQuery =".dialog";
+    $(findQuery).each(function() {
+        $(this).dialog({
+		autoOpen: false,
+		title: $(this).attr("title"),
+		modal: true,
+		width: $(this).attr("width"),
+                height: $(this).attr("height"),
+		buttons: { 
+                    "Save": function() { 
+                        $(this).find(':submit').click(); 
+                    },
+                    "Close": function() { $(this).dialog('close'); } 
+                }
+	});
+    });
 }
 
 function setupSearchBox() {
