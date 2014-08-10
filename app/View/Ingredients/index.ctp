@@ -1,6 +1,6 @@
 <div class="actions">
 	<ul>
-            <li><?php echo $this->Html->link(__('Add Ingredient'), array('action' => 'add'), array('class' => 'ajaxLink', 'targetId' => 'addIngredientDialog'));?></li>
+            <li><?php echo $this->Html->link(__('Add Ingredient'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog'));?></li>
             <li><button id="moreActionLinks">More Actions...</button></li>
 	</ul>
         <div style="display: none;">

@@ -41,28 +41,6 @@ public function view($id = null) {
 }
 
 /**
- * add method
- *
- * @return void
- */
-public function add() {
-    if ($this->request->is('post')) {
-            $this->Ingredient->create();
-            if ($this->Ingredient->save($this->request->data)) {
-                    $this->Session->setFlash(__('The ingredient has been saved.'));
-                    return $this->redirect(array('action' => 'index'));
-            } else {
-                    $this->Session->setFlash(__('The ingredient could not be saved. Please, try again.'));
-            }
-    }
-    $coreIngredients = $this->Ingredient->CoreIngredient->find('list');
-    $locations = $this->Ingredient->Location->find('list');
-    $units = $this->Ingredient->Unit->find('list');
-    $users = $this->Ingredient->User->find('list');
-    $this->set(compact('coreIngredients', 'locations', 'units', 'users'));
-}
-
-/**
  * edit method
  *
  * @throws NotFoundException
@@ -70,17 +48,18 @@ public function add() {
  * @return void
  */
 public function edit($id = null) {
-    if (!$this->Ingredient->exists($id)) {
+    if ($id != null && !$this->Ingredient->exists($id)) {
             throw new NotFoundException(__('Invalid ingredient'));
     }
+    
     if ($this->request->is(array('post', 'put'))) {
             if ($this->Ingredient->save($this->request->data)) {
-                    $this->Session->setFlash(__('The ingredient has been saved.'));
-                    return $this->redirect(array('action' => 'index'));
+                    $this->Session->setFlash(__('The ingredient has been saved.'), 'success');
+                    return $this->redirect(array('action' => 'edit'));
             } else {
                     $this->Session->setFlash(__('The ingredient could not be saved. Please, try again.'));
             }
-    } else {
+    } else if ($id != null) {
             $options = array('conditions' => array('Ingredient.' . $this->Ingredient->primaryKey => $id));
             $this->request->data = $this->Ingredient->find('first', $options);
     }

@@ -17,15 +17,34 @@ function initApplication() {
     };
 }
 
+function initAjax(target) {
+    initAjaxHRef(target);
+    initMoreActionsLink(target);
+    initAjaxForms(target);
+    initAjaxDeleteLinks(target);
+}
+
 function ajaxGet(location, target) {
     target = (target === undefined) ? "content" : target;
     console.log("getting:" + location + " Target: " +target);
     $.get(location, function(data) {
         $("#" + target ).html(data);
-        initAjaxHRef(target);
-        initMoreActionsLink(target);
-        initAjaxForms(target);
-        initAjaxDeleteLinks(target);
+        initAjax(target);
+    });
+}
+
+function ajaxPostForm($formItem) {
+    $.ajax({
+        async:true, 
+        data: $formItem.serialize(), 
+        dataType:"html", 
+        success:function (data, textStatus) {
+            var targetId = ($formItem.attr('targetId') == undefined) ? 'content' : $formItem.attr('targetId');
+            $("#" + targetId).html(data);
+            initAjax(targetId);
+        }, 
+        type:"POST", 
+        url: $formItem.attr('action')
     });
 }
 
@@ -48,7 +67,10 @@ function initNavigationHRef(targetId) {
         //console.log('Navigation ' + $targetItem.attr('href') + ", Title = " + $targetItem.text());
         $targetItem.click(function() {
             console.log("Navigation Push " + $(this).attr('href') + ", target: " + $(this).attr('targetId') + ", Title = " + $(this).text());
-            $("#moreActionLinks").qtip('destroy', true);
+            var $targetItem = $("#" + $(this).attr('targetId'));
+            if (!$targetItem.hasClass('ui-dialog-content')) {
+                $("#content #moreActionLinks").qtip('destroy', true);
+            }
             ajaxNavigate($(this).attr('href'), $(this).text(), $(this).attr('targetId'));
             return false;
         });
@@ -63,11 +85,11 @@ function initAjaxHRef(targetId) {
         //console.log('ajaxLink: ' + $targetItem.attr('href'));
         $targetItem.click(function() {
             //console.log("getting " + $(this).attr('href') + ", target: " + $(this).attr('targetId'));
-            $("#moreActionLinks").qtip('destroy', true);
-            
             var $targetItem = $("#" + $(this).attr('targetId'));
             if ($targetItem.hasClass('ui-dialog-content')) {
                 $targetItem.dialog('open');
+            } else {
+                $("#content #moreActionLinks").qtip('destroy', true);
             }
             
             ajaxGet($(this).attr('href'), $(this).attr('targetId'));
@@ -80,17 +102,9 @@ function initAjaxForms(targetId) {
     var findQuery = (targetId === undefined) ? "#content form" : "#" + targetId + " form";
     $(findQuery).each(function(event) {
         $(this).bind("submit", function (event) {
-            $.ajax({
-                async:true, 
-                data:$(this).serialize(), 
-                dataType:"html", 
-                success:function (data, textStatus) {
-                    $("#content").html(data);
-                }, 
-                type:"POST", 
-                url:$(this).attr('action')
-            });
-            return false;});
+            ajaxPostForm($(this));
+            return false;
+        });
     });
 }
 
@@ -108,9 +122,8 @@ function initAjaxDeleteLinks(targetId) {
     });
 }
 
-function initMoreActionsLink(targetId)
-{
-    var findQuery = (targetId === undefined) ? "#moreActionLinks" : "#" + targetId + " #moreActionLinks";
+function initMoreActionsLink(targetId) {
+    var findQuery = (targetId === undefined) ? "#content #moreActionLinks" : "#" + targetId + " #moreActionLinks";
     $(findQuery).qtip({
         content: $('#moreActionLinksContent'),
         position: {

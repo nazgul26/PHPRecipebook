@@ -53,31 +53,6 @@ class RecipesController extends AppController {
     }
 
     /**
-     * add method
-     *
-     * @return void
-     */
-    public function add() {
-        if ($this->request->is('post')) {
-            $this->Recipe->create();
-            if ($this->Recipe->save($this->request->data)) {
-                $this->Session->setFlash(__('The recipe has been successfully saved.'), "success");
-                return $this->redirect(array('action' => 'index'));
-            } else {
-                $this->Session->setFlash(__('The recipe could not be saved. Please, try again.'));
-            }
-        }
-        $ethnicities = $this->Recipe->Ethnicity->find('list');
-        $baseTypes = $this->Recipe->BaseType->find('list');
-        $courses = $this->Recipe->Course->find('list');
-        $preparationTimes = $this->Recipe->PreparationTime->find('list');
-        $difficulties = $this->Recipe->Difficulty->find('list');
-        $sources = $this->Recipe->Source->find('list');
-        $users = $this->Recipe->User->find('list');
-        $this->set(compact('ethnicities', 'baseTypes', 'courses', 'preparationTimes', 'difficulties', 'sources', 'users'));
-    }
-
-    /**
      * edit method
      *
      * @throws NotFoundException
@@ -85,7 +60,7 @@ class RecipesController extends AppController {
      * @return void
      */
     public function edit($id = null) {
-        if (!$this->Recipe->exists($id)) {
+        if ($id != null && !$this->Recipe->exists($id)) {
                 throw new NotFoundException(__('Invalid recipe'));
         }
         if ($this->request->is(array('post', 'put'))) {
@@ -95,7 +70,7 @@ class RecipesController extends AppController {
                 } else {
                         $this->Session->setFlash(__('The recipe could not be saved. Please, try again.'));
                 }
-        } else {
+        } else if ($id != null) {
                 $options = array('conditions' => array('Recipe.' . $this->Recipe->primaryKey => $id));
                 $this->request->data = $this->Recipe->find('first', $options);
         }
