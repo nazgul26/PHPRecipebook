@@ -67,7 +67,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'phprecipebook',
+		'database' => 'windfox_recipedb',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
