@@ -46,8 +46,8 @@ CREATE TABLE stores (
 );
 	
 CREATE TABLE ethnicities (
-	ethnic_id INT NOT NULL AUTO_INCREMENT,
-	ethnic_desc CHAR(64) NOT NULL UNIQUE,
+	id INT NOT NULL AUTO_INCREMENT,
+	name CHAR(64) NOT NULL UNIQUE,
 	PRIMARY KEY(id)
 );
 
