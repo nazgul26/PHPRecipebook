@@ -67,7 +67,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'recipedb',
+		'database' => 'phprecipebook',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);

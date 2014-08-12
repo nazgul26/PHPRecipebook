@@ -26,7 +26,9 @@ function initAjax(target) {
 
 function ajaxGet(location, target) {
     target = (target === undefined) ? "content" : target;
-    console.log("getting:" + location + " Target: " +target);
+    //console.log("getting:" + location + " Target: " +target);
+    $("#" + target).html("<div class='loadingImage'>Loading..<br/><div><img src='./img/ajax-loader.gif' alt='loading...'/></div></div>");
+
     $.get(location, function(data) {
         $("#" + target ).html(data);
         initAjax(target);
