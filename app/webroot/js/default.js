@@ -32,6 +32,9 @@ function ajaxGet(location, target) {
     $.get(location, function(data) {
         $("#" + target ).html(data);
         initAjax(target);
+    }).fail(function(xhr, status, error) {
+        //var err = eval("(" + xhr.responseText + ")");
+        $("#" + target ).html(xhr.responseText);
     });
 }
 
