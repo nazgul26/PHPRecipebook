@@ -39,18 +39,22 @@ function ajaxGet(location, target) {
 }
 
 function ajaxPostForm($formItem) {
+    var targetId = ($formItem.attr('targetId') == undefined) ? 'content' : $formItem.attr('targetId');
+    
     $.ajax({
         async:true, 
         data: $formItem.serialize(), 
         dataType:"html", 
         success:function (data, textStatus) {
-            var targetId = ($formItem.attr('targetId') == undefined) ? 'content' : $formItem.attr('targetId');
             $("#" + targetId).html(data);
             initAjax(targetId);
         }, 
         type:"POST", 
         url: $formItem.attr('action')
-    });
+    }).fail(function(xhr, status, error) {
+        //var err = eval("(" + xhr.responseText + ")");
+        $("#" + targetId).html(xhr.responseText);
+    });;
 }
 
 function ajaxNavigate(actionUrl, title, targetId) {

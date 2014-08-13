@@ -25,6 +25,7 @@
 <div class="ingredients form">
 <?php echo $this->Form->create('Ingredient', array('default' => false, 'targetId' => 'editIngredientDialog')); ?>
 <?php
+        echo $this->Form->input('id');
         echo $this->Form->input('name');
         echo $this->Form->input('description', array('escape' => true, 'rows' => '2', 'cols' => '10'));
         echo $this->Form->input('USDA_name');

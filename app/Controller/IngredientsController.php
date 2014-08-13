@@ -25,68 +25,53 @@ class IngredientsController extends AppController {
         $this->set('ingredients', $this->Paginator->paginate());
     }
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-public function view($id = null) {
-    if (!$this->Ingredient->exists($id)) {
-            throw new NotFoundException(__('Invalid ingredient'));
-    }
-    $options = array('conditions' => array('Ingredient.' . $this->Ingredient->primaryKey => $id));
-    $this->set('ingredient', $this->Ingredient->find('first', $options));
-}
+    /**
+     * edit method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function edit($id = null) {
+        if ($id != null && !$this->Ingredient->exists($id)) {
+                throw new NotFoundException(__('Invalid ingredient'));
+        }
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-public function edit($id = null) {
-    if ($id != null && !$this->Ingredient->exists($id)) {
-            throw new NotFoundException(__('Invalid ingredient'));
+        if ($this->request->is(array('post', 'put'))) {
+                if ($this->Ingredient->save($this->request->data)) {
+                        $this->Session->setFlash(__('The ingredient has been saved.'), 'success');
+                        return $this->redirect(array('action' => 'edit'));
+                } else {
+                        $this->Session->setFlash(__('The ingredient could not be saved. Please, try again.'));
+                }
+        } else if ($id != null) {
+                $options = array('conditions' => array('Ingredient.' . $this->Ingredient->primaryKey => $id));
+                $this->request->data = $this->Ingredient->find('first', $options);
+        }
+        $coreIngredients = $this->Ingredient->CoreIngredient->find('list');
+        $locations = $this->Ingredient->Location->find('list');
+        $units = $this->Ingredient->Unit->find('list');
+        $users = $this->Ingredient->User->find('list');
+        $this->set(compact('coreIngredients', 'locations', 'units', 'users'));
     }
-    
-    if ($this->request->is(array('post', 'put'))) {
-            if ($this->Ingredient->save($this->request->data)) {
-                    $this->Session->setFlash(__('The ingredient has been saved.'), 'success');
-                    return $this->redirect(array('action' => 'edit'));
-            } else {
-                    $this->Session->setFlash(__('The ingredient could not be saved. Please, try again.'));
-            }
-    } else if ($id != null) {
-            $options = array('conditions' => array('Ingredient.' . $this->Ingredient->primaryKey => $id));
-            $this->request->data = $this->Ingredient->find('first', $options);
-    }
-    $coreIngredients = $this->Ingredient->CoreIngredient->find('list');
-    $locations = $this->Ingredient->Location->find('list');
-    $units = $this->Ingredient->Unit->find('list');
-    $users = $this->Ingredient->User->find('list');
-    $this->set(compact('coreIngredients', 'locations', 'units', 'users'));
-}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-public function delete($id = null) {
-    $this->Ingredient->id = $id;
-    if (!$this->Ingredient->exists()) {
-            throw new NotFoundException(__('Invalid ingredient'));
-    }
-    $this->request->onlyAllow('post', 'delete');
-    if ($this->Ingredient->delete()) {
-            $this->Session->setFlash(__('The ingredient has been deleted.'));
-    } else {
-            $this->Session->setFlash(__('The ingredient could not be deleted. Please, try again.'));
-    }
-    return $this->redirect(array('action' => 'index'));
-}}
+    /**
+     * delete method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function delete($id = null) {
+        $this->Ingredient->id = $id;
+        if (!$this->Ingredient->exists()) {
+                throw new NotFoundException(__('Invalid ingredient'));
+        }
+        $this->request->onlyAllow('post', 'delete');
+        if ($this->Ingredient->delete()) {
+                $this->Session->setFlash(__('The ingredient has been deleted.'));
+        } else {
+                $this->Session->setFlash(__('The ingredient could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(array('action' => 'index'));
+    }}

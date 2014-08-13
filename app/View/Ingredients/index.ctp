@@ -18,17 +18,19 @@
 	<h2><?php echo __('Ingredients'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+            <th class="actions"><?php echo __('Actions'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('description'); ?></th>
 			<th><?php echo $this->Paginator->sort('location_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('unit_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('solid'); ?></th>
-			<th><?php echo $this->Paginator->sort('system'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			
 	</tr>
 	<?php foreach ($ingredients as $ingredient): ?>
 	<tr>
+            		<td class="actions">
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $ingredient['Ingredient']['id']), array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog')); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $ingredient['Ingredient']['id']), null, __('Are you sure you want to delete # %s?', $ingredient['Ingredient']['id'])); ?>
+		</td>
 		<td><?php echo h($ingredient['Ingredient']['name']); ?>&nbsp;</td>
 		<td><?php echo h($ingredient['Ingredient']['description']); ?>&nbsp;</td>
 		<td>
@@ -36,16 +38,6 @@
 		</td>
 		<td>
 			<?php echo $this->Html->link($ingredient['Unit']['name'], array('controller' => 'units', 'action' => 'view', $ingredient['Unit']['id'])); ?>
-		</td>
-		<td><?php echo h($ingredient['Ingredient']['solid']); ?>&nbsp;</td>
-		<td><?php echo h($ingredient['Ingredient']['system']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($ingredient['User']['name'], array('controller' => 'users', 'action' => 'view', $ingredient['User']['id'])); ?>
-		</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $ingredient['Ingredient']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $ingredient['Ingredient']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $ingredient['Ingredient']['id']), null, __('Are you sure you want to delete # %s?', $ingredient['Ingredient']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
