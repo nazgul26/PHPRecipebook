@@ -29,7 +29,7 @@
 	<tr>
             		<td class="actions">
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $ingredient['Ingredient']['id']), array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog')); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $ingredient['Ingredient']['id']), null, __('Are you sure you want to delete # %s?', $ingredient['Ingredient']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $ingredient['Ingredient']['id']), null, __('Are you sure you want to delete "%s"?', $ingredient['Ingredient']['name'])); ?>
 		</td>
 		<td><?php echo h($ingredient['Ingredient']['name']); ?>&nbsp;</td>
 		<td><?php echo h($ingredient['Ingredient']['description']); ?>&nbsp;</td>

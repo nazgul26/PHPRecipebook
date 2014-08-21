@@ -69,7 +69,7 @@ class IngredientsController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Ingredient->delete()) {
-                $this->Session->setFlash(__('The ingredient has been deleted.'));
+                $this->Session->setFlash(__('The ingredient has been deleted.'), 'success');
         } else {
                 $this->Session->setFlash(__('The ingredient could not be deleted. Please, try again.'));
         }
