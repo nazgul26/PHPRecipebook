@@ -181,9 +181,13 @@ function initDialogs() {
 
 function setupSearchBox() {
     showCancel();
+    $("#searchEverythingForm").submit(function() {
+        e.preventDefault();
+        return false;
+    });
+    
     $('.cancelBtn').click(function()
     {
-        console.log('time to clear');
         $(".cancelBtn").stop();
         $(".cancelBtn").fadeTo(500 , 0 );
         $('.searchTextBox').val('');
@@ -193,8 +197,14 @@ function setupSearchBox() {
     {
         showCancel();
     });
-    $('.searchTextBox').keydown(function()
+    $('.searchTextBox').keydown(function(e)
     {
+        if(e.which == 13) {
+            console.log('going to Search ' + window.applicationContext + " for " + $(this).val());
+            console.log('Address:' + window.applicationContext + '/search/term=' + $(this).val());
+            ajaxGet(window.applicationContext + '/search?term=' + $(this).val());
+            return false;
+        }
         showCancel();
     });
     
@@ -202,8 +212,6 @@ function setupSearchBox() {
     {
         showCancel();
     });
-    
-    $('.searchTextBox').change();
 }
 
 function showCancel() {

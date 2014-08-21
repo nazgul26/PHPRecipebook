@@ -1,3 +1,8 @@
+<script type="text/javascript">
+    $(function() {
+        window.applicationContext = "ingredients";
+    });
+</script>
 <div class="actions">
 	<ul>
             <li><?php echo $this->Html->link(__('Add Ingredient'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog'));?></li>
@@ -19,15 +24,15 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
             <th class="actions"><?php echo __('Actions'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('description'); ?></th>
-			<th><?php echo $this->Paginator->sort('location_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('unit_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('name', null, array('direction' => 'asc', 'class' => 'ajaxLink')); ?></th>
+			<th><?php echo $this->Paginator->sort('description', null, array('class' => 'ajaxLink')); ?></th>
+			<th><?php echo $this->Paginator->sort('location_id', null, array('class' => 'ajaxLink')); ?></th>
+			<th><?php echo $this->Paginator->sort('unit_id', null, array('class' => 'ajaxLink')); ?></th>
 			
 	</tr>
 	<?php foreach ($ingredients as $ingredient): ?>
 	<tr>
-            		<td class="actions">
+            	<td class="actions">
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $ingredient['Ingredient']['id']), array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog')); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $ingredient['Ingredient']['id']), null, __('Are you sure you want to delete "%s"?', $ingredient['Ingredient']['name'])); ?>
 		</td>
@@ -43,16 +48,13 @@
 <?php endforeach; ?>
 	</table>
 	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
+	<?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}')	));?>
+        </p>
 	<div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->prev('< ' . __('previous'), array('class' => 'ajaxLink'), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->numbers(array('separator' => '','class'=>'ajaxLink'));
+		echo $this->Paginator->next(__('next') . ' >', array('class' => 'ajaxLink'), null, array('class' => 'next disabled'));
 	?>
 	</div>
 </div>

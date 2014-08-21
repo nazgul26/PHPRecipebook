@@ -14,6 +14,12 @@ class IngredientsController extends AppController {
      * @var array
      */
     public $components = array('Paginator');
+    
+    public $paginate = array(
+        'order' => array(
+            'Ingredient.name' => 'asc'
+        )
+    );
 
     /**
      * index method
@@ -22,6 +28,7 @@ class IngredientsController extends AppController {
      */
     public function index() {
         $this->Ingredient->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('ingredients', $this->Paginator->paginate());
     }
 
@@ -74,4 +81,18 @@ class IngredientsController extends AppController {
                 $this->Session->setFlash(__('The ingredient could not be deleted. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index'));
-    }}
+    }
+     
+    public function search() {
+        $term = $this->request->query('term');
+        if ($term)
+        {
+            $this->Ingredient->recursive = 0;
+            $this->Paginator->settings = $this->paginate;
+            $this->set('ingredients', $this->Paginator->paginate("Ingredient", array('Ingredient.Name LIKE' => $term . '%')));
+        } else {
+            $this->set('ingredients', $this->Paginator->paginate());
+        }
+        $this->render('index');
+    }
+}

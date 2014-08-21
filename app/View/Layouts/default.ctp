@@ -51,6 +51,7 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
         initApplication();
     });
 
+    var applicationContext = "recipe"; // Default context
     </script>
     <div id="container">
         <div id="header">
@@ -68,7 +69,7 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                     <li><a href="Ingredients" class="ajaxNavigationLink" targetId="content"><?php echo __('Ingredients'); ?></a></li>
                     <li><a href="Restaurants" class="ajaxNavigationLink" targetId="content"><?php echo __('Restaurants');?></a></li>
                     <li><div id="searchHolder">
-                        <form>
+                        <form id="searchEverythingForm">
                           <span>
                               <input type="text" class="searchTextBox" placeholder="Search EveryThing" />
                               <img src="img/clearBtn.png"  class="cancelBtn"/>
@@ -85,12 +86,7 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
             </div>
         
             <div id="footer">
-                    <?php echo $this->Html->link(
-                                    $this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-                                    'http://www.cakephp.org/',
-                                    array('target' => '_blank', 'escape' => false)
-                            );
-                    ?>
+
             </div>
         </div>
     </div>

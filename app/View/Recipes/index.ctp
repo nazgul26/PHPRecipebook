@@ -1,3 +1,8 @@
+<script type="text/javascript">
+    $(function() {
+        window.applicationContext = "recipes";
+    });
+</script>
 <?php echo $this->Session->flash(); ?>
 <div class="recipes index">
 	<h2><?php echo __('Recipes'); ?></h2>
@@ -24,11 +29,8 @@
 <?php endforeach; ?>
 	</table>
 	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
+	<?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}')	));?>
+        </p>
 	<div class="paging">
 	<?php
 		echo $this->Paginator->prev('< ' . __('previous'), array('class' => 'ajaxLink'), null, array('class' => 'prev disabled'));
