@@ -71,7 +71,7 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                     <li><div id="searchHolder">
                         <form id="searchEverythingForm">
                           <span>
-                              <input type="text" class="searchTextBox" placeholder="Search EveryThing" />
+                              <input type="text" class="searchTextBox" placeholder="Search Recipes" />
                               <img src="img/clearBtn.png"  class="cancelBtn"/>
                           </span>
                         </form>

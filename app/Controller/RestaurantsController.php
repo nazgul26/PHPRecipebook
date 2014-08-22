@@ -107,4 +107,17 @@ class RestaurantsController extends AppController {
             }
             return $this->redirect(array('action' => 'index'));
     }
+    
+    public function search() {
+        $term = $this->request->query('term');
+        if ($term)
+        {
+            $this->Restaurant->recursive = 0;
+            $this->Paginator->settings = $this->paginate;
+            $this->set('restaurants', $this->Paginator->paginate("Restaurant", array('Restaurant.Name LIKE' => '%' . $term . '%')));
+        } else {
+            $this->set('restaurants', $this->Paginator->paginate());
+        }
+        $this->render('index');
+    }
 }

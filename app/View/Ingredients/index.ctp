@@ -1,6 +1,6 @@
 <script type="text/javascript">
     $(function() {
-        window.applicationContext = "ingredients";
+        setSearchBoxTarget('Ingredients');
     });
 </script>
 <div class="actions">

@@ -1,6 +1,6 @@
 <script type="text/javascript">
     $(function() {
-        window.applicationContext = "recipes";
+        setSearchBoxTarget('Recipes');
     });
 </script>
 <?php echo $this->Session->flash(); ?>
@@ -8,23 +8,24 @@
 	<h2><?php echo __('Recipes'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('comments'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+            <th class="actions"><?php echo __('Actions'); ?></th>
+            <th><?php echo $this->Paginator->sort('name'); ?></th>
+            <th><?php echo $this->Paginator->sort('comments'); ?></th>
+            <th><?php echo $this->Paginator->sort('user_id'); ?></th>
+			
 	</tr>
 	<?php foreach ($recipes as $recipe): ?>
 	<tr>
-		<td><?php echo h($recipe['Recipe']['name']); ?>&nbsp;</td>
-		<td><?php echo h($recipe['Recipe']['comments']); ?>&nbsp;</td>
-		<td>
-                    <?php echo $this->Html->link($recipe['User']['name'], array('controller' => 'users', 'action' => 'view', $recipe['User']['id'])); ?>
-		</td>
-		<td class="actions">
-                    <?php echo $this->Html->link(__('View'), array('action' => 'view', $recipe['Recipe']['id']), array('class' => 'ajaxLink')); ?>
-                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recipe['Recipe']['id']), array('class' => 'ajaxLink')); ?>
-                    <?php echo $this->Html->link(__('Delete'), array('action' => 'delete', $recipe['Recipe']['id']), array('class' => 'ajaxDeleteLink', 'deleteMessage' => "Are you sure you wish to delete this recipe?")); ?>
-		</td>
+            <td class="actions">
+                <?php echo $this->Html->link(__('View'), array('action' => 'view', $recipe['Recipe']['id']), array('class' => 'ajaxLink')); ?>
+                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recipe['Recipe']['id']), array('class' => 'ajaxLink')); ?>
+                <?php echo $this->Html->link(__('Delete'), array('action' => 'delete', $recipe['Recipe']['id']), array('class' => 'ajaxDeleteLink', 'deleteMessage' => "Are you sure you wish to delete this recipe?")); ?>
+            </td>
+            <td><?php echo h($recipe['Recipe']['name']); ?>&nbsp;</td>
+            <td><?php echo h($recipe['Recipe']['comments']); ?>&nbsp;</td>
+            <td>
+                <?php echo $this->Html->link($recipe['User']['name'], array('controller' => 'users', 'action' => 'view', $recipe['User']['id'])); ?>
+            </td>
 	</tr>
 <?php endforeach; ?>
 	</table>

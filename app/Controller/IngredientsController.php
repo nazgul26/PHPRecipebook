@@ -89,7 +89,7 @@ class IngredientsController extends AppController {
         {
             $this->Ingredient->recursive = 0;
             $this->Paginator->settings = $this->paginate;
-            $this->set('ingredients', $this->Paginator->paginate("Ingredient", array('Ingredient.Name LIKE' => $term . '%')));
+            $this->set('ingredients', $this->Paginator->paginate("Ingredient", array('Ingredient.Name LIKE' => '%' . $term . '%')));
         } else {
             $this->set('ingredients', $this->Paginator->paginate());
         }

@@ -200,8 +200,6 @@ function setupSearchBox() {
     $('.searchTextBox').keydown(function(e)
     {
         if(e.which == 13) {
-            console.log('going to Search ' + window.applicationContext + " for " + $(this).val());
-            console.log('Address:' + window.applicationContext + '/search/term=' + $(this).val());
             ajaxGet(window.applicationContext + '/search?term=' + $(this).val());
             return false;
         }
@@ -212,6 +210,11 @@ function setupSearchBox() {
     {
         showCancel();
     });
+}
+
+function setSearchBoxTarget(controllerName) {
+    window.applicationContext = controllerName;
+    $('.searchTextBox').attr('placeholder', "Search " + controllerName).focus();
 }
 
 function showCancel() {

@@ -14,6 +14,12 @@ class RecipesController extends AppController {
      * @var array
      */
     public $components = array('Paginator');
+    
+    public $paginate = array(
+        'order' => array(
+            'Recipe.name' => 'asc'
+        )
+    );
 
     /**
      * index method
@@ -22,19 +28,20 @@ class RecipesController extends AppController {
      */
     public function index() {
         $this->Recipe->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
         $this->set('recipes', $this->Paginator->paginate());
     }
 
     public function findByBase($baseId) {
-            $this->Recipe->recursive = 0;
-            $this->set('recipes', $this->Paginator->paginate('Recipe', array('Recipe.base_type_id' => $baseId)));
-            $this->render('index');
+        $this->Recipe->recursive = 0;
+        $this->set('recipes', $this->Paginator->paginate('Recipe', array('Recipe.base_type_id' => $baseId)));
+        $this->render('index');
     }
 
     public function findByCourse($courseId) {
-            $this->Recipe->recursive = 0;
-            $this->set('recipes', $this->Paginator->paginate('Recipe', array('Recipe.course_id' => $courseId)));
-            $this->render('index');
+        $this->Recipe->recursive = 0;
+        $this->set('recipes', $this->Paginator->paginate('Recipe', array('Recipe.course_id' => $courseId)));
+        $this->render('index');
     }
 
     /**
@@ -102,5 +109,18 @@ class RecipesController extends AppController {
                 $this->Session->setFlash(__('The recipe could not be deleted. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index'));
+    }
+    
+    public function search() {
+        $term = $this->request->query('term');
+        if ($term)
+        {
+            $this->Recipe->recursive = 0;
+            $this->Paginator->settings = $this->paginate;
+            $this->set('recipes', $this->Paginator->paginate("Recipe", array('Recipe.Name LIKE' => '%' . $term . '%')));
+        } else {
+            $this->set('recipes', $this->Paginator->paginate());
+        }
+        $this->render('index');
     }
 }
