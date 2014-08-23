@@ -39,7 +39,9 @@
 		<td><?php echo h($ingredient['Ingredient']['name']); ?>&nbsp;</td>
 		<td><?php echo h($ingredient['Ingredient']['description']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($ingredient['Location']['name'], array('controller' => 'locations', 'action' => 'view', $ingredient['Location']['id'])); ?>
+			<?php echo $this->Html->link($ingredient['Location']['name'], 
+                                    array('controller' => 'locations', 'action' => 'edit', $ingredient['Location']['id']) , 
+                                    array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog')); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($ingredient['Unit']['name'], array('controller' => 'units', 'action' => 'view', $ingredient['Unit']['id'])); ?>
