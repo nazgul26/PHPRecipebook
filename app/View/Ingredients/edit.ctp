@@ -9,11 +9,9 @@
             select: function(event, ui) {
                 console.log(ui.item);
                 if (ui.item.id) {
-                    console.log('set it');
                     $("#IngredientCoreIngredientId").val(ui.item.id);
                     $("#USDA_name").val(ui.item.label);
                 } else {
-                    console.log('clear it');
                     $("#IngredientCoreIngredientId").val('');
                     $("#USDA_name").val('');
                 }

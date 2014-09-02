@@ -13,7 +13,13 @@ class LocationsController extends AppController {
      *
      * @var array
      */
-	public $components = array('Paginator');
+    public $components = array('Paginator');
+    
+    public $paginate = array(
+        'order' => array(
+            'Location.name' => 'asc'
+        )
+    );
 
     /**
      * index method
@@ -21,8 +27,9 @@ class LocationsController extends AppController {
      * @return void
      */
     public function index() {
-            $this->Location->recursive = 0;
-            $this->set('locations', $this->Paginator->paginate());
+        $this->Location->recursive = 0;
+        $this->Paginator->settings = $this->paginate;
+        $this->set('locations', $this->Paginator->paginate());
     }
 
     /**
@@ -38,7 +45,7 @@ class LocationsController extends AppController {
         }
         if ($this->request->is(array('post', 'put'))) {
                 if ($this->Location->save($this->request->data)) {
-                        $this->Session->setFlash(__('The location has been saved.'), 'success');
+                        $this->Session->setFlash(__('The location has been saved.'), 'success', array('event' => 'saved.location'));
                         return $this->redirect(array('action' => 'edit'));
                 } else {
                         $this->Session->setFlash(__('The location could not be saved. Please, try again.'));
@@ -63,7 +70,7 @@ class LocationsController extends AppController {
             }
             $this->request->onlyAllow('post', 'delete');
             if ($this->Location->delete()) {
-                    $this->Session->setFlash(__('The location has been deleted.'));
+                    $this->Session->setFlash(__('The location has been deleted.'), 'success', array('event' => 'saved.location'));
             } else {
                     $this->Session->setFlash(__('The location could not be deleted. Please, try again.'));
             }

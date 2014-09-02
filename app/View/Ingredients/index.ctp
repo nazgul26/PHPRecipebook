@@ -1,9 +1,22 @@
 <script type="text/javascript">
     $(function() {
         setSearchBoxTarget('Ingredients');
+        
+        $(document).on("saved.ingredient", function() {
+            $('#editIngredientDialog').dialog('close');
+            ajaxGet('ingredients');
+        });
+        
+        $(document).on("saved.location", function() {
+            $('#editLocationDialog').dialog('close');
+            ajaxGet('ingredients');
+        });
+        
     });
 </script>
-<div class="actions">
+<div class="ingredients index">
+	<h2><?php echo __('Ingredients'); ?></h2>
+        <div class="actions">
 	<ul>
             <li><?php echo $this->Html->link(__('Add Ingredient'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog'));?></li>
             <li><button id="moreActionLinks">More Actions...</button></li>
@@ -12,15 +25,13 @@
             <ul id="moreActionLinksContent">
                 <li><?php echo $this->Html->link(__('List Core Ingredients'), array('controller' => 'core_ingredients', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Core Ingredient'), array('controller' => 'core_ingredients', 'action' => 'add'), array('class' => 'ajaxLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Locations'), array('controller' => 'locations', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Locations'), array('controller' => 'locations', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Location'), array('controller' => 'locations', 'action' => 'add'), array('class' => 'ajaxLink')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Units'), array('controller' => 'units', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Unit'), array('controller' => 'units', 'action' => 'add'), array('class' => 'ajaxLink')); ?> </li>
             </ul>
         </div> 
-</div>
-<div class="ingredients index">
-	<h2><?php echo __('Ingredients'); ?></h2>
+        </div>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
             <th class="actions"><?php echo __('Actions'); ?></th>
