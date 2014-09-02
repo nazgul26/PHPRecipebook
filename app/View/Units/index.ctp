@@ -1,5 +1,10 @@
 <div class="units index">
 	<h2><?php echo __('Units'); ?></h2>
+        <div class="actions">
+            <ul>
+                    <li><?php echo $this->Html->link(__('New Unit'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog')); ?></li>
+            </ul>
+        </div>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -11,36 +16,27 @@
 	</tr>
 	<?php foreach ($units as $unit): ?>
 	<tr>
-		<td><?php echo h($unit['Unit']['id']); ?>&nbsp;</td>
-		<td><?php echo h($unit['Unit']['name']); ?>&nbsp;</td>
-		<td><?php echo h($unit['Unit']['abbreviation']); ?>&nbsp;</td>
-		<td><?php echo h($unit['Unit']['system']); ?>&nbsp;</td>
-		<td><?php echo h($unit['Unit']['sort_order']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $unit['Unit']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $unit['Unit']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $unit['Unit']['id']), null, __('Are you sure you want to delete # %s?', $unit['Unit']['id'])); ?>
-		</td>
+            <td class="actions">
+                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $unit['Unit']['id'])); ?>
+                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $unit['Unit']['id']), null, __('Are you sure you want to delete # %s?', $unit['Unit']['id'])); ?>
+            </td>
+            <td><?php echo h($unit['Unit']['id']); ?>&nbsp;</td>
+            <td><?php echo h($unit['Unit']['name']); ?>&nbsp;</td>
+            <td><?php echo h($unit['Unit']['abbreviation']); ?>&nbsp;</td>
+            <td><?php echo h($unit['Unit']['system']); ?>&nbsp;</td>
+            <td><?php echo h($unit['Unit']['sort_order']); ?>&nbsp;</td>
 	</tr>
-<?php endforeach; ?>
+        <?php endforeach; ?>
 	</table>
 	<p>
 	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
+	echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}')));?>
+        </p>
 	<div class="paging">
 	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+		echo $this->Paginator->prev('< ' . __('previous'), array('class' => 'ajaxLink'), null, array('class' => 'prev disabled'));
+		echo $this->Paginator->numbers(array('separator' => '','class'=>'ajaxLink'));
+		echo $this->Paginator->next(__('next') . ' >', array('class' => 'ajaxLink'), null, array('class' => 'next disabled'));
 	?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Unit'), array('action' => 'add')); ?></li>
-	</ul>
 </div>

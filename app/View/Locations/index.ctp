@@ -1,3 +1,13 @@
+<script type="text/javascript">
+    $(function() {
+        setSearchBoxTarget('Locations');
+        
+        $(document).on("saved.location", function() {
+            $('#editLocationDialog').dialog('close');
+            ajaxGet('locations');
+        }); 
+    });
+</script>
 <div class="locations index">
 	<h2><?php echo __('Locations'); ?></h2>
         <div class="actions">

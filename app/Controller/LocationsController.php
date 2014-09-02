@@ -44,15 +44,15 @@ class LocationsController extends AppController {
                 throw new NotFoundException(__('Invalid location'));
         }
         if ($this->request->is(array('post', 'put'))) {
-                if ($this->Location->save($this->request->data)) {
-                        $this->Session->setFlash(__('The location has been saved.'), 'success', array('event' => 'saved.location'));
-                        return $this->redirect(array('action' => 'edit'));
-                } else {
-                        $this->Session->setFlash(__('The location could not be saved. Please, try again.'));
-                }
+            if ($this->Location->save($this->request->data)) {
+                    $this->Session->setFlash(__('The location has been saved.'), 'success', array('event' => 'saved.location'));
+                    return $this->redirect(array('action' => 'edit'));
+            } else {
+                    $this->Session->setFlash(__('The location could not be saved. Please, try again.'));
+            }
         } else {
-                $options = array('conditions' => array('Location.' . $this->Location->primaryKey => $id));
-                $this->request->data = $this->Location->find('first', $options);
+            $options = array('conditions' => array('Location.' . $this->Location->primaryKey => $id));
+            $this->request->data = $this->Location->find('first', $options);
         }
     }
 
@@ -75,5 +75,18 @@ class LocationsController extends AppController {
                     $this->Session->setFlash(__('The location could not be deleted. Please, try again.'));
             }
             return $this->redirect(array('action' => 'index'));
+    }
+    
+    public function search() {
+        $term = $this->request->query('term');
+        if ($term)
+        {
+            $this->Location->recursive = 0;
+            $this->Paginator->settings = $this->paginate;
+            $this->set('locations', $this->Paginator->paginate("Location", array('Location.Name LIKE' => '%' . $term . '%')));
+        } else {
+            $this->set('locations', $this->Paginator->paginate());
+        }
+        $this->render('index');
     }
 }
