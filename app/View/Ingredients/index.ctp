@@ -16,6 +16,7 @@
 </script>
 <div class="ingredients index">
 	<h2><?php echo __('Ingredients'); ?></h2>
+        <a href="http://www.google.com">Google</a>
         <div class="actions">
 	<ul>
             <li><?php echo $this->Html->link(__('Add Ingredient'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog'));?></li>
