@@ -34,9 +34,9 @@ class Restaurant extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'PriceRanges' => array(
+		'PriceRange' => array(
 			'className' => 'PriceRanges',
-			'foreignKey' => 'price_ranges_id',
+			'foreignKey' => 'price_range_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

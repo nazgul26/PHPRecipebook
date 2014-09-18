@@ -196,7 +196,7 @@ ALTER TABLE restaurants CHANGE restaurant_picture picture MEDIUMBLOB;
 ALTER TABLE restaurants CHANGE restaurant_picture_type picture_type VARCHAR(64);
 ALTER TABLE restaurants CHANGE restaurant_menu_text menu_text TEXT;
 ALTER TABLE restaurants CHANGE restaurant_comments comments TEXT;
-ALTER TABLE restaurants CHANGE restaurant_price price_ranges_id INT;
+ALTER TABLE restaurants CHANGE restaurant_price price_range_id INT;
 ALTER TABLE restaurants CHANGE restaurant_delivery delivery BOOL;
 ALTER TABLE restaurants CHANGE restaurant_carry_out carry_out BOOL;
 ALTER TABLE restaurants CHANGE restaurant_dine_in dine_in BOOL;

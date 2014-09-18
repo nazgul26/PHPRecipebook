@@ -1,10 +1,27 @@
 <script type="text/javascript">
     $(function() {
         setSearchBoxTarget('Restaurants');
+        
+        $(document).on("saved.restaurant", function() {
+            $('#editRestaurantDialog').dialog('close');
+            ajaxGet('restaurants');
+        });
     });
 </script>
 <div class="restaurants index">
 	<h2><?php echo __('Restaurants'); ?></h2>
+        <div class="actions">
+	<ul>
+            <li><?php echo $this->Html->link(__('Add Restaurant'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editRestaurantDialog'));?></li>
+            <li><button id="moreActionLinks">More Actions...</button></li>
+	</ul>
+        <div style="display: none;">
+            <ul id="moreActionLinksContent">
+                <li><?php echo $this->Html->link(__('List Price Ranges'), array('controller' => 'price_ranges', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Price Ranges'), array('controller' => 'price_ranges', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editPriceRangesDialog')); ?> </li>
+            </ul>
+        </div> 
+        </div>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
             <th class="actions"><?php echo __('Actions'); ?></th>
@@ -16,22 +33,14 @@
             <th><?php echo $this->Paginator->sort('country'); ?></th>
             <th><?php echo $this->Paginator->sort('phone'); ?></th>
             <th><?php echo $this->Paginator->sort('hours'); ?></th>
-            <th><?php echo $this->Paginator->sort('menu_text'); ?></th>
             <th><?php echo $this->Paginator->sort('comments'); ?></th>
-            <th><?php echo $this->Paginator->sort('price_ranges_id'); ?></th>
-            <th><?php echo $this->Paginator->sort('delivery'); ?></th>
-            <th><?php echo $this->Paginator->sort('carry_out'); ?></th>
-            <th><?php echo $this->Paginator->sort('dine_in'); ?></th>
-            <th><?php echo $this->Paginator->sort('credit'); ?></th>
-            <th><?php echo $this->Paginator->sort('website'); ?></th>
             <th><?php echo $this->Paginator->sort('user_id'); ?></th>
             
 	</tr>
 	<?php foreach ($restaurants as $restaurant): ?>
 	<tr>
             <td class="actions">
-                    <?php echo $this->Html->link(__('View'), array('action' => 'view', $restaurant['Restaurant']['id'])); ?>
-                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $restaurant['Restaurant']['id'])); ?>
+                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $restaurant['Restaurant']['id']), array('class' => 'ajaxLink', 'targetId' => 'editRestaurantDialog')); ?>
                     <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $restaurant['Restaurant']['id']), null, __('Are you sure you want to delete # %s?', $restaurant['Restaurant']['id'])); ?>
             </td>
             <td><?php echo $restaurant['Restaurant']['name']; ?>&nbsp;</td>
@@ -43,14 +52,6 @@
             <td><?php echo h($restaurant['Restaurant']['phone']); ?>&nbsp;</td>
             <td><?php echo $restaurant['Restaurant']['hours']; ?>&nbsp;</td>
             <td><?php echo $restaurant['Restaurant']['comments']; ?>&nbsp;</td>
-            <td>
-                    <?php echo $this->Html->link($restaurant['PriceRanges']['name'], array('controller' => 'price_ranges', 'action' => 'view', $restaurant['PriceRanges']['id'])); ?>
-            </td>
-            <td><?php echo h($restaurant['Restaurant']['delivery']); ?>&nbsp;</td>
-            <td><?php echo h($restaurant['Restaurant']['carry_out']); ?>&nbsp;</td>
-            <td><?php echo h($restaurant['Restaurant']['dine_in']); ?>&nbsp;</td>
-            <td><?php echo h($restaurant['Restaurant']['credit']); ?>&nbsp;</td>
-            <td><?php echo $restaurant['Restaurant']['website']; ?>&nbsp;</td>
             <td>
                     <?php echo $this->Html->link($restaurant['User']['name'], array('controller' => 'users', 'action' => 'view', $restaurant['User']['id'])); ?>
             </td>
@@ -66,14 +67,4 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Restaurant'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Price Ranges'), array('controller' => 'price_ranges', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Price Ranges'), array('controller' => 'price_ranges', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-	</ul>
 </div>
