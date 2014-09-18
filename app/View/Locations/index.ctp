@@ -23,7 +23,7 @@
 	<?php foreach ($locations as $location): ?>
 	<tr>
             <td class="actions">
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $location['Location']['id'])); ?>
+                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $location['Location']['id']),array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog')); ?>
                 <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $location['Location']['id']), null, __('Are you sure you want to delete "%s"?', $location['Location']['name'])); ?>
             </td>
             <td><?php echo h($location['Location']['name']); ?>&nbsp;</td>

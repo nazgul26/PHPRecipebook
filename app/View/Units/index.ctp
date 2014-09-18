@@ -1,26 +1,32 @@
+<script type="text/javascript">
+    $(function() {
+        $(document).on("saved.unit", function() {
+            $('#editUnitDialog').dialog('close');
+            ajaxGet('units');
+        }); 
+    });
+</script>
 <div class="units index">
 	<h2><?php echo __('Units'); ?></h2>
         <div class="actions">
             <ul>
-                    <li><?php echo $this->Html->link(__('New Unit'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog')); ?></li>
+                    <li><?php echo $this->Html->link(__('Add Unit'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog')); ?></li>
             </ul>
         </div>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('abbreviation'); ?></th>
-			<th><?php echo $this->Paginator->sort('system'); ?></th>
-			<th><?php echo $this->Paginator->sort('sort_order'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+                <th class="actions"><?php echo __('Actions'); ?></th>
+                <th><?php echo $this->Paginator->sort('name'); ?></th>
+                <th><?php echo $this->Paginator->sort('abbreviation'); ?></th>
+                <th><?php echo $this->Paginator->sort('system'); ?></th>
+                <th><?php echo $this->Paginator->sort('sort_order'); ?></th>
 	</tr>
 	<?php foreach ($units as $unit): ?>
 	<tr>
             <td class="actions">
-                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $unit['Unit']['id'])); ?>
+                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $unit['Unit']['id']), array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog')); ?>
                     <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $unit['Unit']['id']), null, __('Are you sure you want to delete # %s?', $unit['Unit']['id'])); ?>
             </td>
-            <td><?php echo h($unit['Unit']['id']); ?>&nbsp;</td>
             <td><?php echo h($unit['Unit']['name']); ?>&nbsp;</td>
             <td><?php echo h($unit['Unit']['abbreviation']); ?>&nbsp;</td>
             <td><?php echo h($unit['Unit']['system']); ?>&nbsp;</td>

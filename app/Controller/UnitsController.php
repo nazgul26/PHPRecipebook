@@ -60,8 +60,8 @@ class UnitsController extends AppController {
         }
         if ($this->request->is(array('post', 'put'))) {
                 if ($this->Unit->save($this->request->data)) {
-                        $this->Session->setFlash(__('The unit has been saved.'), 'success', array('event' => 'saved.location'));
-                        return $this->redirect(array('action' => 'index'));
+                        $this->Session->setFlash(__('The unit has been saved.'), 'success', array('event' => 'saved.unit'));
+                        return $this->redirect(array('action' => 'edit'));
                 } else {
                         $this->Session->setFlash(__('The unit could not be saved. Please, try again.'));
                 }
@@ -85,23 +85,10 @@ class UnitsController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Unit->delete()) {
-                $this->Session->setFlash(__('The unit has been deleted.'), 'success', array('event' => 'saved.location'));
+                $this->Session->setFlash(__('The unit has been deleted.'), 'success', array('event' => 'saved.unit'));
         } else {
                 $this->Session->setFlash(__('The unit could not be deleted. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index'));
-    }   
-    
-    public function search() {
-        $term = $this->request->query('term');
-        if ($term)
-        {
-            $this->Location->recursive = 0;
-            $this->Paginator->settings = $this->paginate;
-            $this->set('units', $this->Paginator->paginate("Unit", array('Unit.Name LIKE' => '%' . $term . '%')));
-        } else {
-            $this->set('units', $this->Paginator->paginate());
-        }
-        $this->render('index');
     }
  }

@@ -12,6 +12,11 @@
             ajaxGet('ingredients');
         });
         
+        $(document).on("saved.unit", function() {
+            $('#editUnitDialog').dialog('close');
+            ajaxGet('ingredients');
+        });
+        
     });
 </script>
 <div class="ingredients index">
@@ -55,7 +60,9 @@
                                     array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog')); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($ingredient['Unit']['name'], array('controller' => 'units', 'action' => 'view', $ingredient['Unit']['id'])); ?>
+			<?php echo $this->Html->link($ingredient['Unit']['name'], 
+                                array('controller' => 'units', 'action' => 'edit', $ingredient['Unit']['id']),
+                                array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog')); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
