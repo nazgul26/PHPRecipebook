@@ -204,3 +204,10 @@ ALTER TABLE restaurants CHANGE restaurant_credit credit BOOL;
 ALTER TABLE restaurants CHANGE restaurant_website website VARCHAR(254);
 ALTER TABLE restaurants CHANGE restaurant_user user_id INT NULL;
 ALTER TABLE restaurants ADD UNIQUE (name, user_id);
+
+CREATE TABLE preparation_methods (
+    	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(64),
+	PRIMARY KEY(id)
+);
+ALTER TABLE recipes ADD preparation_method_id INT REFERENCES preparation_methods(id) on DELETE SET NULL;

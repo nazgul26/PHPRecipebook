@@ -87,6 +87,13 @@ class Recipe extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
+                'PreparationMethod' => array(
+			'className' => 'PreparationMethod',
+			'foreignKey' => 'preparation_method_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'Difficulty' => array(
 			'className' => 'Difficulty',
 			'foreignKey' => 'difficulty_id',

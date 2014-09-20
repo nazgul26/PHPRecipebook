@@ -89,6 +89,12 @@ CREATE TABLE difficulties (
 	PRIMARY KEY(id)
 );
 
+CREATE TABLE preparation_methods (
+    	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(64),
+	PRIMARY KEY(id)
+);
+
 CREATE TABLE core_ingredients (
 	id INT NOT NULL,
 	groupId INT NOT NULL,
@@ -136,6 +142,7 @@ CREATE TABLE recipes (
 	course_id INT REFERENCES courses(id) ON DELETE SET NULL,
 	preparation_time_id INT REFERENCES preparation_times(id) ON DELETE SET NULL,
 	difficulty_id INT REFERENCES difficulties(id) ON DELETE SET NULL,
+        preparation_method_id INT REFERENCES preparation_methods(id) on DELETE SET NULL,
 	serving_size INT,
 	directions LONGTEXT,
 	comments MEDIUMTEXT,
