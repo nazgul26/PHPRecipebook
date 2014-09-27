@@ -1,6 +1,11 @@
 <script type="text/javascript">
     $(function() {
         setSearchBoxTarget('Recipes');
+        
+        $(document).on("saved.ethnicity", function() {
+            $('#editEthnicityDialog').dialog('close');
+            ajaxGet('recipes');
+        });
     });
 </script>
 <?php echo $this->Session->flash(); ?>
@@ -14,7 +19,7 @@
         <div style="display: none;">
             <ul id="moreActionLinksContent">
 		<li><?php echo $this->Html->link(__('List Ethnicities'), array('controller' => 'ethnicities', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Ethnicity'), array('controller' => 'ethnicities', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Ethnicity'), array('controller' => 'ethnicities', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Base Types'), array('controller' => 'base_types', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Base Type'), array('controller' => 'base_types', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
