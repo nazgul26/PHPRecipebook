@@ -6,6 +6,11 @@
             $('#editEthnicityDialog').dialog('close');
             ajaxGet('recipes');
         });
+        
+        $(document).on("saved.baseType", function() {
+            $('#editBaseTypeDialog').dialog('close');
+            ajaxGet('recipes');
+        });
     });
 </script>
 <?php echo $this->Session->flash(); ?>
@@ -18,21 +23,21 @@
 	</ul>
         <div style="display: none;">
             <ul id="moreActionLinksContent">
-		<li><?php echo $this->Html->link(__('List Ethnicities'), array('controller' => 'ethnicities', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Ethnicities'), array('controller' => 'ethnicities', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Ethnicity'), array('controller' => 'ethnicities', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Base Types'), array('controller' => 'base_types', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Base Type'), array('controller' => 'base_types', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Base Types'), array('controller' => 'base_types', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Base Type'), array('controller' => 'base_types', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editBaseTypeDialog')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Course'), array('controller' => 'courses', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Preparation Times'), array('controller' => 'preparation_times', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Preparation Times'), array('controller' => 'preparation_times', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Preparation Time'), array('controller' => 'preparation_times', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Difficulties'), array('controller' => 'difficulties', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Difficulties'), array('controller' => 'difficulties', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Difficulty'), array('controller' => 'difficulties', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Sources'), array('controller' => 'sources', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Sources'), array('controller' => 'sources', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Source'), array('controller' => 'sources', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add User'), array('controller' => 'users', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
-                <li><?php echo $this->Html->link(__('List Preparation Methods'), array('controller' => 'preparation_methods', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
+                <li><?php echo $this->Html->link(__('List Preparation Methods'), array('controller' => 'preparation_methods', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Preparation Method'), array('controller' => 'preparation_methods', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
             </ul>
         </div> 
