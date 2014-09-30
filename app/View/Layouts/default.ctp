@@ -98,5 +98,8 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
     <div id="editPriceRangesDialog" class="dialog" width="600" height="200" title="<?php echo __('Price Ranges');?>"/>
     <div id="editEthnicityDialog" class="dialog" width="600" height="200" title="<?php echo __('Ethnicity');?>"/>
     <div id="editBaseTypeDialog" class="dialog" width="600" height="200" title="<?php echo __('Base Type');?>"/>
+    <div id="editCourseDialog" class="dialog" width="600" height="200" title="<?php echo __('Course');?>"/>
+    <div id="editPrepTimeDialog" class="dialog" width="600" height="200" title="<?php echo __('Preparation Time');?>"/>
+    <div id="editDifficultyDialog" class="dialog" width="600" height="200" title="<?php echo __('Difficulty');?>"/>
 </body>
 </html>

@@ -2,7 +2,7 @@
     $(function() {
         $('.coreIngredients .submit').hide();
     });
- </script>
+</script>
 <div class="coreIngredients form">
 <?php echo $this->Form->create('CoreIngredient', array('default' => false, 'targetId' => 'editCoreIngredientDialog')); ?>
     <?php
@@ -13,4 +13,4 @@
     ?>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
- <?php echo $this->Session->flash(); ?>
+<?php echo $this->Session->flash(); ?>
