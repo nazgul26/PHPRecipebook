@@ -1,7 +1,7 @@
 <div id="recipeLinkBox">
     <div id="recipeLinksTitle">Recipe Box</div>
     <div id="recipeLinks">
-        By Course
+        <?php echo __('By Course') ;?>
         <ul class="recipeBoxList">
             <?php foreach ($courses as $course) {?>
                <li><a href="Recipes/findByCourse/<?php echo $course['Course']['id'];?>" class="ajaxLink">
@@ -13,7 +13,7 @@
             }?>
         </ul>
         <br/>
-        By Base
+        <?php echo __('By Base') ;?>
         <ul class="recipeBoxList">
             <?php foreach ($baseTypes as $base) {?>
                <li><a href="Recipes/findByBase/<?php echo $base['BaseType']['id'];?>" class="ajaxLink">

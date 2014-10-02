@@ -21,7 +21,6 @@ function initAjax(target) {
     initAjaxHRef(target);
     initMoreActionsLink(target);
     initAjaxForms(target);
-    initAjaxDeleteLinks(target);
 }
 
 function ajaxGet(location, target) {
@@ -115,20 +114,6 @@ function initAjaxForms(targetId) {
     $(findQuery).each(function(event) {
         $(this).bind("submit", function (event) {
             ajaxPostForm($(this));
-            return false;
-        });
-    });
-}
-
-function initAjaxDeleteLinks(targetId) {
-    var findQuery = (targetId === undefined) ? "#content .ajaxDeleteLink" : "#" + targetId + " .ajaxDeleteLink";
-    $(findQuery).each(function() {
-        $(this).click(function() {
-            var confirmMessage = $(this).attr('deletemessage');
-            if (confirm(confirmMessage)) {
-                //console.log("getting " + $(this).attr('href') + ", target: " + $(this).attr('targetId'));
-                ajaxGet($(this).attr('href'), $(this).attr('targetId'));
-            }
             return false;
         });
     });

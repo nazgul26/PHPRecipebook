@@ -26,17 +26,18 @@
 	<fieldset>
 		<legend><?php echo __('Recipe'); ?></legend>
 	<?php
+                echo $this->Form->hidden('id');
 		echo $this->Form->input('name');
-		echo $this->Form->input('ethnicity_id');
-		echo $this->Form->input('base_type_id');
-		echo $this->Form->input('course_id');
-		echo $this->Form->input('preparation_time_id');
-                echo $this->Form->input('preparation_method_id');
-		echo $this->Form->input('difficulty_id');
+		echo $this->Form->input('ethnicity_id', array('empty'=>true));
+		echo $this->Form->input('base_type_id', array('empty'=>true));
+		echo $this->Form->input('course_id', array('empty'=>true));
+		echo $this->Form->input('preparation_time_id', array('empty'=>true));
+                echo $this->Form->input('preparation_method_id', array('empty'=>true));
+		echo $this->Form->input('difficulty_id', array('empty'=>true));
 		echo $this->Form->input('serving_size');
 		echo $this->Form->input('directions');
 		echo $this->Form->input('comments');
-		echo $this->Form->input('source_id');
+		echo $this->Form->input('source_id', array('empty'=>true));
 		echo $this->Form->input('source_description');
 		echo $this->Form->input('picture');
 		echo $this->Form->input('picture_type');

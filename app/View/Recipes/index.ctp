@@ -84,7 +84,7 @@
             <td class="actions">
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); ?>
                 <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); ?>
-                <?php echo $this->Html->link(__('Delete'), array('action' => 'delete', $recipe['Recipe']['id']), array('class' => 'ajaxDeleteLink', 'deleteMessage' => "Are you sure you wish to delete this recipe?")); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe['Recipe']['id']), null, __('Are you sure you want to delete %s?', $recipe['Recipe']['name'])); ?>
             </td>
             <td><?php echo h($recipe['Recipe']['name']); ?>&nbsp;</td>
             <td><?php echo h($recipe['Recipe']['comments']); ?>&nbsp;</td>
