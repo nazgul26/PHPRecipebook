@@ -32,6 +32,8 @@ function ajaxGet(location, target) {
     $.get(location, function(data) {
         $("#" + target ).html(data);
         initAjax(target);
+        initNavigationHRef(target);
+        console.log("should setup " + target);
     }).fail(function(xhr, status, error) {
         //var err = eval("(" + xhr.responseText + ")");
         $("#" + target ).html(xhr.responseText);
@@ -69,8 +71,9 @@ function ajaxNavigate(actionUrl, title, targetId) {
 }
 
 function initNavigationHRef(targetId) {
-    var findQuery = (targetId === undefined) ? "#content .ajaxNavigationLink" : "#" + targetId + " .ajaxNavigationLink";
+    var findQuery = (targetId === undefined) ? "#content .ajaxNavigation" : "#" + targetId + " .ajaxNavigation";
     $(findQuery).each(function(event) {
+        console.log("setting up:" + $(this).attr('href'));
         var $targetItem = $(this);
         if (!$(this).is('a')) $targetItem = $(this).find("a");
         //console.log('Navigation ' + $targetItem.attr('href') + ", Title = " + $targetItem.text());

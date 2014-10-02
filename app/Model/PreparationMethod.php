@@ -1,7 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * PreperationMethod Model
+ * PreparationMethod Model
  *
  * @property Recipe $Recipe
  */

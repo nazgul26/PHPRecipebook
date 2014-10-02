@@ -63,11 +63,11 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
         <div id="main" class="constrain borderStyle">
             <nav id="navigation-menu">
                 <ul>
-                    <li><a href="Recipes" class="ajaxNavigationLink" targetId="content"><?php echo __('Recipes'); ?></a></li>
-                    <li><a href="MealPlans" class="ajaxNavigationLink" targetId="content"><?php echo __('Meal Planner'); ?></a></li>
-                    <li><a href="ShoppingListNames" class="ajaxNavigationLink" targetId="content"><?php echo __('Shopping List');?></a></li>
-                    <li><a href="Ingredients" class="ajaxNavigationLink" targetId="content"><?php echo __('Ingredients'); ?></a></li>
-                    <li><a href="Restaurants" class="ajaxNavigationLink" targetId="content"><?php echo __('Restaurants');?></a></li>
+                    <li><a href="Recipes" class="ajaxNavigation"><?php echo __('Recipes'); ?></a></li>
+                    <li><a href="MealPlans" class="ajaxNavigation"><?php echo __('Meal Planner'); ?></a></li>
+                    <li><a href="ShoppingListNames" class="ajaxNavigation"><?php echo __('Shopping List');?></a></li>
+                    <li><a href="Ingredients" class="ajaxNavigation"><?php echo __('Ingredients'); ?></a></li>
+                    <li><a href="Restaurants" class="ajaxNavigation"><?php echo __('Restaurants');?></a></li>
                     <li><div id="searchHolder">
                         <form id="searchEverythingForm">
                           <span>
@@ -100,6 +100,8 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
     <div id="editBaseTypeDialog" class="dialog" width="600" height="200" title="<?php echo __('Base Type');?>"/>
     <div id="editCourseDialog" class="dialog" width="600" height="200" title="<?php echo __('Course');?>"/>
     <div id="editPrepTimeDialog" class="dialog" width="600" height="200" title="<?php echo __('Preparation Time');?>"/>
+    <div id="editPrepMethodDialog" class="dialog" width="600" height="200" title="<?php echo __('Preparation Method');?>"/>
     <div id="editDifficultyDialog" class="dialog" width="600" height="200" title="<?php echo __('Difficulty');?>"/>
+    <div id="editSourceDialog" class="dialog" width="600" height="500" title="<?php echo __('Source');?>"/>
 </body>
 </html>

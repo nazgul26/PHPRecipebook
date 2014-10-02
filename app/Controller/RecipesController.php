@@ -88,6 +88,7 @@ class RecipesController extends AppController {
         $difficulties = $this->Recipe->Difficulty->find('list');
         $sources = $this->Recipe->Source->find('list');
         $users = $this->Recipe->User->find('list');
+        $preparationTypes = $this->Recipe->PreparationMethod->find('list');
         $this->set(compact('ethnicities', 'baseTypes', 'courses', 'preparationTimes', 'difficulties', 'sources', 'users'));
     }
 

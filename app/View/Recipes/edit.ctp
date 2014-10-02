@@ -31,6 +31,7 @@
 		echo $this->Form->input('base_type_id');
 		echo $this->Form->input('course_id');
 		echo $this->Form->input('preparation_time_id');
+                echo $this->Form->input('preparation_method_id');
 		echo $this->Form->input('difficulty_id');
 		echo $this->Form->input('serving_size');
 		echo $this->Form->input('directions');

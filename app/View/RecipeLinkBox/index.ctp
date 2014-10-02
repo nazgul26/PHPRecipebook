@@ -25,6 +25,18 @@
             }?>
         </ul>
         <br/>
+        <?php echo __('By Prep Method') ;?>
+        <ul class="recipeBoxList">
+            <?php foreach ($prepMethods as $prepMethod) {?>
+               <li><a href="Recipes/findByBase/<?php echo $prepMethod['PreparationMethod']['id'];?>" class="ajaxLink">
+               <?php echo $prepMethod['PreparationMethod']['name'];
+               if ($prepMethod['PreparationMethod']['count'] > 0) {
+                   echo " (" . $prepMethod['PreparationMethod']['count'] . ")";
+               }
+               echo "</a></li>";
+            }?>
+        </ul>
+        <br/>
         <div id="addRecipeLink">
             <?php echo $this->Html->link(__('Add A Recipe'), 
                     array('controller' => 'recipes', 'action' => 'edit'), array('class' => 'ajaxLink')); 

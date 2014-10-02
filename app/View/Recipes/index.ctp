@@ -28,6 +28,18 @@
             $('#editDifficultyDialog').dialog('close');
             ajaxGet('recipes');
         });
+        
+        $(document).off("savedSource.recipes");
+        $(document).on("savedSource.recipes", function() {
+            $('#editSourceDialog').dialog('close');
+            ajaxGet('recipes');
+        });
+        
+        $(document).off("savedPreparationMethod.recipes");
+        $(document).on("savedPreparationMethod.recipes", function() {
+            $('#editPrepMethodDialog').dialog('close');
+            ajaxGet('recipes');
+        });
     });
 </script>
 <?php echo $this->Session->flash(); ?>
@@ -48,14 +60,14 @@
 		<li><?php echo $this->Html->link(__('Add Course'), array('controller' => 'courses', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editCourseDialog')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Preparation Times'), array('controller' => 'preparation_times', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Preparation Time'), array('controller' => 'preparation_times', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editPrepTimeDialog')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Difficulties'), array('controller' => 'difficulties', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Preparation Methods'), array('controller' => 'preparation_methods', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Preparation Method'), array('controller' => 'preparation_methods', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editPrepMethodDialog')); ?> </li>
+                <li><?php echo $this->Html->link(__('List Difficulties'), array('controller' => 'difficulties', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Difficulty'), array('controller' => 'difficulties', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editDifficultyDialog')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Sources'), array('controller' => 'sources', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Source'), array('controller' => 'sources', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Source'), array('controller' => 'sources', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editSourceDialog')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add User'), array('controller' => 'users', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
-                <li><?php echo $this->Html->link(__('List Preparation Methods'), array('controller' => 'preparation_methods', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Preparation Method'), array('controller' => 'preparation_methods', 'action' => 'edit'), array('class' => 'ajaxLink')); ?> </li>
             </ul>
         </div> 
         </div>
@@ -70,8 +82,8 @@
 	<?php foreach ($recipes as $recipe): ?>
 	<tr>
             <td class="actions">
-                <?php echo $this->Html->link(__('View'), array('action' => 'view', $recipe['Recipe']['id']), array('class' => 'ajaxLink')); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recipe['Recipe']['id']), array('class' => 'ajaxLink')); ?>
+                <?php echo $this->Html->link(__('View'), array('action' => 'view', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); ?>
+                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); ?>
                 <?php echo $this->Html->link(__('Delete'), array('action' => 'delete', $recipe['Recipe']['id']), array('class' => 'ajaxDeleteLink', 'deleteMessage' => "Are you sure you wish to delete this recipe?")); ?>
             </td>
             <td><?php echo h($recipe['Recipe']['name']); ?>&nbsp;</td>

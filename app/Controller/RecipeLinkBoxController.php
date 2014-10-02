@@ -4,7 +4,8 @@ class RecipeLinkBoxController extends AppController {
     public $uses = array(
         'BaseType',
         'Course',
-        'Recipe'
+        'Recipe',
+        'PreparationMethod'
     );
     public function index() {  
         $this->layout = 'ajax';
@@ -23,6 +24,13 @@ class RecipeLinkBoxController extends AppController {
             $courses[$i]["Course"]["count"] = $count;
         }
         $this->set('courses', $courses);
+        
+        $prepMethods = $this->PreparationMethod->find('all');
+        for ($i=0; $i < count($prepMethods); $i++) {
+            $count = $this->Recipe->find('count', array('conditions' => array('Recipe.preparation_method_id' => $prepMethods[$i]["PreparationMethod"]["id"])));
+            $prepMethods[$i]["PreparationMethod"]["count"] = $count;
+        }
+        $this->set('prepMethods', $prepMethods);
     }
 }
 ?>

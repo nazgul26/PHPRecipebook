@@ -1,8 +1,17 @@
+<script type="text/javascript">
+    $(function() {
+        $(document).off("savedPreparationMethod.screen");
+        $(document).on("savedPreparationMethod.screen", function() {
+            $('#editPrepMethodDialog').dialog('close');
+            ajaxGet('preparation_methods');
+        });
+    });
+</script>
 <div class="preparationMethods index">
 	<h2><?php echo __('Preparation Methods'); ?></h2>
         <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('Add Preparation Method'), array('action' => 'edit')); ?></li>
+            <li><?php echo $this->Html->link(__('Add Preparation Method'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editPrepMethodDialog')); ?></li>
 	</ul>
         </div>
 	<table cellpadding="0" cellspacing="0">
@@ -14,19 +23,15 @@
 	<tr>
             <td class="actions">
                     <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $preparationMethod['PreparationMethod']['id'])); ?>
-                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $preparationMethod['PreparationMethod']['id']), null, __('Are you sure you want to delete # %s?', $preperationMethod['PreperationMethod']['id'])); ?>
+                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $preparationMethod['PreparationMethod']['id']), null, __('Are you sure you want to delete %s?', $preparationMethod['PreparationMethod']['name'])); ?>
             </td>
-            <td><?php echo h($preparationMethod['PreparationMethod']['id']); ?>&nbsp;</td>
             <td><?php echo h($preparationMethod['PreparationMethod']['name']); ?>&nbsp;</td>
 	</tr>
         <?php endforeach; ?>
 	</table>
 	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}')
-	));
-	?>	</p>
+	<?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}'))); ?>	
+        </p>
 	<div class="paging">
 	<?php
 		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
