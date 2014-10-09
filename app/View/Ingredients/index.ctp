@@ -2,7 +2,8 @@
     $(function() {
         setSearchBoxTarget('Ingredients');
         
-        $(document).on("saved.ingredient", function() {
+        $(document).off("savedIngredient.ingredients");
+        $(document).on("savedIngredient.ingredients", function() {
             $('#editIngredientDialog').dialog('close');
             ajaxGet('ingredients');
         });

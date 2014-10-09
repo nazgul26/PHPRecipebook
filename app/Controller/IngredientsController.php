@@ -46,7 +46,7 @@ class IngredientsController extends AppController {
 
         if ($this->request->is(array('post', 'put'))) {
                 if ($this->Ingredient->save($this->request->data)) {
-                        $this->Session->setFlash(__('The ingredient has been saved.'), 'success', array('event' => 'saved.ingredient'));
+                        $this->Session->setFlash(__('The ingredient has been saved.'), 'success', array('event' => 'savedIngredient'));
                         return $this->redirect(array('action' => 'edit'));
                 } else {
                         $this->Session->setFlash(__('The ingredient could not be saved. Please, try again.'));
@@ -76,7 +76,7 @@ class IngredientsController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Ingredient->delete()) {
-                $this->Session->setFlash(__('The ingredient has been deleted.'), 'success', array('event' => 'saved.ingredient'));
+                $this->Session->setFlash(__('The ingredient has been deleted.'), 'success');
         } else {
                 $this->Session->setFlash(__('The ingredient could not be deleted. Please, try again.'));
         }

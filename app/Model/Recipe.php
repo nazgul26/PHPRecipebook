@@ -122,6 +122,12 @@ class Recipe extends AppModel {
             'RelatedRecipe' => array(
                 'className' => 'RelatedRecipe',
                 'foreignKey' => 'recipe_id'
+            ),
+            'IngredientMapping' => array(
+                'className' => 'IngredientMapping',
+                'foreignKey' => 'recipe_id',
+                'order' => 'IngredientMapping.sort_order',
+                'dependent' => true
             )
         );
 }

@@ -1,10 +1,10 @@
-function initApplication() {
+function initApplication(baseUrl) {
     initAjaxHRef("container");
     initNavigationHRef("container");
     initDialogs();
     setupSearchBox();
     if ($(window).width() >= 1480) {
-      ajaxGet("RecipeLinkBox/Index", "recipeLinkBoxContainer");
+      ajaxGet(baseUrl + "/RecipeLinkBox/Index", "recipeLinkBoxContainer");
     } 
     
     window.onpopstate = function (event) {

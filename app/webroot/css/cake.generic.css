@@ -295,6 +295,11 @@ form div {
 form .input {
 	color: #444;
 }
+
+form div .number {
+    width: 10em;
+}
+
 form .required {
 	font-weight: bold;
 }
@@ -322,6 +327,7 @@ input, textarea {
 	padding: 1%;
 	width:60%;
 }
+
 select {
 	clear: both;
 	font-size: 120%;

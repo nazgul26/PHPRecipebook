@@ -164,3 +164,11 @@ nav li a {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
+/* Recipes */
+#sourcesEditLink { margin-left: 1em; }
+#RecipeEditForm div { padding: 0 }
+#RecipeServingSize { width: 4em;}
+#ingredientsSection .text input { width: auto;}
+#RecipeDirections { width: 80%;}
+#addNewIngredientsLink { display: inline;}

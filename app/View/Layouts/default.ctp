@@ -48,7 +48,8 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
 <body>
     <script type="text/javascript">
     $(function() {
-        initApplication();
+        var baseUrl = "<?php echo Router::url('/');?>"; 
+        initApplication(baseUrl);
     });
 
     var applicationContext = "recipe"; // Default context
