@@ -42,14 +42,15 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+                
+                $baseUrl = Router::url('/');
 	?>
     
 </head>
 <body>
     <script type="text/javascript">
     $(function() {
-        var baseUrl = "<?php echo Router::url('/');?>"; 
-        initApplication(baseUrl);
+        initApplication("<?php echo $baseUrl;?>");
     });
 
     var applicationContext = "recipe"; // Default context
@@ -64,16 +65,16 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
         <div id="main" class="constrain borderStyle">
             <nav id="navigation-menu">
                 <ul>
-                    <li><a href="Recipes" class="ajaxNavigation"><?php echo __('Recipes'); ?></a></li>
-                    <li><a href="MealPlans" class="ajaxNavigation"><?php echo __('Meal Planner'); ?></a></li>
-                    <li><a href="ShoppingListNames" class="ajaxNavigation"><?php echo __('Shopping List');?></a></li>
-                    <li><a href="Ingredients" class="ajaxNavigation"><?php echo __('Ingredients'); ?></a></li>
-                    <li><a href="Restaurants" class="ajaxNavigation"><?php echo __('Restaurants');?></a></li>
+                    <li><a href="<?php echo $baseUrl;?>Recipes" class="ajaxNavigation"><?php echo __('Recipes'); ?></a></li>
+                    <li><a href="<?php echo $baseUrl;?>MealPlans" class="ajaxNavigation"><?php echo __('Meal Planner'); ?></a></li>
+                    <li><a href="<?php echo $baseUrl;?>ShoppingListNames" class="ajaxNavigation"><?php echo __('Shopping List');?></a></li>
+                    <li><a href="<?php echo $baseUrl;?>Ingredients" class="ajaxNavigation"><?php echo __('Ingredients'); ?></a></li>
+                    <li><a href="<?php echo $baseUrl;?>Restaurants" class="ajaxNavigation"><?php echo __('Restaurants');?></a></li>
                     <li><div id="searchHolder">
                         <form id="searchEverythingForm">
                           <span>
                               <input type="text" class="searchTextBox" placeholder="Search Recipes" />
-                              <img src="img/clearBtn.png"  class="cancelBtn"/>
+                              <img src="<?php echo $baseUrl;?>img/clearBtn.png"  class="cancelBtn"/>
                           </span>
                         </form>
                     </li>

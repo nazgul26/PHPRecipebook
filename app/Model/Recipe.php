@@ -121,7 +121,8 @@ class Recipe extends AppModel {
         public $hasMany = array(
             'RelatedRecipe' => array(
                 'className' => 'RelatedRecipe',
-                'foreignKey' => 'recipe_id'
+                'foreignKey' => 'parent_id',
+                'order' => 'RelatedRecipe.sort_order'
             ),
             'IngredientMapping' => array(
                 'className' => 'IngredientMapping',

@@ -1,10 +1,14 @@
-function initApplication(baseUrl) {
+var baseUrl;
+
+function initApplication(initBaseUrl) {
+    baseUrl = initBaseUrl;
+    console.log("Base URL: " + baseUrl);
     initAjaxHRef("container");
     initNavigationHRef("container");
     initDialogs();
     setupSearchBox();
     if ($(window).width() >= 1480) {
-      ajaxGet(baseUrl + "/RecipeLinkBox/Index", "recipeLinkBoxContainer");
+      ajaxGet("RecipeLinkBox/Index", "recipeLinkBoxContainer");
     } 
     
     window.onpopstate = function (event) {
@@ -25,14 +29,15 @@ function initAjax(target) {
 
 function ajaxGet(location, target) {
     target = (target === undefined) ? "content" : target;
-    //console.log("getting:" + location + " Target: " +target);
-    $("#" + target).html("<div class='loadingImage'>Loading..<br/><div><img src='./img/ajax-loader.gif' alt='loading...'/></div></div>");
-
+    $("#" + target).html("<div class='loadingImage'>Loading..<br/><div><img src='" + baseUrl + "img/ajax-loader.gif' alt='loading...'/></div></div>");
+    
+    if (location.indexOf(baseUrl) != 0) {
+        location = baseUrl + location;
+    }
     $.get(location, function(data) {
         $("#" + target ).html(data);
         initAjax(target);
         initNavigationHRef(target);
-        console.log("should setup " + target);
     }).fail(function(xhr, status, error) {
         //var err = eval("(" + xhr.responseText + ")");
         $("#" + target ).html(xhr.responseText);
@@ -72,7 +77,6 @@ function ajaxNavigate(actionUrl, title, targetId) {
 function initNavigationHRef(targetId) {
     var findQuery = (targetId === undefined) ? "#content .ajaxNavigation" : "#" + targetId + " .ajaxNavigation";
     $(findQuery).each(function(event) {
-        console.log("setting up:" + $(this).attr('href'));
         var $targetItem = $(this);
         if (!$(this).is('a')) $targetItem = $(this).find("a");
         //console.log('Navigation ' + $targetItem.attr('href') + ", Title = " + $targetItem.text());

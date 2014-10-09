@@ -4,9 +4,7 @@ App::uses('AppModel', 'Model');
  * IngredientMapping Model
  *
  */
-class IngredientMapping extends AppModel {
-    public $primaryKey = 'recipe_id';
-    
+class IngredientMapping extends AppModel {    
     public $belongsTo = array(
         'Recipe' => array(
                     'className' => 'Recipe',

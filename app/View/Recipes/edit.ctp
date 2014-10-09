@@ -7,6 +7,8 @@
     });
 </script>
 <?php //echo $this->element('sql_dump'); ?>
+<pre><?php //print_r($recipe); ?></pre>
+
 <div class="actions">
 	<ul>
             <li><?php echo $this->Html->link(__('Edit Sources'), array('controller' => 'sources', 'action' => 'index'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?>
@@ -48,7 +50,7 @@
             echo $this->Form->input('serving_size');
             echo $this->Form->input('picture', array('type'=>'file'));
             echo $this->Form->hidden('picture_type');
-            echo $this->Form->input('private', array('options' => array('false' => 'No', 'true' => 'Yes')));
+            echo $this->Form->input('private', array('options' => array('0' => 'No', '1' => 'Yes')));
             echo $this->Form->input('system', array('options' => array('usa' => 'USA', 'metric' => 'Metric')));
             echo $this->Form->input('user_id');
             ?>
@@ -65,11 +67,13 @@
                     <th><?php echo __('Optional');?></th>
                 </tr>
                 <?php 
+                if (isset($recipe['IngredientMapping'])) {
                 $mapIndex = 0;
                 foreach ($recipe['IngredientMapping'] as $ingredient) {
                 ?>
                 <tr>
                     <td>
+                        <?php echo $this->Form->hidden('IngredientMapping.' . $mapIndex . '.id'); ?>
                         <?php echo $this->Form->hidden('IngredientMapping.' . $mapIndex . '.recipe_id'); ?>
                         <?php echo $this->Form->hidden('IngredientMapping.' . $mapIndex . '.ingredient_id'); ?>
                         <?php echo $this->Form->hidden('IngredientMapping.' . $mapIndex . '.sort_order'); ?>
@@ -80,15 +84,38 @@
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.Ingredient.name', array('label' => false, 'escape' => false)); ?></td>
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.optional', array('label' => false)); ?></td> 
                 </tr>
-                <?php $mapIndex++; } ?>
+                <?php $mapIndex++; }} ?>
                 </table>
             </div>
 
             <?php 
             echo $this->Form->input('directions', array('escape' => true, 'rows' => '20', 'cols' => '20'));
             ?>
+            
+            <div id="relatedRecipes">
+                <table id="sortableTable2">
+                <tr>
+                    <th><?php echo __('Related Recipe Name');?></th>
+                    <th><?php echo __('Required');?></th>
+                </tr>
+                <?php 
+                if (isset($recipe['RelatedRecipe'])) {
+                $mapIndex = 0;
+                foreach ($recipe['RelatedRecipe'] as $related) { ?>
+                <tr>
+                    <td>
+                        <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.parent_id'); ?>
+                        <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.recipe_id'); ?>
+                        <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.sort_order'); ?>
+                        
+                        <?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.Related.name', array('label' => false, 'escape' => false)); ?></td>
+                    <td><?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.required', array('label' => false)); ?></td> 
+                </tr>
+                <?php $mapIndex++; } } ?>
+                </table>
+            </div>
     </fieldset>
-  
+<?php echo $this->Session->flash(); ?> 
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
 

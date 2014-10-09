@@ -158,6 +158,7 @@ CREATE TABLE recipes (
 );
 
 CREATE TABLE ingredient_mappings (
+        id INT NOT NULL AUTO_INCREMENT,
 	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
 	ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
 	quantity FLOAT NOT NULL,
@@ -197,10 +198,11 @@ CREATE TABLE shopping_list_ingredients (
 );
 
 CREATE TABLE related_recipes (
+        id INT NOT NULL AUTO_INCREMENT,
 	parent_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
 	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
 	related_required BOOL,
-	related_order INT,
+	sort_order INT,
         PRIMARY KEY (parent_id, recipe_id)
 );
 	

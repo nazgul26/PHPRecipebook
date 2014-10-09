@@ -71,21 +71,23 @@ class RecipesController extends AppController {
            throw new NotFoundException(__('Invalid recipe'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            if ($this->Recipe->save($this->request->data)) {
-                    $this->Session->setFlash(__('The recipe has been saved.'), "success");
-                    return $this->redirect(array('action' => 'index'));
+            $recipe = $this->request->data;
+            if ($this->Recipe->saveAll($this->request->data))
+            {
+                $this->Session->setFlash(__('The recipe has been saved.'), "success");
             } else {
-                    $this->Session->setFlash(__('The recipe could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The recipe could not be saved. Please, try again.'));
             }
         } else if ($id != null) {
             //NOTE: This is pretty cool, you can control the depth and properties with 'Containable' and contain.  
             //// much better then a loop of crazy custom SQL Code
             $this->Recipe->Behaviors->load('Containable');
-            $options = array('conditions' => array('Recipe.' . $this->Recipe->primaryKey => $id), 'contain' => 'IngredientMapping.Ingredient.name');
+            $options = array('conditions' => array('Recipe.' . $this->Recipe->primaryKey => $id), 
+                'contain' => array('IngredientMapping.Ingredient.name', 'RelatedRecipe.Related.name'));
             $this->request->data = $this->Recipe->find('first', $options);
-            //TODO: There has be a way to reuse request-data instead
             $recipe = $this->request->data;
         }
+        
         $ethnicities = $this->Recipe->Ethnicity->find('list');
         $baseTypes = $this->Recipe->BaseType->find('list');
         $courses = $this->Recipe->Course->find('list');

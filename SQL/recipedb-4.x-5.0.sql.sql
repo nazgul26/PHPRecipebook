@@ -109,6 +109,8 @@ ALTER TABLE recipes CHANGE recipe_system system VARCHAR(16) DEFAULT 'usa' NOT NU
 ALTER TABLE recipes CHANGE recipe_user user_id INT NULL;
 
 RENAME TABLE recipe_ingredient_mapping TO ingredient_mappings;
+ALTER TABLE ingredient_mappings DROP PRIMARY KEY;
+ALTER TABLE ingredient_mappings ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
 ALTER TABLE ingredient_mappings CHANGE map_recipe recipe_id INT NOT NULL;
 ALTER TABLE ingredient_mappings CHANGE map_ingredient ingredient_id INT NOT NULL;
 ALTER TABLE ingredient_mappings CHANGE map_quantity quantity FLOAT NOT NULL;
@@ -146,6 +148,8 @@ CREATE TABLE shopping_list_ingredients (
 	UNIQUE KEY (shopping_list_name_id,ingredient_id));
 
 RENAME TABLE recipe_related_recipes TO related_recipes;
+ALTER TABLE related_recipes DROP PRIMARY KEY;
+ALTER TABLE related_recipes ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
 ALTER TABLE related_recipes CHANGE related_parent parent_id INT NOT NULL;
 ALTER TABLE related_recipes CHANGE related_child recipe_id INT NOT NULL;
 ALTER TABLE related_recipes CHANGE related_required required BOOL;
