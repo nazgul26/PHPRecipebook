@@ -4,7 +4,18 @@
         $(document).on("savedIngredient.editRecipe", function() {
             $('#editIngredientDialog').dialog('close');
         });
+        
+        $("#sortableTable1 tbody.content").sortable({
+            stop: function( event, ui ) { 
+                reNumberTable("sortableTable1");
+                console.log("I changed, time to ")}
+        });
+        $("#sortableTable2 tbody.content").sortable();
     });
+    
+    function reNumberTable(tableId) {
+        
+    }
 </script>
 <?php //echo $this->element('sql_dump'); ?>
 <pre><?php //print_r($recipe); ?></pre>
@@ -57,6 +68,7 @@
             <div id="ingredientsSection">
                 <table id="sortableTable1">
                 <tr>
+                    <th class="deleteIcon"></th><th class="moveIcon"></th>
                     <th><?php echo __('Quantity');?></th>
                     <th><?php echo __('Units');?></th>
                     <th><?php echo __('Qualifier');?></th>
@@ -66,12 +78,23 @@
                     </th>
                     <th><?php echo __('Optional');?></th>
                 </tr>
+                <tbody class="content">
                 <?php 
                 if (isset($recipe['IngredientMapping'])) {
                 $mapIndex = 0;
                 foreach ($recipe['IngredientMapping'] as $ingredient) {
                 ?>
                 <tr>
+                    <td>
+                        <div class="ui-state-default ui-corner-all deleteIcon" title="<?php echo __('Delete'); ?>">
+                            <span class="ui-icon ui-icon-trash"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="ui-state-default ui-corner-all moveIcon" title="<?php echo __('Order Ingredient - currently #' . $ingredient['sort_order'] );?>">
+                            <span class="ui-icon ui-icon-arrow-4"></span>
+                        </div>
+                    </td>
                     <td>
                         <?php echo $this->Form->hidden('IngredientMapping.' . $mapIndex . '.id'); ?>
                         <?php echo $this->Form->hidden('IngredientMapping.' . $mapIndex . '.recipe_id'); ?>
@@ -85,6 +108,7 @@
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.optional', array('label' => false)); ?></td> 
                 </tr>
                 <?php $mapIndex++; }} ?>
+                </tbody>
                 </table>
             </div>
 
@@ -95,15 +119,28 @@
             <div id="relatedRecipes">
                 <table id="sortableTable2">
                 <tr>
+                    <th class="deleteIcon"></th><th class="moveIcon"></th>
                     <th><?php echo __('Related Recipe Name');?></th>
                     <th><?php echo __('Required');?></th>
                 </tr>
+                <tbody class="content">
                 <?php 
                 if (isset($recipe['RelatedRecipe'])) {
                 $mapIndex = 0;
                 foreach ($recipe['RelatedRecipe'] as $related) { ?>
                 <tr>
                     <td>
+                        <div class="ui-state-default ui-corner-all deleteIcon" title="<?php echo __('Delete'); ?>">
+                            <span class="ui-icon ui-icon-trash"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="ui-state-default ui-corner-all moveIcon" title="<?php echo __('Order Recipe - currently #' . $related['sort_order']);?>">
+                            <span class="ui-icon ui-icon-arrow-4"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.id'); ?>
                         <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.parent_id'); ?>
                         <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.recipe_id'); ?>
                         <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.sort_order'); ?>
@@ -112,6 +149,7 @@
                     <td><?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.required', array('label' => false)); ?></td> 
                 </tr>
                 <?php $mapIndex++; } } ?>
+                </tbody>
                 </table>
             </div>
     </fieldset>

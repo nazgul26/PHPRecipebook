@@ -6,13 +6,6 @@ App::uses('AppModel', 'Model');
  * @property Recipe $Recipe
  */
 class RelatedRecipe extends AppModel {
-    /**
-     * belongsTo associations
-     *
-     * @var array
-     */
-    public $primaryKey = 'parent_id';
-
     public $belongsTo = array(
         'Parent' => array(
             'className' => 'Recipe',

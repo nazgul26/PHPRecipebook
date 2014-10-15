@@ -5,7 +5,6 @@
         var flashEvent = jQuery.Event("<?php echo h($event);?>");
         $(document).trigger(flashEvent);
         <?php } ?>
-        $('.notice .success').delay(5000).fadeOut(400);
     });
 </script>
 

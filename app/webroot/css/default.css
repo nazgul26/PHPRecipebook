@@ -172,3 +172,12 @@ nav li a {
 #ingredientsSection .text input { width: auto;}
 #RecipeDirections { width: 80%;}
 #addNewIngredientsLink { display: inline;}
+.ui-icon-trash, .ui-icon-arrow-4 {
+  transform: scale(1.8);
+  margin: 10px;
+  margin-left: 12px
+}
+.deleteIcon, .moveIcon {
+    width: 40px;
+    padding-top: 6px;
+}
