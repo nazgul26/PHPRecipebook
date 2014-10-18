@@ -11,10 +11,44 @@
                 console.log("I changed, time to ")}
         });
         $("#sortableTable2 tbody.content").sortable();
+        
+        $('#ingredientsSection .fraction input').each(function() {
+            $(this).change(function() {
+                fractionConvert($(this));
+            });
+        })
     });
     
     function reNumberTable(tableId) {
         
+    }
+    
+    function fractionConvert($item) {
+        var teststring = $item.val();
+        var a=teststring.indexOf(",");      // change "," to "." (in all languages)
+        if ( a !== -1 ) {                   //FIXME: bug - still displays "." for all languages
+            $item.val(teststring=teststring.substring(0,a)+"."+teststring.substring(a+1,teststring.length));
+        }
+        
+        if (isNaN(teststring))
+        {
+            if (teststring.indexOf("/")>0) {
+                if (teststring.indexOf(" ")>0) {
+                        n = teststring.substring(0,teststring.indexOf(" ")+1);
+                        f = teststring.substring(teststring.indexOf(" ")+1);
+                } else {
+                        n = teststring.substring(0,teststring.indexOf("/")-1);
+                        f = teststring.substring(teststring.indexOf("/")-1);
+                }
+                if (isNaN(n)){alert(numberErrorHtml);return;}//Make shure we have a number
+                var newArray = f.split("/");
+                if (isNaN(newArray[0])){alert(numberErrorHtml);return;}//Make shure we have a number
+                if (isNaN(newArray[1])){alert(numberErrorHtml);return;}
+                $item.val(eval((n*1)+(newArray[0]/newArray[1])));//write the new value to the calling box
+            } else {
+                alert(numberErrorHtml)
+            }
+        }
     }
 </script>
 <?php //echo $this->element('sql_dump'); ?>
@@ -80,9 +114,13 @@
                 </tr>
                 <tbody class="content">
                 <?php 
-                if (isset($recipe['IngredientMapping'])) {
-                $mapIndex = 0;
-                foreach ($recipe['IngredientMapping'] as $ingredient) {
+                for ($mapIndex = 0; $mapIndex <= count($recipe['IngredientMapping']); $mapIndex++) {
+                    $currentSortOrder = __("Unknown");
+                    
+                    if ($mapIndex < count($recipe['IngredientMapping']))
+                        $currentSortOrder = $recipe['IngredientMapping'][$mapIndex]['sort_order'];
+                    
+                        
                 ?>
                 <tr>
                     <td>
@@ -91,7 +129,7 @@
                         </div>
                     </td>
                     <td>
-                        <div class="ui-state-default ui-corner-all moveIcon" title="<?php echo __('Order Ingredient - currently #' . $ingredient['sort_order'] );?>">
+                        <div class="ui-state-default ui-corner-all moveIcon" title="<?php echo __('Order Ingredient - currently #' . $currentSortOrder );?>">
                             <span class="ui-icon ui-icon-arrow-4"></span>
                         </div>
                     </td>
@@ -101,13 +139,13 @@
                         <?php echo $this->Form->hidden('IngredientMapping.' . $mapIndex . '.ingredient_id'); ?>
                         <?php echo $this->Form->hidden('IngredientMapping.' . $mapIndex . '.sort_order'); ?>
                         
-                        <?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.quantity', array('label' => false)); ?></td>
+                        <?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.quantity', array('label' => false, 'type' => 'fraction')); ?></td>
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.unit_id', array('label' => false)); ?></td>
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.qualifier', array('label' => false, 'escape' => false)); ?></td>
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.Ingredient.name', array('label' => false, 'escape' => false)); ?></td>
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.optional', array('label' => false)); ?></td> 
                 </tr>
-                <?php $mapIndex++; }} ?>
+                <?php } ?>
                 </tbody>
                 </table>
             </div>
@@ -125,9 +163,13 @@
                 </tr>
                 <tbody class="content">
                 <?php 
-                if (isset($recipe['RelatedRecipe'])) {
-                $mapIndex = 0;
-                foreach ($recipe['RelatedRecipe'] as $related) { ?>
+                for ($mapIndex = 0; $mapIndex <= count($recipe['RelatedRecipe']); $mapIndex++) {
+                    $currentSortOrder = __("Unknown");
+                    
+                    if ($mapIndex < count($recipe['RelatedRecipe']))
+                        $currentSortOrder = $recipe['RelatedRecipe'][$mapIndex]['sort_order'];
+                       
+                ?>
                 <tr>
                     <td>
                         <div class="ui-state-default ui-corner-all deleteIcon" title="<?php echo __('Delete'); ?>">
@@ -135,7 +177,7 @@
                         </div>
                     </td>
                     <td>
-                        <div class="ui-state-default ui-corner-all moveIcon" title="<?php echo __('Order Recipe - currently #' . $related['sort_order']);?>">
+                        <div class="ui-state-default ui-corner-all moveIcon" title="<?php echo __('Order Recipe - currently #' . $currentSortOrder);?>">
                             <span class="ui-icon ui-icon-arrow-4"></span>
                         </div>
                     </td>
@@ -148,7 +190,7 @@
                         <?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.Related.name', array('label' => false, 'escape' => false)); ?></td>
                     <td><?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.required', array('label' => false)); ?></td> 
                 </tr>
-                <?php $mapIndex++; } } ?>
+                <?php } ?>
                 </tbody>
                 </table>
             </div>
