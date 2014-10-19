@@ -5,22 +5,49 @@
             $('#editIngredientDialog').dialog('close');
         });
         
-        $("#sortableTable1 tbody.content").sortable({
+        $("#sortableTable1 tbody.ingredientContent").sortable({
             stop: function( event, ui ) { 
-                reNumberTable("sortableTable1");
-                console.log("I changed, time to ")}
+                reNumberTable("sortableTable1");}
         });
-        $("#sortableTable2 tbody.content").sortable();
+        $("#sortableTable2 tbody.ingredientContent").sortable({
+            stop: function( event, ui ) { 
+                reNumberTable("sortableTable2");}
+        });
         
         $('#ingredientsSection .fraction input').each(function() {
             $(this).change(function() {
                 fractionConvert($(this));
             });
-        })
+        });
+        
+        initRowCopy();
+        initRowDelete();
     });
     
+    function initRowCopy() {
+        $('.extraItem input').each(function() {
+            $(this).change(function() {
+               $('.extraItem input').off('change');
+               $original = $('.extraItem');
+               $clonedCopy = $original.clone();
+               $clonedCopy.find('input').val('');
+               $clonedCopy.appendTo('.ingredientContent');
+               $original.attr('class', '');
+               initRowCopy();
+               initRowDelete()
+            });
+        });
+    }
+    
+    function initRowDelete() {
+        $('.deleteIcon').click(function() {
+            // TODO: if count of TR = 1 then just blank the row and re-number
+            $(this).parent().parent().remove();
+        });
+    }
+    
     function reNumberTable(tableId) {
-        
+        console.log('I am going to renumber ' + tableId);
     }
     
     function fractionConvert($item) {
@@ -112,17 +139,20 @@
                     </th>
                     <th><?php echo __('Optional');?></th>
                 </tr>
-                <tbody class="content">
+                <tbody class="ingredientContent">
                 <?php 
                 for ($mapIndex = 0; $mapIndex <= count($recipe['IngredientMapping']); $mapIndex++) {
                     $currentSortOrder = __("Unknown");
-                    
+                    $extraItem = true;
                     if ($mapIndex < count($recipe['IngredientMapping']))
+                    {
                         $currentSortOrder = $recipe['IngredientMapping'][$mapIndex]['sort_order'];
+                        $extraItem = false;
+                    }
                     
                         
                 ?>
-                <tr>
+                <tr class="extraItem">
                     <td>
                         <div class="ui-state-default ui-corner-all deleteIcon" title="<?php echo __('Delete'); ?>">
                             <span class="ui-icon ui-icon-trash"></span>
@@ -186,7 +216,7 @@
                         <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.parent_id'); ?>
                         <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.recipe_id'); ?>
                         <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.sort_order'); ?>
-                        
+         
                         <?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.Related.name', array('label' => false, 'escape' => false)); ?></td>
                     <td><?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.required', array('label' => false)); ?></td> 
                 </tr>
