@@ -20,6 +20,11 @@
             });
         });
         
+        $('#AddMoreIngredientsLink').click(function() {
+            $('.extraItem input').change();
+            return false;
+        })
+        
         initRowCopy();
         initRowDelete();
     });
@@ -34,7 +39,7 @@
                $clonedCopy.appendTo('.ingredientContent');
                $original.attr('class', '');
                initRowCopy();
-               initRowDelete()
+               initRowDelete();
             });
         });
     }
@@ -42,12 +47,45 @@
     function initRowDelete() {
         $('.deleteIcon').click(function() {
             // TODO: if count of TR = 1 then just blank the row and re-number
-            $(this).parent().parent().remove();
+            if (confirm("<?php echo __("Are you sure you wish to remove this ingredient?");?>")) {
+                $(this).parent().parent().remove();
+            }
         });
     }
     
     function reNumberTable(tableId) {
         console.log('I am going to renumber ' + tableId);
+        var i = -1;
+        var tableSelector = "#" + tableId;
+        $(tableSelector).find("tr").each(function () {
+            $(this).find(":input").each(function() {
+                    var nodeName = $(this).attr('id');
+                    var newNodeName = "";
+                    var newNodeId = "";
+                    
+                    if (nodeName.indexOf("Quantity") > -1)
+                    {
+                        newNodeId = "IngredientMapping" + i + "Quantity";
+                        newNodeName = "data[IngredientMapping][" + i + "][quantity]";
+                    }
+                    else if (nodeName.indexOf("UnitId") > -1) { 
+                        newNodeId = "IngredientMapping" + i + "UnitId";
+                        newNodeName = "data[IngredientMapping][" + i + "][unit_id]";
+                    }
+                    else if (nodeName.indexOf("Qualifier") > -1) { 
+                        newNodeId = "IngredientMapping" + i + "Qualifier";
+                        newNodeName = "data[IngredientMapping][" + i + "][qualifier]";
+                    }
+                    else if (nodeName.indexOf("IngredientName") > -1) { 
+                        newNodeId = "IngredientMapping" + i + "IngredientName";
+                        newNodeName = "data[IngredientMapping][" + i + "][Ingredient][name]";
+                    }
+                    // TODO Ingredient ID as hidden
+                    $(this).attr('name', newNodeName);
+                    $(this).attr('id', newNodeId);
+            });
+            i++;
+        });
     }
     
     function fractionConvert($item) {
@@ -148,9 +186,7 @@
                     {
                         $currentSortOrder = $recipe['IngredientMapping'][$mapIndex]['sort_order'];
                         $extraItem = false;
-                    }
-                    
-                        
+                    }       
                 ?>
                 <tr class="extraItem">
                     <td>
@@ -178,8 +214,8 @@
                 <?php } ?>
                 </tbody>
                 </table>
+                <a href="#" id="AddMoreIngredientsLink"><?php echo __('Add Another Ingredient');?></a>
             </div>
-
             <?php 
             echo $this->Form->input('directions', array('escape' => true, 'rows' => '20', 'cols' => '20'));
             ?>

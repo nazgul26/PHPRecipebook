@@ -181,3 +181,9 @@ nav li a {
     width: 40px;
     padding-top: 6px;
 }
+
+#ingredientsSection {
+   border: 1px solid gray;
+   border-radius: 10px;
+   padding: 20px !important;
+}
