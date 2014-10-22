@@ -179,10 +179,11 @@
                 </tr>
                 <tbody class="ingredientContent">
                 <?php 
-                for ($mapIndex = 0; $mapIndex <= count($recipe['IngredientMapping']); $mapIndex++) {
+                $ingredientCount = (isset($recipe)? count($recipe['IngredientMapping']) : 0);
+                for ($mapIndex = 0; $mapIndex <= $ingredientCount; $mapIndex++) {
                     $currentSortOrder = __("Unknown");
                     $extraItem = true;
-                    if ($mapIndex < count($recipe['IngredientMapping']))
+                    if ($mapIndex < $ingredientCount)
                     {
                         $currentSortOrder = $recipe['IngredientMapping'][$mapIndex]['sort_order'];
                         $extraItem = false;
@@ -229,10 +230,11 @@
                 </tr>
                 <tbody class="content">
                 <?php 
-                for ($mapIndex = 0; $mapIndex <= count($recipe['RelatedRecipe']); $mapIndex++) {
+                $relatedCount = isset($recipe) ? count($recipe['RelatedRecipe']) : 0;
+                for ($mapIndex = 0; $mapIndex <= $relatedCount; $mapIndex++) {
                     $currentSortOrder = __("Unknown");
                     
-                    if ($mapIndex < count($recipe['RelatedRecipe']))
+                    if ($mapIndex < $relatedCount)
                         $currentSortOrder = $recipe['RelatedRecipe'][$mapIndex]['sort_order'];
                        
                 ?>
@@ -259,6 +261,7 @@
                 <?php } ?>
                 </tbody>
                 </table>
+                <a href="#" id="AddMoreRelatedRecipesLink"><?php echo __('Add Another Recipe');?></a>
             </div>
     </fieldset>
 <?php echo $this->Session->flash(); ?> 
