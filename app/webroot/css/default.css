@@ -169,7 +169,10 @@ nav li a {
 #sourcesEditLink { margin-left: 1em; }
 #RecipeEditForm div { padding: 0 }
 #RecipeServingSize { width: 4em;}
-#ingredientsSection .text input { width: auto;}
+#ingredientsSection .text input, #ingredientsSection .ui-widget input { 
+    width: auto;
+    font-size: 1.2em;
+}
 #RecipeDirections { width: 80%;}
 #addNewIngredientsLink { display: inline;}
 .ui-icon-trash, .ui-icon-arrow-4 {
@@ -187,6 +190,8 @@ nav li a {
    border-radius: 10px;
    padding: 20px !important;
 }
+
+.fraction { width: 6em;}
 
 #relatedRecipes {
    border: 1px solid gray;

@@ -13,7 +13,7 @@ class IngredientsController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator');
+    public $components = array('Paginator', 'RequestHandler');
     
     public $paginate = array(
         'order' => array(
@@ -62,13 +62,6 @@ class IngredientsController extends AppController {
         $this->set(compact('coreIngredients', 'locations', 'units', 'users'));
     }
 
-    /**
-     * delete method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
     public function delete($id = null) {
         $this->Ingredient->id = $id;
         if (!$this->Ingredient->exists()) {
@@ -94,5 +87,30 @@ class IngredientsController extends AppController {
             $this->set('ingredients', $this->Paginator->paginate());
         }
         $this->render('index');
+    }
+    
+    public function autoCompleteSearch() {
+        $searchResults = array();
+        $term = $this->request->query('term');
+        if ($term)
+        {
+            $ingredients = $this->Ingredient->find('all', array(
+              'conditions' => array('Ingredient.name LIKE ' => '%' . trim($term) . '%')
+            ));
+            
+            if (count($ingredients) > 0) {
+                foreach ($ingredients as $item) {
+                    $key = $item['Ingredient']['name'];
+                    $value = $item['Ingredient']['id'];
+                    array_push($searchResults, array("id"=>$value, "value" => strip_tags($key)));
+                }
+            } else {
+                $key = "No Results for ' . $term . ' Found";
+                array_push($searchResults, array("id"=>$value, "value" => ""));
+            }
+            
+            $this->set(compact('searchResults'));
+            $this->set('_serialize', 'searchResults');
+        }
     }
 }

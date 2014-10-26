@@ -27,6 +27,7 @@
         
         initRowCopy();
         initRowDelete();
+        initAutocomplete();
     });
     
     function initRowCopy() {
@@ -114,6 +115,37 @@
                 alert(numberErrorHtml)
             }
         }
+    }
+    
+    function initAutocomplete()
+    {
+        $(".ui-widget").find("input[id$='IngredientName']").each(function() {
+            console.log("found name: " + $(this).attr('id'));
+            $(this).autocomplete({
+                    source: "<?php echo Router::url('/'); ?>Ingredients/autoCompleteSearch.json",
+                    minLength: 1,
+                    html: true,
+                    select: function(event, ui) {
+                        console.log("ID: " + ui.item.id, + ", Name: " + ui.item.label);
+                        /*    var $target = $(event.target);
+                            var ingredientIdName = getOtherFromName($target.attr("id"), "ingredientId");
+                            $(ingredientIdName).val(ui.item.id);*/
+                    }
+            });
+        });
+        /*$(".ui-widget").find("input[id^='recipeAuto_']").each(function()
+        {
+                $(this).autocomplete({
+                        source: "index.php?m=recipes&a=get&format=no",
+                        minLength: 1,
+                        html: true,
+                        select: function(event, ui) {
+                                var $target = $(event.target);
+                                var recipeIdName = getOtherFromName($target.attr("id"), "relatedId");
+                                $(recipeIdName).val(ui.item.id);
+                        }
+                });
+        });*/
     }
 </script>
 <?php //echo $this->element('sql_dump'); ?>
@@ -209,7 +241,10 @@
                         <?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.quantity', array('label' => false, 'type' => 'fraction')); ?></td>
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.unit_id', array('label' => false)); ?></td>
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.qualifier', array('label' => false, 'escape' => false)); ?></td>
-                    <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.Ingredient.name', array('label' => false, 'escape' => false)); ?></td>
+                    <td>
+                        <?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.Ingredient.name', array('label' => false, 'escape' => false, 'type' => 'ui-widget')); ?>
+                        <?php echo $this->Form->hidden('IngredientMapping.' . $mapIndex . '.ingredient_id'); ?>
+                    </td>
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.optional', array('label' => false)); ?></td> 
                 </tr>
                 <?php } ?>

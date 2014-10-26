@@ -91,7 +91,7 @@ class CoreIngredientsController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
     
-    //TODO: need to seperate navigation search from Autocomplete
+    // Autocomplete Search
     public function search() {
         $searchResults = array();
         $term = $this->request->query('term');

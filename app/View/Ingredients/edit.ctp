@@ -7,7 +7,6 @@
             source: "CoreIngredients/search.json",
             minLength: 3,
             select: function(event, ui) {
-                console.log(ui.item);
                 if (ui.item.id) {
                     $("#IngredientCoreIngredientId").val(ui.item.id);
                     $("#USDA_name").val(ui.item.label);
