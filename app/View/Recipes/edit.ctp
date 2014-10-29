@@ -23,7 +23,25 @@
         $('#AddMoreIngredientsLink').click(function() {
             $('.extraItem input').change();
             return false;
-        })
+        });
+        
+        $('input[type="submit"]').click(function() {
+            console.log('hey');
+            $("#sortableTable1 tr").each(function() {
+                var rowIsNull = true;
+                $(this).find('input').each(function() {
+                    // check Quanity and name and then remove
+                    console.log("Input: " + $(this).attr('id') + $(this).val());
+                    if (!$(this).val()) {
+                        rowIsNull = false;
+                        console.log("is not set");
+                    }
+                });
+                if (rowIsNull) {
+                    $(this).remove();
+                }
+            })
+        });
         
         initRowCopy();
         initRowDelete();
@@ -127,9 +145,9 @@
                     html: true,
                     select: function(event, ui) {
                         console.log("ID: " + ui.item.id, + ", Name: " + ui.item.label);
-                        /*    var $target = $(event.target);
-                            var ingredientIdName = getOtherFromName($target.attr("id"), "ingredientId");
-                            $(ingredientIdName).val(ui.item.id);*/
+                        var $target = $(event.target);
+                        var mapId = $target.attr("id").replace("IngredientName", "") + "IngredientId";
+                        $("#" + mapId).val(ui.item.id);
                     }
             });
         });
