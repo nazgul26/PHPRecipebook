@@ -26,18 +26,16 @@
         });
         
         $('input[type="submit"]').click(function() {
-            console.log('hey');
             $("#sortableTable1 tr").each(function() {
                 var rowIsNull = true;
                 $(this).find('input').each(function() {
-                    // check Quanity and name and then remove
-                    console.log("Input: " + $(this).attr('id') + $(this).val());
-                    if (!$(this).val()) {
+                    var itemId = $(this).attr('id');
+                    if (itemId.indexOf('UnitId') === -1 && $(this).val()) {
                         rowIsNull = false;
-                        console.log("is not set");
+                        //console.log("Input: " + $(this).attr('id') + "=" + $(this).val() + " Which is SET");
                     }
                 });
-                if (rowIsNull) {
+                if (rowIsNull && !$(this).hasClass('headerRow')) {
                     $(this).remove();
                 }
             })
@@ -50,6 +48,7 @@
     
     function initRowCopy() {
         $('.extraItem input').each(function() {
+            console.log("Extra Item found");
             $(this).change(function() {
                $('.extraItem input').off('change');
                $original = $('.extraItem');
@@ -73,7 +72,6 @@
     }
     
     function reNumberTable(tableId) {
-        console.log('I am going to renumber ' + tableId);
         var i = -1;
         var tableSelector = "#" + tableId;
         $(tableSelector).find("tr").each(function () {
@@ -99,7 +97,6 @@
                         newNodeId = "IngredientMapping" + i + "IngredientName";
                         newNodeName = "data[IngredientMapping][" + i + "][Ingredient][name]";
                     }
-                    // TODO Ingredient ID as hidden
                     $(this).attr('name', newNodeName);
                     $(this).attr('id', newNodeId);
             });
@@ -138,32 +135,32 @@
     function initAutocomplete()
     {
         $(".ui-widget").find("input[id$='IngredientName']").each(function() {
-            console.log("found name: " + $(this).attr('id'));
             $(this).autocomplete({
-                    source: "<?php echo Router::url('/'); ?>Ingredients/autoCompleteSearch.json",
-                    minLength: 1,
-                    html: true,
-                    select: function(event, ui) {
-                        console.log("ID: " + ui.item.id, + ", Name: " + ui.item.label);
-                        var $target = $(event.target);
-                        var mapId = $target.attr("id").replace("IngredientName", "") + "IngredientId";
-                        $("#" + mapId).val(ui.item.id);
-                    }
+                source: "<?php echo Router::url('/'); ?>Ingredients/autoCompleteSearch.json",
+                minLength: 1,
+                html: true,
+                select: function(event, ui) {
+                    console.log("ID: " + ui.item.id, + ", Name: " + ui.item.label);
+                    var $target = $(event.target);
+                    var mapId = $target.attr("id").replace("IngredientName", "") + "IngredientId";
+                    $("#" + mapId).val(ui.item.id);
+                }
             });
         });
-        /*$(".ui-widget").find("input[id^='recipeAuto_']").each(function()
-        {
-                $(this).autocomplete({
-                        source: "index.php?m=recipes&a=get&format=no",
-                        minLength: 1,
-                        html: true,
-                        select: function(event, ui) {
-                                var $target = $(event.target);
-                                var recipeIdName = getOtherFromName($target.attr("id"), "relatedId");
-                                $(recipeIdName).val(ui.item.id);
-                        }
-                });
-        });*/
+        $(".ui-widget").find("input[id$='RelatedName']").each(function() {
+            console.log("wire up:" + $(this).attr('id'));
+            $(this).autocomplete({
+                source: "<?php echo Router::url('/'); ?>Recipes/autoCompleteSearch.json",
+                minLength: 1,
+                html: true,
+                select: function(event, ui) {
+                    console.log("ID: " + ui.item.id, + ", Name: " + ui.item.label);
+                    var $target = $(event.target);
+                    var mapId = $target.attr("id").replace("RecipeName", "") + "RecipeId";
+                    $("#" + mapId).val(ui.item.id);
+                }
+            });
+        });
     }
 </script>
 <?php //echo $this->element('sql_dump'); ?>
@@ -216,7 +213,7 @@
             ?>
             <div id="ingredientsSection">
                 <table id="sortableTable1">
-                <tr>
+                <tr class="headerRow">
                     <th class="deleteIcon"></th><th class="moveIcon"></th>
                     <th><?php echo __('Quantity');?></th>
                     <th><?php echo __('Units');?></th>
@@ -239,7 +236,7 @@
                         $extraItem = false;
                     }       
                 ?>
-                <tr class="extraItem">
+                <tr class="<?php echo ($extraItem) ? "extraItem" : ""?>">
                     <td>
                         <div class="ui-state-default ui-corner-all deleteIcon" title="<?php echo __('Delete'); ?>">
                             <span class="ui-icon ui-icon-trash"></span>
@@ -308,7 +305,7 @@
                         <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.recipe_id'); ?>
                         <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.sort_order'); ?>
          
-                        <?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.Related.name', array('label' => false, 'escape' => false)); ?></td>
+                        <?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.Related.name', array('label' => false, 'escape' => false, 'type' => 'ui-widget')); ?></td>
                     <td><?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.required', array('label' => false)); ?></td> 
                 </tr>
                 <?php } ?>

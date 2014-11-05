@@ -13,7 +13,7 @@ class RecipesController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator');
+    public $components = array('Paginator', 'RequestHandler');
     
     public $paginate = array(
         'order' => array(
@@ -131,5 +131,30 @@ class RecipesController extends AppController {
             $this->set('recipes', $this->Paginator->paginate());
         }
         $this->render('index');
+    }
+    
+    public function autoCompleteSearch() {
+        $searchResults = array();
+        $term = $this->request->query('term');
+        if ($term)
+        {
+            $recipes = $this->Recipe->find('all', array(
+              'conditions' => array('Recipe.name LIKE ' => '%' . trim($term) . '%')
+            ));
+
+            if (count($recipes) > 0) {
+                foreach ($recipes as $item) {
+                    $key = $item['Recipe']['name'];
+                    $value = $item['Recipe']['id'];
+                    array_push($searchResults, array("id"=>$value, "value" => strip_tags($key)));
+                }
+            } else {
+                $key = "No Results for ' . $term . ' Found";
+                array_push($searchResults, array("id"=>$value, "value" => ""));
+            }
+
+            $this->set(compact('searchResults'));
+            $this->set('_serialize', 'searchResults');
+        }
     }
 }
