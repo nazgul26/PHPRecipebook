@@ -5,13 +5,13 @@
             $('#editIngredientDialog').dialog('close');
         });
         
-        $("#sortableTable1 tbody.ingredientContent").sortable({
+        $("#sortableTable1 tbody.gridContent").sortable({
             stop: function( event, ui ) { 
-                reNumberTable("sortableTable1");}
+                reNumberIngredientsTable();}
         });
-        $("#sortableTable2 tbody.ingredientContent").sortable({
+        $("#sortableTable2 tbody.gridContent").sortable({
             stop: function( event, ui ) { 
-                reNumberTable("sortableTable2");}
+                reNumberRelatedRecipesTable();}
         });
         
         $('#ingredientsSection .fraction input').each(function() {
@@ -21,7 +21,11 @@
         });
         
         $('#AddMoreIngredientsLink').click(function() {
-            $('.extraItem input').change();
+            $('#ingredientsSection .extraItem input').change();
+            return false;
+        });
+        $('#AddMoreRelatedRecipesLink').click(function() {
+            $('#relatedRecipesSection .extraItem input').change();
             return false;
         });
         
@@ -41,23 +45,37 @@
             })
         });
         
-        initRowCopy();
+        initRowCopy('ingredientsSection');
+        initRowCopy('relatedRecipesSection');
         initRowDelete();
-        initAutocomplete();
+        initIngredientAutoComplete();
+        initRelatedAutoCompleted();
     });
     
-    function initRowCopy() {
-        $('.extraItem input').each(function() {
-            console.log("Extra Item found");
+    function initIngredientAutoComplete() {
+        initAutocomplete("IngredientName", "IngredientId", "Ingredients/autoCompleteSearch.json");
+    }
+    
+    function initRelatedAutoCompleted() {
+        initAutocomplete("RelatedName", "RecipeId", "Recipes/autoCompleteSearch.json");
+    }
+    
+    function initRowCopy(gridId) {
+        $('#' + gridId + ' .extraItem input').each(function() {
             $(this).change(function() {
-               $('.extraItem input').off('change');
-               $original = $('.extraItem');
+               $('#' + gridId + ' .extraItem input').off('change');
+               $original = $('#' + gridId +' .extraItem');
                $clonedCopy = $original.clone();
                $clonedCopy.find('input').val('');
-               $clonedCopy.appendTo('.ingredientContent');
+               $clonedCopy.appendTo('#' + gridId + ' .gridContent');
                $original.attr('class', '');
-               initRowCopy();
+               initRowCopy(gridId);
                initRowDelete();
+               if (gridId.indexOf('ingredients') > -1) {
+                   initIngredientAutoComplete();
+               } else {
+                   initRelatedAutoCompleted();
+               }
             });
         });
     }
@@ -71,9 +89,9 @@
         });
     }
     
-    function reNumberTable(tableId) {
+    function reNumberIngredientsTable() {
         var i = -1;
-        var tableSelector = "#" + tableId;
+        var tableSelector = "#sortableTable1";
         $(tableSelector).find("tr").each(function () {
             $(this).find(":input").each(function() {
                     var nodeName = $(this).attr('id');
@@ -96,6 +114,31 @@
                     else if (nodeName.indexOf("IngredientName") > -1) { 
                         newNodeId = "IngredientMapping" + i + "IngredientName";
                         newNodeName = "data[IngredientMapping][" + i + "][Ingredient][name]";
+                    }
+                    $(this).attr('name', newNodeName);
+                    $(this).attr('id', newNodeId);
+            });
+            i++;
+        });
+    }
+    
+    function reNumberRelatedRecipesTable() {
+        var i = -1;
+        var tableSelector = "#sortableTable2";
+        $(tableSelector).find("tr").each(function () {
+            $(this).find(":input").each(function() {
+                    var nodeName = $(this).attr('id');
+                    var newNodeName = "";
+                    var newNodeId = "";
+                    
+                    if (nodeName.indexOf("RelatedName") > -1)
+                    {
+                        newNodeId = "RelatedRecipe" + i + "RelatedName";
+                        newNodeName = "data[RelatedRecipe][" + i + "][Related][name]";
+                    }
+                    else if (nodeName.indexOf("Required") > -1) { 
+                        newNodeId = "RelatedRecipe" + i + "Required";
+                        newNodeName = "data[RelatedRecipe][" + i + "][Required]";
                     }
                     $(this).attr('name', newNodeName);
                     $(this).attr('id', newNodeId);
@@ -132,31 +175,17 @@
         }
     }
     
-    function initAutocomplete()
+    function initAutocomplete(itemName, itemId, getUrl)
     {
-        $(".ui-widget").find("input[id$='IngredientName']").each(function() {
+        $(".ui-widget").find("input[id$='" + itemName + "']").each(function() {
             $(this).autocomplete({
-                source: "<?php echo Router::url('/'); ?>Ingredients/autoCompleteSearch.json",
+                source: "<?php echo Router::url('/'); ?>" + getUrl,
                 minLength: 1,
                 html: true,
                 select: function(event, ui) {
                     console.log("ID: " + ui.item.id, + ", Name: " + ui.item.label);
                     var $target = $(event.target);
-                    var mapId = $target.attr("id").replace("IngredientName", "") + "IngredientId";
-                    $("#" + mapId).val(ui.item.id);
-                }
-            });
-        });
-        $(".ui-widget").find("input[id$='RelatedName']").each(function() {
-            console.log("wire up:" + $(this).attr('id'));
-            $(this).autocomplete({
-                source: "<?php echo Router::url('/'); ?>Recipes/autoCompleteSearch.json",
-                minLength: 1,
-                html: true,
-                select: function(event, ui) {
-                    console.log("ID: " + ui.item.id, + ", Name: " + ui.item.label);
-                    var $target = $(event.target);
-                    var mapId = $target.attr("id").replace("RecipeName", "") + "RecipeId";
+                    var mapId = $target.attr("id").replace(itemName, "") + itemId;
                     $("#" + mapId).val(ui.item.id);
                 }
             });
@@ -224,7 +253,7 @@
                     </th>
                     <th><?php echo __('Optional');?></th>
                 </tr>
-                <tbody class="ingredientContent">
+                <tbody class="gridContent">
                 <?php 
                 $ingredientCount = (isset($recipe)? count($recipe['IngredientMapping']) : 0);
                 for ($mapIndex = 0; $mapIndex <= $ingredientCount; $mapIndex++) {
@@ -271,24 +300,27 @@
             echo $this->Form->input('directions', array('escape' => true, 'rows' => '20', 'cols' => '20'));
             ?>
             
-            <div id="relatedRecipes">
+            <div id="relatedRecipesSection">
                 <table id="sortableTable2">
                 <tr>
                     <th class="deleteIcon"></th><th class="moveIcon"></th>
                     <th><?php echo __('Related Recipe Name');?></th>
                     <th><?php echo __('Required');?></th>
                 </tr>
-                <tbody class="content">
+                <tbody class="gridContent">
                 <?php 
                 $relatedCount = isset($recipe) ? count($recipe['RelatedRecipe']) : 0;
                 for ($mapIndex = 0; $mapIndex <= $relatedCount; $mapIndex++) {
                     $currentSortOrder = __("Unknown");
-                    
+                    $extraItem = true;
                     if ($mapIndex < $relatedCount)
+                    {
                         $currentSortOrder = $recipe['RelatedRecipe'][$mapIndex]['sort_order'];
+                        $extraItem = false;
+                    }
                        
                 ?>
-                <tr>
+                <tr class="<?php echo ($extraItem) ? "extraItem" : ""?>">
                     <td>
                         <div class="ui-state-default ui-corner-all deleteIcon" title="<?php echo __('Delete'); ?>">
                             <span class="ui-icon ui-icon-trash"></span>
@@ -304,7 +336,6 @@
                         <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.parent_id'); ?>
                         <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.recipe_id'); ?>
                         <?php echo $this->Form->hidden('RelatedRecipe.' . $mapIndex . '.sort_order'); ?>
-         
                         <?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.Related.name', array('label' => false, 'escape' => false, 'type' => 'ui-widget')); ?></td>
                     <td><?php echo $this->Form->input('RelatedRecipe.' . $mapIndex . '.required', array('label' => false)); ?></td> 
                 </tr>
