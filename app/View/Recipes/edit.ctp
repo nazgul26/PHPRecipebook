@@ -30,6 +30,7 @@
         });
         
         $('input[type="submit"]').click(function() {
+            // cleanup extra ingredient rows not entered
             $("#sortableTable1 tr").each(function() {
                 var rowIsNull = true;
                 $(this).find('input').each(function() {
@@ -42,7 +43,22 @@
                 if (rowIsNull && !$(this).hasClass('headerRow')) {
                     $(this).remove();
                 }
-            })
+            });
+            // Cleanup extra related recipes not set.
+            $("#sortableTable2 tr").each(function() {
+                var rowIsNull = true;
+                $(this).find('input').each(function() {
+                    var itemId = $(this).attr('id');
+                    if ($(this).val()) {
+                        rowIsNull = false;
+                    }
+                });
+                if (rowIsNull && !$(this).hasClass('headerRow')) {
+                    $(this).remove();
+                }
+            });
+            reNumberIngredientsTable();
+            reNumberRelatedRecipesTable();
         });
         
         initRowCopy('ingredientsSection');
@@ -115,6 +131,20 @@
                         newNodeId = "IngredientMapping" + i + "IngredientName";
                         newNodeName = "data[IngredientMapping][" + i + "][Ingredient][name]";
                     }
+                    else if (nodeName.indexOf("RecipeId") > -1) { 
+                        newNodeId = "IngredientMapping" + i + "RecipeId";
+                        newNodeName = "data[IngredientMapping][" + i + "][RecipeId]";
+                        var recipeId = $('#RecipeId').val();
+                        $(this).val(recipeId);
+                    }
+                    else if (nodeName.indexOf("IngredientId") > -1) { 
+                        newNodeId = "IngredientMapping" + i + "IngredientId";
+                        newNodeName = "data[IngredientMapping][" + i + "][IngredientId]";
+                    }
+                    else if (nodeName.indexOf("Id") > -1) { 
+                        newNodeId = "IngredientMapping" + i + "Id";
+                        newNodeName = "data[IngredientMapping][" + i + "][Id]";
+                    }
                     $(this).attr('name', newNodeName);
                     $(this).attr('id', newNodeId);
             });
@@ -131,6 +161,7 @@
                     var newNodeName = "";
                     var newNodeId = "";
                     
+                    
                     if (nodeName.indexOf("RelatedName") > -1)
                     {
                         newNodeId = "RelatedRecipe" + i + "RelatedName";
@@ -139,6 +170,27 @@
                     else if (nodeName.indexOf("Required") > -1) { 
                         newNodeId = "RelatedRecipe" + i + "Required";
                         newNodeName = "data[RelatedRecipe][" + i + "][Required]";
+                    }
+                    else if (nodeName.indexOf('RecipeId') > -1)
+                    {
+                        newNodeId = "RelatedRecipe" + i + "RecipeId";
+                        newNodeName = "data[RelatedRecipe][" + i + "][RecipeId]";
+                        $(this).val(recipeId);
+                    }
+                    else if (nodeName.indexOf('ParentId') > -1)
+                    {
+                        newNodeId = "RelatedRecipe" + i + "ParentId";
+                        newNodeName = "data[ParentId][" + i + "][ParentId]";
+                        var recipeId = $('#RecipeId').val();
+                        $(this).val(recipeId);
+                    }
+                    else if (nodeName.indexOf("SortOrder") > -1) { 
+                        newNodeId = "RelatedRecipe" + i + "SortOrder";
+                        newNodeName = "data[RelatedRecipe][" + i + "][SortOrder]";
+                    }
+                    else if (nodeName.indexOf("Id") > -1) { 
+                        newNodeId = "RelatedRecipe" + i + "Id";
+                        newNodeName = "data[RelatedRecipe][" + i + "][Id]";
                     }
                     $(this).attr('name', newNodeName);
                     $(this).attr('id', newNodeId);
@@ -287,7 +339,6 @@
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.qualifier', array('label' => false, 'escape' => false)); ?></td>
                     <td>
                         <?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.Ingredient.name', array('label' => false, 'escape' => false, 'type' => 'ui-widget')); ?>
-                        <?php echo $this->Form->hidden('IngredientMapping.' . $mapIndex . '.ingredient_id'); ?>
                     </td>
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.optional', array('label' => false)); ?></td> 
                 </tr>
@@ -302,7 +353,7 @@
             
             <div id="relatedRecipesSection">
                 <table id="sortableTable2">
-                <tr>
+                <tr class="headerRow">
                     <th class="deleteIcon"></th><th class="moveIcon"></th>
                     <th><?php echo __('Related Recipe Name');?></th>
                     <th><?php echo __('Required');?></th>
