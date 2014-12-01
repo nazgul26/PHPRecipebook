@@ -31,6 +31,14 @@ class SourcesController extends AppController {
         $this->Paginator->settings = $this->paginate;
         $this->set('sources', $this->Paginator->paginate());
     }
+    
+    public function view($id = null) {
+        if (!$this->Recipe->exists($id)) {
+                throw new NotFoundException(__('Invalid source'));
+        }
+        $options = array('conditions' => array('Source.' . $this->Source->primaryKey => $id));
+        $this->set('source', $this->Source->find('first', $options));
+    }
 
     /**
      * edit method

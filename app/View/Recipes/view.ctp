@@ -1,11 +1,22 @@
 <div class="recipes view">
-<h2><?php echo __('Recipe'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($recipe['Recipe']['id']); ?>
-			&nbsp;
-		</dd>
+    <h2><?php echo __('Recipe'); ?></h2>
+        <div class="actions">
+            <ul>
+                <li><?php echo $this->Html->link(__('Edit Recipe'), array('action' => 'edit', $recipe['Recipe']['id'])); ?></li>
+                <li><a href="#" onclick="alert('done yet.');"><?php echo __('Add to Shopping List');?></a></li>
+                <li><a href="#" onclick="alert('done yet.');"><?php echo __('Print');?></a></li>
+                <li><a href="#" onclick="alert('done yet.');"><?php echo __('eMail');?></a></li>
+                <!-- Ratings - Put it on the page somewhere instead of a link -->
+                <li><button id="moreActionLinks">More Actions...</button></li>
+            </ul>
+            <div style="display: none;">
+                <ul id="moreActionLinksContent">
+                    <li><?php echo $this->Html->link(__('Import'), array('controller' => 'import', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
+                    <li><?php echo $this->Html->link(__('Export'), array('controller' => 'export', 'action' => 'edit'), array('class' => 'ajaxNavigation')); ?> </li>
+                </ul>
+            </div> 
+        </div>
+	<dl class="floatSections">
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
 			<?php echo h($recipe['Recipe']['name']); ?>
@@ -13,39 +24,37 @@
 		</dd>
 		<dt><?php echo __('Ethnicity'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($recipe['Ethnicity']['name'], array('controller' => 'ethnicities', 'action' => 'view', $recipe['Ethnicity']['id'])); ?>
+                        <?php echo h($recipe['Ethnicity']['name']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Base Type'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($recipe['BaseType']['name'], array('controller' => 'base_types', 'action' => 'view', $recipe['BaseType']['id'])); ?>
-			&nbsp;
+                        <?php echo h($recipe['BaseType']['name']); ?>
+                        &nbsp;
 		</dd>
 		<dt><?php echo __('Course'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($recipe['Course']['name'], array('controller' => 'courses', 'action' => 'view', $recipe['Course']['id'])); ?>
-			&nbsp;
+			<?php echo h($recipe['Course']['name']); ?>
+                        &nbsp;
 		</dd>
 		<dt><?php echo __('Preparation Time'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($recipe['PreparationTime']['name'], array('controller' => 'preparation_times', 'action' => 'view', $recipe['PreparationTime']['id'])); ?>
-			&nbsp;
+			<?php echo h($recipe['PreparationTime']['name']); ?>
+                        &nbsp;
 		</dd>
 		<dt><?php echo __('Difficulty'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($recipe['Difficulty']['name'], array('controller' => 'difficulties', 'action' => 'view', $recipe['Difficulty']['id'])); ?>
-			&nbsp;
+			<?php echo h($recipe['Difficulty']['name']); ?>
+                        &nbsp;
 		</dd>
 		<dt><?php echo __('Serving Size'); ?></dt>
 		<dd>
 			<?php echo h($recipe['Recipe']['serving_size']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Directions'); ?></dt>
-		<dd>
-			<?php echo h($recipe['Recipe']['directions']); ?>
-			&nbsp;
-		</dd>
+        </dl>
+
+        <dl class="floatSections">
 		<dt><?php echo __('Comments'); ?></dt>
 		<dd>
 			<?php echo h($recipe['Recipe']['comments']); ?>
@@ -61,29 +70,9 @@
 			<?php echo h($recipe['Recipe']['source_description']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
+		<dt><?php echo __('Last Modified'); ?></dt>
 		<dd>
 			<?php echo h($recipe['Recipe']['modified']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Picture'); ?></dt>
-		<dd>
-			<?php echo h($recipe['Recipe']['picture']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Picture Type'); ?></dt>
-		<dd>
-			<?php echo h($recipe['Recipe']['picture_type']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Private'); ?></dt>
-		<dd>
-			<?php echo h($recipe['Recipe']['private']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('System'); ?></dt>
-		<dd>
-			<?php echo h($recipe['Recipe']['system']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
@@ -92,27 +81,26 @@
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Recipe'), array('action' => 'edit', $recipe['Recipe']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Recipe'), array('action' => 'delete', $recipe['Recipe']['id']), null, __('Are you sure you want to delete # %s?', $recipe['Recipe']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Recipes'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Recipe'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Ethnicities'), array('controller' => 'ethnicities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Ethnicity'), array('controller' => 'ethnicities', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Base Types'), array('controller' => 'base_types', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Base Type'), array('controller' => 'base_types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Courses'), array('controller' => 'courses', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Course'), array('controller' => 'courses', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Preparation Times'), array('controller' => 'preparation_times', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Preparation Time'), array('controller' => 'preparation_times', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Difficulties'), array('controller' => 'difficulties', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Difficulty'), array('controller' => 'difficulties', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Sources'), array('controller' => 'sources', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Source'), array('controller' => 'sources', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-	</ul>
+        
+        <div class="clear"/><br/>
+        
+        <div>
+            <b><?php echo __('Ingredients'); ?></b>
+<pre><?php for ($i = 0; $i < count($recipe['IngredientMapping']); $i++) {
+                $quantity = $recipe['IngredientMapping'][$i]['quantity'];
+                $unit = $recipe['IngredientMapping'][$i]['Unit']['name'];
+                $ingredientName = $recipe['IngredientMapping'][$i]['Ingredient']['name'];
+                echo $quantity . " <b>" . $unit . "</b> " . $ingredientName . "<br/>";
+            }?>
+</pre>
+        </div>
+        <br/>     
+        <div>
+            <b><?php echo __('Directions'); ?></b>
+
+            <pre><?php echo h($recipe['Recipe']['directions']); ?></pre>
+        </div>
+        
+        <?php echo h($recipe['Recipe']['picture']); ?>
+        <?php echo h($recipe['Recipe']['picture_type']); ?>
 </div>

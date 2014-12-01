@@ -39,30 +39,18 @@ class Ingredient extends AppModel {
             'CoreIngredient' => array(
                     'className' => 'CoreIngredient',
                     'foreignKey' => 'core_ingredient_id',
-                    'conditions' => '',
-                    'fields' => '',
-                    'order' => ''
             ),
             'Location' => array(
                     'className' => 'Location',
                     'foreignKey' => 'location_id',
-                    'conditions' => '',
-                    'fields' => '',
-                    'order' => ''
             ),
             'Unit' => array(
                     'className' => 'Unit',
                     'foreignKey' => 'unit_id',
-                    'conditions' => '',
-                    'fields' => '',
-                    'order' => ''
             ),
             'User' => array(
                     'className' => 'User',
                     'foreignKey' => 'user_id',
-                    'conditions' => '',
-                    'fields' => '',
-                    'order' => ''
             )
     );
 
@@ -70,6 +58,7 @@ class Ingredient extends AppModel {
         'IngredientMapping' => array(
             'className' => 'IngredientMapping',
             'foreignKey' => 'ingredient_id',
+            'order' => 'IngredientMapping.sort_order',
             'dependent' => true
         )
     );

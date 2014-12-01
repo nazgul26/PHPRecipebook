@@ -35,9 +35,14 @@
                 var rowIsNull = true;
                 $(this).find('input').each(function() {
                     var itemId = $(this).attr('id');
-                    if (itemId.indexOf('UnitId') === -1 && $(this).val()) {
+                    if (itemId != "" && 
+                            itemId.indexOf('RecipeId') === -1 && 
+                            itemId.indexOf('UnitId') === -1 && 
+                            itemId.indexOf('SortOrder') === -1 &&
+                            itemId.indexOf('Optional') === -1 &&
+                            $(this).val()) {
                         rowIsNull = false;
-                        //console.log("Input: " + $(this).attr('id') + "=" + $(this).val() + " Which is SET");
+                        //console.log("Ingredient Input: " + $(this).attr('id') + "=" + $(this).val() + " Which is SET");
                     }
                 });
                 if (rowIsNull && !$(this).hasClass('headerRow')) {
@@ -49,7 +54,10 @@
                 var rowIsNull = true;
                 $(this).find('input').each(function() {
                     var itemId = $(this).attr('id');
-                    if ($(this).val()) {
+                    if (itemId != "" && itemId.indexOf('ParentId') === -1 && 
+                            itemId.indexOf('SortOrder') === -1 && 
+                            itemId.indexOf('Required') === -1 && $(this).val()) {
+                        //console.log("Related Input: " + $(this).attr('id') + "=" + $(this).val() + " Which is SET");
                         rowIsNull = false;
                     }
                 });
@@ -59,6 +67,7 @@
             });
             reNumberIngredientsTable();
             reNumberRelatedRecipesTable();
+            return true;
         });
         
         initRowCopy('ingredientsSection');
@@ -69,10 +78,12 @@
     });
     
     function initIngredientAutoComplete() {
+        reNumberIngredientsTable();
         initAutocomplete("IngredientName", "IngredientId", "Ingredients/autoCompleteSearch.json");
     }
     
     function initRelatedAutoCompleted() {
+        reNumberRelatedRecipesTable();
         initAutocomplete("RelatedName", "RecipeId", "Recipes/autoCompleteSearch.json");
     }
     
@@ -114,8 +125,7 @@
                     var newNodeName = "";
                     var newNodeId = "";
                     
-                    if (nodeName.indexOf("Quantity") > -1)
-                    {
+                    if (nodeName.indexOf("Quantity") > -1) {
                         newNodeId = "IngredientMapping" + i + "Quantity";
                         newNodeName = "data[IngredientMapping][" + i + "][quantity]";
                     }
@@ -133,17 +143,26 @@
                     }
                     else if (nodeName.indexOf("RecipeId") > -1) { 
                         newNodeId = "IngredientMapping" + i + "RecipeId";
-                        newNodeName = "data[IngredientMapping][" + i + "][RecipeId]";
+                        newNodeName = "data[IngredientMapping][" + i + "][recipe_id]";
                         var recipeId = $('#RecipeId').val();
                         $(this).val(recipeId);
                     }
                     else if (nodeName.indexOf("IngredientId") > -1) { 
                         newNodeId = "IngredientMapping" + i + "IngredientId";
-                        newNodeName = "data[IngredientMapping][" + i + "][IngredientId]";
+                        newNodeName = "data[IngredientMapping][" + i + "][ingredient_id]";
+                    }
+                    else if (nodeName.indexOf("SortOrder") > -1) {
+                        newNodeId = "IngredientMapping" + i + "SortOrder";
+                        newNodeName = "data[IngredientMapping][" + i + "][sort_order]";
+                        $(this).val(i);
+                    }
+                    else if (nodeName.indexOf("Optional") > -1) {
+                        newNodeId = "IngredientMapping" + i + "Optional";
+                        newNodeName = "data[IngredientMapping][" + i + "][optional]";  
                     }
                     else if (nodeName.indexOf("Id") > -1) { 
                         newNodeId = "IngredientMapping" + i + "Id";
-                        newNodeName = "data[IngredientMapping][" + i + "][Id]";
+                        newNodeName = "data[IngredientMapping][" + i + "][id]";
                     }
                     $(this).attr('name', newNodeName);
                     $(this).attr('id', newNodeId);
@@ -161,7 +180,6 @@
                     var newNodeName = "";
                     var newNodeId = "";
                     
-                    
                     if (nodeName.indexOf("RelatedName") > -1)
                     {
                         newNodeId = "RelatedRecipe" + i + "RelatedName";
@@ -169,29 +187,30 @@
                     }
                     else if (nodeName.indexOf("Required") > -1) { 
                         newNodeId = "RelatedRecipe" + i + "Required";
-                        newNodeName = "data[RelatedRecipe][" + i + "][Required]";
+                        newNodeName = "data[RelatedRecipe][" + i + "][required]";
                     }
                     else if (nodeName.indexOf('RecipeId') > -1)
                     {
                         newNodeId = "RelatedRecipe" + i + "RecipeId";
-                        newNodeName = "data[RelatedRecipe][" + i + "][RecipeId]";
-                        $(this).val(recipeId);
+                        newNodeName = "data[RelatedRecipe][" + i + "][recipe_id]";
                     }
                     else if (nodeName.indexOf('ParentId') > -1)
                     {
                         newNodeId = "RelatedRecipe" + i + "ParentId";
-                        newNodeName = "data[ParentId][" + i + "][ParentId]";
+                        newNodeName = "data[ParentId][" + i + "][parent_id]";
                         var recipeId = $('#RecipeId').val();
                         $(this).val(recipeId);
                     }
                     else if (nodeName.indexOf("SortOrder") > -1) { 
                         newNodeId = "RelatedRecipe" + i + "SortOrder";
-                        newNodeName = "data[RelatedRecipe][" + i + "][SortOrder]";
+                        newNodeName = "data[RelatedRecipe][" + i + "][sort_order]";
+                        $(this).val(i);
                     }
                     else if (nodeName.indexOf("Id") > -1) { 
                         newNodeId = "RelatedRecipe" + i + "Id";
-                        newNodeName = "data[RelatedRecipe][" + i + "][Id]";
+                        newNodeName = "data[RelatedRecipe][" + i + "][id]";
                     }
+                        
                     $(this).attr('name', newNodeName);
                     $(this).attr('id', newNodeId);
             });
@@ -200,6 +219,7 @@
     }
     
     function fractionConvert($item) {
+        var numberError = "<?php echo __("Entered value is not a number/fraction, please try again.");?>";
         var teststring = $item.val();
         var a=teststring.indexOf(",");      // change "," to "." (in all languages)
         if ( a !== -1 ) {                   //FIXME: bug - still displays "." for all languages
@@ -216,13 +236,13 @@
                         n = teststring.substring(0,teststring.indexOf("/")-1);
                         f = teststring.substring(teststring.indexOf("/")-1);
                 }
-                if (isNaN(n)){alert(numberErrorHtml);return;}//Make shure we have a number
+                if (isNaN(n)){alert(numberError);return;}//Make sure we have a number
                 var newArray = f.split("/");
-                if (isNaN(newArray[0])){alert(numberErrorHtml);return;}//Make shure we have a number
-                if (isNaN(newArray[1])){alert(numberErrorHtml);return;}
+                if (isNaN(newArray[0])){alert(numberError);return;}
+                if (isNaN(newArray[1])){alert(numberError);return;}
                 $item.val(eval((n*1)+(newArray[0]/newArray[1])));//write the new value to the calling box
             } else {
-                alert(numberErrorHtml)
+                alert(numberError);
             }
         }
     }
@@ -235,10 +255,12 @@
                 minLength: 1,
                 html: true,
                 select: function(event, ui) {
-                    console.log("ID: " + ui.item.id, + ", Name: " + ui.item.label);
+                    //console.log("ID: " + ui.item.id, + ", Name: " + ui.item.label);
                     var $target = $(event.target);
                     var mapId = $target.attr("id").replace(itemName, "") + itemId;
+                    //console.log("Going to set ID: " + mapId + " to :" + ui.item.id);
                     $("#" + mapId).val(ui.item.id);
+                    //var mapId =  $target.attr("id").replace(itemName, "") + itemId;
                 }
             });
         });
@@ -249,6 +271,7 @@
 
 <div class="actions">
 	<ul>
+            <li><?php echo $this->Html->link(__('View Recipe'), array('action' => 'view', $recipe['Recipe']['id'])); ?></li>
             <li><?php echo $this->Html->link(__('Edit Sources'), array('controller' => 'sources', 'action' => 'index'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?>
             <li><?php echo $this->Html->link(__('Import'), array('controller' => 'import'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?></li>
             <li><?php echo $this->Html->link(__('Export'), array('controller' => 'export'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?></li>
@@ -266,9 +289,10 @@
         </div>     
 </div>
 <div class="recipes form">
-<?php echo $this->Form->create('Recipe', array('default' => false, 'type' => 'file')); ?>
+<?php echo $this->Form->create('Recipe', array('type' => 'file')); ?>
     <fieldset>
             <legend><?php echo __('Recipe'); ?></legend>
+            <?php echo $this->Session->flash(); ?> 
             <?php
             echo $this->Form->hidden('id');
             echo $this->Form->input('name');
@@ -286,8 +310,8 @@
             echo $this->Form->input('preparation_time_id', array('empty'=>true));
             echo $this->Form->input('difficulty_id', array('empty'=>true));
             echo $this->Form->input('serving_size');
-            echo $this->Form->input('picture', array('type'=>'file'));
-            echo $this->Form->hidden('picture_type');
+            //echo $this->Form->input('picture', array('type'=>'file'));
+            //echo $this->Form->hidden('picture_type');
             echo $this->Form->input('private', array('options' => array('0' => 'No', '1' => 'Yes')));
             echo $this->Form->input('system', array('options' => array('usa' => 'USA', 'metric' => 'Metric')));
             echo $this->Form->input('user_id');
@@ -307,7 +331,7 @@
                 </tr>
                 <tbody class="gridContent">
                 <?php 
-                $ingredientCount = (isset($recipe)? count($recipe['IngredientMapping']) : 0);
+                $ingredientCount = (isset($recipe) && $recipe['IngredientMapping'])? count($recipe['IngredientMapping']) : 0;
                 for ($mapIndex = 0; $mapIndex <= $ingredientCount; $mapIndex++) {
                     $currentSortOrder = __("Unknown");
                     $extraItem = true;
@@ -360,7 +384,7 @@
                 </tr>
                 <tbody class="gridContent">
                 <?php 
-                $relatedCount = isset($recipe) ? count($recipe['RelatedRecipe']) : 0;
+                $relatedCount = (isset($recipe) && isset($recipe['RelatedRecipe']) )? count($recipe['RelatedRecipe']) : 0;
                 for ($mapIndex = 0; $mapIndex <= $relatedCount; $mapIndex++) {
                     $currentSortOrder = __("Unknown");
                     $extraItem = true;
@@ -396,7 +420,6 @@
                 <a href="#" id="AddMoreRelatedRecipesLink"><?php echo __('Add Another Recipe');?></a>
             </div>
     </fieldset>
-<?php echo $this->Session->flash(); ?> 
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
 

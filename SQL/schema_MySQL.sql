@@ -165,7 +165,7 @@ CREATE TABLE ingredient_mappings (
 	unit_id INT REFERENCES units(id) ON DELETE SET NULL,
 	qualifier VARCHAR(32),
 	optional BOOL,
-	sort_order INT NOT NULL,
+	sort_order INT,
 	PRIMARY KEY (ingredient_id,recipe_id)
 );
 

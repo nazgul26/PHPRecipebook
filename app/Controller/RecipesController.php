@@ -55,7 +55,21 @@ class RecipesController extends AppController {
         if (!$this->Recipe->exists($id)) {
                 throw new NotFoundException(__('Invalid recipe'));
         }
-        $options = array('conditions' => array('Recipe.' . $this->Recipe->primaryKey => $id));
+        $this->Recipe->Behaviors->load('Containable');
+        $options = array('conditions' => array('Recipe.' . $this->Recipe->primaryKey => $id), 
+                'contain' => array(
+                    'IngredientMapping.Ingredient.name', 
+                    'IngredientMapping.Unit.name',
+                    'RelatedRecipe.Related.name',
+                    'Ethnicity.name',
+                    'BaseType.name',
+                    'Course.name',
+                    'PreparationTime.name',
+                    'Difficulty.name',
+                    'Source.name',
+                    'Source.id',
+                    'User.name',
+                    'User.id'));
         $this->set('recipe', $this->Recipe->find('first', $options));
     }
 

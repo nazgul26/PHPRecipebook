@@ -117,7 +117,7 @@ ALTER TABLE ingredient_mappings CHANGE map_quantity quantity FLOAT NOT NULL;
 ALTER TABLE ingredient_mappings CHANGE map_unit unit_id INT;
 ALTER TABLE ingredient_mappings CHANGE map_qualifier qualifier VARCHAR(32);
 ALTER TABLE ingredient_mappings CHANGE map_optional optional BOOL;
-ALTER TABLE ingredient_mappings CHANGE map_order sort_order INT NOT NULL;
+ALTER TABLE ingredient_mappings CHANGE map_order sort_order INT;
 
 DROP TABLE recipe_list_names;
 CREATE TABLE shopping_list_names (

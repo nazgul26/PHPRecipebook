@@ -1,3 +1,4 @@
+
 .constrain {
     margin: 0 auto;
     max-width: 1240px;
@@ -197,4 +198,22 @@ nav li a {
    border: 1px solid gray;
    border-radius: 10px;
    padding: 20px !important;
+}
+
+/* View Recipes */
+.floatSections {
+    float: left;
+    width: 50%;
+}
+.float40Section {
+    float: left;
+    width: 40%;
+}
+float60Section {
+    float: left;
+    width: 60%;
+}
+.clear {
+    clear: both;
+    width: 100%;
 }
