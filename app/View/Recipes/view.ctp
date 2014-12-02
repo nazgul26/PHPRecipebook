@@ -1,3 +1,13 @@
+<script type="text/javascript">
+    $(function() {
+        $('#qtipSource').qtip({ // Grab some elements to apply the tooltip to
+            content: {
+                text: $('#qtipSourceData').html()
+            },
+            style: { classes: 'qtip-dark' }
+        });
+})
+</script>
 <div class="recipes view">
     <h2><?php echo __('Recipe'); ?></h2>
         <div class="actions">
@@ -16,7 +26,7 @@
                 </ul>
             </div> 
         </div>
-	<dl class="floatSections">
+	<dl class="float50Section">
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
 			<?php echo h($recipe['Recipe']['name']); ?>
@@ -54,7 +64,7 @@
 		</dd>
         </dl>
 
-        <dl class="floatSections">
+        <dl class="float50Section">
 		<dt><?php echo __('Comments'); ?></dt>
 		<dd>
 			<?php echo h($recipe['Recipe']['comments']); ?>
@@ -62,8 +72,11 @@
 		</dd>
 		<dt><?php echo __('Source'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($recipe['Source']['name'], array('controller' => 'sources', 'action' => 'view', $recipe['Source']['id'])); ?>
-			&nbsp;
+                    <a href="#" onclick="return false;" id="qtipSource"><?php echo $recipe['Source']['name'];?></a>
+                    <div id="qtipSourceData" class="hide">
+                        <?php echo $recipe['Source']['description'];?>
+                    </div>
+                    &nbsp;
 		</dd>
 		<dt><?php echo __('Source Description'); ?></dt>
 		<dd>
@@ -77,14 +90,13 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($recipe['User']['name'], array('controller' => 'users', 'action' => 'view', $recipe['User']['id'])); ?>
-			&nbsp;
+                    <?php echo h($recipe['User']['name']); ?>
 		</dd>
 	</dl>
         
         <div class="clear"/><br/>
         
-        <div>
+        <div style="width: 50%;">
             <b><?php echo __('Ingredients'); ?></b>
 <pre><?php for ($i = 0; $i < count($recipe['IngredientMapping']); $i++) {
                 $quantity = $recipe['IngredientMapping'][$i]['quantity'];

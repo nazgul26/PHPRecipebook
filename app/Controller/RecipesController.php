@@ -68,6 +68,7 @@ class RecipesController extends AppController {
                     'Difficulty.name',
                     'Source.name',
                     'Source.id',
+                    'Source.description',
                     'User.name',
                     'User.id'));
         $this->set('recipe', $this->Recipe->find('first', $options));

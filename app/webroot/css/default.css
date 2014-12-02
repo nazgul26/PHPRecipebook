@@ -201,7 +201,7 @@ nav li a {
 }
 
 /* View Recipes */
-.floatSections {
+.float50Section {
     float: left;
     width: 50%;
 }
@@ -216,4 +216,7 @@ float60Section {
 .clear {
     clear: both;
     width: 100%;
+}
+.hide {
+    display: none;
 }

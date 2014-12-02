@@ -33,7 +33,7 @@ class SourcesController extends AppController {
     }
     
     public function view($id = null) {
-        if (!$this->Recipe->exists($id)) {
+        if (!$this->Source->exists($id)) {
                 throw new NotFoundException(__('Invalid source'));
         }
         $options = array('conditions' => array('Source.' . $this->Source->primaryKey => $id));
