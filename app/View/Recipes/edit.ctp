@@ -294,6 +294,7 @@
             <legend><?php echo __('Recipe'); ?></legend>
             <?php echo $this->Session->flash(); ?> 
             <?php
+            $baseUrl = Router::url('/');
             echo $this->Form->hidden('id');
             echo $this->Form->input('name');
             echo $this->Form->input('comments', array('escape' => true, 'rows' => '2'));
@@ -310,8 +311,23 @@
             echo $this->Form->input('preparation_time_id', array('empty'=>true));
             echo $this->Form->input('difficulty_id', array('empty'=>true));
             echo $this->Form->input('serving_size');
-            //echo $this->Form->input('picture', array('type'=>'file'));
-            //echo $this->Form->hidden('picture_type');
+            $imageCount = (isset($recipe) && $recipe['Image'])? count($recipe['Image']) : 0;
+            echo $this->Form->input('Image.' . $imageCount . '.attachment', array('type' => 'file', 'label' => 'Image'));
+            if ($imageCount > 0)
+            {
+                echo "<div id='imageSection'>";
+                echo "Images<br/>";
+                for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
+
+                    $imageName = $recipe['Image'][$imageIndex]['attachment'];
+                    $imageDir = $recipe['Image'][$imageIndex]['dir'];
+                    $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'thumb_${1}.$2', $imageName);
+                    echo $this->Form->hidden('Image.' . $imageIndex . '.id');
+                    echo $this->Form->hidden('Image.' . $imageIndex . '.sort_order');
+                    echo '<img class="recipeImage" src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . $imageThumb . '" alt="Image"/>';
+                }
+                echo "</div>";
+            }
             echo $this->Form->input('private', array('options' => array('0' => 'No', '1' => 'Yes')));
             echo $this->Form->input('system', array('options' => array('usa' => 'USA', 'metric' => 'Metric')));
             echo $this->Form->input('user_id');

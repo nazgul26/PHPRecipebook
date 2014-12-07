@@ -149,12 +149,27 @@ CREATE TABLE recipes (
 	source_id INT REFERENCES sources(id) ON DELETE SET NULL,
 	source_description VARCHAR(200),
 	modified DATE,
-	picture MEDIUMBLOB,
-	picture_type VARCHAR(32),
+        image VARCHAR(255),
+        image_dir VARCHAR(255),
+        -- Need Migration script to move them to image
+	--picture MEDIUMBLOB,
+	--picture_type VARCHAR(32),
 	private BOOL NOT NULL,
 	system VARCHAR(16) DEFAULT 'usa' NOT NULL,
 	user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
 	PRIMARY KEY (id)
+);
+
+CREATE table attachments (
+    id INT NOT NULL auto_increment,
+    recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+    `name` varchar(32) NOT NULL,
+    `attachment` varchar(255) NOT NULL,
+    `dir` varchar(255) DEFAULT NULL,
+    `type` varchar(255) DEFAULT NULL,
+    `size` int(11) DEFAULT 0,
+    sort_order INT
+    PRIMARY KEY (`id`)
 );
 
 CREATE TABLE ingredient_mappings (

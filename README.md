@@ -17,3 +17,12 @@ And of course now that we are on GitHub contributions and collaboration should b
 When the basics are working I will put up a Beta site for people to see what is coming.
 
 There will be migration path from PHPRecipeBook 4.0
+
+
+Installation Steps:
+
+1. Run migration SQL Script
+2. Edit Configuration DB Configuration Settings ./app/Config/database.php to match your database settings
+3. For File uploads:
+    mkdir ./app/webroot/files/recipe
+    sudo chown www-data.www-data ./app/webroot/files/recipe

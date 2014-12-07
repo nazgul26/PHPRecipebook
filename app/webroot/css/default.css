@@ -220,3 +220,13 @@ float60Section {
 .hide {
     display: none;
 }
+#imageSection {
+   border: 1px solid gray;
+   border-radius: 10px;
+   padding: 20px !important;
+   height: 80px;
+}
+.recipeImage {
+    float: left;
+    width: 60px;
+}

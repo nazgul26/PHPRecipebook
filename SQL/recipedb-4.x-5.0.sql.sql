@@ -108,6 +108,18 @@ ALTER TABLE recipes CHANGE recipe_private private BOOL NOT NULL;
 ALTER TABLE recipes CHANGE recipe_system system VARCHAR(16) DEFAULT 'usa' NOT NULL;
 ALTER TABLE recipes CHANGE recipe_user user_id INT NULL;
 
+CREATE table attachments (
+    id INT NOT NULL auto_increment,
+    recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+    `name` varchar(32) NOT NULL,
+    `attachment` varchar(255) NOT NULL,
+    `dir` varchar(255) DEFAULT NULL,
+    `type` varchar(255) DEFAULT NULL,
+    `size` int(11) DEFAULT 0,
+    sort_order INT
+    PRIMARY KEY (`id`)
+);
+
 RENAME TABLE recipe_ingredient_mapping TO ingredient_mappings;
 ALTER TABLE ingredient_mappings DROP PRIMARY KEY;
 ALTER TABLE ingredient_mappings ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;

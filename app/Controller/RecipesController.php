@@ -87,7 +87,8 @@ class RecipesController extends AppController {
         }
         if ($this->request->is(array('post', 'put'))) {
             $recipe = $this->request->data;
-            if ($this->Recipe->saveAll($this->request->data))
+            //print_r($recipe);
+            if ($this->Recipe->saveWithAttachments($this->request->data))
             {
                 $this->Session->setFlash(__('The recipe has been saved.'), "success");
             } else {
@@ -98,7 +99,10 @@ class RecipesController extends AppController {
             //// much better then a loop of crazy custom SQL Code
             $this->Recipe->Behaviors->load('Containable');
             $options = array('conditions' => array('Recipe.' . $this->Recipe->primaryKey => $id), 
-                'contain' => array('IngredientMapping.Ingredient.name', 'RelatedRecipe.Related.name'));
+                'contain' => array(
+                    'IngredientMapping.Ingredient.name', 
+                    'RelatedRecipe.Related.name', 
+                    'Image'));
             $this->request->data = $this->Recipe->find('first', $options);
             $recipe = $this->request->data;
         }
