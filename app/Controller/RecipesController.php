@@ -88,8 +88,7 @@ class RecipesController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             $recipe = $this->request->data;
             //print_r($recipe);
-            if ($this->Recipe->saveWithAttachments($this->request->data))
-            {
+            if ($this->Recipe->saveWithAttachments($recipe)) {
                 $this->Session->setFlash(__('The recipe has been saved.'), "success");
             } else {
                 $this->Session->setFlash(__('The recipe could not be saved. Please, try again.'));

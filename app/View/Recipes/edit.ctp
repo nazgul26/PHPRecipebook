@@ -30,7 +30,8 @@
         });
         
         $('input[type="submit"]').click(function() {
-            // cleanup extra ingredient rows not entered
+            // cleanup extra items not entered.  This is needed to prevent empty items from
+            //  being added.  Also helps with validation on items.
             $("#sortableTable1 tr").each(function() {
                 var rowIsNull = true;
                 $(this).find('input').each(function() {
@@ -67,6 +68,10 @@
             });
             reNumberIngredientsTable();
             reNumberRelatedRecipesTable();
+            
+            // Remove Add Image
+            $('#imageSection .file input').remove();
+            $('#imageSection .text input').remove();
             return true;
         });
         
@@ -312,20 +317,30 @@
             echo $this->Form->input('difficulty_id', array('empty'=>true));
             echo $this->Form->input('serving_size');
             $imageCount = (isset($recipe) && $recipe['Image'])? count($recipe['Image']) : 0;
-            echo $this->Form->input('Image.' . $imageCount . '.attachment', array('type' => 'file', 'label' => 'Image'));
+            
             if ($imageCount > 0)
             {
                 echo "<div id='imageSection'>";
-                echo "Images<br/>";
+                echo $this->Form->input('Image.' . $imageCount . '.attachment', array('type' => 'file', 'label' => 'Add Image'));
+                echo $this->Form->input('Image.' . $imageCount . '.name', array('label' => 'Caption'));
+                echo "<div id='currentImages'>";
                 for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
 
                     $imageName = $recipe['Image'][$imageIndex]['attachment'];
                     $imageDir = $recipe['Image'][$imageIndex]['dir'];
                     $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'thumb_${1}.$2', $imageName);
+                    $imageCaption = $recipe['Image'][$imageIndex]['name'];
+                    echo '<div class="recipeImage">';
                     echo $this->Form->hidden('Image.' . $imageIndex . '.id');
                     echo $this->Form->hidden('Image.' . $imageIndex . '.sort_order');
-                    echo '<img class="recipeImage" src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . $imageThumb . '" alt="Image"/>';
+                    echo $this->Form->input('Attachment.' . $imageIndex . '.remove', array('type' => 'checkbox', 'label' => 'Delete'));
+                    echo '<img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
+                            $imageThumb . '" alt="' . $imageCaption . '"/>';
+                    
+                    echo "</div>";
                 }
+                echo "</div>";
+                echo "<div class='clear'></div>";
                 echo "</div>";
             }
             echo $this->Form->input('private', array('options' => array('0' => 'No', '1' => 'Yes')));

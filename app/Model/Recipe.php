@@ -156,7 +156,7 @@ class Recipe extends AppModel {
                         unset($image['recipe_id']);
                     }
                     
-                    echo $image['attachment'] . ' is size '. $image['size'];
+                    //echo $image['attachment'] . ' is size '. $image['size'];
 
                     $images[] = $image;
                 }
