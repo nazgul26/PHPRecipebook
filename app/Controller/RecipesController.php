@@ -70,7 +70,8 @@ class RecipesController extends AppController {
                     'Source.id',
                     'Source.description',
                     'User.name',
-                    'User.id'));
+                    'User.id',
+                    'Image'));
         $this->set('recipe', $this->Recipe->find('first', $options));
     }
 

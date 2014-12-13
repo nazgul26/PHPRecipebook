@@ -96,7 +96,7 @@
         
         <div class="clear"/><br/>
         
-        <div style="width: 50%;">
+        <div class="float50Section">
             <b><?php echo __('Ingredients'); ?></b>
 <pre><?php for ($i = 0; $i < count($recipe['IngredientMapping']); $i++) {
                 $quantity = $recipe['IngredientMapping'][$i]['quantity'];
@@ -106,8 +106,35 @@
             }?>
 </pre>
         </div>
-        <br/>     
-        <div>
+        <div class="float50Section" id="imagePreview">
+            <?php 
+            $imageCount = (isset($recipe) && $recipe['Image'])? count($recipe['Image']) : 0;
+            $baseUrl = Router::url('/');
+            if ($imageCount > 0) {
+                $imageName = $recipe['Image'][0]['attachment'];
+                $imageDir = $recipe['Image'][0]['dir'];
+                $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'preview_${1}.$2', $imageName);
+                $imageCaption = $recipe['Image'][0]['name'];
+                
+                echo '<a id="selectedPreviewImage" href="#"><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
+                            $imageThumb . '" title="' . $imageCaption . '"/></a><br/>';
+                
+                if ($imageCount > 1) {
+                    echo "<div id='ImageOptions'>";
+                    for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
+                        $imageName = $recipe['Image'][$imageIndex]['attachment'];
+                        $imageDir = $recipe['Image'][$imageIndex]['dir'];
+                        $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'thumb_${1}.$2', $imageName);
+                        $imageCaption = $recipe['Image'][$imageIndex]['name'];
+                        echo '<a href="#"><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
+                                $imageThumb . '" title="' . $imageCaption . '"/></a>';
+                    }
+                    echo "</div>";
+                }
+            }?>
+        </div> 
+        <div class="clear"/><br/>    
+        <div style="width: 100%;">
             <b><?php echo __('Directions'); ?></b>
 
             <pre><?php echo h($recipe['Recipe']['directions']); ?></pre>

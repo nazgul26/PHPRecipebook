@@ -5,6 +5,7 @@ class Attachment extends AppModel {
             'attachment' => array(
                 'thumbnailSizes' => array(
                     'thumb' => '60w',
+                    'preview' => '200w'
                 ),
                 'thumbnailMethod' => 'php',
                 'deleteFolderOnDelete' => true

@@ -243,3 +243,18 @@ float60Section {
 .recipeImage img {
     margin-left: 1.5em;
 }
+
+#imagePreview {
+    margin-top: -50px;
+}
+#imagePreview a {
+    margin-top: 6px;
+    margin-left: 6px;
+}
+#imagePreview #selectedPreviewImage img {
+    margin-left: 4em;
+}
+#ImageOptions {
+    margin-left: 3em;
+}
+
