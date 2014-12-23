@@ -6,16 +6,22 @@
             },
             style: { classes: 'qtip-dark' }
         });
-})
+    });
+    
+    function loadImage(imageUrl, caption) {
+        console.log("Image Url:" + imageUrl);
+        $('#selectedPreviewImage img').attr('src', imageUrl).attr('title', caption);
+        return false;
+    }
 </script>
 <div class="recipes view">
     <h2><?php echo __('Recipe'); ?></h2>
         <div class="actions">
             <ul>
                 <li><?php echo $this->Html->link(__('Edit Recipe'), array('action' => 'edit', $recipe['Recipe']['id'])); ?></li>
-                <li><a href="#" onclick="alert('done yet.');"><?php echo __('Add to Shopping List');?></a></li>
-                <li><a href="#" onclick="alert('done yet.');"><?php echo __('Print');?></a></li>
-                <li><a href="#" onclick="alert('done yet.');"><?php echo __('eMail');?></a></li>
+                <li><a href="#" onclick="alert('not done yet.');"><?php echo __('Add to Shopping List');?></a></li>
+                <li><a href="#" onclick="alert('not done yet.');"><?php echo __('Print');?></a></li>
+                <li><a href="#" onclick="alert('not done yet.');"><?php echo __('eMail');?></a></li>
                 <!-- Ratings - Put it on the page somewhere instead of a link -->
                 <li><button id="moreActionLinks">More Actions...</button></li>
             </ul>
@@ -113,11 +119,11 @@
             if ($imageCount > 0) {
                 $imageName = $recipe['Image'][0]['attachment'];
                 $imageDir = $recipe['Image'][0]['dir'];
-                $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'preview_${1}.$2', $imageName);
+                $imagePreview =  preg_replace('/(.*)\.(.*)/i', 'preview_${1}.$2', $imageName);
                 $imageCaption = $recipe['Image'][0]['name'];
                 
                 echo '<a id="selectedPreviewImage" href="#"><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
-                            $imageThumb . '" title="' . $imageCaption . '"/></a><br/>';
+                            $imagePreview . '" title="' . $imageCaption . '"/></a><br/>';
                 
                 if ($imageCount > 1) {
                     echo "<div id='ImageOptions'>";
@@ -125,8 +131,11 @@
                         $imageName = $recipe['Image'][$imageIndex]['attachment'];
                         $imageDir = $recipe['Image'][$imageIndex]['dir'];
                         $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'thumb_${1}.$2', $imageName);
+                        $imagePreview =  preg_replace('/(.*)\.(.*)/i', 'preview_${1}.$2', $imageName);
                         $imageCaption = $recipe['Image'][$imageIndex]['name'];
-                        echo '<a href="#"><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
+                        
+                        $previewUrl = $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . $imagePreview;
+                        echo '<a href="#" onclick=\'loadImage("' . $previewUrl. '", "'. $imageCaption . '");\'><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
                                 $imageThumb . '" title="' . $imageCaption . '"/></a>';
                     }
                     echo "</div>";
