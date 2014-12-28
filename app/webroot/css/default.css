@@ -258,3 +258,27 @@ float60Section {
     margin-left: 3em;
 }
 
+/* Meal Planner */
+#weeklyContainer {
+    border: 1px solid black;
+    border-radius: 4px;
+    min-height: 170px;
+    padding-left: 4px;
+}
+.dayHeader {
+    border-bottom: 1px solid black;
+    float: left;
+    font-weight: bold;
+    width: 170px;
+}
+.dayContent {
+    border-radius: 1px;
+    border-right: 1px solid black;
+    float: left;
+    font-weight: normal;
+    min-height: 142px;
+    padding: 4px;
+    width: 161px;
+}
+.endOfRow { border-right: none;}
+
