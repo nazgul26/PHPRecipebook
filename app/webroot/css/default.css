@@ -273,12 +273,26 @@ float60Section {
 }
 .dayContent {
     border-radius: 1px;
-    border-right: 1px solid black;
+    border-right: 1px solid gray;
     float: left;
     font-weight: normal;
     min-height: 142px;
-    padding: 4px;
+    padding: 3px;
     width: 161px;
 }
 .endOfRow { border-right: none;}
+.nextMonth { 
+    background: #DBDBDB;
+    width: 167px;
+}
+.calendarNavigation {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 8px;
+    text-decoration: none;
+}
+.currentDay {
+    background: rgba(0, 0, 100, .2);
+    border-right: 1px solid black;
+}
 
