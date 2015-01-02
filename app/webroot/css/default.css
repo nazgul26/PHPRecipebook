@@ -295,4 +295,30 @@ float60Section {
     background: rgba(0, 0, 100, .2);
     border-right: 1px solid black;
 }
+.mealType {
+    border-radius: 4px;
+    margin-right: 2px;
+    margin-top: 2px;
+    padding: 4px;
+    width: 96%;
+    overflow: auto;
+    background: #DBDBDB; /* Default background for undefined */
+}
+.mealType a { float: left; }
+/* Breakfast */
+.mealType1 {
+    background: rgba(0,255,0,.2);
+}
+/* Lunch */
+.mealType3 {
+    background: rgba(0,0,255,.2);
+}
+/* Dinner */
+.mealType5 {
+    background:  rgba(255,0,0,.4);
+}
+/* Dessert */
+.mealType6 {
+    background: rgba(100,0,100,.4);
+}
 
