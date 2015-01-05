@@ -70,6 +70,7 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                     <li><a href="<?php echo $baseUrl;?>ShoppingListNames" class="ajaxNavigation"><?php echo __('Shopping List');?></a></li>
                     <li><a href="<?php echo $baseUrl;?>Ingredients" class="ajaxNavigation"><?php echo __('Ingredients'); ?></a></li>
                     <li><a href="<?php echo $baseUrl;?>Restaurants" class="ajaxNavigation"><?php echo __('Restaurants');?></a></li>
+                    <li><a href="<?php echo $baseUrl;?>Users" class="ajaxNavigation"><?php echo __('Users');?></a></li>
                     <li><div id="searchHolder">
                         <form id="searchEverythingForm">
                           <span>
@@ -77,6 +78,9 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                               <img src="<?php echo $baseUrl;?>img/clearBtn.png"  class="cancelBtn"/>
                           </span>
                         </form>
+                    </li>
+                    <li>
+                        <a href="#" id="signInButton">Sign in</a>
                     </li>
                 </ul>
             </nav> 

@@ -15,6 +15,7 @@
         echo $this->Form->input('meal_name_id');
         echo $this->Form->input('recipe_id');
         echo $this->Form->input('servings');
+        echo $this->Form->input('days', array('default' => 1, 'type' => 'number'));
 ?>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>

@@ -4,6 +4,7 @@
             ajaxGet('MealPlans/index/<?php echo date('m-d-Y');?>');
         });
         
+        $(document).off("saved.meal");
         $(document).on("saved.meal", function() {
             $('#editMealDialog').dialog('close');
             ajaxGet('MealPlans/index/<?php echo $date;?>');
@@ -61,7 +62,8 @@
 </div>
 <br/>
 <br/>
-<div style="width: 12em;">
+<div class="mealLegend">
+    <div><strong>Legend</strong></div>
     <div class="mealType mealType1"><?php echo __('Breakfast');?></div>
     <div class="mealType mealType3"><?php echo __('Lunch');?></div>
     <div class="mealType mealType5"><?php echo __('Dinner');?></div>

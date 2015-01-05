@@ -32,6 +32,25 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     
+    public $components = array(
+        'Session',
+        'Auth' => array(
+            'loginRedirect' => array(
+                'controller' => 'recipes',
+                'action' => 'index'
+            ),
+            'logoutRedirect' => array(
+                'controller' => 'recipes',
+                'action' => 'index'
+            ),
+            'authenticate' => array(
+                'Form' => array(
+                    'passwordHasher' => 'Blowfish'
+                )
+            )
+        )
+    );
+
     public function beforeFilter() {
         parent::beforeFilter();
         if ($this->request->is('ajax')) {
@@ -39,6 +58,8 @@ class AppController extends Controller {
         } else {
             $this->layout = 'default';
         }
+        
+        $this->Auth->allow('index', 'view', 'display');
     }
     
 }
