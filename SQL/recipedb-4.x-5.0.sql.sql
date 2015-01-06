@@ -1,7 +1,7 @@
 RENAME TABLE security_users TO users;
 ALTER TABLE users CHANGE user_id id INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE users CHANGE user_login username VARCHAR(32) NOT NULL UNIQUE;
-ALTER TABLE users CHANGE user_password password VARCHAR(64) NOT NULL DEFAULT '';
+ALTER TABLE users CHANGE user_password password VARCHAR(255) NOT NULL DEFAULT '';
 ALTER TABLE users CHANGE user_name name VARCHAR(64) NOT NULL DEFAULT '';
 ALTER TABLE users CHANGE user_access_level access_level INTEGER NOT NULL DEFAULT '0';
 ALTER TABLE users CHANGE user_language language VARCHAR(8) DEFAULT 'en' NOT NULL;
@@ -10,6 +10,8 @@ ALTER TABLE users CHANGE user_date_created created DATETIME;
 ALTER TABLE users CHANGE user_last_login last_login DATETIME;
 ALTER TABLE users CHANGE user_email email VARCHAR(64) NOT NULL UNIQUE;
 ALTER TABLE users ADD modified DATETIME;
+ALTER TABLE users ADD locked BOOL NOT NULL DEFAULT 0;
+ALTER TABLE users ADD reset_token VARCHAR(255) NULL;
 
 RENAME TABLE security_providers TO providers;
 ALTER TABLE providers CHANGE provider_id id INT NOT NULL AUTO_INCREMENT;

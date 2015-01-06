@@ -20,6 +20,11 @@ class RecipesController extends AppController {
             'Recipe.name' => 'asc'
         )
     );
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('findByBase', 'findByCourse', 'findByPrepMethod','search', 'autoCompleteSearch');
+    }
 
     /**
      * index method
@@ -41,6 +46,12 @@ class RecipesController extends AppController {
     public function findByCourse($courseId) {
         $this->Recipe->recursive = 0;
         $this->set('recipes', $this->Paginator->paginate('Recipe', array('Recipe.course_id' => $courseId)));
+        $this->render('index');
+    }
+    
+    public function findByPrepMethod($methodId) {
+        $this->Recipe->recursive = 0;
+        $this->set('recipes', $this->Paginator->paginate('Recipe', array('Recipe.preparation_method_id' => $methodId)));
         $this->render('index');
     }
 

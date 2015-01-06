@@ -28,7 +28,7 @@
         <?php echo __('By Prep Method') ;?>
         <ul class="recipeBoxList">
             <?php foreach ($prepMethods as $prepMethod) {?>
-               <li><a href="Recipes/findByBase/<?php echo $prepMethod['PreparationMethod']['id'];?>" class="ajaxLink">
+               <li><a href="Recipes/findByPrepMethod/<?php echo $prepMethod['PreparationMethod']['id'];?>" class="ajaxLink">
                <?php echo $prepMethod['PreparationMethod']['name'];
                if ($prepMethod['PreparationMethod']['count'] > 0) {
                    echo " (" . $prepMethod['PreparationMethod']['count'] . ")";

@@ -2,9 +2,11 @@
 CREATE TABLE users (
 	id INT NOT NULL AUTO_INCREMENT,
 	username VARCHAR(32) NOT NULL UNIQUE,
-	password VARCHAR(64) NOT NULL DEFAULT '',
+	password VARCHAR(255) NOT NULL DEFAULT '',
 	name VARCHAR(64) NOT NULL DEFAULT '',
 	access_level INTEGER NOT NULL DEFAULT '0',
+        locked BOOL NOT NULL DEFAULT 0,
+        reset_token VARCHAR(255) NULL,
 	language VARCHAR(8) DEFAULT 'en' NOT NULL,
 	country VARCHAR(8) DEFAULT 'us' NOT NULL,
 	last_login DATE,

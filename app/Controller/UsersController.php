@@ -17,13 +17,23 @@ class UsersController extends AppController {
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('add', 'logout');
+        $this->Auth->allow('add', 'logout', 'reset');
+        
+        // This pages index and view are little more restricted
+        $this->Auth->deny('index', 'view');
     }
     
     public function login() {
         if ($this->request->is('post')) {
-            if ($this->Auth->login()) {
-                return $this->redirect($this->Auth->redirectUrl());
+            $item = $this->User->findByUsername($this->data['User']['username']);
+            if (isset($item['User'])) {
+                if ($item['User']['locked']) {
+                    $this->Session->setFlash(__('Your account is currently locked. Use the password reset link to reset your password.'));
+                    return;
+                }
+                else if ($this->Auth->login()) {
+                    return $this->redirect($this->Auth->redirectUrl());
+                }
             }
             $this->Session->setFlash(__('Invalid username or password, try again'));
         }
@@ -32,6 +42,25 @@ class UsersController extends AppController {
     public function logout() {
         return $this->redirect($this->Auth->logout());
     }
+    
+    public function reset() {
+        if ($this->request->is('post')) {
+            $item = $this->User->findByEmail($this->data['User']['email']);
+            if (isset($item['User'])) {
+                $key = String::uuid();
+                $hashedKey = Security::hash(String::uuid(),'sha1',true); // goes in the email
+                $item['User']['reset_token'] = $key;
+                
+                if ($this->User->save($item))
+                {
+                    $this->Session->setFlash(__('Your reset email is on the way!'), "success");
+                    return;
+                }
+                $this->Session->setFlash(__('Could not send a reset email. Please contact support.'));
+            }
+            $this->Session->setFlash(__('Could not find your email address, try again.'));
+        }
+    }
 
     /**
      * index method
@@ -39,8 +68,8 @@ class UsersController extends AppController {
      * @return void
      */
     public function index() {
-            $this->User->recursive = 0;
-            $this->set('users', $this->Paginator->paginate());
+        $this->User->recursive = 0;
+        $this->set('users', $this->Paginator->paginate());
     }
 
     /**
@@ -51,11 +80,11 @@ class UsersController extends AppController {
      * @return void
      */
     public function view($id = null) {
-            if (!$this->User->exists($id)) {
-                    throw new NotFoundException(__('Invalid user'));
-            }
-            $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-            $this->set('user', $this->User->find('first', $options));
+        if (!$this->User->exists($id)) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+        $this->set('user', $this->User->find('first', $options));
     }
 
     /**
@@ -118,16 +147,16 @@ class UsersController extends AppController {
      * @return void
      */
     public function delete($id = null) {
-            $this->User->id = $id;
-            if (!$this->User->exists()) {
-                    throw new NotFoundException(__('Invalid user'));
-            }
-            $this->request->onlyAllow('post', 'delete');
-            if ($this->User->delete()) {
-                    $this->Session->setFlash(__('The user has been deleted.'));
-            } else {
-                    $this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
-            }
-            return $this->redirect(array('action' => 'index'));
+        $this->User->id = $id;
+        if (!$this->User->exists()) {
+                throw new NotFoundException(__('Invalid user'));
+        }
+        $this->request->onlyAllow('post', 'delete');
+        if ($this->User->delete()) {
+                $this->Session->setFlash(__('The user has been deleted.'));
+        } else {
+                $this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(array('action' => 'index'));
     }   
  }
