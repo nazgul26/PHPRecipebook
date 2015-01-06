@@ -3,7 +3,9 @@ PHPRecipebook
 
 PHP Recipe Book 5.0
 
-This is a rewrite of PHPRecipeBook hosted on sourceforge to use Cake MVC.  My goal is to complete the rewrite by the end of the year (2014), but we will see how it goes.  
+This is a rewrite of PHPRecipeBook hosted on sourceforge to use Cake MVC.
+
+Great progress has been made in 2014, about 1/2 way through re-write.  CakePHP is a so far a great platform for this project.  
 
 Improvements I want to make along the way:
 * AJAX Page loads (so less refreshes/data between clicks)
