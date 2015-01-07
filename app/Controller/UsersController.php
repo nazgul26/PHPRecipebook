@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class UsersController extends AppController {
-   
+
     /**
      * Components
      *
@@ -44,6 +44,8 @@ class UsersController extends AppController {
     }
     
     public function reset() {
+        App::uses('CakeEmail', 'Network/Email');
+               
         if ($this->request->is('post')) {
             $item = $this->User->findByEmail($this->data['User']['email']);
             if (isset($item['User'])) {
@@ -53,6 +55,12 @@ class UsersController extends AppController {
                 
                 if ($this->User->save($item))
                 {
+                    $Email = new CakeEmail('default');
+                    $Email->from(array('passwordreset@phprecipebook.com' => 'PHP RecipeBook'))
+                        ->to($this->data['User']['email'])
+                        ->subject('PHPRecipebook Password Reset')
+                        ->send('You have requested a password request, the hashed token is:' . $hashedKey);
+
                     $this->Session->setFlash(__('Your reset email is on the way!'), "success");
                     return;
                 }
