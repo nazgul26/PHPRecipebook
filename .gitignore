@@ -7,3 +7,4 @@ app/[Cc]onfig/database.php
 !empty
 /nbproject/private/
 app/webroot/files/
+app/sass/.sass-cache

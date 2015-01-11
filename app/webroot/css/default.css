@@ -1,348 +1,473 @@
-
+/* line 2, ../../sass/src/default.scss */
 .constrain {
-    margin: 0 auto;
-    max-width: 1240px;
-    padding: 0 0;
+  margin: 0;
+  max-width: 1240px;
+  padding: 0;
 }
+
+/* line 7, ../../sass/src/default.scss */
 #main {
-    background-color: rgba(0, 0, 0, 0.18);
-    border-left: 1px solid rgba(2, 2, 2, 0.28);
-    border-radius: 10px 10px 0 0;
-    border-right: 1px solid rgba(2, 2, 2, 0.28);
-    border-top: 1px solid rgba(250, 250, 250, 0.27);
-    box-shadow: 0 0 5px rgba(1, 1, 1, 0.698);
-    float: left;
+  background-color: rgba(0, 0, 0, 0.18);
+  border-left: 1px solid rgba(2, 2, 2, 0.28);
+  border-radius: 10px 10px 0 0;
+  border-right: 1px solid rgba(2, 2, 2, 0.28);
+  border-top: 1px solid rgba(250, 250, 250, 0.27);
+  box-shadow: 0 0 5px rgba(1, 1, 1, 0.698);
+  float: left;
 }
+
+/* line 16, ../../sass/src/default.scss */
 nav ul {
-    float: left;
-    margin: 0;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    width: 100%;
+  float: left;
+  margin: 0;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
 }
+
+/* line 23, ../../sass/src/default.scss */
 nav ul, nav ol {
-    list-style: none outside none;
+  list-style: none outside none;
 }
 
+/* line 27, ../../sass/src/default.scss */
 nav li {
-    float: left;
-    font: 16px "klavika-web","Helvetica Neue",Helvetica,Arial,Geneva,sans-serif;
-    margin-right: 2px;
-    padding: 4px 4px 4px 4px;
+  float: left;
+  font: 16px "klavika-web","Helvetica Neue",Helvetica,Arial,Geneva,sans-serif;
+  margin-right: 2px;
+  padding: 4px 4px 4px 4px;
 }
 
+/* line 34, ../../sass/src/default.scss */
 nav a {
-    color: #FFFFFF;
-    text-decoration: none;
-    display: block;
-    padding: 6px 10px;
+  color: #FFFFFF;
+  text-decoration: none;
+  display: block;
+  padding: 6px 10px;
 }
 
+/* line 41, ../../sass/src/default.scss */
 nav li a:hover, nav li.current a {
-    background: none repeat scroll 0 0 transparent;
-    border-radius: 4px 4px 4px 4px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset, 0 1px 0 rgba(255, 255, 255, 0.1);
-    color: #FFFFFF;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.796), 0 0 10px rgba(255, 255, 255, 0.298);
-} 
+  background: none repeat scroll 0 0 transparent;
+  border-radius: 4px 4px 4px 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset, 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.796), 0 0 10px rgba(255, 255, 255, 0.298);
+}
+
+/* line 48, ../../sass/src/default.scss */
 nav li a {
-    border: 1px solid transparent;
-    color: #FFFFFF;
-    display: block;
-    text-decoration: none;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.76);
+  border: 1px solid transparent;
+  color: #FFFFFF;
+  display: block;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.76);
 }
 
+/* line 56, ../../sass/src/default.scss */
 .loadingImage {
-    background-color: rgba(0, 0, 0, 0.18);
-    border: 1px solid rgba(250, 250, 250, 0.27);
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.698);
-    height: 80px;
-    text-align: center;
-    width: 100px;
-    float: left;
-    margin: 10px;
+  background-color: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(250, 250, 250, 0.27);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.698);
+  height: 80px;
+  text-align: center;
+  width: 100px;
+  float: left;
+  margin: 10px;
 }
+
+/* line 67, ../../sass/src/default.scss */
 .loadingImage > div {
-    width: 100px; 
-    height: 50px;
-    background: white;
+  width: 100px;
+  height: 50px;
+  background: white;
 }
+
+/* line 72, ../../sass/src/default.scss */
 .loadingImage img {
-    padding: 10px 0 0;
+  padding: 10px 0 0;
 }
 
-#recipeLinkBox { 
-    float: left; 
-    width: 200px; 
-    background-color: rgba(0, 0, 0, 0.18);
-    border-radius: 10px 10px 10px 10px;
-    border: 1px solid rgba(250, 250, 250, 0.27);
-    box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.698);
-    margin-left: 20px;
-    margin-right: 20px;
+/* line 76, ../../sass/src/default.scss */
+#recipeLinkBox {
+  float: left;
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.18);
+  border-radius: 10px 10px 10px 10px;
+  border: 1px solid rgba(250, 250, 250, 0.27);
+  box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.698);
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
+/* line 87, ../../sass/src/default.scss */
 .recipeBoxList {
-    list-style-type: none;
+  list-style-type: none;
 }
 
+/* line 91, ../../sass/src/default.scss */
 #recipeLinks {
-    background: none repeat scroll 0 0 #FFFFFF;
-    clear: both;
-    color: #333333;
-    overflow: auto;
-    padding: 10px 20px 40px;
-    border-radius: 0px 0px 5px 5px;
+  background: none repeat scroll 0 0 #FFFFFF;
+  clear: both;
+  color: #333333;
+  overflow: auto;
+  padding: 10px 20px 40px;
+  border-radius: 0px 0px 5px 5px;
 }
 
+/* line 100, ../../sass/src/default.scss */
 #recipeLinksTitle {
-    padding: 6px;
-    text-align: center;
-    font-weight: bold;
+  padding: 6px;
+  text-align: center;
+  font-weight: bold;
 }
 
-#addRecipeLink { text-align: center; width: 100%;}
+/* line 106, ../../sass/src/default.scss */
+#addRecipeLink {
+  text-align: center;
+  width: 100%;
+}
 
 /*
  Search Box
  */
-#searchHolder
-{
-	margin:-5px;
-        float: left; 
-        width: 350px;
-        margin-left: 40px;
-}
-#searchHolder form
-{
-	padding:0px;
-	margin:0px;
-}
-#searchHolder span
-{
-	padding:0px;
-	margin:0px;
-	background:1px 1px url(../img/searchbg.png) no-repeat;
-	padding-right:30px;
-	display:block;
-	float:left;
-	width:280px;
-	padding-left:40px;
-	height:37px;
-	padding-top:5px;
-}
-#searchHolder input
-{
-	border:none;
-	background:none;
-	line-height:18px;
-	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	font-size:14px;
-	height:30px;
-	padding:0px;
-	width:200px;
-	float:left;
-	margin-right:10px;
-	margin-top:2px;
+/* line 111, ../../sass/src/default.scss */
+#searchHolder {
+  margin: -5px;
+  float: left;
+  width: 350px;
+  margin-left: 40px;
 }
 
-#searchHolder .cancelBtn
-{
-	float:left;
-	margin-top:8px;
-	border:none;
-	cursor:pointer;
+/* line 117, ../../sass/src/default.scss */
+#searchHolder form {
+  padding: 0px;
+  margin: 0px;
 }
 
+/* line 121, ../../sass/src/default.scss */
+#searchHolder span {
+  padding: 0px;
+  margin: 0px;
+  background: 1px 1px url(../img/searchbg.png) no-repeat;
+  padding-right: 30px;
+  display: block;
+  float: left;
+  width: 280px;
+  padding-left: 40px;
+  height: 37px;
+  padding-top: 5px;
+}
+
+/* line 133, ../../sass/src/default.scss */
+#searchHolder input {
+  border: none;
+  background: none;
+  line-height: 18px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 14px;
+  height: 30px;
+  padding: 0px;
+  width: 200px;
+  float: left;
+  margin-right: 10px;
+  margin-top: 2px;
+}
+
+/* line 147, ../../sass/src/default.scss */
+#searchHolder .cancelBtn {
+  float: left;
+  margin-top: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* line 154, ../../sass/src/default.scss */
 #signInButton {
-    background-color: #006699;
-    color: white;
-    cursor: default;
-    text-decoration: none;
-    border-radius: 2px;
-    border: 1px solid #fff;
+  background-color: #006699;
+  color: white;
+  cursor: default;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 1px solid #fff;
 }
 
 /* Action Links */
-
-#moreActionLinks { 	
-    width: 180px;
+/* line 165, ../../sass/src/default.scss */
+#moreActionLinks {
+  width: 180px;
 }
+
+/* line 168, ../../sass/src/default.scss */
 #moreActionLinksContent li {
-    list-style-type: none;
-    font-size: 1.4em;
-    margin-top: 15px;
-    margin-bottom: 15px;
+  list-style-type: none;
+  font-size: 1.4em;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 /* Recipes */
-#sourcesEditLink { margin-left: 1em; }
-#RecipeEditForm div { padding: 0 }
-#RecipeServingSize { width: 4em;}
-#ingredientsSection .text input, #ingredientsSection .ui-widget input { 
-    width: auto;
-    font-size: 1.2em;
+/* line 176, ../../sass/src/default.scss */
+#sourcesEditLink {
+  margin-left: 1em;
 }
-#RecipeDirections { width: 80%;}
-#addNewIngredientsLink { display: inline;}
+
+/* line 177, ../../sass/src/default.scss */
+#RecipeEditForm div {
+  padding: 0;
+}
+
+/* line 178, ../../sass/src/default.scss */
+#RecipeServingSize {
+  width: 4em;
+}
+
+/* line 179, ../../sass/src/default.scss */
+#ingredientsSection .text input, #ingredientsSection .ui-widget input {
+  width: auto;
+  font-size: 1.2em;
+}
+
+/* line 183, ../../sass/src/default.scss */
+#RecipeDirections {
+  width: 80%;
+}
+
+/* line 184, ../../sass/src/default.scss */
+#addNewIngredientsLink {
+  display: inline;
+}
+
+/* line 185, ../../sass/src/default.scss */
 .ui-icon-trash, .ui-icon-arrow-4 {
   transform: scale(1.8);
   margin: 10px;
-  margin-left: 12px
+  margin-left: 12px;
 }
+
+/* line 190, ../../sass/src/default.scss */
 .deleteIcon, .moveIcon {
-    width: 40px;
-    padding-top: 6px;
+  width: 40px;
+  padding-top: 6px;
 }
 
+/* line 195, ../../sass/src/default.scss */
 #ingredientsSection {
-   border: 1px solid gray;
-   border-radius: 10px;
-   padding: 20px !important;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 20px !important;
 }
 
-.fraction { width: 6em;}
+/* line 201, ../../sass/src/default.scss */
+.fraction {
+  width: 6em;
+}
 
+/* line 203, ../../sass/src/default.scss */
 #relatedRecipes {
-   border: 1px solid gray;
-   border-radius: 10px;
-   padding: 20px !important;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 20px !important;
 }
 
 /* View Recipes */
+/* line 210, ../../sass/src/default.scss */
 .float50Section {
-    float: left;
-    width: 50%;
-}
-.float40Section {
-    float: left;
-    width: 40%;
-}
-float60Section {
-    float: left;
-    width: 60%;
-}
-.clear {
-    clear: both;
-    width: 100%;
-}
-.hide {
-    display: none;
-}
-#imageSection {
-   border: 1px solid gray;
-   border-radius: 10px;
-   padding: 20px !important;
-}
-#currentImages { 
-    width: 100%;
-}
-.recipeImage {
-    float: left;
-    width: 80px;
-    height: 60px;
-    margin: 1em;
-}
-.recipeImage div {
-    margin-bottom: 4px;
-}
-.recipeImage label {
-    float: none;
-}
-.recipeImage img {
-    margin-left: 1.5em;
+  float: left;
+  width: 50%;
 }
 
+/* line 214, ../../sass/src/default.scss */
+.float40Section {
+  float: left;
+  width: 40%;
+}
+
+/* line 218, ../../sass/src/default.scss */
+float60Section {
+  float: left;
+  width: 60%;
+}
+
+/* line 222, ../../sass/src/default.scss */
+.clear {
+  clear: both;
+  width: 100%;
+}
+
+/* line 226, ../../sass/src/default.scss */
+.hide {
+  display: none;
+}
+
+/* line 229, ../../sass/src/default.scss */
+#imageSection {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 20px !important;
+}
+
+/* line 234, ../../sass/src/default.scss */
+#currentImages {
+  width: 100%;
+}
+
+/* line 237, ../../sass/src/default.scss */
+.recipeImage {
+  float: left;
+  width: 80px;
+  height: 60px;
+  margin: 1em;
+}
+
+/* line 243, ../../sass/src/default.scss */
+.recipeImage div {
+  margin-bottom: 4px;
+}
+
+/* line 246, ../../sass/src/default.scss */
+.recipeImage label {
+  float: none;
+}
+
+/* line 249, ../../sass/src/default.scss */
+.recipeImage img {
+  margin-left: 1.5em;
+}
+
+/* line 253, ../../sass/src/default.scss */
 #imagePreview {
-    margin-top: -50px;
+  margin-top: -50px;
 }
+
+/* line 256, ../../sass/src/default.scss */
 #imagePreview a {
-    margin-top: 6px;
-    margin-left: 6px;
+  margin-top: 6px;
+  margin-left: 6px;
 }
+
+/* line 260, ../../sass/src/default.scss */
 #imagePreview #selectedPreviewImage img {
-    margin-left: 4em;
+  margin-left: 4em;
 }
+
+/* line 263, ../../sass/src/default.scss */
 #ImageOptions {
-    margin-left: 3em;
+  margin-left: 3em;
 }
 
 /* Meal Planner */
 /* -----------------------------------*/
+/* line 269, ../../sass/src/default.scss */
 #weeklyContainer {
-    border: 1px solid black;
-    border-radius: 4px;
-    min-height: 170px;
-    padding-left: 4px;
+  border: 1px solid black;
+  border-radius: 4px;
+  min-height: 170px;
+  padding-left: 4px;
 }
-.dayHeader {
-    border-bottom: 1px solid black;
-    float: left;
-    font-weight: bold;
-    width: 170px;
-}
-.dayContent {
-    border-radius: 1px;
-    border-right: 1px solid gray;
-    float: left;
-    font-weight: normal;
-    min-height: 142px;
-    padding: 3px;
-    width: 158px;
-}
-.endOfRow { border-right: none;}
-.nextMonth { 
-    background: #DBDBDB;
-    width: 167px;
-}
-.calendarNavigation {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 8px;
-    text-decoration: none;
-}
-.currentDay {
-    background: rgba(0, 0, 100, .2);
-    border-right: 1px solid black;
-}
-.mealType {
-    border-radius: 4px;
-    margin-right: 2px;
-    margin-top: 2px;
-    padding: 4px;
-    overflow: auto;
-    background: #f5f5f5; /* Default background for undefined */
-    border: 1px solid #DBDBDB;
-}
-.mealType a { float: left; }
-/* Breakfast */
-.mealType1 {
-    background: #fcf8e3;
-}
-/* Lunch */
-.mealType3 {
-    background: #d9edf7;
-}
-/* Dinner */
-.mealType5 {
-    background:  #dff0d8;
-}
-/* Dessert */
-.mealType6 {
-    background: #f2dede;
-}
-.mealLegend {
-    border: 1px solid #DBDBDB;
-    border-radius: 4px;
-    overflow: auto;
-    padding: 1em;
-}
-.mealLegend div {
-    width: 100px;
-    float: left;
-    margin-right: 1em;
-}
-#MealPlanServings, #MealPlanDays { width: 4em;}
 
+/* line 275, ../../sass/src/default.scss */
+.dayHeader {
+  border-bottom: 1px solid black;
+  float: left;
+  font-weight: bold;
+  width: 170px;
+}
+
+/* line 281, ../../sass/src/default.scss */
+.dayContent {
+  border-radius: 1px;
+  border-right: 1px solid gray;
+  float: left;
+  font-weight: normal;
+  min-height: 142px;
+  padding: 3px;
+  width: 158px;
+}
+
+/* line 290, ../../sass/src/default.scss */
+.endOfRow {
+  border-right: none;
+}
+
+/* line 291, ../../sass/src/default.scss */
+.nextMonth {
+  background: #DBDBDB;
+  width: 167px;
+}
+
+/* line 295, ../../sass/src/default.scss */
+.calendarNavigation {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 8px;
+  text-decoration: none;
+}
+
+/* line 301, ../../sass/src/default.scss */
+.currentDay {
+  background: rgba(0, 0, 100, 0.2);
+  border-right: 1px solid black;
+}
+
+/* line 305, ../../sass/src/default.scss */
+.mealType {
+  border-radius: 4px;
+  margin-right: 2px;
+  margin-top: 2px;
+  padding: 4px;
+  overflow: auto;
+  background: #f5f5f5;
+  /* Default background for undefined */
+  border: 1px solid #DBDBDB;
+}
+
+/* line 314, ../../sass/src/default.scss */
+.mealType a {
+  float: left;
+}
+
+/* Breakfast */
+/* line 316, ../../sass/src/default.scss */
+.mealType1 {
+  background: #fcf8e3;
+}
+
+/* Lunch */
+/* line 320, ../../sass/src/default.scss */
+.mealType3 {
+  background: #d9edf7;
+}
+
+/* Dinner */
+/* line 324, ../../sass/src/default.scss */
+.mealType5 {
+  background: #dff0d8;
+}
+
+/* Dessert */
+/* line 328, ../../sass/src/default.scss */
+.mealType6 {
+  background: #f2dede;
+}
+
+/* line 331, ../../sass/src/default.scss */
+.mealLegend {
+  border: 1px solid #DBDBDB;
+  border-radius: 4px;
+  overflow: auto;
+  padding: 1em;
+}
+
+/* line 337, ../../sass/src/default.scss */
+.mealLegend div {
+  width: 100px;
+  float: left;
+  margin-right: 1em;
+}
+
+/* line 342, ../../sass/src/default.scss */
+#MealPlanServings, #MealPlanDays {
+  width: 4em;
+}
