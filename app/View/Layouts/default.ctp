@@ -66,11 +66,15 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
             <nav id="navigation-menu">
                 <ul>
                     <li><a href="<?php echo $baseUrl;?>Recipes" class="ajaxNavigation"><?php echo __('Recipes'); ?></a></li>
+                    <?php if ($loggedIn) : ?>
                     <li><a href="<?php echo $baseUrl;?>MealPlans" class="ajaxNavigation"><?php echo __('Meal Planner'); ?></a></li>
                     <li><a href="<?php echo $baseUrl;?>ShoppingListNames" class="ajaxNavigation"><?php echo __('Shopping List');?></a></li>
                     <li><a href="<?php echo $baseUrl;?>Ingredients" class="ajaxNavigation"><?php echo __('Ingredients'); ?></a></li>
+                    <?php endif; ?>
                     <li><a href="<?php echo $baseUrl;?>Restaurants" class="ajaxNavigation"><?php echo __('Restaurants');?></a></li>
+                    <?php if ($loggedIn) : ?>
                     <li><a href="<?php echo $baseUrl;?>Users" class="ajaxNavigation"><?php echo __('Users');?></a></li>
+                    <?php endif; ?>
                     <li><div id="searchHolder">
                         <form id="searchEverythingForm">
                           <span>
@@ -79,9 +83,14 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                           </span>
                         </form>
                     </li>
+                    <?php if (!$loggedIn) : ?>
                     <li>
-                        <a href="#" id="signInButton">Sign in</a>
+                        <a href="<?php echo $baseUrl;?>Users/login" id="signInButton">Sign in</a>
                     </li>
+                    <li>
+                        <a href="<?php echo $baseUrl;?>Users/add" id="signInButton">Create Account</a>
+                    </li>
+                    <?php endif; ?>
                 </ul>
             </nav> 
 

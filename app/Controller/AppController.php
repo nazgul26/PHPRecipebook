@@ -60,6 +60,9 @@ class AppController extends Controller {
         }
         
         $this->Auth->allow('index', 'view', 'display');
+        
+        // Let everyone know about the user
+        $this->set('loggedIn', $this->Auth->loggedIn());
     }
     
 }

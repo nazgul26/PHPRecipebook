@@ -12,6 +12,7 @@ ALTER TABLE users CHANGE user_email email VARCHAR(64) NOT NULL UNIQUE;
 ALTER TABLE users ADD modified DATETIME;
 ALTER TABLE users ADD locked BOOL NOT NULL DEFAULT 0;
 ALTER TABLE users ADD reset_token VARCHAR(255) NULL;
+ALTER TABLE users ADD reset_time DATETIME NULL;
 
 RENAME TABLE security_providers TO providers;
 ALTER TABLE providers CHANGE provider_id id INT NOT NULL AUTO_INCREMENT;

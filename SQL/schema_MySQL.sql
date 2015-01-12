@@ -7,6 +7,7 @@ CREATE TABLE users (
 	access_level INTEGER NOT NULL DEFAULT '0',
         locked BOOL NOT NULL DEFAULT 0,
         reset_token VARCHAR(255) NULL,
+        reset_time DATETIME NULL,
 	language VARCHAR(8) DEFAULT 'en' NOT NULL,
 	country VARCHAR(8) DEFAULT 'us' NOT NULL,
 	last_login DATE,

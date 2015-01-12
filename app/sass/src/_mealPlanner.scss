@@ -1,0 +1,85 @@
+
+/* Meal Planner                       */
+/* -----------------------------------*/
+$breakfast: #fcf8e3;
+$lunch: #fcf8e3;
+$dinner: #dff0d8;
+$dessert: #f2dede;
+
+#weeklyContainer {
+    border: 1px solid black;
+    border-radius: 4px;
+    min-height: 170px;
+    padding-left: 4px;
+}
+.dayHeader {
+    border-bottom: 1px solid black;
+    float: left;
+    font-weight: bold;
+    width: 170px;
+}
+.dayContent {
+    border-radius: 1px;
+    border-right: 1px solid gray;
+    float: left;
+    font-weight: normal;
+    min-height: 142px;
+    padding: 3px;
+    width: 158px;
+}
+.endOfRow { border-right: none;}
+.nextMonth { 
+    background: #DBDBDB;
+    width: 167px;
+}
+.calendarNavigation {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 8px;
+    text-decoration: none;
+}
+.currentDay {
+    background: rgba(0, 0, 100, .2);
+    border-right: 1px solid black;
+}
+.mealType {
+    border-radius: 4px;
+    margin-right: 2px;
+    margin-top: 2px;
+    padding: 4px;
+    overflow: auto;
+    background: #f5f5f5; /* Default background for undefined */
+    border: 1px solid #DBDBDB;
+}
+.mealType a { float: left; }
+
+/* Breakfast */
+.mealType1 {
+    background: $breakfast;
+}
+/* Lunch */
+.mealType3 {
+    background: $lunch;
+}
+/* Dinner */
+.mealType5 {
+    background:  $dinner;
+}
+/* Dessert */
+.mealType6 {
+    background: $dessert;
+}
+
+.mealLegend {
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+    overflow: auto;
+    padding: 1em;
+    div {
+        width: 100px;
+        float: left;
+        margin-right: 1em;
+    }
+}
+
+#MealPlanServings, #MealPlanDays { width: 4em;}

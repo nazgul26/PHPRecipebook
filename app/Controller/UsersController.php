@@ -17,7 +17,7 @@ class UsersController extends AppController {
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('add', 'logout', 'reset');
+        $this->Auth->allow('add', 'logout', 'reset', 'resetLink');
         
         // This pages index and view are little more restricted
         $this->Auth->deny('index', 'view');
@@ -49,9 +49,9 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $item = $this->User->findByEmail($this->data['User']['email']);
             if (isset($item['User'])) {
-                $key = String::uuid();
-                $hashedKey = Security::hash(String::uuid(),'sha1',true); // goes in the email
-                $item['User']['reset_token'] = $key;
+                $hashedKey = Security::hash(String::uuid(),'sha1',true);
+                $item['User']['reset_token'] = $hashedKey;
+                $item['User']['reset_time'] = date("Y-m-d H:i:s");
                 
                 if ($this->User->save($item))
                 {
@@ -68,6 +68,25 @@ class UsersController extends AppController {
             }
             $this->Session->setFlash(__('Could not find your email address, try again.'));
         }
+    }
+    
+    public function resetLink($token) {
+        $item = $this->User->findByResetToken($token);
+        //TODO: put $token in form to load user
+        if (isset($item['User'])) {
+            if ($this->request->is('post')) {
+                //$item['User']['reset_time']) -- TODO: need to compare time within 1 hour
+                $this->request->data['User']['locked'] = false;
+                if ($this->User->save($this->request->data)) {
+                    $this->Session->setFlash(__('The user has been saved.'), 'success');
+                    return $this->redirect(array('action' => 'index'));
+                } else {
+                    $this->Session->setFlash(__('The password could not be saved. Please, try again.'));
+                }
+            }
+            return;
+        }
+        $this->Session->setFlash(__('Could not find reset information. Please try again.'));
     }
 
     /**
