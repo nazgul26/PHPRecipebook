@@ -1,18 +1,8 @@
 <?php
 App::uses('AppController', 'Controller');
-/**
- * Users Controller
- *
- * @property User $User
- * @property PaginatorComponent $Paginator
- */
+
 class UsersController extends AppController {
 
-    /**
-     * Components
-     *
-     * @var array
-     */
     public $components = array('Paginator');
     
     public function beforeFilter() {
@@ -71,20 +61,40 @@ class UsersController extends AppController {
     }
     
     public function resetLink($token) {
-        $item = $this->User->findByResetToken($token);
-        //TODO: put $token in form to load user
-        if (isset($item['User'])) {
-            if ($this->request->is('post')) {
-                //$item['User']['reset_time']) -- TODO: need to compare time within 1 hour
-                $this->request->data['User']['locked'] = false;
-                if ($this->User->save($this->request->data)) {
-                    $this->Session->setFlash(__('The user has been saved.'), 'success');
-                    return $this->redirect(array('action' => 'index'));
-                } else {
-                    $this->Session->setFlash(__('The password could not be saved. Please, try again.'));
-                }
+        if ($this->request->is('post')) {
+            $token = $this->request->data['User']['token'];
+            // Load the User from the Token. Don't trust the input.
+            $user = $this->User->findByResetToken($token); 
+            
+            //$item['User']['reset_time']) -- TODO: need to compare time within 1 hour
+            if ($this->data['User']['password1'] != $this->data['User']['password2']) {
+                $this->Session->setFlash(__('Passwords are not set to same value. Please, try again.'));
+                return;
             }
-            return;
+            
+            // only pass on the password when there is a value (and it matches the confirm)
+            if (empty($this->request->data['User']['password2'])) {  
+                $this->Session->setFlash(__('A new password is required. Please, try again.'));
+                return;
+            }
+            
+            // Everything looks good, lets reset :-)
+            $user['User']['password'] = $this->request->data['User']['password2'];
+            $user['User']['locked'] = false;
+            $user['User']['reset_token'] = null;
+            if ($this->User->save($user)) {
+                $this->Session->setFlash(__('Password successfully saved.'), 'success');
+                return $this->redirect(array('controller' => 'recipes', 'action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('The password could not be saved. Please, try again.'));
+                return;
+            }
+        } else {
+            $user = $this->User->findByResetToken($token);
+            if (isset($user['User'])) {   
+                $this->set(compact('user', 'token'));
+                return;
+            }
         }
         $this->Session->setFlash(__('Could not find reset information. Please try again.'));
     }
@@ -123,10 +133,10 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                    $this->Session->setFlash(__('The user has been saved.'), 'success');
-                    return $this->redirect(array('action' => 'index'));
+                $this->Session->setFlash(__('The user has been saved.'), 'success');
+                return $this->redirect(array('action' => 'index'));
             } else {
-                    $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
             }
         }
     }
