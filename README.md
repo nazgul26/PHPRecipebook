@@ -21,10 +21,10 @@ When the basics are working I will put up a Beta site for people to see what is 
 There will be migration path from PHPRecipeBook 4.0
 
 Fresh Installation
-1. Ensure you have the following PHP Modules installed: mysql, mcrypt, gd.
-1. Create database and import SQL\recipedb_MySQL.sql script
-2. Edit Configuration DB Configuration Settings ./app/Config/database.php to match your database settings
-3. Edit ./app/Config/email.php to use your Email Server/Account
-3. For File uploads:
-    mkdir ./app/webroot/files/recipe
-    sudo chown <your web group>.<your web user> ./app/webroot/files/recipe
+* Ensure you have the following PHP Modules installed: mysql, mcrypt, gd.
+* Create database and import SQL\recipedb_MySQL.sql script
+* Edit Configuration DB Configuration Settings ./app/Config/database.php to match your database settings
+* Edit ./app/Config/email.php to use your Email Server/Account
+* For File uploads:
+    - mkdir ./app/webroot/files/recipe
+    - sudo chown <your web group>.<your web user> ./app/webroot/files/recipe
