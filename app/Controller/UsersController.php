@@ -30,6 +30,7 @@ class UsersController extends AppController {
     }
 
     public function logout() {
+        $this->Session->setFlash(__('Logged out.'), "success");
         return $this->redirect($this->Auth->logout());
     }
     
@@ -47,9 +48,13 @@ class UsersController extends AppController {
                 {
                     $Email = new CakeEmail('default');
                     $Email->from(array('passwordreset@phprecipebook.com' => 'PHP RecipeBook'))
+                        ->template('reset', 'default')
+                        ->emailFormat('both')
+                        ->viewVars(array('firstName' => $item['User']['name'], 'resetLink' => 
+                            Router::url( array('controller'=>'users','action'=>'resetLink'), true ).'/'.$hashedKey))
                         ->to($this->data['User']['email'])
                         ->subject('PHPRecipebook Password Reset')
-                        ->send('You have requested a password request, the hashed token is:' . $hashedKey);
+                        ->send();
 
                     $this->Session->setFlash(__('Your reset email is on the way!'), "success");
                     return;
@@ -65,6 +70,9 @@ class UsersController extends AppController {
             $token = $this->request->data['User']['token'];
             // Load the User from the Token. Don't trust the input.
             $user = $this->User->findByResetToken($token); 
+            
+            // Set in case in case of failure and end of returning to user.
+            $this->set(compact('user', 'token'));
             
             //$item['User']['reset_time']) -- TODO: need to compare time within 1 hour
             if ($this->data['User']['password1'] != $this->data['User']['password2']) {
@@ -83,8 +91,8 @@ class UsersController extends AppController {
             $user['User']['locked'] = false;
             $user['User']['reset_token'] = null;
             if ($this->User->save($user)) {
-                $this->Session->setFlash(__('Password successfully saved.'), 'success');
-                return $this->redirect(array('controller' => 'recipes', 'action' => 'index'));
+                $this->Session->setFlash(__('Password successfully reset. Login with your new password to continue.'), 'success');
+                return $this->redirect(array('controller' => 'users', 'action' => 'login'));
             } else {
                 $this->Session->setFlash(__('The password could not be saved. Please, try again.'));
                 return;

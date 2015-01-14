@@ -90,7 +90,11 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                     <li>
                         <a href="<?php echo $baseUrl;?>Users/add" id="signInButton">Create Account</a>
                     </li>
-                    <?php endif; ?>
+                    <?php else: ?>
+                    <li>
+                        <a href="<?php echo $baseUrl;?>Users/logout">Logout</a>
+                    </li>
+                    <?php endif;?>
                 </ul>
             </nav> 
 
