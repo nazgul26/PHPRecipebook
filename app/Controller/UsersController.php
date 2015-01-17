@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 
 class UsersController extends AppController {
 
-    public $components = array('Paginator');
+    public $components = array('Paginator', 'String');
     
     public function beforeFilter() {
         parent::beforeFilter();
@@ -22,7 +22,13 @@ class UsersController extends AppController {
                     return;
                 }
                 else if ($this->Auth->login()) {
-                    return $this->redirect($this->Auth->redirectUrl());
+                    //echo "redirect to:" . $this->Auth->redirectUrl();
+                    $redirectUrl = $this->Auth->redirectUrl();
+                    if ($this->String->endsWith($redirectUrl, '/Users/login')) {
+                        return $this->redirect(array('controller' => 'recipes', 'action' => 'index'));
+                    } else {
+                        return $this->redirect($redirectUrl);
+                    }
                 }
             }
             $this->Session->setFlash(__('Invalid username or password, try again'));

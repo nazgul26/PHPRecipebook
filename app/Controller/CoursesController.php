@@ -8,13 +8,13 @@ App::uses('AppController', 'Controller');
  */
 class CoursesController extends AppController {
 
-    /**
-     * Components
-     *
-     * @var array
-     */
     public $components = array('Paginator');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->deny(); // Deny ALL, user must be logged in.
+    }
+    
     /**
      * index method
      *

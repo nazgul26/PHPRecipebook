@@ -15,6 +15,10 @@ class BaseTypesController extends AppController {
      */
     public $components = array('Paginator');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->deny(); // Deny ALL, user must be logged in.
+    }
     /**
      * index method
      *

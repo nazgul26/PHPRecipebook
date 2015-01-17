@@ -20,6 +20,11 @@ class IngredientsController extends AppController {
             'Ingredient.name' => 'asc'
         )
     );
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->deny(); // Deny ALL, user must be logged in.
+    }
 
     /**
      * index method

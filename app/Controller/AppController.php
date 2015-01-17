@@ -35,7 +35,9 @@ class AppController extends Controller {
     public function beforeFilter() {
         parent::beforeFilter();
         
-        $this->Auth->authError = __('Enter your login information to continue.');
+        // Delete the default auth message.  Just show them the login page
+        //  people will get the idea pretty quickly.
+        $this->Session->delete('Message.auth');
         
         if ($this->request->is('ajax')) {
             $this->layout = 'ajax'; 

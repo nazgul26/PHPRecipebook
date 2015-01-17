@@ -8,11 +8,6 @@ App::uses('AppController', 'Controller');
  */
 class PriceRangesController extends AppController {
 
-    /**
-     * Components
-     *
-     * @var array
-     */
     public $components = array('Paginator');
 
     public $paginate = array(
@@ -21,6 +16,11 @@ class PriceRangesController extends AppController {
         )
     );
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->deny(); // Deny ALL, user must be logged in.
+    }
+    
     /**
      * index method
      *

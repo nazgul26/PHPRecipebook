@@ -1,5 +1,5 @@
 <div class="users form">
-<?php echo $this->Session->flash('auth'); ?>
+<?php echo $this->Session->flash(); ?>
 <?php echo $this->Form->create('User'); ?>
     <fieldset>
         <legend>

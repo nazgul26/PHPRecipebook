@@ -8,11 +8,6 @@ App::uses('AppController', 'Controller');
  */
 class SourcesController extends AppController {
 
-    /**
-     * Components
-     *
-     * @var array
-     */
     public $components = array('Paginator');
 
     public $paginate = array(
@@ -20,6 +15,11 @@ class SourcesController extends AppController {
             'Source.name' => 'asc'
         )
     );
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->deny(); // Deny ALL, user must be logged in.
+    }
 
     /**
      * index method

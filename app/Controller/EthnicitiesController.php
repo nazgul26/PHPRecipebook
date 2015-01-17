@@ -8,17 +8,18 @@ App::uses('AppController', 'Controller');
  */
 class EthnicitiesController extends AppController {
 
-    /**
-     * Components
-     *
-     * @var array
-     */
     public $components = array('Paginator');
     public $paginate = array(
             'order' => array(
                 'Ethnicities.name' => 'asc'
             )
         );
+
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->deny(); // Deny ALL, user must be logged in.
+    }
+    
     /**
      * index method
      *

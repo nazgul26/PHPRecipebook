@@ -8,17 +8,18 @@ App::uses('AppController', 'Controller');
  */
 class CoreIngredientsController extends AppController {
 
-    /**
-     * Components
-     *
-     * @var array
-     */
     public $components = array('Paginator', 'RequestHandler');
     public $paginate = array(
         'order' => array(
             'CoreIngredient.name' => 'asc'
         )
     );
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->deny(); // Deny ALL, user must be logged in.
+    }
+    
     /**
      * index method
      *

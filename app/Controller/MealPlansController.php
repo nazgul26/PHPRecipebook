@@ -8,6 +8,11 @@ App::uses('AppController', 'Controller');
  */
 class MealPlansController extends AppController {
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->deny(); // Deny ALL, user must be logged in.
+    }
+    
     /**
      * index method
      *

@@ -8,11 +8,6 @@ App::uses('AppController', 'Controller');
  */
 class UnitsController extends AppController {
 
-    /**
-     * Components
-     *
-     * @var array
-     */
     public $components = array('Paginator');
 
     public $paginate = array(
@@ -20,6 +15,11 @@ class UnitsController extends AppController {
             'Unit.name' => 'asc'
         )
     );
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->deny(); // Deny ALL, user must be logged in.
+    }
     
     /**
      * index method
