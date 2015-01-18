@@ -28,7 +28,8 @@ class AppController extends Controller {
                 'Form' => array(
                     'passwordHasher' => 'Blowfish'
                 )
-            )
+            ),
+            'authorize' => array('Controller') // Added this line
         )
     );
 
@@ -51,4 +52,29 @@ class AppController extends Controller {
         $this->set('loggedIn', $this->Auth->loggedIn());
     }
     
+    public function isAuthorized($user) {
+        // Check Auth for Admin only Pages.
+        if (in_array($this->params['controller'], array(
+            'BaseTypes', 
+            'CoreIngredients', 
+            'Courses', 
+            'Difficulties', 
+            'Ethnicities', 
+            'Locations', 
+            'PreparationMethods',
+            'PreparationTimes',
+            'PriceRanges',
+            'Settings',
+            'Stores',
+            'Units'))) {
+            $adminRole = Configure::read('AuthRoles.admin');
+            if ($user['access_level'] >= $adminRole) 
+            { 
+                return true;
+            }
+            $this->Session->setFlash(__('Not Authorized.'));
+            return false;
+        }
+        return true; // expected to be overriden
+    }
 }

@@ -93,6 +93,10 @@ Configure::write('Dispatcher.filters', array(
 	'CacheDispatcher'
 ));
 
+Configure::write('AuthRoles', array(
+    'admin'=>99
+));
+
 /**
  * Configures default file logging options
  */

@@ -29,7 +29,6 @@ class BaseTypesController extends AppController {
         $this->set('baseTypes', $this->Paginator->paginate());
     }
 
-
     /**
      * edit method
      *
@@ -73,5 +72,5 @@ class BaseTypesController extends AppController {
                 $this->Session->setFlash(__('The base type could not be deleted. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index'));
-    }        
+    }
 }
