@@ -8,9 +8,32 @@ App::uses('AppController', 'Controller');
  */
 class MealPlansController extends AppController {
 
+    // Filter to hide ingredients of other users
+    public $filterConditions = array();
+    
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->deny(); // Deny ALL, user must be logged in.
+        
+        $this->filterConditions = array('MealPlan.user_id' => $this->Auth->user('id'));
+    }
+    
+    public function isAuthorized($user) {
+        // The owner of a meal can edit and delete it
+        if (in_array($this->action, array('edit', 'delete'))) {
+            $mealId = (int) $this->request->params['pass'][0];
+            // Little extra access level needed for this. Editors should not mess with meal plans.
+            if ($this->User->isAdmin($user) || $this->MealPlan->isOwnedBy($mealId, $user['id'])) {
+                return true;
+            }
+            else {
+                $this->Session->setFlash(__('Not Meal Owner'));
+                return false;
+            }
+        }
+
+        // Just in case the base controller has something to add
+        return parent::isAuthorized($user);
     }
     
     /**
@@ -34,7 +57,8 @@ class MealPlansController extends AppController {
         $startDateQuery = $weekList[0][2] . "-" . $weekList[0][1] . "-" . $weekList[0][0];
         $endDateQuery = $weekList[6][2] . "-" . $weekList[6][1] . "-" . $weekList[6][0];
         $meals = $this->MealPlan->find('all', array(
-              'conditions' => array('MealPlan.mealday BETWEEN ? AND ?' => array($startDateQuery,$endDateQuery))
+              'conditions' => 
+                array_merge($this->filterConditions, array('MealPlan.mealday BETWEEN ? AND ?' => array($startDateQuery,$endDateQuery)))
         ));
         
         foreach ($meals as $item) {
@@ -55,6 +79,7 @@ class MealPlansController extends AppController {
                 throw new NotFoundException(__('Invalid meal plan'));
         }
         if ($this->request->is(array('post', 'put'))) {
+            $this->request->data['MealPlan']['user_id'] = $this->Auth->user('id');
             if ($this->MealPlan->save($this->request->data)) {
                 $this->Session->setFlash(__('The meal plan has been saved.'), "success", array('event' => 'saved.meal'));
                 return $this->redirect(array('action' => 'edit'));

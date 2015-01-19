@@ -42,6 +42,7 @@
         });
     });
 </script>
+<?php //echo $this->element('sql_dump'); ?>
 <?php echo $this->Session->flash(); ?>
 <div class="recipes index">
 	<h2><?php echo __('Recipes'); ?></h2>

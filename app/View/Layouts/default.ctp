@@ -72,7 +72,7 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                     <li><a href="<?php echo $baseUrl;?>Ingredients" class="ajaxNavigation"><?php echo __('Ingredients'); ?></a></li>
                     <?php endif; ?>
                     <li><a href="<?php echo $baseUrl;?>Restaurants" class="ajaxNavigation"><?php echo __('Restaurants');?></a></li>
-                    <?php if ($loggedIn) : ?>
+                    <?php if ($loggedIn && $isAdmin) : ?>
                     <li><a href="<?php echo $baseUrl;?>Users" class="ajaxNavigation"><?php echo __('Users');?></a></li>
                     <?php endif; ?>
                     <li><div id="searchHolder">

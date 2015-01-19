@@ -274,11 +274,12 @@
     }
 </script>
 <?php //echo $this->element('sql_dump'); ?>
-<pre><?php //print_r($recipe); ?></pre>
 
 <div class="actions">
 	<ul>
+            <?php if (isset($recipe)) :?>
             <li><?php echo $this->Html->link(__('View Recipe'), array('action' => 'view', $recipe['Recipe']['id'])); ?></li>
+            <?php endif;?>
             <li><?php echo $this->Html->link(__('Edit Sources'), array('controller' => 'sources', 'action' => 'index'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?>
             <li><?php echo $this->Html->link(__('Import'), array('controller' => 'import'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?></li>
             <li><?php echo $this->Html->link(__('Export'), array('controller' => 'export'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?></li>
@@ -347,7 +348,7 @@
             
             echo $this->Form->input('private', array('options' => array('0' => 'No', '1' => 'Yes')));
             echo $this->Form->input('system', array('options' => array('usa' => 'USA', 'metric' => 'Metric')));
-            echo $this->Form->input('user_id');
+            echo $this->Form->hidden('user_id');
             ?>
             <div id="ingredientsSection">
                 <table id="sortableTable1">

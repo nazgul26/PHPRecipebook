@@ -13,6 +13,8 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
+    public $uses = array('User');
+    
     public $components = array(
         'Session',
         'Auth' => array(
@@ -50,6 +52,8 @@ class AppController extends Controller {
         
         // Let everyone know about the user
         $this->set('loggedIn', $this->Auth->loggedIn());
+        $user = $this->Auth->user();
+        $this->set('isAdmin', $this->User->isAdmin($user));
     }
     
     public function isAuthorized($user) {
@@ -67,9 +71,8 @@ class AppController extends Controller {
             'Settings',
             'Stores',
             'Units'))) {
-            $adminRole = Configure::read('AuthRoles.admin');
-            if ($user['access_level'] >= $adminRole) 
-            { 
+            
+            if ($this->User->isAdmin($user)) { 
                 return true;
             }
             $this->Session->setFlash(__('Not Authorized.'));

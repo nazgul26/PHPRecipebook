@@ -62,4 +62,8 @@ class Ingredient extends AppModel {
             'dependent' => true
         )
     );
+    
+    public function isOwnedBy($ingredientId, $user) {
+        return $this->field('id', array('id' => $ingredientId, 'user_id' => $user)) !== false;
+    }    
 }

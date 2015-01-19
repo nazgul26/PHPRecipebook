@@ -63,6 +63,16 @@ class User extends AppModel {
                 $this->data[$this->alias]['password']
             );
         }
-    return true;
-}
+        return true;
+    }
+    
+    public function isAdmin($user) {
+        $adminRole = Configure::read('AuthRoles.admin');
+        return $user['access_level'] >= $adminRole;
+    }
+    
+    public function isEditor($user) {
+        $editorRole = Configure::read('AuthRoles.editor');
+        return $user['access_level'] >= $editorRole;
+    }
 }

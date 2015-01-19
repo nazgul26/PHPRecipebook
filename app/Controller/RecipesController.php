@@ -21,9 +21,33 @@ class RecipesController extends AppController {
         )
     );
     
+    // Filter to hide recipes of other users
+    public $filterConditions = array();
+    
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('findByBase', 'findByCourse', 'findByPrepMethod','search', 'autoCompleteSearch');
+        
+        $this->filterConditions = array('Recipe.user_id' => $this->Auth->user('id'));
+    }
+    
+    
+    public function isAuthorized($user) {
+        // The owner of a recipe can edit and delete it
+        if (in_array($this->action, array('edit', 'delete')) && isset($this->request->params['pass'][0])) {
+            $recipeId = (int) $this->request->params['pass'][0];
+
+            if ($this->User->isEditor($user) || $this->Recipe->isOwnedBy($recipeId, $user['id'])) {
+                return true;
+            }
+            else {
+                $this->Session->setFlash(__('Not Recipe Owner'));
+                return false;
+            }
+        }
+
+        // Just in case the base controller has something to add
+        return parent::isAuthorized($user);
     }
 
     /**
@@ -34,24 +58,27 @@ class RecipesController extends AppController {
     public function index() {
         $this->Recipe->recursive = 0;
         $this->Paginator->settings = $this->paginate;
-        $this->set('recipes', $this->Paginator->paginate());
+        $this->set('recipes', $this->Paginator->paginate('Recipe', $this->filterConditions));
     }
 
     public function findByBase($baseId) {
         $this->Recipe->recursive = 0;
-        $this->set('recipes', $this->Paginator->paginate('Recipe', array('Recipe.base_type_id' => $baseId)));
+        $this->filterConditions['Recipe.base_type_id'] = $baseId;
+        $this->set('recipes', $this->Paginator->paginate('Recipe', $this->filterConditions));
         $this->render('index');
     }
 
     public function findByCourse($courseId) {
         $this->Recipe->recursive = 0;
-        $this->set('recipes', $this->Paginator->paginate('Recipe', array('Recipe.course_id' => $courseId)));
+        $this->filterConditions['Recipe.course_id'] = $courseId;
+        $this->set('recipes', $this->Paginator->paginate('Recipe', $this->filterConditions));
         $this->render('index');
     }
     
     public function findByPrepMethod($methodId) {
         $this->Recipe->recursive = 0;
-        $this->set('recipes', $this->Paginator->paginate('Recipe', array('Recipe.preparation_method_id' => $methodId)));
+        $this->filterConditions['Recipe.preparation_method_id'] = $methodId;
+        $this->set('recipes', $this->Paginator->paginate('Recipe', $this->filterConditions));
         $this->render('index');
     }
 
@@ -99,7 +126,8 @@ class RecipesController extends AppController {
         }
         if ($this->request->is(array('post', 'put'))) {
             $recipe = $this->request->data;
-            //print_r($recipe);
+            //TODO: Keep the original author just in case editor/admin edits
+            $recipe['Recipe']['user_id'] = $this->Auth->user('id');
             if ($this->Recipe->saveWithAttachments($recipe)) {
                 $this->Session->setFlash(__('The recipe has been saved.'), "success");
             } else {
@@ -107,7 +135,7 @@ class RecipesController extends AppController {
             }
         } else if ($id != null) {
             //NOTE: This is pretty cool, you can control the depth and properties with 'Containable' and contain.  
-            //// much better then a loop of crazy custom SQL Code
+            // much better then a loop of crazy custom SQL Code
             $this->Recipe->Behaviors->load('Containable');
             $options = array('conditions' => array('Recipe.' . $this->Recipe->primaryKey => $id), 
                 'contain' => array(
@@ -124,10 +152,9 @@ class RecipesController extends AppController {
         $preparationTimes = $this->Recipe->PreparationTime->find('list');
         $difficulties = $this->Recipe->Difficulty->find('list');
         $sources = $this->Recipe->Source->find('list');
-        $users = $this->Recipe->User->find('list');
         $preparationMethods = $this->Recipe->PreparationMethod->find('list');
         $units = $this->Recipe->IngredientMapping->Ingredient->Unit->find('list');
-        $this->set(compact('ethnicities', 'baseTypes', 'courses', 'preparationTimes', 'difficulties', 'sources', 'users', 'preparationMethods', 'recipe', 'units'));
+        $this->set(compact('ethnicities', 'baseTypes', 'courses', 'preparationTimes', 'difficulties', 'sources',  'preparationMethods', 'recipe', 'units'));
     }
 
     /**
@@ -156,9 +183,10 @@ class RecipesController extends AppController {
         {
             $this->Recipe->recursive = 0;
             $this->Paginator->settings = $this->paginate;
-            $this->set('recipes', $this->Paginator->paginate("Recipe", array('Recipe.Name LIKE' => '%' . $term . '%')));
+            $this->set('recipes', $this->Paginator->paginate("Recipe", 
+                    array_merge($this->filterConditions, array('Recipe.Name LIKE' => '%' . $term . '%'))));
         } else {
-            $this->set('recipes', $this->Paginator->paginate());
+            $this->set('recipes', $this->Paginator->paginate('Recipe', $this->filterConditions));
         }
         $this->render('index');
     }
@@ -169,7 +197,8 @@ class RecipesController extends AppController {
         if ($term)
         {
             $recipes = $this->Recipe->find('all', array(
-              'conditions' => array('Recipe.name LIKE ' => '%' . trim($term) . '%')
+              'conditions' => 
+                array_merge($this->filterConditions, array('Recipe.name LIKE ' => '%' . trim($term) . '%'))
             ));
 
             if (count($recipes) > 0) {

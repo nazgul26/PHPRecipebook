@@ -339,4 +339,8 @@ class MealPlan extends AppModel {
                 'order' => ''
         )
     );
+    
+    public function isOwnedBy($mealId, $user) {
+        return $this->field('id', array('id' => $mealId, 'user_id' => $user)) !== false;
+    }
 }

@@ -8,11 +8,6 @@ App::uses('AppController', 'Controller');
  */
 class IngredientsController extends AppController {
 
-    /**
-     * Components
-     *
-     * @var array
-     */
     public $components = array('Paginator', 'RequestHandler');
     
     public $paginate = array(
@@ -21,9 +16,32 @@ class IngredientsController extends AppController {
         )
     );
     
+    // Filter to hide ingredients of other users
+    public $filterConditions = array();
+    
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->deny(); // Deny ALL, user must be logged in.
+        
+        $this->filterConditions = array('Ingredient.user_id' => $this->Auth->user('id'));
+    }
+    
+    public function isAuthorized($user) {
+        // The owner of a ingredient can edit and delete it
+        if (in_array($this->action, array('edit', 'delete')) && isset($this->request->params['pass'][0])) {
+            $ingredientId = (int) $this->request->params['pass'][0];
+
+            if ($this->Ingredient->isEditor($user) || $this->Ingredient->isOwnedBy($ingredientId, $user['id'])) {
+                return true;
+            }
+            else {
+                $this->Session->setFlash(__('Not Ingredient Owner'));
+                return false;
+            }
+        }
+
+        // Just in case the base controller has something to add
+        return parent::isAuthorized($user);
     }
 
     /**
@@ -34,7 +52,7 @@ class IngredientsController extends AppController {
     public function index() {
         $this->Ingredient->recursive = 0;
         $this->Paginator->settings = $this->paginate;
-        $this->set('ingredients', $this->Paginator->paginate());
+        $this->set('ingredients', $this->Paginator->paginate('Ingredient', $this->filterConditions));
     }
 
     /**
@@ -87,9 +105,10 @@ class IngredientsController extends AppController {
         {
             $this->Ingredient->recursive = 0;
             $this->Paginator->settings = $this->paginate;
-            $this->set('ingredients', $this->Paginator->paginate("Ingredient", array('Ingredient.Name LIKE' => '%' . $term . '%')));
+            $this->set('ingredients', $this->Paginator->paginate("Ingredient", 
+                    array_merge($this->filterConditions, array('Ingredient.Name LIKE' => '%' . $term . '%'))));
         } else {
-            $this->set('ingredients', $this->Paginator->paginate());
+            $this->set('ingredients', $this->Paginator->paginate('Ingredient', $this->filterConditions));
         }
         $this->render('index');
     }
@@ -100,7 +119,8 @@ class IngredientsController extends AppController {
         if ($term)
         {
             $ingredients = $this->Ingredient->find('all', array(
-              'conditions' => array('Ingredient.name LIKE ' => '%' . trim($term) . '%')
+              'conditions' => 
+                array_merge($this->filterConditions, array('Ingredient.name LIKE ' => '%' . trim($term) . '%'))
             ));
             
             if (count($ingredients) > 0) {

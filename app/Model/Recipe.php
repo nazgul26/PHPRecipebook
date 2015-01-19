@@ -173,4 +173,8 @@ class Recipe extends AppModel {
         // Throw an exception for the controller
         throw new Exception(__("This post could not be saved. Please try again"));
     }
+    
+    public function isOwnedBy($recipeId, $user) {
+        return $this->field('id', array('id' => $recipeId, 'user_id' => $user)) !== false;
+    }
 }
