@@ -187,7 +187,7 @@ CREATE TABLE ingredient_mappings (
 	PRIMARY KEY (ingredient_id,recipe_id)
 );
 
-CREATE TABLE shopping_list_names (
+CREATE TABLE shopping_lists (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(64) NOT NULL,
 	user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
@@ -196,23 +196,23 @@ CREATE TABLE shopping_list_names (
 
 CREATE TABLE shopping_list_recipes (
         id INT NOT NULL AUTO_INCREMENT,
-	shopping_list_name_id INT NOT NULL REFERENCES shopping_list_names(id) ON DELETE CASCADE,
+	shopping_list_id INT NOT NULL REFERENCES shopping_lists(id) ON DELETE CASCADE,
 	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
 	scale FLOAT DEFAULT 0.0,
         PRIMARY KEY (id),
-	UNIQUE KEY (shopping_list_name_id,recipe_id)
+	UNIQUE KEY (shopping_list_id,recipe_id)
 );
 	
 CREATE TABLE shopping_list_ingredients (
         id INT NOT NULL AUTO_INCREMENT,
-	shopping_list_name_id INT NOT NULL REFERENCES shopping_list_names(id) ON DELETE CASCADE,
+	shopping_list_id INT NOT NULL REFERENCES shopping_lists(id) ON DELETE CASCADE,
 	ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
 	unit_id INT NOT NULL REFERENCES units(id) ON DELETE SET NULL,
 	qualifier VARCHAR(32),
 	quantity FLOAT NOT NULL,
 	sort_order INT,
         PRIMARY KEY (id),
-	UNIQUE KEY (shopping_list_name_id,ingredient_id)
+	UNIQUE KEY (shopping_list_id,ingredient_id)
 );
 
 CREATE TABLE related_recipes (

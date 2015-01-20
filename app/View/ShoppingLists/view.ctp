@@ -1,19 +1,20 @@
-<div class="shoppingListNames view">
+<div class="shoppingLists view">
 <h2><?php echo __('Shopping List Name'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
-			<?php echo h($shoppingListName['ShoppingListName']['id']); ?>
+			<?php echo h($shoppingList['ShoppingList']['id']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
-			<?php echo h($shoppingListName['ShoppingListName']['name']); ?>
+			<?php echo h($shoppingList['ShoppingList']['name']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($shoppingListName['User']['name'], array('controller' => 'users', 'action' => 'view', $shoppingListName['User']['id'])); ?>
+			<?php echo $this->Html->link($shoppingList['User']['name'], 
+                                array('controller' => 'users', 'action' => 'view', $shoppingList['User']['id'])); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -21,8 +22,9 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Shopping List Name'), array('action' => 'edit', $shoppingListName['ShoppingListName']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Shopping List Name'), array('action' => 'delete', $shoppingListName['ShoppingListName']['id']), null, __('Are you sure you want to delete # %s?', $shoppingListName['ShoppingListName']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Shopping List Name'), array('action' => 'edit', $shoppingList['ShoppingList']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Delete Shopping List Name'), array('action' => 'delete', $shoppingList['ShoppingList']['id']), null, 
+                        __('Are you sure you want to delete # %s?', $shoppingList['ShoppingList']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Shopping List Names'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Shopping List Name'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
@@ -35,7 +37,7 @@
 </div>
 <div class="related">
 	<h3><?php echo __('Related Shopping List Ingredients'); ?></h3>
-	<?php if (!empty($shoppingListName['ShoppingListIngredient'])): ?>
+	<?php if (!empty($shoppingList['ShoppingListIngredient'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Shopping List Name Id'); ?></th>
@@ -46,7 +48,7 @@
 		<th><?php echo __('Sort Order'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
-	<?php foreach ($shoppingListName['ShoppingListIngredient'] as $shoppingListIngredient): ?>
+	<?php foreach ($shoppingList['ShoppingListIngredient'] as $shoppingListIngredient): ?>
 		<tr>
 			<td><?php echo $shoppingListIngredient['shopping_list_name_id']; ?></td>
 			<td><?php echo $shoppingListIngredient['ingredient_id']; ?></td>
@@ -72,7 +74,7 @@
 </div>
 <div class="related">
 	<h3><?php echo __('Related Shopping List Recipes'); ?></h3>
-	<?php if (!empty($shoppingListName['ShoppingListRecipe'])): ?>
+	<?php if (!empty($shoppingList['ShoppingListRecipe'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Shopping List Name Id'); ?></th>
@@ -80,7 +82,7 @@
 		<th><?php echo __('Scale'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
-	<?php foreach ($shoppingListName['ShoppingListRecipe'] as $shoppingListRecipe): ?>
+	<?php foreach ($shoppingList['ShoppingListRecipe'] as $shoppingListRecipe): ?>
 		<tr>
 			<td><?php echo $shoppingListRecipe['shopping_list_name_id']; ?></td>
 			<td><?php echo $shoppingListRecipe['recipe_id']; ?></td>

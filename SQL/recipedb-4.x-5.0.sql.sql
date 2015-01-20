@@ -135,7 +135,7 @@ ALTER TABLE ingredient_mappings CHANGE map_optional optional BOOL;
 ALTER TABLE ingredient_mappings CHANGE map_order sort_order INT;
 
 DROP TABLE recipe_list_names;
-CREATE TABLE shopping_list_names (
+CREATE TABLE shopping_lists (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(64) NOT NULL,
 	user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
@@ -144,23 +144,23 @@ CREATE TABLE shopping_list_names (
 DROP TABLE recipe_list_recipes;
 CREATE TABLE shopping_list_recipes (
         id INT NOT NULL AUTO_INCREMENT,
-	shopping_list_name_id INT NOT NULL REFERENCES shopping_list_names(id) ON DELETE CASCADE,
+	shopping_list_id INT NOT NULL REFERENCES shopping_lists(id) ON DELETE CASCADE,
 	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
 	scale FLOAT DEFAULT 0.0,
         PRIMARY KEY (id),
-	UNIQUE KEY (shopping_list_name_id,recipe_id));
+	UNIQUE KEY (shopping_list_id,recipe_id));
 
 DROP TABLE recipe_list_ingredients;
 CREATE TABLE shopping_list_ingredients (
         id INT NOT NULL AUTO_INCREMENT,
-	shopping_list_name_id INT NOT NULL REFERENCES shopping_list_names(id) ON DELETE CASCADE,
+	shopping_list_id INT NOT NULL REFERENCES shopping_lists(id) ON DELETE CASCADE,
 	ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
 	unit_id INT NOT NULL REFERENCES units(id) ON DELETE SET NULL,
 	qualifier VARCHAR(32),
 	quantity FLOAT NOT NULL,
 	sort_order INT,
         PRIMARY KEY (id),
-	UNIQUE KEY (shopping_list_name_id,ingredient_id));
+	UNIQUE KEY (shopping_list_id,ingredient_id));
 
 RENAME TABLE recipe_related_recipes TO related_recipes;
 ALTER TABLE related_recipes DROP PRIMARY KEY;

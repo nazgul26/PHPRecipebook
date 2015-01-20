@@ -431,6 +431,26 @@ nav li a {
 }
 
 /* line 69, ../../sass/src/default.scss */
+dl {
+  margin-top: 1em;
+}
+/* line 72, ../../sass/src/default.scss */
+dl dt {
+  display: block;
+  float: left;
+  clear: both;
+  width: 12em;
+  font-weight: bold;
+  padding-top: 4px;
+}
+/* line 81, ../../sass/src/default.scss */
+dl dd {
+  display: block;
+  float: left;
+  padding-top: 4px;
+}
+
+/* line 89, ../../sass/src/default.scss */
 .loadingImage {
   background-color: rgba(0, 0, 0, 0.18);
   border: 1px solid rgba(250, 250, 250, 0.27);
@@ -443,25 +463,25 @@ nav li a {
   margin: 10px;
 }
 
-/* line 80, ../../sass/src/default.scss */
+/* line 100, ../../sass/src/default.scss */
 .loadingImage > div {
   width: 100px;
   height: 50px;
   background: white;
 }
 
-/* line 85, ../../sass/src/default.scss */
+/* line 105, ../../sass/src/default.scss */
 .loadingImage img {
   padding: 10px 0 0;
 }
 
 /* Action Links */
-/* line 90, ../../sass/src/default.scss */
+/* line 110, ../../sass/src/default.scss */
 #moreActionLinks {
   width: 180px;
 }
 
-/* line 93, ../../sass/src/default.scss */
+/* line 113, ../../sass/src/default.scss */
 #moreActionLinksContent li {
   list-style-type: none;
   font-size: 1.4em;

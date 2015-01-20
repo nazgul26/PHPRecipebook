@@ -66,6 +66,26 @@ nav li a {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.76);
 }
 
+dl {
+  margin-top: 1em;
+
+  dt {
+    display: block;
+    float: left;
+    clear: both;
+    width: 12em;
+    font-weight: bold;
+    padding-top: 4px;
+  }
+  
+  dd {
+    display: block;
+    float: left;
+    padding-top: 4px;
+  }
+}
+
+
 .loadingImage {
     background-color: rgba(0, 0, 0, 0.18);
     border: 1px solid rgba(250, 250, 250, 0.27);
