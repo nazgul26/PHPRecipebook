@@ -13,7 +13,6 @@
 	<?php foreach ($shoppingLists as $shoppingList): ?>
 	<tr>
             <td class="actions">
-                    <?php echo $this->Html->link(__('View'), array('action' => 'view', $shoppingList['ShoppingList']['id'])); ?>
                     <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $shoppingList['ShoppingList']['id'])); ?>
                     <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $shoppingList['ShoppingList']['id']), 
                             null, __('Are you sure you want to delete # %s?', $shoppingList['ShoppingList']['id'])); ?>

@@ -58,17 +58,29 @@ class ShoppingListsController extends AppController {
         }
         if ($this->request->is(array('post', 'put'))) {
             $this->request->data['ShoppingList']['user_id'] = $this->Auth->user('id');
-            if ($this->ShoppingList->save($this->request->data)) {
+            if ($this->ShoppingList->saveAll($this->request->data)) {
                 $this->Session->setFlash(__('The shopping list has been saved.'), 'success');
                 return $this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash(__('The shopping list name could not be saved. Please, try again.'));
             }
         } else {
-            $options = array('conditions' => array('ShoppingList.' . $this->ShoppingList->primaryKey => $id));
-            $this->request->data = $this->ShoppingList->find('first', $options);
+            $this->ShoppingList->Behaviors->load('Containable');
+            $options = array('contain' => array(
+                    'ShoppingListIngredient.Ingredient.name', 
+                    'ShoppingListRecipe.Recipe.name'));
+            
+            if ($id == null) {
+                $search = array('conditions' => array('ShoppingList.name' => __('DEFAULT')));
+            } else {
+                $search = array('conditions' => array('ShoppingList.' . $this->ShoppingList->primaryKey => $id));
+            }
+            
+            $this->request->data = $this->ShoppingList->find('first', array_merge($options, $search));
         }
-        $this->set(compact('users'));
+        $units = $this->ShoppingList->ShoppingListIngredient->Ingredient->Unit->find('list');
+        $list = $this->request->data;
+        $this->set(compact('list', 'units'));
     }
 
     /**

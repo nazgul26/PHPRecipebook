@@ -117,7 +117,7 @@
     function initRowDelete() {
         $('.deleteIcon').click(function() {
             // TODO: if count of TR = 1 then just blank the row and re-number
-            if (confirm("<?php echo __("Are you sure you wish to remove this ingredient?");?>")) {
+            if (confirm("<?php echo __("Are you sure you wish to remove this item?");?>")) {
                 $(this).parent().parent().remove();
             }
         });
@@ -365,7 +365,7 @@
                 </tr>
                 <tbody class="gridContent">
                 <?php 
-                $ingredientCount = (isset($recipe) && $recipe['IngredientMapping'])? count($recipe['IngredientMapping']) : 0;
+                $ingredientCount = (isset($recipe) && isset($recipe['IngredientMapping']))? count($recipe['IngredientMapping']) : 0;
                 for ($mapIndex = 0; $mapIndex <= $ingredientCount; $mapIndex++) {
                     $currentSortOrder = __("Unknown");
                     $extraItem = true;
