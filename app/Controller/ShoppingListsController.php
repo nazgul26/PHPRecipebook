@@ -68,7 +68,8 @@ class ShoppingListsController extends AppController {
             $this->ShoppingList->Behaviors->load('Containable');
             $options = array('contain' => array(
                     'ShoppingListIngredient.Ingredient.name', 
-                    'ShoppingListRecipe.Recipe.name'));
+                    'ShoppingListRecipe.Recipe.name',
+                    'ShoppingListRecipe.Recipe.serving_size'));
             
             if ($id == null) {
                 $search = array('conditions' => array('ShoppingList.name' => __('DEFAULT')));

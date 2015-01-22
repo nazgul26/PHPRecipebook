@@ -146,7 +146,7 @@ CREATE TABLE shopping_list_recipes (
         id INT NOT NULL AUTO_INCREMENT,
 	shopping_list_id INT NOT NULL REFERENCES shopping_lists(id) ON DELETE CASCADE,
 	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
-	scale FLOAT DEFAULT 0.0,
+	scale FLOAT DEFAULT 1.0,
         PRIMARY KEY (id),
 	UNIQUE KEY (shopping_list_id,recipe_id));
 

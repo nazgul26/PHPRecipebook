@@ -10,18 +10,20 @@
 </script>
 <div class="restaurants index">
 	<h2><?php echo __('Restaurants'); ?></h2>
+        <?php if ($loggedIn): ?>
         <div class="actions">
-	<ul>
-            <li><?php echo $this->Html->link(__('Add Restaurant'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editRestaurantDialog'));?></li>
-            <li><button id="moreActionLinks">More Actions...</button></li>
-	</ul>
-        <div style="display: none;">
-            <ul id="moreActionLinksContent">
-                <li><?php echo $this->Html->link(__('List Price Ranges'), array('controller' => 'price_ranges', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Price Ranges'), array('controller' => 'price_ranges', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editPriceRangesDialog')); ?> </li>
+            <ul>
+                <li><?php echo $this->Html->link(__('Add Restaurant'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editRestaurantDialog'));?></li>
+                <li><button id="moreActionLinks">More Actions...</button></li>
             </ul>
-        </div> 
+            <div style="display: none;">
+                <ul id="moreActionLinksContent">
+                    <li><?php echo $this->Html->link(__('List Price Ranges'), array('controller' => 'price_ranges', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
+                    <li><?php echo $this->Html->link(__('New Price Ranges'), array('controller' => 'price_ranges', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editPriceRangesDialog')); ?> </li>
+                </ul>
+            </div> 
         </div>
+        <?php endif;?>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
             <th class="actions"><?php echo __('Actions'); ?></th>
