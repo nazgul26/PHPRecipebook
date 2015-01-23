@@ -31,8 +31,8 @@
         
     <table>
         <tr class="headerRow">
-            <th></th>
-            <th><?php echo __('Recipes');?></th>
+            <th><?php echo __('Delete');?></th>
+            <th><?php echo __('Recipe Name');?></th>
             <th><?php echo __('Servings');?>
             <th><?php echo __('Scale By');?></th>
         </tr>
@@ -62,10 +62,11 @@
 
     <table>
     <tr class="headerRow">
-        <th colspan="2"><?php echo __('Ingredient Quantity');?></th>
+        <th><?php echo __('Delete');?></th>
+        <th><?php echo __('Quantity');?></th>
         <th><?php echo __('Units');?></th>
         <th><?php echo __('Qualifier');?></th>
-        <th><?php echo __('Ingredient');?></th>
+        <th><?php echo __('Ingredient Name');?></th>
     </tr>
     <tbody class="gridContent">
     <?php 
@@ -87,7 +88,7 @@
         <td><?php echo $this->Form->input('ShoppingListIngredient.' . $mapIndex . '.unit_id', array('label' => false)); ?></td>
         <td><?php echo $this->Form->input('ShoppingListIngredient.' . $mapIndex . '.qualifier', array('label' => false, 'escape' => false)); ?></td>
         <td>
-            <?php echo $this->Form->input('ShoppingListIngredient.' . $mapIndex . '.Ingredient.name', array('label' => false, 'escape' => false, 'type' => 'ui-widget')); ?>
+            <?php echo $this->Form->input('ShoppingListIngredient.' . $mapIndex . '.Ingredient.name', array('label' => false, 'escape' => false)); ?>
         </td>
     </tr>
     <?php } ?>
@@ -95,9 +96,9 @@
         </table>
     <?php
             echo $this->Form->hidden('id');
-            echo $this->Form->input('name');
+            echo $this->Form->hidden('name'); // Make dialog to change name
     ?>
     </fieldset>
-    <?php echo $this->Form->end(__('Submit')); ?>
-    <button>Start Shopping</button>
+    <?php echo $this->Form->end(__('Save')); ?>
+    <button class="btn-primary">Start Shopping</button>
 </div>

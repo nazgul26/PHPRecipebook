@@ -44,6 +44,10 @@ class ShoppingListsController extends AppController {
         $options = array('conditions' => array('ShoppingList.' . $this->ShoppingList->primaryKey => $id));
         $this->set('shoppingList', $this->ShoppingList->find('first', $options));
     }
+    
+    public function shop() {
+    
+    }
 
     /**
      * edit method
