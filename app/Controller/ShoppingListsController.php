@@ -45,7 +45,7 @@ class ShoppingListsController extends AppController {
         $this->set('shoppingList', $this->ShoppingList->find('first', $options));
     }
     
-    public function shop() {
+    public function select() {
     
     }
 
@@ -70,10 +70,15 @@ class ShoppingListsController extends AppController {
             }
         } else {
             $this->ShoppingList->Behaviors->load('Containable');
-            $options = array('contain' => array(
-                    'ShoppingListIngredient.Ingredient.name', 
-                    'ShoppingListRecipe.Recipe.name',
-                    'ShoppingListRecipe.Recipe.serving_size'));
+            
+            $options = array(
+                'contain' => array(
+                    'ShoppingListRecipe.Recipe'          => array(
+                        'fields' => array('name', 'serving_size')
+                    ),
+                    'ShoppingListIngredient.Ingredient'
+                )
+            );
             
             if ($id == null) {
                 $search = array('conditions' => array('ShoppingList.name' => __('DEFAULT')));
