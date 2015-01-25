@@ -25,6 +25,10 @@ class ShoppingListIngredient extends AppModel {
         'Unit' => array(
             'className' => 'Unit',
             'foreignKey' => 'unit_id'
+        ),
+        'User' => array(
+                    'className' => 'User',
+                    'foreignKey' => 'user_id'
         )
     );
 }

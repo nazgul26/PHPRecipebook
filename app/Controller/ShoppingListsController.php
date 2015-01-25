@@ -91,7 +91,13 @@ class ShoppingListsController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
     
-    public function deleteListItem($listId, $itemId) {
+    public function deleteRecipe($listId, $recipeId) {
+        
+        // TODO logic
+    }
+    
+    public function deleteIngredient($listId, $ingredientId) {
+        
         // TODO logic
     }
     

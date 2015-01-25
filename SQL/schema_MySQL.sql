@@ -198,6 +198,7 @@ CREATE TABLE shopping_list_recipes (
         id INT NOT NULL AUTO_INCREMENT,
 	shopping_list_id INT NOT NULL REFERENCES shopping_lists(id) ON DELETE CASCADE,
 	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+        user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
 	scale FLOAT DEFAULT 1.0,
         PRIMARY KEY (id),
 	UNIQUE KEY (shopping_list_id,recipe_id)
@@ -210,6 +211,7 @@ CREATE TABLE shopping_list_ingredients (
 	unit_id INT NOT NULL REFERENCES units(id) ON DELETE SET NULL,
 	qualifier VARCHAR(32),
 	quantity FLOAT NOT NULL,
+        user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
 	sort_order INT,
         PRIMARY KEY (id),
 	UNIQUE KEY (shopping_list_id,ingredient_id)

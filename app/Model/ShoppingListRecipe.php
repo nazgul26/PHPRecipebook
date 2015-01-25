@@ -20,6 +20,10 @@ class ShoppingListRecipe extends AppModel {
         'Recipe' => array(
             'className' => 'Recipe',
             'foreignKey' => 'recipe_id'
+        ),
+        'User' => array(
+            'className' => 'User',
+            'foreignKey' => 'user_id'
         )
     );
 }

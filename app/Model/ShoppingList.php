@@ -27,26 +27,13 @@ class ShoppingList extends AppModel {
             ),
     );
 
-    /**
-     * belongsTo associations
-     *
-     * @var array
-     */
     public $belongsTo = array(
             'User' => array(
                     'className' => 'User',
-                    'foreignKey' => 'user_id',
-                    'conditions' => '',
-                    'fields' => '',
-                    'order' => ''
+                    'foreignKey' => 'user_id'
             )
     );
 
-    /**
-     * hasMany associations
-     *
-     * @var array
-     */
     public $hasMany = array(
         'ShoppingListIngredient' => array(
                 'className' => 'ShoppingListIngredient',
