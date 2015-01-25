@@ -13,8 +13,6 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-    public $uses = array('User');
-    
     public $components = array(
         'Session',
         'Auth' => array(
@@ -36,6 +34,8 @@ class AppController extends Controller {
     );
 
     public function beforeFilter() {
+        $this->loadModel('User');
+        
         parent::beforeFilter();
         
         // Delete the default auth message.  Just show them the login page
@@ -57,6 +57,7 @@ class AppController extends Controller {
     }
     
     public function isAuthorized($user) {
+        $this->loadModel('User');
         // Check Auth for Admin only Pages.
         if (in_array($this->params['controller'], array(
             'BaseTypes', 

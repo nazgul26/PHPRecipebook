@@ -19,7 +19,6 @@ $baseUrl = Router::url('/');
 </script>
 <?php //echo $this->element('sql_dump'); ?>
 <div class="shoppingList form">
-    <?php echo $baseUrl;?>
 <?php echo $this->Form->create('ShoppingList'); ?>
         <h2><?php echo __('Shopping List'); ?></h2>
         <div class="actions">
@@ -104,7 +103,10 @@ $baseUrl = Router::url('/');
             echo $this->Form->hidden('id');
             echo $this->Form->hidden('name'); // Make dialog to change name
     ?>
-    <?php echo $this->Form->end(); ?>
+        
     <button class="btn-primary">Save</button>
     <button class="btn-primary" go-shopping>Start Shopping</button>
+    
+    <?php echo $this->Form->end(); ?>
+
 </div>

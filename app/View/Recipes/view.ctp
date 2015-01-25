@@ -19,7 +19,8 @@
         <div class="actions">
             <ul>
                 <li><?php echo $this->Html->link(__('Edit Recipe'), array('action' => 'edit', $recipe['Recipe']['id'])); ?></li>
-                <li><a href="#" onclick="alert('not done yet.');"><?php echo __('Add to Shopping List');?></a></li>
+                <li><?php echo $this->Html->link(__('Add to shopping list'), array('controller' => 'shoppingLists', 'action' => 'addRecipe',
+                    $recipe['Recipe']['id'])); ?></li>
                 <li><a href="#" onclick="alert('not done yet.');"><?php echo __('Print');?></a></li>
                 <li><a href="#" onclick="alert('not done yet.');"><?php echo __('eMail');?></a></li>
                 <!-- Ratings - Put it on the page somewhere instead of a link -->

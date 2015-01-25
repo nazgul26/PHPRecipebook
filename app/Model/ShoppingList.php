@@ -59,4 +59,29 @@ class ShoppingList extends AppModel {
                 'dependent' => true,
         )
     );
+    
+    public function getDefaultListId($userId) {
+        return $this->field('id', array('user_id' => $userId, 'name' => __('DEFAULT')));
+    }
+    
+    public function getList($listId, $userId) {
+        $this->Behaviors->load('Containable');
+        $options = array(
+            'contain' => array(
+                'ShoppingListRecipe.Recipe'          => array(
+                    'fields' => array('name', 'serving_size')
+                ),
+                'ShoppingListIngredient.Ingredient'
+            )
+        );
+
+        if ($listId == null) {
+            $search = array('conditions' => array('name' => __('DEFAULT'), 
+                'user_id' => $userId));
+        } else {
+            $search = array('conditions' => array('' . $this->primaryKey => $listId, 
+                'user_id' => $userId));
+        }
+        return $this->find('first', array_merge($options, $search));
+    }
 }
