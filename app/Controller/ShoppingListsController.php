@@ -76,14 +76,8 @@ class ShoppingListsController extends AppController {
         $this->set(compact('list', 'units'));
     }
 
-    /**
-     * delete method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
     public function delete($id = null) {
+        
         $this->ShoppingList->id = $id;
         if (!$this->ShoppingList->exists()) {
                 throw new NotFoundException(__('Invalid shopping list'));
@@ -95,6 +89,10 @@ class ShoppingListsController extends AppController {
                 $this->Session->setFlash(__('The shopping list could not be deleted. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index'));
+    }
+    
+    public function deleteListItem($listId, $itemId) {
+        // TODO logic
     }
     
     public function addRecipe($id=null) {

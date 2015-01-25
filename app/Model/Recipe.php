@@ -165,13 +165,12 @@ class Recipe extends AppModel {
         $data['Image'] = $images;
 
         // Try to save the data using Model::saveAll()
-        //$this->create();
         if ($this->saveAll($data)) {
             return true;
         }
 
         // Throw an exception for the controller
-        throw new Exception(__("This post could not be saved. Please try again"));
+        throw new Exception(__("This recipe could not be saved. Please try again"));
     }
     
     public function isOwnedBy($recipeId, $user) {
