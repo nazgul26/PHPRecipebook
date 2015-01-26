@@ -92,8 +92,25 @@ class ShoppingListsController extends AppController {
     }
     
     public function deleteRecipe($listId, $recipeId) {
+        $this->ShoppingList->ShoppingListRecipe->recursive = 0;
         
-        // TODO logic
+        //TODO: move to model
+        $itemId = $this->ShoppingList->ShoppingListRecipe->field('id',
+                array(
+                    'ShoppingListRecipe.shopping_list_id' => $listId,
+                    'ShoppingListRecipe.user_id' => $this->Auth->user('id'),
+                    'ShoppingListRecipe.recipe_id' => $recipeId));
+        
+        if (isset($itemId) && $itemId > 0) {
+            if ($this->ShoppingList->ShoppingListRecipe->delete($itemId)) {
+                $this->Session->setFlash(__('The item has been removed.'), 'success');
+            } else {
+                $this->Session->setFlash(__('The item could not be removed. Please, try again.'));
+            }
+        } else {
+            throw new NotFoundException(__('Invalid recipe item'));
+        }
+        return $this->redirect(array('action' => 'edit'));
     }
     
     public function deleteIngredient($listId, $ingredientId) {

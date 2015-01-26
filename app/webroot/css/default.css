@@ -359,18 +359,22 @@ float60Section {
   padding-left: 1em;
   padding-top: 18px;
 }
+/* line 5, ../../sass/src/_shoppingList.scss */
+.shoppingListText a {
+  font-size: .8em;
+}
 
-/* line 8, ../../sass/src/_shoppingList.scss */
+/* line 10, ../../sass/src/_shoppingList.scss */
 .shoppingListText-recipe {
   width: 700px;
 }
 
-/* line 12, ../../sass/src/_shoppingList.scss */
+/* line 14, ../../sass/src/_shoppingList.scss */
 .shoppingListText-ingredient {
   width: 450px;
 }
 
-/* line 17, ../../sass/src/_shoppingList.scss */
+/* line 19, ../../sass/src/_shoppingList.scss */
 #ShoppingListEditForm .number {
   width: 6em;
 }
