@@ -379,6 +379,11 @@ float60Section {
   width: 6em;
 }
 
+/* line 25, ../../sass/src/_shoppingList.scss */
+.addShoppingListItem span {
+  font-size: 1.4em;
+}
+
 /* Buttons */
 /* line 3, ../../sass/src/_buttons.scss */
 .btn-primary {

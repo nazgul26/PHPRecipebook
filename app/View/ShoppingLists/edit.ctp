@@ -3,9 +3,42 @@ $baseUrl = Router::url('/');
 ?>
 <script type="text/javascript">
     $(function() {
+        //TODO: use localStorage to remember ingredient vs recipe search
+        
         $('[go-shopping]').click(function() {
-            ajaxNavigate('<?php echo $baseUrl;?>/ShoppingLists/select');
+            ajaxNavigate('<?php echo $baseUrl;?>ShoppingLists/select');
         })
+        
+        $('#addRecipeAutocomplete').autocomplete({
+            source: "<?php echo Router::url('/'); ?>Recipes/autoCompleteSearch.json",
+            minLength: 1,
+            html: true,
+            select: function(event, ui) {
+                ajaxGet("<?php echo Router::url('/'); ?>ShoppingLists/addRecipe/" + ui.item.id);
+            }
+        });
+        
+        $('#addIngredientAutocomplete').autocomplete({
+            source: "<?php echo Router::url('/'); ?>Ingredients/autoCompleteSearch.json",
+            minLength: 1,
+            html: true,
+            select: function(event, ui) {
+                ajaxGet("<?php echo Router::url('/'); ?>ShoppingLists/addIngredient/" + ui.item.id);
+            }
+        });
+        
+        $("input[name=searchType]").change(function () {
+            var selectedValue = $('input[name=searchType]:checked').val();
+            if (selectedValue == "recipe") {
+                $('#addIngredientAutocomplete').hide();
+                $('#addRecipeAutocomplete').show();
+            } else {
+                $('#addIngredientAutocomplete').show();
+                $('#addRecipeAutocomplete').hide();
+            }
+        });
+        
+        $('#recipeSearch').change(); // simulate change to setup
     });
     
 </script>
@@ -20,11 +53,12 @@ $baseUrl = Router::url('/');
           </ul>    
     </div>
 
-    <div>
-    <input type="radio" name="recipeSearch" value="recipe" checked/><label for="recipeSearch">Recipe</label>
-    <input type="radio" name="ingredientSearch" value="ingredient"/><label for="ingredientSearch">Ingredient</label>
-    <input type="text"/>
-    <button class="btn btn-secondary">Add</button>
+    <fieldset class="addShoppingListItem">
+        <input type="radio" name="searchType" id="recipeSearch" value="recipe" checked/><label for="recipeSearch">Recipes</label>
+        <input type="radio" name="searchType" id="ingredientSearch" value="ingredient"/><label for="ingredientSearch">Ingredients</label>
+        <span>Search</span>
+        <input type="text" class="ui-widget" id="addRecipeAutocomplete"/>
+        <input type="text" class="ui-widget" id="addIngredientAutocomplete"/>
     </div>
     
     <?php 
@@ -67,19 +101,23 @@ $baseUrl = Router::url('/');
     if ($ingredientCount > 0):?>
     <table>
     <tr class="headerRow">
-        <th><?php echo __('Delete');?></th>
+        <th><?php echo __('Action');?></th>
         <th><?php echo __('Quantity');?></th>
         <th><?php echo __('Units');?></th>
         <th><?php echo __('Qualifier');?></th>
         <th><?php echo __('Ingredient Name');?></th>
     </tr>
     <tbody class="gridContent">
-    <?php for ($mapIndex = 0; $mapIndex < $ingredientCount; $mapIndex++) { ?>
+    <?php for ($mapIndex = 0; $mapIndex < $ingredientCount; $mapIndex++) { 
+        $ingredientName = $list['ShoppingListIngredient'][$mapIndex]['Ingredient']['name'];
+    ?>
     <tr>
-        <td>
-            <div class="ui-state-default ui-corner-all deleteIcon" title="<?php echo __('Delete'); ?>">
-                <span class="ui-icon ui-icon-trash"></span>
-            </div>
+        <td class="shoppingListText">
+            <?php echo $this->Html->link(__('Delete'), array('action' => 'deleteIngredient', 
+               $list['ShoppingList']['id'],
+               $list['ShoppingListIngredient'][$mapIndex]['ingredient_id']), array('class' => 'ajaxLink'),
+                   __('Are you sure you want to remove %s?', $ingredientName)); ?>
+                
         </td>
         <td>
             <?php echo $this->Form->hidden('ShoppingListIngredient.' . $mapIndex . '.id'); ?>
@@ -90,7 +128,7 @@ $baseUrl = Router::url('/');
         <td><?php echo $this->Form->input('ShoppingListIngredient.' . $mapIndex . '.unit_id', array('label' => false)); ?></td>
         <td><?php echo $this->Form->input('ShoppingListIngredient.' . $mapIndex . '.qualifier', array('label' => false, 'escape' => false)); ?></td>
         <td class="shoppingListText shoppingListText-ingredient">
-            <?php echo $list['ShoppingListIngredient'][$mapIndex]['Ingredient']['name'];?>
+            <?php echo $ingredientName;?>
         </td>
     </tr>
     <?php } ?>

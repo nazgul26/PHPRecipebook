@@ -262,12 +262,10 @@
                 minLength: 1,
                 html: true,
                 select: function(event, ui) {
-                    //console.log("ID: " + ui.item.id, + ", Name: " + ui.item.label);
+                    //console.log("ID: " + ui.item.id + ", Name: " + ui.item.label);
                     var $target = $(event.target);
                     var mapId = $target.attr("id").replace(itemName, "") + itemId;
-                    //console.log("Going to set ID: " + mapId + " to :" + ui.item.id);
                     $("#" + mapId).val(ui.item.id);
-                    //var mapId =  $target.attr("id").replace(itemName, "") + itemId;
                 }
             });
         });
