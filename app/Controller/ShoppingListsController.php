@@ -20,43 +20,7 @@ class ShoppingListsController extends AppController {
         $this->filterConditions = array('ShoppingList.user_id' => $this->Auth->user('id'));
     }
     
-    /**
-     * index method
-     *
-     * @return void
-     */
-    public function index() {
-        $this->ShoppingList->recursive = 0;
-        $this->set('shoppingLists', $this->Paginator->paginate('ShoppingList', $this->filterConditions));
-    }
-
-    /**
-     * view method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
-    public function view($id = null) {
-        if (!$this->ShoppingList->exists($id)) {
-                throw new NotFoundException(__('Invalid shopping list'));
-        }
-        $options = array('conditions' => array('ShoppingList.' . $this->ShoppingList->primaryKey => $id));
-        $this->set('shoppingList', $this->ShoppingList->find('first', $options));
-    }
-    
-    public function select() {
-    
-    }
-
-    /**
-     * edit method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
-    public function edit($id = null) {
+    public function index($id = null) {
         if ($id != null && !$this->ShoppingList->exists($id)) {
                 throw new NotFoundException(__('Invalid shopping list'));
         }
@@ -93,14 +57,7 @@ class ShoppingListsController extends AppController {
     
     public function deleteRecipe($listId, $recipeId) {
         $this->ShoppingList->ShoppingListRecipe->recursive = 0;
-        
-        //TODO: move to model
-        $itemId = $this->ShoppingList->ShoppingListRecipe->field('id',
-                array(
-                    'ShoppingListRecipe.shopping_list_id' => $listId,
-                    'ShoppingListRecipe.user_id' => $this->Auth->user('id'),
-                    'ShoppingListRecipe.recipe_id' => $recipeId));
-        
+        $itemId = $this->ShoppingList->ShoppingListRecipe->getIdToDelete($listId, $recipeId, $this->Auth->user('id')); 
         if (isset($itemId) && $itemId > 0) {
             if ($this->ShoppingList->ShoppingListRecipe->delete($itemId)) {
                 $this->Session->setFlash(__('The item has been removed.'), 'success');
@@ -114,8 +71,18 @@ class ShoppingListsController extends AppController {
     }
     
     public function deleteIngredient($listId, $ingredientId) {
-        
-        // TODO logic
+        $this->ShoppingList->ShoppingListIngredient->recursive = 0;
+        $itemId = $this->ShoppingList->ShoppingListIngredient->getIdToDelete($listId, $ingredientId, $this->Auth->user('id')); 
+        if (isset($itemId) && $itemId > 0) {
+            if ($this->ShoppingList->ShoppingListIngredient->delete($itemId)) {
+                $this->Session->setFlash(__('The item has been removed.'), 'success');
+            } else {
+                $this->Session->setFlash(__('The item could not be removed. Please, try again.'));
+            }
+        } else {
+            throw new NotFoundException(__('Invalid ingredient item'));
+        }
+        return $this->redirect(array('action' => 'edit'));
     }
     
     public function addRecipe($id=null) {
@@ -169,5 +136,13 @@ class ShoppingListsController extends AppController {
         }
         
         return $this->redirect(array('action' => 'edit'));
+    }
+    
+    public function select($listId=null) {
+        if ($listId == null) {
+            throw new NotFoundException(__('Invalid ingredient'));
+        }
+        $list = $this->ShoppingList->getFullList($listId, $this->Auth->user('id'));
+        $this->set('list', $list);
     }
  }

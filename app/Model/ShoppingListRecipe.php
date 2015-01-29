@@ -26,4 +26,12 @@ class ShoppingListRecipe extends AppModel {
             'foreignKey' => 'user_id'
         )
     );
+    
+    public function getIdToDelete($listId, $recipeId, $userId) {
+        return $this->field('id',
+                array(
+                    'ShoppingListRecipe.shopping_list_id' => $listId,
+                    'ShoppingListRecipe.user_id' => $userId,
+                    'ShoppingListRecipe.recipe_id' => $recipeId));
+    }
 }

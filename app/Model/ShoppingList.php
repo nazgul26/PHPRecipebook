@@ -71,4 +71,11 @@ class ShoppingList extends AppModel {
         }
         return $this->find('first', array_merge($options, $search));
     }
+    
+    public function getFullList($listId, $userId) {
+        $this->recursive = 1;
+        //TODO: need containable to trim down the data.
+        $search = array('conditions' => array('ShoppingList.id'=> $listId, 'ShoppingList.user_id' => $userId));
+        return $this->find('first', $search);
+    }
 }
