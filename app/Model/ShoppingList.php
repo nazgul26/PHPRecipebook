@@ -72,10 +72,28 @@ class ShoppingList extends AppModel {
         return $this->find('first', array_merge($options, $search));
     }
     
-    public function getFullList($listId, $userId) {
-        $this->recursive = 1;
-        //TODO: need containable to trim down the data.
-        $search = array('conditions' => array('ShoppingList.id'=> $listId, 'ShoppingList.user_id' => $userId));
+    public function getAllIngredients($listId, $userId) {
+        $this->Behaviors->load('Containable');
+        $search = array('conditions' => array('ShoppingList.id'=> $listId, 'ShoppingList.user_id' => $userId),
+            'contain' => array( 
+                'ShoppingListIngredient' => array(
+                    'fields' => array('unit_id', 'quantity'),
+                ),
+                'ShoppingListRecipe' => array(
+                    'fields' => array('scale'),
+                    'Recipe' => array(
+                        'fields' => array('name'),
+                        'IngredientMapping' => array(
+                            'fields' => array('quantity'),
+                            'Ingredient' => array(
+                                'fields' => array('name')
+                            )
+                        )
+                    )
+                )
+   
+            ));
+        
         return $this->find('first', $search);
     }
 }

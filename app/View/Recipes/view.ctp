@@ -14,6 +14,9 @@
         return false;
     }
 </script>
+<pre>
+    <?php echo print_r($recipe);?>
+</pre>
 <div class="recipes view">
     <h2><?php echo __('Recipe'); ?></h2>
         <div class="actions">

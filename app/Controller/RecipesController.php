@@ -94,6 +94,7 @@ class RecipesController extends AppController {
                 throw new NotFoundException(__('Invalid recipe'));
         }
         $this->Recipe->Behaviors->load('Containable');
+        //TODO: Redo on this. got the containable really wrong
         $options = array('conditions' => array('Recipe.' . $this->Recipe->primaryKey => $id), 
                 'contain' => array(
                     'IngredientMapping.Ingredient.name', 

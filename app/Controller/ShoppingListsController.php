@@ -142,7 +142,8 @@ class ShoppingListsController extends AppController {
         if ($listId == null) {
             throw new NotFoundException(__('Invalid ingredient'));
         }
-        $list = $this->ShoppingList->getFullList($listId, $this->Auth->user('id'));
+        $this->loadModel('Recipe');
+        $list = $this->ShoppingList->getAllIngredients($listId, $this->Auth->user('id'));
         $this->set('list', $list);
     }
  }

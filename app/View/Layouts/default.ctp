@@ -51,7 +51,7 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                     <li><a href="<?php echo $baseUrl;?>Recipes" class="ajaxNavigation"><?php echo __('Recipes'); ?></a></li>
                     <?php if ($loggedIn) : ?>
                     <li><a href="<?php echo $baseUrl;?>MealPlans" class="ajaxNavigation"><?php echo __('Meal Planner'); ?></a></li>
-                    <li><a href="<?php echo $baseUrl;?>ShoppingLists/edit" class="ajaxNavigation"><?php echo __('Shopping List');?></a></li>
+                    <li><a href="<?php echo $baseUrl;?>ShoppingLists" class="ajaxNavigation"><?php echo __('Shopping List');?></a></li>
                     <li><a href="<?php echo $baseUrl;?>Ingredients" class="ajaxNavigation"><?php echo __('Ingredients'); ?></a></li>
                     <?php endif; ?>
                     <li><a href="<?php echo $baseUrl;?>Restaurants" class="ajaxNavigation"><?php echo __('Restaurants');?></a></li>
