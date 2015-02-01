@@ -94,23 +94,47 @@ class RecipesController extends AppController {
                 throw new NotFoundException(__('Invalid recipe'));
         }
         $this->Recipe->Behaviors->load('Containable');
-        //TODO: Redo on this. got the containable really wrong
         $options = array('conditions' => array('Recipe.' . $this->Recipe->primaryKey => $id), 
                 'contain' => array(
-                    'IngredientMapping.Ingredient.name', 
-                    'IngredientMapping.Unit.name',
-                    'RelatedRecipe.Related.name',
-                    'Ethnicity.name',
-                    'BaseType.name',
-                    'Course.name',
-                    'PreparationTime.name',
-                    'Difficulty.name',
-                    'Source.name',
-                    'Source.id',
-                    'Source.description',
-                    'User.name',
-                    'User.id',
-                    'Image'));
+                    'IngredientMapping' => array(
+                        'Ingredient' => array(
+                            'fields' => array('name')
+                        ),
+                        'Unit' => array(
+                            'fields' => array('name')
+                        )
+                    ),
+                    'RelatedRecipe' => array(
+                        'Related' => array(
+                            'fields' => array('name')
+                        )
+                    ),
+                    'Ethnicity' => array(
+                        'fields' => array('name')
+                    ),
+                    'BaseType' => array(
+                        'fields' => array('name')
+                    ),
+                    'Course' => array(
+                        'fields' => array('name')
+                    ),
+                    'PreparationTime' => array(
+                        'fields' => array('name')
+                    ),
+                    'Difficulty' => array(
+                        'fields' => array('name')
+                    ),
+                    'Source' => array(
+                        'fields' => array('name', 'id', 'description')
+                    ),
+                    'Difficulty' => array(
+                        'fields' => array('name')
+                    ),
+                    'User' => array(
+                        'fields' => array('name', 'id')
+                    ),
+                    'Image'
+                ));
         $this->set('recipe', $this->Recipe->find('first', $options));
     }
 

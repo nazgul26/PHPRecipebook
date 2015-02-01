@@ -78,6 +78,9 @@ class ShoppingList extends AppModel {
             'contain' => array( 
                 'ShoppingListIngredient' => array(
                     'fields' => array('unit_id', 'quantity'),
+                    'Ingredient' => array(
+                        'fields' => array('name')
+                    )
                 ),
                 'ShoppingListRecipe' => array(
                     'fields' => array('scale'),
@@ -85,6 +88,9 @@ class ShoppingList extends AppModel {
                         'fields' => array('name'),
                         'IngredientMapping' => array(
                             'fields' => array('quantity'),
+                            'Unit' => array(
+                                'fields' => array('name')
+                            ),
                             'Ingredient' => array(
                                 'fields' => array('name')
                             )

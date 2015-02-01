@@ -14,9 +14,6 @@
         return false;
     }
 </script>
-<pre>
-    <?php echo print_r($recipe);?>
-</pre>
 <div class="recipes view">
     <h2><?php echo __('Recipe'); ?></h2>
         <div class="actions">
@@ -152,7 +149,4 @@
 
             <pre><?php echo h($recipe['Recipe']['directions']); ?></pre>
         </div>
-        
-        <?php echo h($recipe['Recipe']['picture']); ?>
-        <?php echo h($recipe['Recipe']['picture_type']); ?>
 </div>

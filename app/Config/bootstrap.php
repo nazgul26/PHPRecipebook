@@ -17,6 +17,12 @@ Configure::write('AuthRoles', array(
     'admin'=>90 // Site Admin Level Access
 ));
 
+Configure::write('MeasurementSystems', array(
+    0 => 'Static',
+    1 => 'Imperial',
+    2 => 'Metric'
+));
+
 /**
  * Configures default file logging options
  */

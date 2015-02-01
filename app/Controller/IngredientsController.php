@@ -31,7 +31,7 @@ class IngredientsController extends AppController {
         if (in_array($this->action, array('edit', 'delete')) && isset($this->request->params['pass'][0])) {
             $ingredientId = (int) $this->request->params['pass'][0];
 
-            if ($this->Ingredient->isEditor($user) || $this->Ingredient->isOwnedBy($ingredientId, $user['id'])) {
+            if ($this->User->isEditor($user) || $this->Ingredient->isOwnedBy($ingredientId, $user['id'])) {
                 return true;
             }
             else {

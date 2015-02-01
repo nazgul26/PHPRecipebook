@@ -22,7 +22,9 @@ There will be migration path from PHPRecipeBook 4.0
 
 Fresh Installation
 * Ensure you have the following PHP Modules installed: mysql, mcrypt, gd.
-* Create database and import SQL\recipedb_MySQL.sql script
+* Create database and import:
+    - SQL\schema_MySQL.sql
+    - SQL\default_setup.sql
 * Edit Configuration DB Configuration Settings ./app/Config/database.php to match your database settings
 * Edit ./app/Config/email.php to use your Email Server/Account
 * For File uploads:
