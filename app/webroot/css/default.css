@@ -384,6 +384,11 @@ float60Section {
   font-size: 1.4em;
 }
 
+/* line 30, ../../sass/src/_shoppingList.scss */
+.strikeThrough {
+  text-decoration: line-through;
+}
+
 /* Buttons */
 /* line 3, ../../sass/src/_buttons.scss */
 .btn-primary {

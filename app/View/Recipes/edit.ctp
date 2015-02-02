@@ -16,7 +16,7 @@
         
         $('#ingredientsSection .fraction input').each(function() {
             $(this).change(function() {
-                fractionConvert($(this));
+                fractionConvert($(this), "<?php echo __("Entered value is not a number/fraction, please try again.");?>");
             });
         });
         
@@ -223,35 +223,6 @@
             });
             i++;
         });
-    }
-    
-    function fractionConvert($item) {
-        var numberError = "<?php echo __("Entered value is not a number/fraction, please try again.");?>";
-        var teststring = $item.val();
-        var a=teststring.indexOf(",");      // change "," to "." (in all languages)
-        if ( a !== -1 ) {                   //FIXME: bug - still displays "." for all languages
-            $item.val(teststring=teststring.substring(0,a)+"."+teststring.substring(a+1,teststring.length));
-        }
-        
-        if (isNaN(teststring))
-        {
-            if (teststring.indexOf("/")>0) {
-                if (teststring.indexOf(" ")>0) {
-                        n = teststring.substring(0,teststring.indexOf(" ")+1);
-                        f = teststring.substring(teststring.indexOf(" ")+1);
-                } else {
-                        n = teststring.substring(0,teststring.indexOf("/")-1);
-                        f = teststring.substring(teststring.indexOf("/")-1);
-                }
-                if (isNaN(n)){alert(numberError);return;}//Make sure we have a number
-                var newArray = f.split("/");
-                if (isNaN(newArray[0])){alert(numberError);return;}
-                if (isNaN(newArray[1])){alert(numberError);return;}
-                $item.val(eval((n*1)+(newArray[0]/newArray[1])));//write the new value to the calling box
-            } else {
-                alert(numberError);
-            }
-        }
     }
     
     function initAutocomplete(itemName, itemId, getUrl)

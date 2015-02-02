@@ -3,11 +3,10 @@ $baseUrl = Router::url('/');
 ?>
 <script type="text/javascript">
     $(function() {
-        //TODO: use localStorage to remember ingredient vs recipe search
-        
+  
         $('[go-shopping]').click(function() {
             ajaxNavigate('<?php echo $baseUrl;?>ShoppingLists/select/<?php echo $list['ShoppingList']['id'];?>');
-        })
+        });
         
         $('#addRecipeAutocomplete').autocomplete({
             source: "<?php echo Router::url('/'); ?>Recipes/autoCompleteSearch.json",
@@ -32,11 +31,25 @@ $baseUrl = Router::url('/');
             if (selectedValue == "recipe") {
                 $('#addIngredientAutocomplete').hide();
                 $('#addRecipeAutocomplete').show();
+                localStorage.setItem("shoppingListSearchType", "recipe");
             } else {
                 $('#addIngredientAutocomplete').show();
                 $('#addRecipeAutocomplete').hide();
+                localStorage.setItem("shoppingListSearchType", "ingredient");
             }
         });
+        
+        $('.fraction input').each(function() {
+            $(this).change(function() {
+                fractionConvert($(this), "<?php echo __("Entered value is not a number/fraction, please try again.");?>");
+            });
+        });
+        
+        var searchType = localStorage.getItem("shoppingListSearchType"); 
+        if (searchType == "ingredient") {
+            $('#ingredientSearch').prop('checked', true);
+            $('#recipeSearch').removeAttr('checked');
+        }
         
         $('#recipeSearch').change(); // simulate change to setup
     });
@@ -141,7 +154,7 @@ $baseUrl = Router::url('/');
         echo $this->Form->hidden('name'); // Make dialog to change name
     ?>
         
-    <button class="btn-primary">Save</button>
+    <button class="btn-primary" type="submit">Save</button>
     <button class="btn-primary" go-shopping>Start Shopping</button>
     
     <?php echo $this->Form->end(); ?>

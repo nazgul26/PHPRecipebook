@@ -148,8 +148,7 @@ CREATE TABLE shopping_list_recipes (
 	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
 	scale FLOAT DEFAULT 1.0,
         user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
-        PRIMARY KEY (id),
-	UNIQUE KEY (shopping_list_id,recipe_id));
+        PRIMARY KEY (id));
 
 DROP TABLE recipe_list_ingredients;
 CREATE TABLE shopping_list_ingredients (
@@ -160,8 +159,7 @@ CREATE TABLE shopping_list_ingredients (
 	qualifier VARCHAR(32),
 	quantity FLOAT NOT NULL,
 	user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
-        PRIMARY KEY (id),
-	UNIQUE KEY (shopping_list_id,ingredient_id));
+        PRIMARY KEY (id));
 
 RENAME TABLE recipe_related_recipes TO related_recipes;
 ALTER TABLE related_recipes DROP PRIMARY KEY;

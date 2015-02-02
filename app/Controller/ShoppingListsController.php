@@ -9,6 +9,7 @@ App::uses('AppController', 'Controller');
 class ShoppingListsController extends AppController {
 
     public $components = array('Paginator');
+    public $helpers = array('Fraction');
     
     // Filter to hide recipes of other users
     public $filterConditions = array();
@@ -28,7 +29,7 @@ class ShoppingListsController extends AppController {
             $this->request->data['ShoppingList']['user_id'] = $this->Auth->user('id');
             if ($this->ShoppingList->saveAll($this->request->data)) {
                 $this->Session->setFlash(__('The shopping list has been saved.'), 'success');
-                return $this->redirect(array('action' => 'edit'));
+                return $this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash(__('The shopping list name could not be saved. Please, try again.'));
             }
@@ -67,7 +68,7 @@ class ShoppingListsController extends AppController {
         } else {
             throw new NotFoundException(__('Invalid recipe item'));
         }
-        return $this->redirect(array('action' => 'edit'));
+        return $this->redirect(array('action' => 'index'));
     }
     
     public function deleteIngredient($listId, $ingredientId) {
@@ -82,7 +83,7 @@ class ShoppingListsController extends AppController {
         } else {
             throw new NotFoundException(__('Invalid ingredient item'));
         }
-        return $this->redirect(array('action' => 'edit'));
+        return $this->redirect(array('action' => 'index'));
     }
     
     public function addRecipe($id=null) {
@@ -108,7 +109,7 @@ class ShoppingListsController extends AppController {
             $this->Session->setFlash(__('Unable to add recipe to list.'));
         }
         
-        return $this->redirect(array('action' => 'edit'));
+        return $this->redirect(array('action' => 'index'));
     }
     
     public function addIngredient($id=null) {
@@ -135,7 +136,7 @@ class ShoppingListsController extends AppController {
             $this->Session->setFlash(__('Unable to add ingredient to list.'));
         }
         
-        return $this->redirect(array('action' => 'edit'));
+        return $this->redirect(array('action' => 'index'));
     }
     
     public function select($listId=null) {
@@ -143,7 +144,14 @@ class ShoppingListsController extends AppController {
             throw new NotFoundException(__('Invalid ingredient'));
         }
         $this->loadModel('Recipe');
+        
         $list = $this->ShoppingList->getAllIngredients($listId, $this->Auth->user('id'));
-        $this->set('list', $list);
+        $ingredients =  $this->ShoppingList->combineIngredients($list);
+        //TODO: Need to: 
+        //  * Scale by!
+        //  * Related recipes!
+        //  * Optionals - option to include optinals (maybe include but show as options). help about what recipe it when with.
+        //  * Sort Into Store sections (not important for online)
+        $this->set('list', $ingredients);
     }
  }

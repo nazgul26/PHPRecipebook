@@ -31,7 +31,8 @@ class ShoppingList extends AppModel {
             'User' => array(
                     'className' => 'User',
                     'foreignKey' => 'user_id'
-            )
+            ),
+            'ListItem'
     );
 
     public $hasMany = array(
@@ -72,12 +73,19 @@ class ShoppingList extends AppModel {
         return $this->find('first', array_merge($options, $search));
     }
     
+    /*
+     * Get list of ingredients with details.  Loads the current shopping list of the logged
+     *  in user.
+     */
     public function getAllIngredients($listId, $userId) {
         $this->Behaviors->load('Containable');
         $search = array('conditions' => array('ShoppingList.id'=> $listId, 'ShoppingList.user_id' => $userId),
             'contain' => array( 
                 'ShoppingListIngredient' => array(
                     'fields' => array('unit_id', 'quantity'),
+                    'Unit' => array(
+                        'fields' => array('name')
+                    ),
                     'Ingredient' => array(
                         'fields' => array('name')
                     )
@@ -101,5 +109,49 @@ class ShoppingList extends AppModel {
             ));
         
         return $this->find('first', $search);
+    }
+    
+    /*
+     * Combines a list of ingredients based on type and converted if possible
+     * 
+     * @list - Shopping list data provided by 'getAllIngredients'
+     */
+    public function combineIngredients($list) {
+        $ingredients = array();
+        
+        foreach ($list['ShoppingListIngredient'] as $item) {
+            $ingredients = $this->combineIngredient($ingredients, $item);
+        }
+        foreach ($list['ShoppingListRecipe'] as $recipeInList) {
+            $recipeDetail = $recipeInList['Recipe'];
+            foreach ($recipeDetail['IngredientMapping'] as $mapping) {
+                $ingredients = $this->combineIngredient($ingredients, $mapping);
+            }
+        }
+        
+        return ($ingredients);
+    }
+    
+    private function combineIngredient($list, $ingredient) {
+        $id = $ingredient['ingredient_id'];
+        $unitId = $ingredient['unit_id'];
+        $quantity = $ingredient['quantity'];
+        $name = $ingredient['Ingredient']['name'];
+        $unitName = $ingredient['Unit']['name'];
+        if (isset($list[$id])) {
+            foreach ($list[$id] as $item) {
+                if ($item->unitId == $unitId) {
+                    $item->quantity += $quantity;
+                }
+            }
+        } else {
+            $this->ListItem->id = $id;
+            $this->ListItem->name = $name;
+            $this->ListItem->unitId = $unitId;
+            $this->ListItem->quantity = $quantity;
+            $this->ListItem->unitName = $unitName;
+            $list[$id] = array(clone $this->ListItem);
+        }
+        return $list;
     }
 }
