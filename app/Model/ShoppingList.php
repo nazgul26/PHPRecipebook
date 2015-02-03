@@ -87,7 +87,7 @@ class ShoppingList extends AppModel {
                         'fields' => array('name')
                     ),
                     'Ingredient' => array(
-                        'fields' => array('name')
+                        'fields' => array('name', 'location_id')
                     )
                 ),
                 'ShoppingListRecipe' => array(
@@ -100,7 +100,7 @@ class ShoppingList extends AppModel {
                                 'fields' => array('name')
                             ),
                             'Ingredient' => array(
-                                'fields' => array('name')
+                                'fields' => array('name', 'location_id')
                             )
                         )
                     )
@@ -137,6 +137,7 @@ class ShoppingList extends AppModel {
         $unitId = $ingredient['unit_id'];
         $quantity = $ingredient['quantity'];
         $name = $ingredient['Ingredient']['name'];
+        $locationId = $ingredient['Ingredient']['location_id'];
         $unitName = $ingredient['Unit']['name'];
         if (isset($list[$id])) {
             foreach ($list[$id] as $item) {
@@ -150,6 +151,7 @@ class ShoppingList extends AppModel {
             $this->ListItem->unitId = $unitId;
             $this->ListItem->quantity = $quantity;
             $this->ListItem->unitName = $unitName;
+            $this->ListItem->locationId = $locationId;
             $list[$id] = array(clone $this->ListItem);
         }
         return $list;

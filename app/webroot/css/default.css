@@ -389,6 +389,17 @@ float60Section {
   text-decoration: line-through;
 }
 
+/* line 34, ../../sass/src/_shoppingList.scss */
+.storeLocation div {
+  background: none repeat scroll 0 0 #2e629d;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px #000;
+  color: #fff;
+  font-size: 0.8em;
+  padding: 4px 0 4px 1em;
+  text-shadow: 2px 2px #000;
+}
+
 /* Buttons */
 /* line 3, ../../sass/src/_buttons.scss */
 .btn-primary {
@@ -578,4 +589,29 @@ dl dd {
   font-size: 1.4em;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+/* Breadcrumbs */
+/* line 127, ../../sass/src/default.scss */
+.breadcrumb > li + li:before {
+  color: #ccc;
+  content: "/ ";
+  padding: 0 5px;
+}
+
+/* line 132, ../../sass/src/default.scss */
+.breadcrumb {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  list-style: outside none none;
+  margin-bottom: 20px;
+  padding: 8px 15px;
+}
+/* line 139, ../../sass/src/default.scss */
+.breadcrumb li {
+  display: inline-block;
+}
+/* line 142, ../../sass/src/default.scss */
+.breadcrumb .active {
+  color: #777;
 }

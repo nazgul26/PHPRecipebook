@@ -144,9 +144,11 @@ class ShoppingListsController extends AppController {
             throw new NotFoundException(__('Invalid ingredient'));
         }
         $this->loadModel('Recipe');
+        $this->loadModel('Location');
         
-        $list = $this->ShoppingList->getAllIngredients($listId, $this->Auth->user('id'));
-        $ingredients =  $this->ShoppingList->combineIngredients($list);
+        $ingredients = $this->ShoppingList->getAllIngredients($listId, $this->Auth->user('id'));
+        $ingredients = $this->ShoppingList->combineIngredients($ingredients);
+        $ingredients = $this->Location->orderShoppingListByLocation($ingredients);
         //TODO: Need to: 
         //  * Scale by!
         //  * Related recipes!

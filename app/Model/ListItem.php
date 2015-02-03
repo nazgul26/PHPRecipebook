@@ -10,7 +10,9 @@ class ListItem extends AppModel {
     public $id;
     public $unitId;
     public $unitName;
-    public $quantity;  
+    public $quantity;
+    public $locationId;
+    public $locationName;
 }
 ?>
 

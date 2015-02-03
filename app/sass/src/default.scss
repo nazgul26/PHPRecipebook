@@ -123,3 +123,25 @@ dl {
     margin-bottom: 15px;
 }
 
+/* Breadcrumbs */
+.breadcrumb > li + li:before {
+    color: #ccc;
+    content: "/ ";
+    padding: 0 5px;
+}
+.breadcrumb {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    list-style: outside none none;
+    margin-bottom: 20px;
+    padding: 8px 15px;
+    
+    li {
+        display: inline-block;
+    }
+    .active {
+        color: #777;
+    }
+}
+
+
