@@ -8,8 +8,20 @@
             $checkBox = $(this).find('input');
             rowClicked($checkBox);
         });
-        
+        $('[shop-store]').click(function() {
+            loadShoppingStep('instore');
+        });
+        $('[shop-online]').click(function() {
+            loadShoppingStep('online');
+        })
     });
+    
+    function loadShoppingStep(routeName) {
+        $('#route').val(routeName);
+        var action = $('#ShoppingListSelectSelectForm').prop('action');
+        $('#ShoppingListSelectSelectForm').prop('action', action.replace('/select', '/' + routeName));
+        $('#ShoppingListSelectSelectForm').submit();
+    }
     
     function rowClicked($checkBox) {
         if ($checkBox.prop('checked')) {
@@ -23,13 +35,13 @@
 </script>
 <?php //echo $this->element('sql_dump'); ?>
 <ol class="breadcrumb">
-    <li><?php echo $this->Html->link(__('Shopping List'), array('action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
+    <li><?php echo $this->Html->link(__('Shopping List'), array('action' => 'index', $listId), array('class' => 'ajaxNavigation')); ?> </li>
     <li class="active"><?php echo __('Select Items');?></li>
 </ol>
 <h2><?php echo __('What Items do you already have?');?></h2>
 <br/>
-
-
+<?php echo $this->Form->create('ShoppingListSelect'); ?>
+<input type="hidden" name="route" id="route"/>
 <table>
     <tr class="headerRow">
         <th><?php echo __('Select');?></th>
@@ -41,8 +53,8 @@
     <tbody class="gridContent">
     <?php 
     $locationName = "";
-    foreach ($list as $ingredientType) {
-        foreach ($ingredientType as $item) {
+    foreach ($list as $i=>$ingredientType):
+        foreach ($ingredientType as $j=>$item) :
             $locationChanged = false;
             if ($locationName != $item->locationName) {
                 $locationName = $item->locationName;
@@ -56,14 +68,16 @@
     <?php endif;?>
         
     <tr row-click>
-        <td><input type="checkbox" list-item/></td>
+        <td><input type="checkbox" name="remove[]" value="<?php echo $i . "-" . $j;?>" list-item/></td>
         <td><?php echo $this->Fraction->toFraction($item->quantity);?></td>
         <td><?php echo $item->unitName;?></td>
         <td><b><?php echo $item->name;?></b></td>
     </tr>
-    <?php } 
-    }?>
+    <?php 
+        endforeach;
+    endforeach?>
     </tbody>
 </table>
-<button class="btn-primary">Shop At Store</button>
-<button class="btn-primary">Shop Online</button>
+<button class="btn-primary" shop-store>Shop At Store</button>
+<button class="btn-primary" shop-online>Shop Online</button>
+</form>

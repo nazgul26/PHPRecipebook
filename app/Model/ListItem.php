@@ -13,6 +13,7 @@ class ListItem extends AppModel {
     public $quantity;
     public $locationId;
     public $locationName;
+    public $removed;
 }
 ?>
 

@@ -400,6 +400,12 @@ float60Section {
   text-shadow: 2px 2px #000;
 }
 
+/* line 44, ../../sass/src/_shoppingList.scss */
+.vendor-input {
+  width: 4em;
+  margin-left: 1em;
+}
+
 /* Buttons */
 /* line 3, ../../sass/src/_buttons.scss */
 .btn-primary {

@@ -8,6 +8,7 @@ App::uses('AppController', 'Controller');
  */
 class ShoppingListsController extends AppController {
 
+    const SHOPPING_LIST = "ShoppingList"; // Session VAR
     public $components = array('Paginator');
     public $helpers = array('Fraction');
     
@@ -42,7 +43,6 @@ class ShoppingListsController extends AppController {
     }
 
     public function delete($id = null) {
-        
         $this->ShoppingList->id = $id;
         if (!$this->ShoppingList->exists()) {
                 throw new NotFoundException(__('Invalid shopping list'));
@@ -141,19 +141,57 @@ class ShoppingListsController extends AppController {
     
     public function select($listId=null) {
         if ($listId == null) {
-            throw new NotFoundException(__('Invalid ingredient'));
+            throw new NotFoundException(__('Invalid list'));
         }
-        $this->loadModel('Recipe');
-        $this->loadModel('Location');
         
-        $ingredients = $this->ShoppingList->getAllIngredients($listId, $this->Auth->user('id'));
-        $ingredients = $this->ShoppingList->combineIngredients($ingredients);
-        $ingredients = $this->Location->orderShoppingListByLocation($ingredients);
+        $ingredients = $this->loadShoppingList($listId);
+
         //TODO: Need to: 
         //  * Scale by!
         //  * Related recipes!
         //  * Optionals - option to include optinals (maybe include but show as options). help about what recipe it when with.
         //  * Sort Into Store sections (not important for online)
+        $this->set('list', $ingredients); 
+        $this->set('listId', $listId);
+    }
+    
+    public function instore($listId) {
+        if ($listId == null) {
+            throw new NotFoundException(__('Invalid list'));
+        }
+        
+        if ($this->request->is(array('post', 'put'))) { 
+            $removeIds = isset($this->request->data['remove']) ? $this->request->data['remove'] : NULL;
+            $ingredients = $this->removeSelectedItems($listId, $removeIds);
+        }
+    }
+    
+    public function online($listId) {
+        if ($listId == null) {
+            throw new NotFoundException(__('Invalid list'));
+        }
+        
+        if ($this->request->is(array('post', 'put'))) { 
+            $removeIds = isset($this->request->data['remove']) ? $this->request->data['remove'] : NULL;
+            $ingredients = $this->removeSelectedItems($listId, $removeIds);
+        }
+    }
+    
+    private function loadShoppingList($listId) {
+        $this->loadModel('Recipe');
+        $this->loadModel('Location');
+
+        $ingredients = $this->ShoppingList->getAllIngredients($listId, $this->Auth->user('id'));
+        $ingredients = $this->ShoppingList->combineIngredients($ingredients);
+        $ingredients = $this->Location->orderShoppingListByLocation($ingredients);
+        return $ingredients;
+    }
+    
+    private function removeSelectedItems($listId, $removeIds) {
+        $ingredients = $this->loadShoppingList($listId);
+        $ingredients = $this->ShoppingList->markIngredientsRemoved($ingredients, $removeIds);
         $this->set('list', $ingredients);
+        $this->set('listId', $listId);
+        return $ingredients;
     }
  }

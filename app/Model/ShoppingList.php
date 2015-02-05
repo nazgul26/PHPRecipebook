@@ -132,6 +132,16 @@ class ShoppingList extends AppModel {
         return ($ingredients);
     }
     
+    public function markIngredientsRemoved($list, $removeIds) {
+        if (isset($removeIds)) {
+            foreach ($removeIds as $removeId) {
+                list($i, $j) = split('-', $removeId);
+                $list[$i][$j]->removed = true;
+            }
+        }
+        return $list;
+    } 
+    
     private function combineIngredient($list, $ingredient) {
         $id = $ingredient['ingredient_id'];
         $unitId = $ingredient['unit_id'];
@@ -152,6 +162,7 @@ class ShoppingList extends AppModel {
             $this->ListItem->quantity = $quantity;
             $this->ListItem->unitName = $unitName;
             $this->ListItem->locationId = $locationId;
+            $this->ListItem->removed = false;
             $list[$id] = array(clone $this->ListItem);
         }
         return $list;
