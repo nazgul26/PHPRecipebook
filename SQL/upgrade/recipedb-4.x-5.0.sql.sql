@@ -14,14 +14,8 @@ ALTER TABLE users ADD locked BOOL NOT NULL DEFAULT 0;
 ALTER TABLE users ADD reset_token VARCHAR(255) NULL;
 ALTER TABLE users ADD reset_time DATETIME NULL;
 
-RENAME TABLE security_providers TO providers;
-ALTER TABLE providers CHANGE provider_id id INT NOT NULL AUTO_INCREMENT;
-ALTER TABLE providers CHANGE provider_name name VARCHAR(64) NOT NULL UNIQUE;
-
-RENAME TABLE security_openid TO openids;
-ALTER TABLE openids CHANGE login_id user_id INT NOT NULL;
-ALTER TABLE openids CHANGE user_identity identity VARCHAR(255) NOT NULL;
-ALTER TABLE openids ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+DROP TABLE providers;
+DROP TABLE openids;
 
 RENAME TABLE recipe_settings TO settings;
 ALTER TABLE settings CHANGE setting_name name VARCHAR(32);
@@ -170,6 +164,23 @@ ALTER TABLE related_recipes CHANGE related_required required BOOL;
 ALTER TABLE related_recipes CHANGE related_order sort_order INT;
 
 DROP TABLE recipe_favorites;
+
+CREATE TABLE vendors (
+  	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(64) NOT NULL UNIQUE,
+        home_url VARCHAR(255) NULL,
+        add_url VARCHAR(255) NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE vendor_products (
+  	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(64) NOT NULL,
+        ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
+        vendor_id INT NOT NULL REFERENCES vendors(id) ON DELETE CASCADE,
+        code VARCHAR(32),
+	PRIMARY KEY (id)
+);
 
 RENAME TABLE recipe_meals TO meal_names;
 ALTER TABLE meal_names CHANGE meal_id id INT NOT NULL AUTO_INCREMENT;

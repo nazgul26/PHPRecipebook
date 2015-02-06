@@ -23,6 +23,11 @@
     float: left;
 }
 
+.disabled {
+    color : darkGray;
+    font-style: italic;
+}  
+
 #main {
     background-color: rgba(0, 0, 0, 0.18);
     border-left: 1px solid rgba(2, 2, 2, 0.28);

@@ -56,23 +56,23 @@ $baseUrl = Router::url('/');
     
 </script>
 <?php //echo $this->element('sql_dump'); ?>
+
+<h2><?php echo __('Shopping List'); ?></h2>
+<div class="actions">
+    <ul>
+        <li><?php echo $this->Html->link(__('List Stores'), array('controller' => 'stores', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
+        <li><?php echo $this->Html->link(__('List Online Vendors'), array('controller' => 'vendors', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
+    </ul>
+</div>
 <div class="shoppingList form">
 <?php echo $this->Form->create('ShoppingList'); ?>
-    <h2><?php echo __('Shopping List'); ?></h2>
-    <div class="actions">
-          <ul>
-              <li><a href="#" id="saveAs"><?php echo __('Save as...');?></li>
-              <li><?php echo $this->Html->link(__('Show Saved Lists'), array('action' => 'index')); ?></li>
-          </ul>    
-    </div>
-
     <fieldset class="addShoppingListItem">
         <input type="radio" name="searchType" id="recipeSearch" value="recipe" checked/><label for="recipeSearch">Recipes</label>
         <input type="radio" name="searchType" id="ingredientSearch" value="ingredient"/><label for="ingredientSearch">Ingredients</label>
         <span>Search</span>
         <input type="text" class="ui-widget" id="addRecipeAutocomplete"/>
         <input type="text" class="ui-widget" id="addIngredientAutocomplete"/>
-    </div>
+    </fieldset>
     
     <?php 
     $recipeCount = (isset($list) && isset($list['ShoppingListRecipe']) )? count($list['ShoppingListRecipe']) : 0; 

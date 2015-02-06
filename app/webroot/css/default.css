@@ -480,6 +480,12 @@ float60Section {
 }
 
 /* line 26, ../../sass/src/default.scss */
+.disabled {
+  color: darkGray;
+  font-style: italic;
+}
+
+/* line 31, ../../sass/src/default.scss */
 #main {
   background-color: rgba(0, 0, 0, 0.18);
   border-left: 1px solid rgba(2, 2, 2, 0.28);
@@ -490,7 +496,7 @@ float60Section {
   float: left;
 }
 
-/* line 35, ../../sass/src/default.scss */
+/* line 40, ../../sass/src/default.scss */
 nav ul {
   float: left;
   margin: 0;
@@ -499,12 +505,12 @@ nav ul {
   width: 100%;
 }
 
-/* line 42, ../../sass/src/default.scss */
+/* line 47, ../../sass/src/default.scss */
 nav ul, nav ol {
   list-style: none outside none;
 }
 
-/* line 46, ../../sass/src/default.scss */
+/* line 51, ../../sass/src/default.scss */
 nav li {
   float: left;
   font: 16px "klavika-web","Helvetica Neue",Helvetica,Arial,Geneva,sans-serif;
@@ -512,7 +518,7 @@ nav li {
   padding: 4px 4px 4px 4px;
 }
 
-/* line 53, ../../sass/src/default.scss */
+/* line 58, ../../sass/src/default.scss */
 nav a {
   color: #FFFFFF;
   text-decoration: none;
@@ -520,7 +526,7 @@ nav a {
   padding: 6px 10px;
 }
 
-/* line 60, ../../sass/src/default.scss */
+/* line 65, ../../sass/src/default.scss */
 nav li a:hover, nav li.current a {
   background: none repeat scroll 0 0 transparent;
   border-radius: 4px 4px 4px 4px;
@@ -529,7 +535,7 @@ nav li a:hover, nav li.current a {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.796), 0 0 10px rgba(255, 255, 255, 0.298);
 }
 
-/* line 67, ../../sass/src/default.scss */
+/* line 72, ../../sass/src/default.scss */
 nav li a {
   border: 1px solid transparent;
   color: #FFFFFF;
@@ -538,11 +544,11 @@ nav li a {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.76);
 }
 
-/* line 75, ../../sass/src/default.scss */
+/* line 80, ../../sass/src/default.scss */
 dl {
   margin-top: 1em;
 }
-/* line 78, ../../sass/src/default.scss */
+/* line 83, ../../sass/src/default.scss */
 dl dt {
   display: block;
   float: left;
@@ -551,14 +557,14 @@ dl dt {
   font-weight: bold;
   padding-top: 4px;
 }
-/* line 87, ../../sass/src/default.scss */
+/* line 92, ../../sass/src/default.scss */
 dl dd {
   display: block;
   float: left;
   padding-top: 4px;
 }
 
-/* line 95, ../../sass/src/default.scss */
+/* line 100, ../../sass/src/default.scss */
 .loadingImage {
   background-color: rgba(0, 0, 0, 0.18);
   border: 1px solid rgba(250, 250, 250, 0.27);
@@ -571,25 +577,25 @@ dl dd {
   margin: 10px;
 }
 
-/* line 106, ../../sass/src/default.scss */
+/* line 111, ../../sass/src/default.scss */
 .loadingImage > div {
   width: 100px;
   height: 50px;
   background: white;
 }
 
-/* line 111, ../../sass/src/default.scss */
+/* line 116, ../../sass/src/default.scss */
 .loadingImage img {
   padding: 10px 0 0;
 }
 
 /* Action Links */
-/* line 116, ../../sass/src/default.scss */
+/* line 121, ../../sass/src/default.scss */
 #moreActionLinks {
   width: 180px;
 }
 
-/* line 119, ../../sass/src/default.scss */
+/* line 124, ../../sass/src/default.scss */
 #moreActionLinksContent li {
   list-style-type: none;
   font-size: 1.4em;
@@ -598,14 +604,14 @@ dl dd {
 }
 
 /* Breadcrumbs */
-/* line 127, ../../sass/src/default.scss */
+/* line 132, ../../sass/src/default.scss */
 .breadcrumb > li + li:before {
   color: #ccc;
   content: "/ ";
   padding: 0 5px;
 }
 
-/* line 132, ../../sass/src/default.scss */
+/* line 137, ../../sass/src/default.scss */
 .breadcrumb {
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -613,11 +619,11 @@ dl dd {
   margin-bottom: 20px;
   padding: 8px 15px;
 }
-/* line 139, ../../sass/src/default.scss */
+/* line 144, ../../sass/src/default.scss */
 .breadcrumb li {
   display: inline-block;
 }
-/* line 142, ../../sass/src/default.scss */
+/* line 147, ../../sass/src/default.scss */
 .breadcrumb .active {
   color: #777;
 }

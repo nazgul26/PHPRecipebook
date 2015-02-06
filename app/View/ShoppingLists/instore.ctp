@@ -57,5 +57,5 @@
     endforeach?>
     </tbody>
 </table>
-<button class="btn-primary" shop-print>Print</button>
-<button class="btn-primary" shop-done>Complete</button>
+<button class="btn-primary" shop-print><?php echo __('Print');?></button>
+<button class="btn-primary" shop-done><?php echo __('Complete');?></button>

@@ -73,6 +73,10 @@ class ShoppingList extends AppModel {
         return $this->find('first', array_merge($options, $search));
     }
     
+    public function isOwnedBy($listId, $user) {
+        return $this->field('id', array('id' => $listId, 'user_id' => $user)) !== false;
+    }
+    
     /*
      * Get list of ingredients with details.  Loads the current shopping list of the logged
      *  in user.

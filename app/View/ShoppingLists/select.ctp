@@ -4,7 +4,6 @@
             rowClicked($(this));
         });
         $('[row-click]').click(function() {
-            console.log("clicked");
             $checkBox = $(this).find('input');
             rowClicked($checkBox);
         });

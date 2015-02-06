@@ -22,6 +22,22 @@ class ShoppingListsController extends AppController {
         $this->filterConditions = array('ShoppingList.user_id' => $this->Auth->user('id'));
     }
     
+    public function isAuthorized($user) {
+        // The owner of a list can edit and delete it. Check every operation
+        if (isset($this->request->params['pass'][0])) {
+            $listId = (int)$this->request->params['pass'][0];
+            if ($this->User->isEditor($user) || $this->ShoppingList->isOwnedBy($listId, $user['id'])) {
+                return true;
+            } else {
+                $this->Session->setFlash(__('Not List Owner'));
+                return false;
+            }
+        }
+
+        // Just in case the base controller has something to add
+        return parent::isAuthorized($user);
+    }
+    
     public function index($id = null) {
         if ($id != null && !$this->ShoppingList->exists($id)) {
                 throw new NotFoundException(__('Invalid shopping list'));
@@ -41,21 +57,7 @@ class ShoppingListsController extends AppController {
         $list = $this->request->data;
         $this->set(compact('list', 'units'));
     }
-
-    public function delete($id = null) {
-        $this->ShoppingList->id = $id;
-        if (!$this->ShoppingList->exists()) {
-                throw new NotFoundException(__('Invalid shopping list'));
-        }
-        $this->request->onlyAllow('post', 'delete');
-        if ($this->ShoppingList->delete()) {
-                $this->Session->setFlash(__('The shopping list has been deleted.'), 'success');
-        } else {
-                $this->Session->setFlash(__('The shopping list could not be deleted. Please, try again.'));
-        }
-        return $this->redirect(array('action' => 'index'));
-    }
-    
+ 
     public function deleteRecipe($listId, $recipeId) {
         $this->ShoppingList->ShoppingListRecipe->recursive = 0;
         $itemId = $this->ShoppingList->ShoppingListRecipe->getIdToDelete($listId, $recipeId, $this->Auth->user('id')); 
@@ -155,7 +157,7 @@ class ShoppingListsController extends AppController {
         $this->set('listId', $listId);
     }
     
-    public function instore($listId) {
+    public function instore($listId=null) {
         if ($listId == null) {
             throw new NotFoundException(__('Invalid list'));
         }
@@ -166,15 +168,31 @@ class ShoppingListsController extends AppController {
         }
     }
     
-    public function online($listId) {
+    public function online($listId=null) {
         if ($listId == null) {
             throw new NotFoundException(__('Invalid list'));
         }
+        
+        $this->loadModel('VendorProduct');
         
         if ($this->request->is(array('post', 'put'))) { 
             $removeIds = isset($this->request->data['remove']) ? $this->request->data['remove'] : NULL;
             $ingredients = $this->removeSelectedItems($listId, $removeIds);
         }
+        
+        $vendors = $this->VendorProduct->Vendor->find('list');
+        
+        // Load the First Vendor as the Selected one
+        if (isset($vendors)) {
+            reset($vendors);
+            $first_key = key($vendors);
+            $selectedVendor = $this->VendorProduct->Vendor->find('first', 
+                     array('conditions' => array('Vendor.id' => $first_key)));
+            $this->request->data = $selectedVendor;
+            $this->set('selectedVendor', $selectedVendor);
+        }
+              
+	$this->set('vendors', $vendors);
     }
     
     private function loadShoppingList($listId) {

@@ -16,21 +16,7 @@ CREATE TABLE users (
         modified DATETIME,
 	PRIMARY KEY (id)
 );
-	
-CREATE TABLE providers (
-	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(64) NOT NULL UNIQUE,
-	PRIMARY KEY (id)
-);
-	
-CREATE TABLE openids (
-        id INT NOT NULL AUTO_INCREMENT,
-	user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
-	provider_id INT NOT NULL REFERENCES providers(id) ON DELETE CASCADE ON UPDATE CASCADE,
-	identity VARCHAR(255) NOT NULL,
-        PRIMARY KEY (id)
-);
-
+		
 CREATE TABLE settings ( 
         id INT NOT NULL AUTO_INCREMENT,
         name VARCHAR(32),
@@ -187,6 +173,15 @@ CREATE TABLE ingredient_mappings (
 	PRIMARY KEY (ingredient_id,recipe_id)
 );
 
+CREATE TABLE related_recipes (
+        id INT NOT NULL AUTO_INCREMENT,
+	parent_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+	related_required BOOL,
+	sort_order INT,
+        PRIMARY KEY (parent_id, recipe_id)
+);
+
 CREATE TABLE shopping_lists (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(64) NOT NULL,
@@ -215,13 +210,21 @@ CREATE TABLE shopping_list_ingredients (
         PRIMARY KEY (id)
 );
 
-CREATE TABLE related_recipes (
-        id INT NOT NULL AUTO_INCREMENT,
-	parent_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
-	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
-	related_required BOOL,
-	sort_order INT,
-        PRIMARY KEY (parent_id, recipe_id)
+CREATE TABLE vendors (
+  	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(64) NOT NULL UNIQUE,
+        home_url VARCHAR(255) NULL,
+        add_url VARCHAR(255) NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE vendor_products (
+  	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(64) NOT NULL,
+        ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
+        vendor_id INT NOT NULL REFERENCES vendors(id) ON DELETE CASCADE,
+        code VARCHAR(32),
+	PRIMARY KEY (id)
 );
 	
 CREATE TABLE meal_names (
