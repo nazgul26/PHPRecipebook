@@ -10,7 +10,22 @@ class UsersController extends AppController {
         $this->Auth->allow('add', 'logout', 'reset', 'resetLink');
         
         // This pages index and view are little more restricted
-        $this->Auth->deny('index', 'view');
+        $this->Auth->deny('index', 'view', 'delete');
+    }
+    
+    public function isAuthorized($user) {
+        if (in_array($this->action, array('index', 'view', 'delete'))) {
+
+            if ($this->User->isAdmin($user)) {
+                return true;
+            } else {
+                $this->Session->setFlash(__('Not Admininstrator'));
+                return false;
+            }
+        }
+
+        // Just in case the base controller has something to add
+        return parent::isAuthorized($user);
     }
     
     public function login() {

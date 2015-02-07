@@ -68,15 +68,17 @@ class IngredientsController extends AppController {
         }
 
         if ($this->request->is(array('post', 'put'))) {
-                if ($this->Ingredient->save($this->request->data)) {
-                        $this->Session->setFlash(__('The ingredient has been saved.'), 'success', array('event' => 'savedIngredient'));
-                        return $this->redirect(array('action' => 'edit'));
-                } else {
-                        $this->Session->setFlash(__('The ingredient could not be saved. Please, try again.'));
-                }
+            //TODO: Keep the original author just in case editor/admin edits
+            $this->request->data['Ingredient']['user_id'] = $this->Auth->user('id');
+            if ($this->Ingredient->save($this->request->data)) {
+                    $this->Session->setFlash(__('The ingredient has been saved.'), 'success', array('event' => 'savedIngredient'));
+                    return $this->redirect(array('action' => 'edit'));
+            } else {
+                    $this->Session->setFlash(__('The ingredient could not be saved. Please, try again.'));
+            }
         } else if ($id != null) {
-                $options = array('conditions' => array('Ingredient.' . $this->Ingredient->primaryKey => $id));
-                $this->request->data = $this->Ingredient->find('first', $options);
+            $options = array('conditions' => array('Ingredient.' . $this->Ingredient->primaryKey => $id));
+            $this->request->data = $this->Ingredient->find('first', $options);
         }
         $coreIngredients = $this->Ingredient->CoreIngredient->find('list');
         $locations = $this->Ingredient->Location->find('list');
@@ -88,13 +90,13 @@ class IngredientsController extends AppController {
     public function delete($id = null) {
         $this->Ingredient->id = $id;
         if (!$this->Ingredient->exists()) {
-                throw new NotFoundException(__('Invalid ingredient'));
+            throw new NotFoundException(__('Invalid ingredient'));
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Ingredient->delete()) {
-                $this->Session->setFlash(__('The ingredient has been deleted.'), 'success');
+            $this->Session->setFlash(__('The ingredient has been deleted.'), 'success');
         } else {
-                $this->Session->setFlash(__('The ingredient could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('The ingredient could not be deleted. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index'));
     }

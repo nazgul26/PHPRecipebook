@@ -175,10 +175,10 @@ CREATE TABLE vendors (
 
 CREATE TABLE vendor_products (
   	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(64) NOT NULL,
         ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
         vendor_id INT NOT NULL REFERENCES vendors(id) ON DELETE CASCADE,
         code VARCHAR(32),
+        user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
 	PRIMARY KEY (id)
 );
 

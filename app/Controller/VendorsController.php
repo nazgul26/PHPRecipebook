@@ -9,8 +9,22 @@ App::uses('AppController', 'Controller');
 class VendorsController extends AppController {
 
     public $components = array('Paginator');
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->deny(); // Deny ALL, user must be logged in.
+    }
+    
+    public function isAuthorized($user) {
+        // Allow limited access to this controller
+        if (in_array($this->action, array('complete'))) {
+            return true;
+        }
 
-
+        // Just in case the base controller has something to add
+        return parent::isAuthorized($user);
+    }
+    
     public function index() {
             $this->Vendor->recursive = 0;
             $this->set('vendors', $this->Paginator->paginate());
@@ -72,25 +86,22 @@ class VendorsController extends AppController {
             throw new NotFoundException(__('Invalid vendor'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            echo "<pre>";
             foreach ($this->request->data['VendorProduct'] as $key=>$product) 
             {
-                //echo "Key: " . $key . " Code: " . $product['code'];
-                echo print_r($product);
                 if ($product['code'] == ""){
-                    //echo "removing: " . $product['code'];
                     unset($this->request->data['VendorProduct'][$key]);
+                } else {
+                    $this->request->data['VendorProduct'][$key]['user_id'] = $this->Auth->user('id');
                 }
                 
             }
             
-            //echo print_r($this->request->data);
-            echo "</pre>";
             if ($this->Vendor->VendorProduct->saveAll($this->request->data['VendorProduct'])) {
-                $this->Session->setFlash(__('The vendor data has been saved.'), 'success');
-                //return $this->redirect(array('controller'=> 'shoppinglists', 'action' => 'index'));
+                $this->Session->setFlash(__('The product data has been saved and list cleared.'), 'success');
+                //TODO Clear shopping list
+                return $this->redirect(array('controller'=> 'shoppingLists', 'action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The vendor could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The product data could not be saved. Please, try again.'));
             }
         }
     }  

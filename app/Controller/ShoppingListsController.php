@@ -29,7 +29,7 @@ class ShoppingListsController extends AppController {
             if ($this->User->isEditor($user) || $this->ShoppingList->isOwnedBy($listId, $user['id'])) {
                 return true;
             } else {
-                $this->Session->setFlash(__('Not List Owner'));
+                $this->Session->setFlash(__('Not List Owner or Editor'));
                 return false;
             }
         }
@@ -51,7 +51,23 @@ class ShoppingListsController extends AppController {
                 $this->Session->setFlash(__('The shopping list name could not be saved. Please, try again.'));
             }
         } else {
-            $this->request->data = $this->ShoppingList->getList($id, $this->Auth->user('id'));
+            $userId = $this->Auth->user('id');
+            $defaultList = $this->ShoppingList->getList($id, $this->Auth->user('id'));
+            if (!isset($defaultList['ShoppingList'])) {
+                $newData = array(
+                    'id' => NULL,
+                    'name' => __('DEFAULT'),
+                    'user_id' => $userId
+                );
+
+                if ($this->ShoppingList->save($newData)) {
+                    $this->Session->setFlash(__('Shopping list created.'), 'success');
+                } else {
+                    $this->Session->setFlash(__('Unable to create shopping list.'));
+                }
+                $defaultList = $this->ShoppingList->getList($id, $userId);
+            }
+            $this->request->data = $defaultList;
         }
         $units = $this->ShoppingList->ShoppingListIngredient->Ingredient->Unit->find('list');
         $list = $this->request->data;
@@ -85,47 +101,43 @@ class ShoppingListsController extends AppController {
         } else {
             throw new NotFoundException(__('Invalid ingredient item'));
         }
-        return $this->redirect(array('action' => 'index'));
+        return $this->redirect(array('action' => 'index', $listId));
     }
     
-    public function addRecipe($id=null) {
+    public function addRecipe($listId=null, $recipeId=null) {
         $this->loadModel('Recipe');
-        if ($id == null || !$this->Recipe->exists($id)) {
+        if ($listId == null || $recipeId == null || !$this->Recipe->exists($recipeId)) {
             throw new NotFoundException(__('Invalid recipe'));
         }
         $userId = $this->Auth->user('id');
-        $defaultListId = $this->ShoppingList->getDefaultListId($userId);
-        
+
         $newData = array(
             'id' => NULL,
-            'shopping_list_id' => $defaultListId,
-            'recipe_id' => $id,
+            'shopping_list_id' => $listId,
+            'recipe_id' => $recipeId,
             'scale' => 1,
             'user_id' => $userId
         );
 
         if ($this->ShoppingList->ShoppingListRecipe->save($newData)) {
             $this->Session->setFlash(__('Recipe added to list.'), 'success');
-            
         } else {
             $this->Session->setFlash(__('Unable to add recipe to list.'));
         }
         
-        return $this->redirect(array('action' => 'index'));
+        return $this->redirect(array('action' => 'index', $listId));
     }
     
-    public function addIngredient($id=null) {
+    public function addIngredient($listId=null, $ingredientId=null) {
         $this->loadModel('Ingredient');
-        if ($id == null || !$this->Ingredient->exists($id)) {
+        if ($ingredientId == null || $listId == null || !$this->Ingredient->exists($ingredientId)) {
             throw new NotFoundException(__('Invalid ingredient'));
         }
         $userId = $this->Auth->user('id');
-        $defaultListId = $this->ShoppingList->getDefaultListId($userId);
-        
         $newData = array(
             'id' => NULL,
-            'shopping_list_id' => $defaultListId,
-            'ingredient_id' => $id,
+            'shopping_list_id' => $listId,
+            'ingredient_id' => $ingredientId,
             'quantity' => 1,
             'unit_id' => 1,
             'user_id' => $userId
@@ -138,7 +150,7 @@ class ShoppingListsController extends AppController {
             $this->Session->setFlash(__('Unable to add ingredient to list.'));
         }
         
-        return $this->redirect(array('action' => 'index'));
+        return $this->redirect(array('action' => 'index', $listId));
     }
     
     public function select($listId=null) {
@@ -173,6 +185,7 @@ class ShoppingListsController extends AppController {
             throw new NotFoundException(__('Invalid list'));
         }
         
+        $this->loadModel('Vendor');
         $this->loadModel('VendorProduct');
         
         if ($this->request->is(array('post', 'put'))) { 
@@ -182,12 +195,22 @@ class ShoppingListsController extends AppController {
         
         $vendors = $this->VendorProduct->Vendor->find('list');
         
-        // Load the First Vendor as the Selected one
+        // Load the First Vendor as the Selected one and filter to User setup mappings
         if (isset($vendors)) {
             reset($vendors);
             $first_key = key($vendors);
-            $selectedVendor = $this->VendorProduct->Vendor->find('first', 
-                     array('conditions' => array('Vendor.id' => $first_key)));
+            $this->Vendor->Behaviors->load('Containable');
+            
+            $selectedVendor = $this->Vendor->find('first', 
+                array('conditions' => array('Vendor.id' => $first_key),
+                      'contain' => array(
+                            'VendorProduct' => array(
+                                'conditions' => array('VendorProduct.user_id =' => $this->Auth->user('id'))
+                            )
+                        )
+                    )
+                );
+ 
             $this->request->data = $selectedVendor;
             $this->set('selectedVendor', $selectedVendor);
         }

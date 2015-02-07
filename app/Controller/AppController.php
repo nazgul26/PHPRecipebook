@@ -71,7 +71,9 @@ class AppController extends Controller {
             'PriceRanges',
             'Settings',
             'Stores',
-            'Units'))) {
+            'Units',
+            'Vendors',
+            'VendorProducts'))) {
             
             if ($this->User->isAdmin($user)) { 
                 return true;

@@ -1,11 +1,12 @@
 <?php 
 $baseUrl = Router::url('/');
+$shoppingListId = isset($list['ShoppingList']['id']) ? $list['ShoppingList']['id'] : "";
 ?>
 <script type="text/javascript">
     $(function() {
   
         $('[go-shopping]').click(function() {
-            ajaxNavigate('<?php echo $baseUrl;?>ShoppingLists/select/<?php echo $list['ShoppingList']['id'];?>');
+            ajaxNavigate('<?php echo $baseUrl;?>ShoppingLists/select/<?php echo $shoppingListId;?>');
         });
         
         $('#addRecipeAutocomplete').autocomplete({
@@ -13,7 +14,7 @@ $baseUrl = Router::url('/');
             minLength: 1,
             html: true,
             select: function(event, ui) {
-                ajaxGet("<?php echo Router::url('/'); ?>ShoppingLists/addRecipe/" + ui.item.id);
+                ajaxGet("<?php echo Router::url('/'); ?>ShoppingLists/addRecipe/<?php echo $shoppingListId;?>/" + ui.item.id);
             }
         });
         
@@ -22,7 +23,7 @@ $baseUrl = Router::url('/');
             minLength: 1,
             html: true,
             select: function(event, ui) {
-                ajaxGet("<?php echo Router::url('/'); ?>ShoppingLists/addIngredient/" + ui.item.id);
+                ajaxGet("<?php echo Router::url('/'); ?>ShoppingLists/addIngredient/<?php echo $shoppingListId;?>/" + ui.item.id);
             }
         });
         
