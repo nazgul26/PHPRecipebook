@@ -15,13 +15,13 @@
     }
 </script>
 <div class="recipes view">
-    <h2><?php echo __('Recipe'); ?></h2>
+    <h2><?php echo h($recipe['Recipe']['name']); ?></h2>
         <div class="actions">
             <ul>
                 <li><?php echo $this->Html->link(__('Edit Recipe'), array('action' => 'edit', $recipe['Recipe']['id'])); ?></li>
                 <li><?php echo $this->Html->link(__('Add to shopping list'), array('controller' => 'shoppingLists', 'action' => 'addRecipe',
                     $recipe['Recipe']['id'])); ?></li>
-                <li><a href="#" onclick="alert('not done yet.');"><?php echo __('Print');?></a></li>
+                <li><a href="#" onclick="window.print();"><?php echo __('Print');?></a></li>
                 <li><a href="#" onclick="alert('not done yet.');"><?php echo __('eMail');?></a></li>
                 <!-- Ratings - Put it on the page somewhere instead of a link -->
                 <li><button id="moreActionLinks">More Actions...</button></li>
@@ -34,11 +34,6 @@
             </div> 
         </div>
 	<dl class="float50Section">
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-			<?php echo h($recipe['Recipe']['name']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Ethnicity'); ?></dt>
 		<dd>
                         <?php echo h($recipe['Ethnicity']['name']); ?>

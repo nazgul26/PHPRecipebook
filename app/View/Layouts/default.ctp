@@ -16,6 +16,7 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                 echo $this->Html->css("jquery.qtip");
                 echo $this->Html->css('cake.generic');
                 echo $this->Html->css('default');
+                echo $this->Html->css('print');
                 
                 echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js");
                 echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js");

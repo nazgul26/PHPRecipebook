@@ -3,6 +3,9 @@
         $('[list-item]').click(function() {
             rowClicked($(this));
         });
+        $('[shop-print]').click(function() {
+            window.print();
+        });
     });
 </script>
 <ol class="breadcrumb">
@@ -11,13 +14,14 @@
     <li class="active"><?php echo __('In Store');?></li>
 </ol>
 
-<label>Select Store</label>
-<select>
-    <option>Store A</option>
-</select>
+<div id="selectStore">
+    <label>Select Store</label>
+    <select>
+        <option>Store A</option>
+    </select>
+</div>
 
-
-<table>
+<table id="instoreShoppingList">
     <tr class="headerRow">
         <th><?php echo __('Select');?></th>
         <th><?php echo __('Quantity');?></th>
