@@ -1,10 +1,11 @@
 <script type="text/javascript">
     $(function() {
         $('[list-item]').click(function() {
-            rowClicked($(this));
+            //rowClicked($(this));
         });
         $('[shop-print]').click(function() {
             window.print();
+            return false;
         });
     });
 </script>
@@ -13,14 +14,16 @@
     <li><?php echo $this->Html->link(__('Select Items'), array('action' => 'select', $listId), array('class' => 'ajaxNavigation')); ?> </li>
     <li class="active"><?php echo __('In Store');?></li>
 </ol>
-
+<?php echo $this->Form->create('ShoppingList');?>
 <div id="selectStore">
-    <label>Select Store</label>
-    <select>
-        <option>Store A</option>
-    </select>
+    <?php echo $this->Form->input('store_id',array('label'=>'Select Store', 'escape' => false)); ?>
 </div>
 
+<?php if (isset($removeIds)) :
+    foreach ($removeIds as $id) : ?>
+    <input type="hidden" name="remove[]" value="<?php echo $id;?>" />
+<?php endforeach; endif;?>
+    
 <table id="instoreShoppingList">
     <tr class="headerRow">
         <th><?php echo __('Select');?></th>
@@ -51,7 +54,7 @@
     <?php endif;?>
         
     <tr row-click>
-        <td><input type="checkbox" name="remove[]" value="<?php echo $i . "-" . $j;?>" list-item/></td>
+        <td><input type="checkbox" list-item/></td>
         <td><?php echo $this->Fraction->toFraction($item->quantity);?></td>
         <td><?php echo $item->unitName;?></td>
         <td><b><?php echo $item->name;?></b></td>
@@ -63,3 +66,4 @@
 </table>
 <button class="btn-primary" shop-print><?php echo __('Print');?></button>
 <button class="btn-primary" shop-done><?php echo __('Complete');?></button>
+</form>

@@ -26,10 +26,11 @@ ALTER TABLE settings ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
 ALTER TABLE settings ADD UNIQUE (name, user_id);
 
 RENAME TABLE recipe_stores TO stores;
-ALTER TABLE stores CHANGE store_id id INT NOT NULL;
+ALTER TABLE stores CHANGE store_id id INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE stores CHANGE store_name name VARCHAR(32) NOT NULL DEFAULT '';
 ALTER TABLE stores CHANGE store_layout layout TEXT;
 ALTER TABLE stores CHANGE store_user user_id VARCHAR(32) NULL;
+ALTER TABLE stores DROP user_id;
 
 RENAME TABLE recipe_ethnicity TO ethnicities;
 ALTER TABLE ethnicities CHANGE ethnic_id id INT NOT NULL AUTO_INCREMENT;

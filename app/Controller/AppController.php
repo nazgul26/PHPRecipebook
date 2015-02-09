@@ -58,6 +58,7 @@ class AppController extends Controller {
     
     public function isAuthorized($user) {
         $this->loadModel('User');
+        
         // Check Auth for Admin only Pages.
         if (in_array($this->params['controller'], array(
             'BaseTypes', 

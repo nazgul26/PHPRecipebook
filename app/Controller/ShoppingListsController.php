@@ -175,8 +175,38 @@ class ShoppingListsController extends AppController {
         }
         
         if ($this->request->is(array('post', 'put'))) { 
-            $removeIds = isset($this->request->data['remove']) ? $this->request->data['remove'] : NULL;
+            $this->loadModel('Store');
+
+            if (isset($this->request->data['remove'])) {
+                $removeIds = $this->request->data['remove'];
+                $this->set('removeIds', $removeIds);
+            }
+            
+            
+            $stores = $this->Store->find('list');
+            $selectedStoreId = null;
+            if (isset($this->request->data['ShoppingList']['store_id']))
+            {
+                $selectedStoreId = $this->request->data['ShoppingList']['store_id'];
+            } else if (isset($stores) && count($stores) > 0) {
+                reset($stores);
+                $selectedStoreId = key($stores);
+            }
+            
+            // Load and remove extra items
             $ingredients = $this->removeSelectedItems($listId, $removeIds);
+
+            // Sort by the currently selected store
+            $store = $this->Store->findById($selectedStoreId);
+            $locationIds = split(",", $store['Store']['layout']);
+            $ingredients = $this->Location->orderShoppingListByStore($ingredients, $locationIds);
+            
+            $this->set('list', $ingredients);
+            $this->set('listId', $listId);
+            $this->set('stores', $stores);
+        } else {
+            // Missing post data, really can't continue, send them back.
+            return $this->redirect(array('action' => 'index', $listId));
         }
     }
     
@@ -191,11 +221,13 @@ class ShoppingListsController extends AppController {
         if ($this->request->is(array('post', 'put'))) { 
             $removeIds = isset($this->request->data['remove']) ? $this->request->data['remove'] : NULL;
             $ingredients = $this->removeSelectedItems($listId, $removeIds);
+            $this->set('list', $ingredients);
+            $this->set('listId', $listId);
         }
         
         $vendors = $this->VendorProduct->Vendor->find('list');
         
-        // Load the First Vendor as the Selected one and filter to User setup mappings
+        // Load the first Vendor as the Selected one and filter to User setup mappings
         if (isset($vendors)) {
             reset($vendors);
             $first_key = key($vendors);
@@ -230,9 +262,9 @@ class ShoppingListsController extends AppController {
     
     private function removeSelectedItems($listId, $removeIds) {
         $ingredients = $this->loadShoppingList($listId);
-        $ingredients = $this->ShoppingList->markIngredientsRemoved($ingredients, $removeIds);
-        $this->set('list', $ingredients);
-        $this->set('listId', $listId);
+        if (isset($removeIds)) {
+            $ingredients = $this->ShoppingList->markIngredientsRemoved($ingredients, $removeIds);
+        }
         return $ingredients;
     }
  }

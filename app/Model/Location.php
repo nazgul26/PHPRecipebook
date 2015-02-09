@@ -6,12 +6,9 @@ App::uses('AppModel', 'Model');
  */
 class Location extends AppModel {
 
-    /**
-     * Display field
-     *
-     * @var string
-     */
     public $displayField = 'name';
+    
+
     
     public function orderShoppingListByLocation($list) {
         $sortedList = array();
@@ -27,4 +24,17 @@ class Location extends AppModel {
         return $sortedList;
     }
 
+    public function orderShoppingListByStore($list, $locationIds) {
+        $sortedList = array();
+        foreach ($locationIds as $id) {
+            $location = $this->findById($id);
+            foreach ($list as $item) {
+                if ($item[0]->locationId == $location['Location']['id']) {
+                    $item[0]->locationName = $location['Location']['name'];
+                    $sortedList[] = $item;
+                }
+            }
+        }
+        return $sortedList;
+    }
 }

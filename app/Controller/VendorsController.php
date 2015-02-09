@@ -38,43 +38,31 @@ class VendorsController extends AppController {
             $this->set('vendor', $this->Vendor->find('first', $options));
     }
 
-    public function add() {
-            if ($this->request->is('post')) {
-                    $this->Vendor->create();
-                    if ($this->Vendor->save($this->request->data)) {
-                            $this->Session->setFlash(__('The vendor has been saved.'));
-                            return $this->redirect(array('action' => 'index'));
-                    } else {
-                            $this->Session->setFlash(__('The vendor could not be saved. Please, try again.'));
-                    }
-            }
-    }
-
     public function edit($id = null) {
-        if (!$this->Vendor->exists($id)) {
-                throw new NotFoundException(__('Invalid vendor'));
+        if ($id != null && !$this->Vendor->exists($id)) {
+            throw new NotFoundException(__('Invalid vendor'));
         }
         if ($this->request->is(array('post', 'put'))) {
-                if ($this->Vendor->save($this->request->data)) {
-                        $this->Session->setFlash(__('The vendor has been saved.'));
-                        return $this->redirect(array('action' => 'index'));
-                } else {
-                        $this->Session->setFlash(__('The vendor could not be saved. Please, try again.'));
-                }
-        } else {
-                $options = array('conditions' => array('Vendor.' . $this->Vendor->primaryKey => $id));
-                $this->request->data = $this->Vendor->find('first', $options);
+            if ($this->Vendor->save($this->request->data)) {
+                    $this->Session->setFlash(__('The vendor has been saved.'), 'success');
+                    return $this->redirect(array('action' => 'index'));
+            } else {
+                    $this->Session->setFlash(__('The vendor could not be saved. Please, try again.'));
+            }
+        } else if ($id != null) {
+            $options = array('conditions' => array('Vendor.' . $this->Vendor->primaryKey => $id));
+            $this->request->data = $this->Vendor->find('first', $options);
         }
     }
 
     public function delete($id = null) {
         $this->Vendor->id = $id;
         if (!$this->Vendor->exists()) {
-                throw new NotFoundException(__('Invalid vendor'));
+            throw new NotFoundException(__('Invalid vendor'));
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Vendor->delete()) {
-                $this->Session->setFlash(__('The vendor has been deleted.'));
+                $this->Session->setFlash(__('The vendor has been deleted.'), 'success');
         } else {
                 $this->Session->setFlash(__('The vendor could not be deleted. Please, try again.'));
         }

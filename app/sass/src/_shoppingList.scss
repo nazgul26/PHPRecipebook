@@ -27,6 +27,18 @@
     }
 }
 
+#selectStore {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    margin-bottom: 1em;
+    padding: 8px 0 4px 8px;
+    width: 50%;
+    label {
+        margin-top: 5px;
+        width: 8em;
+    }
+}
+
 .strikeThrough {
     text-decoration: line-through;
 }
