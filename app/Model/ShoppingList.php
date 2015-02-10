@@ -146,6 +146,14 @@ class ShoppingList extends AppModel {
         return $list;
     } 
     
+    /*
+     * Clears all ingredients and recipes from the given shopping list.
+     */
+    public function clearList($userId) {
+        $this->ShoppingListIngredient->deleteAll(array('ShoppingListIngredient.user_id' => $userId), false);
+        $this->ShoppingListRecipe->deleteAll(array('ShoppingListRecipe.user_id' => $userId), false);
+    }
+    
     private function combineIngredient($list, $ingredient) {
         $id = $ingredient['ingredient_id'];
         $unitId = $ingredient['unit_id'];

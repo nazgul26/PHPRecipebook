@@ -39,8 +39,12 @@ function ajaxGet(location, target) {
         initAjax(target);
         initNavigationHRef(target);
     }).fail(function(xhr, status, error) {
-        //var err = eval("(" + xhr.responseText + ")");
-        $("#" + target ).html(xhr.responseText);
+        if (xhr.status == 403) {
+            // need to login
+            ajaxGet(baseUrl + "users/login", target);
+        } else {
+            $("#" + target ).html(xhr.responseText);
+        }
     });
 }
 
@@ -58,8 +62,12 @@ function ajaxPostForm($formItem) {
         type:"POST", 
         url: $formItem.attr('action')
     }).fail(function(xhr, status, error) {
-        //var err = eval("(" + xhr.responseText + ")");
-        $("#" + targetId).html(xhr.responseText);
+        if (xhr.status == 403) {
+            // need to login
+            ajaxGet(baseUrl + "users/login", target);
+        } else {
+            $("#" + target ).html(xhr.responseText);
+        }
     });;
 }
 
@@ -178,19 +186,16 @@ function setupSearchBox() {
         return false;
     });
     
-    $('.cancelBtn').click(function()
-    {
+    $('.cancelBtn').click(function() {
         $(".cancelBtn").stop();
         $(".cancelBtn").fadeTo(500 , 0 );
         $('.searchTextBox').val('');
     });
 
-    $('.searchTextBox').change(function()
-    {
+    $('.searchTextBox').change(function() {
         showCancel();
     });
-    $('.searchTextBox').keydown(function(e)
-    {
+    $('.searchTextBox').keydown(function(e) {
         if(e.which == 13) {
             ajaxGet(window.applicationContext + '/search?term=' + $(this).val());
             return false;

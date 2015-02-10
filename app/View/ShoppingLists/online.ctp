@@ -42,9 +42,9 @@ if (isset($selectedVendor['Vendor'])) {
     <li><?php echo $this->Html->link(__('Select Items'), array('action' => 'select', $listId), array('class' => 'ajaxNavigation')); ?> </li>
     <li class="active"><?php echo __('Online');?></li>
 </ol>
-<?php echo $this->Form->input('vendor_id',array('label'=>'Select Vendor')); ?>
 <br/><br/>
 <?php echo $this->Form->create('Vendor', array('action' => 'complete'));?>
+<?php echo $this->Form->input('vendor_id',array('label'=>'Select Vendor')); ?>
 <table>
     <tr class="headerRow">
         <th><?php echo __('Select');?></th>

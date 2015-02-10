@@ -33,12 +33,14 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
 </head>
 <body>
     <script type="text/javascript">
-    $(function() {
-        initApplication("<?php echo $baseUrl;?>");
-    });
-
-    var applicationContext = "recipe"; // Default context
+        $(function() {
+            initApplication("<?php echo $baseUrl;?>");
+        });
+        
+        // Global Variables
+        var applicationContext = "recipe"; // Default context
     </script>
+    
     <div id="container">
         <div id="header">
 

@@ -73,7 +73,10 @@ class VendorsController extends AppController {
         if (!$this->Vendor->exists($id)) {
             throw new NotFoundException(__('Invalid vendor'));
         }
+        
         if ($this->request->is(array('post', 'put'))) {
+            $this->loadModel('ShoppingList');
+            $userId = $this->Auth->user('id');
             foreach ($this->request->data['VendorProduct'] as $key=>$product) 
             {
                 if ($product['code'] == ""){
@@ -81,12 +84,11 @@ class VendorsController extends AppController {
                 } else {
                     $this->request->data['VendorProduct'][$key]['user_id'] = $this->Auth->user('id');
                 }
-                
             }
             
             if ($this->Vendor->VendorProduct->saveAll($this->request->data['VendorProduct'])) {
-                $this->Session->setFlash(__('The product data has been saved and list cleared.'), 'success');
-                //TODO Clear shopping list
+                $this->Session->setFlash(__('Shopping done! List cleared.'), 'success');
+                $this->ShoppingList->clearList($userId);
                 return $this->redirect(array('controller'=> 'shoppingLists', 'action' => 'index'));
             } else {
                 $this->Session->setFlash(__('The product data could not be saved. Please, try again.'));

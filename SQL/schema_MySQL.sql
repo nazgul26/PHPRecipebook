@@ -123,28 +123,28 @@ CREATE TABLE sources (
 );
 
 CREATE TABLE recipes (
-	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(128) NOT NULL,
-	ethnicity_id INT REFERENCES ethnicities(id) ON DELETE SET NULL,
-	base_type_id INT REFERENCES base_types(id) ON DELETE SET NULL,
-	course_id INT REFERENCES courses(id) ON DELETE SET NULL,
-	preparation_time_id INT REFERENCES preparation_times(id) ON DELETE SET NULL,
-	difficulty_id INT REFERENCES difficulties(id) ON DELETE SET NULL,
-        preparation_method_id INT REFERENCES preparation_methods(id) on DELETE SET NULL,
-	serving_size INT,
-	directions LONGTEXT,
-	comments MEDIUMTEXT,
-	source_id INT REFERENCES sources(id) ON DELETE SET NULL,
-	source_description VARCHAR(200),
-	modified DATE,
-        image VARCHAR(255),
-        image_dir VARCHAR(255),
-        -- Need Migration script to move them to image
-	--picture MEDIUMBLOB,
-	--picture_type VARCHAR(32),
-	private BOOL NOT NULL,
-	system VARCHAR(16) DEFAULT 'usa' NOT NULL,
-	user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(128) NOT NULL,
+    ethnicity_id INT REFERENCES ethnicities(id) ON DELETE SET NULL,
+    base_type_id INT REFERENCES base_types(id) ON DELETE SET NULL,
+    course_id INT REFERENCES courses(id) ON DELETE SET NULL,
+    preparation_time_id INT REFERENCES preparation_times(id) ON DELETE SET NULL,
+    difficulty_id INT REFERENCES difficulties(id) ON DELETE SET NULL,
+    preparation_method_id INT REFERENCES preparation_methods(id) on DELETE SET NULL,
+    serving_size INT,
+    directions LONGTEXT,
+    comments MEDIUMTEXT,
+    source_id INT REFERENCES sources(id) ON DELETE SET NULL,
+    source_description VARCHAR(200),
+    modified DATE,
+    image VARCHAR(255),
+    image_dir VARCHAR(255),
+    -- Need Migration script to move them to image
+    --picture MEDIUMBLOB,
+    --picture_type VARCHAR(32),
+    private BOOL NOT NULL,
+    system VARCHAR(16) DEFAULT 'usa' NOT NULL,
+    user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
 	PRIMARY KEY (id)
 );
 
@@ -161,97 +161,97 @@ CREATE table attachments (
 );
 
 CREATE TABLE ingredient_mappings (
-        id INT NOT NULL AUTO_INCREMENT,
-	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
-	ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
-	quantity FLOAT NOT NULL,
-	unit_id INT REFERENCES units(id) ON DELETE SET NULL,
-	qualifier VARCHAR(32),
-	optional BOOL,
-	sort_order INT,
-	PRIMARY KEY (ingredient_id,recipe_id)
+    id INT NOT NULL AUTO_INCREMENT,
+    recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+    ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
+    quantity FLOAT NOT NULL,
+    unit_id INT REFERENCES units(id) ON DELETE SET NULL,
+    qualifier VARCHAR(32),
+    optional BOOL,
+    sort_order INT,
+    PRIMARY KEY (ingredient_id,recipe_id)
 );
 
 CREATE TABLE related_recipes (
-        id INT NOT NULL AUTO_INCREMENT,
-	parent_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
-	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
-	related_required BOOL,
-	sort_order INT,
-        PRIMARY KEY (parent_id, recipe_id)
+    id INT NOT NULL AUTO_INCREMENT,
+    parent_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+    recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+    related_required BOOL,
+    sort_order INT,
+    PRIMARY KEY (parent_id, recipe_id)
 );
 
 CREATE TABLE shopping_lists (
-	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(64) NOT NULL,
-	user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
-	PRIMARY KEY (id)
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(64) NOT NULL,
+    user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE shopping_list_recipes (
-        id INT NOT NULL AUTO_INCREMENT,
-	shopping_list_id INT NOT NULL REFERENCES shopping_lists(id) ON DELETE CASCADE,
-	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
-        user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
-	scale FLOAT DEFAULT 1.0,
-        PRIMARY KEY (id)
+    id INT NOT NULL AUTO_INCREMENT,
+    shopping_list_id INT NOT NULL REFERENCES shopping_lists(id) ON DELETE CASCADE,
+    recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+    user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
+    scale FLOAT DEFAULT 1.0,
+    PRIMARY KEY (id)
 );
 	
 CREATE TABLE shopping_list_ingredients (
-        id INT NOT NULL AUTO_INCREMENT,
-	shopping_list_id INT NOT NULL REFERENCES shopping_lists(id) ON DELETE CASCADE,
-	ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
-	unit_id INT NOT NULL REFERENCES units(id) ON DELETE SET NULL,
-	qualifier VARCHAR(32),
-	quantity FLOAT NOT NULL,
-        user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
-	sort_order INT,
-        PRIMARY KEY (id)
+    id INT NOT NULL AUTO_INCREMENT,
+    shopping_list_id INT NOT NULL REFERENCES shopping_lists(id) ON DELETE CASCADE,
+    ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
+    unit_id INT NOT NULL REFERENCES units(id) ON DELETE SET NULL,
+    qualifier VARCHAR(32),
+    quantity FLOAT NOT NULL,
+    user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
+    sort_order INT,
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE vendors (
-  	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(64) NOT NULL UNIQUE,
-        home_url VARCHAR(255) NULL,
-        add_url VARCHAR(255) NULL,
-	PRIMARY KEY (id)
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(64) NOT NULL UNIQUE,
+    home_url VARCHAR(255) NULL,
+    add_url VARCHAR(255) NULL,
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE vendor_products (
-  	id INT NOT NULL AUTO_INCREMENT,
-        ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
-        vendor_id INT NOT NULL REFERENCES vendors(id) ON DELETE CASCADE,
-        code VARCHAR(32),
-        user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
-	PRIMARY KEY (id)
+    id INT NOT NULL AUTO_INCREMENT,
+    ingredient_id INT NOT NULL REFERENCES ingredients(id) ON DELETE CASCADE,
+    vendor_id INT NOT NULL REFERENCES vendors(id) ON DELETE CASCADE,
+    code VARCHAR(32),
+    user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
+    PRIMARY KEY (id)
 );
 	
 CREATE TABLE meal_names (
-  	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(64) NOT NULL UNIQUE,
-	PRIMARY KEY (id)
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(64) NOT NULL UNIQUE,
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE meal_plans (
-        id INT NOT NULL AUTO_INCREMENT,
-	mealday DATE NOT NULL,
-	meal_name_id INT NOT NULL REFERENCES meal_names(id) ON DELETE CASCADE,
-	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
-	servings INT NOT NULL DEFAULT 0,
-	user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
-        PRIMARY KEY (id),
-	UNIQUE KEY (mealday,meal_name_id,recipe_id,user_id)
+    id INT NOT NULL AUTO_INCREMENT,
+    mealday DATE NOT NULL,
+    meal_name_id INT NOT NULL REFERENCES meal_names(id) ON DELETE CASCADE,
+    recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+    servings INT NOT NULL DEFAULT 0,
+    user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
+    PRIMARY KEY (id),
+    UNIQUE KEY (mealday,meal_name_id,recipe_id,user_id)
 );
 
 CREATE TABLE reviews (
-        id INT NOT NULL AUTO_INCREMENT,
-	recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
-	comments VARCHAR(255) NOT NULL,
-	created DATETIME,
-        rating INT,
-	user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
-        PRIMARY KEY (id),
-	UNIQUE KEY (recipe_id,comments,user_id)
+    id INT NOT NULL AUTO_INCREMENT,
+    recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+    comments VARCHAR(255) NOT NULL,
+    created DATETIME,
+    rating INT,
+    user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
+    PRIMARY KEY (id),
+    UNIQUE KEY (recipe_id,comments,user_id)
 );
 
 -- TODO: copy this table into the Reviews
@@ -264,35 +264,35 @@ CREATE TABLE reviews (
 	UNIQUE KEY (rating_recipe, rating_ip));*/
 	
 CREATE TABLE price_ranges (
-	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(16),
-	PRIMARY KEY (id),
-        UNIQUE KEY (name)
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(16),
+    PRIMARY KEY (id),
+    UNIQUE KEY (name)
 );
 	
 CREATE TABLE restaurants (
-	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(64) NOT NULL,
-	street VARCHAR(128),
-	city VARCHAR(64),
-	state VARCHAR(2),
-	zip VARCHAR(16),
-	country VARCHAR(64),
-	phone VARCHAR(128),
-	hours TEXT,
-	picture MEDIUMBLOB,
-	picture_type VARCHAR(64),
-	menu_text TEXT,
-	comments TEXT,
-	price_range_id INT REFERENCES prices(id) ON DELETE SET NULL,
-	delivery BOOL,
-	carry_out BOOL,
-	dine_in BOOL,
-	credit BOOL,
-	website VARCHAR(254),
-	user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
-	PRIMARY KEY (id),
-        UNIQUE KEY (name)
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(64) NOT NULL,
+    street VARCHAR(128),
+    city VARCHAR(64),
+    state VARCHAR(2),
+    zip VARCHAR(16),
+    country VARCHAR(64),
+    phone VARCHAR(128),
+    hours TEXT,
+    picture MEDIUMBLOB,
+    picture_type VARCHAR(64),
+    menu_text TEXT,
+    comments TEXT,
+    price_range_id INT REFERENCES prices(id) ON DELETE SET NULL,
+    delivery BOOL,
+    carry_out BOOL,
+    dine_in BOOL,
+    credit BOOL,
+    website VARCHAR(254),
+    user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
+    PRIMARY KEY (id),
+    UNIQUE KEY (name)
 );
 	
 INSERT INTO settings (name, value, user_id) values ('MealPlanStartDay', '0', 1);

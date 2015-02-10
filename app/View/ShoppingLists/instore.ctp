@@ -1,20 +1,27 @@
 <script type="text/javascript">
     $(function() {
-        $('[list-item]').click(function() {
-            //rowClicked($(this));
-        });
         $('[shop-print]').click(function() {
             window.print();
             return false;
         });
+        $('[shop-done]').click(function() {
+            $('#done').val("1");
+            $('#ShoppingListInstoreForm').submit();
+        });
+        
+        $('#ShoppingListStoreId').change(function() {
+            $('#ShoppingListInstoreForm').submit();
+        });
     });
 </script>
+<?php //echo $this->element('sql_dump'); ?>
 <ol class="breadcrumb">
     <li><?php echo $this->Html->link(__('Shopping List'), array('action' => 'index', $listId), array('class' => 'ajaxNavigation')); ?> </li>
     <li><?php echo $this->Html->link(__('Select Items'), array('action' => 'select', $listId), array('class' => 'ajaxNavigation')); ?> </li>
     <li class="active"><?php echo __('In Store');?></li>
 </ol>
 <?php echo $this->Form->create('ShoppingList');?>
+<input type="hidden" name="done" id="done" value="0" />
 <div id="selectStore">
     <?php echo $this->Form->input('store_id',array('label'=>'Select Store', 'escape' => false)); ?>
 </div>

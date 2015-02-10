@@ -164,7 +164,6 @@ class ShoppingListsController extends AppController {
         //  * Scale by!
         //  * Related recipes!
         //  * Optionals - option to include optinals (maybe include but show as options). help about what recipe it when with.
-        //  * Sort Into Store sections (not important for online)
         $this->set('list', $ingredients); 
         $this->set('listId', $listId);
     }
@@ -177,16 +176,24 @@ class ShoppingListsController extends AppController {
         if ($this->request->is(array('post', 'put'))) { 
             $this->loadModel('Store');
 
+            // Check if we are done and if so clear list and redirect.
+            if (isset($this->request->data['done']) && $this->request->data['done'] == "1") {
+                $this->ShoppingList->clearList($this->Auth->user('id'));
+                $this->Session->setFlash(__('Shopping done! List cleared.'), 'success');
+                return $this->redirect(array('action' => 'index', $listId));
+                return;
+            }
+            
+            // Remove items picked during select step
             if (isset($this->request->data['remove'])) {
                 $removeIds = $this->request->data['remove'];
                 $this->set('removeIds', $removeIds);
             }
             
-            
+            // Figure out what store layout to use
             $stores = $this->Store->find('list');
             $selectedStoreId = null;
-            if (isset($this->request->data['ShoppingList']['store_id']))
-            {
+            if (isset($this->request->data['ShoppingList']['store_id'])) {
                 $selectedStoreId = $this->request->data['ShoppingList']['store_id'];
             } else if (isset($stores) && count($stores) > 0) {
                 reset($stores);
