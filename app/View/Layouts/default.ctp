@@ -51,15 +51,26 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
         <div id="main" class="constrain borderStyle">
             <nav id="navigation-menu">
                 <ul>
-                    <li><a href="<?php echo $baseUrl;?>Recipes" class="ajaxNavigation"><?php echo __('Recipes'); ?></a></li>
+                    <li><a href="<?php echo $baseUrl;?>Recipes" class="ajaxNavigation" 
+                           title="<?php echo __('Browse your recipes');?>"><?php echo __('Recipes'); ?></a></li>
+                           
                     <?php if ($loggedIn) : ?>
-                    <li><a href="<?php echo $baseUrl;?>MealPlans" class="ajaxNavigation"><?php echo __('Meal Planner'); ?></a></li>
-                    <li><a href="<?php echo $baseUrl;?>ShoppingLists" class="ajaxNavigation"><?php echo __('Shopping List');?></a></li>
-                    <li><a href="<?php echo $baseUrl;?>Ingredients" class="ajaxNavigation"><?php echo __('Ingredients'); ?></a></li>
+                    <li><a href="<?php echo $baseUrl;?>MealPlans" class="ajaxNavigation" 
+                           title="<?php echo __('Manage your meal plans');?>"><?php echo __('Meal Planner'); ?></a></li>
+                           
+                    <li><a href="<?php echo $baseUrl;?>ShoppingLists" class="ajaxNavigation" 
+                           title="<?php echo __('Create or Edit a shopping list');?>"><?php echo __('Shopping List');?></a></li>
+                           
+                    <li><a href="<?php echo $baseUrl;?>Ingredients" class="ajaxNavigation" 
+                           title="<?php echo __('Ingredients used in recipes');?>"><?php echo __('Ingredients'); ?></a></li>
+                           
                     <?php endif; ?>
-                    <li><a href="<?php echo $baseUrl;?>Restaurants" class="ajaxNavigation"><?php echo __('Restaurants');?></a></li>
+                    <li><a href="<?php echo $baseUrl;?>Restaurants" class="ajaxNavigation" 
+                           title="<?php echo __('List of your restaurants');?>"><?php echo __('Restaurants');?></a></li>
                     <?php if ($loggedIn && $isAdmin) : ?>
-                    <li><a href="<?php echo $baseUrl;?>Users" class="ajaxNavigation"><?php echo __('Users');?></a></li>
+                    <li><a href="<?php echo $baseUrl;?>Users" class="ajaxNavigation" 
+                           title="<?php echo __('Administer Users');?>"><?php echo __('Users');?></a></li>
+                           
                     <?php endif; ?>
                     <li><div id="searchHolder">
                         <form id="searchEverythingForm">
@@ -71,14 +82,21 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                     </li>
                     <?php if (!$loggedIn) : ?>
                     <li>
-                        <a href="<?php echo $baseUrl;?>Users/login" id="signInButton">Sign in</a>
+                        <a href="<?php echo $baseUrl;?>Users/login" id="signInButton" 
+                           title="<?php echo __('Sign in with your existing account');?>">Sign in</a>
                     </li>
                     <li>
-                        <a href="<?php echo $baseUrl;?>Users/add" id="signInButton">Create Account</a>
+                        <a href="<?php echo $baseUrl;?>Users/add" id="signInButton" 
+                           title="<?php echo __('Create a new account');?>">Create Account</a>
                     </li>
                     <?php else: ?>
                     <li>
-                        <a href="<?php echo $baseUrl;?>Users/logout">Logout</a>
+                        <a href="<?php echo $baseUrl;?>Users/logout" title="<?php echo __('Logout');?>">Logout</a>
+                    </li>
+                    <li id="settingsLink">
+                        <a href="<?php echo $baseUrl;?>Users/edit/1" title="<?php echo __('Edit your Account settings');?>">
+                            <?php echo $this->Html->image('two_gears.png', array('alt' => 'Settings'));?>
+                        </a>
                     </li>
                     <?php endif;?>
                 </ul>
