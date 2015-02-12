@@ -18,7 +18,7 @@ When the basics are working I will put up a Beta site for people to see what is 
 
 There will be migration path from PHPRecipeBook 4.0
 
-<h2>Fresh Developer Installation<h2>
+<h2>Fresh Developer Installation</h2>
 <hr/>
 * Get PHP Composer installed. https://getcomposer.org/download/.  Composer is used to manage dependencies and make upgrading CakePHP easier.
 * Ensure you have the following PHP Modules installed: mysql, mcrypt, gd.
