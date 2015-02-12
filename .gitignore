@@ -8,3 +8,4 @@ app/[Cc]onfig/database.php
 /nbproject/private/
 app/webroot/files/
 app/sass/.sass-cache
+app/Vendor/

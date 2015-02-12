@@ -1,7 +1,5 @@
-PHPRecipebook
+<h1>PHPRecipebook 5.0</h1>
 =============
-
-PHP Recipe Book 5.0
 
 This is a rewrite of PHPRecipeBook hosted on sourceforge to use Cake MVC.
 
@@ -20,8 +18,11 @@ When the basics are working I will put up a Beta site for people to see what is 
 
 There will be migration path from PHPRecipeBook 4.0
 
-Fresh Installation
+<h2>Fresh Developer Installation<h2>
+<hr/>
+* Get PHP Composer installed. https://getcomposer.org/download/.  Composer is used to manage dependencies and make upgrading CakePHP easier.
 * Ensure you have the following PHP Modules installed: mysql, mcrypt, gd.
+* Run 'php composer.phar install' in the app\ directory to get CakePHP and check dependencies.
 * Create database and import:
     - SQL\schema_MySQL.sql
     - SQL\default_setup.sql

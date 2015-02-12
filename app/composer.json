@@ -1,0 +1,12 @@
+{
+    "name": "PHPRecipeBook",
+    "require": {
+        "cakephp/cakephp": "2.6.*",
+        "ext-gd": "*",
+        "ext-mcrypt": "*"
+    },
+    "config": {
+        "vendor-dir": "Vendor/"
+    }
+}
+
