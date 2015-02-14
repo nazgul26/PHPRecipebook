@@ -10,20 +10,20 @@ $shoppingListId = isset($list['ShoppingList']['id']) ? $list['ShoppingList']['id
         });
         
         $('#addRecipeAutocomplete').autocomplete({
-            source: "<?php echo Router::url('/'); ?>Recipes/autoCompleteSearch.json",
+            source: "<?php echo $baseUrl; ?>Recipes/autoCompleteSearch.json",
             minLength: 1,
             html: true,
             select: function(event, ui) {
-                ajaxGet("<?php echo Router::url('/'); ?>ShoppingLists/addRecipe/<?php echo $shoppingListId;?>/" + ui.item.id);
+                ajaxGet("<?php echo $baseUrl; ?>ShoppingLists/addRecipe/<?php echo $shoppingListId;?>/" + ui.item.id);
             }
         });
         
         $('#addIngredientAutocomplete').autocomplete({
-            source: "<?php echo Router::url('/'); ?>Ingredients/autoCompleteSearch.json",
+            source: "<?php echo $baseUrl; ?>Ingredients/autoCompleteSearch.json",
             minLength: 1,
             html: true,
             select: function(event, ui) {
-                ajaxGet("<?php echo Router::url('/'); ?>ShoppingLists/addIngredient/<?php echo $shoppingListId;?>/" + ui.item.id);
+                ajaxGet("<?php echo $baseUrl; ?>ShoppingLists/addIngredient/<?php echo $shoppingListId;?>/" + ui.item.id);
             }
         });
         

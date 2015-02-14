@@ -10,6 +10,7 @@ class MealPlansController extends AppController {
 
     // Filter to hide ingredients of other users
     public $filterConditions = array();
+    const LAST_VIEWED_WEEK = "LastViewedWeek"; 
     
     public function beforeFilter() {
         parent::beforeFilter();
@@ -43,6 +44,11 @@ class MealPlansController extends AppController {
      */
     public function index($date = null) {
         $weekDays = $this->MealPlan->DaysFull;
+        if ($date == null && $this->Session->read(self::LAST_VIEWED_WEEK) != null) {
+            $date = $this->Session->read(self::LAST_VIEWED_WEEK);
+        } else if ($date != null) {
+            $this->Session->write(self::LAST_VIEWED_WEEK, $date);
+        }
         $this->MealPlan->InitDate($date);
         $weekList = $this->MealPlan->getWeekDaysList();
         $currentMonth = $this->MealPlan->currentMonth;
@@ -79,8 +85,30 @@ class MealPlansController extends AppController {
                 throw new NotFoundException(__('Invalid meal plan'));
         }
         if ($this->request->is(array('post', 'put'))) {
+            $allSuccessful = true; // good, until it is bad.
             $this->request->data['MealPlan']['user_id'] = $this->Auth->user('id');
-            if ($this->MealPlan->save($this->request->data)) {
+            
+            // Save first copy
+            if (!$this->MealPlan->save($this->request->data)) {
+                    $allSuccessful = false;
+            }
+            
+            // Any additional 'repeat' days. Aka Leftovers
+            list($year, $month, $day) = explode("-",$mealDate);
+            $this->request->data['MealPlan']['id'] = "";
+            for ($repeatForDays = ($this->request->data['MealPlan']['days'] - 1); $repeatForDays > 0; $repeatForDays--) {
+                list($day, $month, $year) = $this->MealPlan->getNextDay($day, $month, $year);
+                if (isset($this->request->data['MealPlan']['skip']) && $this->request->data['MealPlan']['skip'] == "1") {
+                    list($day, $month, $year) = $this->MealPlan->getNextDay($day, $month, $year);
+                }
+                
+                $this->request->data['MealPlan']['mealday'] = $year . "-" . $month . "-" . $day;
+                if (!$this->MealPlan->save($this->request->data)) {
+                    $allSuccessful = false;
+                }
+            }
+            
+            if ($allSuccessful) {
                 $this->Session->setFlash(__('The meal plan has been saved.'), "success", array('event' => 'saved.meal'));
                 return $this->redirect(array('action' => 'edit'));
             } else {

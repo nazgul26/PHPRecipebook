@@ -48,7 +48,7 @@
                         $mealName = $meal["Recipe"]["name"];
                         echo "<div class='mealType mealType" . $meal["MealName"]["id"] . "'>"; 
                         echo $this->Form->postLink("", array('action' => 'delete', $mealPlanId), array('class' => 'ui-icon ui-icon-circle-close'), __('Are you sure you want to delete meal "%s"?', $mealName));
-                        echo $this->Html->link($mealName, array('action' => 'edit', $mealPlanId), 
+                        echo $this->Html->link($mealName, array('action' => 'edit', $mealPlanId, $dateIndex), 
                                 array('class' => 'ajaxLink', 'targetId' => 'editMealDialog'));
                         
                         echo "</div>";

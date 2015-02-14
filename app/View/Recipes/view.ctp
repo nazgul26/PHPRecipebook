@@ -9,7 +9,6 @@
     });
     
     function loadImage(imageUrl, caption) {
-        console.log("Image Url:" + imageUrl);
         $('#selectedPreviewImage img').attr('src', imageUrl).attr('title', caption);
         return false;
     }
