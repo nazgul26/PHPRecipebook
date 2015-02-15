@@ -52,11 +52,11 @@ class ShoppingList extends AppModel {
         return $this->field('id', array('user_id' => $userId, 'name' => __('DEFAULT')));
     }
     
-    public function getList($listId, $userId) {
+    public function getList($userId, $listId=null) {
         $this->Behaviors->load('Containable');
         $options = array(
             'contain' => array(
-                'ShoppingListRecipe.Recipe'          => array(
+                'ShoppingListRecipe.Recipe' => array(
                     'fields' => array('name', 'serving_size')
                 ),
                 'ShoppingListIngredient.Ingredient'

@@ -11,8 +11,13 @@
         });
     });
 </script>
+<h2><?php echo __('Meal Plan - Weekly'); ?></h2>
+<div class="actions">
+    <ul>
+        <li><?php echo $this->Html->link(__('Add to Shopping List'), array('action' => 'addToShoppingList', $date), array('class' => 'ajaxLink'));?></li>
+    </ul>
+</div>
 <div class="mealPlans index">
-	<h2><?php echo __('Meal Plan - Weekly'); ?></h2>
         <?php echo $this->Html->link('<', 
                 array('action' => 'index', $previousWeek[1].'-'.$previousWeek[0].'-'.$previousWeek[2]), 
                 array('class' => 'ajaxNavigation calendarNavigation')); ?>

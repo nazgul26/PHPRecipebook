@@ -52,7 +52,7 @@ class ShoppingListsController extends AppController {
             }
         } else {
             $userId = $this->Auth->user('id');
-            $defaultList = $this->ShoppingList->getList($id, $this->Auth->user('id'));
+            $defaultList = $this->ShoppingList->getList($userId, $id);
             if (!isset($defaultList['ShoppingList'])) {
                 $newData = array(
                     'id' => NULL,
@@ -65,7 +65,7 @@ class ShoppingListsController extends AppController {
                 } else {
                     $this->Session->setFlash(__('Unable to create shopping list.'));
                 }
-                $defaultList = $this->ShoppingList->getList($id, $userId);
+                $defaultList = $this->ShoppingList->getList($userId, $id);
             }
             $this->request->data = $defaultList;
         }

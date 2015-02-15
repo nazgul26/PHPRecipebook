@@ -60,12 +60,7 @@ class MealPlansController extends AppController {
         $realMonth = $this->MealPlan->realMonth;
         $realYear = $this->MealPlan->realYear;
         
-        $startDateQuery = $weekList[0][2] . "-" . $weekList[0][1] . "-" . $weekList[0][0];
-        $endDateQuery = $weekList[6][2] . "-" . $weekList[6][1] . "-" . $weekList[6][0];
-        $meals = $this->MealPlan->find('all', array(
-              'conditions' => 
-                array_merge($this->filterConditions, array('MealPlan.mealday BETWEEN ? AND ?' => array($startDateQuery,$endDateQuery)))
-        ));
+        $meals = $this->getMeals($weekList);
         
         foreach ($meals as $item) {
             $mealList[$item["MealPlan"]["mealday"]][] = $item;
@@ -147,5 +142,50 @@ class MealPlansController extends AppController {
         }
         return $this->redirect(array('action' => 'index'));
     }
-
+    
+    public function addToShoppingList($date) {
+        if ($date == null) {
+            throw new BadRequestException(__('Start date not defined'));
+        }   
+        $this->loadModel('ShoppingList');
+        $this->MealPlan->InitDate($date);
+        $weekList = $this->MealPlan->getWeekDaysList();
+        $meals = $this->getMeals($weekList);
+        
+        $userId = $this->Auth->user('id');
+        $list = $this->ShoppingList->getList($userId);
+        
+        //TODO: move initial list creation to getList and create GetDefaultListId
+        foreach ($meals as $item) {
+            // TODO: Combine recipes and scale for each. 
+            // TODO: convert servings to scale
+            $newData = array(
+               'id' => NULL,
+               'shopping_list_id' => $list['ShoppingList']['id'],
+               'recipe_id' => $item['MealPlan']['recipe_id'],
+               'scale' => 1,
+               'user_id' => $userId
+            );
+            
+            $this->ShoppingList->ShoppingListRecipe->save($newData);
+        }
+        return $this->redirect(array('controller' => 'shoppingLists', 'action' => 'index'));
+    }
+    
+    private function getMeals($weekList) {
+        $start = $weekList[0][2] . "-" . $weekList[0][1] . "-" . $weekList[0][0];
+        $end = $weekList[6][2] . "-" . $weekList[6][1] . "-" . $weekList[6][0];
+        $this->MealPlan->Behaviors->load('Containable');
+        return $this->MealPlan->find('all', array(
+            'contain' => array(
+                'MealName' => array(
+                    'fields' => array('id', 'name')
+                ),
+                'Recipe' => array(
+                    'fields' => array('name')
+                )
+            ),
+            'conditions' => array_merge($this->filterConditions, array('MealPlan.mealday BETWEEN ? AND ?' => array($start,$end)))
+        ));
+    }
 }
