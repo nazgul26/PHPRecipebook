@@ -43,13 +43,15 @@
         margin-top:8px;
         border:none;
         cursor:pointer;
+        height: 20px;
+        width: 20px;
     }
 }
 
 #signInButton {
     background-color: #006699;
     color: white;
-    cursor: default;
+    cursor: hand;
     text-decoration: none;
     border-radius: 2px;
     border: 1px solid #fff;

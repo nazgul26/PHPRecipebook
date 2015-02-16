@@ -46,6 +46,9 @@ class MealPlansController extends AppController {
         $weekDays = $this->MealPlan->DaysFull;
         if ($date == null && $this->Session->read(self::LAST_VIEWED_WEEK) != null) {
             $date = $this->Session->read(self::LAST_VIEWED_WEEK);
+            echo "I am getting date from session";
+        } else if ($date == null) {
+            $date = date('m-d-Y');
         } else if ($date != null) {
             $this->Session->write(self::LAST_VIEWED_WEEK, $date);
         }
@@ -112,14 +115,14 @@ class MealPlansController extends AppController {
         } else {
             $options = array('conditions' => array('MealPlan.' . $this->MealPlan->primaryKey => $id));
             $meal = $this->MealPlan->find('first', $options);
-            $this->request->data = $meal;
+            
             if (isset($meal["MealPlan"])) {
+                $this->request->data = $meal;
                 $mealDate = $meal["MealPlan"]["mealday"];
             }
         }
         $mealNames = $this->MealPlan->MealName->find('list');
-        $recipes = $this->MealPlan->Recipe->find('list');
-        $this->set(compact('mealNames', 'recipes', 'mealDate', 'meal'));
+        $this->set(compact('mealNames', 'mealDate'));
     }
 
     /**
@@ -153,21 +156,25 @@ class MealPlansController extends AppController {
         $meals = $this->getMeals($weekList);
         
         $userId = $this->Auth->user('id');
-        $list = $this->ShoppingList->getList($userId);
+        $listId = $this->ShoppingList->getDefaultListId($userId);
         
-        //TODO: move initial list creation to getList and create GetDefaultListId
+        $listItems = array();
         foreach ($meals as $item) {
-            // TODO: Combine recipes and scale for each. 
-            // TODO: convert servings to scale
-            $newData = array(
-               'id' => NULL,
-               'shopping_list_id' => $list['ShoppingList']['id'],
-               'recipe_id' => $item['MealPlan']['recipe_id'],
-               'scale' => 1,
-               'user_id' => $userId
-            );
-            
-            $this->ShoppingList->ShoppingListRecipe->save($newData);
+            $recipeId = $item['MealPlan']['recipe_id'];
+            $servings = $item['MealPlan']['servings'];
+            if (isset($listItems[$recipeId])) {
+                $listItems[$recipeId]['servings'] += $servings;
+            } else {
+                $listItems[$recipeId] = array( 'servings' => $servings, 'id' => $recipeId);
+            }
+        }
+        
+        foreach ($listItems as $item) {
+            $this->ShoppingList->ShoppingListRecipe->addToShoppingList(
+                    $listId, 
+                    $item['id'], 
+                    $item['servings'], 
+                    $userId);
         }
         return $this->redirect(array('controller' => 'shoppingLists', 'action' => 'index'));
     }

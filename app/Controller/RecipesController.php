@@ -222,19 +222,21 @@ class RecipesController extends AppController {
         if ($term)
         {
             $recipes = $this->Recipe->find('all', array(
-              'conditions' => 
-                array_merge($this->filterConditions, array('Recipe.name LIKE ' => '%' . trim($term) . '%'))
+                'recursive' => 0,
+                'fields' => array('Recipe.id', 'Recipe.name', 'Recipe.serving_size'),
+                'conditions' => array_merge($this->filterConditions, array('Recipe.name LIKE ' => '%' . trim($term) . '%'))
             ));
 
             if (count($recipes) > 0) {
                 foreach ($recipes as $item) {
                     $key = $item['Recipe']['name'];
                     $value = $item['Recipe']['id'];
-                    array_push($searchResults, array("id"=>$value, "value" => strip_tags($key)));
+                    $servings = $item['Recipe']['serving_size'];
+                    array_push($searchResults, array('id'=>$value, 'value' => strip_tags($key), 'servings' => $servings));
                 }
             } else {
                 $key = "No Results for ' . $term . ' Found";
-                array_push($searchResults, array("id"=>$value, "value" => ""));
+                array_push($searchResults, array('id'=>'', 'value' => $key, 'servings' => '0'));
             }
 
             $this->set(compact('searchResults'));

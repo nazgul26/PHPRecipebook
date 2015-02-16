@@ -1,5 +1,7 @@
 <script type="text/javascript">
     $(function() {
+        setSearchBoxTarget('Recipes');
+        
         $('#loadToday').click(function() {
             ajaxGet('MealPlans/index/<?php echo date('m-d-Y');?>');
         });

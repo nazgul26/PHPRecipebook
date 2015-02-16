@@ -2,7 +2,7 @@
 /* Meal Planner                       */
 /* -----------------------------------*/
 $breakfast: #fcf8e3;
-$lunch: #fcf8e3;
+$lunch: #d9edf7;
 $dinner: #dff0d8;
 $dessert: #f2dede;
 
@@ -83,6 +83,18 @@ $dessert: #f2dede;
         float: left;
         margin-right: 1em;
     }
+}
+
+/* Edit a meal day */
+
+#recipeServingInfo {
+    font-style: italic;
+    font-weight: normal;
+    margin-bottom: 0;
+    margin-left: 11em;
+    padding-bottom: 0;
+    padding-top: 4px;
+    display:none;
 }
 
 #MealPlanServings, #MealPlanDays { width: 4em;}

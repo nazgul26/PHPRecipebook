@@ -49,7 +49,12 @@ class ShoppingList extends AppModel {
     );
     
     public function getDefaultListId($userId) {
-        return $this->field('id', array('user_id' => $userId, 'name' => __('DEFAULT')));
+        $listId = $this->field('id', array('user_id' => $userId, 'name' => __('DEFAULT')));
+        if (!isset($listId)) {
+            $list = $this->getList($user);
+            $listId = $list['ShoppingList']['id'];
+        }
+        return $listId;
     }
     
     public function getList($userId, $listId=null) {
@@ -70,7 +75,21 @@ class ShoppingList extends AppModel {
             $search = array('conditions' => array('' . $this->primaryKey => $listId, 
                 'user_id' => $userId));
         }
-        return $this->find('first', array_merge($options, $search));
+        
+        $defaultList = $this->find('first', array_merge($options, $search));
+        if (!isset($defaultList['ShoppingList'])) {
+            $newData = array(
+                'id' => NULL,
+                'name' => __('DEFAULT'),
+                'user_id' => $userId
+            );
+
+            if ($this->save($newData)) {
+                $defaultList = $this->find('first', array_merge($options, $search));
+            }
+        }
+        // TODO: did not return new ID when call from GetDefaultListId
+        return $defaultList;
     }
     
     public function isOwnedBy($listId, $user) {
@@ -95,7 +114,7 @@ class ShoppingList extends AppModel {
                     )
                 ),
                 'ShoppingListRecipe' => array(
-                    'fields' => array('scale'),
+                    'fields' => array('servings'),
                     'Recipe' => array(
                         'fields' => array('name'),
                         'IngredientMapping' => array(

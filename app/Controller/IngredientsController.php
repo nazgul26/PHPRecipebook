@@ -129,11 +129,11 @@ class IngredientsController extends AppController {
                 foreach ($ingredients as $item) {
                     $key = $item['Ingredient']['name'];
                     $value = $item['Ingredient']['id'];
-                    array_push($searchResults, array("id"=>$value, "value" => strip_tags($key)));
+                    array_push($searchResults, array('id'=>$value, 'value' => strip_tags($key)));
                 }
             } else {
                 $key = "No Results for ' . $term . ' Found";
-                array_push($searchResults, array("id"=>$value, "value" => ""));
+                array_push($searchResults, array('id'=> '', 'value' => $key));
             }
             
             $this->set(compact('searchResults'));

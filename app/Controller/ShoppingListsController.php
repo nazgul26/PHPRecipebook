@@ -53,20 +53,6 @@ class ShoppingListsController extends AppController {
         } else {
             $userId = $this->Auth->user('id');
             $defaultList = $this->ShoppingList->getList($userId, $id);
-            if (!isset($defaultList['ShoppingList'])) {
-                $newData = array(
-                    'id' => NULL,
-                    'name' => __('DEFAULT'),
-                    'user_id' => $userId
-                );
-
-                if ($this->ShoppingList->save($newData)) {
-                    $this->Session->setFlash(__('Shopping list created.'), 'success');
-                } else {
-                    $this->Session->setFlash(__('Unable to create shopping list.'));
-                }
-                $defaultList = $this->ShoppingList->getList($userId, $id);
-            }
             $this->request->data = $defaultList;
         }
         $units = $this->ShoppingList->ShoppingListIngredient->Ingredient->Unit->find('list');
@@ -104,22 +90,15 @@ class ShoppingListsController extends AppController {
         return $this->redirect(array('action' => 'index', $listId));
     }
     
-    public function addRecipe($listId=null, $recipeId=null) {
+    public function addRecipe($listId=null, $recipeId=null, $servings=1) {
         $this->loadModel('Recipe');
         if ($listId == null || $recipeId == null || !$this->Recipe->exists($recipeId)) {
             throw new NotFoundException(__('Invalid recipe'));
         }
+        
         $userId = $this->Auth->user('id');
-
-        $newData = array(
-            'id' => NULL,
-            'shopping_list_id' => $listId,
-            'recipe_id' => $recipeId,
-            'scale' => 1,
-            'user_id' => $userId
-        );
-
-        if ($this->ShoppingList->ShoppingListRecipe->save($newData)) {
+        $saveResult = $this->ShoppingList->ShoppingListRecipe->addToShoppingList($listId, $recipeId, $servings, $userId);
+        if ($saveResult) {
             $this->Session->setFlash(__('Recipe added to list.'), 'success');
         } else {
             $this->Session->setFlash(__('Unable to add recipe to list.'));

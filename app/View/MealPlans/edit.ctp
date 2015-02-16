@@ -13,9 +13,26 @@ $baseUrl = Router::url('/');
             html: true,
             select: function(event, ui) {
                 $('#MealPlanRecipeId').val(ui.item.id);
+                $('#MealPlanServings').val(ui.item.servings);
+                $('#recipeServingInfo').html("<?php echo _('recipe serves: ');?>" + ui.item.servings).show();
+                scaleServingsByDays();
             }
         });
+        
+        $('#MealPlanDays').change(scaleServingsByDays);
     });
+    
+    function scaleServingsByDays() {
+        var days = $('#MealPlanDays').val();
+        var servings = $('#MealPlanServings').val();
+        var calculatedServings = servings/days;
+        if (calculatedServings > 1) {
+            $('#MealPlanServings').val(servings/days);
+        } else {
+            // Lets not go into decimal level servings
+            $('#MealPlanServings').val(1);
+        }
+    }
 </script>
 <?php //echo $this->element('sql_dump'); ?>
 <div class="mealPlans form">
@@ -26,17 +43,20 @@ $baseUrl = Router::url('/');
         echo $this->Form->hidden('mealday', array('default' => $mealDate));
         echo $this->Form->input('meal_name_id');
 ?>
+    
 <div class="required">    
-<label for="recipeAutocomplete"><?php echo __('Recipe');?></label>
-<input type="text" 
-       class="ui-widget" 
-       id="recipeAutocomplete" 
-       placeholder="<?php echo __('Enter Recipe Name');?>"
-       value="<?php echo (isset($this->data['Recipe']['name']) ? $this->data['Recipe']['name'] : "");?>"/>
+    <label for="recipeAutocomplete"><?php echo __('Recipe');?></label>
+    <input type="text" 
+           class="ui-widget" 
+           id="recipeAutocomplete" 
+           placeholder="<?php echo __('Enter Recipe Name');?>"
+           value="<?php echo (isset($this->data['Recipe']['name']) ? $this->data['Recipe']['name'] : "");?>"/>
+    <div id="recipeServingInfo"></div>
 </div>  
-<?php   
+ 
+    <?php   
         echo $this->Form->hidden('recipe_id');
-        echo $this->Form->input('servings', array('default' => 4));
+        echo $this->Form->input('servings');
         echo $this->Form->input('days', array('default' => 1, 'type' => 'number'));
         echo $this->Form->input('skip', array('label' => __('Every other day'), 'type' => 'checkbox', 'default' => true));
 ?>

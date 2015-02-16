@@ -14,7 +14,7 @@ $shoppingListId = isset($list['ShoppingList']['id']) ? $list['ShoppingList']['id
             minLength: 1,
             html: true,
             select: function(event, ui) {
-                ajaxGet("<?php echo $baseUrl; ?>ShoppingLists/addRecipe/<?php echo $shoppingListId;?>/" + ui.item.id);
+                ajaxGet("<?php echo $baseUrl; ?>ShoppingLists/addRecipe/<?php echo $shoppingListId;?>/" + ui.item.id + "/" + ui.item.servings);
             }
         });
         
@@ -83,7 +83,7 @@ $shoppingListId = isset($list['ShoppingList']['id']) ? $list['ShoppingList']['id
             <th><?php echo __('Action');?></th>
             <th><?php echo __('Recipe Name');?></th>
             <th><?php echo __('Servings');?>
-            <th><?php echo __('Scale By');?></th>
+            <th><?php echo __('Servings to buy');?></th>
         </tr>
         <tbody class="gridContent">
         <?php 
@@ -103,7 +103,7 @@ $shoppingListId = isset($list['ShoppingList']['id']) ? $list['ShoppingList']['id
             </td>
             <td class="shoppingListText shoppingListText-recipe"><?php echo $recipeName;?></td>
             <td class="shoppingListText"><?php echo $list['ShoppingListRecipe'][$mapIndex]['Recipe']['serving_size'];?></td>
-            <td><?php echo $this->Form->input('ShoppingListRecipe.' . $mapIndex . '.scale', array('label' => false)); ?></td>
+            <td><?php echo $this->Form->input('ShoppingListRecipe.' . $mapIndex . '.servings', array('label' => false)); ?></td>
         </tr>
         <?php } ?>
         </tbody>
