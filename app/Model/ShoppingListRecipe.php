@@ -43,7 +43,31 @@ class ShoppingListRecipe extends AppModel {
            'servings' => $servings,
            'user_id' => $userId
         );
+        $saveOk = $this->save($newData);
+        
+        if ($saveOk) {
+            $this->Recipe->Behaviors->load('Containable');
+            $data = $this->Recipe->find('first', array(
+                'fields' => array('id'),
+                'contain' => array(
+                'RelatedRecipe' => array(
+                    'fields' => array('recipe_id')
+                )
+            ),
+            'conditions' => array('Recipe.id' => $recipeId)));
 
-        return $this->save($newData);
+            foreach ($data['RelatedRecipe'] as $related) {
+                $newData = array(
+                    'id' => NULL,
+                    'shopping_list_id' => $listId,
+                    'recipe_id' => $related['recipe_id'],
+                    'servings' => $servings,
+                    'user_id' => $userId
+                 );
+                $saveOk = $this->save($newData);
+                if (!$saveOk) break;
+            }
+        } 
+        return $saveOk;
     }
 }
