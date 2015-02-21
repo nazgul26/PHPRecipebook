@@ -56,8 +56,7 @@ class ShoppingListsController extends AppController {
             $this->request->data = $defaultList;
         }
         $units = $this->ShoppingList->ShoppingListIngredient->Ingredient->Unit->find('list');
-        $list = $this->request->data;
-        $this->set(compact('list', 'units'));
+        $this->set(compact('units'));
     }
  
     public function deleteRecipe($listId, $recipeId) {
@@ -97,6 +96,12 @@ class ShoppingListsController extends AppController {
         }
         
         $userId = $this->Auth->user('id');
+        
+        // Create the list if needed
+        if ($listId == 0) {
+            $listId = $this->ShoppingList->getDefaultListId($userId);
+        }
+        
         $saveResult = $this->ShoppingList->ShoppingListRecipe->addToShoppingList($listId, $recipeId, $servings, $userId);
         if ($saveResult) {
             $this->Session->setFlash(__('Recipe added to list.'), 'success');
@@ -138,11 +143,6 @@ class ShoppingListsController extends AppController {
         }
         
         $ingredients = $this->loadShoppingList($listId);
-
-        //TODO: Need to: 
-        //  * Scale by!
-        //  * Related recipes!
-        //  * Optionals - option to include optinals (maybe include but show as options). help about what recipe it when with.
         $this->set('list', $ingredients); 
         $this->set('listId', $listId);
     }
@@ -164,6 +164,7 @@ class ShoppingListsController extends AppController {
             }
             
             // Remove items picked during select step
+            $removeIds = array();
             if (isset($this->request->data['remove'])) {
                 $removeIds = $this->request->data['remove'];
                 $this->set('removeIds', $removeIds);
@@ -234,6 +235,11 @@ class ShoppingListsController extends AppController {
         }
               
 	$this->set('vendors', $vendors);
+    }
+    
+    public function clear() {
+        $this->ShoppingList->clearList($this->Auth->user('id'));
+        return $this->redirect(array('action' => 'index'));
     }
     
     private function loadShoppingList($listId) {

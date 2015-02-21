@@ -21,14 +21,15 @@ class MealPlansController extends AppController {
     
     public function isAuthorized($user) {
         // The owner of a meal can edit and delete it
-        if (in_array($this->action, array('edit', 'delete'))) {
+        if (isset($this->request->params['pass'][0]) && $this->request->params['pass'][0] != "undefined" 
+                && in_array($this->action, array('edit', 'delete'))) {
             $mealId = (int) $this->request->params['pass'][0];
             // Little extra access level needed for this. Editors should not mess with meal plans.
             if ($this->User->isAdmin($user) || $this->MealPlan->isOwnedBy($mealId, $user['id'])) {
                 return true;
             }
             else {
-                $this->Session->setFlash(__('Not Meal Owner'));
+                $this->Session->setFlash(__("Not meal owner"));
                 return false;
             }
         }
@@ -46,7 +47,6 @@ class MealPlansController extends AppController {
         $weekDays = $this->MealPlan->DaysFull;
         if ($date == null && $this->Session->read(self::LAST_VIEWED_WEEK) != null) {
             $date = $this->Session->read(self::LAST_VIEWED_WEEK);
-            echo "I am getting date from session";
         } else if ($date == null) {
             $date = date('m-d-Y');
         } else if ($date != null) {

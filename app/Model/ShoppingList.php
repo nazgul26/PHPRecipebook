@@ -62,7 +62,7 @@ class ShoppingList extends AppModel {
         $options = array(
             'contain' => array(
                 'ShoppingListRecipe.Recipe' => array(
-                    'fields' => array('name', 'serving_size')
+                    'fields' => array('id', 'name', 'serving_size')
                 ),
                 'ShoppingListIngredient.Ingredient'
             )

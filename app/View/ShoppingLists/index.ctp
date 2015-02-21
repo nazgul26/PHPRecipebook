@@ -1,6 +1,6 @@
 <?php 
 $baseUrl = Router::url('/');
-$shoppingListId = isset($list['ShoppingList']['id']) ? $list['ShoppingList']['id'] : "";
+$shoppingListId = isset($this->request->data['ShoppingList']['id']) ? $this->request->data['ShoppingList']['id'] : "";
 ?>
 <script type="text/javascript">
     $(function() {
@@ -61,6 +61,7 @@ $shoppingListId = isset($list['ShoppingList']['id']) ? $list['ShoppingList']['id
 <h2><?php echo __('Shopping List'); ?></h2>
 <div class="actions">
     <ul>
+        <li><?php echo $this->Html->link(__('Clear List'), array('action' => 'clear'), array('class' => 'ajaxLink')); ?> </li>
         <li><?php echo $this->Html->link(__('List Stores'), array('controller' => 'stores', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
         <li><?php echo $this->Html->link(__('List Online Vendors'), array('controller' => 'vendors', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
     </ul>
@@ -76,7 +77,7 @@ $shoppingListId = isset($list['ShoppingList']['id']) ? $list['ShoppingList']['id
     </fieldset>
     
     <?php 
-    $recipeCount = (isset($list) && isset($list['ShoppingListRecipe']) )? count($list['ShoppingListRecipe']) : 0; 
+    $recipeCount = (isset($this->request->data) && isset($this->request->data['ShoppingListRecipe']) )? count($this->request->data['ShoppingListRecipe']) : 0; 
     if ($recipeCount > 0):?>
     <table>
         <tr class="headerRow">
@@ -88,21 +89,23 @@ $shoppingListId = isset($list['ShoppingList']['id']) ? $list['ShoppingList']['id
         <tbody class="gridContent">
         <?php 
         for ($mapIndex = 0; $mapIndex < $recipeCount; $mapIndex++) {
-            $recipeName = $list['ShoppingListRecipe'][$mapIndex]['Recipe']['name'];
+            $recipeName = $this->request->data['ShoppingListRecipe'][$mapIndex]['Recipe']['name'];
+            $recipeId = $this->request->data['ShoppingListRecipe'][$mapIndex]['Recipe']['id'];
         ?>
         <tr>
-            <td class="shoppingListText">
+            <td class="shoppingListText actions">
+                <?php echo $this->Html->link(__('View'), array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxNavigationLink')); ?>
+                <?php echo $this->Html->link(__('Edit'), array('controller' => 'recipes', 'action' => 'edit', $recipeId), array('class' => 'ajaxNavigationLink')); ?>
                 <?php echo $this->Html->link(__('Delete'), array('action' => 'deleteRecipe', 
-                    $list['ShoppingList']['id'],
-                    $list['ShoppingListRecipe'][$mapIndex]['recipe_id']), array('class' => 'ajaxLink'),
+                    $this->request->data['ShoppingList']['id'],
+                    $this->request->data['ShoppingListRecipe'][$mapIndex]['recipe_id']), array('class' => 'ajaxLink'),
                         __('Are you sure you want to remove %s?', $recipeName)); ?>
-                
                 <?php echo $this->Form->hidden('ShoppingListRecipe.' . $mapIndex . '.id'); ?>
                 <?php echo $this->Form->hidden('ShoppingListRecipe.' . $mapIndex . '.recipe_id'); ?>
                 <?php echo $this->Form->hidden('ShoppingListRecipe.' . $mapIndex . '.shopping_list_id'); ?>
             </td>
             <td class="shoppingListText shoppingListText-recipe"><?php echo $recipeName;?></td>
-            <td class="shoppingListText"><?php echo $list['ShoppingListRecipe'][$mapIndex]['Recipe']['serving_size'];?></td>
+            <td class="shoppingListText"><?php echo $this->request->data['ShoppingListRecipe'][$mapIndex]['Recipe']['serving_size'];?></td>
             <td><?php echo $this->Form->input('ShoppingListRecipe.' . $mapIndex . '.servings', array('label' => false)); ?></td>
         </tr>
         <?php } ?>
@@ -111,7 +114,7 @@ $shoppingListId = isset($list['ShoppingList']['id']) ? $list['ShoppingList']['id
     <?php endif;?>
         
     <?php
-    $ingredientCount = (isset($list) && isset($list['ShoppingListIngredient']))? count($list['ShoppingListIngredient']) : 0;
+    $ingredientCount = (isset($this->request->data) && isset($this->request->data['ShoppingListIngredient']))? count($this->request->data['ShoppingListIngredient']) : 0;
     if ($ingredientCount > 0):?>
     <table>
     <tr class="headerRow">
@@ -123,13 +126,15 @@ $shoppingListId = isset($list['ShoppingList']['id']) ? $list['ShoppingList']['id
     </tr>
     <tbody class="gridContent">
     <?php for ($mapIndex = 0; $mapIndex < $ingredientCount; $mapIndex++) { 
-        $ingredientName = $list['ShoppingListIngredient'][$mapIndex]['Ingredient']['name'];
+        $ingredientName = $this->request->data['ShoppingListIngredient'][$mapIndex]['Ingredient']['name'];
+        $ingredientId = $this->request->data['ShoppingListIngredient'][$mapIndex]['Ingredient']['id'];
     ?>
     <tr>
-        <td class="shoppingListText">
+        <td class="shoppingListText actions">
+            <?php echo $this->Html->link(__('Edit'), array('controller' => 'ingredients', 'action' => 'edit', $ingredientId), array('class' => 'ajaxNavigationLink')); ?>
             <?php echo $this->Html->link(__('Delete'), array('action' => 'deleteIngredient', 
-               $list['ShoppingList']['id'],
-               $list['ShoppingListIngredient'][$mapIndex]['ingredient_id']), array('class' => 'ajaxLink'),
+               $this->request->data['ShoppingList']['id'],
+               $this->request->data['ShoppingListIngredient'][$mapIndex]['ingredient_id']), array('class' => 'ajaxLink'),
                    __('Are you sure you want to remove %s?', $ingredientName)); ?>
                 
         </td>

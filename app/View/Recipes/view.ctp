@@ -1,3 +1,12 @@
+<?php 
+$recipeId = $recipe['Recipe']['id'];
+$scale = 1; // default no scaling
+if (isset($servings)) {
+    $scale = $servings / $recipe['Recipe']['serving_size'];
+} else {
+    $servings = $recipe['Recipe']['serving_size'];
+}
+?>
 <script type="text/javascript">
     $(function() {
         $('#qtipSource').qtip({ // Grab some elements to apply the tooltip to
@@ -6,6 +15,11 @@
             },
             style: { classes: 'qtip-dark' }
         });
+        
+        $('#viewRefresh').click(function() {
+            var newServings = $('#viewServings').val();
+            ajaxNavigate("recipes/view/<?php echo $recipeId;?>/" + newServings);
+        })
     });
     
     function loadImage(imageUrl, caption) {
@@ -17,9 +31,8 @@
     <h2><?php echo h($recipe['Recipe']['name']); ?></h2>
         <div class="actions">
             <ul>
-                <li><?php echo $this->Html->link(__('Edit Recipe'), array('action' => 'edit', $recipe['Recipe']['id'])); ?></li>
-                <li><?php echo $this->Html->link(__('Add to shopping list'), array('controller' => 'shoppingLists', 'action' => 'addRecipe',
-                    $recipe['Recipe']['id'])); ?></li>
+                <li><?php echo $this->Html->link(__('Edit Recipe'), array('action' => 'edit', $recipeId)); ?></li>
+                <li><?php echo $this->Html->link(__('Add to shopping list'), array('controller' => 'shoppingLists', 'action' => 'addRecipe', 0, $recipeId, $servings)); ?></li>
                 <li><a href="#" onclick="window.print();"><?php echo __('Print');?></a></li>
                 <!-- Ratings - Put it on the page somewhere instead of a link -->
                 <li><button id="moreActionLinks">More Actions...</button></li>
@@ -59,8 +72,8 @@
 		</dd>
 		<dt><?php echo __('Serving Size'); ?></dt>
 		<dd>
-			<?php echo h($recipe['Recipe']['serving_size']); ?>
-			&nbsp;
+                    <input type="text" id="viewServings" value="<?php echo $servings;?>"/>
+                    <button id="viewRefresh">Refresh</button>
 		</dd>
         </dl>
 
@@ -98,13 +111,15 @@
         
         <div class="float50Section">
             <b><?php echo __('Ingredients'); ?></b>
-<pre><?php for ($i = 0; $i < count($recipe['IngredientMapping']); $i++) {
-                $quantity = $recipe['IngredientMapping'][$i]['quantity'];
-                $unit = $recipe['IngredientMapping'][$i]['Unit']['name'];
-                $ingredientName = $recipe['IngredientMapping'][$i]['Ingredient']['name'];
-                echo $quantity . " <b>" . $unit . "</b> " . $ingredientName . "<br/>";
-            }?>
-</pre>
+            <pre><?php for ($i = 0; $i < count($recipe['IngredientMapping']); $i++) {
+                            $quantity = $recipe['IngredientMapping'][$i]['quantity'];
+                            if (isset($scale)) $quantity *= $scale;
+                            $quantity = $this->Fraction->toFraction($quantity);
+                            $unit = $recipe['IngredientMapping'][$i]['Unit']['name'];
+                            $ingredientName = $recipe['IngredientMapping'][$i]['Ingredient']['name'];
+                            echo $quantity . " " . $unit . " " . $ingredientName . "<br/>";
+                        }?>
+            </pre>
         </div>
         <div class="float50Section" id="imagePreview">
             <?php 
@@ -142,4 +157,35 @@
 
             <pre><?php echo h($recipe['Recipe']['directions']); ?></pre>
         </div>
+        
+        <?php foreach ($recipe['RelatedRecipe'] as $related) :?>
+            <div class="clear"/><br/> 
+            <div class="relatedRecipe">
+                <?php echo $this->Html->link($related['Related']['name'], array('controller' => 'recipes', 'action' => 'view', $related['recipe_id']), 
+                                array('class' => 'ajaxNavigationLink')); ?>
+                        (<?php echo $related['required'] == "1" ? "required" : __('optional');?>):
+                <hr/><br/>    
+                <div class="float50Section">
+                    <b><?php echo __('Ingredients'); ?></b>
+                    
+                    <pre><?php for ($i = 0; $i < count($related['Related']['IngredientMapping']); $i++) {
+                            $quantity = $related['Related']['IngredientMapping'][$i]['quantity'];
+                            if (isset($scale)) $quantity *= $scale;
+                            $quantity = $this->Fraction->toFraction($quantity);
+                            $unit = $related['Related']['IngredientMapping'][$i]['Unit']['name'];
+                            $ingredientName = $related['Related']['IngredientMapping'][$i]['Ingredient']['name'];
+                            echo $quantity . " " . $unit . " " . $ingredientName . "<br/>";
+                        }?></pre>
+                </div>
+                <div class="float50Section">
+                    <!-- placeholder for related recipe image -->
+                </div>
+                <div class="clear"/><br/>    
+                <div style="width: 100%;">
+                    <b><?php echo __('Directions'); ?></b>
+                    <pre><?php echo $related['Related']['directions'];?></pre>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        </pre>
 </div>

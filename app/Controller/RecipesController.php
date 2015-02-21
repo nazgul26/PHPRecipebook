@@ -89,7 +89,7 @@ class RecipesController extends AppController {
      * @param string $id
      * @return void
      */
-    public function view($id = null) {
+    public function view($id = null, $servings=null) {
         if (!$this->Recipe->exists($id)) {
                 throw new NotFoundException(__('Invalid recipe'));
         }
@@ -106,7 +106,15 @@ class RecipesController extends AppController {
                     ),
                     'RelatedRecipe' => array(
                         'Related' => array(
-                            'fields' => array('name')
+                            'fields' => array('id', 'name', 'directions'),
+                            'IngredientMapping' => array(
+                                'Ingredient' => array(
+                                    'fields' => array('name')
+                                ),
+                                'Unit' => array(
+                                    'fields' => array('name')
+                                )
+                            )
                         )
                     ),
                     'Ethnicity' => array(
@@ -136,6 +144,7 @@ class RecipesController extends AppController {
                     'Image'
                 ));
         $this->set('recipe', $this->Recipe->find('first', $options));
+        $this->set('servings', $servings);
     }
 
     /**

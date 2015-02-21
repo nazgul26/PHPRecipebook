@@ -31,7 +31,11 @@ class FractionHelper extends AppHelper {
                 // It is a whole number.
                 $this->whole = $value;
             }
-            if ($this->fraction != "") return ($this->whole . ' ' . $this->fraction);
+            if ($this->fraction != "") {
+                $returnValue = $this->whole != "" ? $this->whole . " " : "";
+                $returnValue .= $this->fraction;
+                return ($returnValue);
+            }
             else return ($this->whole);
 	}
 	

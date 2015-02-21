@@ -160,12 +160,25 @@ class UsersController extends AppController {
      */
     public function add() {
         if ($this->request->is('post')) {
-            $this->User->create();
-            if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved.'), 'success');
-                return $this->redirect(array('action' => 'index'));
+            if ($this->data['User']['password1'] === $this->data['User']['password2']) {
+                // only pass on the password when there is a value (and it matches the confirm)
+                if (!empty($this->request->data['User']['password2'])) {  
+                    $this->request->data['User']['password'] = $this->request->data['User']['password2'];
+                }
+                
+                $this->request->data['User']['access_level'] = Configure::read('AuthRoles.author');
+                $this->request->data['User']['language'] = 'en';
+                $this->request->data['User']['country'] = 'us';
+                
+                if ($this->User->save($this->request->data)) {
+                    $this->Session->setFlash(__('The user has been saved.'), 'success');
+                    return $this->redirect(array('controller'=> 'recipes', 'action' => 'edit'));
+                } else {
+                    $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                }
             } else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                // didn't validate logic
+                 $this->Session->setFlash(__('Passwords did not match. Please, try again.'));
             }
         }
     }

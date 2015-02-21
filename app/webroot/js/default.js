@@ -72,6 +72,10 @@ function ajaxPostForm($formItem) {
 }
 
 function ajaxNavigate(actionUrl, title, targetId) {
+    if (actionUrl.indexOf(baseUrl) != 0) {
+        actionUrl = baseUrl + actionUrl;
+    }
+    
     if (history.pushState) {
         var stateObj = { target: targetId, action: actionUrl };
         history.pushState(stateObj, title, actionUrl);
