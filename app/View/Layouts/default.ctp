@@ -94,7 +94,7 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                         <a href="<?php echo $baseUrl;?>Users/logout" title="<?php echo __('Logout');?>">Logout</a>
                     </li>
                     <li id="settingsLink">
-                        <a href="<?php echo $baseUrl;?>Users/edit/1" title="<?php echo __('Edit your Account settings');?>">
+                        <a href="<?php echo $baseUrl;?>Users/edit/<?php echo AuthComponent::user('id');?>" title="<?php echo __('Edit your Account settings');?>">
                             <?php echo $this->Html->image('two_gears.png', array('alt' => 'Settings'));?>
                         </a>
                     </li>

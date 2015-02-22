@@ -52,7 +52,8 @@ class MealPlansController extends AppController {
         } else if ($date != null) {
             $this->Session->write(self::LAST_VIEWED_WEEK, $date);
         }
-        $this->MealPlan->InitDate($date);
+        $startDayOfWeek = $this->Auth->user('meal_plan_start_day');
+        $this->MealPlan->InitDate($date, $startDayOfWeek);
         $weekList = $this->MealPlan->getWeekDaysList();
         $currentMonth = $this->MealPlan->currentMonth;
         $startDate = $this->MealPlan->MonthsAbbreviated[$weekList[0][1]-1] . " " . $weekList[0][0] . ", " . $weekList[0][2];
@@ -68,7 +69,20 @@ class MealPlansController extends AppController {
         foreach ($meals as $item) {
             $mealList[$item["MealPlan"]["mealday"]][] = $item;
         }
-        $this->set(compact('mealList', 'weekDays', 'weekList', 'currentMonth', 'startDate', 'endDate', 'nextWeek', 'previousWeek', 'realDay', 'realMonth', 'realYear', 'date'));
+        $this->set(compact(
+                'mealList', 
+                'weekDays', 
+                'weekList', 
+                'currentMonth', 
+                'startDate', 
+                'endDate', 
+                'nextWeek', 
+                'previousWeek', 
+                'realDay', 
+                'realMonth', 
+                'realYear', 
+                'date',
+                'startDayOfWeek'));
     }
 
     /**
@@ -151,7 +165,7 @@ class MealPlansController extends AppController {
             throw new BadRequestException(__('Start date not defined'));
         }   
         $this->loadModel('ShoppingList');
-        $this->MealPlan->InitDate($date);
+        $this->MealPlan->InitDate($date, $this->Auth->user('meal_plan_start_day'));
         $weekList = $this->MealPlan->getWeekDaysList();
         $meals = $this->getMeals($weekList);
         

@@ -13,9 +13,11 @@ ALTER TABLE users ADD modified DATETIME;
 ALTER TABLE users ADD locked BOOL NOT NULL DEFAULT 0;
 ALTER TABLE users ADD reset_token VARCHAR(255) NULL;
 ALTER TABLE users ADD reset_time DATETIME NULL;
+ALTER TABLE users ADD meal_plan_start_day INT NOT NULL DEFAULT '0';
 
 DROP TABLE providers;
 DROP TABLE openids;
+DROP TABLE settings;
 
 RENAME TABLE recipe_settings TO settings;
 ALTER TABLE settings CHANGE setting_name name VARCHAR(32);

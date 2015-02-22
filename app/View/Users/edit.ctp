@@ -22,6 +22,19 @@
             } else {
                 echo $this->Form->hidden('access_level');
             }
+            echo $this->Form->input('meal_plan_start_day', 
+                    array('options' => 
+                        array(
+                            '0' => __('Sunday'), 
+                            '1' => __('Monday'),
+                            '2' => __('Tuesday'),
+                            '3' => __('Wednesday'),
+                            '4' => __('Thursday'),
+                            '5' => __('Friday'),
+                            '6' => __('Saturday'),
+                            )
+                        )
+                    );
             echo $this->Form->input('language');
             echo $this->Form->input('country');
             echo $this->Form->input('last_login',array('disabled' => 'disabled'));

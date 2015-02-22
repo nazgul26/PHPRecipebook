@@ -202,8 +202,8 @@ class UsersController extends AppController {
                     $this->request->data['User']['password'] = $this->request->data['User']['password2'];
                 }
                 if ($this->User->save($this->request->data)) {
-                    $this->Session->setFlash(__('The user has been saved.'), 'success');
-                    return $this->redirect(array('action' => 'index'));
+                    $this->Session->setFlash(__('Settings saved.  Logout/Sign In maybe required for settings to take effect.'), 'success');
+                    return $this->redirect(array('controler'=> 'recipes', 'action' => 'index'));
                 } else {
                     $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
                 }

@@ -12,18 +12,10 @@ CREATE TABLE users (
 	country VARCHAR(8) DEFAULT 'us' NOT NULL,
 	last_login DATE,
 	email VARCHAR(64) NOT NULL UNIQUE,
+        meal_plan_start_day INT NOT NULL DEFAULT '0', -- Sunday is default
         created DATETIME,
         modified DATETIME,
 	PRIMARY KEY (id)
-);
-		
-CREATE TABLE settings ( 
-        id INT NOT NULL AUTO_INCREMENT,
-        name VARCHAR(32),
-	value VARCHAR(64),
-	user_id INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
-	PRIMARY KEY (id),
-        UNIQUE KEY (name, user_id)
 );
 
 CREATE TABLE stores ( 

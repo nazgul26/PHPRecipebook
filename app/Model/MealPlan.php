@@ -64,9 +64,9 @@ class MealPlan extends AppModel {
     public $realYear;
     
     /**
-            Initalizes the current date settings for use later on
+            Initializes the current date settings for use later on
     */
-    public function InitDate($date) {
+    public function InitDate($date, $startDayOfWeek) {
         if ($date == null) {
             $date = date('m-d-Y');
         }
@@ -75,6 +75,7 @@ class MealPlan extends AppModel {
         // Now set the real date
         $date = date('m-d-Y');
         $this->realDate = $date;
+        $this->startWeekDay = $startDayOfWeek;
         list($this->realMonth,$this->realDay,$this->realYear) = explode("-",$date);
     }
     

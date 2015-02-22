@@ -33,11 +33,18 @@
         
         <br/><br/>
         <div id="weeklyContainer">
-	<?php foreach ($weekDays as $day): ?>
-        <div class="dayHeader">
-            <?php echo $day;?>
+        <?php 
+        $day = $startDayOfWeek;
+        for ($i=0; $i<7; $i++) : ?>
+                    <div class="dayHeader">
+            <?php echo $weekDays[$day];?>
         </div>
-        <?php endforeach; ?>
+            <?php
+		// if we get to 6 wrap around to the next day (sunday)
+		if ($day == 6) $day = 0;
+		else $day++;
+	endfor;?>
+
         <?php for ($i=0; $i < 7; $i++) : ?>
         <div class="dayContent 
             <?php echo ($i == 6) ? "endOfRow" : "";?> 
