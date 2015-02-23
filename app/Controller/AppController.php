@@ -13,6 +13,8 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
+    public $isAdmin = false;
+    
     public $components = array(
         'Session',
         'Auth' => array(
@@ -53,7 +55,8 @@ class AppController extends Controller {
         // Let everyone know about the user
         $this->set('loggedIn', $this->Auth->loggedIn());
         $user = $this->Auth->user();
-        $this->set('isAdmin', $this->User->isAdmin($user));
+        $this->isAdmin = $this->User->isAdmin($user);
+        $this->set('isAdmin', $this->isAdmin);
     }
     
     public function isAuthorized($user) {

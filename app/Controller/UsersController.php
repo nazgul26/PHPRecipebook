@@ -15,11 +15,19 @@ class UsersController extends AppController {
     
     public function isAuthorized($user) {
         if (in_array($this->action, array('index', 'view', 'delete'))) {
-
-            if ($this->User->isAdmin($user)) {
+            if ($this->isAdmin) {
                 return true;
             } else {
                 $this->Session->setFlash(__('Not Admininstrator'));
+                return false;
+            }
+        }
+        else if ($this->action == "edit") {
+            if (isset($this->request->params['pass'][0]) && 
+                    ($this->isAdmin || $this->request->params['pass'][0] == $user['id'])) {
+                return true;
+            } else {
+                $this->Session->setFlash(__('Not allowed to edit another user.'));
                 return false;
             }
         }

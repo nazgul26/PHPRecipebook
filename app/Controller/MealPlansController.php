@@ -25,7 +25,7 @@ class MealPlansController extends AppController {
                 && in_array($this->action, array('edit', 'delete'))) {
             $mealId = (int) $this->request->params['pass'][0];
             // Little extra access level needed for this. Editors should not mess with meal plans.
-            if ($this->User->isAdmin($user) || $this->MealPlan->isOwnedBy($mealId, $user['id'])) {
+            if ($this->isAdmin|| $this->MealPlan->isOwnedBy($mealId, $user['id'])) {
                 return true;
             }
             else {

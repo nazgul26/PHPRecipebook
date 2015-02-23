@@ -49,7 +49,7 @@
         <?php if ($loggedIn): ?>
         <div class="actions">
             <ul>
-                <li><?php echo $this->Html->link(__('Add Recipe'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editRecipeDialog'));?></li>
+                <li><?php echo $this->Html->link(__('Add Recipe'), array('action' => 'edit'), array('class' => 'ajaxNavigation'));?></li>
                 <li><button id="moreActionLinks">More Actions...</button></li>
             </ul>
             <div style="display: none;">

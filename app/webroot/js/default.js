@@ -2,8 +2,7 @@ var baseUrl;
 
 function initApplication(initBaseUrl) {
     baseUrl = initBaseUrl;
-    console.log("Base URL: " + baseUrl);
-    initAjaxHRef("container");
+    initAjax("container");
     initNavigationHRef("container");
     initDialogs();
     setupSearchBox();
@@ -93,7 +92,7 @@ function initNavigationHRef(targetId) {
         if (!$(this).is('a')) $targetItem = $(this).find("a");
         //console.log('Navigation ' + $targetItem.attr('href') + ", Title = " + $targetItem.text());
         $targetItem.click(function() {
-            console.log("Navigation Push " + $(this).attr('href') + ", target: " + $(this).attr('targetId') + ", Title = " + $(this).text());
+            //console.log("Navigation Push " + $(this).attr('href') + ", target: " + $(this).attr('targetId') + ", Title = " + $(this).text());
             var $targetItem = $("#" + $(this).attr('targetId'));
             if (!$targetItem.hasClass('ui-dialog-content')) {
                 $("#content #moreActionLinks").qtip('destroy', true);
