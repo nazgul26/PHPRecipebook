@@ -2,8 +2,10 @@ var baseUrl;
 
 function initApplication(initBaseUrl) {
     baseUrl = initBaseUrl;
-    initAjax("container");
-    initNavigationHRef("container");
+    var contentId = "container";
+    initAjaxHRef(contentId);
+    initMoreActionsLink(contentId);
+    initNavigationHRef(contentId);
     initDialogs();
     setupSearchBox();
     if ($(window).width() >= 1480) {
@@ -48,6 +50,7 @@ function ajaxGet(location, target) {
 }
 
 function ajaxPostForm($formItem) {
+    console.log('we are ajax posting a form');
     var targetId = ($formItem.attr('targetId') == undefined) ? 'content' : $formItem.attr('targetId');
     
     $.ajax({

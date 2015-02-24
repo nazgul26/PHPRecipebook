@@ -57,6 +57,7 @@ class AppController extends Controller {
         $user = $this->Auth->user();
         $this->isAdmin = $this->User->isAdmin($user);
         $this->set('isAdmin', $this->isAdmin);
+        $this->set('allowAccountCreation', Configure::read('App.allowPublicAccountCreation'));
     }
     
     public function isAuthorized($user) {

@@ -1,12 +1,13 @@
-<h2><?php echo __('Account Settings'); ?></h2>
+
 <?php if ($isAdmin) :?>
-<div class="actions">
-<ul>
-        <li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('User.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('User.id'))); ?></li>
-        <li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-</ul>
-</div>
+<ol class="breadcrumb">
+    <li><?php echo $this->Html->link(__('Users'), array('action' => 'index')); ?></li>
+    <li class="active"><?php echo __('Edit');?></li>
+</ol>
+<?php else : ?>
+<h2><?php echo __('Account Settings'); ?></h2>
 <?php endif;?>
+
 <div class="users form">
 <?php echo $this->Form->create('User'); ?>
 	<fieldset>

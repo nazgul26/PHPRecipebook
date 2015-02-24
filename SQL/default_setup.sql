@@ -103,6 +103,11 @@ INSERT INTO preparation_times (name) VALUES ('10-30 Minutes');
 INSERT INTO preparation_times (name) VALUES ('30-60 Minutes');
 INSERT INTO preparation_times (name) VALUES ('60+ Minutes');
 
+INSERT INTO preparation_methods (name) VALUES('Slow cooker');
+INSERT INTO preparation_methods (name) VALUES('Microwave'
+INSERT INTO preparation_methods (name) VALUES('BBQ');
+INSERT INTO preparation_methods (name) VALUES('Canning');
+
 INSERT INTO difficulties (name) VALUES ('Easy');
 INSERT INTO difficulties (name) VALUES ('Intermediate');
 INSERT INTO difficulties (name) VALUES ('Difficult');

@@ -26,6 +26,9 @@ There will be migration path from PHPRecipeBook 4.0
 * Create database and import:
     - SQL\schema_MySQL.sql
     - SQL\default_setup.sql
+    - SQL\core_ingredients.sql
+    - SQL\sample_ingredients.sql (optional)
+
 * Edit Configuration DB Configuration Settings ./app/Config/database.php to match your database settings
 * Edit ./app/Config/email.php to use your Email Server/Account
 * For File uploads:

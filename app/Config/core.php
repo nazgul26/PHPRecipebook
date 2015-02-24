@@ -2,88 +2,13 @@
 /**
  * This is core configuration file.
  *
- * Use it to configure core behavior of Cake.
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.Config
- * @since         CakePHP(tm) v 0.2.9
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * Use it to configure core behavior of this application.
  */
 
-/**
- * CakePHP Debug Level:
- *
- * Production Mode:
- * 	0: No error messages, errors, or warnings shown. Flash messages redirect.
- *
- * Development Mode:
- * 	1: Errors and warnings shown, model caches refreshed, flash messages halted.
- * 	2: As in 1, but also with full debug messages and SQL output.
- *
- * In production mode, flash messages redirect after a time interval.
- * In development mode, you need to click the flash message to continue.
+/*
+ * Allow unauthenticated users to setup their own accounts.
  */
-	Configure::write('debug', 2);
-
-/**
- * Configure the Error handler used to handle errors for your application. By default
- * ErrorHandler::handleError() is used. It will display errors using Debugger, when debug > 0
- * and log errors with CakeLog when debug = 0.
- *
- * Options:
- *
- * - `handler` - callback - The callback to handle errors. You can set this to any callable type,
- *   including anonymous functions.
- *   Make sure you add App::uses('MyHandler', 'Error'); when using a custom handler class
- * - `level` - integer - The level of errors you are interested in capturing.
- * - `trace` - boolean - Include stack traces for errors in log files.
- *
- * @see ErrorHandler for more information on error handling and configuration.
- */
-	Configure::write('Error', array(
-		'handler' => 'ErrorHandler::handleError',
-		'level' => E_ALL & ~E_DEPRECATED,
-		'trace' => true
-	));
-
-/**
- * Configure the Exception handler used for uncaught exceptions. By default,
- * ErrorHandler::handleException() is used. It will display a HTML page for the exception, and
- * while debug > 0, framework errors like Missing Controller will be displayed. When debug = 0,
- * framework errors will be coerced into generic HTTP errors.
- *
- * Options:
- *
- * - `handler` - callback - The callback to handle exceptions. You can set this to any callback type,
- *   including anonymous functions.
- *   Make sure you add App::uses('MyHandler', 'Error'); when using a custom handler class
- * - `renderer` - string - The class responsible for rendering uncaught exceptions. If you choose a custom class you
- *   should place the file for that class in app/Lib/Error. This class needs to implement a render method.
- * - `log` - boolean - Should Exceptions be logged?
- * - `skipLog` - array - list of exceptions to skip for logging. Exceptions that
- *   extend one of the listed exceptions will also be skipped for logging.
- *   Example: `'skipLog' => array('NotFoundException', 'UnauthorizedException')`
- *
- * @see ErrorHandler for more information on exception handling and configuration.
- */
-	Configure::write('Exception', array(
-		'handler' => 'ErrorHandler::handleException',
-		'renderer' => 'ExceptionRenderer',
-		'log' => true
-	));
-
-/**
- * Application wide charset encoding
- */
-	Configure::write('App.encoding', 'UTF-8');
+Configure::write('App.allowPublicAccountCreation', TRUE);
 
 /**
  * To configure CakePHP *not* to use mod_rewrite and to
@@ -104,7 +29,7 @@
  * included primarily as a development convenience - and
  * thus not recommended for production applications.
  */
-	//Configure::write('App.baseUrl', env('SCRIPT_NAME'));
+//Configure::write('App.baseUrl', env('SCRIPT_NAME'));
 
 /**
  * To configure CakePHP to use a particular domain URL
@@ -113,70 +38,31 @@
  * will override the automatic detection of full base URL and can be
  * useful when generating links from the CLI (e.g. sending emails)
  */
-	//Configure::write('App.fullBaseUrl', 'http://example.com');
+//Configure::write('App.fullBaseUrl', 'http://example.com');
 
 /**
  * Web path to the public images directory under webroot.
  * If not set defaults to 'img/'
  */
-	//Configure::write('App.imageBaseUrl', 'img/');
+//Configure::write('App.imageBaseUrl', 'img/');
 
 /**
  * Web path to the CSS files directory under webroot.
  * If not set defaults to 'css/'
  */
-	//Configure::write('App.cssBaseUrl', 'css/');
+//Configure::write('App.cssBaseUrl', 'css/');
 
 /**
  * Web path to the js files directory under webroot.
  * If not set defaults to 'js/'
  */
-	//Configure::write('App.jsBaseUrl', 'js/');
+//Configure::write('App.jsBaseUrl', 'js/');
 
 /**
- * Uncomment the define below to use CakePHP prefix routes.
- *
- * The value of the define determines the names of the routes
- * and their associated controller actions:
- *
- * Set to an array of prefixes you want to use in your application. Use for
- * admin or other prefixed routes.
- *
- * 	Routing.prefixes = array('admin', 'manager');
- *
- * Enables:
- *	`admin_index()` and `/admin/controller/index`
- *	`manager_index()` and `/manager/controller/index`
- *
+ * A random numeric string (digits only) used to encrypt/decrypt strings. You should change
+ *  this to ensure you don't take the default values everyone is using.
  */
-	//Configure::write('Routing.prefixes', array('admin'));
-
-/**
- * Turn off all caching application-wide.
- *
- */
-	//Configure::write('Cache.disable', true);
-
-/**
- * Enable cache checking.
- *
- * If set to true, for view caching you must still use the controller
- * public $cacheAction inside your controllers to define caching settings.
- * You can either set it controller-wide by setting public $cacheAction = true,
- * or in each action using $this->cacheAction = true.
- *
- */
-	//Configure::write('Cache.check', true);
-
-/**
- * Enable cache view prefixes.
- *
- * If set it will be prepended to the cache name for view file caching. This is
- * helpful if you deploy the same application via multiple subdomains and languages,
- * for instance. Each version can then have its own view cache namespace.
- * Note: The final cache file name will then be `prefix_cachefilename`.
- */
-	//Configure::write('Cache.viewPrefix', 'prefix');
+Configure::write('Security.cipherSeed', '234820394820398420938402938');
 
 /**
  * Session configuration.
@@ -215,59 +101,14 @@
  * the cake shell command: cake schema create Sessions
  *
  */
-	Configure::write('Session', array(
-		'defaults' => 'php'
-	));
+Configure::write('Session', array('defaults' => 'php'));
 
-/**
- * A random string used in security hashing methods.
- */
-	Configure::write('Security.salt', '23049asdf0asdfrlk2j34knef0asdfal3kwn4asdfasdlk5234');
-
-/**
- * A random numeric string (digits only) used to encrypt/decrypt strings.
- */
-	Configure::write('Security.cipherSeed', '234820394820398420938402938');
-
-/**
- * Apply timestamps with the last modified time to static assets (js, css, images).
- * Will append a query string parameter containing the time the file was modified. This is
- * useful for invalidating browser caches.
- *
- * Set to `true` to apply timestamps when debug > 0. Set to 'force' to always enable
- * timestamping regardless of debug value.
- */
-	//Configure::write('Asset.timestamp', true);
-
-/**
- * Compress CSS output by removing comments, whitespace, repeating tags, etc.
- * This requires a/var/cache directory to be writable by the web server for caching.
- * and /vendors/csspp/csspp.php
- *
- * To use, prefix the CSS link URL with '/ccss/' instead of '/css/' or use HtmlHelper::css().
- */
-	//Configure::write('Asset.filter.css', 'css.php');
-
-/**
- * Plug in your own custom JavaScript compressor by dropping a script in your webroot to handle the
- * output, and setting the config below to the name of the script.
- *
- * To use, prefix your JavaScript link URLs with '/cjs/' instead of '/js/' or use JsHelper::link().
- */
-	//Configure::write('Asset.filter.js', 'custom_javascript_output_filter.php');
-
-/**
- * The class name and database used in CakePHP's
- * access control lists.
- */
-	Configure::write('Acl.classname', 'DbAcl');
-	Configure::write('Acl.database', 'default');
 
 /**
  * Uncomment this line and correct your server timezone to fix
  * any date & time related errors.
  */
-	date_default_timezone_set('UTC');
+date_default_timezone_set('UTC');
 
 /**
  * `Config.timezone` is available in which you can set users' timezone string.
@@ -275,7 +116,12 @@
  * then the value of `Config.timezone` will be used. This feature allows you to set users' timezone just
  * once instead of passing it each time in function calls.
  */
-	Configure::write('Config.timezone', 'America/New_York');
+Configure::write('Config.timezone', 'America/New_York');
+
+/**
+ * Application wide charset encoding
+ */
+Configure::write('App.encoding', 'UTF-8');
 
 /**
  *
@@ -383,3 +229,72 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+
+/**
+ * CakePHP Debug Level:
+ *
+ * Production Mode:
+ * 	0: No error messages, errors, or warnings shown. Flash messages redirect.
+ *
+ * Development Mode:
+ * 	1: Errors and warnings shown, model caches refreshed, flash messages halted.
+ * 	2: As in 1, but also with full debug messages and SQL output.
+ *
+ * In production mode, flash messages redirect after a time interval.
+ * In development mode, you need to click the flash message to continue.
+ */
+Configure::write('debug', 2);
+
+/**
+ * Configure the Error handler used to handle errors for your application. By default
+ * ErrorHandler::handleError() is used. It will display errors using Debugger, when debug > 0
+ * and log errors with CakeLog when debug = 0.
+ *
+ * Options:
+ *
+ * - `handler` - callback - The callback to handle errors. You can set this to any callable type,
+ *   including anonymous functions.
+ *   Make sure you add App::uses('MyHandler', 'Error'); when using a custom handler class
+ * - `level` - integer - The level of errors you are interested in capturing.
+ * - `trace` - boolean - Include stack traces for errors in log files.
+ *
+ * @see ErrorHandler for more information on error handling and configuration.
+ */
+Configure::write('Error', array(
+        'handler' => 'ErrorHandler::handleError',
+        'level' => E_ALL & ~E_DEPRECATED,
+        'trace' => true
+));
+
+/**
+ * Configure the Exception handler used for uncaught exceptions. By default,
+ * ErrorHandler::handleException() is used. It will display a HTML page for the exception, and
+ * while debug > 0, framework errors like Missing Controller will be displayed. When debug = 0,
+ * framework errors will be coerced into generic HTTP errors.
+ *
+ * Options:
+ *
+ * - `handler` - callback - The callback to handle exceptions. You can set this to any callback type,
+ *   including anonymous functions.
+ *   Make sure you add App::uses('MyHandler', 'Error'); when using a custom handler class
+ * - `renderer` - string - The class responsible for rendering uncaught exceptions. If you choose a custom class you
+ *   should place the file for that class in app/Lib/Error. This class needs to implement a render method.
+ * - `log` - boolean - Should Exceptions be logged?
+ * - `skipLog` - array - list of exceptions to skip for logging. Exceptions that
+ *   extend one of the listed exceptions will also be skipped for logging.
+ *   Example: `'skipLog' => array('NotFoundException', 'UnauthorizedException')`
+ *
+ * @see ErrorHandler for more information on exception handling and configuration.
+ */
+Configure::write('Exception', array(
+        'handler' => 'ErrorHandler::handleException',
+        'renderer' => 'ExceptionRenderer',
+        'log' => true
+));
+
+/**
+ * A random string used in security hashing methods.  Leave blank since this app
+ *  uses bcrypt.
+ */
+Configure::write('Security.salt', '');
+

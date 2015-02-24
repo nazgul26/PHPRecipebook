@@ -81,14 +81,16 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                         </form>
                     </li>
                     <?php if (!$loggedIn) : ?>
-                    <li>
-                        <a href="<?php echo $baseUrl;?>Users/login" id="signInButton" 
-                           title="<?php echo __('Sign in with your existing account');?>">Sign in</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $baseUrl;?>Users/add" id="signInButton" 
-                           title="<?php echo __('Create a new account');?>">Create Account</a>
-                    </li>
+                        <li>
+                            <a href="<?php echo $baseUrl;?>Users/login" id="signInButton" 
+                               title="<?php echo __('Sign in with your existing account');?>">Sign in</a>
+                        </li>
+                        <?php if ($allowAccountCreation) :?>
+                        <li>
+                            <a href="<?php echo $baseUrl;?>Users/add" id="signInButton" 
+                               title="<?php echo __('Create a new account');?>">Create Account</a>
+                        </li>
+                        <?php endif;?>
                     <?php else: ?>
                     <li>
                         <a href="<?php echo $baseUrl;?>Users/logout" title="<?php echo __('Logout');?>">Logout</a>
