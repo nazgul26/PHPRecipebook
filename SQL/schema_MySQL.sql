@@ -287,6 +287,5 @@ CREATE TABLE restaurants (
     UNIQUE KEY (name)
 );
 	
-INSERT INTO settings (name, value, user_id) values ('MealPlanStartDay', '0', 1);
-INSERT INTO users (username,password,name,access_level,country,email) VALUES ('admin', '76a2173be6393254e72ffa4d6df1030a', 'Administrator', '99','us','user@localhost');
+INSERT INTO users (username,password,name,access_level,country,email) VALUES ('admin', '', 'Administrator', '90','us','user@localhost');
 INSERT INTO stores (name, layout, user_id) VALUES('default', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43', 1);

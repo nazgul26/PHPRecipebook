@@ -23,14 +23,20 @@ There will be migration path from PHPRecipeBook 4.0
 * Get PHP Composer installed. https://getcomposer.org/download/.  Composer is used to manage dependencies and make upgrading CakePHP easier.
 * Ensure you have the following PHP Modules installed: mysql, mcrypt, gd.
 * Run 'php composer.phar install' in the app\ directory to get CakePHP and check dependencies.
-* Create database and import:
-    - SQL\schema_MySQL.sql
-    - SQL\default_setup.sql
-    - SQL\core_ingredients.sql
-    - SQL\sample_ingredients.sql (optional)
+* Create a new database to store the application in. i.e. recipebook
+* Edit Configuration DB Configuration Settings ./app/Config/database.php to match your database settings. 
+* Create scheme and import:
+    - sudo ./app/Console/cake schema create
+      * Answer Y to drop, Y to create
+    - Import: SQL/core_ingredients.sql
+    - Import: SQL/sample_ingredients.sql (optional)
 
-* Edit Configuration DB Configuration Settings ./app/Config/database.php to match your database settings
 * Edit ./app/Config/email.php to use your Email Server/Account
+
 * For File uploads:
     - mkdir ./app/webroot/files/recipe
     - sudo chown <your web group>.<your web user> ./app/webroot/files/recipe
+
+* Launch the website and login as:
+     - User: admin
+     - Password: passwd
