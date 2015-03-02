@@ -1,4 +1,5 @@
 <?php
+Configure::write('App.version', '5.0');
 
 // Setup a 'default' cache configuration for use in the application.
 Cache::config('default', array('engine' => 'File'));

@@ -14,18 +14,12 @@ ALTER TABLE users ADD locked BOOL NOT NULL DEFAULT 0;
 ALTER TABLE users ADD reset_token VARCHAR(255) NULL;
 ALTER TABLE users ADD reset_time DATETIME NULL;
 ALTER TABLE users ADD meal_plan_start_day INT NOT NULL DEFAULT '0';
+UPDATE users SET password = NULL;
+UPDATE users SET locked = 1;
 
-DROP TABLE providers;
-DROP TABLE openids;
-DROP TABLE settings;
-
-RENAME TABLE recipe_settings TO settings;
-ALTER TABLE settings CHANGE setting_name name VARCHAR(32);
-ALTER TABLE settings CHANGE setting_value value VARCHAR(64);
-ALTER TABLE settings CHANGE setting_user user_id INT NULL;
-ALTER TABLE settings DROP PRIMARY KEY;
-ALTER TABLE settings ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
-ALTER TABLE settings ADD UNIQUE (name, user_id);
+DROP TABLE security_providers;
+DROP TABLE security_openid;
+DROP TABLE recipe_settings;
 
 RENAME TABLE recipe_stores TO stores;
 ALTER TABLE stores CHANGE store_id id INT NOT NULL AUTO_INCREMENT;
@@ -66,7 +60,6 @@ ALTER TABLE difficulties CHANGE difficult_id id INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE difficulties CHANGE difficult_desc name VARCHAR(64);
 
 RENAME TABLE recipe_core_ingredients TO core_ingredients;
-ALTER TABLE core_ingredients CHANGE groupNumber group INT NOT NULL;
 ALTER TABLE core_ingredients CHANGE description name VARCHAR(200) NOT NULL;
 
 RENAME TABLE recipe_core_weights TO core_weights;
@@ -116,8 +109,8 @@ CREATE table attachments (
     `dir` varchar(255) DEFAULT NULL,
     `type` varchar(255) DEFAULT NULL,
     `size` int(11) DEFAULT 0,
-    sort_order INT
-    PRIMARY KEY (`id`)
+    sort_order INT,
+    PRIMARY KEY (id)
 );
 
 RENAME TABLE recipe_ingredient_mapping TO ingredient_mappings;
@@ -185,6 +178,11 @@ CREATE TABLE vendor_products (
 	PRIMARY KEY (id)
 );
 
+INSERT INTO vendors (name, home_url, add_url) 
+    VALUES ('Presto Fresh Grocery', 
+    'http://www.prestofreshgrocery.com/', 
+    'http://www.prestofreshgrocery.com/checkout/cart/add/uenc/a/product/');
+
 RENAME TABLE recipe_meals TO meal_names;
 ALTER TABLE meal_names CHANGE meal_id id INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE meal_names CHANGE meal_name name VARCHAR(64) NOT NULL UNIQUE;
@@ -243,3 +241,7 @@ CREATE TABLE preparation_methods (
 	PRIMARY KEY(id)
 );
 ALTER TABLE recipes ADD preparation_method_id INT REFERENCES preparation_methods(id) on DELETE SET NULL;
+INSERT INTO preparation_methods (name) VALUES ('Slow cooker');
+INSERT INTO preparation_methods (name) VALUES ('BBQ');
+INSERT INTO preparation_methods (name) VALUES ('Microwave');
+INSERT INTO preparation_methods (name) VALUES ('Canning');

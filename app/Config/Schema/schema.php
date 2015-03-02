@@ -196,6 +196,14 @@ class AppSchema extends CakeSchema {
                                 'email' => 'user@localhost')
                         );
                         break; 
+                    case 'vendors':
+                        $data = array(
+                            array('name' => 'Presto Fresh Grocery', 
+                                'home_url' => 'http://www.prestofreshgrocery.com/',
+                                'add_url' => 'http://www.prestofreshgrocery.com/checkout/cart/add/uenc/a/product/'
+                            )
+                        );
+                        break;
                     default:
                 }
                 if ($data) {

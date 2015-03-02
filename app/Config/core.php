@@ -6,6 +6,11 @@
  */
 
 /*
+ * During Initial setup this should be true. After setup change to FALSE
+ */
+Configure::write('App.setupMode', TRUE);
+
+/*
  * Allow unauthenticated users to setup their own accounts.
  */
 Configure::write('App.allowPublicAccountCreation', TRUE);

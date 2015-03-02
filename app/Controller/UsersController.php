@@ -208,7 +208,7 @@ class UsersController extends AppController {
         }
         
         if ($this->request->is(array('post', 'put'))) {
-            if ($this->data['User']['password1'] === $this->data['User']['password2']) {
+            if ($this->request->data['User']['password1'] === $this->request->data['User']['password2']) {
                 // only pass on the password when there is a value (and it matches the confirm)
                 if (!empty($this->request->data['User']['password2'])) {  
                     $this->request->data['User']['password'] = $this->request->data['User']['password2'];
