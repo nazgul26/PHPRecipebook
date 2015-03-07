@@ -1,3 +1,5 @@
+Config/database.php
+Config/email.php
 tmp/*
 !empty
 /nbproject/private/

@@ -86,13 +86,19 @@
 	<tr>
             <td class="actions">
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe['Recipe']['id']), null, __('Are you sure you want to delete %s?', $recipe['Recipe']['name'])); ?>
+                <?php if ($loggedIn):?>
+                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); ?>
+                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe['Recipe']['id']), null, __('Are you sure you want to delete %s?', $recipe['Recipe']['name'])); ?>
+                <?php endif;?>
             </td>
             <td><?php echo h($recipe['Recipe']['name']); ?>&nbsp;</td>
             <td><?php echo h($recipe['Recipe']['comments']); ?>&nbsp;</td>
             <td>
-                <?php echo $this->Html->link($recipe['User']['name'], array('controller' => 'users', 'action' => 'view', $recipe['User']['id'])); ?>
+                <?php if ($isAdmin) {
+                    echo $this->Html->link($recipe['User']['name'], array('controller' => 'users', 'action' => 'view', $recipe['User']['id']));
+                }else {
+                    echo $recipe['User']['name'];
+                }?>
             </td>
 	</tr>
 <?php endforeach; ?>

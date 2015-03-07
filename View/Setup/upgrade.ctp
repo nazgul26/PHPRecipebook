@@ -15,11 +15,11 @@
 <ul>
     <li><?php echo __('Make a backup of your database!');?></li>
     <li><?php echo __('Migrate from latest 4.x PHPRecipeBook to 5.0');?> -<br/>
-        <b>SQL/upgrade/recipedb-4.x-5.0.sql</b>
+        <b>./Config/SQL/upgrade/recipedb-4.x-5.0.sql</b>
     </li>
     <li>
         Edit the configuration file to set your Email Server/Account<br/>
-        <b>./app/Config/email.php</b>
+        <b>./Config/email.php</b>
     </li> 
 </ul>
 <br/>

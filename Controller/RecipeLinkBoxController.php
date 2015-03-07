@@ -10,7 +10,9 @@ class RecipeLinkBoxController extends AppController {
     );
     
     public function index() {  
-        $userFilter = array('Recipe.user_id' => $this->Auth->user('id'));
+        //TODO: make this a setting to filter out mine (probably remember last login to get ID)
+        //$userFilter = array('Recipe.user_id' => $this->Auth->user('id'));
+        $userFilter = array();
         
         $this->layout = 'ajax';
         $baseTypes = $this->BaseType->find('all');

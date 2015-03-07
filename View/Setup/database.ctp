@@ -10,18 +10,18 @@
 
     <li>
         <?php echo __('Create the schema');?> - <br/>
-        <b>sudo ./app/Console/cake schema create</b><br/>
+        <b>sudo ./Console/cake schema create</b><br/>
         <i>* Answer Y to drop, Y to create</i>
     </li>
     <li><?php echo __('Import core ingredients');?> - <br/>
-        <b>SQL/core_ingredients.sql</b>
+        <b>Config/SQL/core_ingredients.sql</b>
     </li>
     <li><?php echo __('Import sample ingredients (optional)');?> -<br/>
-        <b>SQL/sample_ingredients.sql</b>(optional)
+        <b>Config/SQL/sample_ingredients.sql</b>(optional)
     </li>
     <li>
         Edit the configuration file to set your Email Server/Account<br/>
-        <b>./app/Config/email.php</b>
+        <b>./Config/email.php</b>
     </li> 
 </ul>
 <br/>

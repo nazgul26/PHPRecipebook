@@ -8,7 +8,7 @@
 /*
  * During Initial setup this should be true. After setup change to FALSE
  */
-Configure::write('App.setupMode', TRUE);
+Configure::write('App.setupMode', FALSE);
 
 /*
  * Allow unauthenticated users to setup their own accounts.
