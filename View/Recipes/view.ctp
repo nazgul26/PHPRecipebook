@@ -31,11 +31,14 @@ if (isset($servings)) {
     <h2><?php echo h($recipe['Recipe']['name']); ?></h2>
         <div class="actions">
             <ul>
+                <?php if ($loggedIn):?>
                 <li><?php echo $this->Html->link(__('Edit Recipe'), array('action' => 'edit', $recipeId)); ?></li>
                 <li><?php echo $this->Html->link(__('Add to shopping list'), array('controller' => 'shoppingLists', 'action' => 'addRecipe', 0, $recipeId, $servings)); ?></li>
+                <?php endif;?>
                 <li><a href="#" onclick="window.print();"><?php echo __('Print');?></a></li>
-                <!-- Ratings - Put it on the page somewhere instead of a link -->
+                <?php if ($loggedIn) :?>
                 <li><button id="moreActionLinks">More Actions...</button></li>
+                <?php endif;?>
             </ul>
             <div style="display: none;">
                 <ul id="moreActionLinksContent">

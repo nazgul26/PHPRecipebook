@@ -40,10 +40,13 @@ class AppController extends Controller {
         
         parent::beforeFilter();
         
+        // Disable content cache for Chrome
+        $this->response->disableCache();
+        
         // Delete the default auth message.  Just show them the login page
         //  people will get the idea pretty quickly.
         $this->Session->delete('Message.auth');
-        
+
         if ($this->request->is('ajax')) {
             $this->layout = 'ajax'; 
         } else {

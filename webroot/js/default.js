@@ -13,12 +13,11 @@ function initApplication(initBaseUrl) {
     } 
     
     window.onpopstate = function (event) {
-        if (event.state && event.state.target) {
-            ajaxGet(event.state.action, event.state.target);
-        } else {
-            // Get us Home and refresh
+        if (event.state == null) 
             location.reload();
-        }
+        else {
+           ajaxGet(event.state.action, event.state.target); 
+        }             
     };
 }
 
@@ -50,7 +49,6 @@ function ajaxGet(location, target) {
 }
 
 function ajaxPostForm($formItem) {
-    console.log('we are ajax posting a form');
     var targetId = ($formItem.attr('targetId') == undefined) ? 'content' : $formItem.attr('targetId');
     
     $.ajax({

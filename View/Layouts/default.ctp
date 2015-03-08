@@ -34,6 +34,7 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
 <body>
     <script type="text/javascript">
         $(function() {
+            console.log("base URL <?php echo $baseUrl;?>");
             initApplication("<?php echo $baseUrl;?>");
         });
         

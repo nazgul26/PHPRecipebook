@@ -9,6 +9,10 @@ $shoppingListId = isset($this->request->data['ShoppingList']['id']) ? $this->req
             ajaxNavigate('<?php echo $baseUrl;?>ShoppingLists/select/<?php echo $shoppingListId;?>');
         });
         
+        $('[save-list]').click(function() {
+            $('#ShoppingListIndexForm').submit();
+        });
+        
         $('#addRecipeAutocomplete').autocomplete({
             source: "<?php echo $baseUrl; ?>Recipes/autoCompleteSearch.json",
             minLength: 1,
@@ -159,9 +163,7 @@ $shoppingListId = isset($this->request->data['ShoppingList']['id']) ? $this->req
         echo $this->Form->hidden('id');
         echo $this->Form->hidden('name'); // Make dialog to change name
     ?>
-        
-    <button class="btn-primary" type="submit">Save</button>
-    <button class="btn-primary" go-shopping>Start Shopping</button>
-    
     <?php echo $this->Form->end(); ?>
+    <button class="btn-primary" save-list>Save</button>
+    <button class="btn-primary" go-shopping>Start Shopping</button>
 </div>
