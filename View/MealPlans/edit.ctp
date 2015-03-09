@@ -35,6 +35,7 @@ $baseUrl = Router::url('/');
     }
 </script>
 <?php //echo $this->element('sql_dump'); ?>
+
 <div class="mealPlans form">
 
 <?php echo $this->Form->create('MealPlan', array('default' => false, 'targetId' => 'editMealDialog')); ?>
@@ -60,6 +61,16 @@ $baseUrl = Router::url('/');
         echo $this->Form->input('days', array('default' => 1, 'type' => 'number'));
         echo $this->Form->input('skip', array('label' => __('Every other day'), 'type' => 'checkbox', 'default' => true));
 ?>
+    <?php if (isset($this->data['Recipe']['id'])):?>
+    <div class="viewRecipe">
+    <?php echo $this->Html->link(__('View'), array('controller'=>'recipes', 'action' => 'view', 
+            $this->request->data['Recipe']['id'])); ?>
+           <?php echo $this->Html->link(__('Edit'), array('controller'=>'recipes', 'action' => 'edit', 
+            $this->request->data['Recipe']['id'])); ?>
+    </div>  
+    <?php endif;?>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
 <?php echo $this->Session->flash(); ?>
+
+

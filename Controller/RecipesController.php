@@ -214,9 +214,7 @@ class RecipesController extends AppController {
     }
     
     public function deleteAttachment($recipeId, $id) {
-        $this->loadModel('Attachment');
-        $this->Attachment->delete($id);
-        //TODO: Remove the Image / thumbnails
+        $this->Recipe->Image->delete($id);
         return $this->redirect(array('action' => 'edit', $recipeId));
     }
     

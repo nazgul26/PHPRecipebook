@@ -387,6 +387,16 @@ float60Section {
   margin-left: 11em;
 }
 
+/* line 110, ../../sass/src/_mealPlanner.scss */
+.viewRecipe {
+  text-align: center;
+  margin-top: 22px;
+}
+/* line 113, ../../sass/src/_mealPlanner.scss */
+.viewRecipe a {
+  margin-right: 2em;
+}
+
 /* line 1, ../../sass/src/_shoppingList.scss */
 .shoppingListText {
   font-size: 1.4em;

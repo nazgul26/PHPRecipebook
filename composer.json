@@ -1,7 +1,8 @@
 {
     "name": "PHPRecipeBook",
     "require": {
-        "cakephp/cakephp": "2.6.*",
+        "cakephp/cakephp": "2.*",
+        "josegonzalez/cakephp-upload": "1.*",
         "ext-gd": "*",
         "ext-mcrypt": "*"
     },
