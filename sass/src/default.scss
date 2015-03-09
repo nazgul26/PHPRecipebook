@@ -88,6 +88,13 @@ nav li img {
     padding-bottom: 4px;
 }
 
+@media (max-width: 1024px) {
+  .higherRes {
+    display: none;
+  }
+}
+
+
 dl {
   margin-top: 1em;
 

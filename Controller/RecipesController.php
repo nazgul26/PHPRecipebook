@@ -213,6 +213,13 @@ class RecipesController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
     
+    public function deleteAttachment($recipeId, $id) {
+        $this->loadModel('Attachment');
+        $this->Attachment->delete($id);
+        //TODO: Remove the Image / thumbnails
+        return $this->redirect(array('action' => 'edit', $recipeId));
+    }
+    
     public function search() {
         $term = $this->request->query('term');
         if ($term)

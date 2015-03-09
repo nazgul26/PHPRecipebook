@@ -1,3 +1,6 @@
+<?php
+$recipeId = $recipe['Recipe']['id'];
+?>
 <script type="text/javascript">
     $(function() {
         $(document).off("savedIngredient.editRecipe");
@@ -70,9 +73,11 @@
             reNumberRelatedRecipesTable();
             
             // Remove Add Image
-            if ($('#imageSection .file input').val() == "") {
+            if ($('#imageSection .file input').val() === "") {
+                var imageId = $('#imageSection .file input').attr('id').replace('Attachment', '');
                 $('#imageSection .file input').remove();
                 $('#imageSection .text input').remove();
+                $('#' + imageId + 'Id').remove();
             }
             return true;
         });
@@ -233,7 +238,6 @@
                 minLength: 1,
                 html: true,
                 select: function(event, ui) {
-                    //console.log("ID: " + ui.item.id + ", Name: " + ui.item.label);
                     var $target = $(event.target);
                     var mapId = $target.attr("id").replace(itemName, "") + itemId;
                     $("#" + mapId).val(ui.item.id);
@@ -269,7 +273,6 @@
 <?php echo $this->Form->create('Recipe', array('type' => 'file')); ?>
     <fieldset>
             <legend><?php echo __('Recipe'); ?></legend>
-            <?php echo $this->Session->flash(); ?> 
             <?php
             $baseUrl = Router::url('/');
             echo $this->Form->hidden('id');
@@ -302,10 +305,11 @@
                 $imageDir = $recipe['Image'][$imageIndex]['dir'];
                 $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'thumb_${1}.$2', $imageName);
                 $imageCaption = $recipe['Image'][$imageIndex]['name'];
+                $imageId = $recipe['Image'][$imageIndex]['id'];
                 echo '<div class="recipeImage">';
                 echo $this->Form->hidden('Image.' . $imageIndex . '.id');
                 echo $this->Form->hidden('Image.' . $imageIndex . '.sort_order');
-                echo $this->Form->input('Attachment.' . $imageIndex . '.remove', array('type' => 'checkbox', 'label' => 'Delete'));
+                echo $this->Html->link(__('Delete'), array('action' => 'deleteAttachment',$recipeId, $imageId));
                 echo '<img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
                         $imageThumb . '" alt="' . $imageCaption . '"/>';
 
@@ -423,6 +427,7 @@
                 <a href="#" id="AddMoreRelatedRecipesLink"><?php echo __('Add Another Recipe');?></a>
             </div>
     </fieldset>
+<?php echo $this->Session->flash(); ?> 
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
 

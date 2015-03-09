@@ -14,10 +14,9 @@ function initApplication(initBaseUrl) {
     
     window.onpopstate = function (event) {
         if (event.state == null) 
-            location.reload();
-        else {
-           ajaxGet(event.state.action, event.state.target); 
-        }             
+            return;
+
+        ajaxGet(event.state.action, event.state.target);          
     };
 }
 

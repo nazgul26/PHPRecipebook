@@ -62,14 +62,14 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                     <li><a href="<?php echo $baseUrl;?>ShoppingLists" class="ajaxNavigation" 
                            title="<?php echo __('Create or Edit a shopping list');?>"><?php echo __('Shopping List');?></a></li>
                            
-                    <li><a href="<?php echo $baseUrl;?>Ingredients" class="ajaxNavigation" 
+                    <li><a href="<?php echo $baseUrl;?>Ingredients" class="ajaxNavigation higherRes" 
                            title="<?php echo __('Ingredients used in recipes');?>"><?php echo __('Ingredients'); ?></a></li>
                            
                     <?php endif; ?>
-                    <li><a href="<?php echo $baseUrl;?>Restaurants" class="ajaxNavigation" 
+                    <li><a href="<?php echo $baseUrl;?>Restaurants" class="ajaxNavigation higherRes" 
                            title="<?php echo __('List of your restaurants');?>"><?php echo __('Restaurants');?></a></li>
                     <?php if ($loggedIn && $isAdmin) : ?>
-                    <li><a href="<?php echo $baseUrl;?>Users" class="ajaxNavigation" 
+                    <li><a href="<?php echo $baseUrl;?>Users" class="ajaxNavigation higherRes" 
                            title="<?php echo __('Administer Users');?>"><?php echo __('Users');?></a></li>
                            
                     <?php endif; ?>
@@ -97,7 +97,9 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                         <a href="<?php echo $baseUrl;?>Users/logout" title="<?php echo __('Logout');?>">Logout</a>
                     </li>
                     <li id="settingsLink">
-                        <a href="<?php echo $baseUrl;?>Users/edit/<?php echo AuthComponent::user('id');?>" title="<?php echo __('Edit your Account settings');?>">
+                        <a href="<?php echo $baseUrl;?>Users/edit/<?php echo AuthComponent::user('id');?>" 
+                           title="<?php echo __('Edit your Account settings');?>"
+                           class="ajaxNavigation">
                             <?php echo $this->Html->image('two_gears.png', array('alt' => 'Settings'));?>
                         </a>
                     </li>
