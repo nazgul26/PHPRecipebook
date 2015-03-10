@@ -106,7 +106,7 @@ Configure::write('Security.cipherSeed', '234820394820398420938402938');
  * the cake shell command: cake schema create Sessions
  *
  */
-Configure::write('Session', array('defaults' => 'php'));
+Configure::write('Session', array('defaults' => 'cake'));
 
 
 /**

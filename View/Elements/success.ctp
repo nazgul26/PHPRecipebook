@@ -4,10 +4,8 @@
         <?php if (isset($event)) { ?>
         var flashEvent = jQuery.Event("<?php echo h($event);?>");
         $(document).trigger(flashEvent);
-        <?php } ?>
+        <?php }?>
+            
+        toastr.info('<?php echo h($message);?>');
     });
 </script>
-
-<span class="notice success">
-<?php echo h($message); ?>
-</span>

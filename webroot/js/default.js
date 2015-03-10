@@ -15,7 +15,6 @@ function initApplication(initBaseUrl) {
     window.onpopstate = function (event) {
         if (event.state == null) 
             return;
-
         ajaxGet(event.state.action, event.state.target);          
     };
 }

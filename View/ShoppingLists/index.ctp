@@ -4,11 +4,11 @@ $shoppingListId = isset($this->request->data['ShoppingList']['id']) ? $this->req
 ?>
 <script type="text/javascript">
     $(function() {
-  
+     
         $('[go-shopping]').click(function() {
             ajaxNavigate('<?php echo $baseUrl;?>ShoppingLists/select/<?php echo $shoppingListId;?>');
         });
-        
+
         $('[save-list]').click(function() {
             $('#ShoppingListIndexForm').submit();
         });
@@ -61,7 +61,7 @@ $shoppingListId = isset($this->request->data['ShoppingList']['id']) ? $this->req
     
 </script>
 <?php //echo $this->element('sql_dump'); ?>
-
+<?php echo $this->Session->flash(); ?> 
 <h2><?php echo __('Shopping List'); ?></h2>
 <div class="actions">
     <ul>
@@ -164,6 +164,6 @@ $shoppingListId = isset($this->request->data['ShoppingList']['id']) ? $this->req
         echo $this->Form->hidden('name'); // Make dialog to change name
     ?>
     <?php echo $this->Form->end(); ?>
-    <button class="btn-primary" save-list>Save</button>
-    <button class="btn-primary" go-shopping>Start Shopping</button>
+    <button class="btn-primary" save-list><?php echo __('Save');?></button>
+    <button class="btn-primary" go-shopping><?php echo __('Start Shopping');?></button>
 </div>
