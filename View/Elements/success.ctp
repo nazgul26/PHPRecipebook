@@ -6,6 +6,6 @@
         $(document).trigger(flashEvent);
         <?php }?>
             
-        toastr.info('<?php echo h($message);?>');
+        toastr.success('<?php echo h($message);?>');
     });
 </script>

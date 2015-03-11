@@ -7,10 +7,8 @@ if (isset($selectedVendor['Vendor'])) {
 ?>
 <script type="text/javascript">
     $(function() {
-        $('[row-click]').click(function() {
-            $checkBox = $(this).find('input');
-            $productInput = $(this).find('[product-id]').first();
-            rowClicked($checkBox, $productInput);
+        $('[list-item]').change(function() {
+            rowClicked($(this));
         });
         $('[shop-add]').click(function() {
             var vendorAddUrl = "<?php echo $vendorAddUrl;?>";
@@ -24,15 +22,11 @@ if (isset($selectedVendor['Vendor'])) {
         });
     });
     
-    function rowClicked($checkBox, $productInput) {
+    function rowClicked($checkBox) {
         if ($checkBox.prop('checked')) {
-            $checkBox.removeAttr('checked');
-            $checkBox.parent().parent().removeClass('strikeThrough');
-            $productInput.removeClass('disabled');
-        } else {
-            $checkBox.prop('checked', true);
             $checkBox.parent().parent().addClass('strikeThrough');
-            $productInput.addClass('disabled');
+        } else {
+            $checkBox.parent().parent().removeClass('strikeThrough');
         }
     }
     
