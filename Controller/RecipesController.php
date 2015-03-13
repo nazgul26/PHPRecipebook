@@ -60,6 +60,7 @@ class RecipesController extends AppController {
     public function index() {
         $this->Recipe->recursive = 0;
         $this->Paginator->settings = $this->paginate;
+        $this->set('loggedInuserId', $this->Auth->user('id'));
         $this->set('recipes', $this->Paginator->paginate('Recipe', $this->filterConditions));
     }
 
@@ -191,6 +192,22 @@ class RecipesController extends AppController {
         $preparationMethods = $this->Recipe->PreparationMethod->find('list');
         $units = $this->Recipe->IngredientMapping->Ingredient->Unit->find('list');
         $this->set(compact('ethnicities', 'baseTypes', 'courses', 'preparationTimes', 'difficulties', 'sources',  'preparationMethods', 'recipe', 'units'));
+    }
+    
+    public function removeIngredientMapping($recipeId, $mappingId) {
+        if ($this->Recipe->IngredientMapping->delete($mappingId)) {
+            $this->Session->setFlash(__('The ingredient has been removed.'), "success");
+        } else {
+            $this->Session->setFlash(__('The ingredient could not be removed. Please, try again.'));
+        }
+    }
+    
+    public function removeRecipeMapping($recipeId, $mappingId) {
+        if ($this->Recipe->RelatedRecipe->delete($mappingId)) {
+            $this->Session->setFlash(__('The related recipe has been removed.'), "success");
+        } else {
+            $this->Session->setFlash(__('The related recipe could not be removed. Please, try again.'));
+        }
     }
 
     /**

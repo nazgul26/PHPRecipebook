@@ -41,6 +41,7 @@ function ajaxGet(location, target) {
             // need to login
             ajaxGet(baseUrl + "users/login", target);
         } else {
+            // All Other errors
             $("#" + target ).html(xhr.responseText);
         }
     });

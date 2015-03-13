@@ -1,7 +1,9 @@
 <?php
-$recipeId = $recipe['Recipe']['id'];
+$recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
 ?>
 <script type="text/javascript">
+    var recipeId = "<?php echo $recipeId;?>";
+            
     $(function() {
         $(document).off("savedIngredient.editRecipe");
         $(document).on("savedIngredient.editRecipe", function() {
@@ -123,6 +125,12 @@ $recipeId = $recipe['Recipe']['id'];
         $('.deleteIcon').click(function() {
             // TODO: if count of TR = 1 then just blank the row and re-number
             if (confirm("<?php echo __("Are you sure you wish to remove this item?");?>")) {
+                var itemId = $(this).attr('itemId');        
+                if ($(this).is("[ingredient-delete]")) {
+                    ajaxGet(baseUrl + "/Recipes/RemoveIngredientMapping/" + recipeId + "/" + itemId, "ingredientDeleteResponse");
+                } else {
+                    ajaxGet(baseUrl + "/Recipes/RemoveRecipeMapping/" + recipeId + "/" + itemId, "recipeDeleteResponse");
+                }
                 $(this).parent().parent().remove();
             }
         });
@@ -234,7 +242,7 @@ $recipeId = $recipe['Recipe']['id'];
     {
         $(".ui-widget").find("input[id$='" + itemName + "']").each(function() {
             $(this).autocomplete({
-                source: "<?php echo Router::url('/'); ?>" + getUrl,
+                source: baseUrl + getUrl,
                 minLength: 1,
                 html: true,
                 select: function(event, ui) {
@@ -291,7 +299,7 @@ $recipeId = $recipe['Recipe']['id'];
             echo $this->Form->input('preparation_time_id', array('empty'=>true));
             echo $this->Form->input('difficulty_id', array('empty'=>true));
             echo $this->Form->input('serving_size');
-            $imageCount = (isset($recipe) && $recipe['Image'])? count($recipe['Image']) : 0;
+            $imageCount = (isset($recipe) && isset($recipe['Image']))? count($recipe['Image']) : 0;
             
             echo "<div id='imageSection'>";
             echo $this->Form->input('Image.' . $imageCount . '.attachment', array('type' => 'file', 'label' => 'Add Image'));
@@ -342,15 +350,20 @@ $recipeId = $recipe['Recipe']['id'];
                 for ($mapIndex = 0; $mapIndex <= $ingredientCount; $mapIndex++) {
                     $currentSortOrder = __("Unknown");
                     $extraItem = true;
+                    $itemId = "";
                     if ($mapIndex < $ingredientCount)
                     {
+                        $itemId = $recipe['IngredientMapping'][$mapIndex]['id'];
                         $currentSortOrder = $recipe['IngredientMapping'][$mapIndex]['sort_order'];
                         $extraItem = false;
                     }       
                 ?>
                 <tr class="<?php echo ($extraItem) ? "extraItem" : ""?>">
                     <td>
-                        <div class="ui-state-default ui-corner-all deleteIcon" title="<?php echo __('Delete'); ?>">
+                        <div class="ui-state-default ui-corner-all deleteIcon" 
+                             ingredient-delete 
+                             itemId="<?php echo $itemId;?>" 
+                             title="<?php echo __('Delete'); ?>">
                             <span class="ui-icon ui-icon-trash"></span>
                         </div>
                     </td>
@@ -376,6 +389,7 @@ $recipeId = $recipe['Recipe']['id'];
                 <?php } ?>
                 </tbody>
                 </table>
+                <div id="ingredientDeleteResponse"></div>
                 <a href="#" id="AddMoreIngredientsLink"><?php echo __('Add Another Ingredient');?></a>
             </div>
             <?php 
@@ -397,6 +411,7 @@ $recipeId = $recipe['Recipe']['id'];
                     $extraItem = true;
                     if ($mapIndex < $relatedCount)
                     {
+                        $itemId = $recipe['RelatedRecipe'][$mapIndex]['id'];
                         $currentSortOrder = $recipe['RelatedRecipe'][$mapIndex]['sort_order'];
                         $extraItem = false;
                     }
@@ -404,7 +419,9 @@ $recipeId = $recipe['Recipe']['id'];
                 ?>
                 <tr class="<?php echo ($extraItem) ? "extraItem" : ""?>">
                     <td>
-                        <div class="ui-state-default ui-corner-all deleteIcon" title="<?php echo __('Delete'); ?>">
+                        <div class="ui-state-default ui-corner-all deleteIcon" 
+                             itemId="<?php echo $itemId;?>"
+                             title="<?php echo __('Delete'); ?>">
                             <span class="ui-icon ui-icon-trash"></span>
                         </div>
                     </td>
@@ -424,6 +441,7 @@ $recipeId = $recipe['Recipe']['id'];
                 <?php } ?>
                 </tbody>
                 </table>
+                <div id="recipeDeleteResponse"></div>
                 <a href="#" id="AddMoreRelatedRecipesLink"><?php echo __('Add Another Recipe');?></a>
             </div>
     </fieldset>
