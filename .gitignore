@@ -1,7 +1,11 @@
 Config/database.php
 Config/email.php
-tmp/*
-!empty
+tmp/cache/persistent/*
+tmp/cache/models/*
+tmp/cache/views/*
+tmp/logs/*
+tmp/tests/*
+tmp/sessions/*
 /nbproject/private/
 webroot/files/
 sass/.sass-cache
