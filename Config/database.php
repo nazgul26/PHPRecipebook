@@ -71,4 +71,23 @@ class DATABASE_CONFIG {
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
+        
+        // Heroku Setup -- comment out above and use this below:
+        /*
+        public $default;
+        
+        public function __construct() {
+          $DATABASE_URL = parse_url(getenv('DATABASE_URL'));
+          $this->default = array(
+            'datasource' => 'Database/Postgres',
+            'persistent' => false,
+            'host'       => $DATABASE_URL['host'],
+            'login'      => $DATABASE_URL['user'],
+            'password'   => $DATABASE_URL['pass'],
+            'database'   => substr($DATABASE_URL['path'], 1),
+            'prefix'     => '',
+            'encoding'   => 'utf8',
+          );
+        }
+        */
 }
