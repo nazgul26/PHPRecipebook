@@ -61,7 +61,7 @@
  */
 class DATABASE_CONFIG {
 
-	/*public $default = array(
+	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
@@ -70,8 +70,9 @@ class DATABASE_CONFIG {
 		'database' => 'phprecipebook',
 		'prefix' => '',
 		//'encoding' => 'utf8',
-	);*/
+	);
         
+    /*
         // Heroku Setup -- comment out above and use this below:
         public $default;
         
@@ -88,4 +89,5 @@ class DATABASE_CONFIG {
             'encoding'   => 'utf8',
           );
         }
+     */
 }

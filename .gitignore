@@ -1,4 +1,4 @@
-!Config/database.php
+Config/database.php
 Config/email.php
 tmp/cache/persistent/*
 !tmp/cache/persistent/empty
@@ -17,5 +17,4 @@ tmp/sessions/*
 webroot/files/
 sass/.sass-cache
 Vendor/*
-!Vendor/empty
 Plugin/Upload
