@@ -155,34 +155,34 @@ class AppSchema extends CakeSchema {
                         break;   
                     case 'units':
                         $data = array(
-                            array('id' => 1, 'name' => __('Unit'), 'abbreviation' =>  'ea'),
-                            array('id' => 2, 'name' => __('Slice'), 'abbreviation' =>  'sli'),
-                            array('id' => 3, 'name' => __('Clove'), 'abbreviation' =>  'clv'),
-                            array('id' => 4, 'name' => __('Pinch'), 'abbreviation' =>  'pn'),
-                            array('id' => 5, 'name' => __('Package'), 'abbreviation' =>  'pk'),
-                            array('id' => 6, 'name' => __('Can'), 'abbreviation' =>  'cn'),
-                            array('id' => 7, 'name' => __('Drop'), 'abbreviation' =>  'dr'),
-                            array('id' => 8, 'name' => __('Bunch'), 'abbreviation' =>  'bn'),
-                            array('id' => 9, 'name' => __('Dash'), 'abbreviation' =>  'ds'),
-                            array('id' => 10, 'name' => __('Carton'), 'abbreviation' =>  'ct'),
-                            array('id' => 11, 'name' => __('Cup'), 'abbreviation' =>  'c'),
-                            array('id' => 12, 'name' => __('Tablespoon'), 'abbreviation' =>  'T'),
-                            array('id' => 13, 'name' => __('Teaspoon'), 'abbreviation' =>  't'),
-                            array('id' => 14, 'name' => __('Pound'), 'abbreviation' =>  'lb'),
-                            array('id' => 15, 'name' => __('Ounce'), 'abbreviation' =>  'oz'),
-                            array('id' => 16, 'name' => __('Pint'), 'abbreviation' =>  'pt'),
-                            array('id' => 17, 'name' => __('Quart'), 'abbreviation' =>  'q'),
-                            array('id' => 18, 'name' => __('Gallon'), 'abbreviation' =>  'gal'),
-                            array('id' => 19, 'name' => __('Milligram'), 'abbreviation' =>  'mg'),
-                            array('id' => 20, 'name' => __('Centigram'), 'abbreviation' =>  'cg'),
-                            array('id' => 21, 'name' => __('Gram'), 'abbreviation' =>  'g'),
-                            array('id' => 22, 'name' => __('Kilogram'), 'abbreviation' =>  'kg'),
-                            array('id' => 23, 'name' => __('Milliliter'), 'abbreviation' =>  'ml'),
-                            array('id' => 24, 'name' => __('Centiliter'), 'abbreviation' =>  'cl'),
-                            array('id' => 25, 'name' => __('Liter'), 'abbreviation' =>  'l'),
-                            array('id' => 26, 'name' => __('Deciliter'), 'abbreviation' =>  'dl'),
-                            array('id' => 27, 'name' => __('Tablespoon_m'), 'abbreviation' =>  'tbsp'),
-                            array('id' => 28, 'name' => __('Teaspoon_m'), 'abbreviation' =>  'tsp'),
+                            array('id' => 1, 'name' => __('Unit'), 'abbreviation' =>  'ea', 'system' => 0, 'sort_order' => 0),
+                            array('id' => 2, 'name' => __('Slice'), 'abbreviation' =>  'sli', 'system' => 0, 'sort_order' => 0),
+                            array('id' => 3, 'name' => __('Clove'), 'abbreviation' =>  'clv', 'system' => 0, 'sort_order' => 0),
+                            array('id' => 4, 'name' => __('Pinch'), 'abbreviation' =>  'pn', 'system' => 0, 'sort_order' => 0),
+                            array('id' => 5, 'name' => __('Package'), 'abbreviation' =>  'pk', 'system' => 0, 'sort_order' => 0),
+                            array('id' => 6, 'name' => __('Can'), 'abbreviation' =>  'cn', 'system' => 0, 'sort_order' => 0),
+                            array('id' => 7, 'name' => __('Drop'), 'abbreviation' =>  'dr', 'system' => 0, 'sort_order' => 0),
+                            array('id' => 8, 'name' => __('Bunch'), 'abbreviation' =>  'bn', 'system' => 0, 'sort_order' => 0),
+                            array('id' => 9, 'name' => __('Dash'), 'abbreviation' =>  'ds', 'system' => 0, 'sort_order' => 0),
+                            array('id' => 10, 'name' => __('Carton'), 'abbreviation' =>  'ct', 'system' => 0, 'sort_order' => 0),
+                            array('id' => 11, 'name' => __('Cup'), 'abbreviation' =>  'c', 'system' => 1, 'sort_order' => 0),
+                            array('id' => 12, 'name' => __('Tablespoon'), 'abbreviation' =>  'T', 'system' => 1, 'sort_order' => 0),
+                            array('id' => 13, 'name' => __('Teaspoon'), 'abbreviation' =>  't', 'system' => 1, 'sort_order' => 0),
+                            array('id' => 14, 'name' => __('Pound'), 'abbreviation' =>  'lb', 'system' => 1, 'sort_order' => 0),
+                            array('id' => 15, 'name' => __('Ounce'), 'abbreviation' =>  'oz', 'system' => 1, 'sort_order' => 0),
+                            array('id' => 16, 'name' => __('Pint'), 'abbreviation' =>  'pt', 'system' => 1, 'sort_order' => 0),
+                            array('id' => 17, 'name' => __('Quart'), 'abbreviation' =>  'q', 'system' => 1, 'sort_order' => 0),
+                            array('id' => 18, 'name' => __('Gallon'), 'abbreviation' =>  'gal', 'system' => 1, 'sort_order' => 0),
+                            array('id' => 19, 'name' => __('Milligram'), 'abbreviation' =>  'mg', 'system' => 2, 'sort_order' => 0),
+                            array('id' => 20, 'name' => __('Centigram'), 'abbreviation' =>  'cg', 'system' => 2, 'sort_order' => 0),
+                            array('id' => 21, 'name' => __('Gram'), 'abbreviation' =>  'g', 'system' => 2, 'sort_order' => 0),
+                            array('id' => 22, 'name' => __('Kilogram'), 'abbreviation' =>  'kg', 'system' => 2, 'sort_order' => 0),
+                            array('id' => 23, 'name' => __('Milliliter'), 'abbreviation' =>  'ml', 'system' => 2, 'sort_order' => 0),
+                            array('id' => 24, 'name' => __('Centiliter'), 'abbreviation' =>  'cl', 'system' => 2, 'sort_order' => 0),
+                            array('id' => 25, 'name' => __('Liter'), 'abbreviation' =>  'l', 'system' => 2, 'sort_order' => 0),
+                            array('id' => 26, 'name' => __('Deciliter'), 'abbreviation' =>  'dl', 'system' => 2, 'sort_order' => 0),
+                            array('id' => 27, 'name' => __('Tablespoon_m'), 'abbreviation' =>  'tbsp', 'system' => 2, 'sort_order' => 0),
+                            array('id' => 28, 'name' => __('Teaspoon_m'), 'abbreviation' =>  'tsp', 'system' => 2, 'sort_order' => 0),
                         );
                         break;
                     case 'users':
@@ -254,9 +254,9 @@ class AppSchema extends CakeSchema {
 		'amount' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'measure' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 80, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'weight' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		'indexes' => array(
+		/*'indexes' => array(
 			'PRIMARY' => array('column' => array('id', 'sequence'), 'unique' => 1)
-		),
+		),*/
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
 
@@ -265,7 +265,7 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			'name' => array('column' => 'name', 'unique' => 1)
+			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -284,7 +284,7 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			'name' => array('column' => 'name', 'unique' => 1)
+			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -316,7 +316,7 @@ class AppSchema extends CakeSchema {
 		'core_ingredient_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			'ingredient_name' => array('column' => array('name', 'user_id'), 'unique' => 1)
+			//'ingredient_name' => array('column' => array('name', 'user_id'), 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -326,7 +326,7 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			'name' => array('column' => 'name', 'unique' => 1)
+			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -337,7 +337,7 @@ class AppSchema extends CakeSchema {
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
 			'meal_name' => array('column' => 'name', 'unique' => 1),
-			'name' => array('column' => 'name', 'unique' => 1)
+			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -370,7 +370,7 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			'name' => array('column' => 'name', 'unique' => 1)
+			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -380,7 +380,7 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 16, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			'name' => array('column' => 'name', 'unique' => 1)
+			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -447,7 +447,7 @@ class AppSchema extends CakeSchema {
 		'country' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 64, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			'name' => array('column' => array('name', 'user_id'), 'unique' => 1)
+			//'name' => array('column' => array('name', 'user_id'), 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -566,7 +566,7 @@ class AppSchema extends CakeSchema {
 		'add_url' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			'name' => array('column' => 'name', 'unique' => 1)
+			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'InnoDB')
 	);

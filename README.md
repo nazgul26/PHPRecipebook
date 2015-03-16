@@ -19,7 +19,7 @@ And of course now that we are on GitHub contributions and collaboration should b
 
 <h2>Fresh Installation</h2>
 <hr/>
-* Ensure you have the following PHP Modules installed: mysql, mcrypt, gd.
+* Ensure you have the following PHP Modules installed: mcrypt, gd. And mysql, pgsql or your DB.
 * Create a new database to store the application in. i.e. recipebook
 * Edit Configuration DB Configuration Settings ./Config/database.php to match your database settings. 
 * Make the ./temp folder in the application writable for web user.  example:

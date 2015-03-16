@@ -97,9 +97,13 @@ if (isset($filePresent)):
 			echo '</span>';
 		else:
 			echo '<span class="notice">';
-				echo __d('cake_dev', 'CakePHP is NOT able to connect to the database.');
-				echo '<br /><br />';
-				echo $errorMsg;
+				echo 'CakePHP is NOT able to connect to the database. Check that: ';
+                                echo "<br/>";
+                                echo __('1. Installed the appropriate PHP db module (i.e. php-mysql, php-pgsql)') . "<br/>";
+                                echo __('2. The database has been created and you can connect to it') . "<br/>";
+                                echo __('3. Have the correct username password in database.php config file') . "<br/>";
+				echo '<br />';
+				echo 'error Message:' . $errorMsg;
 			echo '</span>';
 		endif;
 	?>
