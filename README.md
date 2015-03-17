@@ -5,7 +5,9 @@ This is a rewrite of PHPRecipeBook hosted on sourceforge to use Cake MVC.
 
 Current code is now ready for preview usage.  A setup wizard is included and a complete migration script.
 
-A preview site will be available in the next couple of weeks.
+<a href="https://phprecipebook.herokuapp.com/">Demo/Preview site</a>
+* Login admin/passwd
+
 
 Improvements:
 * AJAX Page loads (so less refreshes/data between clicks)
@@ -29,6 +31,24 @@ And of course now that we are on GitHub contributions and collaboration should b
     - mkdir ./webroot/files/recipe
     - sudo chown <your web group>.<your web user> ./webroot/files/recipe
 * Launch the website and complete steps in wizard.
+
+<h2>Heroku Deployment</h2>
+<hr/>
+* Clone PHPRecipebook to your computer.
+* Create an account on heroku and step through their tutorial if you have never done so before.
+* In the PHPRecipebook local repo run: heroku create
+* Run: heroku addons:add heroku-postgresql:hobby-dev
+    - More info at: https://devcenter.heroku.com/articles/heroku-postgresql
+* edit Config/database.php and put in commented out heroku config, remove block for normal db config.
+* edit .gitignore and remove 'Config/database.php' line to allow 
+* commit changes (git)
+* git push heroku master
+* heroku open
+* heroku run bash
+    - (then follow setup directions for): ./Console/cake schema create
+* modify core.php and change setup to false. Commit.
+    - git push heroku master
+* reload web page and then login with your password that you set during the setup of the app.
 
 <h2>Troubleshooting</h2>
 * App does not load:
