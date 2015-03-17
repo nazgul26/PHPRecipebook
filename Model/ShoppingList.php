@@ -50,10 +50,12 @@ class ShoppingList extends AppModel {
     
     public function getDefaultListId($userId) {
         $listId = $this->field('id', array('user_id' => $userId, 'name' => __('DEFAULT')));
-        if (!isset($listId)) {
+        if (!isset($listId) || $listId == "") {
+            echo "going to create list";
             $list = $this->getList($user);
             $listId = $list['ShoppingList']['id'];
         }
+        echo "returning '" . $listId . "'";
         return $listId;
     }
     
@@ -77,7 +79,7 @@ class ShoppingList extends AppModel {
         }
         
         $defaultList = $this->find('first', array_merge($options, $search));
-        if (!isset($defaultList['ShoppingList'])) {
+        if (!isset($defaultList['ShoppingList']) || $defaultList['ShoppingList'] == "") {
             $newData = array(
                 'id' => NULL,
                 'name' => __('DEFAULT'),

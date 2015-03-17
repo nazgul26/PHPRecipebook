@@ -93,7 +93,9 @@ class MealPlansController extends AppController {
      * @return void
      */
     public function edit($id = null, $mealDate=null) {
-        if ($id != null && $id != "undefined" && !$this->MealPlan->exists($id)) {
+        if ($id == "undefined") $id = null;
+        
+        if ($id != null && !$this->MealPlan->exists($id)) {
                 throw new NotFoundException(__('Invalid meal plan'));
         }
         if ($this->request->is(array('post', 'put'))) {
@@ -171,7 +173,6 @@ class MealPlansController extends AppController {
         
         $userId = $this->Auth->user('id');
         $listId = $this->ShoppingList->getDefaultListId($userId);
-        
         $listItems = array();
         foreach ($meals as $item) {
             $recipeId = $item['MealPlan']['recipe_id'];
@@ -184,11 +185,16 @@ class MealPlansController extends AppController {
         }
         
         foreach ($listItems as $item) {
-            $this->ShoppingList->ShoppingListRecipe->addToShoppingList(
+            if ($this->ShoppingList->ShoppingListRecipe->addToShoppingList(
                     $listId, 
                     $item['id'], 
                     $item['servings'], 
-                    $userId);
+                    $userId)) 
+            {
+                $this->Session->setFlash(__('Meal(s) added to shopping list.'), "success");
+            } else {
+                $this->Session->setFlash(__('Meal(s) could not be added to shopping list. Please, try again.'));
+            }
         }
         return $this->redirect(array('controller' => 'shoppingLists', 'action' => 'index'));
     }
