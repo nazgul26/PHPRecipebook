@@ -14,7 +14,7 @@ $baseUrl = Router::url('/');
             select: function(event, ui) {
                 $('#MealPlanRecipeId').val(ui.item.id);
                 $('#MealPlanServings').val(ui.item.servings);
-                $('#recipeServingInfo').html("<?php echo _('recipe serves: ');?>" + ui.item.servings).show();
+                $('#recipeServingInfo').html("<?php echo __('recipe serves');?> :" + ui.item.servings).show();
                 scaleServingsByDays();
             }
         });
