@@ -122,7 +122,7 @@ class IngredientsController extends AppController {
         {
             $ingredients = $this->Ingredient->find('all', array(
               'conditions' => 
-                array_merge($this->filterConditions, array('Ingredient.name LIKE ' => '%' . trim($term) . '%'))
+                array_merge($this->filterConditions, array('LOWER(Ingredient.name) LIKE ' => '%' . trim(strtolower($term)) . '%'))
             ));
             
             if (count($ingredients) > 0) {
@@ -132,7 +132,7 @@ class IngredientsController extends AppController {
                     array_push($searchResults, array('id'=>$value, 'value' => strip_tags($key)));
                 }
             } else {
-                $key = "No Results for ' . $term . ' Found";
+                $key = "No Results for '$term' Found";
                 array_push($searchResults, array('id'=> '', 'value' => $key));
             }
             

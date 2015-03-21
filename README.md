@@ -23,13 +23,13 @@ And of course now that we are on GitHub contributions and collaboration should b
 <hr/>
 * Ensure you have the following PHP Modules installed: mcrypt, gd. And mysql, pgsql or your DB.
 * Create a new database to store the application in. i.e. recipebook
-* Edit Configuration DB Configuration Settings ./Config/database.php to match your database settings. 
-* Make the ./temp folder in the application writable for web user.  example:
+* Edit Configuration DB Configuration Settings <app install dir>/Config/database.php to match your database settings. 
+* Make the <app install dir>/temp folder in the application writable for web user.  example:
     - sudo chown -R apache.apache tmp
   If you don't make <app install dir>/tmp writable by the web user the app will not run!
 * For File uploads:
-    - mkdir ./webroot/files/recipe
-    - sudo chown <your web group>.<your web user> ./webroot/files/recipe
+    - mkdir <app install dir>/webroot/files/recipe
+    - sudo chown <your web group>.<your web user> <app install dir>/webroot/files/recipe
 * Launch the website and complete steps in wizard.
 
 <h2>Heroku Deployment</h2>
