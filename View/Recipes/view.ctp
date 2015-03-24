@@ -164,10 +164,11 @@ if (isset($servings)) {
         <?php foreach ($recipe['RelatedRecipe'] as $related) :?>
             <div class="clear"/><br/> 
             <div class="relatedRecipe">
+                <span>
                 <?php echo $this->Html->link($related['Related']['name'], array('controller' => 'recipes', 'action' => 'view', $related['recipe_id']), 
                                 array('class' => 'ajaxNavigationLink')); ?>
                         (<?php echo $related['required'] == "1" ? "required" : __('optional');?>):
-                <hr/><br/>    
+                </span>   
                 <div class="float50Section">
                     <b><?php echo __('Ingredients'); ?></b>
                     

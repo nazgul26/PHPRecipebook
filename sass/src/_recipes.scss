@@ -88,3 +88,18 @@ float60Section {
     width: 2em;
 }
 
+.relatedRecipe {
+    span {
+        background-color: #00547d;
+        border-radius: 6px;
+        display: block;
+        padding: 8px;
+        width: 100%;
+        color: #FFF;
+        margin-bottom: 1em;
+        a {
+            color: #FFF;
+        }
+    }
+}
+

@@ -8,9 +8,9 @@ class UsersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         if (Configure::read('App.allowPublicAccountCreation')) {  
-            $this->Auth->allow('logout', 'reset', 'resetLink');
-        } else {
             $this->Auth->allow('add', 'logout', 'reset', 'resetLink');
+        } else {
+            $this->Auth->allow('logout', 'reset', 'resetLink');  
         }
         
         // This pages index and view are little more restricted

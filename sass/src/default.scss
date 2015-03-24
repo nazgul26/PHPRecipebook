@@ -1,3 +1,6 @@
+$primary-color: #00547d;
+
+@import "_header.scss";
 @import "_recipeBox.scss";
 @import "_siteSearch.scss";
 @import "_recipes.scss";
@@ -39,62 +42,12 @@
     box-shadow: 0 0 5px rgba(1, 1, 1, 0.698);
     float: left;
 }
-nav ul {
-    float: left;
-    margin: 0;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    width: 100%;
-}
-nav ul, nav ol {
-    list-style: none outside none;
-}
-
-nav li {
-    float: left;
-    font: 16px "klavika-web","Helvetica Neue",Helvetica,Arial,Geneva,sans-serif;
-    margin-right: 2px;
-    padding: 4px 4px 4px 4px;
-}
-
-nav a {
-    color: #FFFFFF;
-    text-decoration: none;
-    display: block;
-    padding: 6px 10px;
-}
-
-nav li a:hover, nav li.current a {
-    background: none repeat scroll 0 0 transparent;
-    border-radius: 4px 4px 4px 4px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset, 0 1px 0 rgba(255, 255, 255, 0.1);
-    color: #FFFFFF;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.796), 0 0 10px rgba(255, 255, 255, 0.298);
-} 
-nav li a {
-    border: 1px solid transparent;
-    color: #FFFFFF;
-    display: block;
-    text-decoration: none;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.76);
-}
-
-#settingsLink a {
-    padding-bottom: 0;
-    margin-top: -4px;
-}
-nav li img {
-    width: 30px;
-    height: 30px;
-    padding-bottom: 4px;
-}
 
 @media (max-width: 1024px) {
   .higherRes {
     display: none;
   }
 }
-
 
 dl {
   margin-top: 1em;
