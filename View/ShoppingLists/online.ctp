@@ -7,6 +7,9 @@ if (isset($selectedVendor['Vendor'])) {
 ?>
 <script type="text/javascript">
     $(function() {
+        $('[vendor-save]').click(function() {
+            $('#VendorCompleteForm').submit();
+        })
         $('[list-item]').change(function() {
             rowClicked($(this));
         });
@@ -14,12 +17,35 @@ if (isset($selectedVendor['Vendor'])) {
             var vendorAddUrl = "<?php echo $vendorAddUrl;?>";
             $productInput = $(this).siblings('[product-id]').first();
             var productId = $productInput.val();
-            var wnd = window.open(vendorAddUrl + productId, 'shopping'); 
-            console.log("Product Sent:" + productId);
-            $checkBox = $(this).parent().parent().find('input:checkbox');
-            rowClicked($checkBox, $productInput);
+            //console.log("Click - " + productId);
+            if (productId) {
+                var wnd = window.open(vendorAddUrl + productId, 'shopping'); 
+                $checkBox = $(this).parent().parent().find('input:checkbox');
+                $checkBox.prop('checked', true);
+                rowClicked($checkBox, $productInput);
+            }
+
             return false;
         });
+        
+        $('[shop-all]').click(function() {
+            var timingCount = 0;
+            $('.gridContent a').each(function() {
+                //console.log("ID: " + $(this).attr('id'));
+                var itemId = "#" + $(this).attr('id');
+                $productInput = $(this).siblings('[product-id]').first();
+                var productId = $productInput.val();
+                if (productId) {
+                    timingCount += 5000;
+                    //console.log("setting it up: " + timingCount);
+                    setTimeout(function(){ 
+                        //console.log("click it - " +  $(itemId).attr('id'));
+                        $(itemId).click(); 
+                    }, timingCount);
+                }
+            });
+        });
+        
     });
     
     function rowClicked($checkBox) {
@@ -70,7 +96,7 @@ if (isset($selectedVendor['Vendor'])) {
     <tr row-click>
         <td><input type="checkbox" list-item/></td>
         <td>
-            <a href="#" shop-add>Add</a>
+            <a href="#" shop-add id="AddItem<?php echo $item->id;?>">Add</a>
             <input type="hidden" name="data[VendorProduct][<?php echo $mapIndex;?>][id]" value="<?php echo $productId;?>"/>
             <input type="hidden" name="data[VendorProduct][<?php echo $mapIndex;?>][vendor_id]" value="<?php echo $vendorId;?>"/>
             <input type="hidden" name="data[VendorProduct][<?php echo $mapIndex;?>][ingredient_id]" value="<?php echo $item->id;?>"/>
@@ -86,6 +112,7 @@ if (isset($selectedVendor['Vendor'])) {
     endforeach?>
     </tbody>
 </table>
-<button class="btn-primary" vendor-save><?php echo __('Complete');?></button>
 </form>
+<button class="btn-primary" shop-all><?php echo __('Add All');?></button>
+<button class="btn-primary" vendor-save><?php echo __('Complete');?></button>
 
