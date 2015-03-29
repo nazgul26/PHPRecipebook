@@ -38,10 +38,11 @@ if (isset($selectedVendor['Vendor'])) {
         progressbar.progressbar({
             value: false,
             change: function() {
-                progressLabel.text( "Adding " + currentAddItem );
+                progressLabel.text("<?php echo __('Adding ');?> " + currentAddItem );
             },
             complete: function() {
-                progressLabel.text( "Complete!" );
+                $('.selectedRow').removeClass('selectedRow');
+                progressLabel.text("<?php echo __('Complete!');?>");
             }
         });
         
@@ -55,6 +56,8 @@ if (isset($selectedVendor['Vendor'])) {
                 if (productId) {
                     totalToAdd++;
                     setTimeout(function(){ 
+                        $('.selectedRow').removeClass('selectedRow');
+                        $(itemId).parent().parent().addClass('selectedRow');
                         currentAddItem = $(itemId).attr('item-name');
                         currentAddNumber++;
                         progressbar.progressbar( "value", currentAddNumber );
