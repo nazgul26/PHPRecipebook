@@ -108,7 +108,7 @@ class IngredientsController extends AppController {
             $this->Ingredient->recursive = 0;
             $this->Paginator->settings = $this->paginate;
             $this->set('ingredients', $this->Paginator->paginate("Ingredient", 
-                    array_merge($this->filterConditions, array('Ingredient.Name LIKE' => '%' . $term . '%'))));
+                    array_merge($this->filterConditions, array('LOWER(Ingredient.name) LIKE' => '%' . trim(strtolower($term)) . '%'))));
         } else {
             $this->set('ingredients', $this->Paginator->paginate('Ingredient', $this->filterConditions));
         }

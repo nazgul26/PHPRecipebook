@@ -4,7 +4,8 @@ $shoppingListId = isset($this->request->data['ShoppingList']['id']) ? $this->req
 ?>
 <script type="text/javascript">
     $(function() {
-     
+        setSearchBoxTarget('Recipes');
+        
         $('[go-shopping]').click(function() {
             ajaxNavigate('<?php echo $baseUrl;?>ShoppingLists/select/<?php echo $shoppingListId;?>');
         });

@@ -63,9 +63,9 @@ function ajaxPostForm($formItem) {
     }).fail(function(xhr, status, error) {
         if (xhr.status == 403) {
             // need to login
-            ajaxGet(baseUrl + "users/login", target);
+            ajaxGet(baseUrl + "users/login", targetId);
         } else {
-            $("#" + target ).html(xhr.responseText);
+            $("#" + targetId ).html(xhr.responseText);
         }
     });;
 }

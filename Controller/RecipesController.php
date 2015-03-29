@@ -242,7 +242,7 @@ class RecipesController extends AppController {
             $this->Recipe->recursive = 0;
             $this->Paginator->settings = $this->paginate;
             $this->set('recipes', $this->Paginator->paginate("Recipe", 
-                    array_merge($this->filterConditions, array('Recipe.Name LIKE' => '%' . $term . '%'))));
+                    array_merge($this->filterConditions, array('LOWER(Recipe.name) LIKE' => '%' . trim(strtolower($term)) . '%'))));
         } else {
             $this->set('recipes', $this->Paginator->paginate('Recipe', $this->filterConditions));
         }

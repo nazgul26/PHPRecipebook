@@ -86,7 +86,7 @@ class RestaurantsController extends AppController {
         {
             $this->Restaurant->recursive = 0;
             $this->Paginator->settings = $this->paginate;
-            $this->set('restaurants', $this->Paginator->paginate("Restaurant", array('Restaurant.Name LIKE' => '%' . $term . '%')));
+            $this->set('restaurants', $this->Paginator->paginate("Restaurant", array('Restaurant.name LIKE' => '%' . $term . '%')));
         } else {
             $this->set('restaurants', $this->Paginator->paginate());
         }
