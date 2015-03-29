@@ -101,9 +101,9 @@ $shoppingListId = isset($this->request->data['ShoppingList']['id']) ? $this->req
                 <?php echo $this->Html->link(__('View'), array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxNavigationLink')); ?>
                 <?php echo $this->Html->link(__('Edit'), array('controller' => 'recipes', 'action' => 'edit', $recipeId), array('class' => 'ajaxNavigationLink')); ?>
                 <?php echo $this->Html->link(__('Delete'), array('action' => 'deleteRecipe', 
-                    $this->request->data['ShoppingList']['id'],
-                    $this->request->data['ShoppingListRecipe'][$mapIndex]['recipe_id']), array('class' => 'ajaxLink'),
-                        __('Are you sure you want to remove %s?', $recipeName)); ?>
+                $this->request->data['ShoppingList']['id'],
+                $this->request->data['ShoppingListRecipe'][$mapIndex]['recipe_id']), 
+                        array('confirm' => __('Are you sure you want to remove %s?', $recipeName))); ?>
                 <?php echo $this->Form->hidden('ShoppingListRecipe.' . $mapIndex . '.id'); ?>
                 <?php echo $this->Form->hidden('ShoppingListRecipe.' . $mapIndex . '.recipe_id'); ?>
                 <?php echo $this->Form->hidden('ShoppingListRecipe.' . $mapIndex . '.shopping_list_id'); ?>

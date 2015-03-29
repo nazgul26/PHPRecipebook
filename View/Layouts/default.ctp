@@ -12,16 +12,16 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
 	<?php
 		echo $this->Html->meta('icon');
 		
-                echo $this->Html->css("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css");
-                echo $this->Html->css("//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css");
+                echo $this->Html->css("https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css");
+                echo $this->Html->css("toastr.min.css");
                 echo $this->Html->css("jquery.qtip");
                 echo $this->Html->css('cake.generic');
                 echo $this->Html->css('default');
                 echo $this->Html->css('print');
                 
                 echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js");
-                echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js");
-                echo $this->Html->script("https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js");
+                echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js");
+                echo $this->Html->script("toastr.min.js");
                 echo $this->Html->script("jquery.qtip.js");
                 echo $this->Html->script("default");
                 

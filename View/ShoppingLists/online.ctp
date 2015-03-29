@@ -5,6 +5,7 @@ if (isset($selectedVendor['Vendor'])) {
     $vendorId = $selectedVendor['Vendor']['id'];
 }
 ?>
+
 <script type="text/javascript">
     $(function() {
         $('[vendor-save]').click(function() {
@@ -17,7 +18,6 @@ if (isset($selectedVendor['Vendor'])) {
             var vendorAddUrl = "<?php echo $vendorAddUrl;?>";
             $productInput = $(this).siblings('[product-id]').first();
             var productId = $productInput.val();
-            //console.log("Click - " + productId);
             if (productId) {
                 var wnd = window.open(vendorAddUrl + productId, 'shopping'); 
                 $checkBox = $(this).parent().parent().find('input:checkbox');
@@ -28,24 +28,43 @@ if (isset($selectedVendor['Vendor'])) {
             return false;
         });
         
+        var progressbar = $("#progressbar");
+        var progressLabel = $(".progress-label");
+        var currentAddItem = "";
+        var currentAddNumber = 0;
+        var totalToAdd = 0;
+        
+        progressbar.hide();
+        progressbar.progressbar({
+            value: false,
+            change: function() {
+                progressLabel.text( "Adding " + currentAddItem );
+            },
+            complete: function() {
+                progressLabel.text( "Complete!" );
+            }
+        });
+        
         $('[shop-all]').click(function() {
-            var timingCount = 0;
+            var timingCount = 1000;
+            progressbar.show();
             $('.gridContent a').each(function() {
-                //console.log("ID: " + $(this).attr('id'));
                 var itemId = "#" + $(this).attr('id');
                 $productInput = $(this).siblings('[product-id]').first();
                 var productId = $productInput.val();
                 if (productId) {
-                    timingCount += 5000;
-                    //console.log("setting it up: " + timingCount);
+                    totalToAdd++;
                     setTimeout(function(){ 
-                        //console.log("click it - " +  $(itemId).attr('id'));
+                        currentAddItem = $(itemId).attr('item-name');
+                        currentAddNumber++;
+                        progressbar.progressbar( "value", currentAddNumber );
                         $(itemId).click(); 
                     }, timingCount);
+                    timingCount += 5000;
                 }
             });
+            progressbar.progressbar("option", "max", totalToAdd);
         });
-        
     });
     
     function rowClicked($checkBox) {
@@ -96,7 +115,7 @@ if (isset($selectedVendor['Vendor'])) {
     <tr row-click>
         <td><input type="checkbox" list-item/></td>
         <td>
-            <a href="#" shop-add id="AddItem<?php echo $item->id;?>">Add</a>
+            <a href="#" shop-add id="AddItem<?php echo $item->id;?>" item-name="<?php echo $item->name;?>">Add</a>
             <input type="hidden" name="data[VendorProduct][<?php echo $mapIndex;?>][id]" value="<?php echo $productId;?>"/>
             <input type="hidden" name="data[VendorProduct][<?php echo $mapIndex;?>][vendor_id]" value="<?php echo $vendorId;?>"/>
             <input type="hidden" name="data[VendorProduct][<?php echo $mapIndex;?>][ingredient_id]" value="<?php echo $item->id;?>"/>
@@ -112,6 +131,7 @@ if (isset($selectedVendor['Vendor'])) {
     endforeach?>
     </tbody>
 </table>
+<div id="progressbar"><div class="progress-label" id="progressName"></div></div>
 </form>
 <button class="btn-primary" shop-all><?php echo __('Add All');?></button>
 <button class="btn-primary" vendor-save><?php echo __('Complete');?></button>

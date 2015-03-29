@@ -1,0 +1,15 @@
+.ui-progressbar div {
+    padding: 0;
+}
+.ui-progressbar {
+    position: relative;
+}
+
+.progress-label {
+    position: absolute;
+    margin-top: 8px !important;
+    left: 50%;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+}
+
