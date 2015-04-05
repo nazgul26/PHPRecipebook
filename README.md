@@ -21,6 +21,7 @@ And of course now that we are on GitHub contributions and collaboration should b
 
 <h2>Fresh Installation</h2>
 <hr/>
+* Download latest release from https://github.com/nazgul26/PHPRecipebook-Download
 * Ensure you have the following PHP Modules installed: mcrypt, gd. And mysql, pgsql or your DB.
 * Create a new database to store the application in. i.e. recipebook
 * Edit Configuration DB Configuration Settings <app install dir>/Config/database.php to match your database settings. 
@@ -58,5 +59,7 @@ And of course now that we are on GitHub contributions and collaboration should b
   - Solution: Clear the ./tmp/cache/models, ./tmp/cache/persistent directories.  These folders keep path info in them so if the path the app runs from changes the cache has to be cleared.
 
 <h2>Developer Requirements</h2>
+* Clone /PHPRecipbook repository (not the PHPRecipebook-Downloads).
 * Get PHP Composer installed. https://getcomposer.org/download/.  Composer is used to manage dependencies and make upgrading CakePHP easier.
 * Run 'php composer.phar install' in the application directory to get CakePHP and check dependencies.
+* Setup using fresh installation directions above.
