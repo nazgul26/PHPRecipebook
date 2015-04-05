@@ -120,7 +120,8 @@ if (isset($servings)) {
                             $quantity = $this->Fraction->toFraction($quantity);
                             $unit = $recipe['IngredientMapping'][$i]['Unit']['name'];
                             $ingredientName = $recipe['IngredientMapping'][$i]['Ingredient']['name'];
-                            echo $quantity . " " . $unit . " " . $ingredientName . "<br/>";
+                            $optional = $recipe['IngredientMapping'][$i]['optional'] ? __('(optional)') : "";
+                            echo "$quantity $unit $ingredientName <i>$optional</i><br/>";
                         }?>
             </pre>
         </div>
@@ -167,7 +168,7 @@ if (isset($servings)) {
                 <span>
                 <?php echo $this->Html->link($related['Related']['name'], array('controller' => 'recipes', 'action' => 'view', $related['recipe_id']), 
                                 array('class' => 'ajaxNavigationLink')); ?>
-                        (<?php echo $related['required'] == "1" ? "required" : __('optional');?>):
+                        (<?php echo $related['required'] == "1" ? "required" : __('optional');?>)
                 </span>   
                 <div class="float50Section">
                     <b><?php echo __('Ingredients'); ?></b>

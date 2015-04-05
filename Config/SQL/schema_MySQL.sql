@@ -168,7 +168,7 @@ CREATE TABLE related_recipes (
     id INT NOT NULL AUTO_INCREMENT,
     parent_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
     recipe_id INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
-    related_required BOOL,
+    required BOOL,
     sort_order INT,
     PRIMARY KEY (parent_id, recipe_id)
 );
