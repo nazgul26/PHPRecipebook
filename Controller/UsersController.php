@@ -184,6 +184,7 @@ class UsersController extends AppController {
                 
                 if ($this->User->save($this->request->data)) {
                     $this->Session->setFlash(__('The user has been saved.'), 'success');
+                    $this->copyIngredientsFromAdmin();
                     return $this->redirect(array('controller'=> 'recipes', 'action' => 'edit'));
                 } else {
                     $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
@@ -194,7 +195,18 @@ class UsersController extends AppController {
             }
         }
     }
-
+    
+    private function copyIngredientsFromAdmin() {
+        $this->loadModel('Ingredient');
+        $newUserId = $this->User->getLastInsertID();
+        $items = $this->Ingredient->find('all', array('conditions' => array('Ingredient.user_id' => '1')));
+        foreach ($items as $item) {
+            $item['Ingredient']['id'] = NULL;
+            $item['Ingredient']['user_id'] = $newUserId;
+            $this->Ingredient->save($item);
+        }
+    }
+    
     /**
      * edit method
      *

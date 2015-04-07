@@ -8,6 +8,10 @@
             echo $this->Form->input('password2',array('type'=>'password','label'=>array('text'=>'Confirm password')));
             echo $this->Form->input('name');
             echo $this->Form->input('email');
+            echo $this->Form->input('copy', array(
+                'type' => 'checkbox', 
+                'checked'=>true,
+                'label'=>array('text'=>'Create with default ingredients')));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
