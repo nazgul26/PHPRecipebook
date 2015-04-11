@@ -123,11 +123,18 @@ if (isset($filePresent)):
 <?php
 if (file_exists(WWW_ROOT . 'css' . DS . 'cake.generic.css')):
 ?>
-<span class="error-message">
-	<?php echo __d('cake_dev', 'URL rewriting might not properly configured on your server.'); ?>
-	1) <a target="_blank" href="http://book.cakephp.org/2.0/en/installation/url-rewriting.html" style="color:#fff;">Help me configure it</a>
-	2) <a target="_blank" href="http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration" style="color:#fff;">I don't / can't use URL rewriting</a>
-</span>
+<div class="notice">
+    <?php echo __d('cake_dev', 'URL rewriting might not properly configured on your server.  '); ?>
+    <ol style="padding-left: 1em;">
+        <li><a target="_blank" href="http://book.cakephp.org/2.0/en/installation/url-rewriting.html">Help me configure it</a></li>
+        <li><a target="_blank" href="http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration">I don't / can't use URL rewriting</a></li>
+    </ol>
+    <br/>
+    
+    <p>
+        <i><?php echo __d('cake_dev', 'If you have already configured rewriting or a base URL and still see this warning you can try to continue the setup.  Detection of this feature sometimes is not correct.'); ?></i>
+    </p>
+</div>
 <?php
 endif;
 ?>

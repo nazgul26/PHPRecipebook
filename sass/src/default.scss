@@ -1,4 +1,5 @@
 $primary-color: #00547d;
+$background-color: #5E99BD;
 
 @import "_header.scss";
 @import "_recipeBox.scss";
@@ -11,6 +12,14 @@ $primary-color: #00547d;
 @import "_toastr.scss";
 @import "_jquery-ui.scss";
 @import "_users.scss";
+
+body {
+    background: $background-color;
+    color: #fff;
+    font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
+    font-size:90%;
+    margin: 0;
+}
 
 .constrain {
     margin: 0;
@@ -36,13 +45,23 @@ $primary-color: #00547d;
 }  
 
 #main {
-    background-color: rgba(0, 0, 0, 0.18);
+    background-color: $primary-color;
     border-left: 1px solid rgba(2, 2, 2, 0.28);
     border-radius: 10px 10px 0 0;
     border-right: 1px solid rgba(2, 2, 2, 0.28);
     border-top: 1px solid rgba(250, 250, 250, 0.27);
     box-shadow: 0 0 5px rgba(1, 1, 1, 0.698);
     float: left;
+}
+
+#content {
+    background: #fff;
+    clear: both;
+    color: #333;
+    padding: 10px 20px 40px 20px;
+    overflow: auto;
+    border: 1px solid $primary-color;
+    margin: -1px;
 }
 
 @media (max-width: 1024px) {

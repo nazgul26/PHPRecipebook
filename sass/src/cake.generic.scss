@@ -8,13 +8,7 @@ $titleColor: rgba(0, 50, 180, 0.8);
 }
 
 /** General Style Info **/
-body {
-	background: #006699;
-	color: #fff;
-	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
-	font-size:90%;
-	margin: 0;
-}
+
 a {
 	color: #003d4c;
 	text-decoration: underline;
@@ -63,13 +57,6 @@ p {
 	text-align: left;
 }
 
-#content{
-	background: #fff;
-	clear: both;
-	color: #333;
-	padding: 10px 20px 40px 20px;
-	overflow: auto;
-}
 
 /** containers **/
 div.form,

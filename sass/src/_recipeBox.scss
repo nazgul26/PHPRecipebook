@@ -5,9 +5,9 @@ Recipe Box on Left.  This is the sidecar of the site.
 #recipeLinkBox { 
     float: left; 
     width: 200px; 
-    background-color: rgba(0, 0, 0, 0.18);
+    background-color: $primary-color;
     border-radius: 10px 10px 10px 10px;
-    border: 1px solid rgba(250, 250, 250, 0.27);
+    border: 1px solid $primary-color;
     box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.698);
     margin-left: 20px;
     margin-right: 20px;
