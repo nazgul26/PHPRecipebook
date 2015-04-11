@@ -33,7 +33,7 @@ more effort copying files around.
 * To upgrade later simply run 'git pull'. Resolve merge conflicts if needed.
 
 <h3>Download Install Option</h3>
-* Download latest release from https://github.com/nazgul26/PHPRecipebook-Download
+* Download latest release from https://github.com/nazgul26/PHPRecipebook/releases
 * Extract files to your web folder.
 
 <hr/>
