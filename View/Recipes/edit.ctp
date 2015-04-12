@@ -262,8 +262,6 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
             <li><?php echo $this->Html->link(__('View Recipe'), array('action' => 'view', $recipe['Recipe']['id'])); ?></li>
             <?php endif;?>
             <li><?php echo $this->Html->link(__('Edit Sources'), array('controller' => 'sources', 'action' => 'index'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?>
-            <li><?php echo $this->Html->link(__('Import'), array('controller' => 'import'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?></li>
-            <li><?php echo $this->Html->link(__('Export'), array('controller' => 'export'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?></li>
             <li><button id="moreActionLinks">More Actions...</button></li>
 	</ul>
         <div style="display: none;">
