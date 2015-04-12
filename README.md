@@ -27,7 +27,7 @@ more effort copying files around.
 </p>
 
 <h3>Git Install Option</h3>
-* Clone /PHPRecipbook repository (not the PHPRecipebook-Downloads).
+* Clone 'PHPRecipebook' repository.
 * Get PHP Composer installed. https://getcomposer.org/download/.  Composer is used to manage dependencies and make upgrading CakePHP easier.
 * Run 'php composer.phar install' in the application directory to get CakePHP and check dependencies.
 * To upgrade later simply run 'git pull'. Resolve merge conflicts if needed.
