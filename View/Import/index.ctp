@@ -4,9 +4,9 @@
     <div class="notice">
             <?= __('Imported ingredients that do not exactly match existing ingredient names will be created as new ingredients.')?>
     </div>
-    <?= $this->Form->create('MealMaster') ?>
+    <?= $this->Form->create('MealMaster', array('type' => 'file')) ?>
     <?= $this->Form->hidden('id') ?>
-    <?= $this->Form->file('name')?>
+    <?= $this->Form->file('mm_file')?>
     <?= $this->Form->end(__('Submit')) ?>
 </div>
 <?php echo $this->Session->flash(); ?>

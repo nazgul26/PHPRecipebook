@@ -12,10 +12,11 @@ class ImportController extends AppController {
 
     public function index($id = null) {
         if ($this->request->is(array('post', 'put'))) {
-            if (!empty($this->request->data['Import']['mm_file']['tmp_name'])
-                && is_uploaded_file($this->request->data['Import']['mm_file']['tmp_name'])) {
+            echo "<pre>" . print_r($this->request->data). "</pre>";
+            if (!empty($this->request->data['MealMaster']['mm_file']['tmp_name'])
+                && is_uploaded_file($this->request->data['MealMaster']['mm_file']['tmp_name'])) {
                 
-                $filename = $this->request->data['Import']['mm_file']['tmp_name'];
+                $filename = $this->request->data['MealMaster']['mm_file']['tmp_name'];
                 $data = $this->MealMaster->parseDataFile($filename);
             } else {
                 $this->Session->setFlash(__('Could not open uploaded file, please try again.'));

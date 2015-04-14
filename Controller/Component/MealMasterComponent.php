@@ -6,25 +6,25 @@ App::uses('Component', 'Controller');
 
 class MealMasterComponent extends Component {
 
+    var $units;
+    
     var $MMCategories = array();
     
     /*
      * Keep track of the current recipe being examined
      */
-    
+    var $importRecipes = array();
     var $currentRecipe = NULL;
     var $currentIngredient = NULL;
-    var $ingredientList = array();	
+    var $ingredientList = NULL;	
+    var $curRecipeString = NULL;
     
     /*
      * Define some reg ex parts to look for
      */
     
     var $rxpHead = '/^(M{5,5}|-{5,5}).*Meal-Master/';
-    //var $rxpEnd = '/^(M{5,5}|-{5,5})\s$/';
-    // Added to fix bug reported to user, use the previous regex if this fails.
-    var $rxpEnd = '/^(M{5,5}|-{5,5})(-{5,5})?\s*$/';
-
+    var $rxpEnd = '/^(M{20,200}|-{20,200})/';
     var $rxpTitle = '/^ *Title: .+/';
     var $rxpCat = '/^ *Categories: .+/';
     var $rxpYield = '/^ *(Yield:|Servings:) +[1-9][0-9]*/';
@@ -36,7 +36,6 @@ class MealMasterComponent extends Component {
     /*
      * Define the Units and there equiv in this program, they are looked up in unitdefs later
      */
-    
     var $MMUnits = array(
 			 'x' =>  'unit',		//Per serving
 			 'cn' => 'can',			//Can
@@ -72,24 +71,35 @@ class MealMasterComponent extends Component {
     
     /*
      * Some MM units are really qualifiers
-     */
-    
+     */ 
     var $MMQualifiers = array(
-			      'sm' => 'small',
-			      'md' => 'medium',
-			      'lg' => 'large'
-			      );
+                            'sm' => 'small',
+                            'md' => 'medium',
+                            'lg' => 'large'
+                            );
 
     /**
-            Gets the data out of the given data file and loads it into the importRecipes, relatedRecipes arrays
-            @param $file The file to parse
+        Gets the data out of the given data file and loads it into the importRecipes, relatedRecipes arrays
+        @param $file The file to parse
     */
     function parseDataFile($file) {
-            if (!($fp = fopen($file, "r"))) {
-                    die(__('could not data file for reading'). "<br />");
-            }
-            $this->parseDataFileImpl($fp); // call the function that is implementing the import
-            fclose($fp); // close the data file
+        $this->Unit = ClassRegistry::init('Unit');
+        $this->units = $this->Unit->find('list');
+        
+        $this->BaseType = ClassRegistry::init('BaseType');
+        $this->bases = $this->BaseType->find('list');
+        
+        $this->Course = ClassRegistry::init('Course');
+        $this->courses = $this->Course->find('list');
+        
+        $this->Ethnicity = ClassRegistry::init('Ethnicity');
+        $this->ethnicities = $this->Ethnicity->find('list');
+
+        if (!($fp = fopen($file, "r"))) {
+                die(__('could not data file for reading'). "<br />");
+        }
+        $this->parseDataFileImpl($fp); // call the function that is implementing the import
+        fclose($fp); // close the data file
     }
     
     /*
@@ -103,9 +113,9 @@ class MealMasterComponent extends Component {
 	/* start */
 	
 	$this->readAllRecipes($fp);
-/*	print "<pre>";
+	print "<pre>";
 	print_r($this->importRecipes);
-	print "</pre>"; */
+	print "</pre>"; 
 	
 	// Do not throw exception if user was interrupting the input.
 	if (empty($this->importRecipes)) {
@@ -115,13 +125,12 @@ class MealMasterComponent extends Component {
 	return true;
     }
 
-    function readAllRecipes($fp)
-    {
-	
+    function readAllRecipes($fp) {
 	while (!feof($fp)) {
 	    $data = fgets($fp, 256);
 	    if (preg_match($this->rxpHead, $data)) {
 		// if we have a header string, we can skip it :)
+                $this->curRecipeString = array();
 		$data = fgets($fp, 256);
 		/*
 		 * We might have a recipe here. Copy everything up to the end
@@ -147,15 +156,14 @@ class MealMasterComponent extends Component {
     /* this function gets called once for every recipe
      */
     
-    function readRecipe()
-    {
+    function readRecipe() {
 	$this->currentRecipe = array();
 	$this->ingredientList = array();
 
 	$this->readRecipeHeader();
 	$this->readRecipeBody();
 	if (!empty($this->currentRecipe['name'])) {
-	    $this->importRecipes[] = array ($this->currentRecipe, $this->ingredientList);
+	    $this->importRecipes[] = array('Recipe'=> $this->currentRecipe, 'Ingredient'=>$this->ingredientList);
 	}
 	
 	/* write the recipe to the database here, for memory reasons */
@@ -202,7 +210,6 @@ class MealMasterComponent extends Component {
 	    } else if (preg_match($this->rxpCat, $this->curRecipeString[0])) {
 		$pos = strpos($this->curRecipeString[0], "Categories: ") + strlen("Categories: ");
 		$this->addCategories( substr($this->curRecipeString[0], $pos) );
-                //print "Categories... some random<br />\n";
 		$gotCategories = true;
 	    /* check if it's our Yield string */
 	    } else if (preg_match($this->rxpYield, $this->curRecipeString[0])) {
@@ -235,7 +242,7 @@ class MealMasterComponent extends Component {
      */
     function readRecipeBody()
     {
-	$this->currentIngredient = new Ingredient();
+	$this->currentIngredient = array();
 	$this->readRecipeIngredients();
 	$this->readRecipeSteps();
     }
@@ -283,7 +290,7 @@ class MealMasterComponent extends Component {
 		$this->curRecipeString[0] = preg_replace( '/-*$/', "", trim($this->curRecipeString[0])); // remove dashes after category name
 		$this->curRecipeString[0] = trim($this->curRecipeString[0]); // cut unwanted whitespaces
 		$curGroup = $this->curRecipeString[0];        // The rest is our new category.
-		print "New group: $curGroup<br />\n";
+		//print "New group: $curGroup<br />\n";
 		unset($this->curRecipeString[0]);                // next line
 		$this->curRecipeString = array_values($this->curRecipeString);
 		continue;
@@ -292,8 +299,13 @@ class MealMasterComponent extends Component {
 	    $contLastI = $this->readIngredientLine($this->curRecipeString[0]);
 	    if (!$contLastI) {
                 if (!empty($this->currentIngredient['name'])) {
+                    $parts = split(";", $this->currentIngredient['name']);
+                    $this->currentIngredient['name'] = strtolower($parts[0]);
+                    $this->currentIngredient['qualifier'] = isset($parts[1]) ? strtolower($parts[1]) : NULL;
+                    
                     $this->ingredientList[] = $this->currentIngredient;
                     //print "Ingredient: ".$this->currentIngredient['name']." <br />\n";
+
                     unset($this->currentIngredient);
                     $this->currentIngredient = array();
                 }
@@ -335,11 +347,12 @@ class MealMasterComponent extends Component {
 	$name = trim($name);
 
 	
-	if (intval($amount) == 0 )
-		$amount = $amount;
-	else
-	{
-	 	$amount = Fraction::strToFloat($amount);
+	if (intval($amount) == 0 ) {
+            $amount = $amount;
+        } else {
+            $amount = $amount;
+            //TODO: import fraction conversion
+            //$amount = Fraction::strToFloat($amount);
 	}
 
 	if ($name != "" && $name[0] == '-' && $name[1] != '-') { // continue previous ingredient line.
@@ -392,9 +405,13 @@ class MealMasterComponent extends Component {
     function readRecipeSteps()
     {
 	$skipLines = true;
+        $this->currentRecipe['directions'] = "";
 	while (true) {
-	    if ((empty($this->curRecipeString[0])) || (preg_match($this->rxpEnd, $this->curRecipeString[0])))
-	      break;
+	    if ((empty($this->curRecipeString[0])) || (preg_match($this->rxpEnd, $this->curRecipeString[0]))) {
+               // print "I should break out of here.";
+               break; 
+            }
+	      
 	    
 	    // Skip initial empty line(s).
 	    if ($skipLines && (empty($this->curRecipeString[0])) || preg_match($this->rxpWhitespaceOnly, $this->curRecipeString[0])) {
@@ -405,7 +422,7 @@ class MealMasterComponent extends Component {
 	    $skipLines = false;
 	    
 	    $this->currentRecipe['directions'] .= htmlspecialchars($this->curRecipeString[0], ENT_QUOTES);
-	    // echo "Found directions: ".$this->curRecipeString[0]."<br />";
+	    //print "Found directions: ".$this->curRecipeString[0]."<br />";
 								    
 	    unset($this->curRecipeString[0]);
 	    $this->curRecipeString = array_values($this->curRecipeString);
@@ -419,14 +436,19 @@ class MealMasterComponent extends Component {
      @return the corresponding category ID.
      */
     function addCategories($cat) {
-	$list = split(',', $cat);
+        //print "Looking at categories:$cat<br/>";
+	$list = split(' ', $cat);
 	foreach ($list as $item) {
+            //print "Looking at: $item<br/>";
 	    if ($key = $this->containsValue($this->bases, $item)) {
-		$this->currentRecipe['base_type_id'] = $this->bases[$key];
+		$this->currentRecipe['base_type_id'] = $key;
+                //print "Got Base Type ID: " . $this->bases[$key] . "<br/>";
 	    } else if ($key = $this->containsValue($this->courses, $item)) {
-		$this->currentRecipe['course_id'] = $this->courses[$key];
-	    } else if ($key = $this->containsValue($this->ethnicity, $item)) {
-		$this->currentRecipe['ethnicity_id'] = $this->ethnicity[$key];
+		$this->currentRecipe['course_id'] = $key;
+                //print "Got course ID: " . $this->courses[$key] . "<br/>";
+	    } else if ($key = $this->containsValue($this->ethnicities, $item)) {
+		$this->currentRecipe['ethnicity_id'] = $key;
+                //print "Got ethnic ID: " . $this->ethnicities[$key] . "<br/>";
 	    }
 	}
     } // addCategories
@@ -437,32 +459,26 @@ class MealMasterComponent extends Component {
      *   @param $val The val to look for
      *   @return true, if in array, otherwise false.
      */
-    
     function containsValue($arr, $val) {
 	foreach ($arr as $k=>$v) {
-	    if (trim(strtolower($k)) == trim(strtolower($val))) return $k;
+	    if (trim(strtolower($v)) == trim(strtolower($val))) return $k;
 	}
 	return 0;
     } // containsValue
     
-    /*
-     *                 Converts the Meal Master Units into our units
-     *                 @param $unit The Unit to add to the current ingredient
-     *
-     */
-    
+
     function setUnit($unit) {
-	global $LangUI, $g_rb_unitmap;
 	$unit = trim($unit);
 	// Set as a default ea=unit
 	if ($unit == '') $unit='ea';
 	
-	if ($unit == 'x') {
-	    echo "A dynamic one!! Deal with it later... $unit<br />";
-	} else {
+        //"A dynamic one!! Deal with it later... $unit<br />";
+	if ($unit != 'x') {
 	    // Do a look up on it.
 	    if ($this->MMUnits[$unit]) {
-		$this->currentIngredient['unit_id'] = $g_rb_unitmap[($this->MMUnits[$unit])];
+                //print "Looking up unit: " . $this->MMUnits[$unit] . "<br/>";
+		$this->currentIngredient['unit_id'] = $this->containsValue($this->units, $this->MMUnits[$unit]);
+                //print "Got Unit ID " . $this->currentIngredient['unit_id'] . "<br/>"; 
 		//$this->currentIngredient->unitMap = $this->currentIngredient->unit;
 	    }
 	    // See if we can get qualifier information out of it
