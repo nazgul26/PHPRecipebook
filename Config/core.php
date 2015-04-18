@@ -5,6 +5,11 @@
  * Use it to configure core behavior of this application.
  */
 
+/* 
+ * Set the default language. Default to english.
+ */
+//Configure::write('Config.language', 'ita');
+
 /*
  * During Initial setup this should be true. After setup change to FALSE
  */
