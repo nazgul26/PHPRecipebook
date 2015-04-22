@@ -49,7 +49,10 @@ class UsersController extends AppController {
                     return;
                 }
                 else if ($this->Auth->login()) {
-                    //echo "redirect to:" . $this->Auth->redirectUrl();
+                    if (!empty($item['User']['language'])) {
+                        $this->Session->write('Config.language', $item['User']['language']);
+                    }
+                    
                     $redirectUrl = $this->Auth->redirectUrl();
                     if ($this->String->endsWith($redirectUrl, '/Users/login')) {
                         return $this->redirect(array('controller' => 'recipes', 'action' => 'index'));
@@ -179,7 +182,6 @@ class UsersController extends AppController {
                 }
                 
                 $this->request->data['User']['access_level'] = Configure::read('AuthRoles.author');
-                $this->request->data['User']['language'] = 'en';
                 $this->request->data['User']['country'] = 'us';
                 
                 if ($this->User->save($this->request->data)) {

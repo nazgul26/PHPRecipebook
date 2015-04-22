@@ -35,8 +35,23 @@ Configure::write('AuthRoles', array(
     'admin'=>90 // Site Admin Level Access
 ));
 
+// List for Binding to UI (yes I am lazy on this)
+Configure::write('AuthEditRoles', array(
+    30 => 'author', // Basic User
+    60 => 'editor', // Can Edit other people content
+    90 =>'admin' // Site Admin Level Access
+));
+
 Configure::write('MeasurementSystems', array(
     0 => 'Static',
     1 => 'Imperial',
     2 => 'Metric'
+));
+
+Configure::write('Languages', array(
+    'eng' => 'English',
+    'fra' => 'French',
+    'ita' => 'Italian',
+    'por' => 'Portuguese',
+    'spa' => 'Spanish'
 ));

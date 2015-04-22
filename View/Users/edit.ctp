@@ -19,7 +19,7 @@
             echo $this->Form->input('password1',array('type'=>'password','label'=>array('text'=>'Password')));
             echo $this->Form->input('password2',array('type'=>'password','label'=>array('text'=>'Confirm password')));
             if ($isAdmin) {
-                echo $this->Form->input('access_level');
+                echo $this->Form->input('access_level', array('options' => Configure::read('AuthEditRoles')));
             } else {
                 echo $this->Form->hidden('access_level');
             }
@@ -36,7 +36,7 @@
                             )
                         )
                     );
-            echo $this->Form->input('language');
+            echo $this->Form->input('language', array('options' => Configure::read('Languages')));
             echo $this->Form->input('country');
             echo $this->Form->input('last_login',array('disabled' => 'disabled'));
             
