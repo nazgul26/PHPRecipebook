@@ -374,7 +374,7 @@ msgid "$30+"
 msgstr ""
 
 #: Config/Schema/schema.php:158
-#: View/Layouts/default.ctp:125
+#: View/Layouts/default.ctp:124
 #: View/ShoppingLists/instore.ctp:38
 #: View/ShoppingLists/online.ctp:95
 #: View/ShoppingLists/select.ctp:48
@@ -799,20 +799,20 @@ msgstr ""
 msgid "The restaurant could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/SetupController.php:55
+#: Controller/SetupController.php:36
 msgid "Password must have a value."
 msgstr ""
 
-#: Controller/SetupController.php:61
+#: Controller/SetupController.php:42
 msgid "Password successfully saved"
 msgstr ""
 
-#: Controller/SetupController.php:65
+#: Controller/SetupController.php:46
 #: Controller/UsersController.php:190;232
 msgid "The user could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/SetupController.php:68
+#: Controller/SetupController.php:49
 #: Controller/UsersController.php:194;236
 msgid "Passwords did not match. Please, try again."
 msgstr ""
@@ -1006,7 +1006,7 @@ msgid "The user could not be deleted. Please, try again."
 msgstr ""
 
 #: Controller/Component/MealMasterComponent.php:99
-msgid "could not open data file for reading"
+msgid "could not data file for reading"
 msgstr ""
 
 #: Model/Recipe.php:173
@@ -1035,7 +1035,7 @@ msgstr ""
 #: View/PriceRanges/edit.ctp:12
 #: View/Recipes/edit.ctp:447
 #: View/Restaurants/edit.ctp:30
-#: View/Setup/password.ctp:25
+#: View/Setup/password.ctp:24
 #: View/Sources/edit.ctp:14
 #: View/Stores/edit.ctp:12
 #: View/Units/edit.ctp:15
@@ -1185,7 +1185,7 @@ msgid "next"
 msgstr ""
 
 #: View/CoreIngredients/index.ctp:12
-#: View/Layouts/default.ctp:126
+#: View/Layouts/default.ctp:125
 msgid "Core Ingredients"
 msgstr ""
 
@@ -1260,7 +1260,7 @@ msgid "Solid/Liquid"
 msgstr ""
 
 #: View/Ingredients/index.ctp:24
-#: View/Layouts/default.ctp:68
+#: View/Layouts/default.ctp:67
 #: View/Recipes/view.ctp:116;174
 msgid "Ingredients"
 msgstr ""
@@ -1295,28 +1295,28 @@ msgstr ""
 msgid "Are you sure you want to delete \"%s\"?"
 msgstr ""
 
-#: View/Layouts/default.ctp:58
+#: View/Layouts/default.ctp:57
 msgid "Browse your recipes"
 msgstr ""
 
-#: View/Layouts/default.ctp:58
+#: View/Layouts/default.ctp:57
 #: View/Recipes/index.ctp:48
 msgid "Recipes"
 msgstr ""
 
-#: View/Layouts/default.ctp:62
+#: View/Layouts/default.ctp:61
 msgid "Manage your meal plans"
 msgstr ""
 
-#: View/Layouts/default.ctp:62
+#: View/Layouts/default.ctp:61
 msgid "Meal Planner"
 msgstr ""
 
-#: View/Layouts/default.ctp:65
+#: View/Layouts/default.ctp:64
 msgid "Create or Edit a shopping list"
 msgstr ""
 
-#: View/Layouts/default.ctp:65
+#: View/Layouts/default.ctp:64
 #: View/ShoppingLists/index.ctp:66
 #: View/ShoppingLists/instore.ctp:19
 #: View/ShoppingLists/online.ctp:83
@@ -1324,99 +1324,112 @@ msgstr ""
 msgid "Shopping List"
 msgstr ""
 
-#: View/Layouts/default.ctp:68
+#: View/Layouts/default.ctp:67
 msgid "Ingredients used in recipes"
 msgstr ""
 
-#: View/Layouts/default.ctp:72
+#: View/Layouts/default.ctp:71
 msgid "List of your restaurants"
 msgstr ""
 
-#: View/Layouts/default.ctp:72
+#: View/Layouts/default.ctp:71
 #: View/Restaurants/index.ctp:12
 msgid "Restaurants"
 msgstr ""
 
-#: View/Layouts/default.ctp:75
+#: View/Layouts/default.ctp:74
 msgid "Administer Users"
 msgstr ""
 
-#: View/Layouts/default.ctp:75
+#: View/Layouts/default.ctp:74
 #: View/Users/edit.ctp:4
 #: View/Users/index.ctp:2
 msgid "Users"
 msgstr ""
 
-#: View/Layouts/default.ctp:89
+#: View/Layouts/default.ctp:88
 msgid "Sign in with your existing account"
 msgstr ""
 
-#: View/Layouts/default.ctp:94
+#: View/Layouts/default.ctp:88
+msgid "Sign in"
+msgstr ""
+
+#: View/Layouts/default.ctp:93
 msgid "Create a new account"
 msgstr ""
 
-#: View/Layouts/default.ctp:99
+#: View/Layouts/default.ctp:93
+#: View/Users/add.ctp:4
+msgid "Create Account"
+msgstr ""
+
+#: View/Layouts/default.ctp:98
 msgid "Logout"
 msgstr ""
 
-#: View/Layouts/default.ctp:103
+#: View/Layouts/default.ctp:102
 msgid "Edit your Account settings"
 msgstr ""
 
-#: View/Layouts/default.ctp:123
+#: View/Layouts/default.ctp:122
 #: View/Recipes/edit.ctp:339
 msgid "Ingredient"
 msgstr ""
 
-#: View/Layouts/default.ctp:124
+#: View/Layouts/default.ctp:123
 msgid "Location"
 msgstr ""
 
-#: View/Layouts/default.ctp:127
+#: View/Layouts/default.ctp:126
 msgid "Restaurant"
 msgstr ""
 
-#: View/Layouts/default.ctp:128
+#: View/Layouts/default.ctp:127
 #: View/PriceRanges/index.ctp:11
 msgid "Price Ranges"
 msgstr ""
 
-#: View/Layouts/default.ctp:129
+#: View/Layouts/default.ctp:128
 #: View/Recipes/view.ctp:51
 msgid "Ethnicity"
 msgstr ""
 
-#: View/Layouts/default.ctp:130
+#: View/Layouts/default.ctp:129
 #: View/Recipes/view.ctp:56
 msgid "Base Type"
 msgstr ""
 
-#: View/Layouts/default.ctp:131
+#: View/Layouts/default.ctp:130
 #: View/Recipes/view.ctp:61
 msgid "Course"
 msgstr ""
 
-#: View/Layouts/default.ctp:132
+#: View/Layouts/default.ctp:131
 #: View/Recipes/view.ctp:66
 msgid "Preparation Time"
 msgstr ""
 
-#: View/Layouts/default.ctp:133
+#: View/Layouts/default.ctp:132
 msgid "Preparation Method"
 msgstr ""
 
-#: View/Layouts/default.ctp:134
+#: View/Layouts/default.ctp:133
 #: View/Recipes/view.ctp:71
 msgid "Difficulty"
 msgstr ""
 
-#: View/Layouts/default.ctp:135
+#: View/Layouts/default.ctp:134
 #: View/Recipes/view.ctp:89
 msgid "Source"
 msgstr ""
 
-#: View/Layouts/default.ctp:136
+#: View/Layouts/default.ctp:135
 msgid "Meal"
+msgstr ""
+
+#: View/Layouts/error.ctp:19
+msgid "PHPRecipebook Exception"
 msgstr ""
 
 #: View/Locations/index.ctp:12
@@ -1715,141 +1728,20 @@ msgstr ""
 msgid "New Price Ranges"
 msgstr ""
 
-#: View/Setup/database.ctp:2
-#: View/Setup/upgrade.ctp:2
-msgid "Start"
-msgstr ""
-
-#: View/Setup/database.ctp:3
-#: View/Setup/index.ctp:145
-msgid "New Install"
-msgstr ""
-
-#: View/Setup/database.ctp:8
-msgid "Follow the following steps to create the database schema and import some initial settings:"
-msgstr ""
-
-#: View/Setup/database.ctp:12
-msgid "Create the schema"
-msgstr ""
-
-#: View/Setup/database.ctp:16
-msgid "Import core ingredients"
-msgstr ""
-
-#: View/Setup/database.ctp:19
-msgid "Import sample ingredients (optional)"
-msgstr ""
-
 #: View/Setup/database.ctp:29
 msgid "Continue..."
-msgstr ""
-
-#: View/Setup/finish.ctp:3
-#: View/Setup/password.ctp:2
-msgid "Setup"
-msgstr ""
-
-#: View/Setup/finish.ctp:4
-#: View/Setup/password.ctp:3
-msgid "Database"
-msgstr ""
-
-#: View/Setup/finish.ctp:5
-msgid "Password"
 msgstr ""
 
 #: View/Setup/finish.ctp:6
 msgid "Finish"
 msgstr ""
 
-#: View/Setup/finish.ctp:11
-msgid "Complete the Setup"
-msgstr ""
-
-#: View/Setup/finish.ctp:13
-msgid "By editing"
-msgstr ""
-
-#: View/Setup/finish.ctp:15;23
-msgid "Change"
-msgstr ""
-
-#: View/Setup/finish.ctp:16;24
-msgid "To"
-msgstr ""
-
-#: View/Setup/finish.ctp:19
-msgid "If you don't change this setting your site will be open for anyone to reconfigure it."
-msgstr ""
-
-#: View/Setup/finish.ctp:21
-msgid "AND if you do not want open registration then change"
-msgstr ""
-
-#: View/Setup/finish.ctp:27
-msgid "Congratulations you have successfully setup PHPRecipeBook!"
-msgstr ""
-
-#: View/Setup/finish.ctp:28
-msgid "Press the done button to login and begin setting up some users or adding recipes."
-msgstr ""
-
-#: View/Setup/finish.ctp:30
-msgid "Done"
-msgstr ""
-
-#: View/Setup/index.ctp:10
-msgid "Welcome to PHPRecipeBook "
-msgstr ""
-
-#: View/Setup/index.ctp:12
-msgid "This is the setup page for the application.  The following messages will indicate if your server has been properly setup."
-msgstr ""
-
-#: View/Setup/index.ctp:102
-msgid "1. Installed the appropriate PHP db module (i.e. php-mysql, php-pgsql)"
-msgstr ""
-
-#: View/Setup/index.ctp:103
-msgid "2. The database has been created and you can connect to it"
-msgstr ""
-
-#: View/Setup/index.ctp:104
-msgid "3. Have the correct username password in database.php config file"
-msgstr ""
-
-#: View/Setup/index.ctp:143
-msgid "After correcting any issues above you can continue the setup process."
+#: View/Setup/index.ctp:145
+msgid "New Install"
 msgstr ""
 
 #: View/Setup/index.ctp:146
-#: View/Setup/upgrade.ctp:3
 msgid "Upgrade"
-msgstr ""
-
-#: View/Setup/password.ctp:4
-msgid "Admin Password"
-msgstr ""
-
-#: View/Setup/password.ctp:10
-msgid "Enter a new Administrator password.  This username and password will be used to setup other users"
-msgstr ""
-
-#: View/Setup/upgrade.ctp:8
-msgid "Upgrading will lock all users and require they change their passwords.  This was needed to use Blowfish encryption."
-msgstr ""
-
-#: View/Setup/upgrade.ctp:12
-msgid "Follow the following steps to upgrade your installation:"
-msgstr ""
-
-#: View/Setup/upgrade.ctp:16
-msgid "Make a backup of your database!"
-msgstr ""
-
-#: View/Setup/upgrade.ctp:17
-msgid "Migrate from latest 4.x PHPRecipeBook to 5.0"
 msgstr ""
 
 #: View/Setup/upgrade.ctp:27
@@ -1970,10 +1862,6 @@ msgstr ""
 
 #: View/Stores/index.ctp:6
 msgid "New Store"
-msgstr ""
-
-#: View/Users/add.ctp:4
-msgid "Create Account"
 msgstr ""
 
 #: View/Users/edit.ctp:8

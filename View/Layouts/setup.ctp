@@ -1,5 +1,5 @@
 <?php
-$cakeDescription = __d('cake_dev', 'PHPRecipeBook');
+$cakeDescription = 'PHPRecipeBook';
 ?>
 
 <html>

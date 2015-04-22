@@ -1,5 +1,5 @@
 <?php
-$cakeDescription = __d('cake_dev', 'PHPRecipeBook');
+$cakeDescription = 'PHPRecipeBook';
 ?>
 
 <html>
@@ -36,7 +36,6 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
 <body>
     <script type="text/javascript">
         $(function() {
-            console.log("base URL <?php echo $baseUrl;?>");
             initApplication("<?php echo $baseUrl;?>");
         });
         
@@ -86,17 +85,17 @@ $cakeDescription = __d('cake_dev', 'PHPRecipeBook');
                     <?php if (!$loggedIn) : ?>
                         <li>
                             <a href="<?php echo $baseUrl;?>Users/login" id="signInButton" 
-                               title="<?php echo __('Sign in with your existing account');?>">Sign in</a>
+                               title="<?php echo __('Sign in with your existing account');?>"><?= __('Sign in')?></a>
                         </li>
                         <?php if ($allowAccountCreation) :?>
                         <li>
                             <a href="<?php echo $baseUrl;?>Users/add" id="signInButton" 
-                               title="<?php echo __('Create a new account');?>">Create Account</a>
+                               title="<?php echo __('Create a new account');?>"><?= __('Create Account')?></a>
                         </li>
                         <?php endif;?>
                     <?php else: ?>
                     <li>
-                        <a href="<?php echo $baseUrl;?>Users/logout" title="<?php echo __('Logout');?>">Logout</a>
+                        <a href="<?php echo $baseUrl;?>Users/logout" title="<?php echo __('Logout');?>"><?= __('Logout')?></a>
                     </li>
                     <li id="settingsLink">
                         <a href="<?php echo $baseUrl;?>Users/edit/<?php echo AuthComponent::user('id');?>" 

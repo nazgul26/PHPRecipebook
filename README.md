@@ -40,7 +40,8 @@ more effort copying files around.
 <h4>Setup Directions for all</h4>
 * Ensure you have the following PHP Modules installed: mcrypt, gd. And mysql, pgsql or your DB.
 * Create a new database to store the application in. i.e. recipebook
-* Edit Configuration DB Configuration Settings <app install dir>/Config/database.php to match your database settings. 
+* Edit Configuration DB Configuration Settings <app dir>/Config/database.php to match your database settings. 
+* Edit <app dir/Config/core.php and set your language if other than English.  Go to translations below if not available.
 * Make the <app install dir>/temp folder in the application writable for web user.  example:
     - sudo chown -R apache.apache tmp
   If you don't make <app install dir>/tmp writable by the web user the app will not run!
@@ -73,3 +74,21 @@ more effort copying files around.
   - Solution 2: Your webserver does not support url rewriting.  Follow the directions http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration to change app to not use rewriting.
 * You get this error: Warning: include(/<some path>/Vendor/cakephp/cakephp/lib/Cake/Error/ErrorHandler.php): failed to open stream: 
   - Solution: Clear the ./tmp/cache/models, ./tmp/cache/persistent directories.  These folders keep path info in them so if the path the app runs from changes the cache has to be cleared.
+
+<h2>Translations</h2>
+<hr/>
+If your local language is not yet translated I can run it up against Google Translate API.  Please star the project (show you care) and submit an 'Issue' to translate.
+<br/>
+If you are interested in performing a translation/corrections then here are some basic steps to follow:
+<p>
+* Install Poedit (http://poedit.net/).  This is an Open Source tool that will help in translations. Hint for Ubuntu installs -  sudo apt-get install poedit
+* Open the <app dir>/Locale/default.pot in Poedit and translate
+* When done save in Locale\<lang code>\LC_MESSAGES\default.po
+</p>
+##Currently Supported Languages
+* English - eng
+* French - fra
+* Portuguese - por
+* Italian - ita
+
+
