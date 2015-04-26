@@ -95,7 +95,7 @@ $cakeDescription = 'PHPRecipeBook';
                         <?php endif;?>
                     <?php else: ?>
                     <li>
-                        <a href="<?php echo $baseUrl;?>Users/logout" title="<?php echo __('Logout');?>"><?php __('Logout')?></a>
+                        <a href="<?php echo $baseUrl;?>Users/logout" title="<?php echo __('Logout');?>"><?php echo __('Logout')?></a>
                     </li>
                     <li id="settingsLink">
                         <a href="<?php echo $baseUrl;?>Users/edit/<?php echo AuthComponent::user('id');?>" 
