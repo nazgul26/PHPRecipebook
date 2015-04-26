@@ -1,7 +1,3 @@
-# LANGUAGE translation of CakePHP Application
-# Copyright YEAR NAME <EMAIL@ADDRESS>
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
@@ -15,363 +11,363 @@ msgstr ""
 
 #: Config/Schema/schema.php:19
 msgid "Beef"
-msgstr ""
+msgstr "Говедина"
 
 #: Config/Schema/schema.php:20;74
 msgid "Bread"
-msgstr ""
+msgstr "Хлеб"
 
 #: Config/Schema/schema.php:21
 msgid "Egg"
-msgstr ""
+msgstr "Јаје"
 
 #: Config/Schema/schema.php:22
 msgid "Fruit"
-msgstr ""
+msgstr "Воће"
 
 #: Config/Schema/schema.php:23
 msgid "Grain"
-msgstr ""
+msgstr "Зрно"
 
 #: Config/Schema/schema.php:24
 msgid "Lamb"
-msgstr ""
+msgstr "Јагњетина"
 
 #: Config/Schema/schema.php:25
 msgid "Other"
-msgstr ""
+msgstr "Други"
 
 #: Config/Schema/schema.php:26
 msgid "Pasta"
-msgstr ""
+msgstr "Паста"
 
 #: Config/Schema/schema.php:27
 msgid "Pork/Ham"
-msgstr ""
+msgstr "Свињетина / Хем"
 
 #: Config/Schema/schema.php:28
 msgid "Poultry"
-msgstr ""
+msgstr "Живина"
 
 #: Config/Schema/schema.php:29;106
 msgid "Seafood"
-msgstr ""
+msgstr "Плодови мора"
 
 #: Config/Schema/schema.php:30
 msgid "Vegetable"
-msgstr ""
+msgstr "Поврће"
 
 #: Config/Schema/schema.php:35;115
 #: View/MealPlans/index.ctp:81
 msgid "Breakfast"
-msgstr ""
+msgstr "Доручак"
 
 #: Config/Schema/schema.php:36
 msgid "Snack"
-msgstr ""
+msgstr "Ужина"
 
 #: Config/Schema/schema.php:37;116
 #: View/MealPlans/index.ctp:82
 msgid "Lunch"
-msgstr ""
+msgstr "Ручак"
 
 #: Config/Schema/schema.php:38
 msgid "Appetizer"
-msgstr ""
+msgstr "Предјело"
 
 #: Config/Schema/schema.php:39
 msgid "Side Dish"
-msgstr ""
+msgstr "Прилог"
 
 #: Config/Schema/schema.php:40
 msgid "Entree"
-msgstr ""
+msgstr "Предјело"
 
 #: Config/Schema/schema.php:41;118
 #: View/MealPlans/index.ctp:84
 msgid "Dessert"
-msgstr ""
+msgstr "Десерт"
 
 #: Config/Schema/schema.php:42
 msgid "Beverage"
-msgstr ""
+msgstr "Напитак"
 
 #: Config/Schema/schema.php:48
 msgid "Easy"
-msgstr ""
+msgstr "Лако"
 
 #: Config/Schema/schema.php:49
 msgid "Intermediate"
-msgstr ""
+msgstr "Средњи"
 
 #: Config/Schema/schema.php:50
 msgid "Difficult"
-msgstr ""
+msgstr "Тежак"
 
 #: Config/Schema/schema.php:51
 msgid "Expert"
-msgstr ""
+msgstr "Експерт"
 
 #: Config/Schema/schema.php:56
 msgid "American"
-msgstr ""
+msgstr "Американац"
 
 #: Config/Schema/schema.php:57
 msgid "Chinese"
-msgstr ""
+msgstr "Кинески"
 
 #: Config/Schema/schema.php:58
 msgid "German"
-msgstr ""
+msgstr "Немачки"
 
 #: Config/Schema/schema.php:59
 msgid "Greek"
-msgstr ""
+msgstr "Грчки"
 
 #: Config/Schema/schema.php:60
 msgid "Indian"
-msgstr ""
+msgstr "Индијанац"
 
 #: Config/Schema/schema.php:61
 msgid "Italian"
-msgstr ""
+msgstr "Италијански"
 
 #: Config/Schema/schema.php:62
 msgid "Japanese"
-msgstr ""
+msgstr "Јапански"
 
 #: Config/Schema/schema.php:63
 msgid "Mexican"
-msgstr ""
+msgstr "Мексиканац"
 
 #: Config/Schema/schema.php:64
 msgid "Middle Eastern"
-msgstr ""
+msgstr "Блиског истока"
 
 #: Config/Schema/schema.php:65
 msgid "None"
-msgstr ""
+msgstr "Ниједан"
 
 #: Config/Schema/schema.php:66
 msgid "Slavic"
-msgstr ""
+msgstr "Словенски"
 
 #: Config/Schema/schema.php:71
 msgid "Alcohol"
-msgstr ""
+msgstr "Алкохол"
 
 #: Config/Schema/schema.php:72
 msgid "Bakery"
-msgstr ""
+msgstr "Пекара"
 
 #: Config/Schema/schema.php:73
 msgid "Beans"
-msgstr ""
+msgstr "Пасуљ"
 
 #: Config/Schema/schema.php:75
 msgid "Candy"
-msgstr ""
+msgstr "Бомбона"
 
 #: Config/Schema/schema.php:76
 msgid "Canned Fruit"
-msgstr ""
+msgstr "Цаннед Фруит"
 
 #: Config/Schema/schema.php:77
 msgid "Canned Meat & Fish"
-msgstr ""
+msgstr "Цаннед Меат & Фисх"
 
 #: Config/Schema/schema.php:78
 msgid "Canned Vegetables"
-msgstr ""
+msgstr "Конзервирано поврће"
 
 #: Config/Schema/schema.php:79
 msgid "Coffee, Tea & Cocoa"
-msgstr ""
+msgstr "Кафа, чај и какао"
 
 #: Config/Schema/schema.php:80
 msgid "Condiments"
-msgstr ""
+msgstr "Додаци храни"
 
 #: Config/Schema/schema.php:81
 msgid "Cookies"
-msgstr ""
+msgstr "Колачи"
 
 #: Config/Schema/schema.php:82
 msgid "Crackers"
-msgstr ""
+msgstr "Ћакнут"
 
 #: Config/Schema/schema.php:83
 msgid "Dairy"
-msgstr ""
+msgstr "Млекара"
 
 #: Config/Schema/schema.php:84
 msgid "Deli"
-msgstr ""
+msgstr "Деликатеси"
 
 #: Config/Schema/schema.php:85
 msgid "Drink mix"
-msgstr ""
+msgstr "Дринк мик"
 
 #: Config/Schema/schema.php:86
 msgid "Facial Tissue"
-msgstr ""
+msgstr "Фациал Тиссуе"
 
 #: Config/Schema/schema.php:87
 msgid "Free"
-msgstr ""
+msgstr "Бесплатно"
 
 #: Config/Schema/schema.php:88
 msgid "Frozen Foods"
-msgstr ""
+msgstr "Фрозен Фоодс"
 
 #: Config/Schema/schema.php:89
 msgid "HABA"
-msgstr ""
+msgstr "ХАБА"
 
 #: Config/Schema/schema.php:90
 msgid "Hand Soap"
-msgstr ""
+msgstr "Сапун за руке"
 
 #: Config/Schema/schema.php:91
 msgid "Hot & Cold Cereal"
-msgstr ""
+msgstr "Топла и хладна пахуљице"
 
 #: Config/Schema/schema.php:92
 msgid "Household Cleaners"
-msgstr ""
+msgstr "Домаћинство Средства за чишћење"
 
 #: Config/Schema/schema.php:93
 msgid "Juice & Cocktail"
-msgstr ""
+msgstr "Јуице & Коктел"
 
 #: Config/Schema/schema.php:94
 msgid "Kosher/Ethnic"
-msgstr ""
+msgstr "Кошер / Етхниц"
 
 #: Config/Schema/schema.php:95
 msgid "Laundry Detergents"
-msgstr ""
+msgstr "Детерџенти за веш"
 
 #: Config/Schema/schema.php:96
 msgid "Meat"
-msgstr ""
+msgstr "Месо"
 
 #: Config/Schema/schema.php:97
 msgid "Natural & Organic"
-msgstr ""
+msgstr "Природне и Органска"
 
 #: Config/Schema/schema.php:98
 msgid "Oil/Vinegar/Dressings"
-msgstr ""
+msgstr "Оил / сирће / преливи"
 
 #: Config/Schema/schema.php:99
 msgid "Pancakes & Syrup"
-msgstr ""
+msgstr "Палачинке & сируп"
 
 #: Config/Schema/schema.php:100
 msgid "Paper Serving Ware"
-msgstr ""
+msgstr "Папир Сервинг Варе"
 
 #: Config/Schema/schema.php:101
 msgid "Pasta & Sauce"
-msgstr ""
+msgstr "Паста Сауце &"
 
 #: Config/Schema/schema.php:102
 msgid "Peanut Butter/Jelly/Honey"
-msgstr ""
+msgstr "Пеанут Буттер / Јелли / Мед"
 
 #: Config/Schema/schema.php:103
 msgid "Produce"
-msgstr ""
+msgstr "Произвести"
 
 #: Config/Schema/schema.php:104
 msgid "Rice"
-msgstr ""
+msgstr "Пиринач"
 
 #: Config/Schema/schema.php:105
 msgid "Salty Snacks & Chips"
-msgstr ""
+msgstr "Сланих грицкалица & Цхипс"
 
 #: Config/Schema/schema.php:107
 msgid "Soda pop"
-msgstr ""
+msgstr "Сода Поп"
 
 #: Config/Schema/schema.php:108
 msgid "Soup"
-msgstr ""
+msgstr "Супа"
 
 #: Config/Schema/schema.php:109
 msgid "Spices"
-msgstr ""
+msgstr "Зачини"
 
 #: Config/Schema/schema.php:110
 msgid "Toilet Paper"
-msgstr ""
+msgstr "Тоалет папир"
 
 #: Config/Schema/schema.php:117
 #: View/MealPlans/index.ctp:83
 msgid "Dinner"
-msgstr ""
+msgstr "Вечера"
 
 #: Config/Schema/schema.php:123
 msgid "Slow cooker"
-msgstr ""
+msgstr "Споро шпорет"
 
 #: Config/Schema/schema.php:124
 msgid "Microwave"
-msgstr ""
+msgstr "Микроталасни"
 
 #: Config/Schema/schema.php:125
 msgid "BBQ"
-msgstr ""
+msgstr "Роштиљ"
 
 #: Config/Schema/schema.php:126
 msgid "Canning"
-msgstr ""
+msgstr "Конзервирање"
 
 #: Config/Schema/schema.php:131
 msgid "0 Minutes"
-msgstr ""
+msgstr "0 Минута"
 
 #: Config/Schema/schema.php:132
 msgid "1-10 Minutes"
-msgstr ""
+msgstr "1-10 минута"
 
 #: Config/Schema/schema.php:133
 msgid "10-30 Minutes"
-msgstr ""
+msgstr "10-30 минута"
 
 #: Config/Schema/schema.php:134
 msgid "30-60 Minutes"
-msgstr ""
+msgstr "30-60 минута"
 
 #: Config/Schema/schema.php:135
 msgid "60+ Minutes"
-msgstr ""
+msgstr "60+ Минута"
 
 #: Config/Schema/schema.php:140
 msgid "$0-$10"
-msgstr ""
+msgstr "$ 0- $ 10"
 
 #: Config/Schema/schema.php:141
 msgid "$10-$15"
-msgstr ""
+msgstr "$ 10- $ 15"
 
 #: Config/Schema/schema.php:142
 msgid "$15-$20"
-msgstr ""
+msgstr "$ 15- $ 20"
 
 #: Config/Schema/schema.php:143
 msgid "$20-$25"
-msgstr ""
+msgstr "$ 20- $ 25"
 
 #: Config/Schema/schema.php:144
 msgid "$25-$30"
-msgstr ""
+msgstr "$ 25- $ 30"
 
 #: Config/Schema/schema.php:145
 msgid "$30+"
-msgstr ""
+msgstr "$ 30 +"
 
 #: Config/Schema/schema.php:158
 #: View/Layouts/default.ctp:124
@@ -379,647 +375,647 @@ msgstr ""
 #: View/ShoppingLists/online.ctp:95
 #: View/ShoppingLists/select.ctp:48
 msgid "Unit"
-msgstr ""
+msgstr "Јединица"
 
 #: Config/Schema/schema.php:159
 msgid "Slice"
-msgstr ""
+msgstr "Кришка"
 
 #: Config/Schema/schema.php:160
 msgid "Clove"
-msgstr ""
+msgstr "Каранфилић"
 
 #: Config/Schema/schema.php:161
 msgid "Pinch"
-msgstr ""
+msgstr "Штипнути"
 
 #: Config/Schema/schema.php:162
 msgid "Package"
-msgstr ""
+msgstr "Пакет"
 
 #: Config/Schema/schema.php:163
 msgid "Can"
-msgstr ""
+msgstr "Моћи"
 
 #: Config/Schema/schema.php:164
 msgid "Drop"
-msgstr ""
+msgstr "Дроп"
 
 #: Config/Schema/schema.php:165
 msgid "Bunch"
-msgstr ""
+msgstr "Дружина"
 
 #: Config/Schema/schema.php:166
 msgid "Dash"
-msgstr ""
+msgstr "Цртица"
 
 #: Config/Schema/schema.php:167
 msgid "Carton"
-msgstr ""
+msgstr "Картонска кутија"
 
 #: Config/Schema/schema.php:168
 msgid "Cup"
-msgstr ""
+msgstr "Шоља"
 
 #: Config/Schema/schema.php:169
 msgid "Tablespoon"
-msgstr ""
+msgstr "Кашика"
 
 #: Config/Schema/schema.php:170
 msgid "Teaspoon"
-msgstr ""
+msgstr "Кашичица"
 
 #: Config/Schema/schema.php:171
 msgid "Pound"
-msgstr ""
+msgstr "Фунта"
 
 #: Config/Schema/schema.php:172
 msgid "Ounce"
-msgstr ""
+msgstr "Унца"
 
 #: Config/Schema/schema.php:173
 msgid "Pint"
-msgstr ""
+msgstr "Пинта"
 
 #: Config/Schema/schema.php:174
 msgid "Quart"
-msgstr ""
+msgstr "Кварт"
 
 #: Config/Schema/schema.php:175
 msgid "Gallon"
-msgstr ""
+msgstr "Галон"
 
 #: Config/Schema/schema.php:176
 msgid "Milligram"
-msgstr ""
+msgstr "Милиграм"
 
 #: Config/Schema/schema.php:177
 msgid "Centigram"
-msgstr ""
+msgstr "Центиграм"
 
 #: Config/Schema/schema.php:178
 msgid "Gram"
-msgstr ""
+msgstr "Грам"
 
 #: Config/Schema/schema.php:179
 msgid "Kilogram"
-msgstr ""
+msgstr "Килограм"
 
 #: Config/Schema/schema.php:180
 msgid "Milliliter"
-msgstr ""
+msgstr "Милилитар"
 
 #: Config/Schema/schema.php:181
 msgid "Centiliter"
-msgstr ""
+msgstr "Литра"
 
 #: Config/Schema/schema.php:182
 msgid "Liter"
-msgstr ""
+msgstr "Литар"
 
 #: Config/Schema/schema.php:183
 msgid "Deciliter"
-msgstr ""
+msgstr "Децилитар"
 
 #: Config/Schema/schema.php:184
 msgid "Tablespoon_m"
-msgstr ""
+msgstr "Таблеспоон_м"
 
 #: Config/Schema/schema.php:185
 msgid "Teaspoon_m"
-msgstr ""
+msgstr "Теаспоон_м"
 
 #: Controller/AppController.php:89
 msgid "Not Authorized."
-msgstr ""
+msgstr "Није овлашћен."
 
 #: Controller/BaseTypesController.php:41;66
 msgid "Invalid base type"
-msgstr ""
+msgstr "Неважећи тип база"
 
 #: Controller/BaseTypesController.php:45
 msgid "The base type has been saved."
-msgstr ""
+msgstr "Тип база је сачувана."
 
 #: Controller/BaseTypesController.php:48
 msgid "The base type could not be saved. Please, try again."
-msgstr ""
+msgstr "Тип База није могла бити сачувана. Молим вас, покушајте поново."
 
 #: Controller/BaseTypesController.php:70
 msgid "The base type has been deleted."
-msgstr ""
+msgstr "Тип база је обрисан."
 
 #: Controller/BaseTypesController.php:72
 msgid "The base type could not be deleted. Please, try again."
-msgstr ""
+msgstr "Тип основица не може бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/CoreIngredientsController.php:43;59;84
 msgid "Invalid core ingredient"
-msgstr ""
+msgstr "Неважећи језгра састојак"
 
 #: Controller/CoreIngredientsController.php:63
 msgid "The core ingredient has been saved."
-msgstr ""
+msgstr "Језгро састојак је сачувана."
 
 #: Controller/CoreIngredientsController.php:66
 msgid "The core ingredient could not be saved. Please, try again."
-msgstr ""
+msgstr "Језгро састојак није могла бити сачувана. Молим вас, покушајте поново."
 
 #: Controller/CoreIngredientsController.php:88
 msgid "The core ingredient has been deleted."
-msgstr ""
+msgstr "Језгро састојак је обрисан."
 
 #: Controller/CoreIngredientsController.php:90
 msgid "The core ingredient could not be deleted. Please, try again."
-msgstr ""
+msgstr "Језгро састојак не може бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/CoursesController.php:37;62
 msgid "Invalid course"
-msgstr ""
+msgstr "Неважећи наравно"
 
 #: Controller/CoursesController.php:41
 msgid "The course has been saved."
-msgstr ""
+msgstr "Курс је сачувана."
 
 #: Controller/CoursesController.php:44
 msgid "The course could not be saved. Please, try again."
-msgstr ""
+msgstr "Наравно да не може бити спасен. Молим вас, покушајте поново."
 
 #: Controller/CoursesController.php:66
 msgid "The course has been deleted."
-msgstr ""
+msgstr "Курс је избрисан."
 
 #: Controller/CoursesController.php:68
 msgid "The course could not be deleted. Please, try again."
-msgstr ""
+msgstr "Наравно да не може бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/DifficultiesController.php:37;62
 msgid "Invalid difficulty"
-msgstr ""
+msgstr "Неважећи тешкоће"
 
 #: Controller/DifficultiesController.php:41
 msgid "The difficulty has been saved."
-msgstr ""
+msgstr "Тешкоћа је сачувана."
 
 #: Controller/DifficultiesController.php:44
 msgid "The difficulty could not be saved. Please, try again."
-msgstr ""
+msgstr "Потешкоћа није могао бити спасен. Молим вас, покушајте поново."
 
 #: Controller/DifficultiesController.php:66
 msgid "The difficulty has been deleted."
-msgstr ""
+msgstr "Тешкоћа је избрисан."
 
 #: Controller/DifficultiesController.php:68
 msgid "The difficulty could not be deleted. Please, try again."
-msgstr ""
+msgstr "Потешкоћа није могао бити обрисан. Молим вас, покушајте поново."
 
 #: Controller/EthnicitiesController.php:43;58;83
 msgid "Invalid ethnicity"
-msgstr ""
+msgstr "Неважећи етничку припадност"
 
 #: Controller/EthnicitiesController.php:62
 msgid "The ethnicity has been saved."
-msgstr ""
+msgstr "Националности је сачувана."
 
 #: Controller/EthnicitiesController.php:65
 msgid "The ethnicity could not be saved. Please, try again."
-msgstr ""
+msgstr "Националности није могла бити сачувана. Молим вас, покушајте поново."
 
 #: Controller/EthnicitiesController.php:87
 msgid "The ethnicity has been deleted."
-msgstr ""
+msgstr "Националности је избрисан."
 
 #: Controller/EthnicitiesController.php:89
 msgid "The ethnicity could not be deleted. Please, try again."
-msgstr ""
+msgstr "Националности није могла бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/ImportController.php:22
 msgid "Could not open uploaded file, please try again."
-msgstr ""
+msgstr "Не могу да отворим додате датотеке, молимо Вас покушајте поново."
 
 #: Controller/IngredientsController.php:38
 msgid "Not Ingredient Owner"
-msgstr ""
+msgstr "Није састојака Власник"
 
 #: Controller/IngredientsController.php:67;93
 #: Controller/ShoppingListsController.php:118
 msgid "Invalid ingredient"
-msgstr ""
+msgstr "Неважећи састојак"
 
 #: Controller/IngredientsController.php:74
 msgid "The ingredient has been saved."
-msgstr ""
+msgstr "Састојак је сачувана."
 
 #: Controller/IngredientsController.php:77
 msgid "The ingredient could not be saved. Please, try again."
-msgstr ""
+msgstr "Састојак не може бити спасен. Молим вас, покушајте поново."
 
 #: Controller/IngredientsController.php:97
 msgid "The ingredient has been deleted."
-msgstr ""
+msgstr "Састојак је избрисан."
 
 #: Controller/IngredientsController.php:99
 msgid "The ingredient could not be deleted. Please, try again."
-msgstr ""
+msgstr "Састојак не може бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/LocationsController.php:44;69
 msgid "Invalid location"
-msgstr ""
+msgstr "Неважећи локација"
 
 #: Controller/LocationsController.php:48
 msgid "The location has been saved."
-msgstr ""
+msgstr "Локација је сачувана."
 
 #: Controller/LocationsController.php:51
 msgid "The location could not be saved. Please, try again."
-msgstr ""
+msgstr "Локација није могла бити сачувана. Молим вас, покушајте поново."
 
 #: Controller/LocationsController.php:73
 msgid "The location has been deleted."
-msgstr ""
+msgstr "Локација је избрисан."
 
 #: Controller/LocationsController.php:75
 msgid "The location could not be deleted. Please, try again."
-msgstr ""
+msgstr "Локација није могла бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/MealPlansController.php:32
 msgid "Not meal owner"
-msgstr ""
+msgstr "Не оброк власник"
 
 #: Controller/MealPlansController.php:99;154
 msgid "Invalid meal plan"
-msgstr ""
+msgstr "Неважећи План оброк"
 
 #: Controller/MealPlansController.php:126
 msgid "The meal plan has been saved."
-msgstr ""
+msgstr "Оброк план је сачуван."
 
 #: Controller/MealPlansController.php:129
 msgid "The meal plan could not be saved. Please, try again."
-msgstr ""
+msgstr "Оброк план не може бити спасен. Молим вас, покушајте поново."
 
 #: Controller/MealPlansController.php:158
 msgid "The meal plan has been deleted."
-msgstr ""
+msgstr "Оброк план је обрисан."
 
 #: Controller/MealPlansController.php:160
 msgid "The meal plan could not be deleted. Please, try again."
-msgstr ""
+msgstr "Оброк план не може бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/MealPlansController.php:167
 msgid "Start date not defined"
-msgstr ""
+msgstr "Датум почетка није дефинисано"
 
 #: Controller/MealPlansController.php:194
 msgid "Meal(s) added to shopping list."
-msgstr ""
+msgstr "Оброк (а) додат у куповину."
 
 #: Controller/MealPlansController.php:196
 msgid "Meal(s) could not be added to shopping list. Please, try again."
-msgstr ""
+msgstr "Оброк (е) не може додати то схоппинг листу. Молим вас, покушајте поново."
 
 #: Controller/PreparationMethodsController.php:37;62
 msgid "Invalid preparation method"
-msgstr ""
+msgstr "Неважећи метод припреме"
 
 #: Controller/PreparationMethodsController.php:41
 msgid "The preparation method has been saved."
-msgstr ""
+msgstr "Поступак припремања је сачувана."
 
 #: Controller/PreparationMethodsController.php:44
 msgid "The preparation method could not be saved. Please, try again."
-msgstr ""
+msgstr "Начин припреме није могла бити сачувана. Молим вас, покушајте поново."
 
 #: Controller/PreparationMethodsController.php:66
 msgid "The preparation method has been deleted."
-msgstr ""
+msgstr "Поступак припремања је обрисан."
 
 #: Controller/PreparationMethodsController.php:68
 msgid "The preparation method could not be deleted. Please, try again."
-msgstr ""
+msgstr "Начин припреме не може бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/PreparationTimesController.php:38;63
 msgid "Invalid preparation time"
-msgstr ""
+msgstr "Неважећи време припреме"
 
 #: Controller/PreparationTimesController.php:42
 msgid "The preparation time has been saved."
-msgstr ""
+msgstr "Време припреме је сачувана."
 
 #: Controller/PreparationTimesController.php:45
 msgid "The preparation time could not be saved. Please, try again."
-msgstr ""
+msgstr "Време припреме не може бити спасен. Молим вас, покушајте поново."
 
 #: Controller/PreparationTimesController.php:67
 msgid "The preparation time has been deleted."
-msgstr ""
+msgstr "Време припреме је обрисан."
 
 #: Controller/PreparationTimesController.php:69
 msgid "The preparation time could not be deleted. Please, try again."
-msgstr ""
+msgstr "Време припреме не може бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/PriceRangesController.php:44;69
 msgid "Invalid price range"
-msgstr ""
+msgstr "Неисправан распон цена"
 
 #: Controller/PriceRangesController.php:48
 msgid "The price range has been saved."
-msgstr ""
+msgstr "Распон цена је сачувана."
 
 #: Controller/PriceRangesController.php:51
 msgid "The price range could not be saved. Please, try again."
-msgstr ""
+msgstr "Распон цена не може бити спасен. Молим вас, покушајте поново."
 
 #: Controller/PriceRangesController.php:73
 msgid "The price range has been deleted."
-msgstr ""
+msgstr "Распон цена је обрисан."
 
 #: Controller/PriceRangesController.php:75
 msgid "The price range could not be deleted. Please, try again."
-msgstr ""
+msgstr "Распон цена не може бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/RecipesController.php:46
 msgid "Not Recipe Owner"
-msgstr ""
+msgstr "Није Рецепт Власник"
 
 #: Controller/RecipesController.php:97;162;223
 #: Controller/ShoppingListsController.php:95
 msgid "Invalid recipe"
-msgstr ""
+msgstr "Неважећи рецепт"
 
 #: Controller/RecipesController.php:169
 msgid "The recipe has been saved."
-msgstr ""
+msgstr "Рецепт је сачувана."
 
 #: Controller/RecipesController.php:171
 msgid "The recipe could not be saved. Please, try again."
-msgstr ""
+msgstr "Рецепт није могла бити сачувана. Молим вас, покушајте поново."
 
 #: Controller/RecipesController.php:199
 msgid "The ingredient has been removed."
-msgstr ""
+msgstr "Састојак је уклоњен."
 
 #: Controller/RecipesController.php:201
 msgid "The ingredient could not be removed. Please, try again."
-msgstr ""
+msgstr "Састојак није било могуће уклонити. Молим вас, покушајте поново."
 
 #: Controller/RecipesController.php:207
 msgid "The related recipe has been removed."
-msgstr ""
+msgstr "Рецепт релатед је уклоњен."
 
 #: Controller/RecipesController.php:209
 msgid "The related recipe could not be removed. Please, try again."
-msgstr ""
+msgstr "Рецепт релатед није било могуће уклонити. Молим вас, покушајте поново."
 
 #: Controller/RecipesController.php:226
 msgid "The recipe has been deleted."
-msgstr ""
+msgstr "Рецепт је избрисан."
 
 #: Controller/RecipesController.php:228
 msgid "The recipe could not be deleted. Please, try again."
-msgstr ""
+msgstr "Рецепт није могла бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/RestaurantsController.php:44;72
 msgid "Invalid restaurant"
-msgstr ""
+msgstr "Неважећи ресторан"
 
 #: Controller/RestaurantsController.php:48
 msgid "The restaurant has been saved."
-msgstr ""
+msgstr "Ресторан је сачувана."
 
 #: Controller/RestaurantsController.php:51
 msgid "The restaurant could not be saved. Please, try again."
-msgstr ""
+msgstr "Ресторан није могла бити сачувана. Молим вас, покушајте поново."
 
 #: Controller/RestaurantsController.php:76
 msgid "The restaurant has been deleted."
-msgstr ""
+msgstr "Ресторан је избрисан."
 
 #: Controller/RestaurantsController.php:78
 msgid "The restaurant could not be deleted. Please, try again."
-msgstr ""
+msgstr "Ресторан није могла бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/SetupController.php:36
 msgid "Password must have a value."
-msgstr ""
+msgstr "Лозинка мора имати вредност."
 
 #: Controller/SetupController.php:42
 msgid "Password successfully saved"
-msgstr ""
+msgstr "Лозинка је успешно сачуван"
 
 #: Controller/SetupController.php:46
 #: Controller/UsersController.php:192;234
 msgid "The user could not be saved. Please, try again."
-msgstr ""
+msgstr "Корисник не може бити спасен. Молим вас, покушајте поново."
 
 #: Controller/SetupController.php:49
 #: Controller/UsersController.php:196;238
 msgid "Passwords did not match. Please, try again."
-msgstr ""
+msgstr "Лозинке се не поклапају. Молим вас, покушајте поново."
 
 #: Controller/ShoppingListsController.php:32
 msgid "Not List Owner or Editor"
-msgstr ""
+msgstr "Није Листа Власник или Едитор"
 
 #: Controller/ShoppingListsController.php:43
 msgid "Invalid shopping list"
-msgstr ""
+msgstr "Неважећи списак за куповину"
 
 #: Controller/ShoppingListsController.php:48
 msgid "The shopping list has been saved."
-msgstr ""
+msgstr "Листа за куповину је сачувана."
 
 #: Controller/ShoppingListsController.php:51
 msgid "The shopping list name could not be saved. Please, try again."
-msgstr ""
+msgstr "Име шопинг листа не може бити спасен. Молим вас, покушајте поново."
 
 #: Controller/ShoppingListsController.php:67;82
 msgid "The item has been removed."
-msgstr ""
+msgstr "Ставка је уклоњена."
 
 #: Controller/ShoppingListsController.php:69;84
 msgid "The item could not be removed. Please, try again."
-msgstr ""
+msgstr "Ставка није било могуће уклонити. Молим вас, покушајте поново."
 
 #: Controller/ShoppingListsController.php:72
 msgid "Invalid recipe item"
-msgstr ""
+msgstr "Неважећи ставка рецепт"
 
 #: Controller/ShoppingListsController.php:87
 msgid "Invalid ingredient item"
-msgstr ""
+msgstr "Неважећи ставка састојак"
 
 #: Controller/ShoppingListsController.php:107
 msgid "Recipe added to list."
-msgstr ""
+msgstr "Рецепт је додао на листу."
 
 #: Controller/ShoppingListsController.php:109
 msgid "Unable to add recipe to list."
-msgstr ""
+msgstr "Није могуће додати на листу рецепт."
 
 #: Controller/ShoppingListsController.php:131
 msgid "Ingredient added to list."
-msgstr ""
+msgstr "Састојак дода на списак."
 
 #: Controller/ShoppingListsController.php:134
 msgid "Unable to add ingredient to list."
-msgstr ""
+msgstr "Није могуће додати састојке у листу."
 
 #: Controller/ShoppingListsController.php:142;152;202
 msgid "Invalid list"
-msgstr ""
+msgstr "Неважећи листа"
 
 #: Controller/ShoppingListsController.php:161
 msgid "Shopping done! List cleared."
-msgstr ""
+msgstr "Продавнице урађено! Листа ситуацију."
 
 #: Controller/SourcesController.php:37;52;79
 msgid "Invalid source"
-msgstr ""
+msgstr "Неважећи извор"
 
 #: Controller/SourcesController.php:56
 msgid "The source has been saved."
-msgstr ""
+msgstr "Извор је сачувана."
 
 #: Controller/SourcesController.php:59
 msgid "The source could not be saved. Please, try again."
-msgstr ""
+msgstr "Извор није могао бити спасен. Молим вас, покушајте поново."
 
 #: Controller/SourcesController.php:83
 msgid "The source has been deleted."
-msgstr ""
+msgstr "Извор је избрисан."
 
 #: Controller/SourcesController.php:85
 msgid "The source could not be deleted. Please, try again."
-msgstr ""
+msgstr "Извор није могао бити обрисан. Молим вас, покушајте поново."
 
 #: Controller/StoresController.php:21;39
 msgid "Invalid store"
-msgstr ""
+msgstr "Неважећи продавница"
 
 #: Controller/StoresController.php:25
 msgid "The store has been saved."
-msgstr ""
+msgstr "Продавница је сачувана."
 
 #: Controller/StoresController.php:28
 msgid "The store could not be saved. Please, try again."
-msgstr ""
+msgstr "Продавница није могла бити сачувана. Молим вас, покушајте поново."
 
 #: Controller/StoresController.php:43
 msgid "The store has been deleted."
-msgstr ""
+msgstr "Продавница је избрисан."
 
 #: Controller/StoresController.php:45
 msgid "The store could not be deleted. Please, try again."
-msgstr ""
+msgstr "Продавница није могла бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/UnitsController.php:44;59;84
 msgid "Invalid unit"
-msgstr ""
+msgstr "Неважећи јединица"
 
 #: Controller/UnitsController.php:63
 msgid "The unit has been saved."
-msgstr ""
+msgstr "Јединица је сачувана."
 
 #: Controller/UnitsController.php:66
 msgid "The unit could not be saved. Please, try again."
-msgstr ""
+msgstr "Јединица није могла бити сачувана. Молим вас, покушајте поново."
 
 #: Controller/UnitsController.php:88
 msgid "The unit has been deleted."
-msgstr ""
+msgstr "Јединица је избрисана."
 
 #: Controller/UnitsController.php:90
 msgid "The unit could not be deleted. Please, try again."
-msgstr ""
+msgstr "Јединица није могла бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/UsersController.php:25
 msgid "Not Admininstrator"
-msgstr ""
+msgstr "Није Админинстратор"
 
 #: Controller/UsersController.php:34
 msgid "Not allowed to edit another user."
-msgstr ""
+msgstr "Није дозвољено да измените другог корисника."
 
 #: Controller/UsersController.php:48
 msgid "Your account is currently locked. Use the password reset link to reset your password."
-msgstr ""
+msgstr "Ваш налог је тренутно закључан. Користите везу за поништавање лозинке да бисте поништили лозинку."
 
 #: Controller/UsersController.php:64
 msgid "Invalid username or password, try again"
-msgstr ""
+msgstr "Погрешно корисничко име или лозинка, покушајте поново"
 
 #: Controller/UsersController.php:69
 msgid "Logged out."
-msgstr ""
+msgstr "Сачувана напоље."
 
 #: Controller/UsersController.php:95
 msgid "Your reset email is on the way!"
-msgstr ""
+msgstr "Ваш ресетовање емаил је на путу!"
 
 #: Controller/UsersController.php:98
 msgid "Could not send a reset email. Please contact support."
-msgstr ""
+msgstr "Цоулд нот сенд ресет емаил. Молимо контактирајте подршку."
 
 #: Controller/UsersController.php:100
 msgid "Could not find your email address, try again."
-msgstr ""
+msgstr "Не могу да пронађем своју е-маил адресу, покушајте поново."
 
 #: Controller/UsersController.php:115
 msgid "Passwords are not set to same value. Please, try again."
-msgstr ""
+msgstr "Лозинке се није постављена на исту вредност. Молим вас, покушајте поново."
 
 #: Controller/UsersController.php:121
 msgid "A new password is required. Please, try again."
-msgstr ""
+msgstr "Је потребна нова лозинка. Молим вас, покушајте поново."
 
 #: Controller/UsersController.php:130
 msgid "Password successfully reset. Login with your new password to continue."
-msgstr ""
+msgstr "Лозинка је успешно ресет. Пријавите се са вашим нову лозинку да бисте наставили."
 
 #: Controller/UsersController.php:133
 msgid "The password could not be saved. Please, try again."
-msgstr ""
+msgstr "Лозинка није могла бити сачувана. Молим вас, покушајте поново."
 
 #: Controller/UsersController.php:143
 msgid "Could not find reset information. Please try again."
-msgstr ""
+msgstr "Није могуће пронаћи ресет информације. Покушајте поново."
 
 #: Controller/UsersController.php:165;221;257
 msgid "Invalid user"
-msgstr ""
+msgstr "Неважећи корисника"
 
 #: Controller/UsersController.php:188
 msgid "The user has been saved."
-msgstr ""
+msgstr "Корисник је сачувана."
 
 #: Controller/UsersController.php:231
 msgid "Settings saved.  Logout/Sign In maybe required for settings to take effect."
-msgstr ""
+msgstr "Подешавања сачувана. Одјава / Пријава можда неопходна за поставке ступиле на снагу."
 
 #: Controller/UsersController.php:261
 msgid "The user has been deleted."
-msgstr ""
+msgstr "Корисник је избрисан."
 
 #: Controller/UsersController.php:263
 msgid "The user could not be deleted. Please, try again."
-msgstr ""
+msgstr "Корисник не може бити обрисана. Молим вас, покушајте поново."
 
 #: Controller/Component/MealMasterComponent.php:99
 msgid "could not data file for reading"
-msgstr ""
+msgstr "није могао да фајл података за читање"
 
 #: Model/Recipe.php:173
 msgid "This recipe could not be saved. Please try again"
-msgstr ""
+msgstr "Овај рецепт није могла бити сачувана. Покушајте поново"
 
 #: Model/ShoppingList.php:52;74;85
 msgid "DEFAULT"
-msgstr ""
+msgstr "ДЕФАУЛТ"
 
 #: Plugin/Upload/Model/Behavior/UploadBehavior.php:1078
 msgid "No filename after parsing. Function %s returned an invalid filename"
-msgstr ""
+msgstr "Не Назив после разбора. Функција% с вратио Инвалид филенаме"
 
 #: View/BaseTypes/edit.ctp:12
 #: View/CoreIngredients/edit.ctp:14
@@ -1043,16 +1039,16 @@ msgstr ""
 #: View/Users/edit.ctp:45
 #: View/Users/reset_link.ctp:13
 msgid "Submit"
-msgstr ""
+msgstr "Поднети"
 
 #: View/BaseTypes/index.ctp:10
 msgid "Base Types"
-msgstr ""
+msgstr "Основни типови"
 
 #: View/BaseTypes/index.ctp:13
 #: View/Recipes/index.ctp:61
 msgid "Add Base Type"
-msgstr ""
+msgstr "Додај Басе Типе"
 
 #: View/BaseTypes/index.ctp:18
 #: View/CoreIngredients/index.ctp:26
@@ -1071,7 +1067,7 @@ msgstr ""
 #: View/Units/index.ctp:18
 #: View/Users/index.ctp:10
 msgid "Actions"
-msgstr ""
+msgstr "Акције"
 
 #: View/BaseTypes/index.ctp:24
 #: View/CoreIngredients/index.ctp:33
@@ -1094,7 +1090,7 @@ msgstr ""
 #: View/Users/edit.ctp:5
 #: View/Users/index.ctp:23
 msgid "Edit"
-msgstr ""
+msgstr "Едит"
 
 #: View/BaseTypes/index.ctp:25
 #: View/CoreIngredients/index.ctp:34
@@ -1115,7 +1111,7 @@ msgstr ""
 #: View/Units/index.ctp:28
 #: View/Users/index.ctp:26
 msgid "Delete"
-msgstr ""
+msgstr "Избрисати"
 
 #: View/BaseTypes/index.ctp:25
 #: View/Courses/index.ctp:25
@@ -1126,7 +1122,7 @@ msgstr ""
 #: View/Recipes/index.ctp:92
 #: View/Sources/index.ctp:27
 msgid "Are you sure you want to delete %s?"
-msgstr ""
+msgstr "Да ли сте сигурни да желите да избришете% с?"
 
 #: View/BaseTypes/index.ctp:32
 #: View/CoreIngredients/index.ctp:43
@@ -1144,7 +1140,7 @@ msgstr ""
 #: View/Units/index.ctp:39
 #: View/Users/index.ctp:43
 msgid "Page {:page} of {:pages}"
-msgstr ""
+msgstr "Страница {:} на страна {:} странице"
 
 #: View/BaseTypes/index.ctp:36
 #: View/CoreIngredients/index.ctp:46
@@ -1163,7 +1159,7 @@ msgstr ""
 #: View/Units/index.ctp:43
 #: View/Users/index.ctp:48
 msgid "previous"
-msgstr ""
+msgstr "претходна"
 
 #: View/BaseTypes/index.ctp:38
 #: View/CoreIngredients/index.ctp:48
@@ -1182,21 +1178,21 @@ msgstr ""
 #: View/Units/index.ctp:45
 #: View/Users/index.ctp:50
 msgid "next"
-msgstr ""
+msgstr "следећи"
 
 #: View/CoreIngredients/index.ctp:12
 #: View/Layouts/default.ctp:125
 msgid "Core Ingredients"
-msgstr ""
+msgstr "Основни састојци"
 
 #: View/CoreIngredients/index.ctp:15
 #: View/Ingredients/index.ctp:33
 msgid "Add Core Ingredient"
-msgstr ""
+msgstr "Додај Цоре Ингредиент"
 
 #: View/CoreIngredients/index.ctp:16
 msgid "List Ingredients"
-msgstr ""
+msgstr "Листа Састојци"
 
 #: View/CoreIngredients/index.ctp:34
 #: View/PriceRanges/index.ctp:27
@@ -1206,115 +1202,115 @@ msgstr ""
 #: View/Users/index.ctp:26
 #: View/Users/view.ctp:5
 msgid "Are you sure you want to delete # %s?"
-msgstr ""
+msgstr "Да ли сте сигурни да желите да избришете #% с?"
 
 #: View/Courses/index.ctp:10
 msgid "Courses"
-msgstr ""
+msgstr "Курсеви"
 
 #: View/Courses/index.ctp:13
 #: View/Recipes/index.ctp:63
 msgid "Add Course"
-msgstr ""
+msgstr "Додај Цоурсе"
 
 #: View/Difficulties/index.ctp:11
 msgid "Difficulties"
-msgstr ""
+msgstr "Тешкоће"
 
 #: View/Difficulties/index.ctp:14
 #: View/Recipes/index.ctp:69
 msgid "Add Difficulty"
-msgstr ""
+msgstr "Додај Диффицулти"
 
 #: View/Ethnicities/index.ctp:11
 msgid "Ethnicities"
-msgstr ""
+msgstr "Националности"
 
 #: View/Ethnicities/index.ctp:14
 #: View/Recipes/index.ctp:59
 msgid "Add Ethnicity"
-msgstr ""
+msgstr "Додај Раса"
 
 #: View/Import/index.ctp:2
 msgid "Import Recipes"
-msgstr ""
+msgstr "Увоз Рецепти"
 
 #: View/Import/index.ctp:3
 msgid "To import a meal master format file, browse for it and press submit to import.  Duplicate recipes names will not be imported."
-msgstr ""
+msgstr "Да бисте увезли формат датотеке оброк мастер, потражите га и притисните поднесе да увезете. Дуплицате рецепти имена неће бити увезена."
 
 #: View/Import/index.ctp:5
 msgid "Imported ingredients that do not exactly match existing ingredient names will be created as new ingredients."
-msgstr ""
+msgstr "Увезена састојци који не одговара у потпуности постојеће називе састојака ће бити креиран као нове састојке."
 
 #: View/Ingredients/edit.ctp:30
 msgid "Location In Store"
-msgstr ""
+msgstr "Локација У продавници"
 
 #: View/Ingredients/edit.ctp:31
 msgid "Measurement Type"
-msgstr ""
+msgstr "Мерење Тип"
 
 #: View/Ingredients/edit.ctp:32
 msgid "Solid/Liquid"
-msgstr ""
+msgstr "Чврста / Ликуид"
 
 #: View/Ingredients/index.ctp:24
 #: View/Layouts/default.ctp:67
 #: View/Recipes/view.ctp:116;174
 msgid "Ingredients"
-msgstr ""
+msgstr "Састојци"
 
 #: View/Ingredients/index.ctp:27
 msgid "Add Ingredient"
-msgstr ""
+msgstr "Адд Ингредиент"
 
 #: View/Ingredients/index.ctp:32
 msgid "List Core Ingredients"
-msgstr ""
+msgstr "Листа Цоре Ингредиентс"
 
 #: View/Ingredients/index.ctp:34
 msgid "List Locations"
-msgstr ""
+msgstr "Листа Локације"
 
 #: View/Ingredients/index.ctp:35
 msgid "Add Location"
-msgstr ""
+msgstr "Додај Локација"
 
 #: View/Ingredients/index.ctp:36
 msgid "List Units"
-msgstr ""
+msgstr "Листа јединице"
 
 #: View/Ingredients/index.ctp:37
 #: View/Units/index.ctp:13
 msgid "Add Unit"
-msgstr ""
+msgstr "Додај Унит"
 
 #: View/Ingredients/index.ctp:54
 #: View/Locations/index.ctp:27
 msgid "Are you sure you want to delete \"%s\"?"
-msgstr ""
+msgstr "Да ли сте сигурни да желите да избришете \"% с\"?"
 
 #: View/Layouts/default.ctp:57
 msgid "Browse your recipes"
-msgstr ""
+msgstr "Потражите своје рецепте"
 
 #: View/Layouts/default.ctp:57
 #: View/Recipes/index.ctp:48
 msgid "Recipes"
-msgstr ""
+msgstr "Рецепти"
 
 #: View/Layouts/default.ctp:61
 msgid "Manage your meal plans"
-msgstr ""
+msgstr "Управљање свој оброк планове"
 
 #: View/Layouts/default.ctp:61
 msgid "Meal Planner"
-msgstr ""
+msgstr "Оброк Планер"
 
 #: View/Layouts/default.ctp:64
 msgid "Create or Edit a shopping list"
-msgstr ""
+msgstr "Направите или измените листу за куповину"
 
 #: View/Layouts/default.ctp:64
 #: View/ShoppingLists/index.ctp:66
@@ -1322,246 +1318,246 @@ msgstr ""
 #: View/ShoppingLists/online.ctp:83
 #: View/ShoppingLists/select.ctp:37
 msgid "Shopping List"
-msgstr ""
+msgstr "Листа за куповину"
 
 #: View/Layouts/default.ctp:67
 msgid "Ingredients used in recipes"
-msgstr ""
+msgstr "Састојци који се користе у рецептима"
 
 #: View/Layouts/default.ctp:71
 msgid "List of your restaurants"
-msgstr ""
+msgstr "Листа ваших ресторана"
 
 #: View/Layouts/default.ctp:71
 #: View/Restaurants/index.ctp:12
 msgid "Restaurants"
-msgstr ""
+msgstr "Ресторан"
 
 #: View/Layouts/default.ctp:74
 msgid "Administer Users"
-msgstr ""
+msgstr "Администер корисника"
 
 #: View/Layouts/default.ctp:74
 #: View/Users/edit.ctp:4
 #: View/Users/index.ctp:2
 msgid "Users"
-msgstr ""
+msgstr "Корисници"
 
 #: View/Layouts/default.ctp:88
 msgid "Sign in with your existing account"
-msgstr ""
+msgstr "Пријавите се са вашим постојећим налогом"
 
 #: View/Layouts/default.ctp:88
 msgid "Sign in"
-msgstr ""
+msgstr "Пријавите се"
 
 #: View/Layouts/default.ctp:93
 msgid "Create a new account"
-msgstr ""
+msgstr "Креирај нови налог"
 
 #: View/Layouts/default.ctp:93
 #: View/Users/add.ctp:4
 msgid "Create Account"
-msgstr ""
+msgstr "Цреате Аццоунт"
 
 #: View/Layouts/default.ctp:98
 msgid "Logout"
-msgstr ""
+msgstr "Одјава"
 
 #: View/Layouts/default.ctp:102
 msgid "Edit your Account settings"
-msgstr ""
+msgstr "Уредите своје Аццоунт сеттингс"
 
 #: View/Layouts/default.ctp:122
 #: View/Recipes/edit.ctp:339
 msgid "Ingredient"
-msgstr ""
+msgstr "Састојак"
 
 #: View/Layouts/default.ctp:123
 msgid "Location"
-msgstr ""
+msgstr "Локација"
 
 #: View/Layouts/default.ctp:126
 msgid "Restaurant"
-msgstr ""
+msgstr "Ресторан"
 
 #: View/Layouts/default.ctp:127
 #: View/PriceRanges/index.ctp:11
 msgid "Price Ranges"
-msgstr ""
+msgstr "Цена се креће"
 
 #: View/Layouts/default.ctp:128
 #: View/Recipes/view.ctp:51
 msgid "Ethnicity"
-msgstr ""
+msgstr "Етничка припадност"
 
 #: View/Layouts/default.ctp:129
 #: View/Recipes/view.ctp:56
 msgid "Base Type"
-msgstr ""
+msgstr "Басе Типе"
 
 #: View/Layouts/default.ctp:130
 #: View/Recipes/view.ctp:61
 msgid "Course"
-msgstr ""
+msgstr "Курс"
 
 #: View/Layouts/default.ctp:131
 #: View/Recipes/view.ctp:66
 msgid "Preparation Time"
-msgstr ""
+msgstr "Време припреме"
 
 #: View/Layouts/default.ctp:132
 msgid "Preparation Method"
-msgstr ""
+msgstr "Препаратион Метход"
 
 #: View/Layouts/default.ctp:133
 #: View/Recipes/view.ctp:71
 msgid "Difficulty"
-msgstr ""
+msgstr "Тешкоћа"
 
 #: View/Layouts/default.ctp:134
 #: View/Recipes/view.ctp:89
 msgid "Source"
-msgstr ""
+msgstr "Извор"
 
 #: View/Layouts/default.ctp:135
 msgid "Meal"
-msgstr ""
+msgstr "Оброк"
 
 #: View/Layouts/error.ctp:19
 msgid "PHPRecipebook Exception"
-msgstr ""
+msgstr "ПХПРеципебоок Изузетак"
 
 #: View/Locations/index.ctp:12
 msgid "Locations"
-msgstr ""
+msgstr "Локације"
 
 #: View/Locations/index.ctp:15
 msgid "New Location"
-msgstr ""
+msgstr "Нова локација"
 
 #: View/MealPlans/edit.ctp:17
 msgid "recipe serves"
-msgstr ""
+msgstr "рецепт служи"
 
 #: View/MealPlans/edit.ctp:49
 #: View/Recipes/edit.ctp:281
 msgid "Recipe"
-msgstr ""
+msgstr "Рецепт"
 
 #: View/MealPlans/edit.ctp:53
 msgid "Enter Recipe Name"
-msgstr ""
+msgstr "Унесите име Реципе"
 
 #: View/MealPlans/edit.ctp:62
 msgid "Every other day"
-msgstr ""
+msgstr "Сваки други дан"
 
 #: View/MealPlans/edit.ctp:66
 #: View/Recipes/index.ctp:89
 #: View/ShoppingLists/index.ctp:102
 #: View/Users/index.ctp:22
 msgid "View"
-msgstr ""
+msgstr "Поглед"
 
 #: View/MealPlans/index.ctp:16
 msgid "Meal Plan - Weekly"
-msgstr ""
+msgstr "Меал План - Недељни"
 
 #: View/MealPlans/index.ctp:19
 msgid "Add to Shopping List"
-msgstr ""
+msgstr "Додај у Схоппинг Лист"
 
 #: View/MealPlans/index.ctp:32
 msgid "Today"
-msgstr ""
+msgstr "Данас"
 
 #: View/MealPlans/index.ctp:64
 msgid "Are you sure you want to delete meal \"%s\"?"
-msgstr ""
+msgstr "Да ли сте сигурни да желите да избришете оброк \"% с\"?"
 
 #: View/PreparationMethods/index.ctp:11
 msgid "Preparation Methods"
-msgstr ""
+msgstr "Методе припреме"
 
 #: View/PreparationMethods/index.ctp:14
 #: View/Recipes/index.ctp:67
 msgid "Add Preparation Method"
-msgstr ""
+msgstr "Додај поступак припремања"
 
 #: View/PreparationTimes/index.ctp:11
 msgid "Preparation Times"
-msgstr ""
+msgstr "Припрема Тајмс"
 
 #: View/PreparationTimes/index.ctp:14
 #: View/Recipes/index.ctp:65
 msgid "Add Preparation Time"
-msgstr ""
+msgstr "Додај Време припреме"
 
 #: View/PriceRanges/index.ctp:15
 msgid "New Price Range"
-msgstr ""
+msgstr "Нова цена Ранге"
 
 #: View/PriceRanges/index.ctp:36
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
-msgstr ""
+msgstr "Страница {:} на страна {:} странице, показујући {: тренутна} записи из {:} бројања укупно, са почетком у записник {: старт}, закључно са {: крај}"
 
 #: View/RecipeLinkBox/index.ctp:2
 msgid "Recipe Box"
-msgstr ""
+msgstr "Рецепт Бокс"
 
 #: View/RecipeLinkBox/index.ctp:4
 msgid "By Course"
-msgstr ""
+msgstr "По Цоурсе"
 
 #: View/RecipeLinkBox/index.ctp:17
 msgid "By Base"
-msgstr ""
+msgstr "По Басе"
 
 #: View/RecipeLinkBox/index.ctp:30
 msgid "By Prep Method"
-msgstr ""
+msgstr "Преп метод"
 
 #: View/RecipeLinkBox/index.ctp:45
 msgid "Add A Recipe"
-msgstr ""
+msgstr "Додај рецепт"
 
 #: View/Recipes/edit.ctp:24
 #: View/ShoppingLists/index.ctp:50
 msgid "Entered value is not a number/fraction, please try again."
-msgstr ""
+msgstr "Ступио вредност није број / фракција, покушајте поново."
 
 #: View/Recipes/edit.ctp:127
 msgid "Are you sure you wish to remove this item?"
-msgstr ""
+msgstr "Да ли сте сигурни да желите да уклоните ову ставку?"
 
 #: View/Recipes/edit.ctp:262
 msgid "View Recipe"
-msgstr ""
+msgstr "Погледај Рецепт"
 
 #: View/Recipes/edit.ctp:264
 msgid "Edit Sources"
-msgstr ""
+msgstr "Едит Извори"
 
 #: View/Recipes/edit.ctp:269
 msgid "Edit Ethnicities"
-msgstr ""
+msgstr "Едит Етхницитиес"
 
 #: View/Recipes/edit.ctp:270
 msgid "Edit Base Types"
-msgstr ""
+msgstr "Едит Басе Типови"
 
 #: View/Recipes/edit.ctp:271
 msgid "Edit Courses"
-msgstr ""
+msgstr "Едит Курсеви"
 
 #: View/Recipes/edit.ctp:272
 msgid "Edit Preparation Times"
-msgstr ""
+msgstr "Едит Припрема Тајмс"
 
 #: View/Recipes/edit.ctp:273
 msgid "Edit Difficulties"
-msgstr ""
+msgstr "Едит Тешкоће"
 
 #: View/Recipes/edit.ctp:336
 #: View/ShoppingLists/index.ctp:127
@@ -1569,409 +1565,409 @@ msgstr ""
 #: View/ShoppingLists/online.ctp:94
 #: View/ShoppingLists/select.ctp:47
 msgid "Quantity"
-msgstr ""
+msgstr "Количина"
 
 #: View/Recipes/edit.ctp:337
 #: View/ShoppingLists/index.ctp:128
 #: View/Units/index.ctp:10
 msgid "Units"
-msgstr ""
+msgstr "Јединице"
 
 #: View/Recipes/edit.ctp:338
 #: View/ShoppingLists/index.ctp:129
 msgid "Qualifier"
-msgstr ""
+msgstr "Квалификатор"
 
 #: View/Recipes/edit.ctp:340
 msgid "add new"
-msgstr ""
+msgstr "адд нев"
 
 #: View/Recipes/edit.ctp:343
 msgid "Optional"
-msgstr ""
+msgstr "Оптионал"
 
 #: View/Recipes/edit.ctp:349;408
 msgid "Unknown"
-msgstr ""
+msgstr "Непознат"
 
 #: View/Recipes/edit.ctp:369
 msgid "Order Ingredient - currently #"
-msgstr ""
+msgstr "Низ Састојак - тренутно #"
 
 #: View/Recipes/edit.ctp:391
 msgid "Add Another Ingredient"
-msgstr ""
+msgstr "Додај другим састојцима"
 
 #: View/Recipes/edit.ctp:401
 msgid "Related Recipe Name"
-msgstr ""
+msgstr "Релатед Рецепт Име"
 
 #: View/Recipes/edit.ctp:402
 msgid "Required"
-msgstr ""
+msgstr "Потребан"
 
 #: View/Recipes/edit.ctp:427
 msgid "Order Recipe - currently #"
-msgstr ""
+msgstr "Низ Рецепт - тренутно #"
 
 #: View/Recipes/edit.ctp:443
 msgid "Add Another Recipe"
-msgstr ""
+msgstr "Додати још један рецепт"
 
 #: View/Recipes/index.ctp:52
 msgid "Add Recipe"
-msgstr ""
+msgstr "Додај рецепт"
 
 #: View/Recipes/index.ctp:53
 #: View/Recipes/view.ctp:45
 msgid "Import"
-msgstr ""
+msgstr "Увоз"
 
 #: View/Recipes/index.ctp:58
 msgid "List Ethnicities"
-msgstr ""
+msgstr "Листа Етхницитиес"
 
 #: View/Recipes/index.ctp:60
 msgid "List Base Types"
-msgstr ""
+msgstr "Листа Басе Типови"
 
 #: View/Recipes/index.ctp:62
 msgid "List Courses"
-msgstr ""
+msgstr "Листа Курсеви"
 
 #: View/Recipes/index.ctp:64
 msgid "List Preparation Times"
-msgstr ""
+msgstr "Листа Припрема Тајмс"
 
 #: View/Recipes/index.ctp:66
 msgid "List Preparation Methods"
-msgstr ""
+msgstr "Листа Методе припреме"
 
 #: View/Recipes/index.ctp:68
 msgid "List Difficulties"
-msgstr ""
+msgstr "Листа Тешкоће"
 
 #: View/Recipes/index.ctp:70
 msgid "List Sources"
-msgstr ""
+msgstr "Листа Извори"
 
 #: View/Recipes/index.ctp:71
 #: View/Sources/index.ctp:14
 msgid "Add Source"
-msgstr ""
+msgstr "Додај Извор"
 
 #: View/Recipes/index.ctp:72
 #: View/Users/view.ctp:6
 msgid "List Users"
-msgstr ""
+msgstr "Листа корисника"
 
 #: View/Recipes/index.ctp:73
 #: View/Users/index.ctp:5
 msgid "Add User"
-msgstr ""
+msgstr "Додај корисника"
 
 #: View/Recipes/view.ctp:35
 msgid "Edit Recipe"
-msgstr ""
+msgstr "Едит Рецепт"
 
 #: View/Recipes/view.ctp:36
 msgid "Add to shopping list"
-msgstr ""
+msgstr "Адд то схоппинг листу"
 
 #: View/Recipes/view.ctp:38
 #: View/ShoppingLists/instore.ctp:74
 msgid "Print"
-msgstr ""
+msgstr "Штампа"
 
 #: View/Recipes/view.ctp:46
 msgid "Export"
-msgstr ""
+msgstr "Извоз"
 
 #: View/Recipes/view.ctp:76
 msgid "Serving Size"
-msgstr ""
+msgstr "Величина порције"
 
 #: View/Recipes/view.ctp:84
 msgid "Comments"
-msgstr ""
+msgstr "Коментари"
 
 #: View/Recipes/view.ctp:97
 msgid "Source Description"
-msgstr ""
+msgstr "Извор Опис"
 
 #: View/Recipes/view.ctp:102
 msgid "Last Modified"
-msgstr ""
+msgstr "Последња измена"
 
 #: View/Recipes/view.ctp:107
 #: View/Users/view.ctp:1
 msgid "User"
-msgstr ""
+msgstr "Корисник"
 
 #: View/Recipes/view.ctp:123
 msgid "(optional)"
-msgstr ""
+msgstr "(Опционо)"
 
 #: View/Recipes/view.ctp:160;190
 msgid "Directions"
-msgstr ""
+msgstr "Упутства"
 
 #: View/Recipes/view.ctp:171
 msgid "optional"
-msgstr ""
+msgstr "опционо"
 
 #: View/Restaurants/index.ctp:16
 msgid "Add Restaurant"
-msgstr ""
+msgstr "Додај Ресторан"
 
 #: View/Restaurants/index.ctp:21
 msgid "List Price Ranges"
-msgstr ""
+msgstr "Листа цена се креће"
 
 #: View/Restaurants/index.ctp:22
 msgid "New Price Ranges"
-msgstr ""
+msgstr "Нова цена се креће"
 
 #: View/Setup/database.ctp:29
 msgid "Continue..."
-msgstr ""
+msgstr "Наставак ..."
 
 #: View/Setup/finish.ctp:6
 msgid "Finish"
-msgstr ""
+msgstr "Завршити"
 
 #: View/Setup/index.ctp:145
 msgid "New Install"
-msgstr ""
+msgstr "Нова Инсталација"
 
 #: View/Setup/index.ctp:146
 msgid "Upgrade"
-msgstr ""
+msgstr "Надоградња"
 
 #: View/Setup/upgrade.ctp:27
 msgid "Continue"
-msgstr ""
+msgstr "Наставити"
 
 #: View/ShoppingLists/index.ctp:69
 msgid "Clear List"
-msgstr ""
+msgstr "Ведро Листа"
 
 #: View/ShoppingLists/index.ctp:70
 msgid "List Stores"
-msgstr ""
+msgstr "Листа Продавнице"
 
 #: View/ShoppingLists/index.ctp:71
 msgid "List Online Vendors"
-msgstr ""
+msgstr "Листа Интернет продавце"
 
 #: View/ShoppingLists/index.ctp:89;126
 msgid "Action"
-msgstr ""
+msgstr "Акција"
 
 #: View/ShoppingLists/index.ctp:90
 msgid "Recipe Name"
-msgstr ""
+msgstr "Рецепт Име"
 
 #: View/ShoppingLists/index.ctp:91
 msgid "Servings"
-msgstr ""
+msgstr "Порција"
 
 #: View/ShoppingLists/index.ctp:92
 msgid "Servings to buy"
-msgstr ""
+msgstr "Порција то буи"
 
 #: View/ShoppingLists/index.ctp:107;143
 msgid "Are you sure you want to remove %s?"
-msgstr ""
+msgstr "Да ли сте сигурни да желите да уклоните% с?"
 
 #: View/ShoppingLists/index.ctp:130
 msgid "Ingredient Name"
-msgstr ""
+msgstr "Састојка"
 
 #: View/ShoppingLists/index.ctp:168
 msgid "Save"
-msgstr ""
+msgstr "Саве"
 
 #: View/ShoppingLists/index.ctp:169
 msgid "Start Shopping"
-msgstr ""
+msgstr "Почетак Продавнице"
 
 #: View/ShoppingLists/instore.ctp:20
 #: View/ShoppingLists/online.ctp:84
 #: View/ShoppingLists/select.ctp:38
 msgid "Select Items"
-msgstr ""
+msgstr "Изаберите Предмети"
 
 #: View/ShoppingLists/instore.ctp:21
 msgid "In Store"
-msgstr ""
+msgstr "У продавници"
 
 #: View/ShoppingLists/instore.ctp:36
 #: View/ShoppingLists/online.ctp:92
 #: View/ShoppingLists/select.ctp:46
 msgid "Select"
-msgstr ""
+msgstr "Одабрати"
 
 #: View/ShoppingLists/instore.ctp:40
 #: View/ShoppingLists/online.ctp:97
 #: View/ShoppingLists/select.ctp:50
 #: View/Users/view.ctp:21
 msgid "Name"
-msgstr ""
+msgstr "Име"
 
 #: View/ShoppingLists/instore.ctp:75
 #: View/ShoppingLists/online.ctp:140
 msgid "Complete"
-msgstr ""
+msgstr "Комплетан"
 
 #: View/ShoppingLists/online.ctp:41
 msgid "Adding "
-msgstr ""
+msgstr "Додавање"
 
 #: View/ShoppingLists/online.ctp:45
 msgid "Complete!"
-msgstr ""
+msgstr "Комплетна!"
 
 #: View/ShoppingLists/online.ctp:85
 msgid "Online"
-msgstr ""
+msgstr "Онлине"
 
 #: View/ShoppingLists/online.ctp:93
 msgid "Product / ID"
-msgstr ""
+msgstr "Производ / ИД"
 
 #: View/ShoppingLists/online.ctp:139
 msgid "Add All"
-msgstr ""
+msgstr "Додај све"
 
 #: View/ShoppingLists/select.ctp:40
 msgid "What Items do you already have?"
-msgstr ""
+msgstr "Шта Предмети већ имате?"
 
 #: View/Sources/index.ctp:11
 msgid "Sources"
-msgstr ""
+msgstr "Извори"
 
 #: View/Stores/edit.ctp:2
 msgid "Stores "
-msgstr ""
+msgstr "Продавнице"
 
 #: View/Stores/edit.ctp:3
 msgid "Add & Edit"
-msgstr ""
+msgstr "Додај & Измени"
 
 #: View/Stores/index.ctp:3
 msgid "Stores"
-msgstr ""
+msgstr "Продавнице"
 
 #: View/Stores/index.ctp:6
 msgid "New Store"
-msgstr ""
+msgstr "Нова продавница"
 
 #: View/Users/edit.ctp:8
 msgid "Account Settings"
-msgstr ""
+msgstr "Аццоунт Сеттингс"
 
 #: View/Users/edit.ctp:29
 msgid "Sunday"
-msgstr ""
+msgstr "Недеља"
 
 #: View/Users/edit.ctp:30
 msgid "Monday"
-msgstr ""
+msgstr "Понедељак"
 
 #: View/Users/edit.ctp:31
 msgid "Tuesday"
-msgstr ""
+msgstr "Уторак"
 
 #: View/Users/edit.ctp:32
 msgid "Wednesday"
-msgstr ""
+msgstr "Среда"
 
 #: View/Users/edit.ctp:33
 msgid "Thursday"
-msgstr ""
+msgstr "Четвртак"
 
 #: View/Users/edit.ctp:34
 msgid "Friday"
-msgstr ""
+msgstr "Петак"
 
 #: View/Users/edit.ctp:35
 msgid "Saturday"
-msgstr ""
+msgstr "Субота"
 
 #: View/Users/login.ctp:12
 msgid "Enter your username and password"
-msgstr ""
+msgstr "Унесите своје корисничко име и лозинку"
 
 #: View/Users/login.ctp:17
 msgid "Forgot password?"
-msgstr ""
+msgstr "Заборавили сте лозинку?"
 
 #: View/Users/login.ctp:19
 msgid "Login"
-msgstr ""
+msgstr "Пријава"
 
 #: View/Users/reset.ctp:2
 #: View/Users/reset_link.ctp:5
 msgid "Reset Password"
-msgstr ""
+msgstr "Ресет Пассворд"
 
 #: View/Users/reset.ctp:10
 msgid "Enter your email address to received an email to reset your password."
-msgstr ""
+msgstr "Унесите Вашу емаил адресу и примили е-маил бисте поново поставили лозинку."
 
 #: View/Users/reset.ctp:15
 msgid "Send"
-msgstr ""
+msgstr "Послати"
 
 #: View/Users/reset_link.ctp:6
 msgid "Enter a new password to reset the account '"
-msgstr ""
+msgstr "Унесите нову лозинку за ресетовање рачун '"
 
 #: View/Users/view.ctp:4
 msgid "Edit User"
-msgstr ""
+msgstr "Измена корисника"
 
 #: View/Users/view.ctp:5
 msgid "Delete User"
-msgstr ""
+msgstr "Делете Усер"
 
 #: View/Users/view.ctp:11
 msgid "Id"
-msgstr ""
+msgstr "Ид"
 
 #: View/Users/view.ctp:16
 msgid "Username"
-msgstr ""
+msgstr "Корисничко име"
 
 #: View/Users/view.ctp:26
 msgid "Access Level"
-msgstr ""
+msgstr "Ниво приступа"
 
 #: View/Users/view.ctp:31
 msgid "Language"
-msgstr ""
+msgstr "Језик"
 
 #: View/Users/view.ctp:36
 msgid "Country"
-msgstr ""
+msgstr "Земља"
 
 #: View/Users/view.ctp:41
 msgid "Created"
-msgstr ""
+msgstr "Направљено"
 
 #: View/Users/view.ctp:46
 msgid "Last Login"
-msgstr ""
+msgstr "Последњи Пријава"
 
 #: View/Users/view.ctp:51
 msgid "Email"
-msgstr ""
+msgstr "Е-маил"
 
 #: View/Users/view.ctp:56
 msgid "Modified"
-msgstr ""
+msgstr "Модификовани"
 
 #: Model/BaseType.php:validation for field name
 #: Model/CoreIngredient.php:validation for field name;validation for field short_description
@@ -1988,7 +1984,7 @@ msgstr ""
 #: Model/Vendor.php:validation for field name
 #: Model/VendorProduct.php:validation for field name
 msgid "notEmpty"
-msgstr ""
+msgstr "нотЕмпти"
 
 #: Model/CoreIngredient.php:validation for field groupNumber
 #: Model/MealPlan.php:validation for field meal_name_id;validation for field recipe_id;validation for field servings
@@ -1996,17 +1992,16 @@ msgstr ""
 #: Model/User.php:validation for field access_level
 #: Model/VendorProduct.php:validation for field ingredient_id;validation for field vendor_id
 msgid "numeric"
-msgstr ""
+msgstr "нумерички"
 
 #: Model/MealPlan.php:validation for field mealday
 msgid "date"
-msgstr ""
+msgstr "датум"
 
 #: Model/Recipe.php:validation for field private
 msgid "boolean"
-msgstr ""
+msgstr "Боолеан"
 
 #: Model/User.php:validation for field email
 msgid "email"
-msgstr ""
-
+msgstr "емаил"

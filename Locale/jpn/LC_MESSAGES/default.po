@@ -1,7 +1,3 @@
-# LANGUAGE translation of CakePHP Application
-# Copyright YEAR NAME <EMAIL@ADDRESS>
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
@@ -15,363 +11,363 @@ msgstr ""
 
 #: Config/Schema/schema.php:19
 msgid "Beef"
-msgstr ""
+msgstr "牛肉"
 
 #: Config/Schema/schema.php:20;74
 msgid "Bread"
-msgstr ""
+msgstr "パン"
 
 #: Config/Schema/schema.php:21
 msgid "Egg"
-msgstr ""
+msgstr "エッグ"
 
 #: Config/Schema/schema.php:22
 msgid "Fruit"
-msgstr ""
+msgstr "フルーツ"
 
 #: Config/Schema/schema.php:23
 msgid "Grain"
-msgstr ""
+msgstr "穀物"
 
 #: Config/Schema/schema.php:24
 msgid "Lamb"
-msgstr ""
+msgstr "子羊"
 
 #: Config/Schema/schema.php:25
 msgid "Other"
-msgstr ""
+msgstr "その他"
 
 #: Config/Schema/schema.php:26
 msgid "Pasta"
-msgstr ""
+msgstr "パスタ"
 
 #: Config/Schema/schema.php:27
 msgid "Pork/Ham"
-msgstr ""
+msgstr "ポーク/ハム"
 
 #: Config/Schema/schema.php:28
 msgid "Poultry"
-msgstr ""
+msgstr "家禽"
 
 #: Config/Schema/schema.php:29;106
 msgid "Seafood"
-msgstr ""
+msgstr "シーフード"
 
 #: Config/Schema/schema.php:30
 msgid "Vegetable"
-msgstr ""
+msgstr "野菜"
 
 #: Config/Schema/schema.php:35;115
 #: View/MealPlans/index.ctp:81
 msgid "Breakfast"
-msgstr ""
+msgstr "朝食"
 
 #: Config/Schema/schema.php:36
 msgid "Snack"
-msgstr ""
+msgstr "スナック"
 
 #: Config/Schema/schema.php:37;116
 #: View/MealPlans/index.ctp:82
 msgid "Lunch"
-msgstr ""
+msgstr "ランチ"
 
 #: Config/Schema/schema.php:38
 msgid "Appetizer"
-msgstr ""
+msgstr "前菜"
 
 #: Config/Schema/schema.php:39
 msgid "Side Dish"
-msgstr ""
+msgstr "サイドディッシュ"
 
 #: Config/Schema/schema.php:40
 msgid "Entree"
-msgstr ""
+msgstr "アントレ"
 
 #: Config/Schema/schema.php:41;118
 #: View/MealPlans/index.ctp:84
 msgid "Dessert"
-msgstr ""
+msgstr "デザート"
 
 #: Config/Schema/schema.php:42
 msgid "Beverage"
-msgstr ""
+msgstr "飲料"
 
 #: Config/Schema/schema.php:48
 msgid "Easy"
-msgstr ""
+msgstr "簡単に"
 
 #: Config/Schema/schema.php:49
 msgid "Intermediate"
-msgstr ""
+msgstr "中間体"
 
 #: Config/Schema/schema.php:50
 msgid "Difficult"
-msgstr ""
+msgstr "難しい"
 
 #: Config/Schema/schema.php:51
 msgid "Expert"
-msgstr ""
+msgstr "専門家"
 
 #: Config/Schema/schema.php:56
 msgid "American"
-msgstr ""
+msgstr "アメリカン"
 
 #: Config/Schema/schema.php:57
 msgid "Chinese"
-msgstr ""
+msgstr "中国人"
 
 #: Config/Schema/schema.php:58
 msgid "German"
-msgstr ""
+msgstr "ドイツ語"
 
 #: Config/Schema/schema.php:59
 msgid "Greek"
-msgstr ""
+msgstr "ギリシャ語"
 
 #: Config/Schema/schema.php:60
 msgid "Indian"
-msgstr ""
+msgstr "インディアン"
 
 #: Config/Schema/schema.php:61
 msgid "Italian"
-msgstr ""
+msgstr "イタリア語"
 
 #: Config/Schema/schema.php:62
 msgid "Japanese"
-msgstr ""
+msgstr "日本人"
 
 #: Config/Schema/schema.php:63
 msgid "Mexican"
-msgstr ""
+msgstr "メキシコ人"
 
 #: Config/Schema/schema.php:64
 msgid "Middle Eastern"
-msgstr ""
+msgstr "中東"
 
 #: Config/Schema/schema.php:65
 msgid "None"
-msgstr ""
+msgstr "なし"
 
 #: Config/Schema/schema.php:66
 msgid "Slavic"
-msgstr ""
+msgstr "スラブの"
 
 #: Config/Schema/schema.php:71
 msgid "Alcohol"
-msgstr ""
+msgstr "アルコール"
 
 #: Config/Schema/schema.php:72
 msgid "Bakery"
-msgstr ""
+msgstr "パン屋"
 
 #: Config/Schema/schema.php:73
 msgid "Beans"
-msgstr ""
+msgstr "豆"
 
 #: Config/Schema/schema.php:75
 msgid "Candy"
-msgstr ""
+msgstr "キャンディ"
 
 #: Config/Schema/schema.php:76
 msgid "Canned Fruit"
-msgstr ""
+msgstr "缶詰の果物"
 
 #: Config/Schema/schema.php:77
 msgid "Canned Meat & Fish"
-msgstr ""
+msgstr "缶詰肉＆魚"
 
 #: Config/Schema/schema.php:78
 msgid "Canned Vegetables"
-msgstr ""
+msgstr "缶詰の野菜"
 
 #: Config/Schema/schema.php:79
 msgid "Coffee, Tea & Cocoa"
-msgstr ""
+msgstr "コー​​ヒー、紅茶＆ココア"
 
 #: Config/Schema/schema.php:80
 msgid "Condiments"
-msgstr ""
+msgstr "調味料"
 
 #: Config/Schema/schema.php:81
 msgid "Cookies"
-msgstr ""
+msgstr "クッキー"
 
 #: Config/Schema/schema.php:82
 msgid "Crackers"
-msgstr ""
+msgstr "クラッカー"
 
 #: Config/Schema/schema.php:83
 msgid "Dairy"
-msgstr ""
+msgstr "乳製品"
 
 #: Config/Schema/schema.php:84
 msgid "Deli"
-msgstr ""
+msgstr "デリ"
 
 #: Config/Schema/schema.php:85
 msgid "Drink mix"
-msgstr ""
+msgstr "ドリンクミックス"
 
 #: Config/Schema/schema.php:86
 msgid "Facial Tissue"
-msgstr ""
+msgstr "化粧紙"
 
 #: Config/Schema/schema.php:87
 msgid "Free"
-msgstr ""
+msgstr "フリー"
 
 #: Config/Schema/schema.php:88
 msgid "Frozen Foods"
-msgstr ""
+msgstr "冷凍食品"
 
 #: Config/Schema/schema.php:89
 msgid "HABA"
-msgstr ""
+msgstr "HABA"
 
 #: Config/Schema/schema.php:90
 msgid "Hand Soap"
-msgstr ""
+msgstr "ハンドソープ"
 
 #: Config/Schema/schema.php:91
 msgid "Hot & Cold Cereal"
-msgstr ""
+msgstr "ホット＆コールドシリアル"
 
 #: Config/Schema/schema.php:92
 msgid "Household Cleaners"
-msgstr ""
+msgstr "家庭用クリーナー"
 
 #: Config/Schema/schema.php:93
 msgid "Juice & Cocktail"
-msgstr ""
+msgstr "ジュース＆カクテル"
 
 #: Config/Schema/schema.php:94
 msgid "Kosher/Ethnic"
-msgstr ""
+msgstr "エスニック/コーシャー"
 
 #: Config/Schema/schema.php:95
 msgid "Laundry Detergents"
-msgstr ""
+msgstr "洗濯用洗剤"
 
 #: Config/Schema/schema.php:96
 msgid "Meat"
-msgstr ""
+msgstr "肉"
 
 #: Config/Schema/schema.php:97
 msgid "Natural & Organic"
-msgstr ""
+msgstr "ナチュラル＆オーガニック"
 
 #: Config/Schema/schema.php:98
 msgid "Oil/Vinegar/Dressings"
-msgstr ""
+msgstr "オイル/ビネガー/ドレッシング"
 
 #: Config/Schema/schema.php:99
 msgid "Pancakes & Syrup"
-msgstr ""
+msgstr "パンケーキ＆シロップ"
 
 #: Config/Schema/schema.php:100
 msgid "Paper Serving Ware"
-msgstr ""
+msgstr "ウェアサービング紙"
 
 #: Config/Schema/schema.php:101
 msgid "Pasta & Sauce"
-msgstr ""
+msgstr "パスタ＆ソース"
 
 #: Config/Schema/schema.php:102
 msgid "Peanut Butter/Jelly/Honey"
-msgstr ""
+msgstr "ピーナッツバター/ゼリー/ハニー"
 
 #: Config/Schema/schema.php:103
 msgid "Produce"
-msgstr ""
+msgstr "作物"
 
 #: Config/Schema/schema.php:104
 msgid "Rice"
-msgstr ""
+msgstr "ライス"
 
 #: Config/Schema/schema.php:105
 msgid "Salty Snacks & Chips"
-msgstr ""
+msgstr "塩味のスナック＆チップス"
 
 #: Config/Schema/schema.php:107
 msgid "Soda pop"
-msgstr ""
+msgstr "ソーダ水"
 
 #: Config/Schema/schema.php:108
 msgid "Soup"
-msgstr ""
+msgstr "スープ"
 
 #: Config/Schema/schema.php:109
 msgid "Spices"
-msgstr ""
+msgstr "スパイス"
 
 #: Config/Schema/schema.php:110
 msgid "Toilet Paper"
-msgstr ""
+msgstr "トイレットペーパー"
 
 #: Config/Schema/schema.php:117
 #: View/MealPlans/index.ctp:83
 msgid "Dinner"
-msgstr ""
+msgstr "夕食"
 
 #: Config/Schema/schema.php:123
 msgid "Slow cooker"
-msgstr ""
+msgstr "スロークッカー"
 
 #: Config/Schema/schema.php:124
 msgid "Microwave"
-msgstr ""
+msgstr "電子レンジ"
 
 #: Config/Schema/schema.php:125
 msgid "BBQ"
-msgstr ""
+msgstr "バーベキュー"
 
 #: Config/Schema/schema.php:126
 msgid "Canning"
-msgstr ""
+msgstr "カニング"
 
 #: Config/Schema/schema.php:131
 msgid "0 Minutes"
-msgstr ""
+msgstr "0分"
 
 #: Config/Schema/schema.php:132
 msgid "1-10 Minutes"
-msgstr ""
+msgstr "1-10分"
 
 #: Config/Schema/schema.php:133
 msgid "10-30 Minutes"
-msgstr ""
+msgstr "10〜30分"
 
 #: Config/Schema/schema.php:134
 msgid "30-60 Minutes"
-msgstr ""
+msgstr "30〜60分"
 
 #: Config/Schema/schema.php:135
 msgid "60+ Minutes"
-msgstr ""
+msgstr "60+分"
 
 #: Config/Schema/schema.php:140
 msgid "$0-$10"
-msgstr ""
+msgstr "$ 0- 10ドル"
 
 #: Config/Schema/schema.php:141
 msgid "$10-$15"
-msgstr ""
+msgstr "$ 10- 15ドル"
 
 #: Config/Schema/schema.php:142
 msgid "$15-$20"
-msgstr ""
+msgstr "$ 15- 20ドル"
 
 #: Config/Schema/schema.php:143
 msgid "$20-$25"
-msgstr ""
+msgstr "$ 20- 25ドル"
 
 #: Config/Schema/schema.php:144
 msgid "$25-$30"
-msgstr ""
+msgstr "$ 25- 30ドル"
 
 #: Config/Schema/schema.php:145
 msgid "$30+"
-msgstr ""
+msgstr "30ドル+"
 
 #: Config/Schema/schema.php:158
 #: View/Layouts/default.ctp:124
@@ -379,647 +375,647 @@ msgstr ""
 #: View/ShoppingLists/online.ctp:95
 #: View/ShoppingLists/select.ctp:48
 msgid "Unit"
-msgstr ""
+msgstr "ユニット"
 
 #: Config/Schema/schema.php:159
 msgid "Slice"
-msgstr ""
+msgstr "スライス"
 
 #: Config/Schema/schema.php:160
 msgid "Clove"
-msgstr ""
+msgstr "クローブ"
 
 #: Config/Schema/schema.php:161
 msgid "Pinch"
-msgstr ""
+msgstr "ピンチ"
 
 #: Config/Schema/schema.php:162
 msgid "Package"
-msgstr ""
+msgstr "パッケージ"
 
 #: Config/Schema/schema.php:163
 msgid "Can"
-msgstr ""
+msgstr "缶"
 
 #: Config/Schema/schema.php:164
 msgid "Drop"
-msgstr ""
+msgstr "ドロップ"
 
 #: Config/Schema/schema.php:165
 msgid "Bunch"
-msgstr ""
+msgstr "房"
 
 #: Config/Schema/schema.php:166
 msgid "Dash"
-msgstr ""
+msgstr "ダッシュ"
 
 #: Config/Schema/schema.php:167
 msgid "Carton"
-msgstr ""
+msgstr "カートン"
 
 #: Config/Schema/schema.php:168
 msgid "Cup"
-msgstr ""
+msgstr "カップ"
 
 #: Config/Schema/schema.php:169
 msgid "Tablespoon"
-msgstr ""
+msgstr "大さじ"
 
 #: Config/Schema/schema.php:170
 msgid "Teaspoon"
-msgstr ""
+msgstr "ティースプーン"
 
 #: Config/Schema/schema.php:171
 msgid "Pound"
-msgstr ""
+msgstr "パウンド"
 
 #: Config/Schema/schema.php:172
 msgid "Ounce"
-msgstr ""
+msgstr "オンス"
 
 #: Config/Schema/schema.php:173
 msgid "Pint"
-msgstr ""
+msgstr "パイント"
 
 #: Config/Schema/schema.php:174
 msgid "Quart"
-msgstr ""
+msgstr "クォート"
 
 #: Config/Schema/schema.php:175
 msgid "Gallon"
-msgstr ""
+msgstr "ガロン"
 
 #: Config/Schema/schema.php:176
 msgid "Milligram"
-msgstr ""
+msgstr "ミリグラム"
 
 #: Config/Schema/schema.php:177
 msgid "Centigram"
-msgstr ""
+msgstr "Centigram"
 
 #: Config/Schema/schema.php:178
 msgid "Gram"
-msgstr ""
+msgstr "グラム"
 
 #: Config/Schema/schema.php:179
 msgid "Kilogram"
-msgstr ""
+msgstr "キログラム"
 
 #: Config/Schema/schema.php:180
 msgid "Milliliter"
-msgstr ""
+msgstr "ミリリットル"
 
 #: Config/Schema/schema.php:181
 msgid "Centiliter"
-msgstr ""
+msgstr "センチリットル"
 
 #: Config/Schema/schema.php:182
 msgid "Liter"
-msgstr ""
+msgstr "リットル"
 
 #: Config/Schema/schema.php:183
 msgid "Deciliter"
-msgstr ""
+msgstr "デシリットル"
 
 #: Config/Schema/schema.php:184
 msgid "Tablespoon_m"
-msgstr ""
+msgstr "Tablespoon_m"
 
 #: Config/Schema/schema.php:185
 msgid "Teaspoon_m"
-msgstr ""
+msgstr "Teaspoon_m"
 
 #: Controller/AppController.php:89
 msgid "Not Authorized."
-msgstr ""
+msgstr "許可されていません。"
 
 #: Controller/BaseTypesController.php:41;66
 msgid "Invalid base type"
-msgstr ""
+msgstr "無効な基本型"
 
 #: Controller/BaseTypesController.php:45
 msgid "The base type has been saved."
-msgstr ""
+msgstr "基本型が保存されました。"
 
 #: Controller/BaseTypesController.php:48
 msgid "The base type could not be saved. Please, try again."
-msgstr ""
+msgstr "基本型は保存できませんでした。 、もう一度試してください。"
 
 #: Controller/BaseTypesController.php:70
 msgid "The base type has been deleted."
-msgstr ""
+msgstr "基本型は削除されました。"
 
 #: Controller/BaseTypesController.php:72
 msgid "The base type could not be deleted. Please, try again."
-msgstr ""
+msgstr "基本型は削除できませんでした。 、もう一度試してください。"
 
 #: Controller/CoreIngredientsController.php:43;59;84
 msgid "Invalid core ingredient"
-msgstr ""
+msgstr "無効なコア成分"
 
 #: Controller/CoreIngredientsController.php:63
 msgid "The core ingredient has been saved."
-msgstr ""
+msgstr "コア成分が保存されました。"
 
 #: Controller/CoreIngredientsController.php:66
 msgid "The core ingredient could not be saved. Please, try again."
-msgstr ""
+msgstr "コア成分は保存できませんでした。 、もう一度試してください。"
 
 #: Controller/CoreIngredientsController.php:88
 msgid "The core ingredient has been deleted."
-msgstr ""
+msgstr "コア成分は削除されました。"
 
 #: Controller/CoreIngredientsController.php:90
 msgid "The core ingredient could not be deleted. Please, try again."
-msgstr ""
+msgstr "コア成分は削除できませんでした。 、もう一度試してください。"
 
 #: Controller/CoursesController.php:37;62
 msgid "Invalid course"
-msgstr ""
+msgstr "無効なコース"
 
 #: Controller/CoursesController.php:41
 msgid "The course has been saved."
-msgstr ""
+msgstr "コー​​スは保存されました。"
 
 #: Controller/CoursesController.php:44
 msgid "The course could not be saved. Please, try again."
-msgstr ""
+msgstr "コー​​スは保存できませんでした。 、もう一度試してください。"
 
 #: Controller/CoursesController.php:66
 msgid "The course has been deleted."
-msgstr ""
+msgstr "コー​​スは削除されました。"
 
 #: Controller/CoursesController.php:68
 msgid "The course could not be deleted. Please, try again."
-msgstr ""
+msgstr "コー​​スは削除できませんでした。 、もう一度試してください。"
 
 #: Controller/DifficultiesController.php:37;62
 msgid "Invalid difficulty"
-msgstr ""
+msgstr "無効な困難"
 
 #: Controller/DifficultiesController.php:41
 msgid "The difficulty has been saved."
-msgstr ""
+msgstr "難易度が保存されました。"
 
 #: Controller/DifficultiesController.php:44
 msgid "The difficulty could not be saved. Please, try again."
-msgstr ""
+msgstr "難易度は保存できませんでした。 、もう一度試してください。"
 
 #: Controller/DifficultiesController.php:66
 msgid "The difficulty has been deleted."
-msgstr ""
+msgstr "難易度が削除されました。"
 
 #: Controller/DifficultiesController.php:68
 msgid "The difficulty could not be deleted. Please, try again."
-msgstr ""
+msgstr "難易度は削除できませんでした。 、もう一度試してください。"
 
 #: Controller/EthnicitiesController.php:43;58;83
 msgid "Invalid ethnicity"
-msgstr ""
+msgstr "無効な民族"
 
 #: Controller/EthnicitiesController.php:62
 msgid "The ethnicity has been saved."
-msgstr ""
+msgstr "民族が保存されました。"
 
 #: Controller/EthnicitiesController.php:65
 msgid "The ethnicity could not be saved. Please, try again."
-msgstr ""
+msgstr "民族は保存できませんでした。 、もう一度試してください。"
 
 #: Controller/EthnicitiesController.php:87
 msgid "The ethnicity has been deleted."
-msgstr ""
+msgstr "民族は削除されました。"
 
 #: Controller/EthnicitiesController.php:89
 msgid "The ethnicity could not be deleted. Please, try again."
-msgstr ""
+msgstr "民族は削除できませんでした。 、もう一度試してください。"
 
 #: Controller/ImportController.php:22
 msgid "Could not open uploaded file, please try again."
-msgstr ""
+msgstr "アップロードされたファイルを開くことができませんでした。もう一度お試しください。"
 
 #: Controller/IngredientsController.php:38
 msgid "Not Ingredient Owner"
-msgstr ""
+msgstr "ない成分オーナー"
 
 #: Controller/IngredientsController.php:67;93
 #: Controller/ShoppingListsController.php:118
 msgid "Invalid ingredient"
-msgstr ""
+msgstr "無効な成分"
 
 #: Controller/IngredientsController.php:74
 msgid "The ingredient has been saved."
-msgstr ""
+msgstr "成分が保存されました。"
 
 #: Controller/IngredientsController.php:77
 msgid "The ingredient could not be saved. Please, try again."
-msgstr ""
+msgstr "成分は保存できませんでした。 、もう一度試してください。"
 
 #: Controller/IngredientsController.php:97
 msgid "The ingredient has been deleted."
-msgstr ""
+msgstr "成分は削除されました。"
 
 #: Controller/IngredientsController.php:99
 msgid "The ingredient could not be deleted. Please, try again."
-msgstr ""
+msgstr "成分は削除できませんでした。 、もう一度試してください。"
 
 #: Controller/LocationsController.php:44;69
 msgid "Invalid location"
-msgstr ""
+msgstr "無効な位置"
 
 #: Controller/LocationsController.php:48
 msgid "The location has been saved."
-msgstr ""
+msgstr "場所が保存されました。"
 
 #: Controller/LocationsController.php:51
 msgid "The location could not be saved. Please, try again."
-msgstr ""
+msgstr "場所は保存できませんでした。 、もう一度試してください。"
 
 #: Controller/LocationsController.php:73
 msgid "The location has been deleted."
-msgstr ""
+msgstr "場所は削除されました。"
 
 #: Controller/LocationsController.php:75
 msgid "The location could not be deleted. Please, try again."
-msgstr ""
+msgstr "場所は削除できませんでした。 、もう一度試してください。"
 
 #: Controller/MealPlansController.php:32
 msgid "Not meal owner"
-msgstr ""
+msgstr "ない食事所有者"
 
 #: Controller/MealPlansController.php:99;154
 msgid "Invalid meal plan"
-msgstr ""
+msgstr "無効な食事の計画"
 
 #: Controller/MealPlansController.php:126
 msgid "The meal plan has been saved."
-msgstr ""
+msgstr "食事の計画が保存されました。"
 
 #: Controller/MealPlansController.php:129
 msgid "The meal plan could not be saved. Please, try again."
-msgstr ""
+msgstr "食事の計画を保存できませんでした。 、もう一度試してください。"
 
 #: Controller/MealPlansController.php:158
 msgid "The meal plan has been deleted."
-msgstr ""
+msgstr "食事の計画が削除されました。"
 
 #: Controller/MealPlansController.php:160
 msgid "The meal plan could not be deleted. Please, try again."
-msgstr ""
+msgstr "食事の計画は削除できませんでした。 、もう一度試してください。"
 
 #: Controller/MealPlansController.php:167
 msgid "Start date not defined"
-msgstr ""
+msgstr "定義されていない日付を起動します。"
 
 #: Controller/MealPlansController.php:194
 msgid "Meal(s) added to shopping list."
-msgstr ""
+msgstr "食事（複数可）は、ショッピングリストに追加されます。"
 
 #: Controller/MealPlansController.php:196
 msgid "Meal(s) could not be added to shopping list. Please, try again."
-msgstr ""
+msgstr "食事（複数可）は、ショッピングリストに追加することができませんでした。 、もう一度試してください。"
 
 #: Controller/PreparationMethodsController.php:37;62
 msgid "Invalid preparation method"
-msgstr ""
+msgstr "無効な調製方法"
 
 #: Controller/PreparationMethodsController.php:41
 msgid "The preparation method has been saved."
-msgstr ""
+msgstr "調製方法は、保存されています。"
 
 #: Controller/PreparationMethodsController.php:44
 msgid "The preparation method could not be saved. Please, try again."
-msgstr ""
+msgstr "製造方法は保存できませんでした。 、もう一度試してください。"
 
 #: Controller/PreparationMethodsController.php:66
 msgid "The preparation method has been deleted."
-msgstr ""
+msgstr "調製方法は、削除されています。"
 
 #: Controller/PreparationMethodsController.php:68
 msgid "The preparation method could not be deleted. Please, try again."
-msgstr ""
+msgstr "製造方法は削除できませんでした。 、もう一度試してください。"
 
 #: Controller/PreparationTimesController.php:38;63
 msgid "Invalid preparation time"
-msgstr ""
+msgstr "無効な準備時間"
 
 #: Controller/PreparationTimesController.php:42
 msgid "The preparation time has been saved."
-msgstr ""
+msgstr "準備時間が保存されました。"
 
 #: Controller/PreparationTimesController.php:45
 msgid "The preparation time could not be saved. Please, try again."
-msgstr ""
+msgstr "準備時間を保存できませんでした。 、もう一度試してください。"
 
 #: Controller/PreparationTimesController.php:67
 msgid "The preparation time has been deleted."
-msgstr ""
+msgstr "準備時間は削除されました。"
 
 #: Controller/PreparationTimesController.php:69
 msgid "The preparation time could not be deleted. Please, try again."
-msgstr ""
+msgstr "準備時間は削除できませんでした。 、もう一度試してください。"
 
 #: Controller/PriceRangesController.php:44;69
 msgid "Invalid price range"
-msgstr ""
+msgstr "無効な価格の範囲"
 
 #: Controller/PriceRangesController.php:48
 msgid "The price range has been saved."
-msgstr ""
+msgstr "価格帯が保存されました。"
 
 #: Controller/PriceRangesController.php:51
 msgid "The price range could not be saved. Please, try again."
-msgstr ""
+msgstr "価格帯は保存できませんでした。 、もう一度試してください。"
 
 #: Controller/PriceRangesController.php:73
 msgid "The price range has been deleted."
-msgstr ""
+msgstr "価格帯は削除されました。"
 
 #: Controller/PriceRangesController.php:75
 msgid "The price range could not be deleted. Please, try again."
-msgstr ""
+msgstr "価格帯は削除できませんでした。 、もう一度試してください。"
 
 #: Controller/RecipesController.php:46
 msgid "Not Recipe Owner"
-msgstr ""
+msgstr "ないレシピオーナー"
 
 #: Controller/RecipesController.php:97;162;223
 #: Controller/ShoppingListsController.php:95
 msgid "Invalid recipe"
-msgstr ""
+msgstr "無効なレシピ"
 
 #: Controller/RecipesController.php:169
 msgid "The recipe has been saved."
-msgstr ""
+msgstr "レシピが保存されました。"
 
 #: Controller/RecipesController.php:171
 msgid "The recipe could not be saved. Please, try again."
-msgstr ""
+msgstr "レシピを保存できませんでした。 、もう一度試してください。"
 
 #: Controller/RecipesController.php:199
 msgid "The ingredient has been removed."
-msgstr ""
+msgstr "成分は削除されました。"
 
 #: Controller/RecipesController.php:201
 msgid "The ingredient could not be removed. Please, try again."
-msgstr ""
+msgstr "成分は除去できませんでした。 、もう一度試してください。"
 
 #: Controller/RecipesController.php:207
 msgid "The related recipe has been removed."
-msgstr ""
+msgstr "関連レシピが削除されました。"
 
 #: Controller/RecipesController.php:209
 msgid "The related recipe could not be removed. Please, try again."
-msgstr ""
+msgstr "関連レシピは削除できませんでした。 、もう一度試してください。"
 
 #: Controller/RecipesController.php:226
 msgid "The recipe has been deleted."
-msgstr ""
+msgstr "レシピは削除されました。"
 
 #: Controller/RecipesController.php:228
 msgid "The recipe could not be deleted. Please, try again."
-msgstr ""
+msgstr "レシピは削除できませんでした。 、もう一度試してください。"
 
 #: Controller/RestaurantsController.php:44;72
 msgid "Invalid restaurant"
-msgstr ""
+msgstr "無効なレストラン"
 
 #: Controller/RestaurantsController.php:48
 msgid "The restaurant has been saved."
-msgstr ""
+msgstr "レストランでは、保存されています。"
 
 #: Controller/RestaurantsController.php:51
 msgid "The restaurant could not be saved. Please, try again."
-msgstr ""
+msgstr "レストランでは保存できませんでした。 、もう一度試してください。"
 
 #: Controller/RestaurantsController.php:76
 msgid "The restaurant has been deleted."
-msgstr ""
+msgstr "レストランでは、削除されました。"
 
 #: Controller/RestaurantsController.php:78
 msgid "The restaurant could not be deleted. Please, try again."
-msgstr ""
+msgstr "レストランでは削除できませんでした。 、もう一度試してください。"
 
 #: Controller/SetupController.php:36
 msgid "Password must have a value."
-msgstr ""
+msgstr "パスワードが値を持っている必要があります。"
 
 #: Controller/SetupController.php:42
 msgid "Password successfully saved"
-msgstr ""
+msgstr "パスワードが正常に保存します"
 
 #: Controller/SetupController.php:46
 #: Controller/UsersController.php:192;234
 msgid "The user could not be saved. Please, try again."
-msgstr ""
+msgstr "ユーザーが保存できませんでした。 、もう一度試してください。"
 
 #: Controller/SetupController.php:49
 #: Controller/UsersController.php:196;238
 msgid "Passwords did not match. Please, try again."
-msgstr ""
+msgstr "パスワードが一致しませんでした。 、もう一度試してください。"
 
 #: Controller/ShoppingListsController.php:32
 msgid "Not List Owner or Editor"
-msgstr ""
+msgstr "所有者または編集者を一覧表示しません"
 
 #: Controller/ShoppingListsController.php:43
 msgid "Invalid shopping list"
-msgstr ""
+msgstr "無効な買い物リスト"
 
 #: Controller/ShoppingListsController.php:48
 msgid "The shopping list has been saved."
-msgstr ""
+msgstr "買い物リストが保存されました。"
 
 #: Controller/ShoppingListsController.php:51
 msgid "The shopping list name could not be saved. Please, try again."
-msgstr ""
+msgstr "買い物リスト名を保存できませんでした。 、もう一度試してください。"
 
 #: Controller/ShoppingListsController.php:67;82
 msgid "The item has been removed."
-msgstr ""
+msgstr "アイテムは削除されました。"
 
 #: Controller/ShoppingListsController.php:69;84
 msgid "The item could not be removed. Please, try again."
-msgstr ""
+msgstr "項目は削除できませんでした。 、もう一度試してください。"
 
 #: Controller/ShoppingListsController.php:72
 msgid "Invalid recipe item"
-msgstr ""
+msgstr "無効なレシピアイテム"
 
 #: Controller/ShoppingListsController.php:87
 msgid "Invalid ingredient item"
-msgstr ""
+msgstr "無効な成分項目"
 
 #: Controller/ShoppingListsController.php:107
 msgid "Recipe added to list."
-msgstr ""
+msgstr "レシピは、リストに追加されます。"
 
 #: Controller/ShoppingListsController.php:109
 msgid "Unable to add recipe to list."
-msgstr ""
+msgstr "リストにレシピを追加することができません。"
 
 #: Controller/ShoppingListsController.php:131
 msgid "Ingredient added to list."
-msgstr ""
+msgstr "成分は、リストに追加されます。"
 
 #: Controller/ShoppingListsController.php:134
 msgid "Unable to add ingredient to list."
-msgstr ""
+msgstr "リストに成分を追加することができません。"
 
 #: Controller/ShoppingListsController.php:142;152;202
 msgid "Invalid list"
-msgstr ""
+msgstr "無効なリスト"
 
 #: Controller/ShoppingListsController.php:161
 msgid "Shopping done! List cleared."
-msgstr ""
+msgstr "ショッピングはやりました！リストがクリアされました。"
 
 #: Controller/SourcesController.php:37;52;79
 msgid "Invalid source"
-msgstr ""
+msgstr "無効なソース"
 
 #: Controller/SourcesController.php:56
 msgid "The source has been saved."
-msgstr ""
+msgstr "ソースが保存されました。"
 
 #: Controller/SourcesController.php:59
 msgid "The source could not be saved. Please, try again."
-msgstr ""
+msgstr "ソースを保存できませんでした。 、もう一度試してください。"
 
 #: Controller/SourcesController.php:83
 msgid "The source has been deleted."
-msgstr ""
+msgstr "ソースは削除されました。"
 
 #: Controller/SourcesController.php:85
 msgid "The source could not be deleted. Please, try again."
-msgstr ""
+msgstr "ソースは削除できませんでした。 、もう一度試してください。"
 
 #: Controller/StoresController.php:21;39
 msgid "Invalid store"
-msgstr ""
+msgstr "無効な店"
 
 #: Controller/StoresController.php:25
 msgid "The store has been saved."
-msgstr ""
+msgstr "ストアは保存されました。"
 
 #: Controller/StoresController.php:28
 msgid "The store could not be saved. Please, try again."
-msgstr ""
+msgstr "ストアは保存できませんでした。 、もう一度試してください。"
 
 #: Controller/StoresController.php:43
 msgid "The store has been deleted."
-msgstr ""
+msgstr "ストアは削除されました。"
 
 #: Controller/StoresController.php:45
 msgid "The store could not be deleted. Please, try again."
-msgstr ""
+msgstr "ストアは削除できませんでした。 、もう一度試してください。"
 
 #: Controller/UnitsController.php:44;59;84
 msgid "Invalid unit"
-msgstr ""
+msgstr "無効なユニット"
 
 #: Controller/UnitsController.php:63
 msgid "The unit has been saved."
-msgstr ""
+msgstr "ユニットは、保存されています。"
 
 #: Controller/UnitsController.php:66
 msgid "The unit could not be saved. Please, try again."
-msgstr ""
+msgstr "ユニットは保存できませんでした。 、もう一度試してください。"
 
 #: Controller/UnitsController.php:88
 msgid "The unit has been deleted."
-msgstr ""
+msgstr "ユニットが削除されました。"
 
 #: Controller/UnitsController.php:90
 msgid "The unit could not be deleted. Please, try again."
-msgstr ""
+msgstr "ユニットが削除できませんでした。 、もう一度試してください。"
 
 #: Controller/UsersController.php:25
 msgid "Not Admininstrator"
-msgstr ""
+msgstr "ないAdmininstrator"
 
 #: Controller/UsersController.php:34
 msgid "Not allowed to edit another user."
-msgstr ""
+msgstr "別のユーザーを編集することはできません。"
 
 #: Controller/UsersController.php:48
 msgid "Your account is currently locked. Use the password reset link to reset your password."
-msgstr ""
+msgstr "あなたのアカウントは現在ロックされています。あなたのパスワードをリセットするためにパスワードリセットのリンクを使用してください。"
 
 #: Controller/UsersController.php:64
 msgid "Invalid username or password, try again"
-msgstr ""
+msgstr "無効なユーザー名またはパスワード、再試行してください"
 
 #: Controller/UsersController.php:69
 msgid "Logged out."
-msgstr ""
+msgstr "ログアウト。"
 
 #: Controller/UsersController.php:95
 msgid "Your reset email is on the way!"
-msgstr ""
+msgstr "あなたのリセット電子メールは道を進んでいます！"
 
 #: Controller/UsersController.php:98
 msgid "Could not send a reset email. Please contact support."
-msgstr ""
+msgstr "リセットメールを送信できませんでした。サポートに連絡してください。"
 
 #: Controller/UsersController.php:100
 msgid "Could not find your email address, try again."
-msgstr ""
+msgstr "あなたのメールアドレスを見つけることができませんでした、もう一度やり直してください。"
 
 #: Controller/UsersController.php:115
 msgid "Passwords are not set to same value. Please, try again."
-msgstr ""
+msgstr "パスワードは同じ値に設定されていません。 、もう一度試してください。"
 
 #: Controller/UsersController.php:121
 msgid "A new password is required. Please, try again."
-msgstr ""
+msgstr "新しいパスワードが必要です。 、もう一度試してください。"
 
 #: Controller/UsersController.php:130
 msgid "Password successfully reset. Login with your new password to continue."
-msgstr ""
+msgstr "パスワードが正常にリセット。続行するには、新しいパスワードでログインします。"
 
 #: Controller/UsersController.php:133
 msgid "The password could not be saved. Please, try again."
-msgstr ""
+msgstr "パスワードを保存できませんでした。 、もう一度試してください。"
 
 #: Controller/UsersController.php:143
 msgid "Could not find reset information. Please try again."
-msgstr ""
+msgstr "リセット情報が見つかりませんでした。もう一度やり直してください。"
 
 #: Controller/UsersController.php:165;221;257
 msgid "Invalid user"
-msgstr ""
+msgstr "無効なユーザー"
 
 #: Controller/UsersController.php:188
 msgid "The user has been saved."
-msgstr ""
+msgstr "ユーザーが保存されました。"
 
 #: Controller/UsersController.php:231
 msgid "Settings saved.  Logout/Sign In maybe required for settings to take effect."
-msgstr ""
+msgstr "設定が保存されました。設定を有効にするためにログアウト/ログインが必要かもしれません。"
 
 #: Controller/UsersController.php:261
 msgid "The user has been deleted."
-msgstr ""
+msgstr "ユーザーは削除されました。"
 
 #: Controller/UsersController.php:263
 msgid "The user could not be deleted. Please, try again."
-msgstr ""
+msgstr "ユーザーは削除できませんでした。 、もう一度試してください。"
 
 #: Controller/Component/MealMasterComponent.php:99
 msgid "could not data file for reading"
-msgstr ""
+msgstr "読書のためのデータファイルではありませんでし"
 
 #: Model/Recipe.php:173
 msgid "This recipe could not be saved. Please try again"
-msgstr ""
+msgstr "このレシピは保存できませんでした。もう一度やり直してください"
 
 #: Model/ShoppingList.php:52;74;85
 msgid "DEFAULT"
-msgstr ""
+msgstr "DEFAULT"
 
 #: Plugin/Upload/Model/Behavior/UploadBehavior.php:1078
 msgid "No filename after parsing. Function %s returned an invalid filename"
-msgstr ""
+msgstr "構文解析後には、ファイル名はありません。関数％sが無効なファイル名を返しました"
 
 #: View/BaseTypes/edit.ctp:12
 #: View/CoreIngredients/edit.ctp:14
@@ -1043,16 +1039,16 @@ msgstr ""
 #: View/Users/edit.ctp:45
 #: View/Users/reset_link.ctp:13
 msgid "Submit"
-msgstr ""
+msgstr "提出する"
 
 #: View/BaseTypes/index.ctp:10
 msgid "Base Types"
-msgstr ""
+msgstr "ベースタイプ"
 
 #: View/BaseTypes/index.ctp:13
 #: View/Recipes/index.ctp:61
 msgid "Add Base Type"
-msgstr ""
+msgstr "ベースタイプを追加"
 
 #: View/BaseTypes/index.ctp:18
 #: View/CoreIngredients/index.ctp:26
@@ -1071,7 +1067,7 @@ msgstr ""
 #: View/Units/index.ctp:18
 #: View/Users/index.ctp:10
 msgid "Actions"
-msgstr ""
+msgstr "アクション"
 
 #: View/BaseTypes/index.ctp:24
 #: View/CoreIngredients/index.ctp:33
@@ -1094,7 +1090,7 @@ msgstr ""
 #: View/Users/edit.ctp:5
 #: View/Users/index.ctp:23
 msgid "Edit"
-msgstr ""
+msgstr "編集"
 
 #: View/BaseTypes/index.ctp:25
 #: View/CoreIngredients/index.ctp:34
@@ -1115,7 +1111,7 @@ msgstr ""
 #: View/Units/index.ctp:28
 #: View/Users/index.ctp:26
 msgid "Delete"
-msgstr ""
+msgstr "削除"
 
 #: View/BaseTypes/index.ctp:25
 #: View/Courses/index.ctp:25
@@ -1126,7 +1122,7 @@ msgstr ""
 #: View/Recipes/index.ctp:92
 #: View/Sources/index.ctp:27
 msgid "Are you sure you want to delete %s?"
-msgstr ""
+msgstr "あなたは％sのを削除してもよろしいですか？"
 
 #: View/BaseTypes/index.ctp:32
 #: View/CoreIngredients/index.ctp:43
@@ -1144,7 +1140,7 @@ msgstr ""
 #: View/Units/index.ctp:39
 #: View/Users/index.ctp:43
 msgid "Page {:page} of {:pages}"
-msgstr ""
+msgstr "ページ{ページ}の{ページ}"
 
 #: View/BaseTypes/index.ctp:36
 #: View/CoreIngredients/index.ctp:46
@@ -1163,7 +1159,7 @@ msgstr ""
 #: View/Units/index.ctp:43
 #: View/Users/index.ctp:48
 msgid "previous"
-msgstr ""
+msgstr "前"
 
 #: View/BaseTypes/index.ctp:38
 #: View/CoreIngredients/index.ctp:48
@@ -1182,21 +1178,21 @@ msgstr ""
 #: View/Units/index.ctp:45
 #: View/Users/index.ctp:50
 msgid "next"
-msgstr ""
+msgstr "次"
 
 #: View/CoreIngredients/index.ctp:12
 #: View/Layouts/default.ctp:125
 msgid "Core Ingredients"
-msgstr ""
+msgstr "コア成分"
 
 #: View/CoreIngredients/index.ctp:15
 #: View/Ingredients/index.ctp:33
 msgid "Add Core Ingredient"
-msgstr ""
+msgstr "コア成分を追加"
 
 #: View/CoreIngredients/index.ctp:16
 msgid "List Ingredients"
-msgstr ""
+msgstr "リストの成分"
 
 #: View/CoreIngredients/index.ctp:34
 #: View/PriceRanges/index.ctp:27
@@ -1206,115 +1202,115 @@ msgstr ""
 #: View/Users/index.ctp:26
 #: View/Users/view.ctp:5
 msgid "Are you sure you want to delete # %s?"
-msgstr ""
+msgstr "あなたが＃％sのを削除してもよろしいですか？"
 
 #: View/Courses/index.ctp:10
 msgid "Courses"
-msgstr ""
+msgstr "コー​​ス"
 
 #: View/Courses/index.ctp:13
 #: View/Recipes/index.ctp:63
 msgid "Add Course"
-msgstr ""
+msgstr "コー​​スを追加"
 
 #: View/Difficulties/index.ctp:11
 msgid "Difficulties"
-msgstr ""
+msgstr "困難"
 
 #: View/Difficulties/index.ctp:14
 #: View/Recipes/index.ctp:69
 msgid "Add Difficulty"
-msgstr ""
+msgstr "難易度を追加します。"
 
 #: View/Ethnicities/index.ctp:11
 msgid "Ethnicities"
-msgstr ""
+msgstr "民族"
 
 #: View/Ethnicities/index.ctp:14
 #: View/Recipes/index.ctp:59
 msgid "Add Ethnicity"
-msgstr ""
+msgstr "人種を追加"
 
 #: View/Import/index.ctp:2
 msgid "Import Recipes"
-msgstr ""
+msgstr "インポートのレシピ"
 
 #: View/Import/index.ctp:3
 msgid "To import a meal master format file, browse for it and press submit to import.  Duplicate recipes names will not be imported."
-msgstr ""
+msgstr "、食事のマスター形式のファイルをインポートし、それを参照し、インポートするために送信]を押します。重複レシピ名はインポートされません。"
 
 #: View/Import/index.ctp:5
 msgid "Imported ingredients that do not exactly match existing ingredient names will be created as new ingredients."
-msgstr ""
+msgstr "正確に既存の成分名と一致しないインポートされた成分は、新成分として作成されます。"
 
 #: View/Ingredients/edit.ctp:30
 msgid "Location In Store"
-msgstr ""
+msgstr "ストア内の場所"
 
 #: View/Ingredients/edit.ctp:31
 msgid "Measurement Type"
-msgstr ""
+msgstr "測定タイプ"
 
 #: View/Ingredients/edit.ctp:32
 msgid "Solid/Liquid"
-msgstr ""
+msgstr "固体/液体"
 
 #: View/Ingredients/index.ctp:24
 #: View/Layouts/default.ctp:67
 #: View/Recipes/view.ctp:116;174
 msgid "Ingredients"
-msgstr ""
+msgstr "材料"
 
 #: View/Ingredients/index.ctp:27
 msgid "Add Ingredient"
-msgstr ""
+msgstr "成分を追加"
 
 #: View/Ingredients/index.ctp:32
 msgid "List Core Ingredients"
-msgstr ""
+msgstr "リストコア成分"
 
 #: View/Ingredients/index.ctp:34
 msgid "List Locations"
-msgstr ""
+msgstr "リスト場所"
 
 #: View/Ingredients/index.ctp:35
 msgid "Add Location"
-msgstr ""
+msgstr "場所の追加"
 
 #: View/Ingredients/index.ctp:36
 msgid "List Units"
-msgstr ""
+msgstr "リストユニット"
 
 #: View/Ingredients/index.ctp:37
 #: View/Units/index.ctp:13
 msgid "Add Unit"
-msgstr ""
+msgstr "ユニットを追加"
 
 #: View/Ingredients/index.ctp:54
 #: View/Locations/index.ctp:27
 msgid "Are you sure you want to delete \"%s\"?"
-msgstr ""
+msgstr "あなたは \"％s\"を削除してもよろしいですか？"
 
 #: View/Layouts/default.ctp:57
 msgid "Browse your recipes"
-msgstr ""
+msgstr "あなたのレシピを検索"
 
 #: View/Layouts/default.ctp:57
 #: View/Recipes/index.ctp:48
 msgid "Recipes"
-msgstr ""
+msgstr "レシピ"
 
 #: View/Layouts/default.ctp:61
 msgid "Manage your meal plans"
-msgstr ""
+msgstr "お食事プランを管理します"
 
 #: View/Layouts/default.ctp:61
 msgid "Meal Planner"
-msgstr ""
+msgstr "食事プランナー"
 
 #: View/Layouts/default.ctp:64
 msgid "Create or Edit a shopping list"
-msgstr ""
+msgstr "買い物リストを作成または編集"
 
 #: View/Layouts/default.ctp:64
 #: View/ShoppingLists/index.ctp:66
@@ -1322,246 +1318,246 @@ msgstr ""
 #: View/ShoppingLists/online.ctp:83
 #: View/ShoppingLists/select.ctp:37
 msgid "Shopping List"
-msgstr ""
+msgstr "ショッピングリスト"
 
 #: View/Layouts/default.ctp:67
 msgid "Ingredients used in recipes"
-msgstr ""
+msgstr "レシピで使用される成分"
 
 #: View/Layouts/default.ctp:71
 msgid "List of your restaurants"
-msgstr ""
+msgstr "あなたのレストランのリスト"
 
 #: View/Layouts/default.ctp:71
 #: View/Restaurants/index.ctp:12
 msgid "Restaurants"
-msgstr ""
+msgstr "レストラン"
 
 #: View/Layouts/default.ctp:74
 msgid "Administer Users"
-msgstr ""
+msgstr "ユーザーの管理"
 
 #: View/Layouts/default.ctp:74
 #: View/Users/edit.ctp:4
 #: View/Users/index.ctp:2
 msgid "Users"
-msgstr ""
+msgstr "ユーザー"
 
 #: View/Layouts/default.ctp:88
 msgid "Sign in with your existing account"
-msgstr ""
+msgstr "既存のアカウントでログイン"
 
 #: View/Layouts/default.ctp:88
 msgid "Sign in"
-msgstr ""
+msgstr "ログイン"
 
 #: View/Layouts/default.ctp:93
 msgid "Create a new account"
-msgstr ""
+msgstr "新規アカウントの作成"
 
 #: View/Layouts/default.ctp:93
 #: View/Users/add.ctp:4
 msgid "Create Account"
-msgstr ""
+msgstr "アカウントを作成する"
 
 #: View/Layouts/default.ctp:98
 msgid "Logout"
-msgstr ""
+msgstr "ログアウト"
 
 #: View/Layouts/default.ctp:102
 msgid "Edit your Account settings"
-msgstr ""
+msgstr "あなたのアカウント設定を編集します"
 
 #: View/Layouts/default.ctp:122
 #: View/Recipes/edit.ctp:339
 msgid "Ingredient"
-msgstr ""
+msgstr "成分"
 
 #: View/Layouts/default.ctp:123
 msgid "Location"
-msgstr ""
+msgstr "場所"
 
 #: View/Layouts/default.ctp:126
 msgid "Restaurant"
-msgstr ""
+msgstr "レストラン"
 
 #: View/Layouts/default.ctp:127
 #: View/PriceRanges/index.ctp:11
 msgid "Price Ranges"
-msgstr ""
+msgstr "価格帯"
 
 #: View/Layouts/default.ctp:128
 #: View/Recipes/view.ctp:51
 msgid "Ethnicity"
-msgstr ""
+msgstr "民族性"
 
 #: View/Layouts/default.ctp:129
 #: View/Recipes/view.ctp:56
 msgid "Base Type"
-msgstr ""
+msgstr "基底型"
 
 #: View/Layouts/default.ctp:130
 #: View/Recipes/view.ctp:61
 msgid "Course"
-msgstr ""
+msgstr "もちろん"
 
 #: View/Layouts/default.ctp:131
 #: View/Recipes/view.ctp:66
 msgid "Preparation Time"
-msgstr ""
+msgstr "準備時間"
 
 #: View/Layouts/default.ctp:132
 msgid "Preparation Method"
-msgstr ""
+msgstr "調製方法"
 
 #: View/Layouts/default.ctp:133
 #: View/Recipes/view.ctp:71
 msgid "Difficulty"
-msgstr ""
+msgstr "難しさ"
 
 #: View/Layouts/default.ctp:134
 #: View/Recipes/view.ctp:89
 msgid "Source"
-msgstr ""
+msgstr "ソース"
 
 #: View/Layouts/default.ctp:135
 msgid "Meal"
-msgstr ""
+msgstr "食事"
 
 #: View/Layouts/error.ctp:19
 msgid "PHPRecipebook Exception"
-msgstr ""
+msgstr "PHPRecipebook例外"
 
 #: View/Locations/index.ctp:12
 msgid "Locations"
-msgstr ""
+msgstr "場所"
 
 #: View/Locations/index.ctp:15
 msgid "New Location"
-msgstr ""
+msgstr "新しい場所"
 
 #: View/MealPlans/edit.ctp:17
 msgid "recipe serves"
-msgstr ""
+msgstr "レシピは提供しています"
 
 #: View/MealPlans/edit.ctp:49
 #: View/Recipes/edit.ctp:281
 msgid "Recipe"
-msgstr ""
+msgstr "レシピ"
 
 #: View/MealPlans/edit.ctp:53
 msgid "Enter Recipe Name"
-msgstr ""
+msgstr "レシピ名を入力してください"
 
 #: View/MealPlans/edit.ctp:62
 msgid "Every other day"
-msgstr ""
+msgstr "一日おきに"
 
 #: View/MealPlans/edit.ctp:66
 #: View/Recipes/index.ctp:89
 #: View/ShoppingLists/index.ctp:102
 #: View/Users/index.ctp:22
 msgid "View"
-msgstr ""
+msgstr "ビュー"
 
 #: View/MealPlans/index.ctp:16
 msgid "Meal Plan - Weekly"
-msgstr ""
+msgstr "食事プラン - ウィークリー"
 
 #: View/MealPlans/index.ctp:19
 msgid "Add to Shopping List"
-msgstr ""
+msgstr "買い物リストに追加"
 
 #: View/MealPlans/index.ctp:32
 msgid "Today"
-msgstr ""
+msgstr "今日"
 
 #: View/MealPlans/index.ctp:64
 msgid "Are you sure you want to delete meal \"%s\"?"
-msgstr ""
+msgstr "あなたは \"％s\"を食事を削除してもよろしいですか？"
 
 #: View/PreparationMethods/index.ctp:11
 msgid "Preparation Methods"
-msgstr ""
+msgstr "作成方法"
 
 #: View/PreparationMethods/index.ctp:14
 #: View/Recipes/index.ctp:67
 msgid "Add Preparation Method"
-msgstr ""
+msgstr "調製方法を追加"
 
 #: View/PreparationTimes/index.ctp:11
 msgid "Preparation Times"
-msgstr ""
+msgstr "準備タイムズ"
 
 #: View/PreparationTimes/index.ctp:14
 #: View/Recipes/index.ctp:65
 msgid "Add Preparation Time"
-msgstr ""
+msgstr "準備時間を追加します。"
 
 #: View/PriceRanges/index.ctp:15
 msgid "New Price Range"
-msgstr ""
+msgstr "新しい価格帯"
 
 #: View/PriceRanges/index.ctp:36
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
-msgstr ""
+msgstr "ページ{ページ}の{ページ}、{示す：現在は}に終了する、：{start}はレコードで開始し、合計{数}の外に記録する{最後}"
 
 #: View/RecipeLinkBox/index.ctp:2
 msgid "Recipe Box"
-msgstr ""
+msgstr "レシピボックス"
 
 #: View/RecipeLinkBox/index.ctp:4
 msgid "By Course"
-msgstr ""
+msgstr "コー​​スによって"
 
 #: View/RecipeLinkBox/index.ctp:17
 msgid "By Base"
-msgstr ""
+msgstr "ベースによる"
 
 #: View/RecipeLinkBox/index.ctp:30
 msgid "By Prep Method"
-msgstr ""
+msgstr "準備法による"
 
 #: View/RecipeLinkBox/index.ctp:45
 msgid "Add A Recipe"
-msgstr ""
+msgstr "レシピを追加"
 
 #: View/Recipes/edit.ctp:24
 #: View/ShoppingLists/index.ctp:50
 msgid "Entered value is not a number/fraction, please try again."
-msgstr ""
+msgstr "入力された値が数/分数ではありません。もう一度お試しください。"
 
 #: View/Recipes/edit.ctp:127
 msgid "Are you sure you wish to remove this item?"
-msgstr ""
+msgstr "あなたは、この項目を削除したいあなたは確信していますか？"
 
 #: View/Recipes/edit.ctp:262
 msgid "View Recipe"
-msgstr ""
+msgstr "ビューのレシピ"
 
 #: View/Recipes/edit.ctp:264
 msgid "Edit Sources"
-msgstr ""
+msgstr "編集ソース"
 
 #: View/Recipes/edit.ctp:269
 msgid "Edit Ethnicities"
-msgstr ""
+msgstr "編集民族"
 
 #: View/Recipes/edit.ctp:270
 msgid "Edit Base Types"
-msgstr ""
+msgstr "編集ベースタイプ"
 
 #: View/Recipes/edit.ctp:271
 msgid "Edit Courses"
-msgstr ""
+msgstr "編集コース"
 
 #: View/Recipes/edit.ctp:272
 msgid "Edit Preparation Times"
-msgstr ""
+msgstr "編集準備タイムズ"
 
 #: View/Recipes/edit.ctp:273
 msgid "Edit Difficulties"
-msgstr ""
+msgstr "編集難しさ"
 
 #: View/Recipes/edit.ctp:336
 #: View/ShoppingLists/index.ctp:127
@@ -1569,409 +1565,409 @@ msgstr ""
 #: View/ShoppingLists/online.ctp:94
 #: View/ShoppingLists/select.ctp:47
 msgid "Quantity"
-msgstr ""
+msgstr "数量"
 
 #: View/Recipes/edit.ctp:337
 #: View/ShoppingLists/index.ctp:128
 #: View/Units/index.ctp:10
 msgid "Units"
-msgstr ""
+msgstr "単位"
 
 #: View/Recipes/edit.ctp:338
 #: View/ShoppingLists/index.ctp:129
 msgid "Qualifier"
-msgstr ""
+msgstr "予選"
 
 #: View/Recipes/edit.ctp:340
 msgid "add new"
-msgstr ""
+msgstr "新しいメールアドレス"
 
 #: View/Recipes/edit.ctp:343
 msgid "Optional"
-msgstr ""
+msgstr "オプショナル"
 
 #: View/Recipes/edit.ctp:349;408
 msgid "Unknown"
-msgstr ""
+msgstr "不明"
 
 #: View/Recipes/edit.ctp:369
 msgid "Order Ingredient - currently #"
-msgstr ""
+msgstr "注文成分 - 現在＃"
 
 #: View/Recipes/edit.ctp:391
 msgid "Add Another Ingredient"
-msgstr ""
+msgstr "別の成分を追加"
 
 #: View/Recipes/edit.ctp:401
 msgid "Related Recipe Name"
-msgstr ""
+msgstr "関連レシピ名"
 
 #: View/Recipes/edit.ctp:402
 msgid "Required"
-msgstr ""
+msgstr "必須"
 
 #: View/Recipes/edit.ctp:427
 msgid "Order Recipe - currently #"
-msgstr ""
+msgstr "注文レシピ - 現在＃"
 
 #: View/Recipes/edit.ctp:443
 msgid "Add Another Recipe"
-msgstr ""
+msgstr "別のレシピを追加"
 
 #: View/Recipes/index.ctp:52
 msgid "Add Recipe"
-msgstr ""
+msgstr "レシピを追加"
 
 #: View/Recipes/index.ctp:53
 #: View/Recipes/view.ctp:45
 msgid "Import"
-msgstr ""
+msgstr "インポート"
 
 #: View/Recipes/index.ctp:58
 msgid "List Ethnicities"
-msgstr ""
+msgstr "一覧民族"
 
 #: View/Recipes/index.ctp:60
 msgid "List Base Types"
-msgstr ""
+msgstr "リストベースタイプ"
 
 #: View/Recipes/index.ctp:62
 msgid "List Courses"
-msgstr ""
+msgstr "リストコース"
 
 #: View/Recipes/index.ctp:64
 msgid "List Preparation Times"
-msgstr ""
+msgstr "リストの準備タイムズ"
 
 #: View/Recipes/index.ctp:66
 msgid "List Preparation Methods"
-msgstr ""
+msgstr "リスト作成方法"
 
 #: View/Recipes/index.ctp:68
 msgid "List Difficulties"
-msgstr ""
+msgstr "リスト困難"
 
 #: View/Recipes/index.ctp:70
 msgid "List Sources"
-msgstr ""
+msgstr "リストソース"
 
 #: View/Recipes/index.ctp:71
 #: View/Sources/index.ctp:14
 msgid "Add Source"
-msgstr ""
+msgstr "ソースの追加"
 
 #: View/Recipes/index.ctp:72
 #: View/Users/view.ctp:6
 msgid "List Users"
-msgstr ""
+msgstr "ユーザーリスト"
 
 #: View/Recipes/index.ctp:73
 #: View/Users/index.ctp:5
 msgid "Add User"
-msgstr ""
+msgstr "ユーザーの追加"
 
 #: View/Recipes/view.ctp:35
 msgid "Edit Recipe"
-msgstr ""
+msgstr "編集レシピ"
 
 #: View/Recipes/view.ctp:36
 msgid "Add to shopping list"
-msgstr ""
+msgstr "買い物リストに追加"
 
 #: View/Recipes/view.ctp:38
 #: View/ShoppingLists/instore.ctp:74
 msgid "Print"
-msgstr ""
+msgstr "印刷"
 
 #: View/Recipes/view.ctp:46
 msgid "Export"
-msgstr ""
+msgstr "輸出"
 
 #: View/Recipes/view.ctp:76
 msgid "Serving Size"
-msgstr ""
+msgstr "一人前の分量"
 
 #: View/Recipes/view.ctp:84
 msgid "Comments"
-msgstr ""
+msgstr "注釈"
 
 #: View/Recipes/view.ctp:97
 msgid "Source Description"
-msgstr ""
+msgstr "ソース説明"
 
 #: View/Recipes/view.ctp:102
 msgid "Last Modified"
-msgstr ""
+msgstr "最終更新日時"
 
 #: View/Recipes/view.ctp:107
 #: View/Users/view.ctp:1
 msgid "User"
-msgstr ""
+msgstr "ユーザー"
 
 #: View/Recipes/view.ctp:123
 msgid "(optional)"
-msgstr ""
+msgstr "（オプション）"
 
 #: View/Recipes/view.ctp:160;190
 msgid "Directions"
-msgstr ""
+msgstr "行き方"
 
 #: View/Recipes/view.ctp:171
 msgid "optional"
-msgstr ""
+msgstr "オプショナル"
 
 #: View/Restaurants/index.ctp:16
 msgid "Add Restaurant"
-msgstr ""
+msgstr "レストランを追加"
 
 #: View/Restaurants/index.ctp:21
 msgid "List Price Ranges"
-msgstr ""
+msgstr "定価の範囲"
 
 #: View/Restaurants/index.ctp:22
 msgid "New Price Ranges"
-msgstr ""
+msgstr "新しい価格帯"
 
 #: View/Setup/database.ctp:29
 msgid "Continue..."
-msgstr ""
+msgstr "続行..."
 
 #: View/Setup/finish.ctp:6
 msgid "Finish"
-msgstr ""
+msgstr "フィニッシュ"
 
 #: View/Setup/index.ctp:145
 msgid "New Install"
-msgstr ""
+msgstr "新規インストール"
 
 #: View/Setup/index.ctp:146
 msgid "Upgrade"
-msgstr ""
+msgstr "アップグレード"
 
 #: View/Setup/upgrade.ctp:27
 msgid "Continue"
-msgstr ""
+msgstr "続ける"
 
 #: View/ShoppingLists/index.ctp:69
 msgid "Clear List"
-msgstr ""
+msgstr "一覧をクリアする"
 
 #: View/ShoppingLists/index.ctp:70
 msgid "List Stores"
-msgstr ""
+msgstr "リスト店舗"
 
 #: View/ShoppingLists/index.ctp:71
 msgid "List Online Vendors"
-msgstr ""
+msgstr "オンラインベンダーを一覧表示"
 
 #: View/ShoppingLists/index.ctp:89;126
 msgid "Action"
-msgstr ""
+msgstr "アクション"
 
 #: View/ShoppingLists/index.ctp:90
 msgid "Recipe Name"
-msgstr ""
+msgstr "レシピ名"
 
 #: View/ShoppingLists/index.ctp:91
 msgid "Servings"
-msgstr ""
+msgstr "サービング"
 
 #: View/ShoppingLists/index.ctp:92
 msgid "Servings to buy"
-msgstr ""
+msgstr "購入するサービング"
 
 #: View/ShoppingLists/index.ctp:107;143
 msgid "Are you sure you want to remove %s?"
-msgstr ""
+msgstr "あなたは％sの削除してもよろしいですか？"
 
 #: View/ShoppingLists/index.ctp:130
 msgid "Ingredient Name"
-msgstr ""
+msgstr "成分の名称"
 
 #: View/ShoppingLists/index.ctp:168
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: View/ShoppingLists/index.ctp:169
 msgid "Start Shopping"
-msgstr ""
+msgstr "ショッピングを開始"
 
 #: View/ShoppingLists/instore.ctp:20
 #: View/ShoppingLists/online.ctp:84
 #: View/ShoppingLists/select.ctp:38
 msgid "Select Items"
-msgstr ""
+msgstr "アイテムの選択"
 
 #: View/ShoppingLists/instore.ctp:21
 msgid "In Store"
-msgstr ""
+msgstr "ストアで"
 
 #: View/ShoppingLists/instore.ctp:36
 #: View/ShoppingLists/online.ctp:92
 #: View/ShoppingLists/select.ctp:46
 msgid "Select"
-msgstr ""
+msgstr "選択します"
 
 #: View/ShoppingLists/instore.ctp:40
 #: View/ShoppingLists/online.ctp:97
 #: View/ShoppingLists/select.ctp:50
 #: View/Users/view.ctp:21
 msgid "Name"
-msgstr ""
+msgstr "名"
 
 #: View/ShoppingLists/instore.ctp:75
 #: View/ShoppingLists/online.ctp:140
 msgid "Complete"
-msgstr ""
+msgstr "完全な"
 
 #: View/ShoppingLists/online.ctp:41
 msgid "Adding "
-msgstr ""
+msgstr "追加"
 
 #: View/ShoppingLists/online.ctp:45
 msgid "Complete!"
-msgstr ""
+msgstr "コンプリート！"
 
 #: View/ShoppingLists/online.ctp:85
 msgid "Online"
-msgstr ""
+msgstr "オンライン"
 
 #: View/ShoppingLists/online.ctp:93
 msgid "Product / ID"
-msgstr ""
+msgstr "製品/ ID"
 
 #: View/ShoppingLists/online.ctp:139
 msgid "Add All"
-msgstr ""
+msgstr "すべて追加"
 
 #: View/ShoppingLists/select.ctp:40
 msgid "What Items do you already have?"
-msgstr ""
+msgstr "あなたはすでに何のアイテムがありますか？"
 
 #: View/Sources/index.ctp:11
 msgid "Sources"
-msgstr ""
+msgstr "ソース"
 
 #: View/Stores/edit.ctp:2
 msgid "Stores "
-msgstr ""
+msgstr "ストア"
 
 #: View/Stores/edit.ctp:3
 msgid "Add & Edit"
-msgstr ""
+msgstr "追加＆編集"
 
 #: View/Stores/index.ctp:3
 msgid "Stores"
-msgstr ""
+msgstr "ストア"
 
 #: View/Stores/index.ctp:6
 msgid "New Store"
-msgstr ""
+msgstr "新店舗"
 
 #: View/Users/edit.ctp:8
 msgid "Account Settings"
-msgstr ""
+msgstr "アカウント設定"
 
 #: View/Users/edit.ctp:29
 msgid "Sunday"
-msgstr ""
+msgstr "日曜日"
 
 #: View/Users/edit.ctp:30
 msgid "Monday"
-msgstr ""
+msgstr "月曜日"
 
 #: View/Users/edit.ctp:31
 msgid "Tuesday"
-msgstr ""
+msgstr "火曜日"
 
 #: View/Users/edit.ctp:32
 msgid "Wednesday"
-msgstr ""
+msgstr "水曜日"
 
 #: View/Users/edit.ctp:33
 msgid "Thursday"
-msgstr ""
+msgstr "木曜日"
 
 #: View/Users/edit.ctp:34
 msgid "Friday"
-msgstr ""
+msgstr "金曜日"
 
 #: View/Users/edit.ctp:35
 msgid "Saturday"
-msgstr ""
+msgstr "土曜日"
 
 #: View/Users/login.ctp:12
 msgid "Enter your username and password"
-msgstr ""
+msgstr "ユーザ名とパスワードを入力してください"
 
 #: View/Users/login.ctp:17
 msgid "Forgot password?"
-msgstr ""
+msgstr "パスワードをお忘れですか？"
 
 #: View/Users/login.ctp:19
 msgid "Login"
-msgstr ""
+msgstr "ログイン"
 
 #: View/Users/reset.ctp:2
 #: View/Users/reset_link.ctp:5
 msgid "Reset Password"
-msgstr ""
+msgstr "パスワードを再設定する"
 
 #: View/Users/reset.ctp:10
 msgid "Enter your email address to received an email to reset your password."
-msgstr ""
+msgstr "あなたのパスワードをリセットするための電子メールを受信するメールアドレスを入力してください。"
 
 #: View/Users/reset.ctp:15
 msgid "Send"
-msgstr ""
+msgstr "送信する"
 
 #: View/Users/reset_link.ctp:6
 msgid "Enter a new password to reset the account '"
-msgstr ""
+msgstr "「アカウントをリセットするために、新しいパスワードを入力してください"
 
 #: View/Users/view.ctp:4
 msgid "Edit User"
-msgstr ""
+msgstr "ユーザーの編集"
 
 #: View/Users/view.ctp:5
 msgid "Delete User"
-msgstr ""
+msgstr "ユーザーの削除"
 
 #: View/Users/view.ctp:11
 msgid "Id"
-msgstr ""
+msgstr "イド"
 
 #: View/Users/view.ctp:16
 msgid "Username"
-msgstr ""
+msgstr "ユーザー名"
 
 #: View/Users/view.ctp:26
 msgid "Access Level"
-msgstr ""
+msgstr "アクセスレベル"
 
 #: View/Users/view.ctp:31
 msgid "Language"
-msgstr ""
+msgstr "言語"
 
 #: View/Users/view.ctp:36
 msgid "Country"
-msgstr ""
+msgstr "カントリー"
 
 #: View/Users/view.ctp:41
 msgid "Created"
-msgstr ""
+msgstr "作成された"
 
 #: View/Users/view.ctp:46
 msgid "Last Login"
-msgstr ""
+msgstr "最終ログイン"
 
 #: View/Users/view.ctp:51
 msgid "Email"
-msgstr ""
+msgstr "メール"
 
 #: View/Users/view.ctp:56
 msgid "Modified"
-msgstr ""
+msgstr "変更された"
 
 #: Model/BaseType.php:validation for field name
 #: Model/CoreIngredient.php:validation for field name;validation for field short_description
@@ -1988,7 +1984,7 @@ msgstr ""
 #: Model/Vendor.php:validation for field name
 #: Model/VendorProduct.php:validation for field name
 msgid "notEmpty"
-msgstr ""
+msgstr "notEmpty"
 
 #: Model/CoreIngredient.php:validation for field groupNumber
 #: Model/MealPlan.php:validation for field meal_name_id;validation for field recipe_id;validation for field servings
@@ -1996,17 +1992,16 @@ msgstr ""
 #: Model/User.php:validation for field access_level
 #: Model/VendorProduct.php:validation for field ingredient_id;validation for field vendor_id
 msgid "numeric"
-msgstr ""
+msgstr "数値の"
 
 #: Model/MealPlan.php:validation for field mealday
 msgid "date"
-msgstr ""
+msgstr "日付"
 
 #: Model/Recipe.php:validation for field private
 msgid "boolean"
-msgstr ""
+msgstr "ブーリアン"
 
 #: Model/User.php:validation for field email
 msgid "email"
-msgstr ""
-
+msgstr "メールアドレス"

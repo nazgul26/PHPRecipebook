@@ -85,10 +85,23 @@ If you are interested in performing a translation/corrections then here are some
 * Open the <app dir>/Locale/default.pot in Poedit and translate
 * When done save in Locale\<lang code>\LC_MESSAGES\default.po
 </p>
-##Currently Supported Languages
+##Currently Supported Languages / Translation Code
+* Chinese - zho
+* Danish - dan
+* Dutch - nld
 * English - eng
+* Estonian - est
 * French - fra
-* Portuguese - por
+* German - deu
+* Hungarian - hun
 * Italian - ita
+* Japanese - jpn
+* Korean - kor
+* Norwegian - nor
+* Portuguese - por
+* Turkish - tur
+* Serbian - srp
+* Spanish - spa
+* Swedish - swe
 
 

@@ -804,12 +804,12 @@ msgid "Password successfully saved"
 msgstr "Contraseña guardado correctamente"
 
 #: Controller/SetupController.php:46
-#: Controller/UsersController.php:190;232
+#: Controller/UsersController.php:192;234
 msgid "The user could not be saved. Please, try again."
 msgstr "El usuario no puede guardarse. Por favor, vuelva a intentarlo."
 
 #: Controller/SetupController.php:49
-#: Controller/UsersController.php:194;236
+#: Controller/UsersController.php:196;238
 msgid "Passwords did not match. Please, try again."
 msgstr "Las contraseñas no coinciden. Por favor, vuelva a intentarlo."
 
@@ -941,63 +941,63 @@ msgstr "No se permite editar otro usuario."
 msgid "Your account is currently locked. Use the password reset link to reset your password."
 msgstr "Su cuenta está bloqueada. Utilice el enlace de restablecimiento de contraseña para restablecer tu contraseña."
 
-#: Controller/UsersController.php:61
+#: Controller/UsersController.php:64
 msgid "Invalid username or password, try again"
 msgstr "Nombre de usuario o contraseña no válidos, vuelva a intentarlo"
 
-#: Controller/UsersController.php:66
+#: Controller/UsersController.php:69
 msgid "Logged out."
 msgstr "Desconectado."
 
-#: Controller/UsersController.php:92
+#: Controller/UsersController.php:95
 msgid "Your reset email is on the way!"
 msgstr "Tu dirección de correo electrónico de restablecimiento está en camino!"
 
-#: Controller/UsersController.php:95
+#: Controller/UsersController.php:98
 msgid "Could not send a reset email. Please contact support."
 msgstr "No se pudo enviar un mensaje de restablecimiento. Por favor, póngase en contacto con soporte."
 
-#: Controller/UsersController.php:97
+#: Controller/UsersController.php:100
 msgid "Could not find your email address, try again."
 msgstr "No se pudo encontrar su dirección de correo electrónico, intente de nuevo."
 
-#: Controller/UsersController.php:112
+#: Controller/UsersController.php:115
 msgid "Passwords are not set to same value. Please, try again."
 msgstr "Las contraseñas no se establecen en mismo valor. Por favor, vuelva a intentarlo."
 
-#: Controller/UsersController.php:118
+#: Controller/UsersController.php:121
 msgid "A new password is required. Please, try again."
 msgstr "Se requiere una nueva contraseña. Por favor, vuelva a intentarlo."
 
-#: Controller/UsersController.php:127
+#: Controller/UsersController.php:130
 msgid "Password successfully reset. Login with your new password to continue."
 msgstr "Contraseña reajusta correctamente. Ingresar con su nueva contraseña para continuar."
 
-#: Controller/UsersController.php:130
+#: Controller/UsersController.php:133
 msgid "The password could not be saved. Please, try again."
 msgstr "La contraseña no puede guardarse. Por favor, vuelva a intentarlo."
 
-#: Controller/UsersController.php:140
+#: Controller/UsersController.php:143
 msgid "Could not find reset information. Please try again."
 msgstr "No se pudo encontrar la información de restablecimiento. Por favor, vuelva a intentarlo."
 
-#: Controller/UsersController.php:162;219;255
+#: Controller/UsersController.php:165;221;257
 msgid "Invalid user"
 msgstr "Usuario invalido"
 
-#: Controller/UsersController.php:186
+#: Controller/UsersController.php:188
 msgid "The user has been saved."
 msgstr "El usuario ha sido guardado."
 
-#: Controller/UsersController.php:229
+#: Controller/UsersController.php:231
 msgid "Settings saved.  Logout/Sign In maybe required for settings to take effect."
 msgstr "Ajustes guardados. Salir / Ingresa posible que se requiera para la configuración surta efecto."
 
-#: Controller/UsersController.php:259
+#: Controller/UsersController.php:261
 msgid "The user has been deleted."
 msgstr "El usuario ha sido eliminado."
 
-#: Controller/UsersController.php:261
+#: Controller/UsersController.php:263
 msgid "The user could not be deleted. Please, try again."
 msgstr "El usuario no debe ser borrada. Por favor, vuelva a intentarlo."
 
@@ -1035,7 +1035,7 @@ msgstr "Sin nombre después de analizar. Función% s devolvió un nombre de arch
 #: View/Sources/edit.ctp:14
 #: View/Stores/edit.ctp:12
 #: View/Units/edit.ctp:15
-#: View/Users/add.ctp:17
+#: View/Users/add.ctp:18
 #: View/Users/edit.ctp:45
 #: View/Users/reset_link.ctp:13
 msgid "Submit"
@@ -1502,19 +1502,23 @@ msgstr "Nueva Gama Precio"
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
 msgstr "Página {: página} de {:} páginas, mostrando {:} actual registra de {:} recuento total, desde record {:} empezar, terminando en {: end}"
 
+#: View/RecipeLinkBox/index.ctp:2
+msgid "Recipe Box"
+msgstr "Recetario"
+
 #: View/RecipeLinkBox/index.ctp:4
 msgid "By Course"
 msgstr "Por Platillo"
 
-#: View/RecipeLinkBox/index.ctp:16
+#: View/RecipeLinkBox/index.ctp:17
 msgid "By Base"
 msgstr "Por Base"
 
-#: View/RecipeLinkBox/index.ctp:28
+#: View/RecipeLinkBox/index.ctp:30
 msgid "By Prep Method"
 msgstr "Por el método de preparación"
 
-#: View/RecipeLinkBox/index.ctp:42
+#: View/RecipeLinkBox/index.ctp:45
 msgid "Add A Recipe"
 msgstr "Agregar una receta"
 

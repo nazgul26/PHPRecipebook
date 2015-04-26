@@ -1,0 +1,193 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: View/Setup/database.ctp:2
+#: View/Setup/upgrade.ctp:2
+msgid "Start"
+msgstr "开始"
+
+#: View/Setup/database.ctp:3
+msgid "New Install"
+msgstr "新安装"
+
+#: View/Setup/database.ctp:8
+msgid "Follow the following steps to create the database schema and import some initial settings:"
+msgstr "按照下面的步骤来创建数据库模式，并导入一些初始设置："
+
+#: View/Setup/database.ctp:12
+msgid "Create the schema"
+msgstr "创建模式"
+
+#: View/Setup/database.ctp:16
+msgid "Import core ingredients"
+msgstr "进口核心成分"
+
+#: View/Setup/database.ctp:19
+msgid "Import sample ingredients (optional)"
+msgstr "进口样品成分（可选）"
+
+#: View/Setup/finish.ctp:3
+#: View/Setup/password.ctp:2
+msgid "Setup"
+msgstr "设定"
+
+#: View/Setup/finish.ctp:4
+#: View/Setup/password.ctp:3
+msgid "Database"
+msgstr "数据库"
+
+#: View/Setup/finish.ctp:5
+msgid "Password"
+msgstr "密码"
+
+#: View/Setup/finish.ctp:11
+msgid "Complete the Setup"
+msgstr "完成安装"
+
+#: View/Setup/finish.ctp:13
+msgid "By editing"
+msgstr "通过编辑"
+
+#: View/Setup/finish.ctp:15;23
+msgid "Change"
+msgstr "变化"
+
+#: View/Setup/finish.ctp:16;24
+msgid "To"
+msgstr "到"
+
+#: View/Setup/finish.ctp:19
+msgid "If you don't change this setting your site will be open for anyone to reconfigure it."
+msgstr "如果不改变这个设置你的网站将开放供任何人都可以重新配置它。"
+
+#: View/Setup/finish.ctp:21
+msgid "AND if you do not want open registration then change"
+msgstr "如果你不希望开放注册，然后改变"
+
+#: View/Setup/finish.ctp:27
+msgid "Congratulations you have successfully setup PHPRecipeBook!"
+msgstr "恭喜你已经成功安装PHPRecipeBook！"
+
+#: View/Setup/finish.ctp:28
+msgid "Press the done button to login and begin setting up some users or adding recipes."
+msgstr "按下按钮进行登录并开始设置某些用户或添加菜谱。"
+
+#: View/Setup/finish.ctp:30
+msgid "Done"
+msgstr "DONE"
+
+#: View/Setup/index.ctp:10
+msgid "Welcome to PHPRecipeBook "
+msgstr "欢迎PHPRecipeBook"
+
+#: View/Setup/index.ctp:12
+msgid "This is the setup page for the application.  The following messages will indicate if your server has been properly setup."
+msgstr "这是应用程序的设置页面。下面的消息将显示如果您的服务器已正确设置。"
+
+#: View/Setup/index.ctp:23
+msgid "Your version of PHP is 5.2.8 or higher."
+msgstr "你的PHP版本是5.2.8或更高版本。"
+
+#: View/Setup/index.ctp:27
+msgid "Your version of PHP is too low. You need PHP 5.2.8 or higher to use CakePHP."
+msgstr "你的PHP版本太低。您需要PHP 5.2.8或更高版本使用CakePHP。"
+
+#: View/Setup/index.ctp:36
+msgid "Your tmp directory is writable."
+msgstr "你的tmp目录是可写的。"
+
+#: View/Setup/index.ctp:40
+msgid "Your tmp directory is NOT writable."
+msgstr "您tmp目录不可写。"
+
+#: View/Setup/index.ctp:50
+msgid "The %s is being used for core caching. To change the config edit %s"
+msgstr "这％s被用于核心缓存。要更改配置编辑％S"
+
+#: View/Setup/index.ctp:54
+msgid "Your cache is NOT working. Please check the settings in %s"
+msgstr "缓存是行不通的。请在％s的设置"
+
+#: View/Setup/index.ctp:64
+msgid "Your database configuration file is present."
+msgstr "你的数据库配置文件是否存在。"
+
+#: View/Setup/index.ctp:69
+msgid "Your database configuration file is NOT present."
+msgstr "你的数据库配置文件不存在。"
+
+#: View/Setup/index.ctp:71
+msgid "Rename %s to %s"
+msgstr "重命名％s到％s"
+
+#: View/Setup/index.ctp:96
+msgid "CakePHP is able to connect to the database."
+msgstr "CakePHP是能够连接到数据库。"
+
+#: View/Setup/index.ctp:102
+msgid "1. Installed the appropriate PHP db module (i.e. php-mysql, php-pgsql)"
+msgstr "1.安装了相应的PHP DB模块（即PHP-MySQL和PHP-pgsql的）"
+
+#: View/Setup/index.ctp:103
+msgid "2. The database has been created and you can connect to it"
+msgstr "2.数据库已经建立，并且可以连接到它"
+
+#: View/Setup/index.ctp:104
+msgid "3. Have the correct username password in database.php config file"
+msgstr "3.您也可以在database.php中的配置文件正确的用户名密码"
+
+#: View/Setup/index.ctp:116
+msgid "PCRE has not been compiled with Unicode support."
+msgstr "PCRE尚未编译Unicode支持。"
+
+#: View/Setup/index.ctp:118
+msgid "Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring"
+msgstr "编译PCRE与Unicode支持通过增加<代码>  - 启用 -  Unicode的性能</ code>的配置时，"
+
+#: View/Setup/index.ctp:127
+msgid "URL rewriting might not properly configured on your server.  "
+msgstr "你的服务器上URL重写可能未正确配置。"
+
+#: View/Setup/index.ctp:135
+msgid "If you have already configured rewriting or a base URL and still see this warning you can try to continue the setup.  Detection of this feature sometimes is not correct."
+msgstr "如果你已经配置重写或基本URL，仍然可以看到这个警告，您可以尝试继续安装。检测这个功能有时是不正确的。"
+
+#: View/Setup/index.ctp:143
+msgid "After correcting any issues above you can continue the setup process."
+msgstr "更正后的任何问题上面你可以继续安装过程。"
+
+#: View/Setup/password.ctp:4
+msgid "Admin Password"
+msgstr "管理员密码"
+
+#: View/Setup/password.ctp:9
+msgid "Enter a new Administrator password.  This username and password will be used to setup other users"
+msgstr "输入新的管理员密码。该用户名和密码将用于设置其他用户"
+
+#: View/Setup/upgrade.ctp:3
+msgid "Upgrade"
+msgstr "升级"
+
+#: View/Setup/upgrade.ctp:8
+msgid "Upgrading will lock all users and require they change their passwords.  This was needed to use Blowfish encryption."
+msgstr "升级将锁定所有用户，并要求他们更改他们的密码。这需要使用Blowfish加密。"
+
+#: View/Setup/upgrade.ctp:12
+msgid "Follow the following steps to upgrade your installation:"
+msgstr "按照以下步骤升级您的安装："
+
+#: View/Setup/upgrade.ctp:16
+msgid "Make a backup of your database!"
+msgstr "让你的数据库的备份！"
+
+#: View/Setup/upgrade.ctp:17
+msgid "Migrate from latest 4.x PHPRecipeBook to 5.0"
+msgstr "从迁移4.x的最新到PHPRecipeBook 5.0"

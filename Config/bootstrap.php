@@ -50,8 +50,21 @@ Configure::write('MeasurementSystems', array(
 
 Configure::write('Languages', array(
     'eng' => 'English',
+    'zho' => 'Chinese',
+    'dan' => 'Danish',
+    'nld' => 'Dutch',
+    'est' => 'Estonian',
     'fra' => 'French',
+    'deu' => 'German',
+    'hun' => 'Hungarian',
     'ita' => 'Italian',
+    'jpn' => 'Japanese',
+    'kor' => 'Korean',
+    'nor' => 'Norwegian',
     'por' => 'Portuguese',
-    'spa' => 'Spanish'
+    'tur' => 'Turkish',
+    'srp' => 'Serbian',
+    'spa' => 'Spanish',
+    'swe' => 'Swedish'
 ));
+

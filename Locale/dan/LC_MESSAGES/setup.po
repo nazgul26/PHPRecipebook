@@ -1,0 +1,193 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: View/Setup/database.ctp:2
+#: View/Setup/upgrade.ctp:2
+msgid "Start"
+msgstr "Start"
+
+#: View/Setup/database.ctp:3
+msgid "New Install"
+msgstr "Ny Installer"
+
+#: View/Setup/database.ctp:8
+msgid "Follow the following steps to create the database schema and import some initial settings:"
+msgstr "Følg nedenstående trin for at oprette databasen skema og importere nogle indledende indstillinger:"
+
+#: View/Setup/database.ctp:12
+msgid "Create the schema"
+msgstr "Opret skemaet"
+
+#: View/Setup/database.ctp:16
+msgid "Import core ingredients"
+msgstr "Import centrale ingredienser"
+
+#: View/Setup/database.ctp:19
+msgid "Import sample ingredients (optional)"
+msgstr "Import prøve ingredienser (valgfrit)"
+
+#: View/Setup/finish.ctp:3
+#: View/Setup/password.ctp:2
+msgid "Setup"
+msgstr "Opsætning"
+
+#: View/Setup/finish.ctp:4
+#: View/Setup/password.ctp:3
+msgid "Database"
+msgstr "Database"
+
+#: View/Setup/finish.ctp:5
+msgid "Password"
+msgstr "Adgangskode"
+
+#: View/Setup/finish.ctp:11
+msgid "Complete the Setup"
+msgstr "Fuldfør opsætning"
+
+#: View/Setup/finish.ctp:13
+msgid "By editing"
+msgstr "Ved redigering"
+
+#: View/Setup/finish.ctp:15;23
+msgid "Change"
+msgstr "Ændring"
+
+#: View/Setup/finish.ctp:16;24
+msgid "To"
+msgstr "Til"
+
+#: View/Setup/finish.ctp:19
+msgid "If you don't change this setting your site will be open for anyone to reconfigure it."
+msgstr "Hvis du ikke ændrer denne indstilling dit websted vil være åben for alle at omkonfigurere den."
+
+#: View/Setup/finish.ctp:21
+msgid "AND if you do not want open registration then change"
+msgstr "OG hvis du ikke ønsker åben tilmelding derefter forandring"
+
+#: View/Setup/finish.ctp:27
+msgid "Congratulations you have successfully setup PHPRecipeBook!"
+msgstr "Tillykke, du har med succes setup PHPRecipeBook!"
+
+#: View/Setup/finish.ctp:28
+msgid "Press the done button to login and begin setting up some users or adding recipes."
+msgstr "Tryk på knappen Udført for at logge ind og begynde at oprette nogle brugere eller tilføje opskrifter."
+
+#: View/Setup/finish.ctp:30
+msgid "Done"
+msgstr "Færdig"
+
+#: View/Setup/index.ctp:10
+msgid "Welcome to PHPRecipeBook "
+msgstr "Velkommen til PHPRecipeBook"
+
+#: View/Setup/index.ctp:12
+msgid "This is the setup page for the application.  The following messages will indicate if your server has been properly setup."
+msgstr "Dette er opsætningen siden for anvendelsen. Følgende meddelelser vil angive, om din server er blevet ordentligt setup."
+
+#: View/Setup/index.ctp:23
+msgid "Your version of PHP is 5.2.8 or higher."
+msgstr "Din version af PHP er 5.2.8 eller højere."
+
+#: View/Setup/index.ctp:27
+msgid "Your version of PHP is too low. You need PHP 5.2.8 or higher to use CakePHP."
+msgstr "Din version af PHP er for lav. Du har brug for PHP 5.2.8 eller højere for at bruge CakePHP."
+
+#: View/Setup/index.ctp:36
+msgid "Your tmp directory is writable."
+msgstr "Din tmp er skrivbar."
+
+#: View/Setup/index.ctp:40
+msgid "Your tmp directory is NOT writable."
+msgstr "Din tmp er ikke skrivbar."
+
+#: View/Setup/index.ctp:50
+msgid "The %s is being used for core caching. To change the config edit %s"
+msgstr "% S bliver brugt til core caching. For at ændre config redigere% s"
+
+#: View/Setup/index.ctp:54
+msgid "Your cache is NOT working. Please check the settings in %s"
+msgstr "Cachen fungerer ikke. Kontroller indstillingerne i% s"
+
+#: View/Setup/index.ctp:64
+msgid "Your database configuration file is present."
+msgstr "Din database konfigurationsfil er til stede."
+
+#: View/Setup/index.ctp:69
+msgid "Your database configuration file is NOT present."
+msgstr "Din database konfigurationsfil er ikke til stede."
+
+#: View/Setup/index.ctp:71
+msgid "Rename %s to %s"
+msgstr "Omdøbe% s til% s"
+
+#: View/Setup/index.ctp:96
+msgid "CakePHP is able to connect to the database."
+msgstr "CakePHP er i stand til at oprette forbindelse til databasen."
+
+#: View/Setup/index.ctp:102
+msgid "1. Installed the appropriate PHP db module (i.e. php-mysql, php-pgsql)"
+msgstr "1. Installeret den relevante PHP db modul (dvs. php-mysql, php-pgsql)"
+
+#: View/Setup/index.ctp:103
+msgid "2. The database has been created and you can connect to it"
+msgstr "2. Databasen er oprettet, og du kan oprette forbindelse til det"
+
+#: View/Setup/index.ctp:104
+msgid "3. Have the correct username password in database.php config file"
+msgstr "3. Har den korrekte brugernavn adgangskode i database.php konfigurationsfil"
+
+#: View/Setup/index.ctp:116
+msgid "PCRE has not been compiled with Unicode support."
+msgstr "PCRE er ikke blevet kompileret med Unicode support."
+
+#: View/Setup/index.ctp:118
+msgid "Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring"
+msgstr "Rekompilere PCRE med Unicode-understøttelse ved at tilføje <code> - enable-unicode-egenskaber </ code>, når du konfigurerer"
+
+#: View/Setup/index.ctp:127
+msgid "URL rewriting might not properly configured on your server.  "
+msgstr "URL omskrivning måske ikke konfigureret korrekt på din server."
+
+#: View/Setup/index.ctp:135
+msgid "If you have already configured rewriting or a base URL and still see this warning you can try to continue the setup.  Detection of this feature sometimes is not correct."
+msgstr "Hvis du allerede har konfigureret omskrivning eller base URL og stadig se denne advarsel kan du prøve at fortsætte opsætningen. Påvisning af denne funktion til tider er ikke korrekt."
+
+#: View/Setup/index.ctp:143
+msgid "After correcting any issues above you can continue the setup process."
+msgstr "Efter korrektion eventuelle problemer ovenfor kan du fortsætte installationsprocessen."
+
+#: View/Setup/password.ctp:4
+msgid "Admin Password"
+msgstr "Admin Password"
+
+#: View/Setup/password.ctp:9
+msgid "Enter a new Administrator password.  This username and password will be used to setup other users"
+msgstr "Indtast en ny administrator password. Denne brugernavn og adgangskode vil blive brugt til opsætning andre brugere"
+
+#: View/Setup/upgrade.ctp:3
+msgid "Upgrade"
+msgstr "Opgradering"
+
+#: View/Setup/upgrade.ctp:8
+msgid "Upgrading will lock all users and require they change their passwords.  This was needed to use Blowfish encryption."
+msgstr "Opgradering vil låse alle brugere og kræver de ændrer deres adgangskoder. Dette var nødvendigt for at bruge Blowfish kryptering."
+
+#: View/Setup/upgrade.ctp:12
+msgid "Follow the following steps to upgrade your installation:"
+msgstr "Følg følgende trin for at opgradere din installation:"
+
+#: View/Setup/upgrade.ctp:16
+msgid "Make a backup of your database!"
+msgstr "Lav en sikkerhedskopi af din database!"
+
+#: View/Setup/upgrade.ctp:17
+msgid "Migrate from latest 4.x PHPRecipeBook to 5.0"
+msgstr "Migrere fra seneste 4.x PHPRecipeBook til 5,0"
