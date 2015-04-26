@@ -85,17 +85,17 @@ $cakeDescription = 'PHPRecipeBook';
                     <?php if (!$loggedIn) : ?>
                         <li>
                             <a href="<?php echo $baseUrl;?>Users/login" id="signInButton" 
-                               title="<?php echo __('Sign in with your existing account');?>"><?= __('Sign in')?></a>
+                               title="<?php echo __('Sign in with your existing account');?>"><?php echo __('Sign in')?></a>
                         </li>
                         <?php if ($allowAccountCreation) :?>
                         <li>
                             <a href="<?php echo $baseUrl;?>Users/add" id="signInButton" 
-                               title="<?php echo __('Create a new account');?>"><?= __('Create Account')?></a>
+                               title="<?php echo __('Create a new account');?>"><?php echo __('Create Account')?></a>
                         </li>
                         <?php endif;?>
                     <?php else: ?>
                     <li>
-                        <a href="<?php echo $baseUrl;?>Users/logout" title="<?php echo __('Logout');?>"><?= __('Logout')?></a>
+                        <a href="<?php echo $baseUrl;?>Users/logout" title="<?php echo __('Logout');?>"><?php __('Logout')?></a>
                     </li>
                     <li id="settingsLink">
                         <a href="<?php echo $baseUrl;?>Users/edit/<?php echo AuthComponent::user('id');?>" 

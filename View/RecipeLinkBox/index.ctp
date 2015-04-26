@@ -1,5 +1,5 @@
 <div id="recipeLinkBox">
-    <div id="recipeLinksTitle"><?= __('Recipe Box')?></div>
+    <div id="recipeLinksTitle"><?php echo __('Recipe Box')?></div>
     <div id="recipeLinks">
         <?php echo __('By Course') ;?>
         <ul class="recipeBoxList">
