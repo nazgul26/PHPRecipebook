@@ -38,9 +38,8 @@ $cakeDescription = 'PHPRecipeBook';
         $(function() {
             initApplication("<?php echo $baseUrl;?>");
         });
-        
         // Global Variables
-        var applicationContext = "recipe"; // Default context
+        var applicationContext = "recipes"; // Default context
     </script>
     
     <div id="container">
