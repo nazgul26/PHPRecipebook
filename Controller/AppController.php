@@ -59,7 +59,10 @@ class AppController extends Controller {
         $this->set('loggedIn', $this->Auth->loggedIn());
         $user = $this->Auth->user();
         $this->isAdmin = $this->User->isAdmin($user);
+        $this->isEditor = $this->User->isEditor($user);
+        $this->set('loggedInuserId', $this->Auth->user('id'));
         $this->set('isAdmin', $this->isAdmin);
+        $this->set('isEditor', $this->isEditor);
         $this->set('allowAccountCreation', Configure::read('App.allowPublicAccountCreation'));
     }
     

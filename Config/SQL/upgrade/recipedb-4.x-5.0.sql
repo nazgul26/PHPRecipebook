@@ -207,6 +207,11 @@ ALTER TABLE reviews CHANGE review_user user_id INT NULL;
 ALTER TABLE reviews ADD UNIQUE (recipe_id,user_id);
 ALTER TABLE reviews ADD rating INT;
 
+INSERT INTO reviews (recipe_id, rating, comments)  
+    SELECT rating_recipe, rating_score, '' FROM recipe_ratings;
+
+DROP TABLE recipe_ratings;
+
 RENAME TABLE recipe_prices TO price_ranges;
 ALTER TABLE price_ranges CHANGE price_id id INT NOT NULL AUTO_INCREMENT;
 ALTER TABLE price_ranges CHANGE price_desc name VARCHAR(16);

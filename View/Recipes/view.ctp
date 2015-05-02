@@ -20,6 +20,8 @@ if (isset($servings)) {
             var newServings = $('#viewServings').val();
             ajaxNavigate("recipes/view/<?php echo $recipeId;?>/" + newServings);
         })
+        
+        $('.rateit').rateit();
     });
     
     function loadImage(imageUrl, caption) {
@@ -29,10 +31,13 @@ if (isset($servings)) {
 </script>
 <div class="recipes view">
     <h2><?php echo h($recipe['Recipe']['name']); ?></h2>
+        <div class="rateit" data-rateit-value="2.5" data-rateit-ispreset="true" data-rateit-readonly="true"></div> 
+        <?php echo $this->Html->link(__('Reviews'), array('controller'=>'reviews', 'action' => 'index', $recipeId)); ?>
         <div class="actions">
             <ul>
                 <?php if ($loggedIn):?>
-                <li><?php echo $this->Html->link(__('Edit Recipe'), array('action' => 'edit', $recipeId)); ?></li>
+                <li><?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recipeId)); ?></li>
+                <li><?php echo $this->Html->link(__('Add Review'), array('controller'=>'reviews', 'action' => 'edit', $recipeId)); ?></li>
                 <li><?php echo $this->Html->link(__('Add to shopping list'), array('controller' => 'shoppingLists', 'action' => 'addRecipe', 0, $recipeId, $servings)); ?></li>
                 <?php endif;?>
                 <li><a href="#" onclick="window.print();"><?php echo __('Print');?></a></li>
@@ -135,11 +140,9 @@ if (isset($servings)) {
                 $imagePreview =  preg_replace('/(.*)\.(.*)/i', 'preview_${1}.$2', $imageName);
                 $imageCaption = $recipe['Image'][0]['name'];
                 
-                echo '<a id="selectedPreviewImage" href="#"><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
-                            $imagePreview . '" title="' . $imageCaption . '"/></a><br/>';
-                
+                echo "<div id='ImageOptions'>";
                 if ($imageCount > 1) {
-                    echo "<div id='ImageOptions'>";
+                    
                     for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
                         $imageName = $recipe['Image'][$imageIndex]['attachment'];
                         $imageDir = $recipe['Image'][$imageIndex]['dir'];
@@ -151,8 +154,13 @@ if (isset($servings)) {
                         echo '<a href="#" onclick=\'loadImage("' . $previewUrl. '", "'. $imageCaption . '");\'><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
                                 $imageThumb . '" title="' . $imageCaption . '"/></a>';
                     }
-                    echo "</div>";
+                    
                 }
+                echo "</div>";
+                
+                echo '<a id="selectedPreviewImage" href="#"><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
+                            $imagePreview . '" title="' . $imageCaption . '"/></a><br/>';
+
             }?>
         </div> 
         <div class="clear"/><br/>    

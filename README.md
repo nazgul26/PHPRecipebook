@@ -50,6 +50,12 @@ more effort copying files around.
     - sudo chown <your web group>.<your web user> <app install dir>/webroot/files/recipe
 * Launch the website and complete steps in wizard.
 
+<h2>Upgrades in 5.x Series</h2>
+Between releases you can update your database by running 
+
+* ./Console/cake schema update
+* removing all files from ./tmp/cache/models
+
 <h2>Heroku Deployment</h2>
 <hr/>
 * Clone PHPRecipebook to your computer.

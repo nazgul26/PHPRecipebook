@@ -13,8 +13,9 @@ $cakeDescription = 'PHPRecipeBook';
 		echo $this->Html->meta('icon');
 		
                 echo $this->Html->css("https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css");
-                echo $this->Html->css("toastr.min.css");
+                echo $this->Html->css("toastr.min");
                 echo $this->Html->css("jquery.qtip");
+                echo $this->Html->css("rateit");
                 echo $this->Html->css('cake.generic');
                 echo $this->Html->css('default');
                 echo $this->Html->css('print');
@@ -23,6 +24,7 @@ $cakeDescription = 'PHPRecipeBook';
                 echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js");
                 echo $this->Html->script("toastr.min.js");
                 echo $this->Html->script("jquery.qtip.js");
+                echo $this->Html->script("jquery.rateit.min.js");
                 echo $this->Html->script("default");
                 
 		echo $this->fetch('meta');

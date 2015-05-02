@@ -60,7 +60,6 @@ class RecipesController extends AppController {
     public function index() {
         $this->Recipe->recursive = 0;
         $this->Paginator->settings = $this->paginate;
-        $this->set('loggedInuserId', $this->Auth->user('id'));
         $this->set('recipes', $this->Paginator->paginate('Recipe', $this->filterConditions));
     }
 
