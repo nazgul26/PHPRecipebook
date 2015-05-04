@@ -19,6 +19,13 @@ if (isset($servings)) {
         $('#viewRefresh').click(function() {
             var newServings = $('#viewServings').val();
             ajaxNavigate("recipes/view/<?php echo $recipeId;?>/" + newServings);
+            return false;
+        })
+        
+        $('#doubleRefresh').click(function() {
+            var newServings = $('#viewServings').val() * 2;
+            ajaxNavigate("recipes/view/<?php echo $recipeId;?>/" + newServings);
+            return false;
         })
         
         $('.rateit').rateit();
@@ -81,7 +88,8 @@ if (isset($servings)) {
 		<dt><?php echo __('Serving Size'); ?></dt>
 		<dd>
                     <input type="text" id="viewServings" value="<?php echo $servings;?>"/>
-                    <button id="viewRefresh">Refresh</button>
+                    <a id="viewRefresh" href="#"><?php echo __('Refresh');?></a> /
+                    <a id="doubleRefresh" href="#"><?php echo __('Double it');?></a>
 		</dd>
         </dl>
 
@@ -116,8 +124,17 @@ if (isset($servings)) {
 	</dl>
         
         <div class="clear"/><br/>
-        
-        <div class="float50Section">
+        <hr/>
+        <br/>
+            <?php 
+                $imageCount = (isset($recipe) && $recipe['Image'])? count($recipe['Image']) : 0;
+                if ($imageCount > 0) {
+                    echo '<div class="float50Section">';
+
+                } else {
+                    echo  '<div style="width: 100%;">';
+                }
+            ?>
             <b><?php echo __('Ingredients'); ?></b>
             <pre><?php for ($i = 0; $i < count($recipe['IngredientMapping']); $i++) {
                             $quantity = $recipe['IngredientMapping'][$i]['quantity'];
@@ -132,7 +149,6 @@ if (isset($servings)) {
         </div>
         <div class="float50Section" id="imagePreview">
             <?php 
-            $imageCount = (isset($recipe) && $recipe['Image'])? count($recipe['Image']) : 0;
             $baseUrl = Router::url('/');
             if ($imageCount > 0) {
                 $imageName = $recipe['Image'][0]['attachment'];
@@ -140,7 +156,11 @@ if (isset($servings)) {
                 $imagePreview =  preg_replace('/(.*)\.(.*)/i', 'preview_${1}.$2', $imageName);
                 $imageCaption = $recipe['Image'][0]['name'];
                 
-                echo "<div id='ImageOptions'>";
+                echo "<div id='selectedRecipeImage'>";
+                echo '<a href="#"><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
+                            $imagePreview . '" title="' . $imageCaption . '"/></a><br/>';
+                echo "</div>";
+                echo "<div id='previewImageOptions'>";
                 if ($imageCount > 1) {
                     
                     for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
@@ -157,10 +177,6 @@ if (isset($servings)) {
                     
                 }
                 echo "</div>";
-                
-                echo '<a id="selectedPreviewImage" href="#"><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
-                            $imagePreview . '" title="' . $imageCaption . '"/></a><br/>';
-
             }?>
         </div> 
         <div class="clear"/><br/>    

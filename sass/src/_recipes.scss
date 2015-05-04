@@ -70,21 +70,17 @@ float60Section {
     margin-left: 1.5em;
 }
 
-#imagePreview {
-    margin-top: -50px;
+#selectedRecipeImage {
+    float: left;
+    margin-left: 40px;
+    width: 230px;
 }
-#imagePreview a {
-    margin-top: 6px;
-    margin-left: 6px;
-}
-#imagePreview #selectedPreviewImage img {
-    margin-left: 4em;
-}
-#ImageOptions {
+
+#previewImageOptions a {
     height: 55px;
-    margin-left: 4px;
-    margin-top: 4px;
-    padding: 2px;
+    margin-bottom: 4px;
+    float: left;
+    width: 70px;
 }
 
 #viewServings {
