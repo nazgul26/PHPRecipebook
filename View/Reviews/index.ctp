@@ -2,6 +2,7 @@
     <li><?php echo $this->Html->link($recipe['Recipe']['name'], array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxNavigation')); ?> </li>
     <li class="active"><?php echo __('Reviews');?></li>
 </ol>
+       
 <div class="reviews index">
     <?php foreach ($reviews as $review): ?>
     <div class="reviewCell">
@@ -30,8 +31,9 @@
     </div>
     <?php endforeach; ?>
     <p>
-    <?php
-    echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}')));?></p>
+        <a class="btn-primary"><?php echo __('Add your own review...');?></a>
+    </p>
+    <p><?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}')));?></p>
     <div class="paging">
     <?php
         echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));

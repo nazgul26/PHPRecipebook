@@ -143,7 +143,8 @@ class RecipesController extends AppController {
                     'User' => array(
                         'fields' => array('name', 'id')
                     ),
-                    'Image'
+                    'Image',
+                    'Review'
                 ));
         $this->set('recipe', $this->Recipe->find('first', $options));
         $this->set('servings', $servings);

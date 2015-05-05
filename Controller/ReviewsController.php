@@ -6,7 +6,10 @@ class ReviewsController extends AppController {
 
     public $components = array('Paginator');
 
-
+    public $paginate = array(
+        'limit' => 8
+    );
+    
     public function index($recipeId = null) {
         if ($recipeId == null) {
             throw new NotFoundException(__('Missing Recipe ID'));
@@ -17,7 +20,8 @@ class ReviewsController extends AppController {
                 'contain' => array());
         $this->set('recipe', $this->Recipe->find('first', $options));
         $this->Review->recursive = 0;
-        $this->set('reviews', $this->Paginator->paginate());
+        $this->Paginator->settings = $this->paginate;
+        $this->set('reviews', $this->Paginator->paginate('Review', array('Review.recipe_id =' => $recipeId)));
         $this->set('recipeId', $recipeId);
     }
 

@@ -140,7 +140,13 @@ class Recipe extends AppModel {
         'Image' => array(
             'className' => 'Attachment',
             'foreignKey' => 'recipe_id',
-        )
+        ),
+        'Review' => array(
+            'className' => 'Review',
+            'foreignKey' => 'recipe_id',
+            'order' => 'Review.created',
+            'dependent' => true
+        ),
     );
         
     public function saveWithAttachments($data) {

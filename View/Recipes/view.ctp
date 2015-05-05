@@ -1,10 +1,20 @@
 <?php 
 $recipeId = $recipe['Recipe']['id'];
 $scale = 1; // default no scaling
+$numberOfReviews = 0;
+$averageRating = 0;
 if (isset($servings)) {
     $scale = $servings / $recipe['Recipe']['serving_size'];
 } else {
     $servings = $recipe['Recipe']['serving_size'];
+}
+
+if (isset($recipe['Review'])) {
+    $numberOfReviews = count($recipe['Review']);
+    foreach ($recipe['Review'] as $review) {
+        $averageRating += $review['rating'];
+    }
+    $averageRating = $averageRating / $numberOfReviews;
 }
 ?>
 <script type="text/javascript">
@@ -38,8 +48,13 @@ if (isset($servings)) {
 </script>
 <div class="recipes view">
     <h2><?php echo h($recipe['Recipe']['name']); ?></h2>
-        <div class="rateit" data-rateit-value="2.5" data-rateit-ispreset="true" data-rateit-readonly="true"></div> 
-        <?php echo $this->Html->link(__('Reviews'), array('controller'=>'reviews', 'action' => 'index', $recipeId)); ?>
+        <div class="rateit" 
+             data-rateit-value="<?php echo $averageRating;?>" 
+             title="<?php echo __("$averageRating out of 5 stars");?>"
+             data-rateit-ispreset="true" 
+             data-rateit-readonly="true">
+        </div> 
+        <?php echo $numberOfReviews . " " . $this->Html->link(__('Review(s)'), array('controller'=>'reviews', 'action' => 'index', $recipeId)); ?>
         <div class="actions">
             <ul>
                 <?php if ($loggedIn):?>
