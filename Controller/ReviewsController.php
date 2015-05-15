@@ -12,7 +12,7 @@ class ReviewsController extends AppController {
     
     public function index($recipeId = null) {
         if ($recipeId == null) {
-            throw new NotFoundException(__('Missing Recipe ID'));
+            throw new NotFoundException(__('Missing review ID'));
         }
         $this->loadModel('Recipe');
         $this->Recipe->Behaviors->load('Containable');
@@ -44,19 +44,24 @@ class ReviewsController extends AppController {
                 throw new NotFoundException(__('Invalid review'));
         }
         if ($this->request->is(array('post', 'put'))) {
-            if ($this->Review->save($this->request->data)) {
-                    $this->Session->setFlash(__('The review has been saved.'));
-                    return $this->redirect(array('action' => 'index'));
-            } else {
+            $this->request->data['Review']['user_id'] = $this->Auth->user('id');
+            $this->request->data['Review']['recipe_id'] = $recipeId;
+            try {
+                if ($this->Review->save($this->request->data)) {
+                    $this->Session->setFlash(__('The review has been saved.'), 'success');
+                    return $this->redirect(array('action' => 'index', $recipeId));
+                } else {
                     $this->Session->setFlash(__('The review could not be saved. Please, try again.'));
+                }
+            } catch (Exception $e) {
+                $this->Session->setFlash(__('You have already entered a review for this recipe. Please edit or delete your existing review.'));
             }
         } else {
             $options = array('conditions' => array('Review.' . $this->Review->primaryKey => $id));
             $this->request->data = $this->Review->find('first', $options);
         }
-        $recipes = $this->Review->Recipe->find('list');
-        $users = $this->Review->User->find('list');
-        $this->set(compact('recipes', 'users'));
+        $recipe = $this->Review->Recipe->findById($recipeId);
+        $this->set('recipe', $recipe);
     }
 
     public function delete($id = null) {

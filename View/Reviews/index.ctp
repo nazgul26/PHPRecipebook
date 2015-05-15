@@ -1,3 +1,15 @@
+<?php 
+$baseUrl = Router::url('/');
+?>
+<script type="text/javascript">
+    $(function() {
+        $('[add-review]').click(function() {
+            ajaxNavigate('<?php echo $baseUrl;?>Reviews/edit/<?php echo $recipeId;?>');
+        });
+    });
+</script>
+<?php echo $this->Session->flash(); ?>
+
 <ol class="breadcrumb">
     <li><?php echo $this->Html->link($recipe['Recipe']['name'], array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxNavigation')); ?> </li>
     <li class="active"><?php echo __('Reviews');?></li>
@@ -26,12 +38,13 @@
             ?>
         </div>
         <?php if ($isEditor || ($loggedIn && $loggedInuserId == $review['User']['id'])) {
-            echo $this->Html->link(__('Edit'), array('action' => 'edit'), array('class' => 'ajaxNavigation'));
+            echo $this->Html->link(__('Edit'), array('action' => 'edit', $review['Review']['recipe_id'], $review['Review']['id']), array('class' => 'ajaxNavigation'));
+            echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $review['Review']['id']), null, __('Are you sure you want to delete this review?'));
         }?>
     </div>
     <?php endforeach; ?>
     <p>
-        <a class="btn-primary"><?php echo __('Add your own review...');?></a>
+        <a class="btn-primary" add-review><?php echo __('Add your own review...');?></a>
     </p>
     <p><?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}')));?></p>
     <div class="paging">

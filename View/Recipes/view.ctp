@@ -11,10 +11,12 @@ if (isset($servings)) {
 
 if (isset($recipe['Review'])) {
     $numberOfReviews = count($recipe['Review']);
-    foreach ($recipe['Review'] as $review) {
-        $averageRating += $review['rating'];
+    if ($numberOfReviews > 0) {
+        foreach ($recipe['Review'] as $review) {
+            $averageRating += $review['rating'];
+        }
+        $averageRating = $averageRating / $numberOfReviews;
     }
-    $averageRating = $averageRating / $numberOfReviews;
 }
 ?>
 <script type="text/javascript">
