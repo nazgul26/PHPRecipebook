@@ -56,7 +56,7 @@ if (isset($recipe['Review'])) {
              data-rateit-ispreset="true" 
              data-rateit-readonly="true">
         </div> 
-        <?php echo $numberOfReviews . " " . $this->Html->link(__('Review(s)'), array('controller'=>'reviews', 'action' => 'index', $recipeId)); ?>
+        <?php echo $this->Html->link($numberOfReviews . ' ' . __('Review(s)'), array('controller'=>'reviews', 'action' => 'index', $recipeId)); ?>
         <div class="actions">
             <ul>
                 <?php if ($loggedIn):?>

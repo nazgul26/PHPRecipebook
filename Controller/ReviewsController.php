@@ -10,6 +10,24 @@ class ReviewsController extends AppController {
         'limit' => 8
     );
     
+    public function isAuthorized($user) {
+        // The owner of a review can edit and delete it
+        if (in_array($this->action, array('edit', 'delete')) && isset($this->request->params['pass'][1])) {
+            $reviewId = (int) $this->request->params['pass'][1];
+
+            if ($this->User->isEditor($user) || $this->Review->isOwnedBy($reviewId, $user['id'])) {
+                return true;
+            }
+            else {
+                $this->Session->setFlash(__('Not Review Owner'));
+                return false;
+            }
+        }
+
+        // Just in case the base controller has something to add
+        return parent::isAuthorized($user);
+    }
+    
     public function index($recipeId = null) {
         if ($recipeId == null) {
             throw new NotFoundException(__('Missing review ID'));

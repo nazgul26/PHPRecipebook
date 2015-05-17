@@ -6,6 +6,7 @@ $baseUrl = Router::url('/');
         $('[add-review]').click(function() {
             ajaxNavigate('<?php echo $baseUrl;?>Reviews/edit/<?php echo $recipeId;?>');
         });
+        $('.rateit').rateit();
     });
 </script>
 <?php echo $this->Session->flash(); ?>
@@ -43,9 +44,23 @@ $baseUrl = Router::url('/');
         }?>
     </div>
     <?php endforeach; ?>
+    
+    <?php if (count($reviews) == 0) :
+        echo __('No one has reviewed this recipe yet. Be the first.');?>
+        <br/>
+        <br/>
+    <?php endif; ?>
+    <br/>
+    
     <p>
+        <?php if ($loggedIn) { ?>
         <a class="btn-primary" add-review><?php echo __('Add your own review...');?></a>
+        <?php } else { ?>
+            <a add-review href='#'><?php echo __('Sign in to add your own review');?></a>
+            <br/><br/>
+        <?php }?>
     </p>
+    <?php if (count($reviews) > 0) : ?>
     <p><?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}')));?></p>
     <div class="paging">
     <?php
@@ -54,5 +69,6 @@ $baseUrl = Router::url('/');
         echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
     ?>
     </div>
+    <?php endif;?>
 </div>
 
