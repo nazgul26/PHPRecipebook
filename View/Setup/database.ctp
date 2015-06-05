@@ -20,7 +20,7 @@
         <b>Config/SQL/sample_ingredients.sql</b>(optional)
     </li>
     <li>
-        <?php echo d('setup', 'Edit the configuration file to set your Email Server/Account')?><br/>
+        <?php echo __d('setup', 'Edit the configuration file to set your Email Server/Account')?><br/>
         <b>./Config/email.php</b>
     </li> 
 </ul>

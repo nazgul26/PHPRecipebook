@@ -25,7 +25,7 @@
 	<tr>
             <td class="actions">
                     <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $unit['Unit']['id']), array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog')); ?>
-                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $unit['Unit']['id']), null, __('Are you sure you want to delete # %s?', $unit['Unit']['id'])); ?>
+                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $unit['Unit']['id']), null, __('Are you sure you want to delete %s?', $unit['Unit']['name'])); ?>
             </td>
             <td><?php echo h($unit['Unit']['name']); ?>&nbsp;</td>
             <td><?php echo h($unit['Unit']['abbreviation']); ?>&nbsp;</td>

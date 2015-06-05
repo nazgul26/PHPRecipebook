@@ -9,7 +9,15 @@
     echo $this->Form->hidden('id');
     echo $this->Form->input('name');
     echo $this->Form->input('abbreviation');
-    echo $this->Form->input('system');
+    echo $this->Form->input('system', 
+                    array('options' => 
+                        array(
+                            '0' => __('Unit'), 
+                            '1' => __('USA'),
+                            '2' => __('Metric')
+                            )
+                        )
+                    );
     echo $this->Form->input('sort_order');
 ?>
 <?php echo $this->Form->end(__('Submit')); ?>

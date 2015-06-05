@@ -34,7 +34,7 @@
 		<li><?php echo $this->Html->link(__('List Locations'), array('controller' => 'locations', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Location'), array('controller' => 'locations', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Units'), array('controller' => 'units', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Unit'), array('controller' => 'units', 'action' => 'add'), array('class' => 'ajaxLink')); ?> </li>
+		<li><?php echo $this->Html->link(__('Add Unit'), array('controller' => 'units', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog')); ?> </li>
             </ul>
         </div> 
         </div>
