@@ -29,7 +29,7 @@
 	</ul>
         <div style="display: none;">
             <ul id="moreActionLinksContent">
-                <li><?php echo $this->Html->link(__('List Core Ingredients'), array('controller' => 'core_ingredients', 'action' => 'index'), array('class' => 'ajaxLink')); ?> </li>
+                <li><?php echo $this->Html->link(__('List Core Ingredients'), array('controller' => 'core_ingredients', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Core Ingredient'), array('controller' => 'core_ingredients', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editCoreIngredientDialog')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Locations'), array('controller' => 'locations', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
 		<li><?php echo $this->Html->link(__('Add Location'), array('controller' => 'locations', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog')); ?> </li>

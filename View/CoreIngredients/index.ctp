@@ -12,8 +12,8 @@
 	<h2><?php echo __('Core Ingredients'); ?></h2>
             <div class="actions">
             <ul>
-                <li><?php echo $this->Html->link(__('Add Core Ingredient'), array('action' => 'add'), array('class' => 'ajaxLink'));?></li>
-                <li><?php echo $this->Html->link(__('List Ingredients'), array('controller' => 'ingredients', 'action' => 'index'), array('class' => 'ajaxLink'));?></li>
+                <li><?php echo $this->Html->link(__('Add Core Ingredient'), array('action' => 'edit'), array('class' => 'ajaxNavigationLink'));?></li>
+                <li><?php echo $this->Html->link(__('List Ingredients'), array('controller' => 'ingredients', 'action' => 'index'), array('class' => 'ajaxNavigationLink'));?></li>
                 <li><button id="moreActionLinks">More Actions...</button></li>
             </ul>
             <div style="display: none;">
