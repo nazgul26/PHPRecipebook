@@ -58,9 +58,16 @@ class RecipesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Recipe->recursive = 0;
-        $this->Paginator->settings = $this->paginate;
-        $this->set('recipes', $this->Paginator->paginate('Recipe', $this->filterConditions));
+
+        if ($this->isMobile) {
+            $alphabetList = $this->Recipe->query("SELECT DISTINCT LOWER(SUBSTRING(name, 1, 1)) AS A FROM recipes");
+            $this->set('alphabetList', $alphabetList);
+            $this->render('alphabet');
+        } else {
+            $this->Recipe->recursive = 0;
+            $this->Paginator->settings = $this->paginate;
+            $this->set('recipes', $this->Paginator->paginate('Recipe', $this->filterConditions));
+        }
     }
 
     public function findByBase($baseId) {

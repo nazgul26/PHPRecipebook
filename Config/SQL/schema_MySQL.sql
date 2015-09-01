@@ -77,7 +77,7 @@ CREATE TABLE preparation_methods (
 
 CREATE TABLE core_ingredients (
 	id INT NOT NULL,
-	groupId INT NOT NULL,
+	groupNumber INT NOT NULL,
 	name VARCHAR(200) NOT NULL,
 	short_description VARCHAR(60) NOT NULL,
 	PRIMARY KEY (id)

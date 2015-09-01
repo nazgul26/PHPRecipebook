@@ -17,6 +17,7 @@ class AppController extends Controller {
     
     public $components = array(
         'Session',
+        'RequestHandler',
         'Auth' => array(
             'loginRedirect' => array(
                 'controller' => 'recipes',
@@ -47,10 +48,16 @@ class AppController extends Controller {
         //  people will get the idea pretty quickly.
         $this->Session->delete('Message.auth');
 
+        /*if ($this->RequestHandler->isMobile()) {
+            $this->layout = 'mobile';
+            $this->isMobile = true;
+        } else {
+            $this->layout = 'mobile';
+            $this->isMobile = true;
+        }*/
+        
         if ($this->request->is('ajax')) {
             $this->layout = 'ajax'; 
-        } else {
-            $this->layout = 'default';
         }
         
         $this->Auth->allow('index', 'view', 'display');

@@ -53,7 +53,9 @@ more effort copying files around.
 <h2>Upgrades in 5.x Series</h2>
 Between releases you can update your database by running 
 
-* ./Console/cake schema update
+* ./Console/cake schema update -s 1
+* ./Console/cake schema update -s 2
+* etc.. for each update needed
 * removing all files from ./tmp/cache/models
 
 <h2>Heroku Deployment</h2>
