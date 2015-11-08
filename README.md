@@ -82,7 +82,9 @@ Between releases you can update your database by running
   - Solution 2: Your webserver does not support url rewriting.  Follow the directions http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration to change app to not use rewriting.
 * You get this error: Warning: include(/<some path>/Vendor/cakephp/cakephp/lib/Cake/Error/ErrorHandler.php): failed to open stream: 
   - Solution: Clear the ./tmp/cache/models, ./tmp/cache/persistent directories.  These folders keep path info in them so if the path the app runs from changes the cache has to be cleared.
-
+* Page loads but is missing images.
+  - Solution: Check your apache configuration to ensure it allows overrides and mod_rewrite is installed.  The .htaccess files are not properly working and rewriting the URL.  You know this is working when the images load
+ on the login page.
 <h2>Translations</h2>
 <hr/>
 If your local language is not yet translated I can run it up against Google Translate API.  Please star the project (show you care) and submit an 'Issue' to translate.

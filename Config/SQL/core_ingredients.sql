@@ -1,3 +1,4 @@
+DELETE FROM core_ingredients;
 INSERT INTO core_ingredients (id, "groupNumber", name, short_description) VALUES (01001, 0100, 'Butter, salted', 'BUTTER,WITH SALT');
 INSERT INTO core_ingredients (id, "groupNumber", name, short_description) VALUES (01002, 0100, 'Butter, whipped, with salt', 'BUTTER,WHIPPED,WITH SALT');
 INSERT INTO core_ingredients (id, "groupNumber", name, short_description) VALUES (01003, 0100, 'Butter oil, anhydrous', 'BUTTER OIL,ANHYDROUS');

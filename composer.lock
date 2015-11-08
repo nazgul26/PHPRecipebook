@@ -1,31 +1,33 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "hash": "4ad7533ac018c9f3f88655282c970317",
+    "content-hash": "21ae1f152696ff661716402d826ff3e8",
     "packages": [
         {
             "name": "cakephp/cakephp",
-            "version": "2.6.2",
+            "version": "2.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "3fee5b9eaafdcca986f776129aef7c2c04c427df"
+                "reference": "df3c786f57844ee7ba39c74090989b575b589a2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/3fee5b9eaafdcca986f776129aef7c2c04c427df",
-                "reference": "3fee5b9eaafdcca986f776129aef7c2c04c427df",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/df3c786f57844ee7ba39c74090989b575b589a2b",
+                "reference": "df3c786f57844ee7ba39c74090989b575b589a2b",
                 "shasum": ""
             },
             "require": {
                 "ext-mcrypt": "*",
-                "php": ">=5.2.8"
+                "php": ">=5.3.0"
             },
             "require-dev": {
-                "cakephp/debug_kit": "2.2.*",
+                "cakephp/cakephp-codesniffer": "^1.0.0",
+                "cakephp/debug_kit": "^2.2.0",
                 "phpunit/phpunit": "3.7.*"
             },
             "bin": [
@@ -47,21 +49,24 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-02-19 12:34:27"
+            "time": "2015-11-06 03:30:43"
         },
         {
             "name": "composer/installers",
-            "version": "v1.0.21",
+            "version": "v1.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45"
+                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
-                "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
+                "url": "https://api.github.com/repos/composer/installers/zipball/bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046",
                 "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "1.0.0"
             },
             "replace": {
                 "roundcube/plugin-installer": "*",
@@ -71,9 +76,9 @@
                 "composer/composer": "1.0.*@dev",
                 "phpunit/phpunit": "4.1.*"
             },
-            "type": "composer-installer",
+            "type": "composer-plugin",
             "extra": {
-                "class": "Composer\\Installers\\Installer",
+                "class": "Composer\\Installers\\Plugin",
                 "branch-alias": {
                     "dev-master": "1.0-dev"
                 }
@@ -142,20 +147,20 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2015-02-18 17:17:01"
+            "time": "2015-10-29 23:28:48"
         },
         {
             "name": "josegonzalez/cakephp-upload",
-            "version": "1.1.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/josegonzalez/cakephp-upload.git",
-                "reference": "3214271107a3c7728504f7ac42bed115a4f0a4f7"
+                "reference": "4b0f60a7e1c2e7ed5cfacda4b6f441fc7fdc862b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/josegonzalez/cakephp-upload/zipball/3214271107a3c7728504f7ac42bed115a4f0a4f7",
-                "reference": "3214271107a3c7728504f7ac42bed115a4f0a4f7",
+                "url": "https://api.github.com/repos/josegonzalez/cakephp-upload/zipball/4b0f60a7e1c2e7ed5cfacda4b6f441fc7fdc862b",
+                "reference": "4b0f60a7e1c2e7ed5cfacda4b6f441fc7fdc862b",
                 "shasum": ""
             },
             "require": {
@@ -305,7 +310,7 @@
                 "files",
                 "upload"
             ],
-            "time": "2014-07-29 18:34:34"
+            "time": "2015-09-22 04:34:19"
         }
     ],
     "packages-dev": [],
@@ -313,6 +318,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "ext-gd": "*",
         "ext-mcrypt": "*"
