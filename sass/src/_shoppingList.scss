@@ -54,11 +54,16 @@
 }
 
 .vendor-input {
-    width: 4em;
+    width: 24em;
     margin-left: 1em;
 }
 
 .selectedRow {
     background: #E6B800 !important;
+}
+
+.productOptions {
+    img { border-style: none;}
+    a { text-decoration: none;}
 }
 

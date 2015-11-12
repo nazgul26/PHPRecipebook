@@ -8,6 +8,12 @@ if (isset($selectedVendor['Vendor'])) {
 
 <script type="text/javascript">
     $(function() {
+        $(document).off("saved.product");
+        $(document).on("saved.product", function() {
+            $('#editProductDialog').dialog('close');
+            //TODO: refresh dropdowns
+        });
+        
         $('[vendor-save]').click(function() {
             $('#VendorCompleteForm').submit();
         })
@@ -16,7 +22,7 @@ if (isset($selectedVendor['Vendor'])) {
         });
         $('[shop-add]').click(function() {
             var vendorAddUrl = "<?php echo $vendorAddUrl;?>";
-            $productInput = $(this).siblings('[product-id]').first();
+            $productInput = $(this).parent().parent().find('[product-id]').first();
             var productId = $productInput.val();
             if (productId) {
                 var wnd = window.open(vendorAddUrl + productId, 'shopping'); 
@@ -49,9 +55,9 @@ if (isset($selectedVendor['Vendor'])) {
         $('[shop-all]').click(function() {
             var timingCount = 1000;
             progressbar.show();
-            $('.gridContent a').each(function() {
+            $('.gridContent a[shop-add]').each(function() {
                 var itemId = "#" + $(this).attr('id');
-                $productInput = $(this).siblings('[product-id]').first();
+                $productInput = $(this).parent().parent().find('[product-id]').first();
                 var productId = $productInput.val();
                 if (productId) {
                     totalToAdd++;
@@ -89,12 +95,12 @@ if (isset($selectedVendor['Vendor'])) {
 <?php echo $this->Form->input('vendor_id',array('label'=>'Select Vendor')); ?>
 <table>
     <tr class="headerRow">
-        <th><?php echo __('Select');?></th>
-        <th><?php echo __('Product / ID');?></th>
+        <th></th>
+        <th><?php echo __('Product');?></th>
         <th><?php echo __('Quantity');?></th>
         <th><?php echo __('Unit');?></th>
-        
-        <th><?php echo __('Name');?></th>
+        <th><?php echo __('Ingredient Name');?></th>
+        <th><?php echo __('Completed');?></th>
     </tr>
     <tbody class="gridContent">
     <?php 
@@ -103,30 +109,48 @@ if (isset($selectedVendor['Vendor'])) {
     foreach ($list as $i=>$ingredientType):
         foreach ($ingredientType as $j=>$item) :
             if ($item->removed) continue;
-      
+    ?>
+    <tr row-click>
+        <td><a href="#" shop-add id="AddItem<?php echo $item->id;?>" item-name="<?php echo $item->name;?>"><?php echo __('Add');?></a></td>
+        <td>    
+            <select id="SelectedToAdd<?php echo $item->id;?>" class="vendor-input" product-id>
+                <option></option>
+                <?php 
                 $productCode = "";
                 $productId = "";
+                $productName = "";
                 if (isset($selectedVendor['VendorProduct'])) {
                     foreach ($selectedVendor['VendorProduct'] as $product) {
                         if ($product['ingredient_id'] == $item->id) {
                             $productCode = $product['code'];
                             $productId = $product['id'];
+                            $productName = $product['name'];
+                            ?>
+                            <option value="<?php echo $productCode;?>" selected><?php echo $productName;?> (<?php echo $productCode;?>)</option>
+                            <?php
                         }
                     }
-                }
-    ?>
-    <tr row-click>
-        <td><input type="checkbox" list-item/></td>
-        <td>
-            <a href="#" shop-add id="AddItem<?php echo $item->id;?>" item-name="<?php echo $item->name;?>">Add</a>
-            <input type="hidden" name="data[VendorProduct][<?php echo $mapIndex;?>][id]" value="<?php echo $productId;?>"/>
-            <input type="hidden" name="data[VendorProduct][<?php echo $mapIndex;?>][vendor_id]" value="<?php echo $vendorId;?>"/>
-            <input type="hidden" name="data[VendorProduct][<?php echo $mapIndex;?>][ingredient_id]" value="<?php echo $item->id;?>"/>
-            <input type="text" name="data[VendorProduct][<?php echo $mapIndex;?>][code]" value="<?php echo $productCode;?>" 
-                   class="vendor-input" autocomplete="off" product-id /></td>
+                } 
+                ?>
+            </select>
+            
+            <span class="productOptions">
+                <?php echo $this->Html->link(
+                        $this->Html->image("add.png", array('title' => "Add More items for this ingredient", 'alt' => 'Add')), 
+                        array('controller' => 'VendorProducts', 'action' => 'add', $item->id, $vendorId), 
+                        array('class' => 'ajaxLink', 'targetId' => 'editProductDialog','escape' => false)); ?>
+                
+                <?php echo $this->Html->link(
+                        $this->Html->image("edit.png", array('title' => "Edit/Remove selected Item", 'alt' => 'Edit')), 
+                        array('controller' => 'VendorProducts', 'action' => 'editDialog', 1), 
+                        array('class' => 'ajaxLink', 'targetId' => 'editProductDialog','escape' => false)); ?>
+            </span>
+
+        </td>
         <td><?php echo $this->Fraction->toFraction($item->quantity);?></td>
         <td><?php echo $item->unitName;?></td>
         <td><b><?php echo $item->name;?></b></td>
+        <td><input type="checkbox" list-item/></td>
     </tr>
     <?php 
         $mapIndex++;

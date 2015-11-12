@@ -134,6 +134,6 @@ $cakeDescription = 'PHPRecipeBook';
     <div id="editDifficultyDialog" class="dialog" width="600" height="200" title="<?php echo __('Difficulty');?>"/>
     <div id="editSourceDialog" class="dialog" width="600" height="500" title="<?php echo __('Source');?>"/>
     <div id="editMealDialog" class="dialog" width="700" height="500" title="<?php echo __('Meal');?>"/>
-    <div id="editUnitDialog" class="dialog" width="600" height="200" title="<?php echo __('Unit');?>"/>
+    <div id="editProductDialog" class="dialog" width="600" height="400" title="<?php echo __('Product');?>"/>
 </body>
 </html>
