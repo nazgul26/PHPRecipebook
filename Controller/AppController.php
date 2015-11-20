@@ -90,8 +90,7 @@ class AppController extends Controller {
             'Settings',
             'Stores',
             'Units',
-            'Vendors',
-            'VendorProducts'))) {
+            'Vendors'))) {
             
             if ($this->User->isAdmin($user)) { 
                 return true;

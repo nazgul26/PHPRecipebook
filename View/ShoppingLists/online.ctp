@@ -1,4 +1,7 @@
 <?php 
+
+$baseUrl = Router::url('/');
+
 if (isset($selectedVendor['Vendor'])) {
     $vendorHomePage = $selectedVendor['Vendor']['home_url'];
     $vendorAddUrl = $selectedVendor['Vendor']['add_url'];
@@ -7,11 +10,15 @@ if (isset($selectedVendor['Vendor'])) {
 ?>
 
 <script type="text/javascript">
+    var itemToRefresh = null;
+    
     $(function() {
         $(document).off("saved.product");
         $(document).on("saved.product", function() {
             $('#editProductDialog').dialog('close');
-            //TODO: refresh dropdowns
+            console.log("Should refresh: " + itemToRefresh);
+            var itemId = itemToRefresh.replace('SelectToAdd', '');
+            ajaxGet('<?php echo $baseUrl;?>VendorProducts/refresh/' + itemId, itemToRefresh);
         });
         
         $('[vendor-save]').click(function() {
@@ -20,10 +27,16 @@ if (isset($selectedVendor['Vendor'])) {
         $('[list-item]').change(function() {
             rowClicked($(this));
         });
+        
+        $('.addProduct').click(function() {
+            var elementId = $(this).attr('id');
+            itemToRefresh = elementId.replace('AddProd', 'SelectToAdd');
+            console.log('working on ID:' + itemToRefresh);
+        });
         $('[shop-add]').click(function() {
             var vendorAddUrl = "<?php echo $vendorAddUrl;?>";
             $productInput = $(this).parent().parent().find('[product-id]').first();
-            var productId = $productInput.val();
+            var productId = $productInput.val().split(";")[0];
             if (productId) {
                 var wnd = window.open(vendorAddUrl + productId, 'shopping'); 
                 $checkBox = $(this).parent().parent().find('input:checkbox');
@@ -51,7 +64,7 @@ if (isset($selectedVendor['Vendor'])) {
                 progressLabel.text("<?php echo __('Complete!');?>");
             }
         });
-        
+            
         $('[shop-all]').click(function() {
             var timingCount = 1000;
             progressbar.show();
@@ -113,7 +126,7 @@ if (isset($selectedVendor['Vendor'])) {
     <tr row-click>
         <td><a href="#" shop-add id="AddItem<?php echo $item->id;?>" item-name="<?php echo $item->name;?>"><?php echo __('Add');?></a></td>
         <td>    
-            <select id="SelectedToAdd<?php echo $item->id;?>" class="vendor-input" product-id>
+            <select id="SelectToAdd<?php echo $item->id;?>" class="vendor-input" product-id>
                 <option></option>
                 <?php 
                 $productCode = "";
@@ -126,7 +139,7 @@ if (isset($selectedVendor['Vendor'])) {
                             $productId = $product['id'];
                             $productName = $product['name'];
                             ?>
-                            <option value="<?php echo $productCode;?>" selected><?php echo $productName;?> (<?php echo $productCode;?>)</option>
+                            <option value="<?php echo $productCode + ";" + $productId;?>" selected><?php echo $productName;?> (<?php echo $productCode;?>)</option>
                             <?php
                         }
                     }
@@ -137,13 +150,13 @@ if (isset($selectedVendor['Vendor'])) {
             <span class="productOptions">
                 <?php echo $this->Html->link(
                         $this->Html->image("add.png", array('title' => "Add More items for this ingredient", 'alt' => 'Add')), 
-                        array('controller' => 'VendorProducts', 'action' => 'add', $item->id, $vendorId), 
-                        array('class' => 'ajaxLink', 'targetId' => 'editProductDialog','escape' => false)); ?>
+                        array('controller' => 'VendorProducts', 'action' => 'add', $vendorId, $item->id), 
+                        array('class' => 'ajaxLink addProduct', 'id' => 'AddProd' . $item->id, 'targetId' => 'editProductDialog','escape' => false)); ?>
                 
                 <?php echo $this->Html->link(
                         $this->Html->image("edit.png", array('title' => "Edit/Remove selected Item", 'alt' => 'Edit')), 
-                        array('controller' => 'VendorProducts', 'action' => 'editDialog', 1), 
-                        array('class' => 'ajaxLink', 'targetId' => 'editProductDialog','escape' => false)); ?>
+                        array('controller' => 'VendorProducts', 'action' => 'index', $vendorId, $item->id), 
+                        array('escape' => false)); ?>
             </span>
 
         </td>
