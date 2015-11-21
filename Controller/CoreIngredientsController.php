@@ -20,6 +20,15 @@ class CoreIngredientsController extends AppController {
         $this->Auth->deny(); // Deny ALL, user must be logged in.
     }
     
+    public function isAuthorized($user) {
+        if ($this->action == "search" || $this->isAdmin ) {
+            return true;
+        } else {
+            $this->Session->setFlash(__('Not allowed to edit core ingredients.'));
+            return false;
+        }
+    }
+    
     /**
      * index method
      *

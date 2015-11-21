@@ -44,7 +44,7 @@ if (isset($recipe['Review'])) {
     });
     
     function loadImage(imageUrl, caption) {
-        $('#selectedPreviewImage img').attr('src', imageUrl).attr('title', caption);
+        $('#selectedRecipeImage img').attr('src', imageUrl).attr('title', caption);
         return false;
     }
 </script>

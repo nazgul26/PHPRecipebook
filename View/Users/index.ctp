@@ -23,7 +23,7 @@
                 <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id'])); ?>
                 <?php
                     if ($user['User']['id'] != 1) {
-                        echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), null, __('Are you sure you want to delete # %s?', $user['User']['id'])); 
+                        echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), null, __('Are you sure you want to delete \'%s?\'', $user['User']['username'])); 
                     }
                 ?>
             </td>

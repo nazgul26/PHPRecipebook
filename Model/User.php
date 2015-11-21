@@ -8,50 +8,44 @@ class User extends AppModel {
 
     public $validate = array(
         'username' => array(
-            'notEmpty' => array(
-                    'rule' => array('notEmpty'),
-                    'allowEmpty' => false,
-                    'required' => true
-            ),
+            'required' => array(
+                'rule' => 'notBlank',
+                'required' => true
+            )
         ),
         // Turned off to allow Edit and not re-encrypt
         'password' => array(
             'notEmpty' => array(
-                    'rule' => array('notEmpty'),
-                    'allowEmpty' => false,
+                    'rule' => array('notBlank'),
                     'required' => true,
                     'on' => 'create'
             ),
         ),
         'name' => array(
-            'notEmpty' => array(
-                    'rule' => array('notEmpty'),
-                    'allowEmpty' => false,
-                    'required' => true
-            ),
+            'required' => array(
+                'rule' => 'notBlank'
+            )
         ),
         'access_level' => array(
             'numeric' => array(
-                    'rule' => array('numeric'),
-                    'allowEmpty' => false,
-                    'required' => true
+                'rule' => array('numeric', 'notBlank'),
+                'required' => true
             ),
         ),
         'language' => array(
-            'notEmpty' => array(
-                    'rule' => array('notEmpty'),
-            ),
+                'required' => array(
+                    'rule' => 'notBlank'
+                )
         ),
         'country' => array(
-            'notEmpty' => array(
-                    'rule' => array('notEmpty'),
-            ),
+                'required' => array(
+                    'rule' => 'notBlank'
+                )
         ),
         'email' => array(
             'email' => array(
-                    'rule' => array('email'),
-                    'allowEmpty' => false,
-                    'required' => true
+                'rule' => array('email', 'notBlank'),
+                'required' => true
             ),
         ),
     );

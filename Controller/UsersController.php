@@ -258,7 +258,7 @@ class UsersController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->User->delete()) {
-                $this->Session->setFlash(__('The user has been deleted.'));
+                $this->Session->setFlash(__('The user has been deleted.'), 'success');
         } else {
                 $this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
         }

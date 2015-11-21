@@ -270,44 +270,24 @@ class MealPlan extends AppModel {
      */
     public $validate = array(
         'mealday' => array(
-                'date' => array(
-                        'rule' => array('date'),
-                        //'message' => 'Your custom message here',
-                        //'allowEmpty' => false,
-                        //'required' => false,
-                        //'last' => false, // Stop validation after this rule
-                        //'on' => 'create', // Limit validation to 'create' or 'update' operations
-                ),
+            'date' => array(
+                'rule' => 'date'
+            )
         ),
         'meal_name_id' => array(
-                'numeric' => array(
-                        'rule' => array('numeric'),
-                        //'message' => 'Your custom message here',
-                        //'allowEmpty' => false,
-                        //'required' => false,
-                        //'last' => false, // Stop validation after this rule
-                        //'on' => 'create', // Limit validation to 'create' or 'update' operations
-                ),
+            'numeric' => array(
+                'rule' => 'numeric'
+            )
         ),
         'recipe_id' => array(
-                'numeric' => array(
-                        'rule' => array('numeric'),
-                        //'message' => 'Your custom message here',
-                        //'allowEmpty' => false,
-                        //'required' => false,
-                        //'last' => false, // Stop validation after this rule
-                        //'on' => 'create', // Limit validation to 'create' or 'update' operations
-                ),
+            'numeric' => array(
+                'rule' => 'numeric'
+            )
         ),
         'servings' => array(
-                'numeric' => array(
-                        'rule' => array('numeric'),
-                        //'message' => 'Your custom message here',
-                        //'allowEmpty' => false,
-                        //'required' => false,
-                        //'last' => false, // Stop validation after this rule
-                        //'on' => 'create', // Limit validation to 'create' or 'update' operations
-                ),
+            'numeric' => array(
+                'rule' => 'numeric'
+            )
         ),
     );
 

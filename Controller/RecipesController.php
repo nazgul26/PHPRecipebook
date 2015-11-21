@@ -8,11 +8,6 @@ App::uses('AppController', 'Controller');
  */
 class RecipesController extends AppController {
 
-    /**
-     * Components
-     *
-     * @var array
-     */
     public $components = array('Paginator', 'RequestHandler');
     
     public $paginate = array(
@@ -52,11 +47,6 @@ class RecipesController extends AppController {
         return parent::isAuthorized($user);
     }
 
-    /**
-     * index method
-     *
-     * @return void
-     */
     public function index() {
 
         if ($this->isMobile) {
@@ -91,13 +81,6 @@ class RecipesController extends AppController {
         $this->render('index');
     }
 
-    /**
-     * view method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
     public function view($id = null, $servings=null) {
         if (!$this->Recipe->exists($id)) {
                 throw new NotFoundException(__('Invalid recipe'));
@@ -157,13 +140,6 @@ class RecipesController extends AppController {
         $this->set('servings', $servings);
     }
 
-    /**
-     * edit method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
     public function edit($id = null) {
         if ($id != null && !$this->Recipe->exists($id)) {
            throw new NotFoundException(__('Invalid recipe'));
@@ -173,21 +149,13 @@ class RecipesController extends AppController {
             //TODO: Keep the original author just in case editor/admin edits
             $recipe['Recipe']['user_id'] = $this->Auth->user('id');
             if ($this->Recipe->saveWithAttachments($recipe)) {
+                $recipe = $this->loadRecipe($id);
                 $this->Session->setFlash(__('The recipe has been saved.'), "success");
             } else {
                 $this->Session->setFlash(__('The recipe could not be saved. Please, try again.'));
             }
         } else if ($id != null) {
-            //NOTE: This is pretty cool, you can control the depth and properties with 'Containable' and contain.  
-            // much better then a loop of crazy custom SQL Code
-            $this->Recipe->Behaviors->load('Containable');
-            $options = array('conditions' => array('Recipe.' . $this->Recipe->primaryKey => $id), 
-                'contain' => array(
-                    'IngredientMapping.Ingredient.name', 
-                    'RelatedRecipe.Related.name', 
-                    'Image'));
-            $this->request->data = $this->Recipe->find('first', $options);
-            $recipe = $this->request->data;
+            $recipe = $this->loadRecipe($id);
         }
         
         $ethnicities = $this->Recipe->Ethnicity->find('list');
@@ -199,6 +167,17 @@ class RecipesController extends AppController {
         $preparationMethods = $this->Recipe->PreparationMethod->find('list');
         $units = $this->Recipe->IngredientMapping->Ingredient->Unit->find('list');
         $this->set(compact('ethnicities', 'baseTypes', 'courses', 'preparationTimes', 'difficulties', 'sources',  'preparationMethods', 'recipe', 'units'));
+    }
+    
+    private function loadRecipe($id) {
+        $this->Recipe->Behaviors->load('Containable');
+        $options = array('conditions' => array('Recipe.' . $this->Recipe->primaryKey => $id), 
+            'contain' => array(
+                'IngredientMapping.Ingredient.name', 
+                'RelatedRecipe.Related.name', 
+                'Image'));
+        $this->request->data = $this->Recipe->find('first', $options);
+        return $this->request->data;
     }
     
     public function removeIngredientMapping($recipeId, $mappingId) {
@@ -217,13 +196,6 @@ class RecipesController extends AppController {
         }
     }
 
-    /**
-     * delete method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
     public function delete($id = null) {
         $this->Recipe->id = $id;
         if (!$this->Recipe->exists()) {

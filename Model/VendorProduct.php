@@ -11,34 +11,24 @@ class VendorProduct extends AppModel {
 
     public $validate = array(
             'name' => array(
-                    'notBlank' => array(
-                            'rule' => array('notBlank'),
-                    ),
+                'required' => array(
+                    'rule' => 'notBlank'
+                )
             ),
             'ingredient_id' => array(
-                    'numeric' => array(
-                            'rule' => array('numeric'),
-                            //'message' => 'Your custom message here',
-                            //'allowEmpty' => false,
-                            //'required' => false,
-                            //'last' => false, // Stop validation after this rule
-                            //'on' => 'create', // Limit validation to 'create' or 'update' operations
-                    ),
+                'numeric' => array(
+                    'rule' => 'numeric'
+                )
             ),
             'vendor_id' => array(
                     'numeric' => array(
-                            'rule' => array('numeric'),
-                            //'message' => 'Your custom message here',
-                            //'allowEmpty' => false,
-                            //'required' => false,
-                            //'last' => false, // Stop validation after this rule
-                            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                        'rule' => 'numeric'
                     ),
             ),
             'code' => array(
-                'notBlank' => array(
-                        'rule' => array('notBlank'),
-                ),
+                'required' => array(
+                    'rule' => 'notBlank'
+                )
             ),
     );
 
