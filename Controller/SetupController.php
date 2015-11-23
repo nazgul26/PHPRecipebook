@@ -1,14 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
 
-/**
- * Static content controller
- *
- * Override this controller by placing a copy in controllers directory of an application
- *
- * @package       app.Controller
- * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
- */
 class SetupController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
@@ -30,7 +22,8 @@ class SetupController extends AppController {
     
     public function password() {
         $this->loadModel('User');
-        $user = $this->User->findByUsername('admin');
+        $adminUserName = isset($this->request->data['User']['username']) ? $this->request->data['User']['username'] : 'admin';
+        $user = $this->User->findByUsername($adminUserName);
         if ($this->request->is(array('post', 'put'))) {
             if (empty($this->request->data['User']['password1'])) {
                 $this->Session->setFlash(__('Password must have a value.'));
