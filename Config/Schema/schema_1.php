@@ -1,216 +1,14 @@
 <?php 
-App::uses('ClassRegistry', 'Utility');
-App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 class AppSchema extends CakeSchema {
-    
+
+	public $file = 'schema_1.php';
+
 	public function before($event = array()) {
-            $db = ConnectionManager::getDataSource($this->connection);
-            $db->cacheSources = false;
-            return true;
+		return true;
 	}
-        
+
 	public function after($event = array()) {
-            if (isset($event['create'])) {
-                $table = $event['create'];
-                $data = null;
-                switch($table) {
-                    case 'base_types':
-                        $data = array(
-                            array('name' => __('Beef')),
-                            array('name' => __('Bread')),
-                            array('name' => __('Egg')),
-                            array('name' => __('Fruit')),
-                            array('name' => __('Grain')),
-                            array('name' => __('Lamb')),
-                            array('name' => __('Other')),
-                            array('name' => __('Pasta')),
-                            array('name' => __('Pork/Ham')),
-                            array('name' => __('Poultry')),
-                            array('name' => __('Seafood')),
-                            array('name' => __('Vegetable'))
-                        );
-                        break;
-                    case 'courses':
-                        $data = array(
-                            array('name' => __('Breakfast')),
-                            array('name' => __('Snack')),
-                            array('name' => __('Lunch')),
-                            array('name' => __('Appetizer')),
-                            array('name' => __('Side Dish')),
-                            array('name' => __('Entree')),
-                            array('name' => __('Dessert')),
-                            array('name' => __('Beverage'))
-     
-                        );
-                        break;
-                    case 'difficulties':
-                        $data = array(
-                            array('name' => __('Easy')),
-                            array('name' => __('Intermediate')),
-                            array('name' => __('Difficult')),
-                            array('name' => __('Expert'))
-                        );
-                        break;
-                    case 'ethnicities':
-                        $data = array( 
-                            array('name' => __('American')),
-                            array('name' => __('Chinese')),
-                            array('name' => __('German')),
-                            array('name' => __('Greek')),
-                            array('name' => __('Indian')),
-                            array('name' => __('Italian')),
-                            array('name' => __('Japanese')),
-                            array('name' => __('Mexican')),
-                            array('name' => __('Middle Eastern')),
-                            array('name' => __('None')),
-                            array('name' => __('Slavic'))
-                        );
-                        break;
-                    case 'locations':
-                        $data = array(
-                            array('name' => __('Alcohol')),
-                            array('name' => __('Bakery')),
-                            array('name' => __('Beans')),
-                            array('name' => __('Bread')),
-                            array('name' => __('Candy')),
-                            array('name' => __('Canned Fruit')),
-                            array('name' => __('Canned Meat & Fish')),
-                            array('name' => __('Canned Vegetables')),
-                            array('name' => __('Coffee, Tea & Cocoa')),
-                            array('name' => __('Condiments')),
-                            array('name' => __('Cookies')),
-                            array('name' => __('Crackers')),
-                            array('name' => __('Dairy')),
-                            array('name' => __('Deli')),
-                            array('name' => __('Drink mix')),
-                            array('name' => __('Facial Tissue')),
-                            array('name' => __('Free')),
-                            array('name' => __('Frozen Foods')),
-                            array('name' => __('HABA')),
-                            array('name' => __('Hand Soap')),
-                            array('name' => __('Hot & Cold Cereal')),
-                            array('name' => __('Household Cleaners')),
-                            array('name' => __('Juice & Cocktail')),
-                            array('name' => __('Kosher/Ethnic')),
-                            array('name' => __('Laundry Detergents')),
-                            array('name' => __('Meat')),
-                            array('name' => __('Natural & Organic')),
-                            array('name' => __('Oil/Vinegar/Dressings')),
-                            array('name' => __('Pancakes & Syrup')),
-                            array('name' => __('Paper Serving Ware')),
-                            array('name' => __('Pasta & Sauce')),
-                            array('name' => __('Peanut Butter/Jelly/Honey')),
-                            array('name' => __('Produce')),
-                            array('name' => __('Rice')),
-                            array('name' => __('Salty Snacks & Chips')),
-                            array('name' => __('Seafood')),
-                            array('name' => __('Soda pop')),
-                            array('name' => __('Soup')),
-                            array('name' => __('Spices')),
-                            array('name' => __('Toilet Paper'))
-                        );
-                        break;
-                    case 'meal_names':
-                        $data = array(
-                            array('name' => __('Breakfast')),
-                            array('name' => __('Lunch')),
-                            array('name' => __('Dinner')),
-                            array('name' => __('Dessert'))
-                        );
-                        break;
-                    case 'preparation_methods':
-                        $data = array(
-                            array('name' => __('Slow cooker')),
-                            array('name' => __('Microwave')),
-                            array('name' => __('BBQ')),
-                            array('name' => __('Canning')),
-                        );
-                        break;
-                    case 'preparation_times':
-                        $data = array(
-                            array('name' => __('0 Minutes')),
-                            array('name' => __('1-10 Minutes')),
-                            array('name' => __('10-30 Minutes')),
-                            array('name' => __('30-60 Minutes')),
-                            array('name' => __('60+ Minutes'))
-                        );
-                        break;
-                    case 'price_ranges': 
-                        $data = array(
-                            array('name' => __('$0-$10')),
-                            array('name' => __('$10-$15')),
-                            array('name' => __('$15-$20')),
-                            array('name' => __('$20-$25')),
-                            array('name' => __('$25-$30')),
-                            array('name' => __('$30+'))     
-                        );
-                        break;
-                    case 'stores':
-                        $data = array(
-                            array(
-                                'name' => 'default',
-                                'layout' => '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40'
-                                )
-                        );
-                        break;   
-                    case 'units':
-                        $data = array(
-                            array('id' => 1, 'name' => __('Unit'), 'abbreviation' =>  'ea', 'system' => 0, 'sort_order' => 0),
-                            array('id' => 2, 'name' => __('Slice'), 'abbreviation' =>  'sli', 'system' => 0, 'sort_order' => 0),
-                            array('id' => 3, 'name' => __('Clove'), 'abbreviation' =>  'clv', 'system' => 0, 'sort_order' => 0),
-                            array('id' => 4, 'name' => __('Pinch'), 'abbreviation' =>  'pn', 'system' => 0, 'sort_order' => 0),
-                            array('id' => 5, 'name' => __('Package'), 'abbreviation' =>  'pk', 'system' => 0, 'sort_order' => 0),
-                            array('id' => 6, 'name' => __('Can'), 'abbreviation' =>  'cn', 'system' => 0, 'sort_order' => 0),
-                            array('id' => 7, 'name' => __('Drop'), 'abbreviation' =>  'dr', 'system' => 0, 'sort_order' => 0),
-                            array('id' => 8, 'name' => __('Bunch'), 'abbreviation' =>  'bn', 'system' => 0, 'sort_order' => 0),
-                            array('id' => 9, 'name' => __('Dash'), 'abbreviation' =>  'ds', 'system' => 0, 'sort_order' => 0),
-                            array('id' => 10, 'name' => __('Carton'), 'abbreviation' =>  'ct', 'system' => 0, 'sort_order' => 0),
-                            array('id' => 11, 'name' => __('Cup'), 'abbreviation' =>  'c', 'system' => 1, 'sort_order' => 0),
-                            array('id' => 12, 'name' => __('Tablespoon'), 'abbreviation' =>  'T', 'system' => 1, 'sort_order' => 0),
-                            array('id' => 13, 'name' => __('Teaspoon'), 'abbreviation' =>  't', 'system' => 1, 'sort_order' => 0),
-                            array('id' => 14, 'name' => __('Pound'), 'abbreviation' =>  'lb', 'system' => 1, 'sort_order' => 0),
-                            array('id' => 15, 'name' => __('Ounce'), 'abbreviation' =>  'oz', 'system' => 1, 'sort_order' => 0),
-                            array('id' => 16, 'name' => __('Pint'), 'abbreviation' =>  'pt', 'system' => 1, 'sort_order' => 0),
-                            array('id' => 17, 'name' => __('Quart'), 'abbreviation' =>  'q', 'system' => 1, 'sort_order' => 0),
-                            array('id' => 18, 'name' => __('Gallon'), 'abbreviation' =>  'gal', 'system' => 1, 'sort_order' => 0),
-                            array('id' => 19, 'name' => __('Milligram'), 'abbreviation' =>  'mg', 'system' => 2, 'sort_order' => 0),
-                            array('id' => 20, 'name' => __('Centigram'), 'abbreviation' =>  'cg', 'system' => 2, 'sort_order' => 0),
-                            array('id' => 21, 'name' => __('Gram'), 'abbreviation' =>  'g', 'system' => 2, 'sort_order' => 0),
-                            array('id' => 22, 'name' => __('Kilogram'), 'abbreviation' =>  'kg', 'system' => 2, 'sort_order' => 0),
-                            array('id' => 23, 'name' => __('Milliliter'), 'abbreviation' =>  'ml', 'system' => 2, 'sort_order' => 0),
-                            array('id' => 24, 'name' => __('Centiliter'), 'abbreviation' =>  'cl', 'system' => 2, 'sort_order' => 0),
-                            array('id' => 25, 'name' => __('Liter'), 'abbreviation' =>  'l', 'system' => 2, 'sort_order' => 0),
-                            array('id' => 26, 'name' => __('Deciliter'), 'abbreviation' =>  'dl', 'system' => 2, 'sort_order' => 0),
-                            array('id' => 27, 'name' => __('Tablespoon_m'), 'abbreviation' =>  'tbsp', 'system' => 2, 'sort_order' => 0),
-                            array('id' => 28, 'name' => __('Teaspoon_m'), 'abbreviation' =>  'tsp', 'system' => 2, 'sort_order' => 0),
-                        );
-                        break;
-                    case 'users':
-                        $passwordHasher = new BlowfishPasswordHasher();
-                        $data = array(
-                            array (
-                                'username' => 'admin', 
-                                'password' => $passwordHasher->hash('passwd'), 
-                                'name' => 'Administrator', 
-                                'access_level' => Configure::read('AuthRoles.admin'), 
-                                'email' => 'user@localhost')
-                        );
-                        break; 
-                    case 'vendors':
-                        $data = array(
-                            array('name' => 'Presto Fresh Grocery', 
-                                'home_url' => 'http://www.prestofreshgrocery.com/',
-                                'add_url' => 'http://www.prestofreshgrocery.com/checkout/cart/add/uenc/a/product/'
-                            )
-                        );
-                        break;
-                    default:
-                }
-                if ($data) {
-                    ClassRegistry::init($table)->saveAll($data);
-                }
-            }
-        }
+	}
 
 	public $attachments = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
@@ -254,9 +52,9 @@ class AppSchema extends CakeSchema {
 		'amount' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'measure' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 80, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'weight' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		/*'indexes' => array(
+		'indexes' => array(
 			'PRIMARY' => array('column' => array('id', 'sequence'), 'unique' => 1)
-		),*/
+		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
 
@@ -265,7 +63,7 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
+			'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -284,7 +82,7 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
+			'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -316,7 +114,7 @@ class AppSchema extends CakeSchema {
 		'core_ingredient_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'ingredient_name' => array('column' => array('name', 'user_id'), 'unique' => 1)
+			'ingredient_name' => array('column' => array('name', 'user_id'), 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -326,7 +124,7 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
+			'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -337,7 +135,7 @@ class AppSchema extends CakeSchema {
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
 			'meal_name' => array('column' => 'name', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
+			'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -370,7 +168,7 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
+			'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -380,7 +178,7 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 16, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
+			'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -423,20 +221,6 @@ class AppSchema extends CakeSchema {
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
-        
-        public $reviews = array(
-		'recipe_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
-		'comments' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
-		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
-		'user_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'rating' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		'indexes' => array(
-			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			'recipe_id' => array('column' => array('recipe_id', 'user_id'), 'unique' => 1)
-		),
-		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
-	);
 
 	public $restaurants = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
@@ -461,7 +245,21 @@ class AppSchema extends CakeSchema {
 		'country' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 64, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => array('name', 'user_id'), 'unique' => 1)
+			'name' => array('column' => array('name', 'user_id'), 'unique' => 1)
+		),
+		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
+	);
+
+	public $reviews = array(
+		'recipe_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
+		'comments' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
+		'user_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
+		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'rating' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
+		'indexes' => array(
+			'PRIMARY' => array('column' => 'id', 'unique' => 1),
+			'recipe_id' => array('column' => array('recipe_id', 'user_id'), 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
