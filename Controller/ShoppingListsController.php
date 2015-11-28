@@ -239,6 +239,7 @@ class ShoppingListsController extends AppController {
     
     public function clear() {
         $this->ShoppingList->clearList($this->Auth->user('id'));
+        $this->Session->setFlash(__('Shopping done! List cleared.'), 'success');
         return $this->redirect(array('action' => 'index'));
     }
     

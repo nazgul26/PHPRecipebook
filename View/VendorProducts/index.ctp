@@ -22,7 +22,11 @@
 	<tr>
             <td class="actions">
                     <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $vendorProduct['VendorProduct']['id'])); ?>
-                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $vendorProduct['VendorProduct']['id']), null, __('Are you sure you want to delete # %s?', $vendorProduct['VendorProduct']['id'])); ?>
+                    <?php 
+                        $deleteText = (isset($vendorProduct['VendorProduct']['name']) ?
+                                __('Are you sure you want to delete \'%s\'?', $vendorProduct['VendorProduct']['name']) :
+                                __('Are you sure you want to delete the selected product?'));
+                        echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $vendorProduct['VendorProduct']['id']), null, $deleteText); ?>
             </td>
             <td><?php echo h($vendorProduct['VendorProduct']['name']); ?>&nbsp;</td>
             <td><?php echo h($vendorProduct['VendorProduct']['code']); ?>&nbsp;</td>

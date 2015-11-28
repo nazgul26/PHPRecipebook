@@ -22,7 +22,7 @@ if (isset($selectedVendor['Vendor'])) {
         });
         
         $('[vendor-save]').click(function() {
-            $('#VendorCompleteForm').submit();
+            $('#ShoppingListsClearForm').submit();
         })
         $('[list-item]').change(function() {
             rowClicked($(this));
@@ -104,7 +104,7 @@ if (isset($selectedVendor['Vendor'])) {
     <li class="active"><?php echo __('Online');?></li>
 </ol>
 <br/><br/>
-<?php echo $this->Form->create('Vendor', array('action' => 'complete'));?>
+<?php echo $this->Form->create('ShoppingLists', array('action' => 'clear'));?>
 <?php echo $this->Form->input('vendor_id',array('label'=>'Select Vendor')); ?>
 <table>
     <tr class="headerRow">

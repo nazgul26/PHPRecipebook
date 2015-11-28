@@ -206,6 +206,8 @@ CREATE TABLE vendors (
     name VARCHAR(64) NOT NULL UNIQUE,
     home_url VARCHAR(255) NULL,
     add_url VARCHAR(255) NULL,
+    request_type VARCHAR(10) NULL DEFAULT 'GET',
+    format VARCHAR(255) NULL
     PRIMARY KEY (id)
 );
 

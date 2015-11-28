@@ -32,7 +32,6 @@
         }
     }
 </script>
-<?php //echo $this->element('sql_dump'); ?>
 <ol class="breadcrumb">
     <li><?php echo $this->Html->link(__('Shopping List'), array('action' => 'index', $listId), array('class' => 'ajaxNavigation')); ?> </li>
     <li class="active"><?php echo __('Select Items');?></li>
