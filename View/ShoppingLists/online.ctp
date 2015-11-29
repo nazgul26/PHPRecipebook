@@ -10,13 +10,13 @@ if (isset($selectedVendor['Vendor'])) {
 ?>
 
 <script type="text/javascript">
+    var TIME_TO_LOAD = 1000;
     var itemToRefresh = null;
     
     $(function() {
         $(document).off("saved.product");
         $(document).on("saved.product", function() {
             $('#editProductDialog').dialog('close');
-            console.log("Should refresh: " + itemToRefresh);
             var itemId = itemToRefresh.replace('SelectToAdd', '');
             ajaxGet('<?php echo $baseUrl;?>VendorProducts/refresh/' + itemId, itemToRefresh);
         });
@@ -31,14 +31,15 @@ if (isset($selectedVendor['Vendor'])) {
         $('.addProduct').click(function() {
             var elementId = $(this).attr('id');
             itemToRefresh = elementId.replace('AddProd', 'SelectToAdd');
-            console.log('working on ID:' + itemToRefresh);
         });
+        
         $('[shop-add]').click(function() {
             var vendorAddUrl = "<?php echo $vendorAddUrl;?>";
             $productInput = $(this).parent().parent().find('[product-id]').first();
             var productId = $productInput.val().split(";")[0];
             if (productId) {
-                var wnd = window.open(vendorAddUrl + productId, 'shopping'); 
+                var vendorAddUrl = vendorAddUrl.replace("@productId", productId);
+                var wnd = window.open(vendorAddUrl, 'shopping'); 
                 $checkBox = $(this).parent().parent().find('input:checkbox');
                 $checkBox.prop('checked', true);
                 rowClicked($checkBox, $productInput);
@@ -62,11 +63,12 @@ if (isset($selectedVendor['Vendor'])) {
             complete: function() {
                 $('.selectedRow').removeClass('selectedRow');
                 progressLabel.text("<?php echo __('Complete!');?>");
+                setTimeout(function(){ window.open('<?php echo $vendorHomePage;?>', 'shopping'); }, TIME_TO_LOAD);
             }
         });
             
         $('[shop-all]').click(function() {
-            var timingCount = 1000;
+            var timingCount = TIME_TO_LOAD;
             progressbar.show();
             $('.gridContent a[shop-add]').each(function() {
                 var itemId = "#" + $(this).attr('id');
@@ -79,10 +81,10 @@ if (isset($selectedVendor['Vendor'])) {
                         $(itemId).parent().parent().addClass('selectedRow');
                         currentAddItem = $(itemId).attr('item-name');
                         currentAddNumber++;
-                        progressbar.progressbar( "value", currentAddNumber );
                         $(itemId).click(); 
+                        progressbar.progressbar( "value", currentAddNumber );
                     }, timingCount);
-                    timingCount += 5000;
+                    timingCount += TIME_TO_LOAD;
                 }
             });
             progressbar.progressbar("option", "max", totalToAdd);
