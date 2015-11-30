@@ -1,3 +1,9 @@
+<script type="text/javascript">
+    $(function() {
+        setSearchBoxTarget('VendorProducts');
+    });
+</script>
+<?php //echo $this->element('sql_dump'); ?>
 <ol class="breadcrumb">
     <li><?php echo $this->Html->link(__('Online Grocery Vendors '), array('controller'=>'vendors', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?> </li>
     <li class="active"><?php echo __('Products');?></li>

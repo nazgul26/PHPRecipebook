@@ -11,7 +11,7 @@ class VendorProductsController extends AppController {
 
     public $components = array('Paginator', 'RequestHandler');
 
-    // Filter to hide ingredients of other users
+    // Filter to hide items of other users
     public $filterConditions = array();
     
     public function beforeFilter() {
@@ -91,5 +91,25 @@ class VendorProductsController extends AppController {
                 $this->Session->setFlash(__('The vendor product could not be deleted. Please, try again.'));
         }
         return $this->redirect(array('action' => 'index'));
+    }
+    
+    public function search() {
+        $term = $this->request->query('term');
+        if ($term)
+        {
+            $this->VendorProduct->recursive = 0;
+            $this->Paginator->settings = $this->paginate;
+            
+            $this->set('vendorProducts', $this->Paginator->paginate("VendorProduct", array(
+                $this->filterConditions,
+                array(
+                    'LOWER(Ingredient.name) LIKE' => '%' . trim(strtolower($term)) . '%')
+                )
+            ));
+
+        } else {
+            $this->set('vendorProducts', $this->Paginator->paginate('VendorProduct', $this->filterConditions));
+        }
+        $this->render('index');
     }
 }

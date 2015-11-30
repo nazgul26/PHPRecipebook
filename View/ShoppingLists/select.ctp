@@ -7,19 +7,21 @@
             $checkBox = $(this).find('input');
             rowClicked($checkBox);
         });
-        $('[shop-store]').click(function() {
+        $('[shop-store]').click(function(event) {
+            event.preventDefault();
             loadShoppingStep('instore');
         });
-        $('[shop-online]').click(function() {
+        $('[shop-online]').click(function(event) {
+            event.preventDefault();
             loadShoppingStep('online');
         })
     });
     
     function loadShoppingStep(routeName) {
         $('#route').val(routeName);
-        var action = $('#ShoppingListSelectSelectForm').prop('action');
-        $('#ShoppingListSelectSelectForm').prop('action', action.replace('/select', '/' + routeName));
-        $('#ShoppingListSelectSelectForm').submit();
+        $('#ShoppingListSelectForm').prop('action', baseUrl + 'ShoppingLists/' + routeName + "/<?php echo $listId;?>");
+        $('#ShoppingListSelectForm').submit();
+        return false;
     }
     
     function rowClicked($checkBox) {
@@ -38,7 +40,7 @@
 </ol>
 <h2><?php echo __('What Items do you already have?');?></h2>
 <br/>
-<?php echo $this->Form->create('ShoppingListSelect'); ?>
+<form id="ShoppingListSelectForm" method="POST" action="">
 <input type="hidden" name="route" id="route"/>
 <table>
     <tr class="headerRow">

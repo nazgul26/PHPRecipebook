@@ -199,11 +199,12 @@ class AppSchema extends CakeSchema {
                     case 'vendors':
                         $data = array(
                             array('name' => 'Presto Fresh Grocery', 
-                                'home_url' => 'http://www.prestofreshgrocery.com/',
-                                'add_url' => 'http://www.prestofreshgrocery.com/checkout/cart/add/uenc/a/product/'
+                                'home_url' => 'http://www.prestofreshgrocery.com/checkout/cart/',
+                                'add_url' => 'http://www.prestofreshgrocery.com/checkout/cart/add/uenc/a/product/@productId/qty/1?block%5B%5D=options&awacp=1&no_cache=1'
                             )
                         );
                         break;
+                    
                     default:
                 }
                 if ($data) {
@@ -254,9 +255,6 @@ class AppSchema extends CakeSchema {
 		'amount' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'measure' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 80, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'weight' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		/*'indexes' => array(
-			'PRIMARY' => array('column' => array('id', 'sequence'), 'unique' => 1)
-		),*/
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
 
@@ -265,7 +263,6 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -284,7 +281,6 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -316,7 +312,6 @@ class AppSchema extends CakeSchema {
 		'core_ingredient_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'ingredient_name' => array('column' => array('name', 'user_id'), 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -326,7 +321,6 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -337,7 +331,6 @@ class AppSchema extends CakeSchema {
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
 			'meal_name' => array('column' => 'name', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -370,7 +363,6 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 64, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -380,7 +372,6 @@ class AppSchema extends CakeSchema {
 		'name' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 16, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => 'name', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -461,7 +452,6 @@ class AppSchema extends CakeSchema {
 		'country' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 64, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			//'name' => array('column' => array('name', 'user_id'), 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);

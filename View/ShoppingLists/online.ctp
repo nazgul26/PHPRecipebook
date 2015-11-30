@@ -32,7 +32,7 @@ if (isset($selectedVendor['Vendor'])) {
             var elementId = $(this).attr('id');
             itemToRefresh = elementId.replace('AddProd', 'SelectToAdd');
         });
-        
+           
         $('[shop-add]').click(function() {
             var vendorAddUrl = "<?php echo $vendorAddUrl;?>";
             $productInput = $(this).parent().parent().find('[product-id]').first();
@@ -105,7 +105,11 @@ if (isset($selectedVendor['Vendor'])) {
     <li><?php echo $this->Html->link(__('Select Items'), array('action' => 'select', $listId), array('class' => 'ajaxNavigation')); ?> </li>
     <li class="active"><?php echo __('Online');?></li>
 </ol>
-<br/><br/>
+<div class="actions">
+    <ul>
+            <li><?php echo $this->Html->link(__('Edit Products'), array('controller'=>'VendorProducts', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?></li>
+    </ul>
+</div>
 <?php echo $this->Form->create('ShoppingLists', array('action' => 'clear'));?>
 <?php echo $this->Form->input('vendor_id',array('label'=>'Select Vendor')); ?>
 <table>
@@ -151,14 +155,9 @@ if (isset($selectedVendor['Vendor'])) {
             
             <span class="productOptions">
                 <?php echo $this->Html->link(
-                        $this->Html->image("add.png", array('title' => "Add More items for this ingredient", 'alt' => 'Add')), 
-                        array('controller' => 'VendorProducts', 'action' => 'add', $vendorId, $item->id), 
-                        array('class' => 'ajaxLink addProduct', 'id' => 'AddProd' . $item->id, 'targetId' => 'editProductDialog','escape' => false)); ?>
-                
-                <?php echo $this->Html->link(
-                        $this->Html->image("edit.png", array('title' => "Edit/Remove selected Item", 'alt' => 'Edit')), 
-                        array('controller' => 'VendorProducts', 'action' => 'index', $vendorId, $item->id), 
-                        array('escape' => false)); ?>
+                    $this->Html->image("add.png", array('title' => "Add More items for this ingredient", 'alt' => 'Add')), 
+                    array('controller' => 'VendorProducts', 'action' => 'add', $vendorId, $item->id), 
+                    array('class' => 'ajaxLink addProduct', 'id' => 'AddProd' . $item->id, 'targetId' => 'editProductDialog','escape' => false)); ?>
             </span>
 
         </td>
