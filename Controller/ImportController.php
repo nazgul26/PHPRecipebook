@@ -12,7 +12,6 @@ class ImportController extends AppController {
 
     public function index($id = null) {
         if ($this->request->is(array('post', 'put'))) {
-            echo "<pre>" . print_r($this->request->data). "</pre>";
             if (!empty($this->request->data['MealMaster']['mm_file']['tmp_name'])
                 && is_uploaded_file($this->request->data['MealMaster']['mm_file']['tmp_name'])) {
                 
