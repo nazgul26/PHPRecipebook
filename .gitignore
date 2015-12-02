@@ -1,4 +1,3 @@
-Config/database.php
 Config/email.php
 tmp/cache/persistent/*
 !tmp/cache/persistent/empty
