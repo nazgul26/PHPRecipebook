@@ -5,9 +5,11 @@ This is a rewrite of PHPRecipeBook hosted on sourceforge to use Cake MVC.
 
 Current code is now ready for preview usage.  A setup wizard is included and a complete migration script.
 
-<a href="https://phprecipebook.herokuapp.com/">Demo/Preview site</a>
-* Create your own account to demo.
+<a href="https://phprecipebook.herokuapp.com/">Demo/Preview site</a> (Create your own account)
 
+Demo Videos:
+* <a href="https://youtu.be/xNUBANz2aVI">Adding A Recipe</a>
+* ... more to come
 
 Improvements:
 * AJAX Page loads (so less refreshes/data between clicks)
@@ -52,10 +54,7 @@ more effort copying files around.
 
 <h2>Upgrades in 5.x Series</h2>
 Between releases you can update your database by running 
-
-* ./Console/cake schema update -s 1
-* ./Console/cake schema update -s 2
-* etc.. for each update needed
+* ./Console/cake schema update 
 * removing all files from ./tmp/cache/models
 
 <h2>Heroku Deployment</h2>

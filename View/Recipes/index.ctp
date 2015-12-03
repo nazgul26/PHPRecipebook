@@ -48,7 +48,7 @@
         <?php if ($loggedIn): ?>
         <div class="actions">
             <ul>
-                <li><?php echo $this->Html->link(__('Add Recipe'), array('action' => 'edit'), array('class' => 'ajaxNavigation'));?></li>
+                <li><?php echo $this->Html->link(__('Add Recipe'), array('action' => 'edit'));?></li>
                 <li><?php echo $this->Html->link(__('Import'), array('controller' => 'import')); ?></li>
                 <li><button id="moreActionLinks">More Actions...</button></li>
             </ul>

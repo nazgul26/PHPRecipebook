@@ -24,7 +24,7 @@ class MealMasterComponent extends Component {
      */
     
     var $rxpHead = '/^(M{5,5}|-{5,5}).*Meal-Master/';
-    var $rxpEnd = '/^(M{20,200}|-{20,200})/';
+    var $rxpEnd = '/^(M{20,200}|-{20,200}|-{5})/';
     var $rxpTitle = '/^ *Title: .+/';
     var $rxpCat = '/^ *Categories: .+/';
     var $rxpYield = '/^ *(Yield:|Servings:) +[1-9][0-9]*/';
