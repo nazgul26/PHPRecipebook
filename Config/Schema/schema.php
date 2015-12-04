@@ -572,8 +572,7 @@ class AppSchema extends CakeSchema {
 		'request_type' => array('type' => 'string', 'null' => true, 'default' => 'GET', 'length' => 10, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'format' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
-			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			'name' => array('column' => 'name', 'unique' => 1)
+			'PRIMARY' => array('column' => 'id', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'InnoDB')
 	);
