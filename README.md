@@ -1,9 +1,9 @@
 <h1>PHPRecipebook 5.0</h1>
 =============
 
-This is a rewrite of PHPRecipeBook hosted on sourceforge to use Cake MVC.
+This is a complete rewrite of PHPRecipeBook hosted on sourceforge to use CakeMVC by the original author of PHPRecipeBook.
 
-Current code is now ready for preview usage.  A setup wizard is included and a complete migration script.
+A setup wizard is included and a complete migration script.
 
 <a href="https://phprecipebook.herokuapp.com/">Demo/Preview site</a> (Create your own account)
 
@@ -14,9 +14,10 @@ Demo Videos:
 Improvements:
 * AJAX Page loads (so less refreshes/data between clicks)
 * Better/cleaner navigation
-* HTML5 (bye bye tables)
+* HTML5
 * Better Meal Planner UI
 * Integration with other vendors/services
+* Enhanced Password security encryption
 * More databases supported because of CakePHP abstraction
 
 And of course now that we are on GitHub contributions and collaboration should be must easier.  Look forward to anyone with some skills to jump in and keep this moving.
@@ -54,6 +55,7 @@ more effort copying files around.
 
 <h2>Upgrades in 5.x Series</h2>
 Between releases you can update your database by running 
+* Get latest release (git or Release download).
 * ./Console/cake schema update 
 * removing all files from ./tmp/cache/models
 
@@ -84,6 +86,7 @@ Between releases you can update your database by running
 * Page loads but is missing images.
   - Solution: Check your apache configuration to ensure it allows overrides and mod_rewrite is installed.  The .htaccess files are not properly working and rewriting the URL.  You know this is working when the images load
  on the login page.
+
 <h2>Translations</h2>
 <hr/>
 If your local language is not yet translated I can run it up against Google Translate API.  Please star the project (show you care) and submit an 'Issue' to translate.
