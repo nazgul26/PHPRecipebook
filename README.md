@@ -9,6 +9,7 @@ A setup wizard is included and a complete migration script.
 
 Demo Videos:
 * <a href="https://youtu.be/xNUBANz2aVI">Adding A Recipe</a>
+* <a href="https://youtu.be/xZZJI407aSs">Meal Planning</a>
 * ... more to come
 
 Improvements:
