@@ -10,7 +10,7 @@ if (isset($selectedVendor['Vendor'])) {
 ?>
 
 <script type="text/javascript">
-    var TIME_TO_LOAD = 1000;
+    var TIME_TO_LOAD = 5000;
     var itemToRefresh = null;
     
     $(function() {
