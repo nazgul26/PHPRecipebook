@@ -50,7 +50,6 @@ class ShoppingList extends AppModel {
             $list = $this->getList($user);
             $listId = $list['ShoppingList']['id'];
         }
-        echo "returning '" . $listId . "'";
         return $listId;
     }
     
