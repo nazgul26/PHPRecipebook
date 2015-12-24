@@ -70,13 +70,16 @@ if (isset($selectedVendor['Vendor'])) {
         $('[shop-all]').click(function() {
             var timingCount = TIME_TO_LOAD;
             progressbar.show();
+            // Start loading the window now
+            var wnd = window.open('<?php echo $vendorHomePage;?>', 'shopping'); 
             $('.gridContent a[shop-add]').each(function() {
                 var itemId = "#" + $(this).attr('id');
                 $productInput = $(this).parent().parent().find('[product-id]').first();
                 var productId = $productInput.val();
                 if (productId) {
+                    // Add each item, with timing between
                     totalToAdd++;
-                    setTimeout(function(){ 
+                    setTimeout(function(){
                         $('.selectedRow').removeClass('selectedRow');
                         $(itemId).parent().parent().addClass('selectedRow');
                         currentAddItem = $(itemId).attr('item-name');

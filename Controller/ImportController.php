@@ -16,7 +16,7 @@ class ImportController extends AppController {
                 && is_uploaded_file($this->request->data['MealMaster']['mm_file']['tmp_name'])) {
                 
                 $filename = $this->request->data['MealMaster']['mm_file']['tmp_name'];
-                $data = $this->MealMaster->parseDataFile($filename);
+                $this->MealMaster->import($filename);
             } else {
                 $this->Session->setFlash(__('Could not open uploaded file, please try again.'));
             }

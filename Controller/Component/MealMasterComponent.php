@@ -82,7 +82,7 @@ class MealMasterComponent extends Component {
         Gets the data out of the given data file and loads it into the importRecipes, relatedRecipes arrays
         @param $file The file to parse
     */
-    function parseDataFile($file) {
+    function import($file) {
         $this->Unit = ClassRegistry::init('Unit');
         $this->units = $this->Unit->find('list');
         
@@ -94,11 +94,32 @@ class MealMasterComponent extends Component {
         
         $this->Ethnicity = ClassRegistry::init('Ethnicity');
         $this->ethnicities = $this->Ethnicity->find('list');
+        
+        
+        $this->Ingredient = ClassRegistry::init('Ingredient');
 
         if (!($fp = fopen($file, "r"))) {
-                die(__('could not data file for reading'). "<br />");
+            die(__('could not data file for reading'). "<br />");
         }
-        $this->parseDataFileImpl($fp); // call the function that is implementing the import
+        
+        if ($this->parseDataFileImpl($fp)) {
+            print "<pre>";
+            print_r($this->importRecipes);
+            print "</pre>"; 
+            foreach ($this->importRecipes as $recipe) {
+                foreach ($recipe['Ingredient'] as $ingredient) {
+                    $ingredient['id'] = null;
+                    $ingredient['user_id'] = 1;
+                    
+                    $saveIng = array();
+                    $saveIng['Ingredient'] = $ingredient;
+                    if ($this->Ingredient->save($saveIng)) {
+                        echo "Saved: " . $ingredient['name'] . "<br/>";
+                    }
+                }
+            }
+            
+        }
         fclose($fp); // close the data file
     }
     
@@ -111,12 +132,8 @@ class MealMasterComponent extends Component {
     function parseDataFileImpl($fp)
     {
 	/* start */
-	
 	$this->readAllRecipes($fp);
-	print "<pre>";
-	print_r($this->importRecipes);
-	print "</pre>"; 
-	
+
 	// Do not throw exception if user was interrupting the input.
 	if (empty($this->importRecipes)) {
 	    print "File does not contain any Meal-Master recipe(s).<br />\n";
