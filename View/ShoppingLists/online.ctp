@@ -146,7 +146,7 @@ if (isset($selectedVendor['Vendor'])) {
                         if ($product['ingredient_id'] == $item->id) {
                             $productCode = $product['code'];
                             $productId = $product['id'];
-                            $productName = $product['name'];
+                            $productName = isset($product['name']) ? $product['name'] : $item->name;
                             ?>
                             <option value="<?php echo $productCode . ";" . $productId;?>" selected><?php echo $productName;?> (<?php echo $productCode;?>)</option>
                             <?php
