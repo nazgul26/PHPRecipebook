@@ -255,4 +255,27 @@ class RecipesController extends AppController {
             $this->set('_serialize', 'searchResults');
         }
     }
+    
+    public function contains() {
+        $this->Recipe->Behaviors->load('Containable');
+        $this->loadModel('IngredientMapping');
+        if ($this->request->is(array('post', 'put'))) {
+            $ingredients = $this->request->data;
+            $recipeItemIds = $this->IngredientMapping->find('all', 
+                    array('conditions' => array('IngredientMapping.ingredient_id'=> $ingredients),
+                          'fields' => array('recipe_id'))
+                    );
+
+            $recipeIds = array();
+            foreach ($recipeItemIds as $item) {
+                $recipeIds[] = $item['IngredientMapping']['recipe_id'];
+            }
+            $recipes = $this->Recipe->find('all', array('conditions' => array('Recipe.id'=> $recipeIds)));
+            /*echo "<pre>";
+            print_r($recipes);
+            echo "</pre>";*/
+            $this->set('recipes', $recipes);       
+        }
+    }
+
 }

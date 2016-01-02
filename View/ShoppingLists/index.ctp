@@ -76,7 +76,7 @@ $shoppingListId = isset($this->request->data['ShoppingList']['id']) ? $this->req
     <fieldset class="addShoppingListItem">
         <input type="radio" name="searchType" id="recipeSearch" value="recipe" checked/><label for="recipeSearch">Recipes</label>
         <input type="radio" name="searchType" id="ingredientSearch" value="ingredient"/><label for="ingredientSearch">Ingredients</label>
-        <span>Search</span>
+        <span><?php echo __('Search');?></span>
         <input type="text" class="ui-widget" id="addRecipeAutocomplete"/>
         <input type="text" class="ui-widget" id="addIngredientAutocomplete"/>
     </fieldset>
