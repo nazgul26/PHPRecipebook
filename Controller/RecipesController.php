@@ -279,6 +279,7 @@ class RecipesController extends AppController {
                 'conditions' => array(
                     'IngredientMapping.ingredient_id'=> $ingredients
                 ),
+                'limit' => 20,
                 'order' => array('matches DESC')
             ));
             $this->set('recipes', $results);       
