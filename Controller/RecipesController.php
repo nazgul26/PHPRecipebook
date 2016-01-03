@@ -261,6 +261,27 @@ class RecipesController extends AppController {
         $this->loadModel('IngredientMapping');
         if ($this->request->is(array('post', 'put'))) {
             $ingredients = $this->request->data;
+            $results = $this->Recipe->find('all', array(
+                'recursive' => 0,
+                'fields' => array(
+                'id',
+                'name',
+                'COUNT(*) as matches'),
+                'group' => array('id', 'name'),
+                'joins' => array(
+                    array(
+                        'alias' => 'IngredientMapping',
+                        'table' => 'ingredient_mappings',
+                        'foreignKey' => false,
+                        'conditions' => array('IngredientMapping.recipe_id = Recipe.id'),
+                    ),
+                ),
+                'conditions' => array(
+                    'IngredientMapping.ingredient_id'=> $ingredients
+                ),
+                'order' => array('matches DESC')
+            ));
+            /*
             $recipeItemIds = $this->IngredientMapping->find('all', 
                     array('conditions' => array('IngredientMapping.ingredient_id'=> $ingredients),
                           'fields' => array('recipe_id'))
@@ -271,10 +292,11 @@ class RecipesController extends AppController {
                 $recipeIds[] = $item['IngredientMapping']['recipe_id'];
             }
             $recipes = $this->Recipe->find('all', array('conditions' => array('Recipe.id'=> $recipeIds)));
-            /*echo "<pre>";
-            print_r($recipes);
-            echo "</pre>";*/
-            $this->set('recipes', $recipes);       
+            */
+            echo "<pre>";
+            print_r($results);
+            echo "</pre>";
+            $this->set('recipes', $results);       
         }
     }
 

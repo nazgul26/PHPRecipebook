@@ -75,26 +75,8 @@ CREATE TABLE preparation_methods (
 	PRIMARY KEY(id)
 );
 
-CREATE TABLE core_ingredients (
-	id INT NOT NULL,
-	groupNumber INT NOT NULL,
-	name VARCHAR(200) NOT NULL,
-	short_description VARCHAR(60) NOT NULL,
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE core_weights (
-	id INT NOT NULL REFERENCES core_ingredients(id) ON DELETE SET NULL,
-	sequence INT NOT NULL,
-	amount INT,
-	measure VARCHAR(80),
-	weight INT,
-	PRIMARY KEY (id, sequence)
-);
-
 CREATE TABLE ingredients (
 	id INT NOT NULL AUTO_INCREMENT,
-	core_ingredient_id INTEGER REFERENCES core_ingredients(id) ON DELETE SET NULL,
 	name VARCHAR(120) NOT NULL,
 	description MEDIUMTEXT,
 	location_id INT REFERENCES locations(id) ON DELETE SET NULL,

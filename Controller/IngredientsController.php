@@ -80,11 +80,10 @@ class IngredientsController extends AppController {
             $options = array('conditions' => array('Ingredient.' . $this->Ingredient->primaryKey => $id));
             $this->request->data = $this->Ingredient->find('first', $options);
         }
-        $coreIngredients = $this->Ingredient->CoreIngredient->find('list');
         $locations = $this->Ingredient->Location->find('list');
         $units = $this->Ingredient->Unit->find('list');
         $users = $this->Ingredient->User->find('list');
-        $this->set(compact('coreIngredients', 'locations', 'units', 'users'));
+        $this->set(compact('locations', 'units', 'users'));
     }
 
     public function delete($id = null) {

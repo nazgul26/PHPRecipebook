@@ -3,8 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Ingredient Model
  *
- * @property CoreIngredient $CoreIngredient
- * @property Location $Location
+  * @property Location $Location
  * @property Unit $Unit
  * @property User $User
  */
@@ -31,10 +30,6 @@ class Ingredient extends AppModel {
      * @var array
      */
     public $belongsTo = array(
-            'CoreIngredient' => array(
-                    'className' => 'CoreIngredient',
-                    'foreignKey' => 'core_ingredient_id',
-            ),
             'Location' => array(
                     'className' => 'Location',
                     'foreignKey' => 'location_id',
