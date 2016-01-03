@@ -1,7 +1,7 @@
 <?php 
 $baseUrl = Router::url('/');
 ?>
-<?php //echo $this->element('sql_dump'); ?>
+<?php echo $this->element('sql_dump'); ?>
 
 <script type="text/javascript">
     $(function() {
@@ -63,7 +63,8 @@ $baseUrl = Router::url('/');
 	<table cellpadding="0" cellspacing="0">
 	<tr>
             <th class="actions"><?php echo __('Actions'); ?></th>
-            <th><?php echo $this->Paginator->sort('name'); ?></th>		
+            <th><?php echo $this->Paginator->sort('name'); ?></th>
+            <th><?php echo __('# of Matches');?></th>
 	</tr>
 	<?php foreach ($recipes as $recipe): ?>
 	<tr>
@@ -75,5 +76,6 @@ $baseUrl = Router::url('/');
                 <?php endif;?>
             </td>
             <td><?php echo h($recipe['Recipe']['name']); ?>&nbsp;</td>
+            <td><?php echo $recipe[0]['matches'];?></td>
 	</tr>
 <?php endforeach; endif; ?>

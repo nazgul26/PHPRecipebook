@@ -13,9 +13,6 @@
         <b>sudo ./Console/cake schema create</b><br/>
         <i>* Answer Y to drop, Y to create</i>
     </li>
-    <li><?php echo __d('setup','Import core ingredients');?> - <br/>
-        <b>Config/SQL/core_ingredients.sql</b>
-    </li>
     <li><?php echo __d('setup','Import sample ingredients (optional)');?> -<br/>
         <b>Config/SQL/sample_ingredients.sql</b>(optional)
     </li>

@@ -79,7 +79,6 @@ class AppController extends Controller {
         // Check Auth for Admin only Pages.
         if (in_array($this->params['controller'], array(
             'BaseTypes', 
-            'CoreIngredients', 
             'Courses', 
             'Difficulties', 
             'Ethnicities', 

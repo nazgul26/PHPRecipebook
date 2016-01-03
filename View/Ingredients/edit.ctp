@@ -1,21 +1,7 @@
 
 <script type="text/javascript">
     $(function() {
-        $('.ingredients .submit').hide();
-        
-        $("#IngredientUSDAName").autocomplete({
-            source: "CoreIngredients/search.json",
-            minLength: 3,
-            select: function(event, ui) {
-                if (ui.item.id) {
-                    $("#IngredientCoreIngredientId").val(ui.item.id);
-                    $("#USDA_name").val(ui.item.label);
-                } else {
-                    $("#IngredientCoreIngredientId").val('');
-                    $("#USDA_name").val('');
-                }
-            }
-        });
+        $('.ingredients .submit').hide();    
     });
 </script>
 
@@ -25,8 +11,6 @@
         echo $this->Form->input('id');
         echo $this->Form->input('name');
         echo $this->Form->input('description', array('escape' => true, 'rows' => '2', 'cols' => '10'));
-        echo $this->Form->input('USDA_name');
-        echo $this->Form->hidden('core_ingredient_id');
         echo $this->Form->input('location_id', array('label' => __('Location In Store')));
         echo $this->Form->input('unit_id', array('label' => __('Measurement Type')));
         echo $this->Form->input('solid', array('label' => __('Solid/Liquid'), 'options' => array('1' => 'Yes', '2' => 'No')));
