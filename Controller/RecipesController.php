@@ -281,21 +281,6 @@ class RecipesController extends AppController {
                 ),
                 'order' => array('matches DESC')
             ));
-            /*
-            $recipeItemIds = $this->IngredientMapping->find('all', 
-                    array('conditions' => array('IngredientMapping.ingredient_id'=> $ingredients),
-                          'fields' => array('recipe_id'))
-                    );
-
-            $recipeIds = array();
-            foreach ($recipeItemIds as $item) {
-                $recipeIds[] = $item['IngredientMapping']['recipe_id'];
-            }
-            $recipes = $this->Recipe->find('all', array('conditions' => array('Recipe.id'=> $recipeIds)));
-            */
-            echo "<pre>";
-            print_r($results);
-            echo "</pre>";
             $this->set('recipes', $results);       
         }
     }

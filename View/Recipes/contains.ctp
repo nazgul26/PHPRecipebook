@@ -1,7 +1,7 @@
 <?php 
 $baseUrl = Router::url('/');
 ?>
-<?php echo $this->element('sql_dump'); ?>
+<?php //echo $this->element('sql_dump'); ?>
 
 <script type="text/javascript">
     $(function() {
