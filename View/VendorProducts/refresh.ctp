@@ -16,7 +16,7 @@ foreach ($this->request->data as $item) {
     $productId = $item['VendorProduct']['id'];
     $productName = $item['VendorProduct']['name'];
     ?>
-    <option value="<?php echo $productCode + ";" + $productId;?>" selected><?php echo $productName;?> (<?php echo $productCode;?>)</option>
+    <option value="<?php echo $productCode . ";" . $productId;?>" selected><?php echo $productName;?> (<?php echo $productCode;?>)</option>
     <?php
 }
 ?>
