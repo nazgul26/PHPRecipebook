@@ -17,3 +17,4 @@ webroot/files/
 sass/.sass-cache
 Vendor/*
 Plugin/Upload
+.vscode/*

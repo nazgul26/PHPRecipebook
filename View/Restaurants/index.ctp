@@ -26,7 +26,9 @@
         <?php endif;?>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+        <?php if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe['User']['id'])):?>
             <th class="actions"><?php echo __('Actions'); ?></th>
+        <?php endif;?>
             <th><?php echo $this->Paginator->sort('name'); ?></th>
             <th><?php echo $this->Paginator->sort('street'); ?></th>
             <th><?php echo $this->Paginator->sort('city'); ?></th>
@@ -41,10 +43,12 @@
 	</tr>
 	<?php foreach ($restaurants as $restaurant): ?>
 	<tr>
+            <?php if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe['User']['id'])):?>
             <td class="actions">
                     <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $restaurant['Restaurant']['id']), array('class' => 'ajaxLink', 'targetId' => 'editRestaurantDialog')); ?>
                     <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $restaurant['Restaurant']['id']), null, __('Are you sure you want to delete # %s?', $restaurant['Restaurant']['id'])); ?>
             </td>
+            <?php endif;?>
             <td><?php echo $restaurant['Restaurant']['name']; ?>&nbsp;</td>
             <td><?php echo h($restaurant['Restaurant']['street']); ?>&nbsp;</td>
             <td><?php echo h($restaurant['Restaurant']['city']); ?>&nbsp;</td>
@@ -55,7 +59,12 @@
             <td><?php echo $restaurant['Restaurant']['hours']; ?>&nbsp;</td>
             <td><?php echo $restaurant['Restaurant']['comments']; ?>&nbsp;</td>
             <td>
-                    <?php echo $this->Html->link($restaurant['User']['name'], array('controller' => 'users', 'action' => 'view', $restaurant['User']['id'])); ?>
+            <?php 
+            if ($isAdmin) { 
+                echo $this->Html->link($restaurant['User']['name'], array('controller' => 'users', 'action' => 'view', $restaurant['User']['id']));
+            } else {
+                echo $restaurant['User']['name'];
+            }?>
             </td>
 	</tr>
 <?php endforeach; ?>

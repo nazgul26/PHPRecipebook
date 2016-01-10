@@ -97,7 +97,7 @@
             <td>
                 <?php if ($isAdmin) {
                     echo $this->Html->link($recipe['User']['name'], array('controller' => 'users', 'action' => 'view', $recipe['User']['id']));
-                }else {
+                } else {
                     echo $recipe['User']['name'];
                 }?>
             </td>
