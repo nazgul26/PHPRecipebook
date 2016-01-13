@@ -30,13 +30,10 @@
             <th class="actions"><?php echo __('Actions'); ?></th>
         <?php endif;?>
             <th><?php echo $this->Paginator->sort('name'); ?></th>
-            <th><?php echo $this->Paginator->sort('street'); ?></th>
-            <th><?php echo $this->Paginator->sort('city'); ?></th>
-            <th><?php echo $this->Paginator->sort('state'); ?></th>
-            <th><?php echo $this->Paginator->sort('zip'); ?></th>
-            <th><?php echo $this->Paginator->sort('country'); ?></th>
+            <th><?php echo __('address'); ?></th>
             <th><?php echo $this->Paginator->sort('phone'); ?></th>
             <th><?php echo $this->Paginator->sort('hours'); ?></th>
+            <th><?php echo __('price');?></th>
             <th><?php echo $this->Paginator->sort('comments'); ?></th>
             <th><?php echo $this->Paginator->sort('user_id'); ?></th>
             
@@ -50,13 +47,16 @@
             </td>
             <?php endif;?>
             <td><?php echo $restaurant['Restaurant']['name']; ?>&nbsp;</td>
-            <td><?php echo h($restaurant['Restaurant']['street']); ?>&nbsp;</td>
-            <td><?php echo h($restaurant['Restaurant']['city']); ?>&nbsp;</td>
-            <td><?php echo h($restaurant['Restaurant']['state']); ?>&nbsp;</td>
-            <td><?php echo h($restaurant['Restaurant']['zip']); ?>&nbsp;</td>
-            <td><?php echo h($restaurant['Restaurant']['country']); ?>&nbsp;</td>
+            <td>
+                <address>
+                    <?php echo h($restaurant['Restaurant']['street']); ?><br/>
+                    <?php echo h($restaurant['Restaurant']['city']); ?>, <?php echo h($restaurant['Restaurant']['state']); ?> <?php echo h($restaurant['Restaurant']['zip']); ?><br/>
+                    <?php echo h($restaurant['Restaurant']['country']); ?>
+                </address>
+            </td>
             <td><?php echo h($restaurant['Restaurant']['phone']); ?>&nbsp;</td>
             <td><?php echo $restaurant['Restaurant']['hours']; ?>&nbsp;</td>
+            <td><?php echo $restaurant['PriceRange']['name'];?></td>
             <td><?php echo $restaurant['Restaurant']['comments']; ?>&nbsp;</td>
             <td>
             <?php 
