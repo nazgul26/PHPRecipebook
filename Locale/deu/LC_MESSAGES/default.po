@@ -1,13 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"PO-Revision-Date: 2016-01-04 05:47+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"POT-Creation-Date: \n"
+"Language: de\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: Config/Schema/schema.php:19
 msgid "Beef"
@@ -23,7 +26,7 @@ msgstr "Ei"
 
 #: Config/Schema/schema.php:22
 msgid "Fruit"
-msgstr "Frucht"
+msgstr "Obst"
 
 #: Config/Schema/schema.php:23
 msgid "Grain"
@@ -39,11 +42,11 @@ msgstr "Andere"
 
 #: Config/Schema/schema.php:26
 msgid "Pasta"
-msgstr "Pasta"
+msgstr "Nudeln"
 
 #: Config/Schema/schema.php:27
 msgid "Pork/Ham"
-msgstr "Pork / Ham"
+msgstr "Schwein/Schinken"
 
 #: Config/Schema/schema.php:28
 msgid "Poultry"
@@ -57,8 +60,7 @@ msgstr "Meeresfrüchte"
 msgid "Vegetable"
 msgstr "Gemüse"
 
-#: Config/Schema/schema.php:35;115
-#: View/MealPlans/index.ctp:81
+#: Config/Schema/schema.php:35;115 View/MealPlans/index.ctp:81
 msgid "Breakfast"
 msgstr "Frühstück"
 
@@ -66,8 +68,7 @@ msgstr "Frühstück"
 msgid "Snack"
 msgstr "Snack"
 
-#: Config/Schema/schema.php:37;116
-#: View/MealPlans/index.ctp:82
+#: Config/Schema/schema.php:37;116 View/MealPlans/index.ctp:82
 msgid "Lunch"
 msgstr "Mittagessen"
 
@@ -83,8 +84,7 @@ msgstr "Beilage"
 msgid "Entree"
 msgstr "Hauptgericht"
 
-#: Config/Schema/schema.php:41;118
-#: View/MealPlans/index.ctp:84
+#: Config/Schema/schema.php:41;118 View/MealPlans/index.ctp:84
 msgid "Dessert"
 msgstr "Dessert"
 
@@ -98,7 +98,7 @@ msgstr "Leicht"
 
 #: Config/Schema/schema.php:49
 msgid "Intermediate"
-msgstr "Zwischen-"
+msgstr "Mittel"
 
 #: Config/Schema/schema.php:50
 msgid "Difficult"
@@ -110,11 +110,11 @@ msgstr "Experte"
 
 #: Config/Schema/schema.php:56
 msgid "American"
-msgstr "Amerikaner"
+msgstr "Amerikanisch"
 
 #: Config/Schema/schema.php:57
 msgid "Chinese"
-msgstr "Chinese"
+msgstr "Chinesisch"
 
 #: Config/Schema/schema.php:58
 msgid "German"
@@ -150,7 +150,7 @@ msgstr "Keiner"
 
 #: Config/Schema/schema.php:66
 msgid "Slavic"
-msgstr "Slawische"
+msgstr "Slawisch"
 
 #: Config/Schema/schema.php:71
 msgid "Alcohol"
@@ -174,7 +174,7 @@ msgstr "Obstkonserven"
 
 #: Config/Schema/schema.php:77
 msgid "Canned Meat & Fish"
-msgstr "Canned Fleisch & Fisch"
+msgstr "Dosenfleisch & Fisch"
 
 #: Config/Schema/schema.php:78
 msgid "Canned Vegetables"
@@ -238,7 +238,7 @@ msgstr "Haushaltsreiniger"
 
 #: Config/Schema/schema.php:93
 msgid "Juice & Cocktail"
-msgstr "Juice & Cocktail"
+msgstr "Saft & Cocktail"
 
 #: Config/Schema/schema.php:94
 msgid "Kosher/Ethnic"
@@ -254,15 +254,15 @@ msgstr "Fleisch"
 
 #: Config/Schema/schema.php:97
 msgid "Natural & Organic"
-msgstr "Natural & Organic"
+msgstr "Natürlich & biologisch"
 
 #: Config/Schema/schema.php:98
 msgid "Oil/Vinegar/Dressings"
-msgstr "Öle / Essig / Dressings"
+msgstr "Öl-Essig Dressings"
 
 #: Config/Schema/schema.php:99
 msgid "Pancakes & Syrup"
-msgstr "Pancakes & Sirup"
+msgstr "Pfannkuchen & Sirup"
 
 #: Config/Schema/schema.php:100
 msgid "Paper Serving Ware"
@@ -270,11 +270,11 @@ msgstr "Papier Serving Ware"
 
 #: Config/Schema/schema.php:101
 msgid "Pasta & Sauce"
-msgstr "Pasta & Sauce"
+msgstr "Nudeln & Sauce"
 
 #: Config/Schema/schema.php:102
 msgid "Peanut Butter/Jelly/Honey"
-msgstr "Peanut Butter / Jelly / Honig"
+msgstr "Erdnussbutter/ Marmelade / Honig"
 
 #: Config/Schema/schema.php:103
 msgid "Produce"
@@ -286,7 +286,7 @@ msgstr "Reis"
 
 #: Config/Schema/schema.php:105
 msgid "Salty Snacks & Chips"
-msgstr "Salty Snacks & Chips"
+msgstr "salzige Snacks & Chips"
 
 #: Config/Schema/schema.php:107
 msgid "Soda pop"
@@ -304,8 +304,7 @@ msgstr "Gewürze"
 msgid "Toilet Paper"
 msgstr "Toilettenpapier"
 
-#: Config/Schema/schema.php:117
-#: View/MealPlans/index.ctp:83
+#: Config/Schema/schema.php:117 View/MealPlans/index.ctp:83
 msgid "Dinner"
 msgstr "Abendessen"
 
@@ -343,7 +342,7 @@ msgstr "30-60 Minuten"
 
 #: Config/Schema/schema.php:135
 msgid "60+ Minutes"
-msgstr "60+ Minutes"
+msgstr "60+ Minuten"
 
 #: Config/Schema/schema.php:140
 msgid "$0-$10"
@@ -369,13 +368,11 @@ msgstr "$ 25- $ 30"
 msgid "$30+"
 msgstr "$ 30 +"
 
-#: Config/Schema/schema.php:158
-#: View/Layouts/default.ctp:124
-#: View/ShoppingLists/instore.ctp:38
-#: View/ShoppingLists/online.ctp:95
+#: Config/Schema/schema.php:158 View/Layouts/default.ctp:124
+#: View/ShoppingLists/instore.ctp:38 View/ShoppingLists/online.ctp:95
 #: View/ShoppingLists/select.ctp:48
 msgid "Unit"
-msgstr "Einheit"
+msgstr "Stück"
 
 #: Config/Schema/schema.php:159
 msgid "Slice"
@@ -387,7 +384,7 @@ msgstr "Nelke"
 
 #: Config/Schema/schema.php:161
 msgid "Pinch"
-msgstr "Kneifen"
+msgstr "Priese"
 
 #: Config/Schema/schema.php:162
 msgid "Package"
@@ -395,7 +392,7 @@ msgstr "Paket"
 
 #: Config/Schema/schema.php:163
 msgid "Can"
-msgstr "Können"
+msgstr "Dose"
 
 #: Config/Schema/schema.php:164
 msgid "Drop"
@@ -403,11 +400,11 @@ msgstr "Tropfen"
 
 #: Config/Schema/schema.php:165
 msgid "Bunch"
-msgstr "Haufen"
+msgstr "Menge"
 
 #: Config/Schema/schema.php:166
 msgid "Dash"
-msgstr "Strich"
+msgstr "Spritzer"
 
 #: Config/Schema/schema.php:167
 msgid "Carton"
@@ -479,11 +476,11 @@ msgstr "Deziliter"
 
 #: Config/Schema/schema.php:184
 msgid "Tablespoon_m"
-msgstr "Tablespoon_m"
+msgstr "Esslöffel_m"
 
 #: Config/Schema/schema.php:185
 msgid "Teaspoon_m"
-msgstr "Teaspoon_m"
+msgstr "Teelöffel_m"
 
 #: Controller/AppController.php:89
 msgid "Not Authorized."
@@ -531,43 +528,43 @@ msgstr "Der Kernbestandteil konnte nicht gelöscht werden. Bitte versuchen Sie e
 
 #: Controller/CoursesController.php:37;62
 msgid "Invalid course"
-msgstr "Ungültige Kurs"
+msgstr "Ungültiger Gang"
 
 #: Controller/CoursesController.php:41
 msgid "The course has been saved."
-msgstr "Der Kurs wurde gespeichert."
+msgstr "Der Gang wurde gespeichert."
 
 #: Controller/CoursesController.php:44
 msgid "The course could not be saved. Please, try again."
-msgstr "Der Kurs konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Gang konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
 
 #: Controller/CoursesController.php:66
 msgid "The course has been deleted."
-msgstr "Der Kurs wurde gelöscht."
+msgstr "Der Gang wurde gelöscht."
 
 #: Controller/CoursesController.php:68
 msgid "The course could not be deleted. Please, try again."
-msgstr "Der Kurs konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
+msgstr "Der Gang konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
 
 #: Controller/DifficultiesController.php:37;62
 msgid "Invalid difficulty"
-msgstr "Ungültige Schwierigkeit"
+msgstr "Ungültiger Schwierigkeitsgrad"
 
 #: Controller/DifficultiesController.php:41
 msgid "The difficulty has been saved."
-msgstr "Die Schwierigkeit wurde gespeichert."
+msgstr "Der Schwierigkeitsgrad wurde gespeichert."
 
 #: Controller/DifficultiesController.php:44
 msgid "The difficulty could not be saved. Please, try again."
-msgstr "Die Schwierigkeit konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Schwierigkeitsgrad konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
 
 #: Controller/DifficultiesController.php:66
 msgid "The difficulty has been deleted."
-msgstr "Die Schwierigkeit ist gelöscht worden."
+msgstr "Der Schwierigkeitsgrad ist gelöscht worden."
 
 #: Controller/DifficultiesController.php:68
 msgid "The difficulty could not be deleted. Please, try again."
-msgstr "Die Schwierigkeit konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
+msgstr "Der Schwierigkeitsgrad konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
 
 #: Controller/EthnicitiesController.php:43;58;83
 msgid "Invalid ethnicity"
@@ -595,7 +592,7 @@ msgstr "Geladene Datei konnte nicht geöffnet werden, versuchen Sie es erneut."
 
 #: Controller/IngredientsController.php:38
 msgid "Not Ingredient Owner"
-msgstr "Not Ingredient Owner"
+msgstr "Nicht Eigentümer der Zutat"
 
 #: Controller/IngredientsController.php:67;93
 #: Controller/ShoppingListsController.php:118
@@ -604,43 +601,43 @@ msgstr "Ungültige Zutat"
 
 #: Controller/IngredientsController.php:74
 msgid "The ingredient has been saved."
-msgstr "Der Inhaltsstoff wurde gespeichert."
+msgstr "Die Zutat wurde gespeichert."
 
 #: Controller/IngredientsController.php:77
 msgid "The ingredient could not be saved. Please, try again."
-msgstr "Der Inhaltsstoff konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+msgstr "Die Zutat konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
 
 #: Controller/IngredientsController.php:97
 msgid "The ingredient has been deleted."
-msgstr "Der Inhaltsstoff wurde gelöscht."
+msgstr "Die Zutat wurde gelöscht."
 
 #: Controller/IngredientsController.php:99
 msgid "The ingredient could not be deleted. Please, try again."
-msgstr "Der Inhaltsstoff konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
+msgstr "Die Zutat konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
 
 #: Controller/LocationsController.php:44;69
 msgid "Invalid location"
-msgstr "Ungültige Stelle"
+msgstr "Ungültiger Ort"
 
 #: Controller/LocationsController.php:48
 msgid "The location has been saved."
-msgstr "Die Lage wurde gespeichert."
+msgstr "Der Ort wurde gespeichert."
 
 #: Controller/LocationsController.php:51
 msgid "The location could not be saved. Please, try again."
-msgstr "Die Lage könnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Ort könnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
 
 #: Controller/LocationsController.php:73
 msgid "The location has been deleted."
-msgstr "Die Lage wurde gelöscht."
+msgstr "Der Ort wurde gelöscht."
 
 #: Controller/LocationsController.php:75
 msgid "The location could not be deleted. Please, try again."
-msgstr "Die Lage könnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
+msgstr "Der Ort könnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
 
 #: Controller/MealPlansController.php:32
 msgid "Not meal owner"
-msgstr "Nicht Mahlzeit Besitzer"
+msgstr "Nicht Besitzer der Mahlzeit"
 
 #: Controller/MealPlansController.php:99;154
 msgid "Invalid meal plan"
@@ -648,11 +645,11 @@ msgstr "Ungültige Speiseplan"
 
 #: Controller/MealPlansController.php:126
 msgid "The meal plan has been saved."
-msgstr "Die Speisen wurden gespeichert."
+msgstr "Der Speiseplan wurden gespeichert."
 
 #: Controller/MealPlansController.php:129
 msgid "The meal plan could not be saved. Please, try again."
-msgstr "Der Ernährungsplan konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Speiseplan konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
 
 #: Controller/MealPlansController.php:158
 msgid "The meal plan has been deleted."
@@ -660,7 +657,7 @@ msgstr "Der Speiseplan wurde gelöscht."
 
 #: Controller/MealPlansController.php:160
 msgid "The meal plan could not be deleted. Please, try again."
-msgstr "Der Ernährungsplan konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
+msgstr "Der Speiseplan konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
 
 #: Controller/MealPlansController.php:167
 msgid "Start date not defined"
@@ -668,31 +665,31 @@ msgstr "Startdatum nicht festgelegt"
 
 #: Controller/MealPlansController.php:194
 msgid "Meal(s) added to shopping list."
-msgstr "Mahlzeit (en) hinzugefügt, um die Einkaufsliste."
+msgstr "Mahlzeit(en) zur Einkaufsliste hinzugefügt."
 
 #: Controller/MealPlansController.php:196
 msgid "Meal(s) could not be added to shopping list. Please, try again."
-msgstr "Essen konnte (n) nicht die Merkliste hinzugefügt werden. Bitte versuchen Sie es erneut."
+msgstr "Mahlzeit(en) konnte(n) nicht zur Einkaufsliste hinzugefügt werden. Bitte versuchen Sie es erneut."
 
 #: Controller/PreparationMethodsController.php:37;62
 msgid "Invalid preparation method"
-msgstr "Ungültige Herstellungsverfahren"
+msgstr "Ungültige Zubereitungsmethode"
 
 #: Controller/PreparationMethodsController.php:41
 msgid "The preparation method has been saved."
-msgstr "Das Herstellungsverfahren wurde gespeichert."
+msgstr "Das Zubereitungsverfahren wurde gespeichert."
 
 #: Controller/PreparationMethodsController.php:44
 msgid "The preparation method could not be saved. Please, try again."
-msgstr "Das Herstellungsverfahren konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+msgstr "Das Zubereitungsverfahren konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
 
 #: Controller/PreparationMethodsController.php:66
 msgid "The preparation method has been deleted."
-msgstr "Das Herstellungsverfahren wurde gestrichen."
+msgstr "Das Zubereitungsverfahren wurde gelöscht."
 
 #: Controller/PreparationMethodsController.php:68
 msgid "The preparation method could not be deleted. Please, try again."
-msgstr "Das Herstellungsverfahren kann nicht gelöscht werden. Bitte versuchen Sie es erneut."
+msgstr "Das Zubereitungsverfahren kann nicht gelöscht werden. Bitte versuchen Sie es erneut."
 
 #: Controller/PreparationTimesController.php:38;63
 msgid "Invalid preparation time"
@@ -700,7 +697,7 @@ msgstr "Ungültige Vorbereitungszeit"
 
 #: Controller/PreparationTimesController.php:42
 msgid "The preparation time has been saved."
-msgstr "Die Vorbereitungszeit ist gespeichert."
+msgstr "Die Vorbereitungszeit wurde gespeichert."
 
 #: Controller/PreparationTimesController.php:45
 msgid "The preparation time could not be saved. Please, try again."
@@ -708,7 +705,7 @@ msgstr "Die Vorbereitungszeit konnte nicht gespeichert werden. Bitte versuchen S
 
 #: Controller/PreparationTimesController.php:67
 msgid "The preparation time has been deleted."
-msgstr "Die Vorbereitungszeit wurde gestrichen."
+msgstr "Die Vorbereitungszeit wurde gelöscht."
 
 #: Controller/PreparationTimesController.php:69
 msgid "The preparation time could not be deleted. Please, try again."
@@ -736,7 +733,7 @@ msgstr "Die Preisspanne konnte nicht gelöscht werden. Bitte versuchen Sie es er
 
 #: Controller/RecipesController.php:46
 msgid "Not Recipe Owner"
-msgstr "Nicht-Rezept-Besitzer"
+msgstr "Nicht Eigentümer des Rezepts"
 
 #: Controller/RecipesController.php:97;162;223
 #: Controller/ShoppingListsController.php:95
@@ -745,7 +742,7 @@ msgstr "Ungültige Rezept"
 
 #: Controller/RecipesController.php:169
 msgid "The recipe has been saved."
-msgstr "Das Rezept ist gespeichert."
+msgstr "Das Rezept wurde gespeichert."
 
 #: Controller/RecipesController.php:171
 msgid "The recipe could not be saved. Please, try again."
@@ -753,23 +750,23 @@ msgstr "Das Rezept konnte nicht gespeichert werden. Bitte versuchen Sie es erneu
 
 #: Controller/RecipesController.php:199
 msgid "The ingredient has been removed."
-msgstr "Der Bestandteil entfernt worden ist."
+msgstr "Die Zutat wurde gelöscht."
 
 #: Controller/RecipesController.php:201
 msgid "The ingredient could not be removed. Please, try again."
-msgstr "Der Inhaltsstoff nicht entfernt werden konnte. Bitte versuchen Sie es erneut."
+msgstr "Die Zutat konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
 
 #: Controller/RecipesController.php:207
 msgid "The related recipe has been removed."
-msgstr "Der Zusammenhang Rezept wurde entfernt."
+msgstr "Das verwandte Rezept wurde entfernt."
 
 #: Controller/RecipesController.php:209
 msgid "The related recipe could not be removed. Please, try again."
-msgstr "Der Zusammenhang Rezept konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Das verwandte Rezept konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
 
 #: Controller/RecipesController.php:226
 msgid "The recipe has been deleted."
-msgstr "Das Rezept ist gelöscht worden."
+msgstr "Das Rezept wurde gelöscht."
 
 #: Controller/RecipesController.php:228
 msgid "The recipe could not be deleted. Please, try again."
@@ -777,7 +774,7 @@ msgstr "Das Rezept konnte nicht gelöscht werden. Bitte versuchen Sie es erneut.
 
 #: Controller/RestaurantsController.php:44;72
 msgid "Invalid restaurant"
-msgstr "Ungültige Restaurant"
+msgstr "Ungültiges Restaurant"
 
 #: Controller/RestaurantsController.php:48
 msgid "The restaurant has been saved."
@@ -803,13 +800,11 @@ msgstr "Kennwort muss einen Wert haben."
 msgid "Password successfully saved"
 msgstr "Kennwort erfolgreich gespeichert"
 
-#: Controller/SetupController.php:46
-#: Controller/UsersController.php:192;234
+#: Controller/SetupController.php:46 Controller/UsersController.php:192;234
 msgid "The user could not be saved. Please, try again."
 msgstr "Der Benutzer kann nicht gespeichert werden. Bitte versuchen Sie es erneut."
 
-#: Controller/SetupController.php:49
-#: Controller/UsersController.php:196;238
+#: Controller/SetupController.php:49 Controller/UsersController.php:196;238
 msgid "Passwords did not match. Please, try again."
 msgstr "Passwörter stimmen nicht überein. Bitte versuchen Sie es erneut."
 
@@ -823,43 +818,43 @@ msgstr "Ungültige Einkaufsliste"
 
 #: Controller/ShoppingListsController.php:48
 msgid "The shopping list has been saved."
-msgstr "Die Einkaufsliste ist gespeichert."
+msgstr "Die Einkaufsliste wurde gespeichert."
 
 #: Controller/ShoppingListsController.php:51
 msgid "The shopping list name could not be saved. Please, try again."
-msgstr "Die Einkaufsliste Name konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Einkaufslistenname konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
 
 #: Controller/ShoppingListsController.php:67;82
 msgid "The item has been removed."
-msgstr "Der Artikel wurde entfernt."
+msgstr "Der Eintrag wurde entfernt."
 
 #: Controller/ShoppingListsController.php:69;84
 msgid "The item could not be removed. Please, try again."
-msgstr "Das Element konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
+msgstr "Der Eintrag konnte nicht entfernt werden. Bitte versuchen Sie es erneut."
 
 #: Controller/ShoppingListsController.php:72
 msgid "Invalid recipe item"
-msgstr "Ungültige Rezept Artikel"
+msgstr "Ungültiger Rezept Eintrag"
 
 #: Controller/ShoppingListsController.php:87
 msgid "Invalid ingredient item"
-msgstr "Ungültige Bestand Artikel"
+msgstr "Ungültiger Zutaten Eintrag"
 
 #: Controller/ShoppingListsController.php:107
 msgid "Recipe added to list."
-msgstr "Rezept hinzugefügt, um die Liste."
+msgstr "Rezept zur Liste hinzugefügt."
 
 #: Controller/ShoppingListsController.php:109
 msgid "Unable to add recipe to list."
-msgstr "Unable to Rezept Zur Liste hinzufügen."
+msgstr "Rezept kann nicht zur Liste hinzugefügt werden."
 
 #: Controller/ShoppingListsController.php:131
 msgid "Ingredient added to list."
-msgstr "Zutat hinzugefügt, um die Liste."
+msgstr "Zutat zur Liste hinzugefügt."
 
 #: Controller/ShoppingListsController.php:134
 msgid "Unable to add ingredient to list."
-msgstr "Kann nicht Bestandteil Zur Liste hinzufügen."
+msgstr "Kann Zutat nicht zur Liste hinzufügen."
 
 #: Controller/ShoppingListsController.php:142;152;202
 msgid "Invalid list"
@@ -867,7 +862,7 @@ msgstr "Ungültige Liste"
 
 #: Controller/ShoppingListsController.php:161
 msgid "Shopping done! List cleared."
-msgstr "Einkaufs gemacht! Liste gelöscht."
+msgstr "Einkaufs erledigt! Liste gelöscht."
 
 #: Controller/SourcesController.php:37;52;79
 msgid "Invalid source"
@@ -891,7 +886,7 @@ msgstr "Die Quelle kann nicht gelöscht werden. Bitte versuchen Sie es erneut."
 
 #: Controller/StoresController.php:21;39
 msgid "Invalid store"
-msgstr "Ungültige store"
+msgstr "Ungültiger Laden"
 
 #: Controller/StoresController.php:25
 msgid "The store has been saved."
@@ -899,15 +894,15 @@ msgstr "Der Laden wurde gespeichert."
 
 #: Controller/StoresController.php:28
 msgid "The store could not be saved. Please, try again."
-msgstr "Der Speicher konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+msgstr "Der Laden konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
 
 #: Controller/StoresController.php:43
 msgid "The store has been deleted."
-msgstr "Der Speicher wurde gelöscht."
+msgstr "Der Laden wurde gelöscht."
 
 #: Controller/StoresController.php:45
 msgid "The store could not be deleted. Please, try again."
-msgstr "Der Informationsspeicher konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
+msgstr "Der Laden konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
 
 #: Controller/UnitsController.php:44;59;84
 msgid "Invalid unit"
@@ -915,19 +910,19 @@ msgstr "Ungültige Einheit"
 
 #: Controller/UnitsController.php:63
 msgid "The unit has been saved."
-msgstr "Das Gerät wurde gespeichert."
+msgstr "Die Einheit wurde gespeichert."
 
 #: Controller/UnitsController.php:66
 msgid "The unit could not be saved. Please, try again."
-msgstr "Das Gerät konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+msgstr "Die Einheit konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
 
 #: Controller/UnitsController.php:88
 msgid "The unit has been deleted."
-msgstr "Das Gerät wurde gelöscht."
+msgstr "Die Einheit wurde gelöscht."
 
 #: Controller/UnitsController.php:90
 msgid "The unit could not be deleted. Please, try again."
-msgstr "Das Gerät konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
+msgstr "Die Einheit konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
 
 #: Controller/UsersController.php:25
 msgid "Not Admininstrator"
@@ -1017,26 +1012,15 @@ msgstr "DEFAULT"
 msgid "No filename after parsing. Function %s returned an invalid filename"
 msgstr "Keine Dateinamen nach dem Parsen. Funktion% s hat einen ungültigen Dateinamen"
 
-#: View/BaseTypes/edit.ctp:12
-#: View/CoreIngredients/edit.ctp:14
-#: View/Courses/edit.ctp:12
-#: View/Difficulties/edit.ctp:12
-#: View/Ethnicities/edit.ctp:12
-#: View/Import/index.ctp:10
-#: View/Ingredients/edit.ctp:36
-#: View/Locations/edit.ctp:13
-#: View/MealPlans/edit.ctp:72
-#: View/PreparationMethods/edit.ctp:12
-#: View/PreparationTimes/edit.ctp:12
-#: View/PriceRanges/edit.ctp:12
-#: View/Recipes/edit.ctp:447
-#: View/Restaurants/edit.ctp:30
-#: View/Setup/password.ctp:24
-#: View/Sources/edit.ctp:14
-#: View/Stores/edit.ctp:12
-#: View/Units/edit.ctp:15
-#: View/Users/add.ctp:18
-#: View/Users/edit.ctp:45
+#: View/BaseTypes/edit.ctp:12 View/CoreIngredients/edit.ctp:14
+#: View/Courses/edit.ctp:12 View/Difficulties/edit.ctp:12
+#: View/Ethnicities/edit.ctp:12 View/Import/index.ctp:10
+#: View/Ingredients/edit.ctp:36 View/Locations/edit.ctp:13
+#: View/MealPlans/edit.ctp:72 View/PreparationMethods/edit.ctp:12
+#: View/PreparationTimes/edit.ctp:12 View/PriceRanges/edit.ctp:12
+#: View/Recipes/edit.ctp:447 View/Restaurants/edit.ctp:30
+#: View/Setup/password.ctp:24 View/Sources/edit.ctp:14 View/Stores/edit.ctp:12
+#: View/Units/edit.ctp:15 View/Users/add.ctp:18 View/Users/edit.ctp:45
 #: View/Users/reset_link.ctp:13
 msgid "Submit"
 msgstr "Einreichen"
@@ -1045,148 +1029,90 @@ msgstr "Einreichen"
 msgid "Base Types"
 msgstr "Basistypen"
 
-#: View/BaseTypes/index.ctp:13
-#: View/Recipes/index.ctp:61
+#: View/BaseTypes/index.ctp:13 View/Recipes/index.ctp:61
 msgid "Add Base Type"
 msgstr "In Teiltyp"
 
-#: View/BaseTypes/index.ctp:18
-#: View/CoreIngredients/index.ctp:26
-#: View/Courses/index.ctp:18
-#: View/Difficulties/index.ctp:19
-#: View/Ethnicities/index.ctp:19
-#: View/Ingredients/index.ctp:43
-#: View/Locations/index.ctp:20
-#: View/PreparationMethods/index.ctp:19
-#: View/PreparationTimes/index.ctp:19
-#: View/PriceRanges/index.ctp:20
-#: View/Recipes/index.ctp:80
-#: View/Restaurants/index.ctp:29
-#: View/Sources/index.ctp:19
-#: View/Stores/index.ctp:11
-#: View/Units/index.ctp:18
+#: View/BaseTypes/index.ctp:18 View/CoreIngredients/index.ctp:26
+#: View/Courses/index.ctp:18 View/Difficulties/index.ctp:19
+#: View/Ethnicities/index.ctp:19 View/Ingredients/index.ctp:43
+#: View/Locations/index.ctp:20 View/PreparationMethods/index.ctp:19
+#: View/PreparationTimes/index.ctp:19 View/PriceRanges/index.ctp:20
+#: View/Recipes/index.ctp:80 View/Restaurants/index.ctp:29
+#: View/Sources/index.ctp:19 View/Stores/index.ctp:11 View/Units/index.ctp:18
 #: View/Users/index.ctp:10
 msgid "Actions"
 msgstr "Aktionen"
 
-#: View/BaseTypes/index.ctp:24
-#: View/CoreIngredients/index.ctp:33
-#: View/Courses/index.ctp:24
-#: View/Difficulties/index.ctp:25
-#: View/Ethnicities/index.ctp:25
-#: View/Ingredients/index.ctp:53
-#: View/Locations/index.ctp:26
-#: View/MealPlans/edit.ctp:68
-#: View/PreparationMethods/index.ctp:25
-#: View/PreparationTimes/index.ctp:25
-#: View/PriceRanges/index.ctp:26
-#: View/Recipes/edit.ctp:289
-#: View/Recipes/index.ctp:91
-#: View/Restaurants/index.ctp:45
-#: View/ShoppingLists/index.ctp:103;139
-#: View/Sources/index.ctp:26
-#: View/Stores/index.ctp:17
-#: View/Units/index.ctp:27
-#: View/Users/edit.ctp:5
+#: View/BaseTypes/index.ctp:24 View/CoreIngredients/index.ctp:33
+#: View/Courses/index.ctp:24 View/Difficulties/index.ctp:25
+#: View/Ethnicities/index.ctp:25 View/Ingredients/index.ctp:53
+#: View/Locations/index.ctp:26 View/MealPlans/edit.ctp:68
+#: View/PreparationMethods/index.ctp:25 View/PreparationTimes/index.ctp:25
+#: View/PriceRanges/index.ctp:26 View/Recipes/edit.ctp:289
+#: View/Recipes/index.ctp:91 View/Restaurants/index.ctp:45
+#: View/ShoppingLists/index.ctp:103;139 View/Sources/index.ctp:26
+#: View/Stores/index.ctp:17 View/Units/index.ctp:27 View/Users/edit.ctp:5
 #: View/Users/index.ctp:23
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: View/BaseTypes/index.ctp:25
-#: View/CoreIngredients/index.ctp:34
-#: View/Courses/index.ctp:25
-#: View/Difficulties/index.ctp:26
-#: View/Ethnicities/index.ctp:26
-#: View/Ingredients/index.ctp:54
-#: View/Locations/index.ctp:27
-#: View/PreparationMethods/index.ctp:26
-#: View/PreparationTimes/index.ctp:26
-#: View/PriceRanges/index.ctp:27
-#: View/Recipes/edit.ctp:318;364;422
-#: View/Recipes/index.ctp:92
-#: View/Restaurants/index.ctp:46
-#: View/ShoppingLists/index.ctp:104;140
-#: View/Sources/index.ctp:27
-#: View/Stores/index.ctp:18
-#: View/Units/index.ctp:28
+#: View/BaseTypes/index.ctp:25 View/CoreIngredients/index.ctp:34
+#: View/Courses/index.ctp:25 View/Difficulties/index.ctp:26
+#: View/Ethnicities/index.ctp:26 View/Ingredients/index.ctp:54
+#: View/Locations/index.ctp:27 View/PreparationMethods/index.ctp:26
+#: View/PreparationTimes/index.ctp:26 View/PriceRanges/index.ctp:27
+#: View/Recipes/edit.ctp:318;364;422 View/Recipes/index.ctp:92
+#: View/Restaurants/index.ctp:46 View/ShoppingLists/index.ctp:104;140
+#: View/Sources/index.ctp:27 View/Stores/index.ctp:18 View/Units/index.ctp:28
 #: View/Users/index.ctp:26
 msgid "Delete"
 msgstr "Löschen"
 
-#: View/BaseTypes/index.ctp:25
-#: View/Courses/index.ctp:25
-#: View/Difficulties/index.ctp:26
-#: View/Ethnicities/index.ctp:26
-#: View/PreparationMethods/index.ctp:26
-#: View/PreparationTimes/index.ctp:26
-#: View/Recipes/index.ctp:92
-#: View/Sources/index.ctp:27
+#: View/BaseTypes/index.ctp:25 View/Courses/index.ctp:25
+#: View/Difficulties/index.ctp:26 View/Ethnicities/index.ctp:26
+#: View/PreparationMethods/index.ctp:26 View/PreparationTimes/index.ctp:26
+#: View/Recipes/index.ctp:92 View/Sources/index.ctp:27
 msgid "Are you sure you want to delete %s?"
-msgstr "Sind Sie sicher, dass Sie% s wirklich löschen?"
+msgstr "Sind Sie sicher, dass Sie %s wirklich löschen?"
 
-#: View/BaseTypes/index.ctp:32
-#: View/CoreIngredients/index.ctp:43
-#: View/Courses/index.ctp:32
-#: View/Difficulties/index.ctp:33
-#: View/Ethnicities/index.ctp:34
-#: View/Ingredients/index.ctp:72
-#: View/Locations/index.ctp:35
-#: View/PreparationMethods/index.ctp:33
-#: View/PreparationTimes/index.ctp:33
-#: View/Recipes/index.ctp:108
-#: View/Restaurants/index.ctp:64
-#: View/Sources/index.ctp:35
-#: View/Stores/index.ctp:26
-#: View/Units/index.ctp:39
-#: View/Users/index.ctp:43
+#: View/BaseTypes/index.ctp:32 View/CoreIngredients/index.ctp:43
+#: View/Courses/index.ctp:32 View/Difficulties/index.ctp:33
+#: View/Ethnicities/index.ctp:34 View/Ingredients/index.ctp:72
+#: View/Locations/index.ctp:35 View/PreparationMethods/index.ctp:33
+#: View/PreparationTimes/index.ctp:33 View/Recipes/index.ctp:108
+#: View/Restaurants/index.ctp:64 View/Sources/index.ctp:35
+#: View/Stores/index.ctp:26 View/Units/index.ctp:39 View/Users/index.ctp:43
 msgid "Page {:page} of {:pages}"
-msgstr "Seite {Page} von {: Seiten}"
+msgstr "Seite {:page} von {:pages}"
 
-#: View/BaseTypes/index.ctp:36
-#: View/CoreIngredients/index.ctp:46
-#: View/Courses/index.ctp:35
-#: View/Difficulties/index.ctp:36
-#: View/Ethnicities/index.ctp:38
-#: View/Ingredients/index.ctp:76
-#: View/Locations/index.ctp:38
-#: View/PreparationMethods/index.ctp:37
-#: View/PreparationTimes/index.ctp:36
-#: View/PriceRanges/index.ctp:41
-#: View/Recipes/index.ctp:112
-#: View/Restaurants/index.ctp:67
-#: View/Sources/index.ctp:38
-#: View/Stores/index.ctp:31
-#: View/Units/index.ctp:43
+#: View/BaseTypes/index.ctp:36 View/CoreIngredients/index.ctp:46
+#: View/Courses/index.ctp:35 View/Difficulties/index.ctp:36
+#: View/Ethnicities/index.ctp:38 View/Ingredients/index.ctp:76
+#: View/Locations/index.ctp:38 View/PreparationMethods/index.ctp:37
+#: View/PreparationTimes/index.ctp:36 View/PriceRanges/index.ctp:41
+#: View/Recipes/index.ctp:112 View/Restaurants/index.ctp:67
+#: View/Sources/index.ctp:38 View/Stores/index.ctp:31 View/Units/index.ctp:43
 #: View/Users/index.ctp:48
 msgid "previous"
-msgstr "früher"
+msgstr "letzte(r)"
 
-#: View/BaseTypes/index.ctp:38
-#: View/CoreIngredients/index.ctp:48
-#: View/Courses/index.ctp:37
-#: View/Difficulties/index.ctp:38
-#: View/Ethnicities/index.ctp:40
-#: View/Ingredients/index.ctp:78
-#: View/Locations/index.ctp:40
-#: View/PreparationMethods/index.ctp:39
-#: View/PreparationTimes/index.ctp:38
-#: View/PriceRanges/index.ctp:43
-#: View/Recipes/index.ctp:114
-#: View/Restaurants/index.ctp:69
-#: View/Sources/index.ctp:40
-#: View/Stores/index.ctp:33
-#: View/Units/index.ctp:45
+#: View/BaseTypes/index.ctp:38 View/CoreIngredients/index.ctp:48
+#: View/Courses/index.ctp:37 View/Difficulties/index.ctp:38
+#: View/Ethnicities/index.ctp:40 View/Ingredients/index.ctp:78
+#: View/Locations/index.ctp:40 View/PreparationMethods/index.ctp:39
+#: View/PreparationTimes/index.ctp:38 View/PriceRanges/index.ctp:43
+#: View/Recipes/index.ctp:114 View/Restaurants/index.ctp:69
+#: View/Sources/index.ctp:40 View/Stores/index.ctp:33 View/Units/index.ctp:45
 #: View/Users/index.ctp:50
 msgid "next"
-msgstr "nächster"
+msgstr "nächste(r)"
 
-#: View/CoreIngredients/index.ctp:12
-#: View/Layouts/default.ctp:125
+#: View/CoreIngredients/index.ctp:12 View/Layouts/default.ctp:125
 msgid "Core Ingredients"
 msgstr "Kernbestandteile"
 
-#: View/CoreIngredients/index.ctp:15
-#: View/Ingredients/index.ctp:33
+#: View/CoreIngredients/index.ctp:15 View/Ingredients/index.ctp:33
 msgid "Add Core Ingredient"
 msgstr "In Kern Ingredient"
 
@@ -1194,31 +1120,25 @@ msgstr "In Kern Ingredient"
 msgid "List Ingredients"
 msgstr "Liste Ingredients"
 
-#: View/CoreIngredients/index.ctp:34
-#: View/PriceRanges/index.ctp:27
-#: View/Restaurants/index.ctp:46
-#: View/Stores/index.ctp:18
-#: View/Units/index.ctp:28
-#: View/Users/index.ctp:26
-#: View/Users/view.ctp:5
+#: View/CoreIngredients/index.ctp:34 View/PriceRanges/index.ctp:27
+#: View/Restaurants/index.ctp:46 View/Stores/index.ctp:18
+#: View/Units/index.ctp:28 View/Users/index.ctp:26 View/Users/view.ctp:5
 msgid "Are you sure you want to delete # %s?"
-msgstr "Sind Sie sicher, dass Sie #% s wirklich löschen?"
+msgstr "Sind Sie sicher, dass Sie # %s wirklich löschen wollen?"
 
 #: View/Courses/index.ctp:10
 msgid "Courses"
-msgstr "Kurse"
+msgstr "Gänge"
 
-#: View/Courses/index.ctp:13
-#: View/Recipes/index.ctp:63
+#: View/Courses/index.ctp:13 View/Recipes/index.ctp:63
 msgid "Add Course"
-msgstr "Course hinzufügen"
+msgstr "Gang hinzufügen"
 
 #: View/Difficulties/index.ctp:11
 msgid "Difficulties"
 msgstr "Schwierigkeiten"
 
-#: View/Difficulties/index.ctp:14
-#: View/Recipes/index.ctp:69
+#: View/Difficulties/index.ctp:14 View/Recipes/index.ctp:69
 msgid "Add Difficulty"
 msgstr "Schwierigkeitsgrad hinzufügen"
 
@@ -1226,8 +1146,7 @@ msgstr "Schwierigkeitsgrad hinzufügen"
 msgid "Ethnicities"
 msgstr "Ethnien"
 
-#: View/Ethnicities/index.ctp:14
-#: View/Recipes/index.ctp:59
+#: View/Ethnicities/index.ctp:14 View/Recipes/index.ctp:59
 msgid "Add Ethnicity"
 msgstr "In Abstammung"
 
@@ -1237,15 +1156,15 @@ msgstr "Import Rezepte"
 
 #: View/Import/index.ctp:3
 msgid "To import a meal master format file, browse for it and press submit to import.  Duplicate recipes names will not be imported."
-msgstr "So importieren Sie eine Mahlzeit Meister-Format-Datei, suchen Sie es und Presse reichen, um zu importieren. Doppelte Rezepte Namen werden nicht importiert werden."
+msgstr "So importieren Sie eine Mahlzeit Meister-Format-Datei, suchen Sie es und drücken sie import, um es zu importieren. Doppelte Rezeptnamen werden nicht importiert."
 
 #: View/Import/index.ctp:5
 msgid "Imported ingredients that do not exactly match existing ingredient names will be created as new ingredients."
-msgstr "Importierten Zutaten, die keine bestehenden Zutat Namen nicht genau übereinstimmen, wie neue Zutaten erstellt werden."
+msgstr "Importierte Zutaten, bei denen keine bestehender Zutatenname genau übereinstimmt, werden als neue Zutaten erstellt werden."
 
 #: View/Ingredients/edit.ctp:30
 msgid "Location In Store"
-msgstr "Location In Store"
+msgstr "Ort im Laden"
 
 #: View/Ingredients/edit.ctp:31
 msgid "Measurement Type"
@@ -1253,17 +1172,16 @@ msgstr "Messart"
 
 #: View/Ingredients/edit.ctp:32
 msgid "Solid/Liquid"
-msgstr "Fest / Flüssig-"
+msgstr "Fest / Flüssig"
 
-#: View/Ingredients/index.ctp:24
-#: View/Layouts/default.ctp:67
+#: View/Ingredients/index.ctp:24 View/Layouts/default.ctp:67
 #: View/Recipes/view.ctp:116;174
 msgid "Ingredients"
 msgstr "Zutaten"
 
 #: View/Ingredients/index.ctp:27
 msgid "Add Ingredient"
-msgstr "In Ingredient"
+msgstr "Zutat hinzufügen"
 
 #: View/Ingredients/index.ctp:32
 msgid "List Core Ingredients"
@@ -1271,7 +1189,7 @@ msgstr "Liste Kernbestandteile"
 
 #: View/Ingredients/index.ctp:34
 msgid "List Locations"
-msgstr "Fundorte"
+msgstr "Aufzählen Orte"
 
 #: View/Ingredients/index.ctp:35
 msgid "Add Location"
@@ -1279,57 +1197,51 @@ msgstr "Ort hinzufügen"
 
 #: View/Ingredients/index.ctp:36
 msgid "List Units"
-msgstr "Liste Units"
+msgstr "Aufzählen Einheiten"
 
-#: View/Ingredients/index.ctp:37
-#: View/Units/index.ctp:13
+#: View/Ingredients/index.ctp:37 View/Units/index.ctp:13
 msgid "Add Unit"
-msgstr "Gerät hinzufügen"
+msgstr "Einheit hinzufügen"
 
-#: View/Ingredients/index.ctp:54
-#: View/Locations/index.ctp:27
+#: View/Ingredients/index.ctp:54 View/Locations/index.ctp:27
 msgid "Are you sure you want to delete \"%s\"?"
-msgstr "Sind Sie sicher, Sie löschen \"% s\" sagen?"
+msgstr "Sind Sie sicher, dass Sie “%s“ löschen wollen?"
 
 #: View/Layouts/default.ctp:57
 msgid "Browse your recipes"
 msgstr "Durchsuchen Sie Ihre Rezepte"
 
-#: View/Layouts/default.ctp:57
-#: View/Recipes/index.ctp:48
+#: View/Layouts/default.ctp:57 View/Recipes/index.ctp:48
 msgid "Recipes"
 msgstr "Rezepte"
 
 #: View/Layouts/default.ctp:61
 msgid "Manage your meal plans"
-msgstr "Verwalten Sie Ihre Mahlzeit Pläne"
+msgstr "Verwalten Sie Ihre Essenspläne"
 
 #: View/Layouts/default.ctp:61
 msgid "Meal Planner"
-msgstr "Meal Planner"
+msgstr "Essensplaner"
 
 #: View/Layouts/default.ctp:64
 msgid "Create or Edit a shopping list"
 msgstr "Erstellen oder Bearbeiten einer Einkaufsliste"
 
-#: View/Layouts/default.ctp:64
-#: View/ShoppingLists/index.ctp:66
-#: View/ShoppingLists/instore.ctp:19
-#: View/ShoppingLists/online.ctp:83
+#: View/Layouts/default.ctp:64 View/ShoppingLists/index.ctp:66
+#: View/ShoppingLists/instore.ctp:19 View/ShoppingLists/online.ctp:83
 #: View/ShoppingLists/select.ctp:37
 msgid "Shopping List"
 msgstr "Einkaufszettel"
 
 #: View/Layouts/default.ctp:67
 msgid "Ingredients used in recipes"
-msgstr "Zutaten in Rezepten verwendet"
+msgstr "In Rezepten verwendete Zutaten"
 
 #: View/Layouts/default.ctp:71
 msgid "List of your restaurants"
 msgstr "Liste der Restaurants"
 
-#: View/Layouts/default.ctp:71
-#: View/Restaurants/index.ctp:12
+#: View/Layouts/default.ctp:71 View/Restaurants/index.ctp:12
 msgid "Restaurants"
 msgstr "Restaurants"
 
@@ -1337,9 +1249,7 @@ msgstr "Restaurants"
 msgid "Administer Users"
 msgstr "Benutzer verwalten"
 
-#: View/Layouts/default.ctp:74
-#: View/Users/edit.ctp:4
-#: View/Users/index.ctp:2
+#: View/Layouts/default.ctp:74 View/Users/edit.ctp:4 View/Users/index.ctp:2
 msgid "Users"
 msgstr "Benutzer"
 
@@ -1355,8 +1265,7 @@ msgstr "Anmelden"
 msgid "Create a new account"
 msgstr "Ein neues Konto erstellen"
 
-#: View/Layouts/default.ctp:93
-#: View/Users/add.ctp:4
+#: View/Layouts/default.ctp:93 View/Users/add.ctp:4
 msgid "Create Account"
 msgstr "Konto Erstellen"
 
@@ -1368,55 +1277,47 @@ msgstr "Abmelden"
 msgid "Edit your Account settings"
 msgstr "Bearbeiten Sie Ihre Kontoeinstellung"
 
-#: View/Layouts/default.ctp:122
-#: View/Recipes/edit.ctp:339
+#: View/Layouts/default.ctp:122 View/Recipes/edit.ctp:339
 msgid "Ingredient"
 msgstr "Zutat"
 
 #: View/Layouts/default.ctp:123
 msgid "Location"
-msgstr "Lage"
+msgstr "Standort"
 
 #: View/Layouts/default.ctp:126
 msgid "Restaurant"
 msgstr "Restaurant"
 
-#: View/Layouts/default.ctp:127
-#: View/PriceRanges/index.ctp:11
+#: View/Layouts/default.ctp:127 View/PriceRanges/index.ctp:11
 msgid "Price Ranges"
 msgstr "Preis Ranges"
 
-#: View/Layouts/default.ctp:128
-#: View/Recipes/view.ctp:51
+#: View/Layouts/default.ctp:128 View/Recipes/view.ctp:51
 msgid "Ethnicity"
 msgstr "Volkszugehörigkeit"
 
-#: View/Layouts/default.ctp:129
-#: View/Recipes/view.ctp:56
+#: View/Layouts/default.ctp:129 View/Recipes/view.ctp:56
 msgid "Base Type"
-msgstr "Teiltyp"
+msgstr "Basistyp"
 
-#: View/Layouts/default.ctp:130
-#: View/Recipes/view.ctp:61
+#: View/Layouts/default.ctp:130 View/Recipes/view.ctp:61
 msgid "Course"
-msgstr "Kurs"
+msgstr "Gang"
 
-#: View/Layouts/default.ctp:131
-#: View/Recipes/view.ctp:66
+#: View/Layouts/default.ctp:131 View/Recipes/view.ctp:66
 msgid "Preparation Time"
 msgstr "Zubereitungszeit"
 
 #: View/Layouts/default.ctp:132
 msgid "Preparation Method"
-msgstr "Herstellungsverfahren"
+msgstr "Zubereitungsverfahren"
 
-#: View/Layouts/default.ctp:133
-#: View/Recipes/view.ctp:71
+#: View/Layouts/default.ctp:133 View/Recipes/view.ctp:71
 msgid "Difficulty"
 msgstr "Schwierigkeit"
 
-#: View/Layouts/default.ctp:134
-#: View/Recipes/view.ctp:89
+#: View/Layouts/default.ctp:134 View/Recipes/view.ctp:89
 msgid "Source"
 msgstr "Quelle"
 
@@ -1430,7 +1331,7 @@ msgstr "PHPRecipebook Exception"
 
 #: View/Locations/index.ctp:12
 msgid "Locations"
-msgstr "Locations"
+msgstr "Standort"
 
 #: View/Locations/index.ctp:15
 msgid "New Location"
@@ -1440,33 +1341,30 @@ msgstr "Neuer Standort"
 msgid "recipe serves"
 msgstr "Rezept für"
 
-#: View/MealPlans/edit.ctp:49
-#: View/Recipes/edit.ctp:281
+#: View/MealPlans/edit.ctp:49 View/Recipes/edit.ctp:281
 msgid "Recipe"
 msgstr "Rezept"
 
 #: View/MealPlans/edit.ctp:53
 msgid "Enter Recipe Name"
-msgstr "Geben Rezeptname"
+msgstr "Rezeptname eingeben"
 
 #: View/MealPlans/edit.ctp:62
 msgid "Every other day"
 msgstr "Jeden zweiten Tag"
 
-#: View/MealPlans/edit.ctp:66
-#: View/Recipes/index.ctp:89
-#: View/ShoppingLists/index.ctp:102
-#: View/Users/index.ctp:22
+#: View/MealPlans/edit.ctp:66 View/Recipes/index.ctp:89
+#: View/ShoppingLists/index.ctp:102 View/Users/index.ctp:22
 msgid "View"
 msgstr "Ansicht"
 
 #: View/MealPlans/index.ctp:16
 msgid "Meal Plan - Weekly"
-msgstr "Speiseplan - Weekly"
+msgstr "Speiseplan - wöchentlich"
 
 #: View/MealPlans/index.ctp:19
 msgid "Add to Shopping List"
-msgstr "Auf die Einkaufsliste"
+msgstr "Zur Einkaufsliste hinzufügen"
 
 #: View/MealPlans/index.ctp:32
 msgid "Today"
@@ -1474,25 +1372,23 @@ msgstr "Heute"
 
 #: View/MealPlans/index.ctp:64
 msgid "Are you sure you want to delete meal \"%s\"?"
-msgstr "Sind Sie sicher, dass Sie löschen Mahlzeit \"% s\" sagen?"
+msgstr "Sind Sie sicher, dass Sie die Mahlzeit \"%s\" löschen wollen?"
 
 #: View/PreparationMethods/index.ctp:11
 msgid "Preparation Methods"
 msgstr "Vorbereitungsmethoden"
 
-#: View/PreparationMethods/index.ctp:14
-#: View/Recipes/index.ctp:67
+#: View/PreparationMethods/index.ctp:14 View/Recipes/index.ctp:67
 msgid "Add Preparation Method"
-msgstr "In Herstellungsverfahren"
+msgstr "Vorbereitungsmethode hinzufügen"
 
 #: View/PreparationTimes/index.ctp:11
 msgid "Preparation Times"
 msgstr "Vorbereitungszeiten"
 
-#: View/PreparationTimes/index.ctp:14
-#: View/Recipes/index.ctp:65
+#: View/PreparationTimes/index.ctp:14 View/Recipes/index.ctp:65
 msgid "Add Preparation Time"
-msgstr "In Vorbereitung Zeit"
+msgstr "Vorbereitungszeit hinzufügen"
 
 #: View/PriceRanges/index.ctp:15
 msgid "New Price Range"
@@ -1500,7 +1396,7 @@ msgstr "Neue Preisspanne"
 
 #: View/PriceRanges/index.ctp:36
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
-msgstr "Seite {Page} von {: Seiten}, {zeigt: aktuelle} von {zeichnet: count} Gesamt ab dem Rekord {:} beginnen, bis zum {: end}"
+msgstr "Seite {:page} von {:pages}, zeigt {:current} Einträge von insgesamt {:count}, Start: {:start}, Ende: {:end}"
 
 #: View/RecipeLinkBox/index.ctp:2
 msgid "Recipe Box"
@@ -1508,24 +1404,23 @@ msgstr "Rezept-Box"
 
 #: View/RecipeLinkBox/index.ctp:4
 msgid "By Course"
-msgstr "Durch Course"
+msgstr "Nach gang"
 
 #: View/RecipeLinkBox/index.ctp:17
 msgid "By Base"
-msgstr "Unter Basis"
+msgstr "Nach Basis"
 
 #: View/RecipeLinkBox/index.ctp:30
 msgid "By Prep Method"
-msgstr "Von Prep-Methode"
+msgstr "Nach Vorbereitungsmethode"
 
 #: View/RecipeLinkBox/index.ctp:45
 msgid "Add A Recipe"
-msgstr "Fügen Sie ein Rezept"
+msgstr "Fügen Sie ein Rezept hinzu"
 
-#: View/Recipes/edit.ctp:24
-#: View/ShoppingLists/index.ctp:50
+#: View/Recipes/edit.ctp:24 View/ShoppingLists/index.ctp:50
 msgid "Entered value is not a number/fraction, please try again."
-msgstr "Eingegebene Wert ist keine Zahl / Fraktion, versuchen Sie es erneut."
+msgstr "Eingegebene Wert ist keine Zahl / Bruch, versuchen Sie es erneut."
 
 #: View/Recipes/edit.ctp:127
 msgid "Are you sure you wish to remove this item?"
@@ -1537,7 +1432,7 @@ msgstr "Rezept ansehen"
 
 #: View/Recipes/edit.ctp:264
 msgid "Edit Sources"
-msgstr "Bearbeiten Quellen"
+msgstr "Quellen Bearbeiten"
 
 #: View/Recipes/edit.ctp:269
 msgid "Edit Ethnicities"
@@ -1549,7 +1444,7 @@ msgstr "Bearbeiten Basistypen"
 
 #: View/Recipes/edit.ctp:271
 msgid "Edit Courses"
-msgstr "Kurse bearbeiten"
+msgstr "Gänge bearbeiten"
 
 #: View/Recipes/edit.ctp:272
 msgid "Edit Preparation Times"
@@ -1559,22 +1454,18 @@ msgstr "Vorbereitungszeiten bearbeiten"
 msgid "Edit Difficulties"
 msgstr "Die Schwierigkeiten ändern"
 
-#: View/Recipes/edit.ctp:336
-#: View/ShoppingLists/index.ctp:127
-#: View/ShoppingLists/instore.ctp:37
-#: View/ShoppingLists/online.ctp:94
+#: View/Recipes/edit.ctp:336 View/ShoppingLists/index.ctp:127
+#: View/ShoppingLists/instore.ctp:37 View/ShoppingLists/online.ctp:94
 #: View/ShoppingLists/select.ctp:47
 msgid "Quantity"
 msgstr "Menge"
 
-#: View/Recipes/edit.ctp:337
-#: View/ShoppingLists/index.ctp:128
+#: View/Recipes/edit.ctp:337 View/ShoppingLists/index.ctp:128
 #: View/Units/index.ctp:10
 msgid "Units"
 msgstr "Einheiten"
 
-#: View/Recipes/edit.ctp:338
-#: View/ShoppingLists/index.ctp:129
+#: View/Recipes/edit.ctp:338 View/ShoppingLists/index.ctp:129
 msgid "Qualifier"
 msgstr "Kennzeichner"
 
@@ -1592,11 +1483,11 @@ msgstr "Unbekannt"
 
 #: View/Recipes/edit.ctp:369
 msgid "Order Ingredient - currently #"
-msgstr "Sortieren Ingredient - derzeit #"
+msgstr "Sortiere Zutaten - derzeit #"
 
 #: View/Recipes/edit.ctp:391
 msgid "Add Another Ingredient"
-msgstr "Fügen Sie eine weitere Zutat"
+msgstr "Fügen Sie eine weitere Zutat hinzu"
 
 #: View/Recipes/edit.ctp:401
 msgid "Related Recipe Name"
@@ -1608,18 +1499,17 @@ msgstr "Erforderlich"
 
 #: View/Recipes/edit.ctp:427
 msgid "Order Recipe - currently #"
-msgstr "Sortieren Rezept - derzeit #"
+msgstr "Sortiere Rezepte - derzeit #"
 
 #: View/Recipes/edit.ctp:443
 msgid "Add Another Recipe"
-msgstr "Fügen Sie ein weiteres Rezept"
+msgstr "Fügen Sie ein weiteres Rezept hinzu"
 
 #: View/Recipes/index.ctp:52
 msgid "Add Recipe"
 msgstr "Rezept hinzufügen"
 
-#: View/Recipes/index.ctp:53
-#: View/Recipes/view.ctp:45
+#: View/Recipes/index.ctp:53 View/Recipes/view.ctp:45
 msgid "Import"
 msgstr "Import"
 
@@ -1651,18 +1541,15 @@ msgstr "Liste Schwierigkeiten"
 msgid "List Sources"
 msgstr "Liste Sources"
 
-#: View/Recipes/index.ctp:71
-#: View/Sources/index.ctp:14
+#: View/Recipes/index.ctp:71 View/Sources/index.ctp:14
 msgid "Add Source"
 msgstr "Quelle hinzufügen"
 
-#: View/Recipes/index.ctp:72
-#: View/Users/view.ctp:6
+#: View/Recipes/index.ctp:72 View/Users/view.ctp:6
 msgid "List Users"
 msgstr "Benutzerliste"
 
-#: View/Recipes/index.ctp:73
-#: View/Users/index.ctp:5
+#: View/Recipes/index.ctp:73 View/Users/index.ctp:5
 msgid "Add User"
 msgstr "Benutzer hinzufügen"
 
@@ -1674,8 +1561,7 @@ msgstr "Rezept bearbeiten"
 msgid "Add to shopping list"
 msgstr "Auf die Einkaufsliste"
 
-#: View/Recipes/view.ctp:38
-#: View/ShoppingLists/instore.ctp:74
+#: View/Recipes/view.ctp:38 View/ShoppingLists/instore.ctp:74
 msgid "Print"
 msgstr "Druck"
 
@@ -1699,8 +1585,7 @@ msgstr "Quelle Beschreibung"
 msgid "Last Modified"
 msgstr "Zuletzt geändert"
 
-#: View/Recipes/view.ctp:107
-#: View/Users/view.ctp:1
+#: View/Recipes/view.ctp:107 View/Users/view.ctp:1
 msgid "User"
 msgstr "Benutzer"
 
@@ -1710,7 +1595,7 @@ msgstr "(Optional)"
 
 #: View/Recipes/view.ctp:160;190
 msgid "Directions"
-msgstr "Anfahrt"
+msgstr "Anweisungen"
 
 #: View/Recipes/view.ctp:171
 msgid "optional"
@@ -1718,15 +1603,15 @@ msgstr "fakultativ"
 
 #: View/Restaurants/index.ctp:16
 msgid "Add Restaurant"
-msgstr "In Restaurant"
+msgstr "Restaurant hinzufügen"
 
 #: View/Restaurants/index.ctp:21
 msgid "List Price Ranges"
-msgstr "Listenpreis Ranges"
+msgstr "Aufzählen Preisbereiche"
 
 #: View/Restaurants/index.ctp:22
 msgid "New Price Ranges"
-msgstr "Neu Preis Ranges"
+msgstr "Neuer Preisbereich"
 
 #: View/Setup/database.ctp:29
 msgid "Continue..."
@@ -1754,7 +1639,7 @@ msgstr "Liste löschen"
 
 #: View/ShoppingLists/index.ctp:70
 msgid "List Stores"
-msgstr "Liste Stores"
+msgstr "Liste der Läden"
 
 #: View/ShoppingLists/index.ctp:71
 msgid "List Online Vendors"
@@ -1778,11 +1663,11 @@ msgstr "Portionen zu kaufen"
 
 #: View/ShoppingLists/index.ctp:107;143
 msgid "Are you sure you want to remove %s?"
-msgstr "Sind Sie sicher, Sie wollen% s entfernen?"
+msgstr "Wollen Sie %s wirklich entfernen?"
 
 #: View/ShoppingLists/index.ctp:130
 msgid "Ingredient Name"
-msgstr "Name des Inhaltsstoffs"
+msgstr "Name der Zutat"
 
 #: View/ShoppingLists/index.ctp:168
 msgid "Save"
@@ -1792,31 +1677,26 @@ msgstr "Speichern"
 msgid "Start Shopping"
 msgstr "Start Einkaufs"
 
-#: View/ShoppingLists/instore.ctp:20
-#: View/ShoppingLists/online.ctp:84
+#: View/ShoppingLists/instore.ctp:20 View/ShoppingLists/online.ctp:84
 #: View/ShoppingLists/select.ctp:38
 msgid "Select Items"
 msgstr "Elemente auswählen"
 
 #: View/ShoppingLists/instore.ctp:21
 msgid "In Store"
-msgstr "In Store"
+msgstr "Im Laden"
 
-#: View/ShoppingLists/instore.ctp:36
-#: View/ShoppingLists/online.ctp:92
+#: View/ShoppingLists/instore.ctp:36 View/ShoppingLists/online.ctp:92
 #: View/ShoppingLists/select.ctp:46
 msgid "Select"
 msgstr "Wählen"
 
-#: View/ShoppingLists/instore.ctp:40
-#: View/ShoppingLists/online.ctp:97
-#: View/ShoppingLists/select.ctp:50
-#: View/Users/view.ctp:21
+#: View/ShoppingLists/instore.ctp:40 View/ShoppingLists/online.ctp:97
+#: View/ShoppingLists/select.ctp:50 View/Users/view.ctp:21
 msgid "Name"
 msgstr "Name"
 
-#: View/ShoppingLists/instore.ctp:75
-#: View/ShoppingLists/online.ctp:140
+#: View/ShoppingLists/instore.ctp:75 View/ShoppingLists/online.ctp:140
 msgid "Complete"
 msgstr "Komplett"
 
@@ -1826,7 +1706,7 @@ msgstr "Hinzufügen"
 
 #: View/ShoppingLists/online.ctp:45
 msgid "Complete!"
-msgstr "Complete!"
+msgstr "Fertig!"
 
 #: View/ShoppingLists/online.ctp:85
 msgid "Online"
@@ -1898,7 +1778,7 @@ msgstr "Samstag"
 
 #: View/Users/login.ctp:12
 msgid "Enter your username and password"
-msgstr "Geben Sie Ihren Benutzernamen und Passwort"
+msgstr "Geben Sie Ihren Benutzernamen und Passwort ein"
 
 #: View/Users/login.ctp:17
 msgid "Forgot password?"
@@ -1906,10 +1786,9 @@ msgstr "Passwort vergessen?"
 
 #: View/Users/login.ctp:19
 msgid "Login"
-msgstr "Einloggen"
+msgstr "Anmelden"
 
-#: View/Users/reset.ctp:2
-#: View/Users/reset_link.ctp:5
+#: View/Users/reset.ctp:2 View/Users/reset_link.ctp:5
 msgid "Reset Password"
 msgstr "Passwort Zurücksetzen"
 
@@ -1970,27 +1849,22 @@ msgid "Modified"
 msgstr "Geändert"
 
 #: Model/BaseType.php:validation for field name
-#: Model/CoreIngredient.php:validation for field name;validation for field short_description
-#: Model/Course.php:validation for field name
-#: Model/Ethnicity.php:validation for field name
-#: Model/Ingredient.php:validation for field name
-#: Model/PreparationTime.php:validation for field name
-#: Model/Recipe.php:validation for field name;validation for field system
-#: Model/Restaurant.php:validation for field name
-#: Model/ShoppingList.php:validation for field name
-#: Model/Store.php:validation for field name
-#: Model/Unit.php:validation for field name;validation for field abbreviation
-#: Model/User.php:validation for field username;validation for field password;validation for field name;validation for field language;validation for field country
-#: Model/Vendor.php:validation for field name
-#: Model/VendorProduct.php:validation for field name
+#: Model/CoreIngredient.php:validation name;validation short_description
+#: Model/Course.php:validation Model/Ethnicity.php:validation
+#: Model/Ingredient.php:validation Model/PreparationTime.php:validation
+#: Model/Recipe.php:validation system Model/Restaurant.php:validation
+#: Model/ShoppingList.php:validation Model/Store.php:validation
+#: Model/Unit.php:validation abbreviation Model/User.php:validation
+#: username;validation password;validation language;validation country
+#: Model/Vendor.php:validation Model/VendorProduct.php:validation
 msgid "notEmpty"
 msgstr "notEmpty"
 
 #: Model/CoreIngredient.php:validation for field groupNumber
-#: Model/MealPlan.php:validation for field meal_name_id;validation for field recipe_id;validation for field servings
-#: Model/Unit.php:validation for field system;validation for field sort_order
-#: Model/User.php:validation for field access_level
-#: Model/VendorProduct.php:validation for field ingredient_id;validation for field vendor_id
+#: Model/MealPlan.php:validation meal_name_id;validation recipe_id;validation
+#: servings Model/Unit.php:validation system;validation sort_order
+#: Model/User.php:validation access_level Model/VendorProduct.php:validation
+#: ingredient_id;validation vendor_id
 msgid "numeric"
 msgstr "numerisch"
 
@@ -2004,4 +1878,4 @@ msgstr "boolean"
 
 #: Model/User.php:validation for field email
 msgid "email"
-msgstr "E-Mail-"
+msgstr "E-Mail"
