@@ -1,4 +1,4 @@
-
+<?php echo $this->Session->flash(); ?>
 <?php if ($isAdmin) :?>
 <ol class="breadcrumb">
     <li><?php echo $this->Html->link(__('Users'), array('action' => 'index')); ?></li>

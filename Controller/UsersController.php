@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 
 class UsersController extends AppController {
 
-    public $components = array('Paginator', 'String');
+    public $components = array('Paginator', 'String', 'Security');
     
     public function beforeFilter() {
         parent::beforeFilter();
@@ -229,7 +229,6 @@ class UsersController extends AppController {
                 }
                 if ($this->User->save($this->request->data)) {
                     $this->Session->setFlash(__('Settings saved.  Logout/Sign In maybe required for settings to take effect.'), 'success');
-                    return $this->redirect(array('controler'=> 'recipes', 'action' => 'index'));
                 } else {
                     $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
                 }
