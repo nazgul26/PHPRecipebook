@@ -30,7 +30,6 @@
             <th class="actions"><?php echo __('Actions'); ?></th>
         <?php endif;?>
             <th><?php echo $this->Paginator->sort('name'); ?></th>
-            <th><?php echo __('address'); ?></th>
             <th><?php echo $this->Paginator->sort('phone'); ?></th>
             <th><?php echo $this->Paginator->sort('hours'); ?></th>
             <th><?php echo __('price');?></th>
@@ -38,7 +37,9 @@
             <th><?php echo $this->Paginator->sort('user_id'); ?></th>
             
 	</tr>
+    <tbody>
 	<?php foreach ($restaurants as $restaurant): ?>
+    
 	<tr>
             <?php if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe['User']['id'])):?>
             <td class="actions">
@@ -46,13 +47,14 @@
                     <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $restaurant['Restaurant']['id']), null, __('Are you sure you want to delete # %s?', $restaurant['Restaurant']['id'])); ?>
             </td>
             <?php endif;?>
-            <td><?php echo $restaurant['Restaurant']['name']; ?>&nbsp;</td>
             <td>
-                <address>
-                    <?php echo h($restaurant['Restaurant']['street']); ?><br/>
-                    <?php echo h($restaurant['Restaurant']['city']); ?>, <?php echo h($restaurant['Restaurant']['state']); ?> <?php echo h($restaurant['Restaurant']['zip']); ?><br/>
-                    <?php echo h($restaurant['Restaurant']['country']); ?>
-                </address>
+                <?php if (!empty($restaurant['Restaurant']['website'])) { ?>
+                <a href="<?php echo $restaurant['Restaurant']['website'];?>" target="_blank">
+                    <?php echo $restaurant['Restaurant']['name']; ?>
+                </a>
+                <?php } else {?>
+                    <?php echo $restaurant['Restaurant']['name']; ?>
+                <?php } ?>
             </td>
             <td><?php echo h($restaurant['Restaurant']['phone']); ?>&nbsp;</td>
             <td><?php echo $restaurant['Restaurant']['hours']; ?>&nbsp;</td>
@@ -66,8 +68,18 @@
                 echo $restaurant['User']['name'];
             }?>
             </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+            <address>
+                <?php echo h($restaurant['Restaurant']['street']); ?><br/>
+                <?php echo h($restaurant['Restaurant']['city']); ?>, <?php echo h($restaurant['Restaurant']['state']); ?> <?php echo h($restaurant['Restaurant']['zip']); ?><br/>
+                <?php echo h($restaurant['Restaurant']['country']); ?>
+            </address>
+        </td>
 	</tr>
 <?php endforeach; ?>
+    </tbody>
 	</table>
 	<p>
 	<?php echo $this->Paginator->counter(array('format' => __('Page {:page} of {:pages}')));?>	</p>
