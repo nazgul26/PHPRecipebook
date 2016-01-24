@@ -14,7 +14,6 @@ $titleColor: #00547d;
 @import "_jquery-ui.scss";
 @import "_users.scss";
 @import "_reviews.scss";
-@import "_restaurants.scss";
 
 body {
     background: $background-color;
@@ -188,6 +187,11 @@ dl {
     .active {
         color: #777;
     }
+}
+
+/* QTip2  */
+.qtip {
+    font-size: 1em;
 }
 
 

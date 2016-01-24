@@ -6,6 +6,34 @@
             $('#editRestaurantDialog').dialog('close');
             ajaxGet('restaurants');
         });
+        
+        $(".addressQTip").each(function() {
+            var $address = $(this).parent().find('address');
+            $(this).qtip({
+                content: $address,
+                position: {
+                    my: 'top center',  // Position my top left...
+                    at: 'bottom center', // at the bottom right of...
+                },
+                style: {
+                    classes: 'qtip-rounder qtip-shadow',
+                    widget: true, // Use the jQuery UI widget classes
+                    def: true // Remove the default styling (usually a good idea, see below)  
+                },
+                show: {
+                    event: 'click',
+                    effect: function(offset) {
+                        $(this).slideDown(400); // "this" refers to the tooltip
+                    }
+                },
+                hide: {
+                    event: 'click',
+                    effect: function(offset) {
+                        $(this).slideUp(400); // "this" refers to the tooltip
+                    }
+                }
+            });
+        });
     });
 </script>
 <div class="restaurants index">
@@ -31,15 +59,15 @@
         <?php endif;?>
             <th><?php echo $this->Paginator->sort('name'); ?></th>
             <th><?php echo $this->Paginator->sort('phone'); ?></th>
+            <th><?php echo __('Address');?></th>
             <th><?php echo $this->Paginator->sort('hours'); ?></th>
-            <th><?php echo __('price');?></th>
+            <th><?php echo __('Price');?></th>
             <th><?php echo $this->Paginator->sort('comments'); ?></th>
             <th><?php echo $this->Paginator->sort('user_id'); ?></th>
             
 	</tr>
     <tbody>
-	<?php foreach ($restaurants as $restaurant): ?>
-    
+	<?php foreach ($restaurants as $restaurant): ?> 
 	<tr>
             <?php if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe['User']['id'])):?>
             <td class="actions">
@@ -57,6 +85,12 @@
                 <?php } ?>
             </td>
             <td><?php echo h($restaurant['Restaurant']['phone']); ?>&nbsp;</td>
+            <td><?php echo $this->Html->image("address_24.png", array('title' => "Add More items for this ingredient", 'alt' => 'Add', 'class' => 'addressQTip'));?>
+                <address style="display: none;">
+                <?php echo h($restaurant['Restaurant']['street']); ?><br/>
+                <?php echo h($restaurant['Restaurant']['city']); ?>, <?php echo h($restaurant['Restaurant']['state']); ?> <?php echo h($restaurant['Restaurant']['zip']); ?><br/>
+                <?php echo h($restaurant['Restaurant']['country']); ?>
+                </address>
             <td><?php echo $restaurant['Restaurant']['hours']; ?>&nbsp;</td>
             <td><?php echo $restaurant['PriceRange']['name'];?></td>
             <td><?php echo $restaurant['Restaurant']['comments']; ?>&nbsp;</td>
@@ -69,15 +103,6 @@
             }?>
             </td>
     </tr>
-    <tr>
-      <td colspan="3">
-            <address>
-                <?php echo h($restaurant['Restaurant']['street']); ?><br/>
-                <?php echo h($restaurant['Restaurant']['city']); ?>, <?php echo h($restaurant['Restaurant']['state']); ?> <?php echo h($restaurant['Restaurant']['zip']); ?><br/>
-                <?php echo h($restaurant['Restaurant']['country']); ?>
-            </address>
-        </td>
-	</tr>
 <?php endforeach; ?>
     </tbody>
 	</table>
