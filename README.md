@@ -5,7 +5,9 @@ This is a complete rewrite of PHPRecipeBook hosted on sourceforge to use CakeMVC
 
 A setup wizard is included and a complete migration script.
 
-<a href="https://phprecipebook.herokuapp.com/">Demo/Preview site</a> (Create your own account)
+<!--<a href="https://phprecipebook.herokuapp.com/">Demo/Preview site</a> (Create your own account)-->
+
+Demo Site Temporarily Unavailable -- Working on new PHP version on Heroku issue.
 
 Demo Videos:
 * <a href="https://youtu.be/xNUBANz2aVI">Adding A Recipe</a>
