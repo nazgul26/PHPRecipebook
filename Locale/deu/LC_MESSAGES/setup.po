@@ -1,16 +1,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
-"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2016-03-12 15:18+0100\n"
+"Last-Translator: cybe <github@pinshot.net>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"POT-Creation-Date: \n"
+"Language: de\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: View/Setup/database.ctp:2
-#: View/Setup/upgrade.ctp:2
+#: View/Setup/database.ctp:2 View/Setup/upgrade.ctp:2
 msgid "Start"
 msgstr "Start"
 
@@ -20,27 +24,25 @@ msgstr "Neue Installation"
 
 #: View/Setup/database.ctp:8
 msgid "Follow the following steps to create the database schema and import some initial settings:"
-msgstr "Befolgen Sie die folgenden Schritte, um das Datenbankschema zu erstellen und einige Grundeinstellungen zu importieren:"
+msgstr "Führe folgende Schritte aus, um das Datenbankschema zu erstellen und eine Basiskonfiguration zu importieren:"
 
 #: View/Setup/database.ctp:12
 msgid "Create the schema"
-msgstr "Erstellen Sie das Schema"
+msgstr "Erstelle das Schema"
 
 #: View/Setup/database.ctp:16
 msgid "Import core ingredients"
-msgstr "Import Kernbestandteile"
+msgstr "Lade Basiszutaten (optional)"
 
 #: View/Setup/database.ctp:19
 msgid "Import sample ingredients (optional)"
-msgstr "Import Probenbestandteile (optional)"
+msgstr "Lade Basiszutaten (optional)"
 
-#: View/Setup/finish.ctp:3
-#: View/Setup/password.ctp:2
+#: View/Setup/finish.ctp:3 View/Setup/password.ctp:2
 msgid "Setup"
 msgstr "Einrichten"
 
-#: View/Setup/finish.ctp:4
-#: View/Setup/password.ctp:3
+#: View/Setup/finish.ctp:4 View/Setup/password.ctp:3
 msgid "Database"
 msgstr "Datenbank"
 
@@ -50,144 +52,144 @@ msgstr "Passwort"
 
 #: View/Setup/finish.ctp:11
 msgid "Complete the Setup"
-msgstr "Füllen Sie das Setup-"
+msgstr "Einrichtung abschließen"
 
 #: View/Setup/finish.ctp:13
 msgid "By editing"
-msgstr "Und bearbeite"
+msgstr "Bearbeite"
 
 #: View/Setup/finish.ctp:15;23
 msgid "Change"
-msgstr "Veränderung"
+msgstr "Ändere"
 
 #: View/Setup/finish.ctp:16;24
 msgid "To"
-msgstr "Bis"
+msgstr "auf"
 
 #: View/Setup/finish.ctp:19
 msgid "If you don't change this setting your site will be open for anyone to reconfigure it."
-msgstr "Wenn Sie nicht ändern diese Einstellung Ihrer Website wird offen sein für alle, die es neu zu konfigurieren."
+msgstr "Achtung, wenn diese Einstellung nicht geändert wird, kann jeder die Ersteinrichtung neu vornehmen!"
 
 #: View/Setup/finish.ctp:21
 msgid "AND if you do not want open registration then change"
-msgstr "Und wenn Sie nicht wollen, offenen Registrierung dann ändern"
+msgstr "Sofern eine offene Registrierung neuer Benutzer nicht gewünscht ist"
 
 #: View/Setup/finish.ctp:27
 msgid "Congratulations you have successfully setup PHPRecipeBook!"
-msgstr "Herzlichen Glückwunsch Sie haben erfolgreich Setup PHPRecipeBook!"
+msgstr "Herzlichen Glückwunsch, damit wurde die Einrichtung von PHPRecipeBook erfolgreich abgeschlossen!"
 
 #: View/Setup/finish.ctp:28
 msgid "Press the done button to login and begin setting up some users or adding recipes."
-msgstr "Drücken Sie die Schaltfläche Fertig, um anmelden Parameter und geben Sie einige Benutzer oder das Hinzufügen von Rezepten."
+msgstr "Schließe die Einrichtung über die Fertig-Schaltfläche ab, melde Dich an und erstelle erste Benutzer und Rezepte!"
 
 #: View/Setup/finish.ctp:30
 msgid "Done"
-msgstr "Gemacht"
+msgstr "Fertig"
 
 #: View/Setup/index.ctp:10
 msgid "Welcome to PHPRecipeBook "
-msgstr "Willkommen in PHPRecipeBook"
+msgstr "Willkommen bei PHPRecipeBook "
 
 #: View/Setup/index.ctp:12
 msgid "This is the setup page for the application.  The following messages will indicate if your server has been properly setup."
-msgstr "Dies ist die Setup-Seite für die Anwendung. Die folgenden Meldungen zeigen an, ob der Server ordnungsgemäß Setup."
+msgstr "An dieser Stelle erfolgt die initiale Einrichtung der Anwendung. Die folgenden Meldungen geben Hinweise darauf, ob die Umgebung die Mindestanforderungen erfüllt."
 
 #: View/Setup/index.ctp:23
 msgid "Your version of PHP is 5.2.8 or higher."
-msgstr "Ihre Version von PHP 5.2.8 oder höher ist."
+msgstr "Die verwendete Version von PHP ist 5.2.8 oder höher."
 
 #: View/Setup/index.ctp:27
 msgid "Your version of PHP is too low. You need PHP 5.2.8 or higher to use CakePHP."
-msgstr "Ihre Version von PHP ist zu niedrig. Sie müssen PHP 5.2.8 oder höher, um CakePHP zu verwenden."
+msgstr "Die verwendete Version von PHP ist zu alt. Es ist mindestens Version 5.2.8 erforderlich."
 
 #: View/Setup/index.ctp:36
 msgid "Your tmp directory is writable."
-msgstr "Ihre tmp beschreibbar ist."
+msgstr "Das temporäre Verzeichnis ist beschreibbar."
 
 #: View/Setup/index.ctp:40
 msgid "Your tmp directory is NOT writable."
-msgstr "Ihre tmp-Verzeichnis ist nicht beschreibbar."
+msgstr "Das temporäre Verzeichnis ist nicht beschreibbar."
 
 #: View/Setup/index.ctp:50
 msgid "The %s is being used for core caching. To change the config edit %s"
-msgstr "Die% s wird für die Kern Caching verwendet. Um die Konfiguration zu bearbeiten% s ändern"
+msgstr "Fürs Caching wird derzeit die Komponente %s eingesetzt. Dies kann in der Datei %s angepasst werden."
 
 #: View/Setup/index.ctp:54
 msgid "Your cache is NOT working. Please check the settings in %s"
-msgstr "Cache funktioniert nicht. Bitte überprüfen Sie die Einstellungen in% s"
+msgstr "Das Caching ist fehlerhaft eingerichtet. Bitte die Konfiguration in der Datei %s überprüfen."
 
 #: View/Setup/index.ctp:64
 msgid "Your database configuration file is present."
-msgstr "Ihre Datenbank-Konfigurationsdatei vorhanden ist."
+msgstr "Die Datenbank-Konfigurationsdatei ist vorhanden."
 
 #: View/Setup/index.ctp:69
 msgid "Your database configuration file is NOT present."
-msgstr "Ihre Datenbank-Konfigurationsdatei nicht vorhanden ist."
+msgstr "Die Datenbank-Konfigurationsdatei fehlt."
 
 #: View/Setup/index.ctp:71
 msgid "Rename %s to %s"
-msgstr "Benennen Sie% s zu% s"
+msgstr "Eventuell muss die Datei %s nach %s umbenannt werden."
 
 #: View/Setup/index.ctp:96
 msgid "CakePHP is able to connect to the database."
-msgstr "CakePHP ist in der Lage, die Verbindung zur Datenbank."
+msgstr "Die Verbindung zur Datenbank konnte erfolgreich hergestellt werden."
 
 #: View/Setup/index.ctp:102
 msgid "1. Installed the appropriate PHP db module (i.e. php-mysql, php-pgsql)"
-msgstr "1. Installiert die entsprechende PHP db-Modul (dh php-mysql, php-pgsql)"
+msgstr "1. Das PHP-Modul zur Aufnahme der Datenbankverbindung wurde installiert (z.B. php-mysql, php-pgsql oder php-sqlite)."
 
 #: View/Setup/index.ctp:103
 msgid "2. The database has been created and you can connect to it"
-msgstr "2. Die Datenbank wurde erstellt und Sie können, um sie zu verbinden"
+msgstr "2. Die Datenbank wurde erstellt und eine Verbindung kann hergestellt werden."
 
 #: View/Setup/index.ctp:104
 msgid "3. Have the correct username password in database.php config file"
-msgstr "3. Haben Sie den richtigen Benutzernamen Passwort in database.php Konfigurationsdatei"
+msgstr "3. Benutzername und Kennwort sind in der Konfigurationsdatei Config/database.php korrekt hinterlegt."
 
 #: View/Setup/index.ctp:116
 msgid "PCRE has not been compiled with Unicode support."
-msgstr "PCRE nicht mit Unicode-Unterstützung kompiliert wurde."
+msgstr "Dem Modul PCRE fehlt die Unterstützung für Unicode."
 
 #: View/Setup/index.ctp:118
 msgid "Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring"
-msgstr "Neu kompilieren PCRE mit Unicode-Unterstützung, indem <code> - enable-Unicode-Eigenschaften </ code> bei der Konfiguration"
+msgstr "Für Unicode-Unterstützung muss das Modul PCRE mit der Konfiguration <code>--enable-unicode-properties</code> neu kompiliert werden."
 
 #: View/Setup/index.ctp:127
 msgid "URL rewriting might not properly configured on your server.  "
-msgstr "URL-Rewriting möglicherweise nicht korrekt auf dem Server konfiguriert ist."
+msgstr "Das URL-Rewriting ist auf dem Webserver eventuell nicht korrekt konfiguriert."
 
 #: View/Setup/index.ctp:135
 msgid "If you have already configured rewriting or a base URL and still see this warning you can try to continue the setup.  Detection of this feature sometimes is not correct."
-msgstr "Wenn Sie bereits Neuschreiben oder eine Basis-URL konfiguriert haben und immer noch sehen, diese Warnung können Sie versuchen, das Setup fortzufahren. Nachweis dieses Feature manchmal ist nicht korrekt."
+msgstr "Wenn das URL-Rewriting bzw. die eingerichtete Basis-URL bereits konfiguriert wurde, diese Meldung aber weiterhin angezeigt wird, kann die Installation wahrscheinlich dennoch fortgesetzt werden. Das Erkennen dieser Anforderung ist in einigen Fällen fehlerhaft."
 
 #: View/Setup/index.ctp:143
 msgid "After correcting any issues above you can continue the setup process."
-msgstr "Nach der Korrektur alle Probleme oben können Sie den Setup-Prozess fortzusetzen."
+msgstr "Sobald gefundene Probleme gelöst wurden, kann die Installation fortgesetzt werden."
 
 #: View/Setup/password.ctp:4
 msgid "Admin Password"
-msgstr "Admin Password"
+msgstr "Administrator Kennwort"
 
 #: View/Setup/password.ctp:9
 msgid "Enter a new Administrator password.  This username and password will be used to setup other users"
-msgstr "Geben Sie ein neues Administrator-Kennwort. Diese Benutzernamen und Passwort wird an Setup anderen Benutzern verwendet werden,"
+msgstr "Lege das Kennwort des Administrators fest. Dessen Konto wird für das Anlegen weiterer Benutzer verwendet."
 
 #: View/Setup/upgrade.ctp:3
 msgid "Upgrade"
-msgstr "Upgrade"
+msgstr "Migration bestehender Installation"
 
 #: View/Setup/upgrade.ctp:8
 msgid "Upgrading will lock all users and require they change their passwords.  This was needed to use Blowfish encryption."
-msgstr "Aktualisieren Sie alle Benutzer sperren und verlangen sie ihre Passwörter ändern. Dies war nötig, um Blowfish-Verschlüsselung zu verwenden."
+msgstr "Da in der neuen Version ein neuer Verschlüsselungsalgorithmus eingesetzt wird, werden die Passwörter aller Benutzer zurückgesetzt."
 
 #: View/Setup/upgrade.ctp:12
 msgid "Follow the following steps to upgrade your installation:"
-msgstr "Befolgen Sie die folgenden Schritte aus, um die Installation zu aktualisieren:"
+msgstr "Führe folgende Schritte aus, um die Migration durchzuführen:"
 
 #: View/Setup/upgrade.ctp:16
 msgid "Make a backup of your database!"
-msgstr "Machen Sie eine Sicherungskopie der Datenbank!"
+msgstr "Erstelle ein Backup der Datenbank!"
 
 #: View/Setup/upgrade.ctp:17
 msgid "Migrate from latest 4.x PHPRecipeBook to 5.0"
-msgstr "Migration von neuesten 4.x PHPRecipeBook bis 5,0"
+msgstr "Migriere die Datenbank von Version 4.x auf 5.x von PHPRecipeBook"
