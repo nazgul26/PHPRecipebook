@@ -159,8 +159,8 @@ class RecipesController extends AppController {
             //TODO: Keep the original author just in case editor/admin edits
             $recipe['Recipe']['user_id'] = $this->Auth->user('id');
             if ($this->Recipe->saveWithAttachments($recipe)) {
-                $recipe = $this->loadRecipe($id);
                 $this->Session->setFlash(__('The recipe has been saved.'), "success");
+                return $this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash(__('The recipe could not be saved. Please, try again.'));
             }
