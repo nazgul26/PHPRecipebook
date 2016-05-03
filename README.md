@@ -1,29 +1,27 @@
 <h1>PHPRecipebook 5.0</h1>
 =============
 
-This is a complete rewrite of PHPRecipeBook hosted on sourceforge to use CakeMVC by the original author of PHPRecipeBook.
+PHPRecipeBook is a cookbook and meal planning software.
 
-A setup wizard is included and a complete migration script.
-
-<a href="https://warm-beyond-24755.herokuapp.com/">Demo/Preview site</a> (Create your own account)
-
-Demo Site Temporarily Unavailable -- Working on new PHP version on Heroku issue.
+<a href="https://warm-beyond-24755.herokuapp.com/">Demo site</a> (Create your own account)
 
 Demo Videos:
 * <a href="https://youtu.be/xNUBANz2aVI">Adding A Recipe</a>
 * <a href="https://youtu.be/xZZJI407aSs">Meal Planning</a>
 * <a href="https://youtu.be/zWtfNrYJJRk">Shopping</a>
 
-Improvements:
+Features:
 * AJAX Page loads (so less refreshes/data between clicks)
-* Better/cleaner navigation
-* HTML5
-* Better Meal Planner UI
-* Integration with other vendors/services
+* Clean navigation
+* Meal Planner
+* Setup wizard is included and a complete migration script.
+* Integration PrestoFresh online grocery, ability to extend to other vendors.
 * Enhanced Password security encryption
-* More databases supported because of CakePHP abstraction
+* More databases supported because of CakePHP abstraction.
+* Built using CakePHP
 
-And of course now that we are on GitHub contributions and collaboration should be must easier.  Look forward to anyone with some skills to jump in and keep this moving.
+Now that we are on GitHub contributions and collaboration should be must easier.  
+Look forward to anyone with some skills to jump in and keep this moving.
 
 <h2>Installation</h2>
 <p>
