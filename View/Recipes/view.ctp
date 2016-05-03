@@ -159,8 +159,9 @@ if (isset($recipe['Review'])) {
                             $quantity = $this->Fraction->toFraction($quantity);
                             $unit = $recipe['IngredientMapping'][$i]['Unit']['name'];
                             $ingredientName = $recipe['IngredientMapping'][$i]['Ingredient']['name'];
+                            $qualifier = $recipe['IngredientMapping'][$i]['qualifier'];
                             $optional = $recipe['IngredientMapping'][$i]['optional'] ? __('(optional)') : "";
-                            echo "$quantity $unit $ingredientName <i>$optional</i><br/>";
+                            echo "$quantity $unit $qualifier $ingredientName <i>$optional</i><br/>";
                         }?>
             </pre>
         </div>
