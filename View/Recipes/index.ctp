@@ -86,8 +86,12 @@
 	<?php foreach ($recipes as $recipe): ?>
 	<tr>
             <td class="actions">
-                <?php echo $this->Html->link(__('View'), array('action' => 'view', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); ?>
-                <?php if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe['User']['id'])):?>
+                <?php if (isset($recipe['Recipe']['private']) && $recipe['Recipe']['private'] == 'true' && $loggedInuserId != $recipe['User']['id'] && !$isEditor) {
+                    echo __('(private)');
+                } else {
+                    echo $this->Html->link(__('View'), array('action' => 'view', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); 
+                }
+                if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe['User']['id'])):?>
                     <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); ?>
                     <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe['Recipe']['id']), null, __('Are you sure you want to delete %s?', $recipe['Recipe']['name'])); ?>
                 <?php endif;?>
