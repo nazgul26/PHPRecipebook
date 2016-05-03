@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4ad7533ac018c9f3f88655282c970317",
-    "content-hash": "21ae1f152696ff661716402d826ff3e8",
+    "hash": "27a3cef24f856c419916e484d3f8b95f",
+    "content-hash": "6449d8c7e71af0f065f70b6021fde58f",
     "packages": [
         {
             "name": "cakephp/cakephp",
-            "version": "2.7.6",
+            "version": "2.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "df3c786f57844ee7ba39c74090989b575b589a2b"
+                "reference": "8cd5a64c27abf47e02aba29403428f8e4937de45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/df3c786f57844ee7ba39c74090989b575b589a2b",
-                "reference": "df3c786f57844ee7ba39c74090989b575b589a2b",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/8cd5a64c27abf47e02aba29403428f8e4937de45",
+                "reference": "8cd5a64c27abf47e02aba29403428f8e4937de45",
                 "shasum": ""
             },
             "require": {
@@ -49,24 +49,24 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-11-06 03:30:43"
+            "time": "2016-05-03 02:18:41"
         },
         {
             "name": "composer/installers",
-            "version": "v1.0.22",
+            "version": "v1.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046"
+                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/bd9b14f094c89c8b5804a4e41edeb7853bb85046",
-                "reference": "bd9b14f094c89c8b5804a4e41edeb7853bb85046",
+                "url": "https://api.github.com/repos/composer/installers/zipball/36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
+                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "1.0.0"
+                "composer-plugin-api": "^1.0"
             },
             "replace": {
                 "roundcube/plugin-installer": "*",
@@ -84,8 +84,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Composer\\Installers\\": "src/"
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -100,12 +100,14 @@
                 }
             ],
             "description": "A multi-framework Composer library installer",
-            "homepage": "http://composer.github.com/installers/",
+            "homepage": "https://composer.github.io/installers/",
             "keywords": [
                 "Craft",
                 "Dolibarr",
                 "Hurad",
+                "ImageCMS",
                 "MODX Evo",
+                "Mautic",
                 "OXID",
                 "SMF",
                 "Thelia",
@@ -147,7 +149,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2015-10-29 23:28:48"
+            "time": "2016-04-13 19:46:30"
         },
         {
             "name": "josegonzalez/cakephp-upload",
@@ -320,6 +322,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
+        "php": "^5.5.0",
         "ext-gd": "*",
         "ext-mcrypt": "*"
     },
