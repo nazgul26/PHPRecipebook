@@ -9,7 +9,7 @@ function initApplication(initBaseUrl) {
     initDialogs();
     setupSearchBox();
     if ($(window).width() >= 1480) {
-      ajaxGet("RecipeLinkBox/Index", "recipeLinkBoxContainer");
+      ajaxGet("recipeLinkBox/index", "recipeLinkBoxContainer");
     } 
     
     window.onpopstate = function (event) {
