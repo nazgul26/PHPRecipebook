@@ -5,7 +5,7 @@
  * Use it to configure core behavior of this application.
  */
 
-/* 
+/*
  * Set the default language. Default to english.
  */
 //Configure::write('Config.language', 'ita');
@@ -13,14 +13,14 @@
 /*
  * During Initial setup this should be true. After setup change to FALSE
  */
-Configure::write('App.setupMode', TRUE);
+Configure::write('App.setupMode', true);
 
 /*
  * Allow unauthenticated users to setup their own accounts.
  */
-Configure::write('App.allowPublicAccountCreation', TRUE);
+Configure::write('App.allowPublicAccountCreation', true);
 
-/**
+/*
  * To configure CakePHP *not* to use mod_rewrite and to
  * use CakePHP pretty URLs, remove these .htaccess
  * files:
@@ -41,7 +41,7 @@ Configure::write('App.allowPublicAccountCreation', TRUE);
  */
 //Configure::write('App.baseUrl', env('SCRIPT_NAME'));
 
-/**
+/*
  * To configure CakePHP to use a particular domain URL
  * for any URL generation inside the application, set the following
  * configuration variable to the http(s) address to your domain. This
@@ -50,31 +50,31 @@ Configure::write('App.allowPublicAccountCreation', TRUE);
  */
 //Configure::write('App.fullBaseUrl', 'http://example.com');
 
-/**
+/*
  * Web path to the public images directory under webroot.
  * If not set defaults to 'img/'
  */
 //Configure::write('App.imageBaseUrl', 'img/');
 
-/**
+/*
  * Web path to the CSS files directory under webroot.
  * If not set defaults to 'css/'
  */
 //Configure::write('App.cssBaseUrl', 'css/');
 
-/**
+/*
  * Web path to the js files directory under webroot.
  * If not set defaults to 'js/'
  */
 //Configure::write('App.jsBaseUrl', 'js/');
 
-/**
+/*
  * A random numeric string (digits only) used to encrypt/decrypt strings. You should change
  *  this to ensure you don't take the default values everyone is using.
  */
 Configure::write('Security.cipherSeed', '234820394820398420938402938');
 
-/**
+/*
  * Session configuration.
  *
  * Contains an array of settings to use for session configuration. The defaults key is
@@ -111,16 +111,16 @@ Configure::write('Security.cipherSeed', '234820394820398420938402938');
  * the cake shell command: cake schema create Sessions
  *
  */
-Configure::write('Session', array('defaults' => 'cake'));
+Configure::write('Session', ['defaults' => 'cake']);
 
 
-/**
+/*
  * Uncomment this line and correct your server timezone to fix
  * any date & time related errors.
  */
 date_default_timezone_set('UTC');
 
-/**
+/*
  * `Config.timezone` is available in which you can set users' timezone string.
  * If a method of CakeTime class is called with $timezone parameter as null and `Config.timezone` is set,
  * then the value of `Config.timezone` will be used. This feature allows you to set users' timezone just
@@ -128,12 +128,12 @@ date_default_timezone_set('UTC');
  */
 Configure::write('Config.timezone', 'America/New_York');
 
-/**
+/*
  * Application wide charset encoding
  */
 Configure::write('App.encoding', 'UTF-8');
 
-/**
+/*
  *
  * Cache Engine Configuration
  * Default settings provided below
@@ -195,7 +195,7 @@ Configure::write('App.encoding', 'UTF-8');
  *	));
  */
 
-/**
+/*
  * Configure the cache handlers that CakePHP will use for internal
  * metadata like class maps, and model schema.
  *
@@ -210,37 +210,37 @@ $engine = 'File';
 // In development mode, caches should expire quickly.
 $duration = '+999 days';
 if (Configure::read('debug') > 0) {
-	$duration = '+10 seconds';
+    $duration = '+10 seconds';
 }
 
 // Prefix each application on the same server with a different string, to avoid Memcache and APC conflicts.
 $prefix = 'myapp_';
 
-/**
+/*
  * Configure the cache used for general framework caching. Path information,
  * object listings, and translation cache files are stored with this configuration.
  */
-Cache::config('_cake_core_', array(
-	'engine' => $engine,
-	'prefix' => $prefix . 'cake_core_',
-	'path' => CACHE . 'persistent' . DS,
-	'serialize' => ($engine === 'File'),
-	'duration' => $duration
-));
+Cache::config('_cake_core_', [
+    'engine'    => $engine,
+    'prefix'    => $prefix.'cake_core_',
+    'path'      => CACHE.'persistent'.DS,
+    'serialize' => ($engine === 'File'),
+    'duration'  => $duration,
+]);
 
-/**
+/*
  * Configure the cache for model and datasource caches. This cache configuration
  * is used to store schema descriptions, and table listings in connections.
  */
-Cache::config('_cake_model_', array(
-	'engine' => $engine,
-	'prefix' => $prefix . 'cake_model_',
-	'path' => CACHE . 'models' . DS,
-	'serialize' => ($engine === 'File'),
-	'duration' => $duration
-));
+Cache::config('_cake_model_', [
+    'engine'    => $engine,
+    'prefix'    => $prefix.'cake_model_',
+    'path'      => CACHE.'models'.DS,
+    'serialize' => ($engine === 'File'),
+    'duration'  => $duration,
+]);
 
-/**
+/*
  * CakePHP Debug Level:
  *
  * Production Mode:
@@ -255,7 +255,7 @@ Cache::config('_cake_model_', array(
  */
 Configure::write('debug', 2);
 
-/**
+/*
  * Configure the Error handler used to handle errors for your application. By default
  * ErrorHandler::handleError() is used. It will display errors using Debugger, when debug > 0
  * and log errors with CakeLog when debug = 0.
@@ -270,13 +270,13 @@ Configure::write('debug', 2);
  *
  * @see ErrorHandler for more information on error handling and configuration.
  */
-Configure::write('Error', array(
+Configure::write('Error', [
         'handler' => 'ErrorHandler::handleError',
-        'level' => E_ALL & ~E_DEPRECATED,
-        'trace' => true
-));
+        'level'   => E_ALL & ~E_DEPRECATED,
+        'trace'   => true,
+]);
 
-/**
+/*
  * Configure the Exception handler used for uncaught exceptions. By default,
  * ErrorHandler::handleException() is used. It will display a HTML page for the exception, and
  * while debug > 0, framework errors like Missing Controller will be displayed. When debug = 0,
@@ -296,15 +296,14 @@ Configure::write('Error', array(
  *
  * @see ErrorHandler for more information on exception handling and configuration.
  */
-Configure::write('Exception', array(
-        'handler' => 'ErrorHandler::handleException',
+Configure::write('Exception', [
+        'handler'  => 'ErrorHandler::handleException',
         'renderer' => 'ExceptionRenderer',
-        'log' => true
-));
+        'log'      => true,
+]);
 
-/**
+/*
  * A random string used in security hashing methods.  Leave blank since this app
  *  uses bcrypt.
  */
 Configure::write('Security.salt', '');
-

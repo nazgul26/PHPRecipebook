@@ -1,18 +1,17 @@
 <?php
 /**
- *
- *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org).
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
  * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.Config
  * @since         CakePHP(tm) v 0.2.9
+ *
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -59,23 +58,23 @@
  * For Postgres : http://www.postgresql.org/docs/9.2/static/sql-set.html
  * For Sql Server : http://msdn.microsoft.com/en-us/library/ms190356.aspx
  */
-class DATABASE_CONFIG {
+class DATABASE_CONFIG
+{
+    public $default = [
+        'datasource' => 'Database/Mysql',
+        'persistent' => false,
+        'host'       => 'localhost',
+        'login'      => 'root',
+        'password'   => '',
+        'database'   => 'phprecipebook',
+        'prefix'     => '',
+        //'encoding' => 'utf8',
+    ];
 
-	public $default = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => '',
-		'database' => 'phprecipebook',
-		'prefix' => '',
-		//'encoding' => 'utf8',
-	);
-        
 /*
         // Heroku Setup -- comment out above and use this below:
         public $default;
-        
+
         public function __construct() {
           $DATABASE_URL = parse_url(getenv('DATABASE_URL'));
           $this->default = array(

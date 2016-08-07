@@ -1,9 +1,9 @@
 <?php
+
 App::uses('AppModel', 'Model');
 /**
- * Difficulty Model
- *
+ * Difficulty Model.
  */
-class Difficulty extends AppModel {
-
+class Difficulty extends AppModel
+{
 }
