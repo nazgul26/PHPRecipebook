@@ -2,7 +2,7 @@
 
 App::uses('AppHelper', 'View/Helper');
 /**
- * These methods are used for converting a decimal such as .333 to a fraction (1/3)
+ * These methods are used for converting a decimal such as .333 to a fraction (1/3).
  */
 class FractionHelper extends AppHelper
 {
@@ -10,11 +10,11 @@ class FractionHelper extends AppHelper
     public $fraction;
 
     /**
-     * Function that drives the conversion of a decimal to a fraction
+     * Function that drives the conversion of a decimal to a fraction.
      *
      * @param $value decimal to convert
      * @param $period the character that represents a comma (could be ',' in some countries)
-    */
+     */
     public function toFraction($value)
     {
         $this->whole = 0;
@@ -62,7 +62,7 @@ class FractionHelper extends AppHelper
     }
 
     /**
-     * Simplifies a fraction
+     * Simplifies a fraction.
      *
      * @param $fraction fraction to convert
      * @param $loop keeps track of state
@@ -92,6 +92,7 @@ class FractionHelper extends AppHelper
      * called statically.
      *
      * @param $str The string to convert
+     *
      * @return a floating point number
      */
     private function strToFloat($str)
