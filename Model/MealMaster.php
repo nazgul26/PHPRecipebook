@@ -1,6 +1,6 @@
 <?php
 
-class MealMaster extends AppModel {
-   public $useTable = false;
-   
+class MealMaster extends AppModel
+{
+    public $useTable = false;
 }

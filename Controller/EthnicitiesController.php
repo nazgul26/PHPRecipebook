@@ -1,93 +1,107 @@
 <?php
+
 App::uses('AppController', 'Controller');
 /**
- * Ethnicities Controller
+ * Ethnicities Controller.
  *
  * @property Ethnicity $Ethnicity
  * @property PaginatorComponent $Paginator
  */
-class EthnicitiesController extends AppController {
+class EthnicitiesController extends AppController
+{
+    public $components = ['Paginator'];
+    public $paginate = [
+            'order' => [
+                'Ethnicities.name' => 'asc',
+            ],
+        ];
 
-    public $components = array('Paginator');
-    public $paginate = array(
-            'order' => array(
-                'Ethnicities.name' => 'asc'
-            )
-        );
-
-    public function beforeFilter() {
+    public function beforeFilter()
+    {
         parent::beforeFilter();
         $this->Auth->deny(); // Deny ALL, user must be logged in.
     }
-    
+
     /**
-     * index method
+     * index method.
      *
      * @return void
      */
-    public function index() {
+    public function index()
+    {
         $this->Ethnicity->recursive = 0;
         $this->Paginator->settings = $this->paginate;
         $this->set('ethnicities', $this->Paginator->paginate());
     }
 
     /**
-     * view method
+     * view method.
+     *
+     * @param string $id
      *
      * @throws NotFoundException
-     * @param string $id
+     *
      * @return void
      */
-    public function view($id = null) {
+    public function view($id = null)
+    {
         if (!$this->Ethnicity->exists($id)) {
-                throw new NotFoundException(__('Invalid ethnicity'));
+            throw new NotFoundException(__('Invalid ethnicity'));
         }
-        $options = array('conditions' => array('Ethnicity.' . $this->Ethnicity->primaryKey => $id));
+        $options = ['conditions' => ['Ethnicity.'.$this->Ethnicity->primaryKey => $id]];
         $this->set('ethnicity', $this->Ethnicity->find('first', $options));
     }
 
     /**
-     * edit method
+     * edit method.
+     *
+     * @param string $id
      *
      * @throws NotFoundException
-     * @param string $id
+     *
      * @return void
      */
-    public function edit($id = null) {
+    public function edit($id = null)
+    {
         if ($id != null && !$this->Ethnicity->exists($id)) {
-                throw new NotFoundException(__('Invalid ethnicity'));
+            throw new NotFoundException(__('Invalid ethnicity'));
         }
-        if ($this->request->is(array('post', 'put'))) {
+        if ($this->request->is(['post', 'put'])) {
             if ($this->Ethnicity->save($this->request->data)) {
-                    $this->Session->setFlash(__('The ethnicity has been saved.'), 'success', array('event' => 'saved.ethnicity'));
-                    return $this->redirect(array('action' => 'edit'));
+                $this->Session->setFlash(__('The ethnicity has been saved.'), 'success', ['event' => 'saved.ethnicity']);
+
+                return $this->redirect(['action' => 'edit']);
             } else {
-                    $this->Session->setFlash(__('The ethnicity could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The ethnicity could not be saved. Please, try again.'));
             }
         } else {
-            $options = array('conditions' => array('Ethnicity.' . $this->Ethnicity->primaryKey => $id));
+            $options = ['conditions' => ['Ethnicity.'.$this->Ethnicity->primaryKey => $id]];
             $this->request->data = $this->Ethnicity->find('first', $options);
         }
     }
 
     /**
-     * delete method
+     * delete method.
+     *
+     * @param string $id
      *
      * @throws NotFoundException
-     * @param string $id
+     *
      * @return void
      */
-    public function delete($id = null) {
+    public function delete($id = null)
+    {
         $this->Ethnicity->id = $id;
         if (!$this->Ethnicity->exists()) {
             throw new NotFoundException(__('Invalid ethnicity'));
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Ethnicity->delete()) {
-            $this->Session->setFlash(__('The ethnicity has been deleted.'), 'success', array('event' => 'saved.ethnicity'));
+            $this->Session->setFlash(__('The ethnicity has been deleted.'), 'success', ['event' => 'saved.ethnicity']);
         } else {
             $this->Session->setFlash(__('The ethnicity could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index'));
-    }     
- }
+
+        return $this->redirect(['action' => 'index']);
+    }
+}
