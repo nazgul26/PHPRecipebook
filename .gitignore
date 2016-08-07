@@ -18,3 +18,4 @@ sass/.sass-cache
 Vendor/*
 Plugin/Upload
 .vscode/*
+.idea
