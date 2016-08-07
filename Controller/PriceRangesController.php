@@ -1,89 +1,100 @@
 <?php
+
 App::uses('AppController', 'Controller');
 /**
- * PriceRanges Controller
+ * PriceRanges Controller.
  *
  * @property PriceRange $PriceRange
  * @property PaginatorComponent $Paginator
  */
-class PriceRangesController extends AppController {
+class PriceRangesController extends AppController
+{
+    public $components = ['Paginator'];
 
-    public $components = array('Paginator');
+    public $paginate = [
+        'order' => [
+            'PriceRange.name' => 'asc',
+        ],
+    ];
 
-    public $paginate = array(
-        'order' => array(
-            'PriceRange.name' => 'asc'
-        )
-    );
-
-    public function beforeFilter() {
+    public function beforeFilter()
+    {
         parent::beforeFilter();
         $this->Auth->deny(); // Deny ALL, user must be logged in.
     }
-    
+
     /**
-     * index method
+     * index method.
      *
      * @return void
      */
-    public function index() {
+    public function index()
+    {
         $this->PriceRange->recursive = 0;
         $this->Paginator->settings = $this->paginate;
         $this->set('priceRanges', $this->Paginator->paginate());
     }
 
     /**
-     * edit method
+     * edit method.
+     *
+     * @param string $id
      *
      * @throws NotFoundException
-     * @param string $id
+     *
      * @return void
      */
-    public function edit($id = null) {
+    public function edit($id = null)
+    {
         if ($id != null && !$this->PriceRange->exists($id)) {
             throw new NotFoundException(__('Invalid price range'));
         }
-        if ($this->request->is(array('post', 'put'))) {
+        if ($this->request->is(['post', 'put'])) {
             if ($this->PriceRange->save($this->request->data)) {
-                    $this->Session->setFlash(__('The price range has been saved.'), 'success', array('event' => 'saved.priceRange'));
-                    return $this->redirect(array('action' => 'edit'));
+                $this->Session->setFlash(__('The price range has been saved.'), 'success', ['event' => 'saved.priceRange']);
+
+                return $this->redirect(['action' => 'edit']);
             } else {
-                    $this->Session->setFlash(__('The price range could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The price range could not be saved. Please, try again.'));
             }
         } else {
-            $options = array('conditions' => array('PriceRange.' . $this->PriceRange->primaryKey => $id));
+            $options = ['conditions' => ['PriceRange.'.$this->PriceRange->primaryKey => $id]];
             $this->request->data = $this->PriceRange->find('first', $options);
         }
     }
 
     /**
-     * delete method
+     * delete method.
+     *
+     * @param string $id
      *
      * @throws NotFoundException
-     * @param string $id
+     *
      * @return void
      */
-    public function delete($id = null) {
-            $this->PriceRange->id = $id;
-            if (!$this->PriceRange->exists()) {
-                    throw new NotFoundException(__('Invalid price range'));
-            }
-            $this->request->onlyAllow('post', 'delete');
-            if ($this->PriceRange->delete()) {
-                    $this->Session->setFlash(__('The price range has been deleted.'), 'success', array('event' => 'saved.priceRange'));
-            } else {
-                    $this->Session->setFlash(__('The price range could not be deleted. Please, try again.'));
-            }
-            return $this->redirect(array('action' => 'index'));
+    public function delete($id = null)
+    {
+        $this->PriceRange->id = $id;
+        if (!$this->PriceRange->exists()) {
+            throw new NotFoundException(__('Invalid price range'));
+        }
+        $this->request->onlyAllow('post', 'delete');
+        if ($this->PriceRange->delete()) {
+            $this->Session->setFlash(__('The price range has been deleted.'), 'success', ['event' => 'saved.priceRange']);
+        } else {
+            $this->Session->setFlash(__('The price range could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
     }
-    
-    public function search() {
+
+    public function search()
+    {
         $term = $this->request->query('term');
-        if ($term)
-        {
+        if ($term) {
             $this->PriceRanges->recursive = 0;
             $this->Paginator->settings = $this->paginate;
-            $this->set('priceRanges', $this->Paginator->paginate("PriceRange", array('PriceRange.Name LIKE' => '%' . $term . '%')));
+            $this->set('priceRanges', $this->Paginator->paginate('PriceRange', ['PriceRange.Name LIKE' => '%'.$term.'%']));
         } else {
             $this->set('priceRanges', $this->Paginator->paginate());
         }

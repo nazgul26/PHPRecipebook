@@ -1,65 +1,73 @@
 <?php
+
 App::uses('AppController', 'Controller');
 /**
- * Sources Controller
+ * Sources Controller.
  *
  * @property Source $Source
  * @property PaginatorComponent $Paginator
  */
-class SourcesController extends AppController {
+class SourcesController extends AppController
+{
+    public $components = ['Paginator'];
 
-    public $components = array('Paginator');
+    public $paginate = [
+        'order' => [
+            'Source.name' => 'asc',
+        ],
+    ];
 
-    public $paginate = array(
-        'order' => array(
-            'Source.name' => 'asc'
-        )
-    );
-    
-    public function beforeFilter() {
+    public function beforeFilter()
+    {
         parent::beforeFilter();
         $this->Auth->deny(); // Deny ALL, user must be logged in.
     }
 
     /**
-     * index method
+     * index method.
      *
      * @return void
      */
-    public function index() {
+    public function index()
+    {
         $this->Source->recursive = 0;
         $this->Paginator->settings = $this->paginate;
         $this->set('sources', $this->Paginator->paginate());
     }
-    
-    public function view($id = null) {
+
+    public function view($id = null)
+    {
         if (!$this->Source->exists($id)) {
-                throw new NotFoundException(__('Invalid source'));
+            throw new NotFoundException(__('Invalid source'));
         }
-        $options = array('conditions' => array('Source.' . $this->Source->primaryKey => $id));
+        $options = ['conditions' => ['Source.'.$this->Source->primaryKey => $id]];
         $this->set('source', $this->Source->find('first', $options));
     }
 
     /**
-     * edit method
+     * edit method.
+     *
+     * @param string $id
      *
      * @throws NotFoundException
-     * @param string $id
+     *
      * @return void
      */
-    public function edit($id = null) {
+    public function edit($id = null)
+    {
         if ($id != null && !$this->Source->exists($id)) {
             throw new NotFoundException(__('Invalid source'));
         }
-        if ($this->request->is(array('post', 'put'))) {
+        if ($this->request->is(['post', 'put'])) {
             if ($this->Source->save($this->request->data)) {
-                    $this->Session->setFlash(__('The source has been saved.'), 'success', array('event' => 'savedSource'));
-                    return $this->redirect(array('action' => 'edit'));
+                $this->Session->setFlash(__('The source has been saved.'), 'success', ['event' => 'savedSource']);
+
+                return $this->redirect(['action' => 'edit']);
             } else {
-                    $this->Session->setFlash(__('The source could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The source could not be saved. Please, try again.'));
             }
         } else {
-            $options = array('conditions' => array('Source.' . $this->Source->primaryKey => $id));
+            $options = ['conditions' => ['Source.'.$this->Source->primaryKey => $id]];
             $this->request->data = $this->Source->find('first', $options);
         }
         $users = $this->Source->User->find('list');
@@ -67,23 +75,27 @@ class SourcesController extends AppController {
     }
 
     /**
-     * delete method
+     * delete method.
+     *
+     * @param string $id
      *
      * @throws NotFoundException
-     * @param string $id
+     *
      * @return void
      */
-    public function delete($id = null) {
+    public function delete($id = null)
+    {
         $this->Source->id = $id;
         if (!$this->Source->exists()) {
-                throw new NotFoundException(__('Invalid source'));
+            throw new NotFoundException(__('Invalid source'));
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Source->delete()) {
-                $this->Session->setFlash(__('The source has been deleted.'), 'success');
+            $this->Session->setFlash(__('The source has been deleted.'), 'success');
         } else {
-                $this->Session->setFlash(__('The source could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('The source could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index'));
+
+        return $this->redirect(['action' => 'index']);
     }
 }

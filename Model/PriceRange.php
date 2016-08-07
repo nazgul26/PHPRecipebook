@@ -1,9 +1,9 @@
 <?php
+
 App::uses('AppModel', 'Model');
 /**
- * PriceRange Model
- *
+ * PriceRange Model.
  */
-class PriceRange extends AppModel {
-
+class PriceRange extends AppModel
+{
 }

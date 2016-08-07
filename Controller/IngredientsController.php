@@ -1,41 +1,44 @@
 <?php
+
 App::uses('AppController', 'Controller');
 /**
- * Ingredients Controller
+ * Ingredients Controller.
  *
  * @property Ingredient $Ingredient
  * @property PaginatorComponent $Paginator
  */
-class IngredientsController extends AppController {
+class IngredientsController extends AppController
+{
+    public $components = ['Paginator', 'RequestHandler'];
 
-    public $components = array('Paginator', 'RequestHandler');
-    
-    public $paginate = array(
-        'order' => array(
-            'Ingredient.name' => 'asc'
-        )
-    );
-    
+    public $paginate = [
+        'order' => [
+            'Ingredient.name' => 'asc',
+        ],
+    ];
+
     // Filter to hide ingredients of other users
-    public $filterConditions = array();
-    
-    public function beforeFilter() {
+    public $filterConditions = [];
+
+    public function beforeFilter()
+    {
         parent::beforeFilter();
         $this->Auth->deny(); // Deny ALL, user must be logged in.
-        
-        $this->filterConditions = array('Ingredient.user_id' => $this->Auth->user('id'));
+
+        $this->filterConditions = ['Ingredient.user_id' => $this->Auth->user('id')];
     }
-    
-    public function isAuthorized($user) {
+
+    public function isAuthorized($user)
+    {
         // The owner of a ingredient can edit and delete it
-        if (in_array($this->action, array('edit', 'delete')) && isset($this->request->params['pass'][0])) {
+        if (in_array($this->action, ['edit', 'delete']) && isset($this->request->params['pass'][0])) {
             $ingredientId = (int) $this->request->params['pass'][0];
 
             if ($this->User->isEditor($user) || $this->Ingredient->isOwnedBy($ingredientId, $user['id'])) {
                 return true;
-            }
-            else {
+            } else {
                 $this->Session->setFlash(__('Not Ingredient Owner'));
+
                 return false;
             }
         }
@@ -45,39 +48,44 @@ class IngredientsController extends AppController {
     }
 
     /**
-     * index method
+     * index method.
      *
      * @return void
      */
-    public function index() {
+    public function index()
+    {
         $this->Ingredient->recursive = 0;
         $this->Paginator->settings = $this->paginate;
         $this->set('ingredients', $this->Paginator->paginate('Ingredient', $this->filterConditions));
     }
 
     /**
-     * edit method
+     * edit method.
+     *
+     * @param string $id
      *
      * @throws NotFoundException
-     * @param string $id
+     *
      * @return void
      */
-    public function edit($id = null) {
+    public function edit($id = null)
+    {
         if ($id != null && !$this->Ingredient->exists($id)) {
-                throw new NotFoundException(__('Invalid ingredient'));
+            throw new NotFoundException(__('Invalid ingredient'));
         }
 
-        if ($this->request->is(array('post', 'put'))) {
+        if ($this->request->is(['post', 'put'])) {
             //TODO: Keep the original author just in case editor/admin edits
             $this->request->data['Ingredient']['user_id'] = $this->Auth->user('id');
             if ($this->Ingredient->save($this->request->data)) {
-                    $this->Session->setFlash(__('The ingredient has been saved.'), 'success', array('event' => 'savedIngredient'));
-                    return $this->redirect(array('action' => 'edit'));
+                $this->Session->setFlash(__('The ingredient has been saved.'), 'success', ['event' => 'savedIngredient']);
+
+                return $this->redirect(['action' => 'edit']);
             } else {
-                    $this->Session->setFlash(__('The ingredient could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The ingredient could not be saved. Please, try again.'));
             }
-        } else if ($id != null) {
-            $options = array('conditions' => array('Ingredient.' . $this->Ingredient->primaryKey => $id));
+        } elseif ($id != null) {
+            $options = ['conditions' => ['Ingredient.'.$this->Ingredient->primaryKey => $id]];
             $this->request->data = $this->Ingredient->find('first', $options);
         }
         $locations = $this->Ingredient->Location->find('list');
@@ -86,7 +94,8 @@ class IngredientsController extends AppController {
         $this->set(compact('locations', 'units', 'users'));
     }
 
-    public function delete($id = null) {
+    public function delete($id = null)
+    {
         $this->Ingredient->id = $id;
         if (!$this->Ingredient->exists()) {
             throw new NotFoundException(__('Invalid ingredient'));
@@ -97,44 +106,44 @@ class IngredientsController extends AppController {
         } else {
             $this->Session->setFlash(__('The ingredient could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index'));
+
+        return $this->redirect(['action' => 'index']);
     }
-     
-    public function search() {
+
+    public function search()
+    {
         $term = $this->request->query('term');
-        if ($term)
-        {
+        if ($term) {
             $this->Ingredient->recursive = 0;
             $this->Paginator->settings = $this->paginate;
-            $this->set('ingredients', $this->Paginator->paginate("Ingredient", 
-                    array_merge($this->filterConditions, array('LOWER(Ingredient.name) LIKE' => '%' . trim(strtolower($term)) . '%'))));
+            $this->set('ingredients', $this->Paginator->paginate('Ingredient',
+                    array_merge($this->filterConditions, ['LOWER(Ingredient.name) LIKE' => '%'.trim(strtolower($term)).'%'])));
         } else {
             $this->set('ingredients', $this->Paginator->paginate('Ingredient', $this->filterConditions));
         }
         $this->render('index');
     }
-    
-    public function autoCompleteSearch() {
-        $searchResults = array();
+
+    public function autoCompleteSearch()
+    {
+        $searchResults = [];
         $term = $this->request->query('term');
-        if ($term)
-        {
-            $ingredients = $this->Ingredient->find('all', array(
-              'conditions' => 
-                array_merge($this->filterConditions, array('LOWER(Ingredient.name) LIKE ' => '%' . trim(strtolower($term)) . '%'))
-            ));
-            
+        if ($term) {
+            $ingredients = $this->Ingredient->find('all', [
+              'conditions' => array_merge($this->filterConditions, ['LOWER(Ingredient.name) LIKE ' => '%'.trim(strtolower($term)).'%']),
+            ]);
+
             if (count($ingredients) > 0) {
                 foreach ($ingredients as $item) {
                     $key = $item['Ingredient']['name'];
                     $value = $item['Ingredient']['id'];
-                    array_push($searchResults, array('id'=>$value, 'value' => strip_tags($key)));
+                    array_push($searchResults, ['id' => $value, 'value' => strip_tags($key)]);
                 }
             } else {
                 $key = "No Results for '$term' Found";
-                array_push($searchResults, array('id'=> '', 'value' => $key));
+                array_push($searchResults, ['id' => '', 'value' => $key]);
             }
-            
+
             $this->set(compact('searchResults'));
             $this->set('_serialize', 'searchResults');
         }
