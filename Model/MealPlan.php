@@ -26,35 +26,38 @@ class MealPlan extends AppModel
        'Wednesday',
        'Thursday',
        'Friday',
-       'Saturday', ];
+       'Saturday',
+    ];
 
     public $MonthsAbbreviated = [
         'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec', ];
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+    ];
 
     public $MonthsFull = [
         'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December', ];
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ];
 
     public $startWeekDay = 0;
     public $currentMonth;
@@ -82,7 +85,13 @@ class MealPlan extends AppModel
     }
 
     /**
-     @return seven element array of arrays (day, month, year)
+     * Creates an array with the days of the week in them. This will account for weeks
+     * that wrap to the next month, or carry over from the previous month
+     *
+     * @param $day The day
+     * @param $month The month
+     * @param $year the year
+     * @return seven element array of arrays (day, month, year)
      */
     public function getWeekDaysList($day = null, $month = null, $year = null)
     {
@@ -118,7 +127,11 @@ class MealPlan extends AppModel
     }
 
     /**
-     @return the number of days in the month/year combo
+     * This function determines how many days are in a given month and year
+     *
+     * @param $month The month
+     * @param $year THe year
+     * @return the number of days in the month/year combo
      */
     private function daysInMonth($month, $year)
     {
@@ -132,7 +145,14 @@ class MealPlan extends AppModel
     }
 
     /**
-     @return array of ($day, $month, $year) that is the new date
+     * This function gets the date of a day that is a given
+     * number of days in the future.
+     *
+     * @param $day The day
+     * @param $month The month
+     * @param $year The year
+     * @param $num the number of days to forward
+     * @return array of ($day, $month, $year) that is the new date
      */
     public function getNextDay($day = null, $month = null, $year = null, $num = 1)
     {
@@ -162,7 +182,14 @@ class MealPlan extends AppModel
     }
 
     /**
-     @return array of ($day, $month, $year) that is the new date
+     * This function gets the date of a day that is a given
+     * number of days ago.
+     *
+     * @param $day The day
+     * @param $month The month
+     * @param $year The year
+     * @param $num the number of days to go back
+     * @return array of ($day, $month, $year) that is the new date
      */
     public function getPreviousDay($day = null, $month = null, $year = null, $num = 1)
     {
@@ -193,7 +220,7 @@ class MealPlan extends AppModel
     }
 
     /**
-     Gets the next week (Sunday) for a given date
+     * Gets the next week (Sunday) for a given date
      */
     public function getNextWeek($day = null, $month = null, $year = null)
     {
@@ -211,7 +238,7 @@ class MealPlan extends AppModel
     }
 
     /**
-     Gets the previous week (Sunday) for a given date
+     * Gets the previous week (Sunday) for a given date
      */
     public function getPreviousWeek($day = null, $month = null, $year = null)
     {
@@ -229,7 +256,7 @@ class MealPlan extends AppModel
     }
 
     /**
-     Gets the next month
+     * Gets the next month
      */
     public function getNextMonth($day = null, $month = null, $year = null)
     {
@@ -249,7 +276,7 @@ class MealPlan extends AppModel
     }
 
     /**
-     Gets the previous month
+     * Gets the previous month
      */
     public function getPreviousMonth($day = null, $month = null, $year = null)
     {
@@ -325,7 +352,7 @@ class MealPlan extends AppModel
                 'order'      => '',
         ],
     ];
-
+    
     public function isOwnedBy($mealId, $user)
     {
         return $this->field('id', ['id' => $mealId, 'user_id' => $user]) !== false;

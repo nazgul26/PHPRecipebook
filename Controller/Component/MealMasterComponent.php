@@ -79,7 +79,8 @@ class MealMasterComponent extends Component
                             ];
 
     /**
-     @param $file The file to parse
+     * Gets the data out of the given data file and loads it into the importRecipes, relatedRecipes arrays
+     * @param $file The file to parse
      */
     public function import($file)
     {
@@ -471,7 +472,11 @@ class MealMasterComponent extends Component
  // readRecipeSteps()
 
     /**
-     @return the corresponding category ID.
+     * This function adds a list of categories to the current recipe. Because in Meal Master there is
+     * not separate field for base and course we will try to match it up as best we can
+     * 
+     * @param $cat The category to look up
+     * @return the corresponding category ID.
      */
     public function addCategories($cat)
     {

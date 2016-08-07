@@ -2,17 +2,18 @@
 
 App::uses('AppHelper', 'View/Helper');
 /**
- These methods are used for converting a decimal such as .333 to a fraction (1/3)
+ * These methods are used for converting a decimal such as .333 to a fraction (1/3)
  */
 class FractionHelper extends AppHelper
 {
     public $whole;
     public $fraction;
 
-    /* *
-        Function that drives the conversion of a decimal to a fraction
-        @param $value decimal to convert
-        @param $period the character that represents a comma (could be ',' in some countries)
+    /**
+     * Function that drives the conversion of a decimal to a fraction
+     *
+     * @param $value decimal to convert
+     * @param $period the character that represents a comma (could be ',' in some countries)
     */
     public function toFraction($value)
     {
@@ -47,7 +48,7 @@ class FractionHelper extends AppHelper
     }
 
     /**
-     @param $result pointer to the resulting fraction
+     * @param $result pointer to the resulting fraction
      */
     private function decimalToFraction($decimal, $loop, &$result)
     {
@@ -61,7 +62,12 @@ class FractionHelper extends AppHelper
     }
 
     /**
-     @param $bottom the bottom of the fraction
+     * Simplifies a fraction
+     *
+     * @param $fraction fraction to convert
+     * @param $loop keeps track of state
+     * @param $top the top of the fraction
+     * @param $bottom the bottom of the fraction
      */
     private function simplifyFraction($fraction)
     {
@@ -82,7 +88,11 @@ class FractionHelper extends AppHelper
     }
 
     /**
-     @return A floating point number
+     * Converts a string that represents a fraction to a double, this function can be
+     * called statically.
+     *
+     * @param $str The string to convert
+     * @return a floating point number
      */
     private function strToFloat($str)
     {
