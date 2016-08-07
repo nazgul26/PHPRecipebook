@@ -1,19 +1,21 @@
 <?php
+
 App::uses('AppModel', 'Model');
 /**
- * RelatedRecipe Model
+ * RelatedRecipe Model.
  *
  * @property Recipe $Recipe
  */
-class RelatedRecipe extends AppModel {
-    public $belongsTo = array(
-        'Parent' => array(
-            'className' => 'Recipe',
-            'foreignKey' => 'parent_id'
-        ),
-        'Related' => array(
-            'className' => 'Recipe',
-            'foreignKey' => 'recipe_id'
-        )
-    );
+class RelatedRecipe extends AppModel
+{
+    public $belongsTo = [
+        'Parent' => [
+            'className'  => 'Recipe',
+            'foreignKey' => 'parent_id',
+        ],
+        'Related' => [
+            'className'  => 'Recipe',
+            'foreignKey' => 'recipe_id',
+        ],
+    ];
 }

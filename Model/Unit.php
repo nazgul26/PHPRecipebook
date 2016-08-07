@@ -1,36 +1,36 @@
 <?php
+
 App::uses('AppModel', 'Model');
 /**
- * Unit Model
- *
+ * Unit Model.
  */
-class Unit extends AppModel {
-
-/**
- * Validation rules
- *
- * @var array
- */
-	public $validate = array(
-		'name' => array(
-                    'required' => array(
-                        'rule' => 'notBlank'
-                    )
-		),
-		'abbreviation' => array(
-                    'required' => array(
-                        'rule' => 'notBlank'
-                    )
-		),
-		'system' => array(
-                    'numeric' => array(
-                            'rule' => 'numeric'
-                    )
-		),
-		'sort_order' => array(
-                    'numeric' => array(
-                        'rule' => 'numeric'
-                    )
-		),
-	);
+class Unit extends AppModel
+{
+    /**
+     * Validation rules.
+     *
+     * @var array
+     */
+    public $validate = [
+        'name' => [
+                    'required' => [
+                        'rule' => 'notBlank',
+                    ],
+        ],
+        'abbreviation' => [
+                    'required' => [
+                        'rule' => 'notBlank',
+                    ],
+        ],
+        'system' => [
+                    'numeric' => [
+                            'rule' => 'numeric',
+                    ],
+        ],
+        'sort_order' => [
+                    'numeric' => [
+                        'rule' => 'numeric',
+                    ],
+        ],
+    ];
 }

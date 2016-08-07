@@ -1,58 +1,64 @@
 <?php
+
 App::uses('AppController', 'Controller');
 /**
- * Restaurants Controller
+ * Restaurants Controller.
  *
  * @property Restaurant $Restaurant
  * @property PaginatorComponent $Paginator
  */
-class RestaurantsController extends AppController {
-
+class RestaurantsController extends AppController
+{
     /**
-     * Components
+     * Components.
      *
      * @var array
      */
-    public $components = array('Paginator');
-    
-    public $paginate = array(
-        'order' => array(
-            'Restaurant.name' => 'asc'
-        )
-    );
+    public $components = ['Paginator'];
+
+    public $paginate = [
+        'order' => [
+            'Restaurant.name' => 'asc',
+        ],
+    ];
 
     /**
-     * index method
+     * index method.
      *
      * @return void
      */
-    public function index() {
+    public function index()
+    {
         $this->Restaurant->recursive = 0;
         $this->Paginator->settings = $this->paginate;
         $this->set('restaurants', $this->Paginator->paginate());
     }
 
     /**
-     * edit method
+     * edit method.
+     *
+     * @param string $id
      *
      * @throws NotFoundException
-     * @param string $id
+     *
      * @return void
      */
-    public function edit($id = null) {
+    public function edit($id = null)
+    {
         if ($id != null && !$this->Restaurant->exists($id)) {
-                throw new NotFoundException(__('Invalid restaurant'));
+            throw new NotFoundException(__('Invalid restaurant'));
         }
-        if ($this->request->is(array('post', 'put'))) {
-                if ($this->Restaurant->save($this->request->data)) {
-                        $this->Session->setFlash(__('The restaurant has been saved.'), 'success', array('event' => 'saved.restaurant'));
-                        return $this->redirect(array('action' => 'edit'));
-                } else {
-                        $this->Session->setFlash(__('The restaurant could not be saved. Please, try again.'));
-                }
+        if ($this->request->is(['post', 'put'])) {
+            if ($this->Restaurant->save($this->request->data)) {
+                $this->Session->setFlash(__('The restaurant has been saved.'), 'success', ['event' => 'saved.restaurant']);
+
+                return $this->redirect(['action' => 'edit']);
+            } else {
+                $this->Session->setFlash(__('The restaurant could not be saved. Please, try again.'));
+            }
         } else {
-                $options = array('conditions' => array('Restaurant.' . $this->Restaurant->primaryKey => $id));
-                $this->request->data = $this->Restaurant->find('first', $options);
+            $options = ['conditions' => ['Restaurant.'.$this->Restaurant->primaryKey => $id]];
+            $this->request->data = $this->Restaurant->find('first', $options);
         }
         $priceRanges = $this->Restaurant->PriceRange->find('list');
         $users = $this->Restaurant->User->find('list');
@@ -60,33 +66,37 @@ class RestaurantsController extends AppController {
     }
 
     /**
-     * delete method
+     * delete method.
+     *
+     * @param string $id
      *
      * @throws NotFoundException
-     * @param string $id
+     *
      * @return void
      */
-    public function delete($id = null) {
+    public function delete($id = null)
+    {
         $this->Restaurant->id = $id;
         if (!$this->Restaurant->exists()) {
-                throw new NotFoundException(__('Invalid restaurant'));
+            throw new NotFoundException(__('Invalid restaurant'));
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Restaurant->delete()) {
-                $this->Session->setFlash(__('The restaurant has been deleted.'), 'success', array('event' => 'saved.restaurant'));
+            $this->Session->setFlash(__('The restaurant has been deleted.'), 'success', ['event' => 'saved.restaurant']);
         } else {
-                $this->Session->setFlash(__('The restaurant could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('The restaurant could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index'));
+
+        return $this->redirect(['action' => 'index']);
     }
-    
-    public function search() {
+
+    public function search()
+    {
         $term = $this->request->query('term');
-        if ($term)
-        {
+        if ($term) {
             $this->Restaurant->recursive = 0;
             $this->Paginator->settings = $this->paginate;
-            $this->set('restaurants', $this->Paginator->paginate("Restaurant", array('Restaurant.name LIKE' => '%' . $term . '%')));
+            $this->set('restaurants', $this->Paginator->paginate('Restaurant', ['Restaurant.name LIKE' => '%'.$term.'%']));
         } else {
             $this->set('restaurants', $this->Paginator->paginate());
         }

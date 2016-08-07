@@ -1,16 +1,17 @@
 <?php
+
 App::uses('AppModel', 'Model');
 /**
- * Location Model
- *
+ * Location Model.
  */
-class Location extends AppModel {
-
+class Location extends AppModel
+{
     public $displayField = 'name';
-    
-    public function orderShoppingListByLocation($list) {
-        $sortedList = array();
-        $locations = $this->find('all', array('order' => array('name')));
+
+    public function orderShoppingListByLocation($list)
+    {
+        $sortedList = [];
+        $locations = $this->find('all', ['order' => ['name']]);
         foreach ($locations as $location) {
             foreach ($list as $item) {
                 if ($item[0]->locationId == $location['Location']['id']) {
@@ -19,11 +20,13 @@ class Location extends AppModel {
                 }
             }
         }
+
         return $sortedList;
     }
 
-    public function orderShoppingListByStore($list, $locationIds) {
-        $sortedList = array();
+    public function orderShoppingListByStore($list, $locationIds)
+    {
+        $sortedList = [];
         foreach ($locationIds as $id) {
             $location = $this->findById($id);
             if (isset($location['Location'])) {
@@ -35,6 +38,7 @@ class Location extends AppModel {
                 }
             }
         }
+
         return $sortedList;
     }
 }

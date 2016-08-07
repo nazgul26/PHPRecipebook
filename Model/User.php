@@ -1,72 +1,79 @@
 <?php
+
 App::uses('AppModel', 'Model');
 App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 /**
- * User Model
+ * User Model.
  */
-class User extends AppModel {
-
-    public $validate = array(
-        'username' => array(
-            'required' => array(
-                'rule' => 'notBlank',
-                'required' => true
-            )
-        ),
+class User extends AppModel
+{
+    public $validate = [
+        'username' => [
+            'required' => [
+                'rule'     => 'notBlank',
+                'required' => true,
+            ],
+        ],
         // Turned off to allow Edit and not re-encrypt
-        'password' => array(
-            'notEmpty' => array(
-                    'rule' => array('notBlank'),
+        'password' => [
+            'notEmpty' => [
+                    'rule'     => ['notBlank'],
                     'required' => true,
-                    'on' => 'create'
-            ),
-        ),
-        'name' => array(
-            'required' => array(
-                'rule' => 'notBlank'
-            )
-        ),
-        'access_level' => array(
-            'numeric' => array(
-                'rule' => array('numeric', 'notBlank'),
-                'required' => true
-            ),
-        ),
-        'language' => array(
-                'required' => array(
-                    'rule' => 'notBlank'
-                )
-        ),
-        'country' => array(
-                'required' => array(
-                    'rule' => 'notBlank'
-                )
-        ),
-        'email' => array(
-            'email' => array(
-                'rule' => array('email', 'notBlank'),
-                'required' => true
-            ),
-        ),
-    );
-    
-    public function beforeSave($options = array()) {
+                    'on'       => 'create',
+            ],
+        ],
+        'name' => [
+            'required' => [
+                'rule' => 'notBlank',
+            ],
+        ],
+        'access_level' => [
+            'numeric' => [
+                'rule'     => ['numeric', 'notBlank'],
+                'required' => true,
+            ],
+        ],
+        'language' => [
+                'required' => [
+                    'rule' => 'notBlank',
+                ],
+        ],
+        'country' => [
+                'required' => [
+                    'rule' => 'notBlank',
+                ],
+        ],
+        'email' => [
+            'email' => [
+                'rule'     => ['email', 'notBlank'],
+                'required' => true,
+            ],
+        ],
+    ];
+
+    public function beforeSave($options = [])
+    {
         if (isset($this->data[$this->alias]['password'])) {
             $passwordHasher = new BlowfishPasswordHasher();
             $this->data[$this->alias]['password'] = $passwordHasher->hash(
                 $this->data[$this->alias]['password']
             );
         }
+
         return true;
     }
-    
-    public function isAdmin($user) {
+
+    public function isAdmin($user)
+    {
         $adminRole = Configure::read('AuthRoles.admin');
+
         return $user['access_level'] >= $adminRole;
     }
-    
-    public function isEditor($user) {
+
+    public function isEditor($user)
+    {
         $editorRole = Configure::read('AuthRoles.editor');
+
         return $user['access_level'] >= $editorRole;
     }
 }

@@ -1,16 +1,15 @@
 <?php
+
 App::uses('AppModel', 'Model');
 /**
- * MealName Model
- *
+ * MealName Model.
  */
-class MealName extends AppModel {
-
-/**
- * Display field
- *
- * @var string
- */
-	public $displayField = 'name';
-
+class MealName extends AppModel
+{
+    /**
+     * Display field.
+     *
+     * @var string
+     */
+    public $displayField = 'name';
 }

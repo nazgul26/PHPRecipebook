@@ -1,7 +1,8 @@
 <?php
+
 App::uses('AppModel', 'Model');
 /**
- * Recipe Model
+ * Recipe Model.
  *
  * @property Ethnicity $Ethnicity
  * @property BaseType $BaseType
@@ -11,132 +12,134 @@ App::uses('AppModel', 'Model');
  * @property Source $Source
  * @property User $User
  */
-class Recipe extends AppModel {
-    public $actsAs = array(
-        'Upload.Upload' => array(
-            'image' => array(
-                'fields' => array(
-                    'dir' => 'image_dir'
-                )
-            )
-        )
-    );
-    
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public $validate = array(
-        'name' => array(
-                'required' => array(
-                 'rule' => 'notBlank'
-             )
-        ),
-        'private' => array(
-                'boolean' => array(
-                    'rule' => 'boolean'
-                )
-        ),
-        'system' => array(
-                'required' => array(
-                    'rule' => 'notBlank'
-                )
-        ),
-    );
+class Recipe extends AppModel
+{
+    public $actsAs = [
+        'Upload.Upload' => [
+            'image' => [
+                'fields' => [
+                    'dir' => 'image_dir',
+                ],
+            ],
+        ],
+    ];
 
     /**
-     * belongsTo associations
+     * Validation rules.
      *
      * @var array
      */
-    public $belongsTo = array(
-        'Ethnicity' => array(
-                'className' => 'Ethnicity',
+    public $validate = [
+        'name' => [
+                'required' => [
+                 'rule' => 'notBlank',
+             ],
+        ],
+        'private' => [
+                'boolean' => [
+                    'rule' => 'boolean',
+                ],
+        ],
+        'system' => [
+                'required' => [
+                    'rule' => 'notBlank',
+                ],
+        ],
+    ];
+
+    /**
+     * belongsTo associations.
+     *
+     * @var array
+     */
+    public $belongsTo = [
+        'Ethnicity' => [
+                'className'  => 'Ethnicity',
                 'foreignKey' => 'ethnicity_id',
                 'conditions' => '',
-                'fields' => '',
-                'order' => ''
-        ),
-        'BaseType' => array(
-                'className' => 'BaseType',
+                'fields'     => '',
+                'order'      => '',
+        ],
+        'BaseType' => [
+                'className'  => 'BaseType',
                 'foreignKey' => 'base_type_id',
                 'conditions' => '',
-                'fields' => '',
-                'order' => ''
-        ),
-        'Course' => array(
-                'className' => 'Course',
+                'fields'     => '',
+                'order'      => '',
+        ],
+        'Course' => [
+                'className'  => 'Course',
                 'foreignKey' => 'course_id',
                 'conditions' => '',
-                'fields' => '',
-                'order' => ''
-        ),
-        'PreparationTime' => array(
-                'className' => 'PreparationTime',
+                'fields'     => '',
+                'order'      => '',
+        ],
+        'PreparationTime' => [
+                'className'  => 'PreparationTime',
                 'foreignKey' => 'preparation_time_id',
                 'conditions' => '',
-                'fields' => '',
-                'order' => ''
-        ),
-        'PreparationMethod' => array(
-                'className' => 'PreparationMethod',
+                'fields'     => '',
+                'order'      => '',
+        ],
+        'PreparationMethod' => [
+                'className'  => 'PreparationMethod',
                 'foreignKey' => 'preparation_method_id',
                 'conditions' => '',
-                'fields' => '',
-                'order' => ''
-        ),
-        'Difficulty' => array(
-                'className' => 'Difficulty',
+                'fields'     => '',
+                'order'      => '',
+        ],
+        'Difficulty' => [
+                'className'  => 'Difficulty',
                 'foreignKey' => 'difficulty_id',
                 'conditions' => '',
-                'fields' => '',
-                'order' => ''
-        ),
-        'Source' => array(
-                'className' => 'Source',
+                'fields'     => '',
+                'order'      => '',
+        ],
+        'Source' => [
+                'className'  => 'Source',
                 'foreignKey' => 'source_id',
                 'conditions' => '',
-                'fields' => '',
-                'order' => ''
-        ),
-        'User' => array(
-                'className' => 'User',
+                'fields'     => '',
+                'order'      => '',
+        ],
+        'User' => [
+                'className'  => 'User',
                 'foreignKey' => 'user_id',
                 'conditions' => '',
-                'fields' => '',
-                'order' => ''
-        )      
-    );
-        
-    public $hasMany = array(
-        'RelatedRecipe' => array(
-            'className' => 'RelatedRecipe',
+                'fields'     => '',
+                'order'      => '',
+        ],
+    ];
+
+    public $hasMany = [
+        'RelatedRecipe' => [
+            'className'  => 'RelatedRecipe',
             'foreignKey' => 'parent_id',
-            'order' => 'RelatedRecipe.sort_order',
-            'dependent' => true
-        ),
-        'IngredientMapping' => array(
-            'className' => 'IngredientMapping',
+            'order'      => 'RelatedRecipe.sort_order',
+            'dependent'  => true,
+        ],
+        'IngredientMapping' => [
+            'className'  => 'IngredientMapping',
             'foreignKey' => 'recipe_id',
-            'order' => 'IngredientMapping.sort_order',
-            'dependent' => true
-        ),
-        'Image' => array(
-            'className' => 'Attachment',
+            'order'      => 'IngredientMapping.sort_order',
+            'dependent'  => true,
+        ],
+        'Image' => [
+            'className'  => 'Attachment',
             'foreignKey' => 'recipe_id',
-        ),
-        'Review' => array(
-            'className' => 'Review',
+        ],
+        'Review' => [
+            'className'  => 'Review',
             'foreignKey' => 'recipe_id',
-            'order' => 'Review.created',
-            'dependent' => true
-        ),
-    );
-        
-    public function saveWithAttachments($data) {
+            'order'      => 'Review.created',
+            'dependent'  => true,
+        ],
+    ];
+
+    public function saveWithAttachments($data)
+    {
         // Sanitize your images before adding them
-        $images = array();
+        $images = [];
         if (!empty($data['Image'][0])) {
             foreach ($data['Image'] as $i => $image) {
                 if (is_array($data['Image'][$i])) {
@@ -146,7 +149,7 @@ class Recipe extends AppModel {
                     if (isset($image['recipe_id'])) {
                         unset($image['recipe_id']);
                     }
-                    
+
                     //echo $image['attachment'] . ' is size '. $image['size'];
 
                     $images[] = $image;
@@ -161,10 +164,11 @@ class Recipe extends AppModel {
         }
 
         // Throw an exception for the controller
-        throw new Exception(__("This recipe could not be saved. Please try again"));
+        throw new Exception(__('This recipe could not be saved. Please try again'));
     }
-    
-    public function isOwnedBy($recipeId, $user) {
-        return $this->field('id', array('id' => $recipeId, 'user_id' => $user)) !== false;
+
+    public function isOwnedBy($recipeId, $user)
+    {
+        return $this->field('id', ['id' => $recipeId, 'user_id' => $user]) !== false;
     }
 }
