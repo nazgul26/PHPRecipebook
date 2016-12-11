@@ -60,10 +60,8 @@ class AppController extends Controller {
             $this->layout = 'ajax'; 
         }
         
-        if (Configure::read('App.privateCollection'))
-        {
+        if (Configure::read('App.privateCollection')) {
             $this->Auth->deny();   
-            $this->Auth->allow('recipeLinkBox/index');
         } else {
             $this->Auth->allow('index', 'view', 'display');
         }
