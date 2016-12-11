@@ -23,7 +23,7 @@ Configure::write('App.allowPublicAccountCreation', TRUE);
 /*
  * Require user login view any recipes.
  */
-Configure::write('App.privateCollection', TRUE);
+Configure::write('App.privateCollection', FALSE);
 
 /**
  * To configure CakePHP *not* to use mod_rewrite and to
