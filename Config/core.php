@@ -20,6 +20,11 @@ Configure::write('App.setupMode', TRUE);
  */
 Configure::write('App.allowPublicAccountCreation', TRUE);
 
+/*
+ * Require user login view any recipes.
+ */
+Configure::write('App.privateCollection', TRUE);
+
 /**
  * To configure CakePHP *not* to use mod_rewrite and to
  * use CakePHP pretty URLs, remove these .htaccess

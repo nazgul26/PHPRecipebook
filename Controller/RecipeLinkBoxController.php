@@ -9,6 +9,11 @@ class RecipeLinkBoxController extends AppController {
         'PreparationMethod'
     );
     
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('index');
+    }
+    
     public function index() {  
         //TODO: make this a setting to filter out mine (probably remember last login to get ID)
         //$userFilter = array('Recipe.user_id' => $this->Auth->user('id'));

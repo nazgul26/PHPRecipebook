@@ -21,8 +21,9 @@ class RecipesController extends AppController {
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('findByBase', 'findByCourse', 'findByPrepMethod','search', 'autoCompleteSearch');
-        
+        if (!Configure::read('App.privateCollection')) {
+            $this->Auth->allow('findByBase', 'findByCourse', 'findByPrepMethod','search', 'autoCompleteSearch');
+        }
         //TODO: make this a setting to filter out mine (probably remember last login to get ID)
         //$this->filterConditions = array('Recipe.user_id' => $this->Auth->user('id'));
         $this->filterConditions = array();
