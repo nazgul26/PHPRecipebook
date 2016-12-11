@@ -103,7 +103,7 @@ if (isset($filePresent)):
                                 echo __d('setup', '2. The database has been created and you can connect to it') . "<br/>";
                                 echo __d('setup', '3. Have the correct username password in database.php config file') . "<br/>";
 				echo '<br />';
-				echo d('setup','error Message:' ) . $errorMsg;
+				echo __d('setup','error Message:' ) . $errorMsg;
 			echo '</span>';
 		endif;
 	?>
