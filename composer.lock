@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4e06c76c6afff927ed9c985cb6864db",
+    "content-hash": "031dbda00dad0500b87cc819342e30b9",
     "packages": [
         {
             "name": "cakephp/cakephp",
@@ -327,7 +327,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.0.0",
+        "php": "^5.4 || ^7.0",
         "ext-gd": "*",
         "ext-mcrypt": "*"
     },

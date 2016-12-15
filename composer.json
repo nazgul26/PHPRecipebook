@@ -1,7 +1,7 @@
 {
     "name": "PHPRecipeBook",
     "require": {
-        "php": "^7.0.0",
+        "php": "^5.4 || ^7.0",
         "cakephp/cakephp": "2.*",
         "josegonzalez/cakephp-upload": "1.*",
         "ext-gd": "*",
