@@ -154,7 +154,7 @@ class ShoppingList extends AppModel {
     public function markIngredientsRemoved($list, $removeIds) {
         if (isset($removeIds)) {
             foreach ($removeIds as $removeId) {
-                list($i, $j) = split('-', $removeId);
+                list($i, $j) = explode('-', $removeId);
                 $list[$i][$j]->removed = true;
             }
         }

@@ -110,10 +110,14 @@ if (isset($selectedVendor['Vendor'])) {
 </ol>
 <div class="actions">
     <ul>
-            <li><?php echo $this->Html->link(__('Edit Products'), array('controller'=>'VendorProducts', 'action' => 'index'), array('class' => 'ajaxNavigation')); ?></li>
+            <li><?php echo $this->Html->link(__('Edit Products'), 
+                array(
+                    'controller'=>'VendorProducts',
+                    'action' => 'index'), 
+                array('class' => 'ajaxNavigation')); ?></li>
     </ul>
 </div>
-<?php echo $this->Form->create('ShoppingLists', array('action' => 'clear'));?>
+<?php echo $this->Form->create('ShoppingLists', array('url' => array('controller' => 'ShoppingLists','action' => 'clear')));?>
 <?php echo $this->Form->input('vendor_id',array('label'=>'Select Vendor')); ?>
 <table>
     <tr class="headerRow">
