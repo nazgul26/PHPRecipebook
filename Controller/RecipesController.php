@@ -169,14 +169,14 @@ class RecipesController extends AppController {
             $recipe = $this->loadRecipe($id);
         }
         
-        $ethnicities = $this->Recipe->Ethnicity->find('list');
-        $baseTypes = $this->Recipe->BaseType->find('list');
+        $ethnicities = $this->Recipe->Ethnicity->find('list', array('order' => array('name')));
+        $baseTypes = $this->Recipe->BaseType->find('list', array('order' => array('name')));
         $courses = $this->Recipe->Course->find('list');
         $preparationTimes = $this->Recipe->PreparationTime->find('list');
         $difficulties = $this->Recipe->Difficulty->find('list');
-        $sources = $this->Recipe->Source->find('list');
-        $preparationMethods = $this->Recipe->PreparationMethod->find('list');
-        $units = $this->Recipe->IngredientMapping->Ingredient->Unit->find('list');
+        $sources = $this->Recipe->Source->find('list', array('order' => array('name')));
+        $preparationMethods = $this->Recipe->PreparationMethod->find('list', array('order' => array('name')));
+        $units = $this->Recipe->IngredientMapping->Ingredient->Unit->find('list', array('order' => array('name')));
         $this->set(compact('ethnicities', 'baseTypes', 'courses', 'preparationTimes', 'difficulties', 'sources',  'preparationMethods', 'recipe', 'units'));
     }
     
