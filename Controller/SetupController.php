@@ -28,9 +28,11 @@ class SetupController extends AppController {
             if (empty($this->request->data['User']['password1'])) {
                 $this->Session->setFlash(__('Password must have a value.'));
             } else if ($this->request->data['User']['password1'] === $this->request->data['User']['password2']) { 
+				$user['User']['username'] = $adminUserName;
                 $user['User']['password'] = $this->request->data['User']['password2'];
                 $user['User']['locked'] = 0;
                 $user['User']['email'] = $this->request->data['User']['email'];
+				$user['User']['access_level'] = Configure::read('AuthRoles.admin');
                 if ($this->User->save($user)) {
                     $this->Session->setFlash(__('Password successfully saved'), 'success');
                     return $this->redirect(array('action' => 'finish'));
