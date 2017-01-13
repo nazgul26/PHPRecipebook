@@ -71,7 +71,7 @@ CREATE TABLE difficulties (
 );
 
 CREATE TABLE preparation_methods (
-	`` `id` INT NOT NULL AUTO_INCREMENT,
+	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(64),
 	PRIMARY KEY(id)
 );
