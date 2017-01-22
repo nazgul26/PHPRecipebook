@@ -1,3 +1,6 @@
+composer.phar
+Config/database.php
+Config/core.php
 Config/email.php
 tmp/cache/persistent/*
 !tmp/cache/persistent/empty
