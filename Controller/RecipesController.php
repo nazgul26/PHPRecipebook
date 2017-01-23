@@ -95,7 +95,7 @@ class RecipesController extends AppController {
                             'fields' => array('name')
                         ),
                         'Unit' => array(
-                            'fields' => array('name')
+                            'fields' => array('name', 'abbreviation') //2017-01-23 - added 'abbreviation' to be able to view those in the recipe view.
                         )
                     ),
                     'RelatedRecipe' => array(
@@ -106,7 +106,7 @@ class RecipesController extends AppController {
                                     'fields' => array('name')
                                 ),
                                 'Unit' => array(
-                                    'fields' => array('name')
+                                    'fields' => array('name', 'abbreviation') //2017-01-23 - added 'abbreviation' to be able to view those in the related recipe view.
                                 )
                             )
                         )
