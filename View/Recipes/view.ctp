@@ -220,7 +220,7 @@ if (isset($recipe['Review'])) {
                             if (isset($scale)) $quantity *= $scale;
                             $quantity = $this->Fraction->toFraction($quantity);
                             $unit = $related['Related']['IngredientMapping'][$i]['Unit']['name'];
-                            $ingredientName = $related['Related']['IngredientMapping'][$i]['Ingredient']['name'];
+                            $ingredientName = $related['Related']['IngredientMapping'][$i]['Ingredient']['name']; 
                             echo $quantity . " " . $unit . " " . $ingredientName . "<br/>";
                         }?></pre>
                 </div>
