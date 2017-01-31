@@ -157,7 +157,7 @@ if (isset($recipe['Review'])) {
                             $quantity = $recipe['IngredientMapping'][$i]['quantity'];
                             if (isset($scale)) $quantity *= $scale;
                             $quantity = $this->Fraction->toFraction($quantity);
-                            $unit = $recipe['IngredientMapping'][$i]['Unit']['name'];
+                            $unit = $recipe['IngredientMapping'][$i]['Unit']['abbreviation']; 
                             $ingredientName = $recipe['IngredientMapping'][$i]['Ingredient']['name'];
                             $qualifier = $recipe['IngredientMapping'][$i]['qualifier'];
                             $optional = $recipe['IngredientMapping'][$i]['optional'] ? __('(optional)') : "";
@@ -219,8 +219,8 @@ if (isset($recipe['Review'])) {
                             $quantity = $related['Related']['IngredientMapping'][$i]['quantity'];
                             if (isset($scale)) $quantity *= $scale;
                             $quantity = $this->Fraction->toFraction($quantity);
-                            $unit = $related['Related']['IngredientMapping'][$i]['Unit']['name'];
-                            $ingredientName = $related['Related']['IngredientMapping'][$i]['Ingredient']['name'];
+                            $unit = $related['Related']['IngredientMapping'][$i]['Unit']['abbreviation'];
+                            $ingredientName = $related['Related']['IngredientMapping'][$i]['Ingredient']['name']; 
                             echo $quantity . " " . $unit . " " . $ingredientName . "<br/>";
                         }?></pre>
                 </div>
