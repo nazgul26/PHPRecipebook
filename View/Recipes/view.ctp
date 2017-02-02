@@ -153,7 +153,8 @@ if (isset($recipe['Review'])) {
                 }
             ?>
             <b><?php echo __('Ingredients'); ?></b>
-            <pre><?php for ($i = 0; $i < count($recipe['IngredientMapping']); $i++) {
+            <pre>
+                <?php for ($i = 0; $i < count($recipe['IngredientMapping']); $i++) {
                             $quantity = $recipe['IngredientMapping'][$i]['quantity'];
                             if (isset($scale)) $quantity *= $scale;
                             $quantity = $this->Fraction->toFraction($quantity);
@@ -161,7 +162,10 @@ if (isset($recipe['Review'])) {
                             $ingredientName = $recipe['IngredientMapping'][$i]['Ingredient']['name'];
                             $qualifier = $recipe['IngredientMapping'][$i]['qualifier'];
                             $optional = $recipe['IngredientMapping'][$i]['optional'] ? __('(optional)') : "";
-                            echo "$quantity $unit $qualifier $ingredientName <i>$optional</i><br/>";
+                            echo "<div class='ingredientViewItem'>";
+                            echo "<div class='ingredientViewQuantity'>$quantity $unit</div>";
+                            echo "$qualifier $ingredientName <i>$optional</i>";
+                            echo "</div><br/>";
                         }?>
             </pre>
         </div>
