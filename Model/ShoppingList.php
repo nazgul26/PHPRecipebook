@@ -46,7 +46,6 @@ class ShoppingList extends AppModel {
     public function getDefaultListId($userId) {
         $listId = $this->field('id', array('user_id' => $userId, 'name' => __('DEFAULT')));
         if (!isset($listId) || $listId == "") {
-            echo "going to create list";
             $list = $this->getList($user);
             $listId = $list['ShoppingList']['id'];
         }

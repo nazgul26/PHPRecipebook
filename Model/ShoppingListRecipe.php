@@ -34,8 +34,20 @@ class ShoppingListRecipe extends AppModel {
                     'ShoppingListRecipe.user_id' => $userId,
                     'ShoppingListRecipe.recipe_id' => $recipeId));
     }
-    
+
     public function addToShoppingList($listId, $recipeId, $servings, $userId) {
+        // Update Existing
+        $itemId = $this->field('id', array('user_id' => $userId, 'recipe_id' => $recipeId));
+        if (isset($itemId) && $itemId != "") {
+            $data = $this->find('all', array(
+                'conditions' => array('ShoppingListRecipe.id' => $itemId)
+            ));
+            $data[0]["ShoppingListRecipe"]["servings"] += $servings;
+            $saveOk = $this->save($data[0]);
+            return $saveOk;
+        }
+
+        // Add new
         $newData = array(
            'id' => NULL,
            'shopping_list_id' => $listId,
