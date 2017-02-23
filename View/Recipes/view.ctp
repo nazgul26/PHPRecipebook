@@ -231,7 +231,6 @@ if (isset($recipe['Review'])) {
                             echo "<div class='ingredientViewQuantity'>$quantity $unit</div>";
                             echo "$qualifier $ingredientName <i>$optional</i>";
                             echo "</div><br/>";
-                            //echo $quantity . " " . $unit . " " . $ingredientName . "<br/>";
                         }?></pre>
                 </div>
                 <div class="float50Section">
