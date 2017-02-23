@@ -36,26 +36,26 @@ class ShoppingListRecipe extends AppModel {
     }
 
     public function addToShoppingList($listId, $recipeId, $servings, $userId) {
-        // Update Existing
+        $saveOk = false;
         $itemId = $this->field('id', array('user_id' => $userId, 'recipe_id' => $recipeId));
         if (isset($itemId) && $itemId != "") {
+            // Update Existing
             $data = $this->find('all', array(
                 'conditions' => array('ShoppingListRecipe.id' => $itemId)
             ));
             $data[0]["ShoppingListRecipe"]["servings"] += $servings;
             $saveOk = $this->save($data[0]);
-            return $saveOk;
+        } else {
+            // Add new
+            $newData = array(
+            'id' => NULL,
+            'shopping_list_id' => $listId,
+            'recipe_id' => $recipeId,
+            'servings' => $servings,
+            'user_id' => $userId
+            );
+            $saveOk = $this->save($newData);
         }
-
-        // Add new
-        $newData = array(
-           'id' => NULL,
-           'shopping_list_id' => $listId,
-           'recipe_id' => $recipeId,
-           'servings' => $servings,
-           'user_id' => $userId
-        );
-        $saveOk = $this->save($newData);
         
         if ($saveOk) {
             $this->Recipe->Behaviors->load('Containable');
@@ -69,14 +69,22 @@ class ShoppingListRecipe extends AppModel {
             'conditions' => array('Recipe.id' => $recipeId)));
 
             foreach ($data['RelatedRecipe'] as $related) {
-                $newData = array(
-                    'id' => NULL,
-                    'shopping_list_id' => $listId,
-                    'recipe_id' => $related['recipe_id'],
-                    'servings' => $servings,
-                    'user_id' => $userId
-                 );
-                $saveOk = $this->save($newData);
+                $relatedRecipeId = $related['recipe_id'];
+                $itemId = $this->field('id', array('user_id' => $userId, 'recipe_id' => $relatedRecipeId));
+                if (isset($itemId) && $itemId != "") {
+                    $data = $this->find('all', array('conditions' => array('ShoppingListRecipe.id' => $itemId)));
+                    $data[0]["ShoppingListRecipe"]["servings"] += $servings;
+                    $saveOk = $this->save($data[0]);
+                } else { 
+                    $newData = array(
+                        'id' => NULL,
+                        'shopping_list_id' => $listId,
+                        'recipe_id' => $relatedRecipeId,
+                        'servings' => $servings,
+                        'user_id' => $userId
+                    );
+                    $saveOk = $this->save($newData);
+                }
                 if (!$saveOk) break;
             }
         } 

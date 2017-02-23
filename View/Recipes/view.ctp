@@ -225,7 +225,13 @@ if (isset($recipe['Review'])) {
                             $quantity = $this->Fraction->toFraction($quantity);
                             $unit = $related['Related']['IngredientMapping'][$i]['Unit']['abbreviation'];
                             $ingredientName = $related['Related']['IngredientMapping'][$i]['Ingredient']['name']; 
-                            echo $quantity . " " . $unit . " " . $ingredientName . "<br/>";
+                            $qualifier = $related['Related']['IngredientMapping'][$i]['qualifier'];
+                            $optional = $related['Related']['IngredientMapping'][$i]['optional'] ? __('(optional)') : "";
+                            echo "<div class='ingredientViewItem'>";
+                            echo "<div class='ingredientViewQuantity'>$quantity $unit</div>";
+                            echo "$qualifier $ingredientName <i>$optional</i>";
+                            echo "</div><br/>";
+                            //echo $quantity . " " . $unit . " " . $ingredientName . "<br/>";
                         }?></pre>
                 </div>
                 <div class="float50Section">
