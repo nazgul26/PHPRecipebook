@@ -127,9 +127,9 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
             if (confirm("<?php echo __("Are you sure you wish to remove this item?");?>")) {
                 var itemId = $(this).attr('itemId');        
                 if ($(this).is("[ingredient-delete]")) {
-                    ajaxGet(baseUrl + "/Recipes/RemoveIngredientMapping/" + recipeId + "/" + itemId, "ingredientDeleteResponse");
+                    ajaxGet(baseUrl + "Recipes/RemoveIngredientMapping/" + recipeId + "/" + itemId, "ingredientDeleteResponse");
                 } else {
-                    ajaxGet(baseUrl + "/Recipes/RemoveRecipeMapping/" + recipeId + "/" + itemId, "recipeDeleteResponse");
+                    ajaxGet(baseUrl + "Recipes/RemoveRecipeMapping/" + recipeId + "/" + itemId, "recipeDeleteResponse");
                 }
                 $(this).parent().parent().remove();
             }
