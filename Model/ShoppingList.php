@@ -227,15 +227,15 @@ class ShoppingList extends AppModel {
 		
 		$volume = $this->volume();
 		$weight = $this->weight();
-		$actionToBeTaken = (isset($volume[$convert['targetUnitName']])) ? 'T' : 'F';
-		$actionToBeTaken .= (isset($weight[$convert['targetUnitName']])) ? 'T' : 'F';
-		$actionToBeTaken .= (isset($volume[$convert['unitName']])) ? 'T' : 'F';
-		$actionToBeTaken .= (isset($weight[$convert['unitName']])) ? 'T' : 'F';
+		$actionToBeTaken = (isset($volume[$convert['targetUnitId']])) ? 'T' : 'F';
+		$actionToBeTaken .= (isset($weight[$convert['targetUnitId']])) ? 'T' : 'F';
+		$actionToBeTaken .= (isset($volume[$convert['unitId']])) ? 'T' : 'F';
+		$actionToBeTaken .= (isset($weight[$convert['unitId']])) ? 'T' : 'F';
 				
 		switch ($actionToBeTaken) {
 			
 			case "TFTF":
-			$convert['quantity'] = $convert['quantity']*$volume[$convert['unitName']][$convert['targetUnitName']];
+			$convert['quantity'] = $convert['quantity']*$volume[$convert['unitId']][$convert['targetUnitId']];
 			break;
 			
 			//weight to volume
@@ -249,7 +249,7 @@ class ShoppingList extends AppModel {
 			break;
 			
 			case "FTFT":
-			$convert['quantity'] = $convert['quantity']*$weight[$convert['unitName']][$convert['targetUnitName']];
+			$convert['quantity'] = $convert['quantity']*$weight[$convert['unitId']][$convert['targetUnitId']];
 			break;
 			
 			default:
@@ -271,20 +271,20 @@ class ShoppingList extends AppModel {
 			$units = $correlations[$convert['ingredientName']];
 
 			//volume --> weight
-			if (isset($volume[$convert['unitName']])) {
+			if (isset($volume[$convert['unitId']])) {
 				$volumeUnit = $this->getConvertVolumeUnit($units, $volume);
-				$convert['quantity'] = $convert['quantity']*$volume[$convert['unitName']][$volumeUnit];
+				$convert['quantity'] = $convert['quantity']*$volume[$convert['unitId']][$volumeUnit];
 				$weightUnit = $this->getVolumeToWeight($units, $volume);
 				$convert['quantity'] = $convert['quantity']*$weightUnit['value'];
-				$convert['quantity'] = $convert['quantity']*$weight[$weightUnit['weightUnit']][$convert['targetUnitName']];
+				$convert['quantity'] = $convert['quantity']*$weight[$weightUnit['weightUnit']][$convert['targetUnitId']];
 			}
 			//weight --> volume
-			else if (isset($weight[$convert['unitName']])) {
+			else if (isset($weight[$convert['unitId']])) {
 				$weightUnit = $this->getConvertWeightUnit($units, $weight);
-				$convert['quantity'] = $convert['quantity']*$weight[$convert['unitName']][$weightUnit];
+				$convert['quantity'] = $convert['quantity']*$weight[$convert['unitId']][$weightUnit];
 				$volumeUnit = $this->getWeightToVolume($units, $weight);
 				$convert['quantity'] = $convert['quantity']*$volumeUnit['value'];
-				$convert['quantity'] = $convert['quantity']*$volume[$volumeUnit['volumeUnit']][$convert['targetUnitName']];
+				$convert['quantity'] = $convert['quantity']*$volume[$volumeUnit['volumeUnit']][$convert['targetUnitId']];
 			}
 		} 
 		else { //the correlations between volume and weight doesn't exist.
@@ -292,16 +292,16 @@ class ShoppingList extends AppModel {
 			switch($actionToBeTaken) {
 				case "TFFT":
 				//convert weight quantity to gram
-				$convert['quantity'] = $convert['quantity']*$weight[$convert['unitName']]['gram'];
+				$convert['quantity'] = $convert['quantity']*$weight[$convert['unitId']]['21'];
 				//convert gram=milliliter to target unit
-				$convert['quantity'] = $convert['quantity']*$volume['milliliter'][$convert['targetUnitName']];
+				$convert['quantity'] = $convert['quantity']*$volume['23'][$convert['targetUnitId']];
 				break;
 				
 				case "FTTF":
 				//convert volume quantity to millilitre
-				$convert['quantity'] = $convert['quantity']*$volume[$convert['unitName']]['milliliter'];
+				$convert['quantity'] = $convert['quantity']*$volume[$convert['unitId']]['23'];
 				//convert milliliter=gram to target unit
-				$convert['quantity'] = $convert['quantity']*$weight['gram'][$convert['targetUnitName']];
+				$convert['quantity'] = $convert['quantity']*$weight['21'][$convert['targetUnitId']];
 				break;
 				
 				default:
@@ -392,28 +392,28 @@ class ShoppingList extends AppModel {
 	private function correlationsArray() {
 		$correlations = array (
 			'vetemjöl' => array (
-				'gram' => 60,
-				'deciliter' => 1 
+				'21' => 60,
+				'26' => 1 
 			), 
 			'strösocker' => array (
-				'deciliter' => 1,
-				'gram' => 85
+				'26' => 1,
+				'21' => 85
 			),
 			'bacon' => array (
-				'deciliter' => 1,
-				'gram' => 34
+				'26' => 1,
+				'21' => 34
 			), 
 			'bakpulver' => array (
-				'deciliter' => 1,
-				'gram' => 5
+				'26' => 1,
+				'21' => 5
 			), 
 			'basmat ris' => array (
-				'deciliter' => 1,
-				'gram' => 85
+				'26' => 1,
+				'21' => 85
 			), 
 			'pasta' => array (
-				'deciliter' => 8,
-				'gram' => 280
+				'26' => 8,
+				'21' => 280
 			)
 			
 		);
@@ -425,97 +425,107 @@ class ShoppingList extends AppModel {
 	* Returns the matrix related to volumes. 
 	*/
 	private function volume() {		
-		$millilitre_msk = 1/15;
-		$tesked_msk = 5/15;
-		$centilitre_msk = 10/15;
-		$dl_msk = 100/15; 
-		$litre_msk = 1000/15;
+		$milliliter_tbsp = 1/15;
+		$tesked_tbsp = 5/15;
+		$centiliter_tbsp = 10/15;
+		$dl_tbps = 100/15; 
+		$liter_tbsp = 1000/15;
 		
-		
+		//29 = kryddmått
+		//23 = milliliter
+		//28 = teaspoon_m
+		//24 = centiliter
+		//27 = tablespoon_m 
+		//26 = deciliter
+		//25 = liter
 		$volumes = array(
-			'kryddmått' => array(
-				'kryddmått' => 1, 
-				'milliliter' => 1,
-				'tesked' => 0.2,
-				'centiliter' => 0.1, 
-				'matsked' => $millilitre_msk, 
-				'deciliter' => 0.01, 
-				'liter' => 0.001
+			'29' => array(
+				'29' => 1, 
+				'23' => 1,
+				'28' => 0.2,
+				'24' => 0.1, 
+				'27' => $milliliter_tbsp, 
+				'26' => 0.01, 
+				'25' => 0.001
 				), 
-			'milliliter' => array(
-				'kryddmått' => 1, 
-				'milliliter' => 1,
-				'tesked' => 0.2,
-				'centiliter' => 0.1, 
-				'matsked' => $millilitre_msk, 
-				'deciliter' => 0.01, 
-				'liter' => 0.001
+			'23' => array(
+				'29' => 1, 
+				'23' => 1,
+				'28' => 0.2,
+				'24' => 0.1, 
+				'27' => $milliliter_tbsp, 
+				'26' => 0.01, 
+				'25' => 0.001
 				), 
-			'tesked' => array(
-				'kryddmått' => 5, 
-				'milliliter' => 5,
-				'tesked' => 1,
-				'centiliter' => 0.5, 
-				'matsked' => $tesked_msk, 
-				'deciliter' => 0.05, 
-				'liter' => 0.005
+			'28' => array(
+				'29' => 5, 
+				'23' => 5,
+				'28' => 1,
+				'24' => 0.5, 
+				'27' => $tesked_tbsp, 
+				'26' => 0.05, 
+				'25' => 0.005
 				), 
-			'centiliter' => array(
-				'kryddmått' => 10, 
-				'milliliter' => 10,
-				'tesked' => 2,
-				'centiliter' => 1, 
-				'matsked' => $centilitre_msk, 
-				'deciliter' => 0.1, 
-				'liter' => 0.01
+			'24' => array(
+				'29' => 10, 
+				'23' => 10,
+				'28' => 2,
+				'24' => 1, 
+				'27' => $centiliter_tbsp, 
+				'26' => 0.1, 
+				'25' => 0.01
 				), 
-			'matsked' => array(
-				'kryddmått' => 15,
-				'milliliter' => 15,
-				'tesked' => 3,
-				'centiliter' => 1.5,
-				'matsked' => 1, 
-				'deciliter' => 0.15, 
-				'liter' => 0.015
+			'27' => array(
+				'29' => 15,
+				'23' => 15,
+				'28' => 3,
+				'24' => 1.5,
+				'27' => 1, 
+				'26' => 0.15, 
+				'25' => 0.015
 				), 
-			'deciliter' => array(
-				'kryddmått' => 100,
-				'milliliter' => 100,
-				'tesked' => 20,
-				'centiliter' => 10, 
-				'matsked' => $dl_msk, 
-				'deciliter' => 1, 
-				'liter' => 0.1
+			'26' => array(
+				'29' => 100,
+				'23' => 100,
+				'28' => 20,
+				'24' => 10, 
+				'27' => $dl_tbps, 
+				'26' => 1, 
+				'25' => 0.1
 				), 
-			'liter' => array(
-				'kryddmått' => 1000,
-				'milliliter' => 1000,
-				'tesked' => 200, 
-				'centiliter' => 100, 
-				'matsked' => $litre_msk, 
-				'deciliter' => 10, 
-				'liter' => 1
+			'25' => array(
+				'29' => 1000,
+				'23' => 1000,
+				'28' => 200, 
+				'24' => 100, 
+				'27' => $liter_tbsp, 
+				'26' => 10, 
+				'25' => 1
 				)
 			);
 		return $volumes;
 	}
 	
 	private function weight() {
+		
+		//21 = gram
+		//35 = hektogram
+		//22 = kilogram
 		$weights = array(
-			'gram' => array(
-				'gram' => 1, 
-				'hekto' => 0.01, 
-				'kilogram' => 0.001
+			'21' => array(
+				'21' => 1, 
+				'35' => 0.01, 
+				'22' => 0.001
 			), 
-			'hekto' => array(
-				'gram' => 100, 
-				'hekto' => 1, 
-				'kilogram' => 0.1
+			'35' => array(
+				'21' => 100, 
+				'35' => 1, 
+				'22' => 0.1
 			), 
-			'kilogram' => array(
-				'gram' => 1000, 
-				'hekto' => 10, 
-				'kilogram' => 1
+			'22' => array(
+				'21' => 1000, 
+				'35' => 10, 
+				'22' => 1
 			)
 		);
 		return $weights; 
