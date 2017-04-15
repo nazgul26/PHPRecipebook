@@ -115,7 +115,7 @@ class ShoppingList extends AppModel {
                 'ShoppingListRecipe' => array(
                     'fields' => array('servings'),
                     'Recipe' => array(
-                        'fields' => array('name'),
+                        'fields' => array('name', 'serving_size'),
                         'IngredientMapping' => array(
                             'fields' => array('quantity'),
                             'Unit' => array(
@@ -145,12 +145,14 @@ class ShoppingList extends AppModel {
         $ingredients = array();
         
         foreach ($list['ShoppingListIngredient'] as $item) {
-            $ingredients = $this->combineIngredient($ingredients, $item);
+            //TODO: pass on servings
+            $ingredients = $this->combineIngredient($ingredients, $item, 1);
         }
         foreach ($list['ShoppingListRecipe'] as $recipeInList) {
             $recipeDetail = $recipeInList['Recipe'];
+            $scaling = $recipeInList['servings'] / $recipeDetail['serving_size'];
             foreach ($recipeDetail['IngredientMapping'] as $mapping) {
-                $ingredients = $this->combineIngredient($ingredients, $mapping);
+                $ingredients = $this->combineIngredient($ingredients, $mapping, $scaling);
             }
         }
         
@@ -175,7 +177,7 @@ class ShoppingList extends AppModel {
         $this->ShoppingListRecipe->deleteAll(array('ShoppingListRecipe.user_id' => $userId), false);
     }
     
-    private function combineIngredient($list, $ingredient) {
+    private function combineIngredient($list, $ingredient, $scaling) {
         $id = $ingredient['ingredient_id'];
         $unitId = $ingredient['unit_id']; 
 		$targetUnitId = $ingredient['Ingredient']['unit_id']; 
@@ -197,10 +199,10 @@ class ShoppingList extends AppModel {
         if (isset($list[$id])) {
             foreach ($list[$id] as $item) { 
                 if ($item->unitId == $unitId) { 
-                    $item->quantity += $quantity;
+                    $item->quantity += $quantity * $scaling;
 				} else if ($item->id == $id) {
 						$convert = $this->convertToTargetUnitAndQuantity($convert);
-						$item->quantity += $convert['quantity'];
+						$item->quantity += $convert['quantity'] * $scaling;
 				} 
 			}		
         } 
@@ -209,7 +211,7 @@ class ShoppingList extends AppModel {
 			
 			$this->ListItem->id = $id; 
             $this->ListItem->name = $name; 
-			$this->ListItem->quantity = $convert['quantity']; 
+			$this->ListItem->quantity = $convert['quantity'] * $scaling; 
 			$this->ListItem->unitId = $targetUnitId;
 			$this->ListItem->unitName = $targetUnitName; 
         	$this->ListItem->locationId = $locationId;
