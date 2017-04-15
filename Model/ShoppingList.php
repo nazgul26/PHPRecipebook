@@ -9,6 +9,7 @@ App::uses('AppModel', 'Model');
  */
 class ShoppingList extends AppModel {
 
+
     /**
      * Validation rules
      *
@@ -105,9 +106,12 @@ class ShoppingList extends AppModel {
                         'fields' => array('name')
                     ),
                     'Ingredient' => array(
-                        'fields' => array('name', 'location_id')
-                    )
-                ),
+                        'fields' => array('name', 'location_id', 'unit_id'), 
+								'Unit' => array (
+								'fields' => array('name')
+								)
+					)
+				),
                 'ShoppingListRecipe' => array(
                     'fields' => array('servings'),
                     'Recipe' => array(
@@ -118,7 +122,10 @@ class ShoppingList extends AppModel {
                                 'fields' => array('name')
                             ),
                             'Ingredient' => array(
-                                'fields' => array('name', 'location_id')
+                                'fields' => array('name', 'location_id', 'unit_id'), 
+								'Unit' => array (
+								'fields' => array('name')
+								)
                             )
                         )
                     )
@@ -172,27 +179,356 @@ class ShoppingList extends AppModel {
     
     private function combineIngredient($list, $ingredient, $scaling) {
         $id = $ingredient['ingredient_id'];
-        $unitId = $ingredient['unit_id'];
-        $quantity = $ingredient['quantity'];
+        $unitId = $ingredient['unit_id']; 
+		$targetUnitId = $ingredient['Ingredient']['unit_id']; 
+	    $quantity = $ingredient['quantity'];
         $name = $ingredient['Ingredient']['name'];
         $locationId = $ingredient['Ingredient']['location_id'];
         $unitName = $ingredient['Unit']['name'];
+		$targetUnitName = $ingredient['Ingredient']['Unit']['name'];
+	
+		$convert = array(
+			'targetUnitId' => $targetUnitId, 
+			'targetUnitName' => $targetUnitName, 
+			'unitId' => $unitId, 
+			'unitName' => $unitName, 
+			'quantity' => $quantity, 
+			'ingredientName' => $name
+		);
+	
         if (isset($list[$id])) {
-            foreach ($list[$id] as $item) {
-                if ($item->unitId == $unitId) {
+            foreach ($list[$id] as $item) { 
+                if ($item->unitId == $unitId) { 
                     $item->quantity += $quantity * $scaling;
-                }
-            }
-        } else {
-            $this->ListItem->id = $id;
-            $this->ListItem->name = $name;
-            $this->ListItem->unitId = $unitId;
-            $this->ListItem->quantity = $quantity * $scaling;
-            $this->ListItem->unitName = $unitName;
-            $this->ListItem->locationId = $locationId;
+				} else if ($item->id == $id) {
+						$convert = $this->convertToTargetUnitAndQuantity($convert);
+						$item->quantity += $convert['quantity'] * $scaling;
+				} 
+			}		
+        } 
+		else { 
+            $convert = $this->convertToTargetUnitAndQuantity($convert);
+			
+			$this->ListItem->id = $id; 
+            $this->ListItem->name = $name; 
+			$this->ListItem->quantity = $convert['quantity'] * $scaling; 
+			$this->ListItem->unitId = $targetUnitId;
+			$this->ListItem->unitName = $targetUnitName; 
+        	$this->ListItem->locationId = $locationId;
             $this->ListItem->removed = false;
             $list[$id] = array(clone $this->ListItem);
         }
         return $list;
     }
+	/* 
+	* Converts from the given unit to the ingredient's target unit
+	*/
+	private function convertToTargetUnitAndQuantity($convert) {
+		
+		$volume = $this->volume();
+		$weight = $this->weight();
+		$actionToBeTaken = (isset($volume[$convert['targetUnitId']])) ? 'T' : 'F';
+		$actionToBeTaken .= (isset($weight[$convert['targetUnitId']])) ? 'T' : 'F';
+		$actionToBeTaken .= (isset($volume[$convert['unitId']])) ? 'T' : 'F';
+		$actionToBeTaken .= (isset($weight[$convert['unitId']])) ? 'T' : 'F';
+				
+		switch ($actionToBeTaken) {
+			
+			case "TFTF":
+			$convert['quantity'] = $convert['quantity']*$volume[$convert['unitId']][$convert['targetUnitId']];
+			break;
+			
+			//weight to volume
+			case "TFFT":
+			$convert = $this->correlations($convert, $volume, $weight, $actionToBeTaken);
+			break;
+			
+			//volume to weight
+			case "FTTF":
+			$convert = $this->correlations($convert, $volume, $weight, $actionToBeTaken);
+			break;
+			
+			case "FTFT":
+			$convert['quantity'] = $convert['quantity']*$weight[$convert['unitId']][$convert['targetUnitId']];
+			break;
+			
+			default:
+			//doing nothing at the moment... 
+			
+			break;
+		}
+		
+		return $convert;
+	}
+	
+	
+	
+	private function correlations($convert, $volume, $weight, $actionToBeTaken) {
+		
+		$correlations = $this->correlationsArray();
+		
+		if (isset($correlations[$convert['ingredientName']])) {
+			$units = $correlations[$convert['ingredientName']];
+
+			//volume --> weight
+			if (isset($volume[$convert['unitId']])) {
+				$volumeUnit = $this->getConvertVolumeUnit($units, $volume);
+				$convert['quantity'] = $convert['quantity']*$volume[$convert['unitId']][$volumeUnit];
+				$weightUnit = $this->getVolumeToWeight($units, $volume);
+				$convert['quantity'] = $convert['quantity']*$weightUnit['value'];
+				$convert['quantity'] = $convert['quantity']*$weight[$weightUnit['weightUnit']][$convert['targetUnitId']];
+			}
+			//weight --> volume
+			else if (isset($weight[$convert['unitId']])) {
+				$weightUnit = $this->getConvertWeightUnit($units, $weight);
+				$convert['quantity'] = $convert['quantity']*$weight[$convert['unitId']][$weightUnit];
+				$volumeUnit = $this->getWeightToVolume($units, $weight);
+				$convert['quantity'] = $convert['quantity']*$volumeUnit['value'];
+				$convert['quantity'] = $convert['quantity']*$volume[$volumeUnit['volumeUnit']][$convert['targetUnitId']];
+			}
+		} 
+		else { //the correlations between volume and weight doesn't exist.
+			//assumption 1 gram = 1 millilitre
+			switch($actionToBeTaken) {
+				case "TFFT":
+				//convert weight quantity to gram
+				$convert['quantity'] = $convert['quantity']*$weight[$convert['unitId']]['21'];
+				//convert gram=milliliter to target unit
+				$convert['quantity'] = $convert['quantity']*$volume['23'][$convert['targetUnitId']];
+				break;
+				
+				case "FTTF":
+				//convert volume quantity to millilitre
+				$convert['quantity'] = $convert['quantity']*$volume[$convert['unitId']]['23'];
+				//convert milliliter=gram to target unit
+				$convert['quantity'] = $convert['quantity']*$weight['21'][$convert['targetUnitId']];
+				break;
+				
+				default:
+				break;
+			}
+		}
+		return $convert;
+	}
+	
+	private function getConvertWeightUnit($units, $weight) {
+		
+		$weightUnit;
+		
+		if (isset($weight[key($units)])) {
+			$weightUnit = key($units);
+		} 
+		else {
+			next($units);
+			$weightUnit = key($units);
+		}		
+		return $weightUnit;
+	}
+	
+	private function getConvertVolumeUnit($units, $volume) {
+		
+		$volumeUnit;
+		
+		if (isset($volume[key($units)])) {
+			$volumeUnit = key($units);
+		} 
+		else {
+			next($units);
+			$volumeUnit = key($units);
+		}
+		
+		return $volumeUnit;
+			
+	}
+	
+	private function getVolumeToWeight($units, $volume) {
+		
+		$weightUnit = array('value', 
+							'weightUnit'
+						);
+		
+		if (isset($volume[key($units)])) {
+			$weightUnit['value'] = $units[key($units)];
+			next($units);
+			$weightUnit['value'] = $units[key($units)]/$weightUnit['value'];
+			$weightUnit['weightUnit'] = key($units);
+		}
+		else {
+			next($units);
+			$weightUnit['value'] = $units[key($units)];
+			prev($units);
+			$weightUnit['value'] = $units[key($units)]/$weightUnit['value'];
+			$weightUnit['weightUnit'] = key($units);
+		}
+		
+		return $weightUnit;
+	}
+	
+	private function getWeightToVolume($units, $weight) {
+		
+		$voluemUnit = array('value', 
+							'volumeUnit'
+						);
+		
+		if (isset($weight[key($units)])) {
+			$volumeUnit['value'] = $units[key($units)];
+			next($units);
+			$volumeUnit['value'] = $units[key($units)]/$volumeUnit['value'];
+			$volumeUnit['volumeUnit'] = key($units);
+		}
+		else {
+			next($units);
+			$volumeUnit['value'] = $units[key($units)];
+			prev($units);
+			$volumeUnit['value'] = $units[key($units)]/$volumeUnit['value'];
+			$volumeUnit['volumeUnit'] = key($units);
+		}
+		
+		return $volumeUnit;
+	}
+	/*
+	* returns the array of correlations
+	*/
+	private function correlationsArray() {
+		$correlations = array (
+			'vetemjöl' => array (
+				'21' => 60,
+				'26' => 1 
+			), 
+			'strösocker' => array (
+				'26' => 1,
+				'21' => 85
+			),
+			'bacon' => array (
+				'26' => 1,
+				'21' => 34
+			), 
+			'bakpulver' => array (
+				'26' => 1,
+				'21' => 5
+			), 
+			'basmat ris' => array (
+				'26' => 1,
+				'21' => 85
+			), 
+			'pasta' => array (
+				'26' => 8,
+				'21' => 280
+			)
+			
+		);
+		
+		return $correlations;
+	}
+	
+	/*	
+	* Returns the matrix related to volumes. 
+	*/
+	private function volume() {		
+		$milliliter_tbsp = 1/15;
+		$tesked_tbsp = 5/15;
+		$centiliter_tbsp = 10/15;
+		$dl_tbps = 100/15; 
+		$liter_tbsp = 1000/15;
+		
+		//29 = kryddmått
+		//23 = milliliter
+		//28 = teaspoon_m
+		//24 = centiliter
+		//27 = tablespoon_m 
+		//26 = deciliter
+		//25 = liter
+		$volumes = array(
+			'29' => array(
+				'29' => 1, 
+				'23' => 1,
+				'28' => 0.2,
+				'24' => 0.1, 
+				'27' => $milliliter_tbsp, 
+				'26' => 0.01, 
+				'25' => 0.001
+				), 
+			'23' => array(
+				'29' => 1, 
+				'23' => 1,
+				'28' => 0.2,
+				'24' => 0.1, 
+				'27' => $milliliter_tbsp, 
+				'26' => 0.01, 
+				'25' => 0.001
+				), 
+			'28' => array(
+				'29' => 5, 
+				'23' => 5,
+				'28' => 1,
+				'24' => 0.5, 
+				'27' => $tesked_tbsp, 
+				'26' => 0.05, 
+				'25' => 0.005
+				), 
+			'24' => array(
+				'29' => 10, 
+				'23' => 10,
+				'28' => 2,
+				'24' => 1, 
+				'27' => $centiliter_tbsp, 
+				'26' => 0.1, 
+				'25' => 0.01
+				), 
+			'27' => array(
+				'29' => 15,
+				'23' => 15,
+				'28' => 3,
+				'24' => 1.5,
+				'27' => 1, 
+				'26' => 0.15, 
+				'25' => 0.015
+				), 
+			'26' => array(
+				'29' => 100,
+				'23' => 100,
+				'28' => 20,
+				'24' => 10, 
+				'27' => $dl_tbps, 
+				'26' => 1, 
+				'25' => 0.1
+				), 
+			'25' => array(
+				'29' => 1000,
+				'23' => 1000,
+				'28' => 200, 
+				'24' => 100, 
+				'27' => $liter_tbsp, 
+				'26' => 10, 
+				'25' => 1
+				)
+			);
+		return $volumes;
+	}
+	
+	private function weight() {
+		
+		//21 = gram
+		//35 = hektogram
+		//22 = kilogram
+		$weights = array(
+			'21' => array(
+				'21' => 1, 
+				'35' => 0.01, 
+				'22' => 0.001
+			), 
+			'35' => array(
+				'21' => 100, 
+				'35' => 1, 
+				'22' => 0.1
+			), 
+			'22' => array(
+				'21' => 1000, 
+				'35' => 10, 
+				'22' => 1
+			)
+		);
+		return $weights; 
+	}
+	
 }

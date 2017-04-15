@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"PO-Revision-Date: 2017-02-01 21:19+0100\n"
+"PO-Revision-Date: 2017-03-26 18:25+0200\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "POT-Creation-Date: \n"
 "Language: sv\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: Config/Schema/schema.php:19
 msgid "Beef"
@@ -444,19 +444,19 @@ msgstr "Gallon"
 
 #: Config/Schema/schema.php:176
 msgid "Milligram"
-msgstr "Milligram"
+msgstr "milligram"
 
 #: Config/Schema/schema.php:177
 msgid "Centigram"
-msgstr "Centigram"
+msgstr "centigram"
 
 #: Config/Schema/schema.php:178
 msgid "Gram"
-msgstr "Gram"
+msgstr "gram"
 
 #: Config/Schema/schema.php:179
 msgid "Kilogram"
-msgstr "Kilogram"
+msgstr "kilogram"
 
 #: Config/Schema/schema.php:180
 msgid "Milliliter"

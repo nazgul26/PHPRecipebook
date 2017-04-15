@@ -69,7 +69,7 @@
         
     <tr row-click>
         <td><input type="checkbox" name="remove[]" value="<?php echo $i . "-" . $j;?>" list-item/></td>
-        <td><?php echo $this->Fraction->toFraction($item->quantity);?></td>
+        <td><?php echo round($item->quantity, 1);?></td>
         <td><?php echo $item->unitName;?></td>
         <td><b><?php echo $item->name;?></b></td>
     </tr>
