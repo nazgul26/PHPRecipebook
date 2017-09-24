@@ -38,7 +38,7 @@ more effort copying files around.
 
 <h3>Download Install Option</h3>
 * Download latest release from https://github.com/nazgul26/PHPRecipebook/releases
-* Extract files to your web folder.
+* Extract files to your web folder. 
 
 <hr/>
 <h4>Setup Directions for all</h4>
