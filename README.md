@@ -23,18 +23,16 @@ Features:
 Now that we are on GitHub contributions and collaboration should be must easier.  
 Look forward to anyone with some skills to jump in and keep this moving.
 
-<h2>Installation</h2>
-<p>
+<h3>Installation</h3>
 There are two ways to install PHPRecipebook. The first option is to use Git to get the code.  This option will allow for very easy upgrades but a little more 
 upfront effort. The second option is to simply download the tar.gz file and extract.  This option is very easy upfront but upgrades will require 
 more effort copying files around.
-</p>
 
 <h3>Git Install Option</h3>
-- Clone 'PHPRecipebook' repository.
-- Get PHP Composer installed. https://getcomposer.org/download/.  Composer is used to manage dependencies and make upgrading CakePHP easier.
-- Run 'php composer.phar install' in the application directory to get CakePHP and check dependencies.
-- To upgrade later simply run 'git pull'. Resolve merge conflicts if needed.
+* Clone 'PHPRecipebook' repository.
+* Get PHP Composer installed. https://getcomposer.org/download/.  Composer is used to manage dependencies and make upgrading CakePHP easier.
+* Run 'php composer.phar install' in the application directory to get CakePHP and check dependencies.
+* To upgrade later simply run 'git pull'. Resolve merge conflicts if needed.
 
 <h3>Download Install Option</h3>
 * Download latest release from https://github.com/nazgul26/PHPRecipebook/releases
