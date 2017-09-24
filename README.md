@@ -31,10 +31,10 @@ more effort copying files around.
 </p>
 
 <h3>Git Install Option</h3>
-+ Clone 'PHPRecipebook' repository.
-+ Get PHP Composer installed. https://getcomposer.org/download/.  Composer is used to manage dependencies and make upgrading CakePHP easier.
-+ Run 'php composer.phar install' in the application directory to get CakePHP and check dependencies.
-+ To upgrade later simply run 'git pull'. Resolve merge conflicts if needed.
+- Clone 'PHPRecipebook' repository.
+- Get PHP Composer installed. https://getcomposer.org/download/.  Composer is used to manage dependencies and make upgrading CakePHP easier.
+- Run 'php composer.phar install' in the application directory to get CakePHP and check dependencies.
+- To upgrade later simply run 'git pull'. Resolve merge conflicts if needed.
 
 <h3>Download Install Option</h3>
 * Download latest release from https://github.com/nazgul26/PHPRecipebook/releases
