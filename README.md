@@ -1,5 +1,5 @@
-<h1>PHPRecipebook 5.0</h1>
-=============
+# PHPRecipebook 5.0
+---
 
 PHPRecipeBook is a cookbook and meal planning software.
 
@@ -23,23 +23,22 @@ Features:
 Now that we are on GitHub contributions and collaboration should be must easier.  
 Look forward to anyone with some skills to jump in and keep this moving.
 
-<h3>Installation</h3>
+## Installation
 There are two ways to install PHPRecipebook. The first option is to use Git to get the code.  This option will allow for very easy upgrades but a little more 
 upfront effort. The second option is to simply download the tar.gz file and extract.  This option is very easy upfront but upgrades will require 
 more effort copying files around.
 
-<h3>Git Install Option</h3>
+## Git Install Option
 * Clone 'PHPRecipebook' repository.
 * Get PHP Composer installed. https://getcomposer.org/download/.  Composer is used to manage dependencies and make upgrading CakePHP easier.
 * Run 'php composer.phar install' in the application directory to get CakePHP and check dependencies.
 * To upgrade later simply run 'git pull'. Resolve merge conflicts if needed.
 
-<h3>Download Install Option</h3>
+## Download Install Option
 * Download latest release from https://github.com/nazgul26/PHPRecipebook/releases
 * Extract files to your web folder. 
 
-<hr/>
-<h4>Setup Directions for all</h4>
+## Setup Directions for all
 * Ensure you have the following PHP Modules installed: mcrypt, gd. And mysql, pgsql or your DB.
 * Create a new database to store the application in. i.e. recipebook
 * Edit Configuration DB Configuration Settings <app dir>/Config/database.php to match your database settings. 
@@ -52,14 +51,15 @@ more effort copying files around.
     - sudo chown <your web group>.<your web user> <app install dir>/webroot/files/recipe
 * Launch the website and complete steps in wizard.
 
-<h2>Upgrades in 5.x Series</h2>
+---
+## Upgrades in 5.x Series
 Between releases you can update your database by running 
 * Get latest release (git or Release download).
 * ./Console/cake schema update 
 * removing all files from ./tmp/cache/models
 
-<h2>Heroku Deployment</h2>
-<hr/>
+## Heroku Deployment
+
 * Clone PHPRecipebook to your computer.
 * Create an account on heroku and step through their tutorial if you have never done so before.
 * In the PHPRecipebook local repo run: heroku create
@@ -76,7 +76,7 @@ Between releases you can update your database by running
     - git push heroku master
 * reload web page and then login with your password that you set during the setup of the app.
 
-<h2>Troubleshooting</h2>
+## Troubleshooting
 * App does not load:
   - Solution 1: Check the temp directory is writable by the web user.  Try giving world r/w to rule out this (put back after done).
   - Solution 2: Your webserver does not support url rewriting.  Follow the directions http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration to change app to not use rewriting.
@@ -86,17 +86,16 @@ Between releases you can update your database by running
   - Solution: Check your apache configuration to ensure it allows overrides and mod_rewrite is installed.  The .htaccess files are not properly working and rewriting the URL.  You know this is working when the images load
  on the login page.
 
-<h2>Translations</h2>
-<hr/>
+## Translations
 If your local language is not yet translated I can run it up against Google Translate API.  Please star the project (show you care) and submit an 'Issue' to translate.
-<br/>
+
 If you are interested in performing a translation/corrections then here are some basic steps to follow:
-<p>
+
 * Install Poedit (http://poedit.net/).  This is an Open Source tool that will help in translations. Hint for Ubuntu installs -  sudo apt-get install poedit
 * Open the <app dir>/Locale/default.pot in Poedit and translate
 * When done save in Locale\<lang code>\LC_MESSAGES\default.po
-</p>
-##Currently Supported Languages / Translation Code
+
+### Currently Supported Languages / Translation Code
 * Chinese - zho
 * Danish - dan
 * Dutch - nld
