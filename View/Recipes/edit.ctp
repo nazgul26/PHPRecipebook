@@ -11,18 +11,18 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
         });
         
         $("#sortableTable1 tbody.gridContent").sortable({
+            items: "tr:not(.extraItem)",
             stop: function( event, ui ) { 
                 reNumberIngredientsTable();}
         });
         $("#sortableTable2 tbody.gridContent").sortable({
+            items: "tr:not(.extraItem)",
             stop: function( event, ui ) { 
                 reNumberRelatedRecipesTable();}
         });
         
-        $('#ingredientsSection .fraction input').each(function() {
-            $(this).change(function() {
-                fractionConvert($(this), "<?php echo __("Entered value is not a number/fraction, please try again.");?>");
-            });
+        $('#ingredientsSection').on("change", ".fraction input", function() {
+            fractionConvert($(this), "<?php echo __("Entered value is not a number/fraction, please try again.");?>");
         });
         
         $('#AddMoreIngredientsLink').click(function() {
@@ -33,7 +33,7 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
             $('#relatedRecipesSection .extraItem input').change();
             return false;
         });
-        
+
         $('input[type="submit"]').click(function() {
             // cleanup extra items not entered.  This is needed to prevent empty items from
             //  being added.  Also helps with validation on items.
@@ -103,6 +103,7 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
     
     function initRowCopy(gridId) {
         $('#' + gridId + ' .extraItem input').each(function() {
+            $(this).off('change');
             $(this).change(function() {
                $('#' + gridId + ' .extraItem input').off('change');
                $original = $('#' + gridId +' .extraItem');
@@ -122,8 +123,27 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
     }
     
     function initRowDelete() {
+        $('.deleteIcon').off('click');
         $('.deleteIcon').click(function() {
             // TODO: if count of TR = 1 then just blank the row and re-number
+
+           var thisRow = $(this).closest('tr');
+
+            // Don't delete the last table row
+            if (thisRow.is(":last-child")) {
+                return;
+            }
+
+            // Just remove the table row and nothing else, if the IngredientMapping*Id field is blank.
+            // Should we prompt for these since there is no change to the persistant data?
+            if (thisRow
+                 .find('input')
+                 .filter(function() { return this.id.match(/IngredientMapping\d*Id/);})[0]
+                 .value.length == 0) {
+              thisRow.remove();
+              return;
+            }
+
             if (confirm("<?php echo __("Are you sure you wish to remove this item?");?>")) {
                 var itemId = $(this).attr('itemId');        
                 if ($(this).is("[ingredient-delete]")) {
@@ -131,7 +151,7 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
                 } else {
                     ajaxGet(baseUrl + "Recipes/RemoveRecipeMapping/" + recipeId + "/" + itemId, "recipeDeleteResponse");
                 }
-                $(this).parent().parent().remove();
+                thisRow.remove();
             }
         });
     }
@@ -245,10 +265,36 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
                 source: baseUrl + getUrl,
                 minLength: 1,
                 html: true,
+                autoFocus: true,
                 select: function(event, ui) {
-                    var $target = $(event.target);
-                    var mapId = $target.attr("id").replace(itemName, "") + itemId;
-                    $("#" + mapId).val(ui.item.id);
+                    var inputIngredient = $(this);
+                    var inputIngredientId = $(this)
+                          .closest('tr')
+                          .find('input')
+                          .filter(function() { return this.id.match(/IngredientMapping\d*IngredientId/);});
+
+                    // Check if the item selected in the list has an ID.  If it doesn't, then it is "No results for '%s' found"
+                    if (ui.item.id.length == 0) {
+                       inputIngredient.val("");
+                       inputIngredientId.val("");
+                    } else {
+                       inputIngredientId.val(ui.item.id);
+                    }
+                },
+                change: function(event, ui) {
+                  // The ingredient should have already triggered the autocomplete.select event.  Nothing to do.
+                  if (ui.item) {
+                    return;
+                  }
+
+                  var inputIngredient = $(this);
+                  var inputIngredientId = $(this)
+                          .closest('tr')
+                          .find('input')
+                          .filter(function() { return this.id.match(/IngredientMapping\d*IngredientId/);});
+
+                  inputIngredient.val("");
+                  inputIngredientId.val("");
                 }
             });
         });
@@ -446,5 +492,3 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
 <?php echo $this->Session->flash(); ?> 
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
-
-
