@@ -10,7 +10,7 @@ if (isset($selectedVendor['Vendor'])) {
 ?>
 
 <script type="text/javascript">
-    var TIME_TO_LOAD = 5000;
+    //var TIME_TO_LOAD = 5000;
     var itemToRefresh = null;
     
     $(function() {
@@ -35,10 +35,12 @@ if (isset($selectedVendor['Vendor'])) {
            
         $('[shop-add]').click(function() {
             var vendorAddUrl = "<?php echo $vendorAddUrl;?>";
+            var formKey = $("#ShoppingListsFormkey").val();
             $productInput = $(this).parent().parent().find('[product-id]').first();
             var productId = $productInput.val().split(";")[0];
             if (productId) {
                 var vendorAddUrl = vendorAddUrl.replace("@productId", productId);
+                vendorAddUrl = vendorAddUrl.replace("@formKey", formKey);
                 var wnd = window.open(vendorAddUrl, 'shopping'); 
                 $checkBox = $(this).parent().parent().find('input:checkbox');
                 $checkBox.prop('checked', true);
@@ -63,12 +65,12 @@ if (isset($selectedVendor['Vendor'])) {
             complete: function() {
                 $('.selectedRow').removeClass('selectedRow');
                 progressLabel.text("<?php echo __('Complete!');?>");
-                setTimeout(function(){ window.open('<?php echo $vendorHomePage;?>', 'shopping'); }, TIME_TO_LOAD);
+                setTimeout(function(){ window.open('<?php echo $vendorHomePage;?>', 'shopping'); }, $('#ShoppingListsTimeOut').val());
             }
         });
             
         $('[shop-all]').click(function() {
-            var timingCount = TIME_TO_LOAD;
+            var timingCount = $('#ShoppingListsTimeOut').val();
             progressbar.show();
             // Start loading the window now
             var wnd = window.open('<?php echo $vendorHomePage;?>', 'shopping'); 
@@ -87,7 +89,7 @@ if (isset($selectedVendor['Vendor'])) {
                         $(itemId).click(); 
                         progressbar.progressbar( "value", currentAddNumber );
                     }, timingCount);
-                    timingCount += TIME_TO_LOAD;
+                    timingCount += $('#ShoppingListsTimeOut').val();
                 }
             });
             progressbar.progressbar("option", "max", totalToAdd);
@@ -119,6 +121,8 @@ if (isset($selectedVendor['Vendor'])) {
 </div>
 <?php echo $this->Form->create('ShoppingLists', array('url' => array('controller' => 'ShoppingLists','action' => 'clear')));?>
 <?php echo $this->Form->input('vendor_id',array('label'=>'Select Vendor')); ?>
+<?php echo $this->Form->input('formkey',array('label'=>'Form Key')); ?>
+<?php echo $this->Form->input('timeOut',array('label'=>'Time Out', 'default' => '5000')); ?>
 <table>
     <tr class="headerRow">
         <th></th>
