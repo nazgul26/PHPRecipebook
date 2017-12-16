@@ -11,7 +11,7 @@
         <legend>
             <?php echo __('Enter your username and password'); ?>
         </legend>
-        <?php echo $this->Form->input('username');
+        <?php echo $this->Form->input('username', array('type' => 'text'));
         echo $this->Form->input('password');
     ?>
     <?php echo $this->Html->link(__('Forgot password?'), array('action' => 'reset')); ?>   
