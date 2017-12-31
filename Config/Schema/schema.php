@@ -271,6 +271,7 @@ class AppSchema extends CakeSchema {
 		'quantity' => array('type' => 'float', 'null' => false, 'default' => null, 'unsigned' => false),
 		'unit_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'qualifier' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 32, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'note' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 255, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'optional' => array('type' => 'boolean', 'null' => true, 'default' => null),
 		'sort_order' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),

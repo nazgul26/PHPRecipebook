@@ -113,9 +113,6 @@ CREATE TABLE recipes (
 	`modified` DATE,
 	`image` VARCHAR(255),
 	`image_dir` VARCHAR(255),
-    -- Need Migration script to move them to image
-    --picture MEDIUMBLOB,
-    --picture_type VARCHAR(32),
 	`private` TINYINT(1) NOT NULL,
 	`system` VARCHAR(16) DEFAULT 'usa' NOT NULL,
 	`user_id` INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
@@ -141,6 +138,7 @@ CREATE TABLE ingredient_mappings (
 	`quantity` FLOAT NOT NULL,
 	`unit_id` INT REFERENCES units(id) ON DELETE SET NULL,
 	`qualifier` VARCHAR(32),
+	`note` VARCHAR(255),
 	`optional` TINYINT(1),
 	`sort_order` INT,
     PRIMARY KEY (id, ingredient_id,recipe_id)

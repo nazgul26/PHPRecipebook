@@ -161,10 +161,11 @@ if (isset($recipe['Review'])) {
                             $unit = $recipe['IngredientMapping'][$i]['Unit']['abbreviation']; 
                             $ingredientName = $recipe['IngredientMapping'][$i]['Ingredient']['name'];
                             $qualifier = $recipe['IngredientMapping'][$i]['qualifier'];
+                            $note = $recipe['IngredientMapping'][$i]['note'] ? "[" .  $recipe['IngredientMapping'][$i]['note'] . "]" : "";
                             $optional = $recipe['IngredientMapping'][$i]['optional'] ? __('(optional)') : "";
                             echo "<div class='ingredientViewItem'>";
                             echo "<div class='ingredientViewQuantity'>$quantity $unit</div>";
-                            echo "$qualifier $ingredientName <i>$optional</i>";
+                            echo "$qualifier <b>$ingredientName</b> <i>$optional</i> $note";
                             echo "</div><br/>";
                         }?>
             </pre>

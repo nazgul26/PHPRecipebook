@@ -189,6 +189,10 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
                         newNodeId = "IngredientMapping" + i + "Qualifier";
                         newNodeName = "data[IngredientMapping][" + i + "][qualifier]";
                     }
+                    else if (nodeName.indexOf("Note") > -1) { 
+                        newNodeId = "IngredientMapping" + i + "Note";
+                        newNodeName = "data[IngredientMapping][" + i + "][note]";
+                    }
                     else if (nodeName.indexOf("IngredientName") > -1) { 
                         newNodeId = "IngredientMapping" + i + "IngredientName";
                         newNodeName = "data[IngredientMapping][" + i + "][Ingredient][name]";
@@ -406,6 +410,7 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
                         <?php echo $this->Html->link(__('add new'), array('controller'=>'ingredients', 'action' => 'edit'), 
                                 array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog', 'id'=>'addNewIngredientsLink'));?>
                     </th>
+                    <th><?php echo __('Note');?></th>
                     <th><?php echo __('Optional');?></th>
                 </tr>
                 <tbody class="gridContent">
@@ -448,6 +453,7 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
                     <td>
                         <?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.Ingredient.name', array('label' => false, 'escape' => false, 'type' => 'ui-widget')); ?>
                     </td>
+                    <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.note', array('label' => false, 'escape' => false)); ?></td>
                     <td><?php echo $this->Form->input('IngredientMapping.' . $mapIndex . '.optional', array('label' => false)); ?></td> 
                 </tr>
                 <?php } ?>
