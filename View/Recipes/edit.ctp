@@ -93,12 +93,12 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
     
     function initIngredientAutoComplete() {
         reNumberIngredientsTable();
-        initAutocomplete("IngredientName", "IngredientId", "Ingredients/autoCompleteSearch.json");
+        initAutocomplete("IngredientName", "IngredientId", "Ingredients/autoCompleteSearch.json", /IngredientMapping\d*IngredientId/);
     }
     
     function initRelatedAutoCompleted() {
         reNumberRelatedRecipesTable();
-        initAutocomplete("RelatedName", "RecipeId", "Recipes/autoCompleteSearch.json");
+        initAutocomplete("RelatedName", "RecipeId", "Recipes/autoCompleteSearch.json", /RelatedRecipe\d*RecipeId/);
     }
     
     function initRowCopy(gridId) {
@@ -129,6 +129,18 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
 
            var thisRow = $(this).closest('tr');
 
+           // Determine which section we are in when the delete icon is clicked
+           var inIngredientsSection = thisRow.parents('#ingredientsSection').length;
+           var InRelatedRecipesSection = thisRow.parents('#relatedRecipesSection').length;           
+
+            if (inIngredientsSection) {
+               regMatch = /IngredientMapping\d*Id/;
+            } else if (InRelatedRecipesSection) {
+               regMatch = /RelatedRecipe\d*Id/;
+            } else {
+               return;  // Not good if we get here
+            }  
+
             // Don't delete the last table row
             if (thisRow.is(":last-child")) {
                 return;
@@ -138,7 +150,7 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
             // Should we prompt for these since there is no change to the persistant data?
             if (thisRow
                  .find('input')
-                 .filter(function() { return this.id.match(/IngredientMapping\d*Id/);})[0]
+                 .filter(function() { return this.id.match(regMatch);})[0]
                  .value.length == 0) {
               thisRow.remove();
               return;
@@ -257,8 +269,15 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
             i++;
         });
     }
-    
-    function initAutocomplete(itemName, itemId, getUrl)
+
+    /**
+     * Initialize the autocomplete functionality for input fields with an id of itemName
+     * @param {string} itemName - The id of the <input> fields that we want to have autocomplete enabled
+     * @param {string} itemId - Does not appear to be used in this function
+     * @param {string} getUrl - The URL used when performing autocomplete search
+     * @param {regex} regMatch - The regex pattern used to find the hidden <input> to store the ui.item.id or clear its value
+     */    
+    function initAutocomplete(itemName, itemId, getUrl, regMatch)
     {
         $(".ui-widget").find("input[id$='" + itemName + "']").each(function() {
             $(this).autocomplete({
@@ -267,18 +286,18 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
                 html: true,
                 autoFocus: true,
                 select: function(event, ui) {
-                    var inputIngredient = $(this);
-                    var inputIngredientId = $(this)
+                    var inputField = $(this);
+                    var inputFieldId = $(this)
                           .closest('tr')
                           .find('input')
-                          .filter(function() { return this.id.match(/IngredientMapping\d*IngredientId/);});
+                          .filter(function() { return this.id.match(regMatch);});
 
                     // Check if the item selected in the list has an ID.  If it doesn't, then it is "No results for '%s' found"
                     if (ui.item.id.length == 0) {
-                       inputIngredient.val("");
-                       inputIngredientId.val("");
+                       inputField.val("");
+                       inputFieldId.val("");
                     } else {
-                       inputIngredientId.val(ui.item.id);
+                       inputFieldId.val(ui.item.id);
                     }
                 },
                 change: function(event, ui) {
@@ -287,14 +306,15 @@ $recipeId = isset($recipe['Recipe']['id']) ? $recipe['Recipe']['id'] : "";
                     return;
                   }
 
-                  var inputIngredient = $(this);
-                  var inputIngredientId = $(this)
+                  // This occurs when someone enters a value in the autocomplete field, but it doesn't match one of the results.  So clear everything.
+                  var inputField = $(this);
+                  var inputFieldId = $(this)
                           .closest('tr')
                           .find('input')
-                          .filter(function() { return this.id.match(/IngredientMapping\d*IngredientId/);});
+                          .filter(function() { return this.id.match(regMatch);});
 
-                  inputIngredient.val("");
-                  inputIngredientId.val("");
+                  inputField.val("");
+                  inputFieldId.val("");
                 }
             });
         });
