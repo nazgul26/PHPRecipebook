@@ -10,7 +10,7 @@ if (isset($selectedVendor['Vendor'])) {
 ?>
 
 <script type="text/javascript">
-    //var TIME_TO_LOAD = 5000;
+    var TIME_TO_LOAD = 5000;
     var itemToRefresh = null;
     
     $(function() {
@@ -65,12 +65,13 @@ if (isset($selectedVendor['Vendor'])) {
             complete: function() {
                 $('.selectedRow').removeClass('selectedRow');
                 progressLabel.text("<?php echo __('Complete!');?>");
-                setTimeout(function(){ window.open('<?php echo $vendorHomePage;?>', 'shopping'); }, $('#ShoppingListsTimeOut').val());
+                setTimeout(function(){ window.open('<?php echo $vendorHomePage;?>', 'shopping'); }, TIME_TO_LOAD);
             }
         });
             
         $('[shop-all]').click(function() {
-            var timingCount = $('#ShoppingListsTimeOut').val();
+            TIME_TO_LOAD = parseInt($('#ShoppingListsTimeOut').val());
+            var timingCount = TIME_TO_LOAD;
             progressbar.show();
             // Start loading the window now
             var wnd = window.open('<?php echo $vendorHomePage;?>', 'shopping'); 
@@ -89,7 +90,7 @@ if (isset($selectedVendor['Vendor'])) {
                         $(itemId).click(); 
                         progressbar.progressbar( "value", currentAddNumber );
                     }, timingCount);
-                    timingCount += $('#ShoppingListsTimeOut').val();
+                    timingCount += TIME_TO_LOAD;
                 }
             });
             progressbar.progressbar("option", "max", totalToAdd);
