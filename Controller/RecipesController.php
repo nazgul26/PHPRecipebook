@@ -278,7 +278,7 @@ class RecipesController extends AppController {
                 'id',
                 'name',
                 'COUNT(*) as matches'),
-                'group' => array('id', 'name'),
+                'group' => array('Recipe.id', 'Recipe.name'),
                 'joins' => array(
                     array(
                         'alias' => 'IngredientMapping',
