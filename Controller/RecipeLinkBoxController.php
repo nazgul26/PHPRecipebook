@@ -20,29 +20,27 @@ class RecipeLinkBoxController extends AppController {
         $userFilter = array();
         
         $this->layout = 'ajax';
-        $baseTypes = $this->BaseType->find('all');
-        for ($i=0; $i < count($baseTypes); $i++) {
-            
-            $count = $this->Recipe->find('count', array('conditions' => 
-                array_merge($userFilter, array('Recipe.base_type_id' => $baseTypes[$i]["BaseType"]["id"]))));
-            $baseTypes[$i]["BaseType"]["count"] = $count;
+        $baseTypesList = $this->BaseType->find('list', array('order' => array('name')));
+        foreach ($baseTypesList as $baseId => $baseValue) {
+            $count = $this->Recipe->find('count', array('conditions' => array_merge($userFilter, array('Recipe.base_type_id' => $baseId))));
+            $baseTypes[$baseValue]["count"] = $count;
+            $baseTypes[$baseValue]["id"] = $baseId;
         }
         $this->set('baseTypes', $baseTypes);
         
-        $courses = $this->Course->find('all');
-        for ($i=0; $i < count($courses); $i++) {
-            
-            $count = $this->Recipe->find('count', array('conditions' => 
-                array_merge($userFilter, array('Recipe.course_id' => $courses[$i]["Course"]["id"]))));
-            $courses[$i]["Course"]["count"] = $count;
+        $coursesList = $this->Course->find('list', array('order' => array('name')));
+        foreach ($coursesList as $courseId => $courseValue) {
+            $count = $this->Recipe->find('count', array('conditions' => array_merge($userFilter, array('Recipe.course_id' => $courseId))));
+            $courses[$courseValue]["count"] = $count;
+            $courses[$courseValue]["id"] = $courseId;
         }
         $this->set('courses', $courses);
         
-        $prepMethods = $this->PreparationMethod->find('all');
-        for ($i=0; $i < count($prepMethods); $i++) {
-            $count = $this->Recipe->find('count', array('conditions' => 
-                array_merge($userFilter, array('Recipe.preparation_method_id' => $prepMethods[$i]["PreparationMethod"]["id"]))));
-            $prepMethods[$i]["PreparationMethod"]["count"] = $count;
+        $prepMethodsList = $this->PreparationMethod->find('list', array('order' => array('name')));
+        foreach ($prepMethodsList as $prepId => $prepValue) {
+            $count = $this->Recipe->find('count', array('conditions' => array_merge($userFilter, array('Recipe.preparation_method_id' => $prepId))));
+            $prepMethods[$prepValue]["count"] = $count;
+            $prepMethods[$prepValue]["id"] = $prepId;
         }
         $this->set('prepMethods', $prepMethods);
     }
