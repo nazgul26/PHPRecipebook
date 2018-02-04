@@ -193,4 +193,21 @@ dl {
     font-size: 1em;
 }
 
+/* Bootstrap copy/mods */
+
+.alert-info {
+    background-color: #d9edf7;
+    border-color: #bcdff1;
+    color: #31708f;
+}
+.alert {
+    padding: .5em;
+    border: 1px solid transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    border-radius: .25rem;
+}
+
 

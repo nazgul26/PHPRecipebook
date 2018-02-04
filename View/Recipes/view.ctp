@@ -153,22 +153,29 @@ if (isset($recipe['Review'])) {
                 }
             ?>
             <b><?php echo __('Ingredients'); ?></b>
-            <pre>
-                <?php for ($i = 0; $i < count($recipe['IngredientMapping']); $i++) {
+            <table>
+                <?php for ($i = 0; $i < count($recipe['IngredientMapping']); $i++) :
                             $quantity = $recipe['IngredientMapping'][$i]['quantity'];
                             if (isset($scale)) $quantity *= $scale;
                             $quantity = $this->Fraction->toFraction($quantity);
                             $unit = $recipe['IngredientMapping'][$i]['Unit']['abbreviation']; 
                             $ingredientName = $recipe['IngredientMapping'][$i]['Ingredient']['name'];
                             $qualifier = $recipe['IngredientMapping'][$i]['qualifier'];
-                            $note = $recipe['IngredientMapping'][$i]['note'] ? "[" .  $recipe['IngredientMapping'][$i]['note'] . "]" : "";
+                            $note = $recipe['IngredientMapping'][$i]['note'];
                             $optional = $recipe['IngredientMapping'][$i]['optional'] ? __('(optional)') : "";
-                            echo "<div class='ingredientViewItem'>";
-                            echo "<div class='ingredientViewQuantity'>$quantity $unit</div>";
-                            echo "$qualifier <b>$ingredientName</b> <i>$optional</i> $note";
-                            echo "</div><br/>";
-                        }?>
-            </pre>
+                ?>
+                <tr>
+                    <td class="ingredientViewUnit"><?php echo "$quantity $unit";?></td>
+                    <td><?php echo "$qualifier <b>$ingredientName</b> <i>$optional</i> ";?></td>
+                    <td>
+                        <?php if ($note) :?>
+                        <div class="alert alert-info" role="alert"><?php echo "$note"; ?></div>
+                        <?php endif;?>
+                    </td>
+                    
+                </tr>
+                <?php endfor; ?>
+            </table>
         </div>
         <div class="float50Section" id="imagePreview">
             <?php 
@@ -220,7 +227,8 @@ if (isset($recipe['Review'])) {
                 <div class="float50Section">
                     <b><?php echo __('Ingredients'); ?></b>
                     
-                    <pre><?php for ($i = 0; $i < count($related['Related']['IngredientMapping']); $i++) {
+                    <table>
+                    <?php for ($i = 0; $i < count($related['Related']['IngredientMapping']); $i++) :
                             $quantity = $related['Related']['IngredientMapping'][$i]['quantity'];
                             if (isset($scale)) $quantity *= $scale;
                             $quantity = $this->Fraction->toFraction($quantity);
@@ -228,11 +236,18 @@ if (isset($recipe['Review'])) {
                             $ingredientName = $related['Related']['IngredientMapping'][$i]['Ingredient']['name']; 
                             $qualifier = $related['Related']['IngredientMapping'][$i]['qualifier'];
                             $optional = $related['Related']['IngredientMapping'][$i]['optional'] ? __('(optional)') : "";
-                            echo "<div class='ingredientViewItem'>";
-                            echo "<div class='ingredientViewQuantity'>$quantity $unit</div>";
-                            echo "$qualifier $ingredientName <i>$optional</i>";
-                            echo "</div><br/>";
-                        }?></pre>
+                        ?>
+                        <tr>
+                            <td class="ingredientViewUnit"><?php echo "$quantity $unit";?></td>
+                            <td><?php echo "$qualifier <b>$ingredientName</b> <i>$optional</i>";?></td>
+                            <td>
+                                <?php if ($note) :?>
+                                <div class="alert alert-info" role="alert"><?php echo "$note"; ?></div>
+                                <?php endif;?>
+                            </td>
+                        </tr>
+                    <?php endfor;?>
+                    </table>
                 </div>
                 <div class="float50Section">
                     <!-- placeholder for related recipe image -->
