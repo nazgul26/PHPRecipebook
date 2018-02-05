@@ -156,9 +156,14 @@ if (isset($recipe['Review'])) {
             <table>
                 <?php for ($i = 0; $i < count($recipe['IngredientMapping']); $i++) :
                             $quantity = $recipe['IngredientMapping'][$i]['quantity'];
-                            if (isset($scale)) $quantity *= $scale;
-                            $quantity = $this->Fraction->toFraction($quantity);
-                            $unit = $recipe['IngredientMapping'][$i]['Unit']['abbreviation']; 
+                            if ($quantity) {
+                                if (isset($scale)) $quantity *= $scale;
+                                $quantity = $this->Fraction->toFraction($quantity);
+                                $unit = $recipe['IngredientMapping'][$i]['Unit']['abbreviation'];
+                            } else {
+                                $quantity = '';
+                                $unit = '';
+                            }
                             $ingredientName = $recipe['IngredientMapping'][$i]['Ingredient']['name'];
                             $qualifier = $recipe['IngredientMapping'][$i]['qualifier'];
                             $note = $recipe['IngredientMapping'][$i]['note'];
