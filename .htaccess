@@ -1,5 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine on
+    RewriteCond %{REQUEST_URI} !\.well-known/acme-challenge
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
     RewriteRule    ^$    webroot/    [L]
     RewriteRule    (.*) webroot/$1    [L]
 </IfModule>
