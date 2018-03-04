@@ -185,7 +185,7 @@ class ShoppingListsController extends AppController {
 
             // Sort by the currently selected store
             $store = $this->Store->findById($selectedStoreId);
-            $locationIds = split(",", $store['Store']['layout']);
+            $locationIds = explode(",", $store['Store']['layout']);
             $ingredients = $this->Location->orderShoppingListByStore($ingredients, $locationIds);
             
             $this->set('list', $ingredients);

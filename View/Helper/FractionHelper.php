@@ -107,7 +107,7 @@ class FractionHelper extends AppHelper {
 
                 // Now deal with the fraction part
                 if ($frac) {
-                    list($top,$bot) = split('\/', $frac);
+                    list($top,$bot) = explode('\/', $frac);
                     if ($top > 0 && $bot > 0) 
                             $ret += ($top / $bot);
                 }

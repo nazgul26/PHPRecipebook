@@ -316,7 +316,7 @@ class MealMasterComponent extends Component {
 	    $contLastI = $this->readIngredientLine($this->curRecipeString[0]);
 	    if (!$contLastI) {
                 if (!empty($this->currentIngredient['name'])) {
-                    $parts = split(";", $this->currentIngredient['name']);
+                    $parts = explode(";", $this->currentIngredient['name']);
                     $this->currentIngredient['name'] = strtolower($parts[0]);
                     $this->currentIngredient['qualifier'] = isset($parts[1]) ? strtolower($parts[1]) : NULL;
                     
