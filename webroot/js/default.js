@@ -178,7 +178,7 @@ function initDialogs() {
                     },
                     "Close": function() { $(this).dialog('close'); } 
                 }
-	});
+	    });
     });
 }
 

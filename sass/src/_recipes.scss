@@ -8,12 +8,12 @@
 }
 #RecipeDirections { width: 80%;}
 #addNewIngredientsLink { display: inline;}
-.ui-icon-trash, .ui-icon-arrow-4 {
+.ui-icon-trash, .ui-icon-arrow-4, .ui-icon-comment {
     transform: scale(1.8);
     margin: 10px;
     margin-left: 12px
 }
-.deleteIcon, .moveIcon {
+.deleteIcon, .moveIcon, .commentIcon {
     width: 40px;
     padding-top: 6px;
 }
@@ -30,6 +30,11 @@
     border: 1px solid gray;
     border-radius: 10px;
     padding: 20px !important;
+}
+
+#editNoteDialog textarea {
+    width: 17em;
+    height: 4em;
 }
 
 /* View Recipes */
