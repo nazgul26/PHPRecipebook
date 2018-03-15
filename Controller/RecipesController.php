@@ -161,7 +161,7 @@ class RecipesController extends AppController {
             $recipe['Recipe']['user_id'] = $this->Auth->user('id');
             if ($this->Recipe->saveWithAttachments($recipe)) {
                 $this->Session->setFlash(__('The recipe has been saved.'), "success");
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => 'view', $id));
             } else {
                 $this->Session->setFlash(__('The recipe could not be saved. Please, try again.'));
             }
