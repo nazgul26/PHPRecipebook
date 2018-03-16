@@ -32,9 +32,12 @@
     padding: 20px !important;
 }
 
-#editNoteDialog textarea {
-    width: 17em;
-    height: 4em;
+#editNoteDialog {
+    display: none;
+    textarea {
+        width: 17em;
+        height: 4em;
+    }
 }
 
 /* View Recipes */
