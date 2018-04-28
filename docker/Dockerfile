@@ -22,5 +22,3 @@ RUN \
 COPY database.php /var/www/html/Config/database.php
 
 WORKDIR /var/www/html
-
-#USER www-data

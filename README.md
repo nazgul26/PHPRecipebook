@@ -45,8 +45,8 @@ more effort copying files around.
 * Run `docker-compose up -d`
 * Execute `docker exec -ti docker_web_1  ./Console/cake schema create` and anser with `y`
 * Go to `http://localhost` and setup a user
-* Remove the possibility to run the setup by removing the comment sign `#` from the last line in `docker-compose.yml`
-* Restart the services to apply the change `docker-compose stop && docker-compose rm -f && docker up -d`
+* Remove the possibility to run the setup by removing the comment sign `#` from the last two lines in `docker-compose.yml`
+* Restart the services to apply the change `docker-compose stop && docker-compose rm -f && docker-compose up -d`
 
 The database is stored persistent in the folder dbdata. 
 

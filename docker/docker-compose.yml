@@ -20,5 +20,5 @@ services:
      ports:
        - "80:80"
      restart: always
-     volumes:
+#     volumes:
 #      - /tmp/SetupController:/var/www/html/Controller/SetupController.php
