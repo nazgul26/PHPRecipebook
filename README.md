@@ -38,6 +38,18 @@ more effort copying files around.
 * Download latest release from https://github.com/nazgul26/PHPRecipebook/releases
 * Extract files to your web folder. 
 
+## docker-compse Install Option
+* Install git and docker-compose
+* Download git repository (e.g. with wget or git clone) or just download the docker folder
+* Change into directory `cd docker`
+* Run `docker-compose up -d`
+* Execute `docker exec -ti docker_web_1  ./Console/cake schema create` and anser with `y`
+* Go to `http://localhost` and setup a user
+* Remove the possibility to run the setup by removing the comment sign `#` from the last line in `docker-compose.yml`
+* Restart the services to apply the change `docker-compose stop && docker-compose rm -f && docker up -d`
+
+The database is stored persistent in the folder dbdata. 
+
 ## Setup Directions for all
 * Ensure you have the following PHP Modules installed: mcrypt, gd. And mysql, pgsql or your DB.
 * Create a new database to store the application in. i.e. recipebook
