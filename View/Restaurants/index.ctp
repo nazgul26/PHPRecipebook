@@ -54,7 +54,7 @@
         <?php endif;?>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-        <?php if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe['User']['id'])):?>
+        <?php if ($loggedIn) :?>
             <th class="actions"><?php echo __('Actions'); ?></th>
         <?php endif;?>
             <th><?php echo $this->Paginator->sort('name'); ?></th>
@@ -69,7 +69,7 @@
     <tbody>
 	<?php foreach ($restaurants as $restaurant): ?> 
 	<tr>
-            <?php if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe['User']['id'])):?>
+            <?php if ($loggedIn  && ($isAdmin || $loggedInuserId == $restaurant['User']['id'])):?>
             <td class="actions">
                     <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $restaurant['Restaurant']['id']), array('class' => 'ajaxLink', 'targetId' => 'editRestaurantDialog')); ?>
                     <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $restaurant['Restaurant']['id']), null, __('Are you sure you want to delete # %s?', $restaurant['Restaurant']['id'])); ?>
