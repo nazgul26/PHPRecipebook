@@ -1,0 +1,30 @@
+
+version: "3"
+
+services:
+  db:
+    image: ilveroluca/phprecipebook_pgdb:v5.1.5_cv0.1
+    restart: always
+    volumes:
+      - "/home/you//PHPRecipebook/virgin_db:/var/lib/postgresql/data"
+      # To customize the postgresql configuration
+      #-  "$PWD/my-postgres.conf":/etc/postgresql/postgresql.conf
+    environment:
+      - POSTGRES_PASSWORD=recipebook
+      - POSTGRES_USER=recipebook
+      - POSTGRES_DB=recipebook
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+  rb:
+    image: ilveroluca/phprecipebook:v5.1.5_cv0.1
+    restart: always
+    depends_on: ["db"]
+    ports:
+      - "8080:8080"
+    environment:
+      - PHPRECIPEBOOK_DB_DATASOURCE=Database/Postgres
+      - PHPRECIPEBOOK_DB_HOST=db
+      - PHPRECIPEBOOK_DB_NAME=recipebook
+      - PHPRECIPEBOOK_DB_LOGIN=recipebook
+      - PHPRECIPEBOOK_DB_PASS=recipebook
+      #- PHPRECIPEBOOK_SETUP_MODE=TRUE
