@@ -22,7 +22,6 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - PHPRECIPEBOOK_DB_DATASOURCE=Database/Postgres
       - PHPRECIPEBOOK_DB_HOST=db
       - PHPRECIPEBOOK_DB_NAME=recipebook
       - PHPRECIPEBOOK_DB_LOGIN=recipebook
