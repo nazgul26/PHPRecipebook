@@ -47,7 +47,7 @@ apply.
 These are the main variables used by this docker-compose.
 
 | Variable | Default value | Explanation |
-+----------+---------------+-------------+
+|----------|---------------|-------------|
 | POSTGRES_USER | recipebook | Database user. Must match PHPRECIPEBOOK_DB_LOGIN |
 | POSTGRES_PASSWORD | recipebook | Password for database user.  Must match PHPRECIPEBOOK_DB_PASS |
 | POSTGRES_DB | recipebook | Database name. Must match PHPRECIPEBOOK_DB_NAME |
