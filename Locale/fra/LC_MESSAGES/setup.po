@@ -110,11 +110,11 @@ msgstr "Votre répertoire TMP ne est pas accessible en écriture."
 
 #: View/Setup/index.ctp:50
 msgid "The %s is being used for core caching. To change the config edit %s"
-msgstr "Le% s est utilisée pour la mise en cache de base. Pour changer la config modifier% s"
+msgstr "Le %s est utilisée pour la mise en cache de base. Pour changer la config modifier %s"
 
 #: View/Setup/index.ctp:54
 msgid "Your cache is NOT working. Please check the settings in %s"
-msgstr "Votre cache ne fonctionne pas. Se il vous plaît vérifier les paramètres en% s"
+msgstr "Votre cache ne fonctionne pas. Se il vous plaît vérifier les paramètres en %s"
 
 #: View/Setup/index.ctp:64
 msgid "Your database configuration file is present."
@@ -126,7 +126,7 @@ msgstr "Votre fichier de configuration de base de données ne est pas présent."
 
 #: View/Setup/index.ctp:71
 msgid "Rename %s to %s"
-msgstr "Renommez% s à% s"
+msgstr "Renommez %s à %s"
 
 #: View/Setup/index.ctp:96
 msgid "CakePHP is able to connect to the database."

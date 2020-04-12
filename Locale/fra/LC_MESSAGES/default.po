@@ -1015,7 +1015,7 @@ msgstr "DEFAULT"
 
 #: Plugin/Upload/Model/Behavior/UploadBehavior.php:1078
 msgid "No filename after parsing. Function %s returned an invalid filename"
-msgstr "Pas de nom de fichier après l&#39;analyse. Fonction% s retourné un nom de fichier non valide"
+msgstr "Pas de nom de fichier après l&#39;analyse. Fonction %s retourné un nom de fichier non valide"
 
 #: View/BaseTypes/edit.ctp:12
 #: View/CoreIngredients/edit.ctp:14
@@ -1122,7 +1122,7 @@ msgstr "Effacer"
 #: View/Recipes/index.ctp:92
 #: View/Sources/index.ctp:27
 msgid "Are you sure you want to delete %s?"
-msgstr "Êtes-vous sûr de vouloir supprimer% s?"
+msgstr "Êtes-vous sûr de vouloir supprimer %s?"
 
 #: View/BaseTypes/index.ctp:32
 #: View/CoreIngredients/index.ctp:43
@@ -1202,7 +1202,7 @@ msgstr "Liste Ingrédients"
 #: View/Users/index.ctp:26
 #: View/Users/view.ctp:5
 msgid "Are you sure you want to delete # %s?"
-msgstr "Êtes-vous sûr de vouloir supprimer #% s?"
+msgstr "Êtes-vous sûr de vouloir supprimer # %s?"
 
 #: View/Courses/index.ctp:10
 msgid "Courses"
@@ -1289,7 +1289,7 @@ msgstr "Ajouter Unité"
 #: View/Ingredients/index.ctp:54
 #: View/Locations/index.ctp:27
 msgid "Are you sure you want to delete \"%s\"?"
-msgstr "Etes-vous sûr de vouloir supprimer &quot;% s&quot;?"
+msgstr "Etes-vous sûr de vouloir supprimer \"%s\"?"
 
 #: View/Layouts/default.ctp:57
 msgid "Browse your recipes"
@@ -1474,7 +1474,7 @@ msgstr "Aujourd&#39;hui"
 
 #: View/MealPlans/index.ctp:64
 msgid "Are you sure you want to delete meal \"%s\"?"
-msgstr "Etes-vous sûr de vouloir supprimer repas &quot;% s&quot;?"
+msgstr "Etes-vous sûr de vouloir supprimer repas \"%s\"?"
 
 #: View/PreparationMethods/index.ctp:11
 msgid "Preparation Methods"
@@ -1774,7 +1774,7 @@ msgstr "Portions acheter"
 
 #: View/ShoppingLists/index.ctp:107;143
 msgid "Are you sure you want to remove %s?"
-msgstr "Êtes-vous sûr de vouloir supprimer% s?"
+msgstr "Êtes-vous sûr de vouloir supprimer %s?"
 
 #: View/ShoppingLists/index.ctp:130
 msgid "Ingredient Name"
