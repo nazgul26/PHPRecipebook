@@ -1,4 +1,4 @@
-FROM httpd:2.4 AS base
+FROM httpd:2.4.38 AS base
 
 ARG version=5.1.5
 ENV RecipebookRoot=/usr/local/apache2/htdocs/phprecipebook
