@@ -6,8 +6,7 @@ services:
     image: ilveroluca/phprecipebook_pgdb:v5.1.5_cv0.1
     restart: always
     volumes:
-      # Set the path for postgresql's data directory (the path before the colon)
-      - "/home/you//PHPRecipebook/virgin_db:/var/lib/postgresql/data"
+      - recipebookvolume:/var/lib/postgresql/data/pgdata
       # To customize the postgresql configuration
       #-  "$PWD/my-postgres.conf":/etc/postgresql/postgresql.conf
     environment:
@@ -28,3 +27,6 @@ services:
       - PHPRECIPEBOOK_DB_LOGIN=recipebook
       - PHPRECIPEBOOK_DB_PASS=recipebook
       #- PHPRECIPEBOOK_SETUP_MODE=TRUE
+
+volumes:
+  recipebookvolume:
