@@ -7,10 +7,10 @@ an Apache web server with mod-php, where PHPRecipebook runs.
 ## Minimal setup
 
 1. Set the path on the host for the PostgreSQL data.  Edit the volume defined
-	 for the `db` service in `docker-compose.yml`.
+   for the `db` service in `docker-compose.yml`.
 
 2. On the first run, enable PHPRecipebook's setup wizard.  Uncomment the
-	 environment variable setting `PHPRECIPEBOOK_SETUP_MODE=TRUE`.  After you've
+   environment variable setting `PHPRECIPEBOOK_SETUP_MODE=TRUE`.  After you've
    created your admin user turn it back off and restart the application to enable
    regular operation.
 
