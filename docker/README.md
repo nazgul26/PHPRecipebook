@@ -6,13 +6,10 @@ an Apache web server with mod-php, where PHPRecipebook runs.
 
 ## Minimal setup
 
-1. Set the path on the host for the PostgreSQL data.  Edit the volume defined
-   for the `db` service in `docker-compose.yml`.
-
-2. On the first run, enable PHPRecipebook's setup wizard.  Uncomment the
-   environment variable setting `PHPRECIPEBOOK_SETUP_MODE=TRUE`.  After you've
-   created your admin user turn it back off and restart the application to enable
-   regular operation.
+On the first run, enable PHPRecipebook's setup wizard.  Uncomment the
+environment variable setting `PHPRECIPEBOOK_SETUP_MODE=TRUE`.  After you've
+created your admin user turn it back off and restart the application to enable
+regular operation.
 
 ## Usage
 
@@ -56,11 +53,4 @@ These are the main variables used by this docker-compose.
 | PHPRECIPEBOOK_DB_LOGIN | recipebook | Must match POSTGRES_USER |
 | PHPRECIPEBOOK_DB_PASS | recipebook | Must match POSTGRES_PASSWORD |
 | PHPRECIPEBOOK_SETUP_MODE | FALSE | Turn on PHPRecipebook setup mode |
-
-
-## Notes
-
-The database server currently runs as root, which means that the files created
-in the database directory will be owned by root.  This issue may be addressed in
-the future by letting the user specify the database process' user id.
 
