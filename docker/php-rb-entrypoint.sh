@@ -6,6 +6,14 @@ function log() {
     echo -e "${@}" >&2
 }
 
+function schema_exists() {
+  # checks whether the table `users` exists in the DB
+  psql -h "${PHPRECIPEBOOK_DB_HOST}" \
+       -U "${PHPRECIPEBOOK_DB_LOGIN}" \
+       --dbname=${PHPRECIPEBOOK_DB_NAME} \
+       -c '\d users' >/dev/null
+}
+
 PHPRECIPEBOOK_DB_DATASOURCE="${PHPRECIPEBOOK_DB_DATASOURCE:-Database/Postgres}"
 PHPRECIPEBOOK_DB_HOST="${PHPRECIPEBOOK_DB_HOST:-localhost}"
 PHPRECIPEBOOK_DB_NAME="${PHPRECIPEBOOK_DB_NAME:-phprecipebook}"
@@ -35,6 +43,19 @@ sed -i -e "s/Configure::write('App.setupMode', \w*);/Configure::write('App.setup
 
 log "Waiting for postgresql..."
 /usr/local/bin/wait-for-postgres.sh "${PHPRECIPEBOOK_DB_HOST}"
+
+cd "${RecipebookRoot}"
+if [[ "${PHPRECIPEBOOK_DB_UPDATE_SCHEMA:-}" == "TRUE" ]]; then
+  if schema_exists; then
+    log "Updating schema"
+    ./Console/cake schema update --yes
+  else
+    log "CREATING schema"
+    ./Console/cake schema create --yes
+  fi
+else
+  log "Skipping schema update. PHPRECIPEBOOK_DB_UPDATE_SCHEMA set to ${PHPRECIPEBOOK_DB_UPDATE_SCHEMA:-null}"
+fi
 
 log "Starting apache"
 exec httpd-foreground

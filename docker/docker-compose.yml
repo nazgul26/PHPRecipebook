@@ -3,7 +3,7 @@ version: "3"
 
 services:
   db:
-    image: ilveroluca/phprecipebook_pgdb:v5.1.5_cv0.1
+    image: postgres:11-alpine
     restart: always
     volumes:
       - recipebookvolume:/var/lib/postgresql/data/pgdata
@@ -16,7 +16,7 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
 
   rb:
-    image: ilveroluca/phprecipebook:v5.1.5_cv0.1
+    image: ilveroluca/phprecipebook:v5.1.5_cv0.2
     restart: always
     depends_on: ["db"]
     ports:
@@ -26,7 +26,8 @@ services:
       - PHPRECIPEBOOK_DB_NAME=recipebook
       - PHPRECIPEBOOK_DB_LOGIN=recipebook
       - PHPRECIPEBOOK_DB_PASS=recipebook
-      #- PHPRECIPEBOOK_SETUP_MODE=TRUE
+      - PHPRECIPEBOOK_DB_UPDATE_SCHEMA=TRUE
+      - PHPRECIPEBOOK_SETUP_MODE=TRUE
 
 volumes:
   recipebookvolume:
