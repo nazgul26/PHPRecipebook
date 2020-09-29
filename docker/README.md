@@ -15,7 +15,7 @@ regular operation.
 
 ### Starting it
 
-    docker-compose -f docker-compose.yml -d up
+    docker-compose -f docker-compose.yml up -d
 
 The default docker images will be pulled automatically from DockerHub.
 
