@@ -127,7 +127,7 @@ CREATE table attachments (
     `dir` varchar(255) DEFAULT NULL,
     `type` varchar(255) DEFAULT NULL,
     `size` int(11) DEFAULT 0,
-	`sort_order` INT
+	`sort_order` INT,
     PRIMARY KEY (id)
 );
 
