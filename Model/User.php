@@ -62,11 +62,15 @@ class User extends AppModel {
     
     public function isAdmin($user) {
         $adminRole = Configure::read('AuthRoles.admin');
-        return $user['access_level'] >= $adminRole;
+        if ((isset($user['access_level']) && $user['access_level'] >= $adminRole)) {
+          return $user['access_level'] >= $adminRole;
+        }
     }
     
     public function isEditor($user) {
         $editorRole = Configure::read('AuthRoles.editor');
-        return $user['access_level'] >= $editorRole;
+        if ((isset($user['access_level']) && $user['access_level'] >= $editorRole)) {
+          return $user['access_level'] >= $editorRole;
+        }
     }
 }
