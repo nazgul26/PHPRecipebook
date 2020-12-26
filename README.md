@@ -1,3 +1,9 @@
+# PHPReceipbook 6.0
+---
+Currently in progress to upgrade to CakePHP 3.9 to support PHP 7.x+.  Expected release date is **January 2021**.
+
+
+
 # PHPRecipebook 5.0
 ---
 
