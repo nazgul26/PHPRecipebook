@@ -50,8 +50,13 @@ class User extends AppModel {
         ),
     );
     
+    public function startsWith( $haystack, $needle ) {
+        $length = strlen( $needle );
+        return substr( $haystack, 0, $length ) === $needle;
+    }
+   
     public function beforeSave($options = array()) {
-        if (isset($this->data[$this->alias]['password'])) {
+        if (isset($this->data[$this->alias]['password']) && !$this->startsWith($this->data[$this->alias]['password'],'$2a')) {
             $passwordHasher = new BlowfishPasswordHasher();
             $this->data[$this->alias]['password'] = $passwordHasher->hash(
                 $this->data[$this->alias]['password']

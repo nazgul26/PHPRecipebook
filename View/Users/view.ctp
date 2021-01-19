@@ -38,12 +38,12 @@
 			<?php echo h($user['User']['country']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Created'); ?></dt>
+		<dt><?php echo __('Created (UTC)'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['created']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Last Login'); ?></dt>
+		<dt><?php echo __('Last Login (UTC)'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['last_login']); ?>
 			&nbsp;
@@ -53,7 +53,7 @@
 			<?php echo h($user['User']['email']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
+		<dt><?php echo __('Modified (UTC)'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['modified']); ?>
 			&nbsp;

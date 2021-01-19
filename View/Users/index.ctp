@@ -12,9 +12,9 @@
             <th><?php echo $this->Paginator->sort('name'); ?></th>
             <th><?php echo $this->Paginator->sort('email'); ?></th>
             <th><?php echo $this->Paginator->sort('access_level'); ?></th>
-            <th><?php echo $this->Paginator->sort('last_login'); ?></th>
-            <th><?php echo $this->Paginator->sort('created'); ?></th>
-            <th><?php echo $this->Paginator->sort('modified'); ?></th>
+            <th><?php echo $this->Paginator->sort('last_login (UTC)'); ?></th>
+            <th><?php echo $this->Paginator->sort('created (UTC)'); ?></th>
+            <th><?php echo $this->Paginator->sort('modified (UTC)'); ?></th>
 	</tr>
 	<?php foreach ($users as $user): ?>
 	<tr>
