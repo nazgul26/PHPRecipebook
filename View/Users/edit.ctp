@@ -38,7 +38,7 @@
                     );
             echo $this->Form->input('language', array('options' => Configure::read('Languages')));
             echo $this->Form->input('country');
-            echo $this->Form->input('last_login',array('disabled' => 'disabled'));
+            echo $this->Form->input('last_login (UTC)',array('disabled' => 'disabled'));
             
 	?>
 	</fieldset>
