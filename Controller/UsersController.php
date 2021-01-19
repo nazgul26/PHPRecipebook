@@ -53,6 +53,13 @@ class UsersController extends AppController {
                         $this->Session->write('Config.language', $item['User']['language']);
                     }
                     
+                    $this->User->id = $this->Auth->user('id');
+                    $this->User->read();
+                    $this->User->data['User']['last_login'] = date('Y-m-d H:i:s');
+                    $this->User->data['User']['modified'] = false; //don't update the modified field
+		            $this->User->save($this->User->data);
+
+
                     $redirectUrl = $this->Auth->redirectUrl();
                     if ($this->String->endsWith($redirectUrl, '/Users/login')) {
                         return $this->redirect(array('controller' => 'recipes', 'action' => 'index'));
