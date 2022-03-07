@@ -1,0 +1,35 @@
+/*
+Recipe Box on Left.  This is the sidecar of the site.
+*/
+
+#recipeLinkBox { 
+    float: left; 
+    width: 200px; 
+    background-color: $primary-color;
+    border-radius: 10px 10px 10px 10px;
+    border: 1px solid $primary-color;
+    box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.698);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.recipeBoxList {
+    list-style-type: none;
+}
+
+#recipeLinks {
+    background: none repeat scroll 0 0 #FFFFFF;
+    clear: both;
+    color: #333333;
+    overflow: auto;
+    padding: 10px 20px 40px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+#recipeLinksTitle {
+    padding: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#addRecipeLink { text-align: center; width: 100%;}

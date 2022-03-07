@@ -1,0 +1,59 @@
+/*
+ Global Site Search Box.  Changes behavior based on the main content
+ */
+#searchHolder {
+    margin: -5px -5px -5px 0px;
+    float: left; 
+    width: 300px;
+
+    form {
+        padding:0px;
+        margin:0px;
+    }
+    
+    input {
+        border:none;
+        background:none;
+        line-height:18px;
+        font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        font-size:14px;
+        height:30px;
+        padding:0px;
+        width:200px;
+        float:left;
+        margin-right:10px;
+        margin-top:2px;
+    }
+    
+    span {
+        padding:0px;
+        margin:0px;
+        background:1px 1px url(../img/searchbg.png) no-repeat;
+        padding-right:30px;
+        display:block;
+        float:left;
+        width:280px;
+        padding-left:40px;
+        height:37px;
+        padding-top:5px;
+    }
+    
+    .cancelBtn {
+        float:left;
+        margin-top:8px;
+        border:none;
+        cursor:pointer;
+        height: 20px;
+        width: 20px;
+    }
+}
+
+#signInButton {
+    background-color: #006699;
+    color: white;
+    cursor: hand;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid #fff;
+}
+

@@ -1,0 +1,69 @@
+.shoppingListText {
+    font-size: 1.4em;
+    padding-left: 1em;
+    padding-top: 18px;
+    a {
+        font-size: .8em;
+    }
+}
+    
+.shoppingListText-recipe {
+    width: 700px;
+}
+
+.shoppingListText-ingredient {
+    width: 450px;
+}
+
+#ShoppingListEditForm {
+    .number {
+        width: 6em;
+    }
+}
+
+.addShoppingListItem {
+    span {
+        font-size: 1.4em;
+    }
+}
+
+#selectStore {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    margin-bottom: 1em;
+    padding: 8px 0 4px 8px;
+    width: 50%;
+    label {
+        margin-top: 5px;
+        width: 8em;
+    }
+}
+
+.strikeThrough {
+    text-decoration: line-through;
+}
+
+.storeLocation div {
+    background: none repeat scroll 0 0 #2e629d;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px #000;
+    color: #fff;
+    font-size: 0.8em;
+    padding: 4px 0 4px 1em;
+    text-shadow: 2px 2px #000;
+}
+
+.vendor-input {
+    width: 24em;
+    margin-left: 1em;
+}
+
+.selectedRow {
+    background: #E6B800 !important;
+}
+
+.productOptions {
+    img { border-style: none;}
+    a { text-decoration: none;}
+}
+
