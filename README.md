@@ -1,7 +1,8 @@
 # PHPReceipbook 6.0
 ---
-Currently in progress to upgrade to CakePHP 3.9 to support PHP 7.x+.  Expected release date is **January 2021**.
+Code has been committed for V6.  Will be testing against Heroku and other servers to find any issues.  Feel free to pull and play with it.  A formal release will be out after testing completes.
 
+This version uses CakePHP 3.9 to support PHP 7.x+.  
 
 
 # PHPRecipebook 5.0
