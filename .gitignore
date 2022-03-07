@@ -1,7 +1,3 @@
-composer.phar
-Config/database.php
-Config/core.php
-Config/email.php
 tmp/cache/persistent/*
 !tmp/cache/persistent/empty
 tmp/cache/models/*
@@ -21,5 +17,6 @@ tmp/cache/twigView/*
 webroot/files/
 sass/.sass-cache
 vendor/*
-Plugin/Upload
 .vscode/*
+config/.env
+tmp/debug_kit.sqlite
