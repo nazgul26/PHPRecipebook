@@ -21,7 +21,7 @@ class IngredientsFixture extends TestFixture
         'location_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'unit_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'solid' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'system' => ['type' => 'string', 'length' => 8, 'null' => true, 'default' => 'usa', 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'system_type' => ['type' => 'string', 'length' => 8, 'null' => true, 'default' => 'usa', 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'user_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'core_ingredient_id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_constraints' => [
@@ -49,7 +49,7 @@ class IngredientsFixture extends TestFixture
                 'location_id' => 1,
                 'unit_id' => 1,
                 'solid' => 1,
-                'system' => 'Lorem ',
+                'system_type' => 'Lorem ',
                 'user_id' => 1,
                 'core_ingredient_id' => 1,
             ],

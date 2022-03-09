@@ -30,7 +30,7 @@ class Unit extends Entity
     protected $_accessible = [
         'name' => true,
         'abbreviation' => true,
-        'system' => true,
+        'system_type' => true,
         'sort_order' => true,
         'ingredient_mappings' => true,
         'ingredients' => true,

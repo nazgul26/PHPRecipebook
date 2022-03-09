@@ -1,4 +1,5 @@
--- Schema for PHPRecipeBook 5.0
+-- Schema for PHPRecipeBook 6.0
+
 CREATE TABLE users (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`username` VARCHAR(32) NOT NULL UNIQUE,
@@ -35,7 +36,7 @@ CREATE TABLE units (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(64) NOT NULL,
 	`abbreviation` VARCHAR(8) NOT NULL,
-	`system` INT NOT NULL,
+	`system_type` INT NOT NULL,
 	`sort_order` INT NOT NULL,
 	PRIMARY KEY(id)
 );
@@ -82,7 +83,7 @@ CREATE TABLE ingredients (
 	`location_id` INT REFERENCES locations(id) ON DELETE SET NULL,
 	`unit_id` INTEGER REFERENCES units(id) ON DELETE SET NULL,
 	`solid` TINYINT(1),
-	`system` VARCHAR(8) DEFAULT 'usa',
+	`system_type` VARCHAR(8) DEFAULT 'usa',
 	`user_id` INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
 	PRIMARY KEY (id),
     UNIQUE KEY (name, user_id)
@@ -114,7 +115,7 @@ CREATE TABLE recipes (
 	`image` VARCHAR(255),
 	`image_dir` VARCHAR(255),
 	`private` TINYINT(1) NOT NULL,
-	`system` VARCHAR(16) DEFAULT 'usa' NOT NULL,
+	`system_type` VARCHAR(16) DEFAULT 'usa' NOT NULL,
 	`user_id` INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
 	PRIMARY KEY (id)
 );

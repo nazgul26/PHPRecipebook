@@ -19,7 +19,7 @@
                 <th class="actions"><?php echo __('Actions'); ?></th>
                 <th><?php echo $this->Paginator->sort('name'); ?></th>
                 <th><?php echo $this->Paginator->sort('abbreviation'); ?></th>
-                <th><?php echo $this->Paginator->sort('system'); ?></th>
+                <th><?php echo $this->Paginator->sort('system_type'); ?></th>
                 <th><?php echo $this->Paginator->sort('sort_order'); ?></th>
         </tr>
         <?php foreach ($units as $unit): ?>
@@ -30,7 +30,7 @@
                 </td>
                 <td><?php echo h($unit->name); ?>&nbsp;</td>
                 <td><?php echo h($unit->abbreviation); ?>&nbsp;</td>
-                <td><?php echo h($unit->system); ?>&nbsp;</td>
+                <td><?php echo h($unit->system_type); ?>&nbsp;</td>
                 <td><?php echo h($unit->sort_order); ?>&nbsp;</td>
         </tr>
         <?php endforeach; ?>

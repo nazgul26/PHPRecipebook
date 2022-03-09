@@ -9,7 +9,7 @@
     echo $this->Form->hidden('id');
     echo $this->Form->input('name');
     echo $this->Form->input('abbreviation');
-    echo $this->Form->input('system', 
+    echo $this->Form->input('system_type', 
                     array('options' => 
                         array(
                             '0' => __('Unit'), 

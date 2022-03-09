@@ -90,7 +90,7 @@ class IngredientsTable extends Table
 
         $validator
             ->scalar('system_type')
-            ->maxLength('system', 8)
+            ->maxLength('system_type', 8)
             ->allowEmptyString('system_type');
 
         return $validator;

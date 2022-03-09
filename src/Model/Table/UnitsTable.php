@@ -74,9 +74,9 @@ class UnitsTable extends Table
             ->notEmptyString('abbreviation');
 
         $validator
-            ->integer('system')
-            ->requirePresence('system', 'create')
-            ->notEmptyString('system');
+            ->integer('system_type')
+            ->requirePresence('system_type', 'create')
+            ->notEmptyString('system_type');
 
         $validator
             ->integer('sort_order')

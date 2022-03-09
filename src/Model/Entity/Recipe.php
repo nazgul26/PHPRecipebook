@@ -69,7 +69,7 @@ class Recipe extends Entity
         'picture' => true,
         'picture_type' => true,
         'private' => true,
-        'system' => true,
+        'system_type' => true,
         'source_id' => true,
         'user_id' => true,
         'preparation_method_id' => true,

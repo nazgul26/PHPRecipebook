@@ -435,7 +435,7 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
             echo "</div>";
 
             echo $this->Form->control('private', array('options' => array('0' => 'No', '1' => 'Yes')));
-            echo $this->Form->control('system', array('options' => array('usa' => 'USA', 'metric' => 'Metric')));
+            echo $this->Form->control('system_type', array('options' => array('usa' => 'USA', 'metric' => 'Metric')));
             echo $this->Form->hidden('user_id');
             ?>
             <div id="ingredientsSection">

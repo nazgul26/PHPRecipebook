@@ -152,9 +152,9 @@ class RecipesTable extends Table
             ->notEmptyString('private');
 
         $validator
-            ->scalar('system')
-            ->maxLength('system', 16)
-            ->notEmptyString('system');
+            ->scalar('system_type')
+            ->maxLength('system_type', 16)
+            ->notEmptyString('system_type');
 
         return $validator;
     }
