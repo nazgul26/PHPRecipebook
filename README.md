@@ -1,4 +1,4 @@
-# PHPRecipebook 5.0
+# PHPRecipebook 6.0
 ---
 
 PHPRecipeBook is a cookbook and meal planning software.
