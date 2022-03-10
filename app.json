@@ -1,0 +1,31 @@
+{
+    "name": "PHPRecipeBook",
+    "description": "Cookbook and Meal Planning Web Application.",
+    "addons": ["heroku-postgresql:hobby-dev"],
+    "scripts": {
+        "postdeploy": "bin/deploy.sh"
+    },
+    "env": {
+        "SECURITY_SALT": {
+          "description": "Security salt used for encryption",
+          "generator": "secret"
+        },
+        "APP_NAME": {
+          "description": "Name of the Application",
+          "value": "PHPRecipeBook"
+        },
+        "DEBUG": {
+            "description": "Provides additional debugging tools if supported",
+            "value": "false"
+        },
+        "APP_ENCODING": {
+            "value": "UTF-8"
+        },
+        "APP_DEFAULT_LOCALE": {
+            "value": "en_US"
+        },
+        "APP_DEFAULT_TIMEZONE": {
+            "value": "US/Eastern"
+        }
+    }
+}

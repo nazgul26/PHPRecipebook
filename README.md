@@ -1,10 +1,3 @@
-# PHPReceipbook 6.0
----
-Code has been committed for V6.  Will be testing against Heroku and other servers to find any issues.  Feel free to pull and play with it.  A formal release will be out after testing completes.
-
-This version uses CakePHP 3.9 to support PHP 7.x+.  
-
-
 # PHPRecipebook 5.0
 ---
 
@@ -18,107 +11,76 @@ Demo Videos:
 * <a href="https://youtu.be/zWtfNrYJJRk">Shopping</a>
 
 Features:
-* AJAX Page loads (so less refreshes/data between clicks)
-* Clean navigation
+* Recipe edit/create/view.
 * Meal Planner
-* Setup wizard is included and a complete migration script.
-* Integration PrestoFresh online grocery, ability to extend to other vendors.
-* Enhanced Password security encryption
-* More databases supported because of CakePHP abstraction.
-* Built using CakePHP
+* Restaurant List
+* Shopping Lists
+* Multi-User Support
+* Built using CakePHP v3
 
-Now that we are on GitHub contributions and collaboration should be must easier.  
-Look forward to anyone with some skills to jump in and keep this moving.
+# Heroku Deployment
 
-## Installation
-There are two ways to install PHPRecipebook. The first option is to use Git to get the code.  This option will allow for very easy upgrades but a little more 
-upfront effort. The second option is to simply download the tar.gz file and extract.  This option is very easy upfront but upgrades will require 
-more effort copying files around.
+The fastest way to get running is using a provider like Heroku.
 
-## Git Install Option
-* Clone 'PHPRecipebook' repository.
-* Get PHP Composer installed. https://getcomposer.org/download/.  Composer is used to manage dependencies and make upgrading CakePHP easier.
-* Run 'php composer.phar install' in the application directory to get CakePHP and check dependencies.
-* To upgrade later simply run 'git pull'. Resolve merge conflicts if needed.
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-## Download Install Option
-* Download latest release from https://github.com/nazgul26/PHPRecipebook/releases
-* Extract files to your web folder. 
++ Create a Heroku Account if you don't already have one
++ Set the variables when prompted before deploying.
++ Configure the 'Deploy' tab in Heroku to integrate with GitHub for updates - https://devcenter.heroku.com/articles/github-integration
 
-## Setup Directions for all
-* Ensure you have the following PHP Modules installed: mcrypt, gd. And mysql, pgsql or your DB.
-* Create a new database to store the application in. i.e. recipebook
-* Edit Configuration DB Configuration Settings <app dir>/Config/database.php to match your database settings. 
-* Edit <app dir/Config/core.php and set your language if other than English.  Go to translations below if not available.
-* Make the <app install dir>/temp folder in the application writable for web user.  example:
-    - sudo chown -R apache.apache tmp
+The default login of the application is --
+
+User:admin
+Password: passwd
+**CHANGE THE PASSWORD** of your application after login.
+
+
+That is it.  You can then start adding ingredients and recipes.
+
+## Server Install
+
+The second and very common way to run a PHP application is paying for hosting a traditional web hosting provider.  This would provide a fixed cost each month to run your application.  Most likely the basic level of hosting on many providers will be sufficient for many years of growing your business.  We would recommend SiteGround (https://www.siteground.com/) if you don't have a preference to start with.
+
+To start you will need to have:
+    + PHP 7 (or higher) with ext-dom (sudo apt install php-xml)
+    + MySQL with a local db user created.
+
+Create a configuration file config/.env
+
+with contents (modify to fit your needs):
+
+```
+
+export APP_NAME="PHPRecipeBook"
+export ALLOW_PUBLIC_ACCOUNT_CREATION = "false"
+export PRIVATE_COLLECTION = "false"
+export DEBUG="false"
+export APP_ENCODING="UTF-8"
+export APP_DEFAULT_LOCALE="en_US"
+export APP_DEFAULT_TIMEZONE="UTC"
+export SECURITY_SALT="------ CHANGE TO RANDOM STRING ----------------------------"
+export DATABASE_URL="mysql://dbname:password@localhost/phprecipebook?encoding=utf8&timezone=UTC&cacheMetadata=true&quoteIdentifiers=false&persistent=false"
+export EMAIL_TRANSPORT_DEFAULT_URL="smtp://my@gmail.com:secret@smtp.gmail.com:587?tls=true"
+
+```
+### Directory Permissions
+
+* Make the <app install dir>/temp and logs folder in the application writable for web user.  example:
+    - sudo chown -R www-data.www-data tmp
+    - sudo chown -R www-data.www-data logs
+
   If you don't make <app install dir>/tmp writable by the web user the app will not run!
-* For File uploads:
-    - mkdir <app install dir>/webroot/files/recipe
-    - sudo chown <your web group>.<your web user> <app install dir>/webroot/files/recipe
-* Launch the website and complete steps in wizard.
 
----
-## Upgrades in 5.x Series
-Between releases you can update your database by running 
-* Get latest release (git or Release download).
-* ./Console/cake schema update 
-* removing all files from ./tmp/cache/models
+### Database Setup
 
-## Heroku Deployment
+Create your mysql/postgresql Db.  For example 'phprecipebook'.  Then run:
 
-* Clone PHPRecipebook to your computer.
-* Create an account on heroku and step through their tutorial if you have never done so before.
-* In the PHPRecipebook local repo run: heroku create
-* Run: heroku addons:add heroku-postgresql:hobby-dev
-    - More info at: https://devcenter.heroku.com/articles/heroku-postgresql
-* edit Config/database.php and put in commented out heroku config, remove block for normal db config.
-* edit .gitignore and remove 'Config/database.php' line to allow 
-* commit changes (git)
-* git push heroku master
-* heroku open
-* heroku run bash
-    - (then follow setup directions for): ./Console/cake schema create
-* modify core.php and change setup to false. Commit.
-    - git push heroku master
-* reload web page and then login with your password that you set during the setup of the app.
+./bin/deploy.sh 
 
-## Troubleshooting
-* App does not load:
-  - Solution 1: Check the temp directory is writable by the web user.  Try giving world r/w to rule out this (put back after done).
-  - Solution 2: Your webserver does not support url rewriting.  Follow the directions http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration to change app to not use rewriting.
-* You get this error: Warning: include(/<some path>/Vendor/cakephp/cakephp/lib/Cake/Error/ErrorHandler.php): failed to open stream: 
-  - Solution: Clear the ./tmp/cache/models, ./tmp/cache/persistent directories.  These folders keep path info in them so if the path the app runs from changes the cache has to be cleared.
-* Page loads but is missing images.
-  - Solution: Check your apache configuration to ensure it allows overrides and mod_rewrite is installed.  The .htaccess files are not properly working and rewriting the URL.  You know this is working when the images load
- on the login page.
+From the directory that the app was extracted to.  If you get any db errors double check you .env values.
 
-## Translations
-If your local language is not yet translated I can run it up against Google Translate API.  Please star the project (show you care) and submit an 'Issue' to translate.
+### Local Development
 
-If you are interested in performing a translation/corrections then here are some basic steps to follow:
-
-* Install Poedit (http://poedit.net/).  This is an Open Source tool that will help in translations. Hint for Ubuntu installs -  sudo apt-get install poedit
-* Open the <app dir>/Locale/default.pot in Poedit and translate
-* When done save in Locale\<lang code>\LC_MESSAGES\default.po
-
-### Currently Supported Languages / Translation Code
-* Chinese - zho
-* Danish - dan
-* Dutch - nld
-* English - eng
-* Estonian - est
-* French - fra
-* German - deu
-* Hungarian - hun
-* Italian - ita
-* Japanese - jpn
-* Korean - kor
-* Norwegian - nor
-* Portuguese - por
-* Turkish - tur
-* Serbian - srp
-* Spanish - spa
-* Swedish - swe
+Edit the ./.htaccess file and comment out the https redirect lines.
 
 
