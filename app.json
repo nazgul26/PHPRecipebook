@@ -1,7 +1,7 @@
 {
     "name": "PHPRecipeBook",
     "description": "Cookbook and Meal Planning Web Application.",
-    "addons": ["cleardb:ignite"],
+    "addons": ["heroku-postgresql:hobby-dev"],
     "scripts": {
         "postdeploy": "bin/deploy.sh"
     },

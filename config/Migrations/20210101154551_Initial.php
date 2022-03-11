@@ -208,12 +208,6 @@ class Initial extends AbstractMigration
                 ],
                 ['unique' => true]
             )
-            ->addIndex(
-                [
-                    'name',
-                ],
-                ['unique' => true]
-            )
             ->create();
 
         $this->table('meal_plans')
@@ -370,7 +364,6 @@ class Initial extends AbstractMigration
             ])
             ->addColumn('picture', 'blob', [
                 'default' => null,
-                'limit' => 16777215,
                 'null' => true,
             ])
             ->addColumn('picture_type', 'string', [
@@ -466,7 +459,6 @@ class Initial extends AbstractMigration
             ])
             ->addColumn('picture', 'blob', [
                 'default' => null,
-                'limit' => 16777215,
                 'null' => true,
             ])
             ->addColumn('picture_type', 'string', [
@@ -765,18 +757,6 @@ class Initial extends AbstractMigration
             ->addIndex(
                 [
                     'email',
-                ],
-                ['unique' => true]
-            )
-            ->addIndex(
-                [
-                    'email',
-                ],
-                ['unique' => true]
-            )
-            ->addIndex(
-                [
-                    'username',
                 ],
                 ['unique' => true]
             )
