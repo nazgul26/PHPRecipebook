@@ -99,29 +99,6 @@ class MealPlansController extends AppController
         $this->set('mealPlan', $mealPlan);
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $mealPlan = $this->MealPlans->newEntity();
-        if ($this->request->is('post')) {
-            $mealPlan = $this->MealPlans->patchEntity($mealPlan, $this->request->getData());
-            if ($this->MealPlans->save($mealPlan)) {
-                $this->Flash->success(__('The meal plan has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The meal plan could not be saved. Please, try again.'));
-        }
-        $mealNames = $this->MealPlans->MealNames->find('list', ['limit' => 200]);
-        $recipes = $this->MealPlans->Recipes->find('list', ['limit' => 200]);
-        $users = $this->MealPlans->Users->find('list', ['limit' => 200]);
-        $this->set(compact('mealPlan', 'mealNames', 'recipes', 'users'));
-    }
-
     public function edit($id = null, $mealDate=null) {
         if ($id == "undefined") $id = null;
         
@@ -149,10 +126,9 @@ class MealPlansController extends AppController
             
             // Any additional 'repeat' days. Aka Leftovers
             list($year, $month, $day) = explode("-",$mealDate);
-            print_r($requestData);
+
             $requestData['id'] = "";
             for ($repeatForDays = ($requestData['days'] - 1); $repeatForDays > 0; $repeatForDays--) {
-                echo "Days : " . $repeatForDays . "<br>";
                 list($day, $month, $year) = $this->MealPlan->getNextDay($day, $month, $year);
                 if (isset($this->request->data['skip']) && $this->request->data['skip'] == "1") {
                     list($day, $month, $year) = $this->MealPlans->getNextDay($day, $month, $year);
@@ -177,14 +153,6 @@ class MealPlansController extends AppController
         $this->set(compact('mealNames', 'mealPlan', 'mealDate'));
     }
 
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Meal Plan id.
-     * @return \Cake\Http\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
@@ -197,6 +165,56 @@ class MealPlansController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function addToShoppingList($date) {
+        if ($date == null) {
+            throw new BadRequestException(__('Start date not defined'));
+        }   
+        $this->loadModel('ShoppingLists');
+        $this->MealPlans->InitDate($date, $this->Auth->user('meal_plan_start_day'));
+        $weekList = $this->MealPlans->getWeekDaysList();
+        $meals = $this->getMeals($weekList);
+        
+        $userId = $this->Auth->user('id');
+        $list = $this->ShoppingLists->getList($userId);
+        $listId = $list->id;
+        $listItems = [];
+        foreach ($meals as $item) {
+            $recipeId = $item->recipe_id;
+            $servings = $item->servings;
+            if (isset($listItems[$recipeId])) {
+                $listItems[$recipeId]['servings'] += $servings;
+            } else {
+                $listItems[$recipeId] = [ 'servings' => $servings, 'id' => $recipeId];
+            }
+        }
+        
+        foreach ($listItems as $item) {
+            $listItem = $this->ShoppingLists->ShoppingListRecipes->newEntity();
+            $listItem->shopping_list_id = $listId;
+            $listItem->recipe_id = $item['id'];
+            $listItem->servings = $item['servings'];
+            $listItem->user_id = $userId;
+    
+            //Patch vs Add
+            //$item = $this->ShoppingListRecipes->patchEntity($item, $newData);
+            $saveOk = $this->ShoppingLists->ShoppingListRecipes->save($listItem);
+            
+            /*$this->ShoppingLists->ShoppingListRecipes->addToShoppingList(
+                    $listId, 
+                    $item['id'], 
+                    $item['servings'], 
+                    $userId)*/
+
+            if ($saveOk) {
+                $this->Flash->success(__('Meal(s) added to shopping list.'));
+            } else {
+                $this->Flash->error(__('Meal(s) could not be added to shopping list. Please, try again.'));
+            }
+        }
+        return $this->redirect(array('controller' => 'shoppingLists', 'action' => 'index'));
+    }
+
 
     private function getMeals($weekList) {
         $start = $weekList[0][2] . "-" . $weekList[0][1] . "-" . $weekList[0][0];

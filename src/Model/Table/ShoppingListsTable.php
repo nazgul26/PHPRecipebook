@@ -89,14 +89,14 @@ class ShoppingListsTable extends Table
         return $rules;
     }
 
-    public function getDefaultListId($userId) {
+    /*public function getDefaultListId($userId) {
         $listId = $this->field('id', array('user_id' => $userId, 'name' => __('DEFAULT')));
         if (!isset($listId) || $listId == "") {
             $list = $this->getList($user);
             $listId = $list['ShoppingList']['id'];
         }
         return $listId;
-    }
+    }*/
     
     public function getList($userId, $listId=null) {
         $options = array(
