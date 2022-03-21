@@ -129,7 +129,7 @@ class MealPlansController extends AppController
 
             $requestData['id'] = "";
             for ($repeatForDays = ($requestData['days'] - 1); $repeatForDays > 0; $repeatForDays--) {
-                list($day, $month, $year) = $this->MealPlan->getNextDay($day, $month, $year);
+                list($day, $month, $year) = $this->MealPlans->getNextDay($day, $month, $year);
                 if (isset($this->request->data['skip']) && $this->request->data['skip'] == "1") {
                     list($day, $month, $year) = $this->MealPlans->getNextDay($day, $month, $year);
                 }
@@ -138,7 +138,7 @@ class MealPlansController extends AppController
                 $requestData['mealday'] = $year . "-" . $month . "-" . $day;
                 $mealPlan = $this->MealPlans->patchEntity($mealPlan, $requestData);
                 
-                if (!$this->MealPlan->save($mealPlan)) {
+                if (!$this->MealPlans->save($mealPlan)) {
                     $allSuccessful = false;
                 }
             }
