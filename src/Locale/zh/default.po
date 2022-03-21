@@ -1,0 +1,2007 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Config/Schema/schema.php:19
+msgid "Beef"
+msgstr "牛肉"
+
+#: Config/Schema/schema.php:20;74
+msgid "Bread"
+msgstr "面包"
+
+#: Config/Schema/schema.php:21
+msgid "Egg"
+msgstr "鸡蛋"
+
+#: Config/Schema/schema.php:22
+msgid "Fruit"
+msgstr "水果"
+
+#: Config/Schema/schema.php:23
+msgid "Grain"
+msgstr "粮食"
+
+#: Config/Schema/schema.php:24
+msgid "Lamb"
+msgstr "羊肉"
+
+#: Config/Schema/schema.php:25
+msgid "Other"
+msgstr "其他"
+
+#: Config/Schema/schema.php:26
+msgid "Pasta"
+msgstr "面食"
+
+#: Config/Schema/schema.php:27
+msgid "Pork/Ham"
+msgstr "猪肉/火腿"
+
+#: Config/Schema/schema.php:28
+msgid "Poultry"
+msgstr "家禽"
+
+#: Config/Schema/schema.php:29;106
+msgid "Seafood"
+msgstr "海鲜"
+
+#: Config/Schema/schema.php:30
+msgid "Vegetable"
+msgstr "蔬菜"
+
+#: Config/Schema/schema.php:35;115
+#: View/MealPlans/index.ctp:81
+msgid "Breakfast"
+msgstr "早餐"
+
+#: Config/Schema/schema.php:36
+msgid "Snack"
+msgstr "小吃"
+
+#: Config/Schema/schema.php:37;116
+#: View/MealPlans/index.ctp:82
+msgid "Lunch"
+msgstr "午餐"
+
+#: Config/Schema/schema.php:38
+msgid "Appetizer"
+msgstr "开胃菜"
+
+#: Config/Schema/schema.php:39
+msgid "Side Dish"
+msgstr "小菜"
+
+#: Config/Schema/schema.php:40
+msgid "Entree"
+msgstr "主菜"
+
+#: Config/Schema/schema.php:41;118
+#: View/MealPlans/index.ctp:84
+msgid "Dessert"
+msgstr "甜点"
+
+#: Config/Schema/schema.php:42
+msgid "Beverage"
+msgstr "饮料"
+
+#: Config/Schema/schema.php:48
+msgid "Easy"
+msgstr "易"
+
+#: Config/Schema/schema.php:49
+msgid "Intermediate"
+msgstr "中间"
+
+#: Config/Schema/schema.php:50
+msgid "Difficult"
+msgstr "难"
+
+#: Config/Schema/schema.php:51
+msgid "Expert"
+msgstr "专家"
+
+#: Config/Schema/schema.php:56
+msgid "American"
+msgstr "美国"
+
+#: Config/Schema/schema.php:57
+msgid "Chinese"
+msgstr "中国"
+
+#: Config/Schema/schema.php:58
+msgid "German"
+msgstr "德国"
+
+#: Config/Schema/schema.php:59
+msgid "Greek"
+msgstr "希腊人"
+
+#: Config/Schema/schema.php:60
+msgid "Indian"
+msgstr "印度人"
+
+#: Config/Schema/schema.php:61
+msgid "Italian"
+msgstr "意大利"
+
+#: Config/Schema/schema.php:62
+msgid "Japanese"
+msgstr "日本"
+
+#: Config/Schema/schema.php:63
+msgid "Mexican"
+msgstr "墨西哥人"
+
+#: Config/Schema/schema.php:64
+msgid "Middle Eastern"
+msgstr "中东"
+
+#: Config/Schema/schema.php:65
+msgid "None"
+msgstr "无"
+
+#: Config/Schema/schema.php:66
+msgid "Slavic"
+msgstr "斯拉夫"
+
+#: Config/Schema/schema.php:71
+msgid "Alcohol"
+msgstr "酒精"
+
+#: Config/Schema/schema.php:72
+msgid "Bakery"
+msgstr "面包店"
+
+#: Config/Schema/schema.php:73
+msgid "Beans"
+msgstr "豆子"
+
+#: Config/Schema/schema.php:75
+msgid "Candy"
+msgstr "糖果"
+
+#: Config/Schema/schema.php:76
+msgid "Canned Fruit"
+msgstr "水果罐头"
+
+#: Config/Schema/schema.php:77
+msgid "Canned Meat & Fish"
+msgstr "罐头肉类和鱼类"
+
+#: Config/Schema/schema.php:78
+msgid "Canned Vegetables"
+msgstr "蔬菜罐头"
+
+#: Config/Schema/schema.php:79
+msgid "Coffee, Tea & Cocoa"
+msgstr "咖啡，茶，可可"
+
+#: Config/Schema/schema.php:80
+msgid "Condiments"
+msgstr "调味品"
+
+#: Config/Schema/schema.php:81
+msgid "Cookies"
+msgstr "曲奇饼"
+
+#: Config/Schema/schema.php:82
+msgid "Crackers"
+msgstr "饼干"
+
+#: Config/Schema/schema.php:83
+msgid "Dairy"
+msgstr "乳制品"
+
+#: Config/Schema/schema.php:84
+msgid "Deli"
+msgstr "熟食店"
+
+#: Config/Schema/schema.php:85
+msgid "Drink mix"
+msgstr "混合饮料"
+
+#: Config/Schema/schema.php:86
+msgid "Facial Tissue"
+msgstr "面纸"
+
+#: Config/Schema/schema.php:87
+msgid "Free"
+msgstr "免费"
+
+#: Config/Schema/schema.php:88
+msgid "Frozen Foods"
+msgstr "冷冻食品"
+
+#: Config/Schema/schema.php:89
+msgid "HABA"
+msgstr "HABA"
+
+#: Config/Schema/schema.php:90
+msgid "Hand Soap"
+msgstr "洗手液"
+
+#: Config/Schema/schema.php:91
+msgid "Hot & Cold Cereal"
+msgstr "冷热谷物"
+
+#: Config/Schema/schema.php:92
+msgid "Household Cleaners"
+msgstr "家用清洁剂"
+
+#: Config/Schema/schema.php:93
+msgid "Juice & Cocktail"
+msgstr "果汁和鸡尾酒"
+
+#: Config/Schema/schema.php:94
+msgid "Kosher/Ethnic"
+msgstr "犹太/民族"
+
+#: Config/Schema/schema.php:95
+msgid "Laundry Detergents"
+msgstr "洗涤剂"
+
+#: Config/Schema/schema.php:96
+msgid "Meat"
+msgstr "肉"
+
+#: Config/Schema/schema.php:97
+msgid "Natural & Organic"
+msgstr "天然及有机"
+
+#: Config/Schema/schema.php:98
+msgid "Oil/Vinegar/Dressings"
+msgstr "油/醋/敷料"
+
+#: Config/Schema/schema.php:99
+msgid "Pancakes & Syrup"
+msgstr "煎饼糖浆及"
+
+#: Config/Schema/schema.php:100
+msgid "Paper Serving Ware"
+msgstr "纸制品服务"
+
+#: Config/Schema/schema.php:101
+msgid "Pasta & Sauce"
+msgstr "面食和酱"
+
+#: Config/Schema/schema.php:102
+msgid "Peanut Butter/Jelly/Honey"
+msgstr "花生酱/果冻/蜂蜜"
+
+#: Config/Schema/schema.php:103
+msgid "Produce"
+msgstr "生产"
+
+#: Config/Schema/schema.php:104
+msgid "Rice"
+msgstr "饭"
+
+#: Config/Schema/schema.php:105
+msgid "Salty Snacks & Chips"
+msgstr "咸味零食和薯片"
+
+#: Config/Schema/schema.php:107
+msgid "Soda pop"
+msgstr "苏打水"
+
+#: Config/Schema/schema.php:108
+msgid "Soup"
+msgstr "汤"
+
+#: Config/Schema/schema.php:109
+msgid "Spices"
+msgstr "香料"
+
+#: Config/Schema/schema.php:110
+msgid "Toilet Paper"
+msgstr "卫生纸"
+
+#: Config/Schema/schema.php:117
+#: View/MealPlans/index.ctp:83
+msgid "Dinner"
+msgstr "晚餐"
+
+#: Config/Schema/schema.php:123
+msgid "Slow cooker"
+msgstr "慢炖锅"
+
+#: Config/Schema/schema.php:124
+msgid "Microwave"
+msgstr "微波"
+
+#: Config/Schema/schema.php:125
+msgid "BBQ"
+msgstr "BBQ"
+
+#: Config/Schema/schema.php:126
+msgid "Canning"
+msgstr "罐头制造"
+
+#: Config/Schema/schema.php:131
+msgid "0 Minutes"
+msgstr "0分钟"
+
+#: Config/Schema/schema.php:132
+msgid "1-10 Minutes"
+msgstr "1-10分钟"
+
+#: Config/Schema/schema.php:133
+msgid "10-30 Minutes"
+msgstr "10-30分钟"
+
+#: Config/Schema/schema.php:134
+msgid "30-60 Minutes"
+msgstr "30-60分钟"
+
+#: Config/Schema/schema.php:135
+msgid "60+ Minutes"
+msgstr "60+分钟"
+
+#: Config/Schema/schema.php:140
+msgid "$0-$10"
+msgstr "$ 0-10美元"
+
+#: Config/Schema/schema.php:141
+msgid "$10-$15"
+msgstr "10到15美元"
+
+#: Config/Schema/schema.php:142
+msgid "$15-$20"
+msgstr "$ 1520美元"
+
+#: Config/Schema/schema.php:143
+msgid "$20-$25"
+msgstr "$ 20-25美元"
+
+#: Config/Schema/schema.php:144
+msgid "$25-$30"
+msgstr "$ 25-30美元"
+
+#: Config/Schema/schema.php:145
+msgid "$30+"
+msgstr "30美元+"
+
+#: Config/Schema/schema.php:158
+#: View/Layouts/default.ctp:124
+#: View/ShoppingLists/instore.ctp:38
+#: View/ShoppingLists/online.ctp:95
+#: View/ShoppingLists/select.ctp:48
+msgid "Unit"
+msgstr "单元"
+
+#: Config/Schema/schema.php:159
+msgid "Slice"
+msgstr "片"
+
+#: Config/Schema/schema.php:160
+msgid "Clove"
+msgstr "丁香"
+
+#: Config/Schema/schema.php:161
+msgid "Pinch"
+msgstr "掐"
+
+#: Config/Schema/schema.php:162
+msgid "Package"
+msgstr "包"
+
+#: Config/Schema/schema.php:163
+msgid "Can"
+msgstr "可以"
+
+#: Config/Schema/schema.php:164
+msgid "Drop"
+msgstr "降"
+
+#: Config/Schema/schema.php:165
+msgid "Bunch"
+msgstr "束"
+
+#: Config/Schema/schema.php:166
+msgid "Dash"
+msgstr "短跑"
+
+#: Config/Schema/schema.php:167
+msgid "Carton"
+msgstr "纸板箱"
+
+#: Config/Schema/schema.php:168
+msgid "Cup"
+msgstr "杯"
+
+#: Config/Schema/schema.php:169
+msgid "Tablespoon"
+msgstr "汤匙"
+
+#: Config/Schema/schema.php:170
+msgid "Teaspoon"
+msgstr "茶匙"
+
+#: Config/Schema/schema.php:171
+msgid "Pound"
+msgstr "英镑"
+
+#: Config/Schema/schema.php:172
+msgid "Ounce"
+msgstr "盎司"
+
+#: Config/Schema/schema.php:173
+msgid "Pint"
+msgstr "品脱"
+
+#: Config/Schema/schema.php:174
+msgid "Quart"
+msgstr "夸脱"
+
+#: Config/Schema/schema.php:175
+msgid "Gallon"
+msgstr "加仑"
+
+#: Config/Schema/schema.php:176
+msgid "Milligram"
+msgstr "毫克"
+
+#: Config/Schema/schema.php:177
+msgid "Centigram"
+msgstr "厘克"
+
+#: Config/Schema/schema.php:178
+msgid "Gram"
+msgstr "克"
+
+#: Config/Schema/schema.php:179
+msgid "Kilogram"
+msgstr "公斤"
+
+#: Config/Schema/schema.php:180
+msgid "Milliliter"
+msgstr "毫升"
+
+#: Config/Schema/schema.php:181
+msgid "Centiliter"
+msgstr "厘升"
+
+#: Config/Schema/schema.php:182
+msgid "Liter"
+msgstr "升"
+
+#: Config/Schema/schema.php:183
+msgid "Deciliter"
+msgstr "公合"
+
+#: Config/Schema/schema.php:184
+msgid "Tablespoon_m"
+msgstr "Tablespoon_m"
+
+#: Config/Schema/schema.php:185
+msgid "Teaspoon_m"
+msgstr "Teaspoon_m"
+
+#: Controller/AppController.php:89
+msgid "Not Authorized."
+msgstr "未经授权。"
+
+#: Controller/BaseTypesController.php:41;66
+msgid "Invalid base type"
+msgstr "无效的基本类型"
+
+#: Controller/BaseTypesController.php:45
+msgid "The base type has been saved."
+msgstr "基本类型已保存。"
+
+#: Controller/BaseTypesController.php:48
+msgid "The base type could not be saved. Please, try again."
+msgstr "基本类型无法保存。请重试。"
+
+#: Controller/BaseTypesController.php:70
+msgid "The base type has been deleted."
+msgstr "基类型已被删除。"
+
+#: Controller/BaseTypesController.php:72
+msgid "The base type could not be deleted. Please, try again."
+msgstr "基本类型无法删除。请重试。"
+
+#: Controller/CoreIngredientsController.php:43;59;84
+msgid "Invalid core ingredient"
+msgstr "无效的核心因素"
+
+#: Controller/CoreIngredientsController.php:63
+msgid "The core ingredient has been saved."
+msgstr "核心成分已保存。"
+
+#: Controller/CoreIngredientsController.php:66
+msgid "The core ingredient could not be saved. Please, try again."
+msgstr "核心成分无法被保存。请重试。"
+
+#: Controller/CoreIngredientsController.php:88
+msgid "The core ingredient has been deleted."
+msgstr "芯成分已被删除。"
+
+#: Controller/CoreIngredientsController.php:90
+msgid "The core ingredient could not be deleted. Please, try again."
+msgstr "核心成分不能被删除。请重试。"
+
+#: Controller/CoursesController.php:37;62
+msgid "Invalid course"
+msgstr "当然无效"
+
+#: Controller/CoursesController.php:41
+msgid "The course has been saved."
+msgstr "该课程已保存。"
+
+#: Controller/CoursesController.php:44
+msgid "The course could not be saved. Please, try again."
+msgstr "该课程无法保存。请重试。"
+
+#: Controller/CoursesController.php:66
+msgid "The course has been deleted."
+msgstr "该课程已被删除。"
+
+#: Controller/CoursesController.php:68
+msgid "The course could not be deleted. Please, try again."
+msgstr "该课程不能删除。请重试。"
+
+#: Controller/DifficultiesController.php:37;62
+msgid "Invalid difficulty"
+msgstr "难度无效"
+
+#: Controller/DifficultiesController.php:41
+msgid "The difficulty has been saved."
+msgstr "困难已保存。"
+
+#: Controller/DifficultiesController.php:44
+msgid "The difficulty could not be saved. Please, try again."
+msgstr "困难无法保存。请重试。"
+
+#: Controller/DifficultiesController.php:66
+msgid "The difficulty has been deleted."
+msgstr "难度已被删除。"
+
+#: Controller/DifficultiesController.php:68
+msgid "The difficulty could not be deleted. Please, try again."
+msgstr "困难无法删除。请重试。"
+
+#: Controller/EthnicitiesController.php:43;58;83
+msgid "Invalid ethnicity"
+msgstr "种族无效"
+
+#: Controller/EthnicitiesController.php:62
+msgid "The ethnicity has been saved."
+msgstr "族裔已保存。"
+
+#: Controller/EthnicitiesController.php:65
+msgid "The ethnicity could not be saved. Please, try again."
+msgstr "族裔无法保存。请重试。"
+
+#: Controller/EthnicitiesController.php:87
+msgid "The ethnicity has been deleted."
+msgstr "该种族已被删除。"
+
+#: Controller/EthnicitiesController.php:89
+msgid "The ethnicity could not be deleted. Please, try again."
+msgstr "族裔无法删除。请重试。"
+
+#: Controller/ImportController.php:22
+msgid "Could not open uploaded file, please try again."
+msgstr "无法打开上传的文件，请重试。"
+
+#: Controller/IngredientsController.php:38
+msgid "Not Ingredient Owner"
+msgstr "没有业主成分"
+
+#: Controller/IngredientsController.php:67;93
+#: Controller/ShoppingListsController.php:118
+msgid "Invalid ingredient"
+msgstr "无效的成分"
+
+#: Controller/IngredientsController.php:74
+msgid "The ingredient has been saved."
+msgstr "该成分已保存。"
+
+#: Controller/IngredientsController.php:77
+msgid "The ingredient could not be saved. Please, try again."
+msgstr "成分无法被保存。请重试。"
+
+#: Controller/IngredientsController.php:97
+msgid "The ingredient has been deleted."
+msgstr "该成分已被删除。"
+
+#: Controller/IngredientsController.php:99
+msgid "The ingredient could not be deleted. Please, try again."
+msgstr "成分不能被删除。请重试。"
+
+#: Controller/LocationsController.php:44;69
+msgid "Invalid location"
+msgstr "无效的位置"
+
+#: Controller/LocationsController.php:48
+msgid "The location has been saved."
+msgstr "该位置已保存。"
+
+#: Controller/LocationsController.php:51
+msgid "The location could not be saved. Please, try again."
+msgstr "该位置无法被保存。请重试。"
+
+#: Controller/LocationsController.php:73
+msgid "The location has been deleted."
+msgstr "位置已被删除。"
+
+#: Controller/LocationsController.php:75
+msgid "The location could not be deleted. Please, try again."
+msgstr "该位置不能被删除。请重试。"
+
+#: Controller/MealPlansController.php:32
+msgid "Not meal owner"
+msgstr "不吃饭主人"
+
+#: Controller/MealPlansController.php:99;154
+msgid "Invalid meal plan"
+msgstr "无效的膳食计划"
+
+#: Controller/MealPlansController.php:126
+msgid "The meal plan has been saved."
+msgstr "膳食计划已保存。"
+
+#: Controller/MealPlansController.php:129
+msgid "The meal plan could not be saved. Please, try again."
+msgstr "膳食计划无法保存。请重试。"
+
+#: Controller/MealPlansController.php:158
+msgid "The meal plan has been deleted."
+msgstr "膳食计划已被删除。"
+
+#: Controller/MealPlansController.php:160
+msgid "The meal plan could not be deleted. Please, try again."
+msgstr "膳食计划无法删除。请重试。"
+
+#: Controller/MealPlansController.php:167
+msgid "Start date not defined"
+msgstr "开始日期没有定义"
+
+#: Controller/MealPlansController.php:194
+msgid "Meal(s) added to shopping list."
+msgstr "膳食（S）添加到购物清单。"
+
+#: Controller/MealPlansController.php:196
+msgid "Meal(s) could not be added to shopping list. Please, try again."
+msgstr "膳食（S）不能被添加到购物清单。请重试。"
+
+#: Controller/PreparationMethodsController.php:37;62
+msgid "Invalid preparation method"
+msgstr "无效的制备方法"
+
+#: Controller/PreparationMethodsController.php:41
+msgid "The preparation method has been saved."
+msgstr "其制备方法已保存。"
+
+#: Controller/PreparationMethodsController.php:44
+msgid "The preparation method could not be saved. Please, try again."
+msgstr "制备方法无法保存。请重试。"
+
+#: Controller/PreparationMethodsController.php:66
+msgid "The preparation method has been deleted."
+msgstr "的制备方法已被删除。"
+
+#: Controller/PreparationMethodsController.php:68
+msgid "The preparation method could not be deleted. Please, try again."
+msgstr "制备方法无法删除。请重试。"
+
+#: Controller/PreparationTimesController.php:38;63
+msgid "Invalid preparation time"
+msgstr "无效的准备时间"
+
+#: Controller/PreparationTimesController.php:42
+msgid "The preparation time has been saved."
+msgstr "准备时间已保存。"
+
+#: Controller/PreparationTimesController.php:45
+msgid "The preparation time could not be saved. Please, try again."
+msgstr "准备时间不能保存。请重试。"
+
+#: Controller/PreparationTimesController.php:67
+msgid "The preparation time has been deleted."
+msgstr "准备时间已被删除。"
+
+#: Controller/PreparationTimesController.php:69
+msgid "The preparation time could not be deleted. Please, try again."
+msgstr "准备时间无法删除。请重试。"
+
+#: Controller/PriceRangesController.php:44;69
+msgid "Invalid price range"
+msgstr "无效价格区间"
+
+#: Controller/PriceRangesController.php:48
+msgid "The price range has been saved."
+msgstr "价格区间已保存。"
+
+#: Controller/PriceRangesController.php:51
+msgid "The price range could not be saved. Please, try again."
+msgstr "价格区间无法保存。请重试。"
+
+#: Controller/PriceRangesController.php:73
+msgid "The price range has been deleted."
+msgstr "价格区间已被删除。"
+
+#: Controller/PriceRangesController.php:75
+msgid "The price range could not be deleted. Please, try again."
+msgstr "价格区间无法删除。请重试。"
+
+#: Controller/RecipesController.php:46
+msgid "Not Recipe Owner"
+msgstr "没有业主方"
+
+#: Controller/RecipesController.php:97;162;223
+#: Controller/ShoppingListsController.php:95
+msgid "Invalid recipe"
+msgstr "配方无效"
+
+#: Controller/RecipesController.php:169
+msgid "The recipe has been saved."
+msgstr "该配方已保存。"
+
+#: Controller/RecipesController.php:171
+msgid "The recipe could not be saved. Please, try again."
+msgstr "该配方无法保存。请重试。"
+
+#: Controller/RecipesController.php:199
+msgid "The ingredient has been removed."
+msgstr "的成分已被除去。"
+
+#: Controller/RecipesController.php:201
+msgid "The ingredient could not be removed. Please, try again."
+msgstr "成分不能被删除。请重试。"
+
+#: Controller/RecipesController.php:207
+msgid "The related recipe has been removed."
+msgstr "相关的配方已被删除。"
+
+#: Controller/RecipesController.php:209
+msgid "The related recipe could not be removed. Please, try again."
+msgstr "相关的配方不能被删除。请重试。"
+
+#: Controller/RecipesController.php:226
+msgid "The recipe has been deleted."
+msgstr "配方已被删除。"
+
+#: Controller/RecipesController.php:228
+msgid "The recipe could not be deleted. Please, try again."
+msgstr "该配方不能被删除。请重试。"
+
+#: Controller/RestaurantsController.php:44;72
+msgid "Invalid restaurant"
+msgstr "餐厅无效"
+
+#: Controller/RestaurantsController.php:48
+msgid "The restaurant has been saved."
+msgstr "该餐厅已保存。"
+
+#: Controller/RestaurantsController.php:51
+msgid "The restaurant could not be saved. Please, try again."
+msgstr "餐厅无法保存。请重试。"
+
+#: Controller/RestaurantsController.php:76
+msgid "The restaurant has been deleted."
+msgstr "该餐厅已被删除。"
+
+#: Controller/RestaurantsController.php:78
+msgid "The restaurant could not be deleted. Please, try again."
+msgstr "餐厅无法删除。请重试。"
+
+#: Controller/SetupController.php:36
+msgid "Password must have a value."
+msgstr "密码必须有一个值。"
+
+#: Controller/SetupController.php:42
+msgid "Password successfully saved"
+msgstr "密码保存成功"
+
+#: Controller/SetupController.php:46
+#: Controller/UsersController.php:192;234
+msgid "The user could not be saved. Please, try again."
+msgstr "用户无法保存。请重试。"
+
+#: Controller/SetupController.php:49
+#: Controller/UsersController.php:196;238
+msgid "Passwords did not match. Please, try again."
+msgstr "密码不匹配。请重试。"
+
+#: Controller/ShoppingListsController.php:32
+msgid "Not List Owner or Editor"
+msgstr "不是列表所有者或编辑"
+
+#: Controller/ShoppingListsController.php:43
+msgid "Invalid shopping list"
+msgstr "无效的购物清单"
+
+#: Controller/ShoppingListsController.php:48
+msgid "The shopping list has been saved."
+msgstr "购物清单已保存。"
+
+#: Controller/ShoppingListsController.php:51
+msgid "The shopping list name could not be saved. Please, try again."
+msgstr "购物清单的名称无法保存。请重试。"
+
+#: Controller/ShoppingListsController.php:67;82
+msgid "The item has been removed."
+msgstr "该项目已被删除。"
+
+#: Controller/ShoppingListsController.php:69;84
+msgid "The item could not be removed. Please, try again."
+msgstr "该项目不能被删除。请重试。"
+
+#: Controller/ShoppingListsController.php:72
+msgid "Invalid recipe item"
+msgstr "无效的配方项目"
+
+#: Controller/ShoppingListsController.php:87
+msgid "Invalid ingredient item"
+msgstr "无效的成分项目"
+
+#: Controller/ShoppingListsController.php:107
+msgid "Recipe added to list."
+msgstr "配方添加到列表中。"
+
+#: Controller/ShoppingListsController.php:109
+msgid "Unable to add recipe to list."
+msgstr "无法添加配方列出。"
+
+#: Controller/ShoppingListsController.php:131
+msgid "Ingredient added to list."
+msgstr "成分添加到列表中。"
+
+#: Controller/ShoppingListsController.php:134
+msgid "Unable to add ingredient to list."
+msgstr "无法添加成分列表。"
+
+#: Controller/ShoppingListsController.php:142;152;202
+msgid "Invalid list"
+msgstr "清单无效"
+
+#: Controller/ShoppingListsController.php:161
+msgid "Shopping done! List cleared."
+msgstr "购物完成！列表中清除。"
+
+#: Controller/SourcesController.php:37;52;79
+msgid "Invalid source"
+msgstr "源无效"
+
+#: Controller/SourcesController.php:56
+msgid "The source has been saved."
+msgstr "源已保存。"
+
+#: Controller/SourcesController.php:59
+msgid "The source could not be saved. Please, try again."
+msgstr "该人士无法保存。请重试。"
+
+#: Controller/SourcesController.php:83
+msgid "The source has been deleted."
+msgstr "源已被删除。"
+
+#: Controller/SourcesController.php:85
+msgid "The source could not be deleted. Please, try again."
+msgstr "该人士无法删除。请重试。"
+
+#: Controller/StoresController.php:21;39
+msgid "Invalid store"
+msgstr "店内无效"
+
+#: Controller/StoresController.php:25
+msgid "The store has been saved."
+msgstr "该店已保存。"
+
+#: Controller/StoresController.php:28
+msgid "The store could not be saved. Please, try again."
+msgstr "该店无法保存。请重试。"
+
+#: Controller/StoresController.php:43
+msgid "The store has been deleted."
+msgstr "该店已被删除。"
+
+#: Controller/StoresController.php:45
+msgid "The store could not be deleted. Please, try again."
+msgstr "该店无法删除。请重试。"
+
+#: Controller/UnitsController.php:44;59;84
+msgid "Invalid unit"
+msgstr "单位无效"
+
+#: Controller/UnitsController.php:63
+msgid "The unit has been saved."
+msgstr "该单位已保存。"
+
+#: Controller/UnitsController.php:66
+msgid "The unit could not be saved. Please, try again."
+msgstr "该单位无法保存。请重试。"
+
+#: Controller/UnitsController.php:88
+msgid "The unit has been deleted."
+msgstr "该单元已被删除。"
+
+#: Controller/UnitsController.php:90
+msgid "The unit could not be deleted. Please, try again."
+msgstr "该装置不能被删除。请重试。"
+
+#: Controller/UsersController.php:25
+msgid "Not Admininstrator"
+msgstr "不Admininstrator"
+
+#: Controller/UsersController.php:34
+msgid "Not allowed to edit another user."
+msgstr "不能编辑其他用户。"
+
+#: Controller/UsersController.php:48
+msgid "Your account is currently locked. Use the password reset link to reset your password."
+msgstr "您的帐户目前被锁定。使用密码重置链接重设密码。"
+
+#: Controller/UsersController.php:64
+msgid "Invalid username or password, try again"
+msgstr "无效的用户名或密码，再试一次"
+
+#: Controller/UsersController.php:69
+msgid "Logged out."
+msgstr "注销。"
+
+#: Controller/UsersController.php:95
+msgid "Your reset email is on the way!"
+msgstr "您重置电子邮件是在路上！"
+
+#: Controller/UsersController.php:98
+msgid "Could not send a reset email. Please contact support."
+msgstr "无法发送重置电子邮件。请联系技术支持。"
+
+#: Controller/UsersController.php:100
+msgid "Could not find your email address, try again."
+msgstr "找不到您的电子邮件地址，然后重试。"
+
+#: Controller/UsersController.php:115
+msgid "Passwords are not set to same value. Please, try again."
+msgstr "密码不能设置为相同的值。请重试。"
+
+#: Controller/UsersController.php:121
+msgid "A new password is required. Please, try again."
+msgstr "需要一个新的密码。请重试。"
+
+#: Controller/UsersController.php:130
+msgid "Password successfully reset. Login with your new password to continue."
+msgstr "密码重置成功。登录与您的新密码以继续。"
+
+#: Controller/UsersController.php:133
+msgid "The password could not be saved. Please, try again."
+msgstr "该密码无法被保存。请重试。"
+
+#: Controller/UsersController.php:143
+msgid "Could not find reset information. Please try again."
+msgstr "找不到复位信息。请重试。"
+
+#: Controller/UsersController.php:165;221;257
+msgid "Invalid user"
+msgstr "用户无效"
+
+#: Controller/UsersController.php:188
+msgid "The user has been saved."
+msgstr "该用户已被保存。"
+
+#: Controller/UsersController.php:231
+msgid "Settings saved.  Logout/Sign In maybe required for settings to take effect."
+msgstr "设置保存。注销/登录也许需要设置生效。"
+
+#: Controller/UsersController.php:261
+msgid "The user has been deleted."
+msgstr "用户已被删除。"
+
+#: Controller/UsersController.php:263
+msgid "The user could not be deleted. Please, try again."
+msgstr "用户无法删除。请重试。"
+
+#: Controller/Component/MealMasterComponent.php:99
+msgid "could not data file for reading"
+msgstr "读书不能数据文件"
+
+#: Model/Recipe.php:173
+msgid "This recipe could not be saved. Please try again"
+msgstr "这个配方不能保存。请重试"
+
+#: Model/ShoppingList.php:52;74;85
+msgid "DEFAULT"
+msgstr "DEFAULT"
+
+#: Plugin/Upload/Model/Behavior/UploadBehavior.php:1078
+msgid "No filename after parsing. Function %s returned an invalid filename"
+msgstr "解析后无文件名。功能％S返回了无效的文件名"
+
+#: View/BaseTypes/edit.ctp:12
+#: View/CoreIngredients/edit.ctp:14
+#: View/Courses/edit.ctp:12
+#: View/Difficulties/edit.ctp:12
+#: View/Ethnicities/edit.ctp:12
+#: View/Import/index.ctp:10
+#: View/Ingredients/edit.ctp:36
+#: View/Locations/edit.ctp:13
+#: View/MealPlans/edit.ctp:72
+#: View/PreparationMethods/edit.ctp:12
+#: View/PreparationTimes/edit.ctp:12
+#: View/PriceRanges/edit.ctp:12
+#: View/Recipes/edit.ctp:447
+#: View/Restaurants/edit.ctp:30
+#: View/Setup/password.ctp:24
+#: View/Sources/edit.ctp:14
+#: View/Stores/edit.ctp:12
+#: View/Units/edit.ctp:15
+#: View/Users/add.ctp:18
+#: View/Users/edit.ctp:45
+#: View/Users/reset_link.ctp:13
+msgid "Submit"
+msgstr "提交"
+
+#: View/BaseTypes/index.ctp:10
+msgid "Base Types"
+msgstr "基本类型"
+
+#: View/BaseTypes/index.ctp:13
+#: View/Recipes/index.ctp:61
+msgid "Add Base Type"
+msgstr "加入基本类型"
+
+#: View/BaseTypes/index.ctp:18
+#: View/CoreIngredients/index.ctp:26
+#: View/Courses/index.ctp:18
+#: View/Difficulties/index.ctp:19
+#: View/Ethnicities/index.ctp:19
+#: View/Ingredients/index.ctp:43
+#: View/Locations/index.ctp:20
+#: View/PreparationMethods/index.ctp:19
+#: View/PreparationTimes/index.ctp:19
+#: View/PriceRanges/index.ctp:20
+#: View/Recipes/index.ctp:80
+#: View/Restaurants/index.ctp:29
+#: View/Sources/index.ctp:19
+#: View/Stores/index.ctp:11
+#: View/Units/index.ctp:18
+#: View/Users/index.ctp:10
+msgid "Actions"
+msgstr "行动"
+
+#: View/BaseTypes/index.ctp:24
+#: View/CoreIngredients/index.ctp:33
+#: View/Courses/index.ctp:24
+#: View/Difficulties/index.ctp:25
+#: View/Ethnicities/index.ctp:25
+#: View/Ingredients/index.ctp:53
+#: View/Locations/index.ctp:26
+#: View/MealPlans/edit.ctp:68
+#: View/PreparationMethods/index.ctp:25
+#: View/PreparationTimes/index.ctp:25
+#: View/PriceRanges/index.ctp:26
+#: View/Recipes/edit.ctp:289
+#: View/Recipes/index.ctp:91
+#: View/Restaurants/index.ctp:45
+#: View/ShoppingLists/index.ctp:103;139
+#: View/Sources/index.ctp:26
+#: View/Stores/index.ctp:17
+#: View/Units/index.ctp:27
+#: View/Users/edit.ctp:5
+#: View/Users/index.ctp:23
+msgid "Edit"
+msgstr "编辑"
+
+#: View/BaseTypes/index.ctp:25
+#: View/CoreIngredients/index.ctp:34
+#: View/Courses/index.ctp:25
+#: View/Difficulties/index.ctp:26
+#: View/Ethnicities/index.ctp:26
+#: View/Ingredients/index.ctp:54
+#: View/Locations/index.ctp:27
+#: View/PreparationMethods/index.ctp:26
+#: View/PreparationTimes/index.ctp:26
+#: View/PriceRanges/index.ctp:27
+#: View/Recipes/edit.ctp:318;364;422
+#: View/Recipes/index.ctp:92
+#: View/Restaurants/index.ctp:46
+#: View/ShoppingLists/index.ctp:104;140
+#: View/Sources/index.ctp:27
+#: View/Stores/index.ctp:18
+#: View/Units/index.ctp:28
+#: View/Users/index.ctp:26
+msgid "Delete"
+msgstr "删除"
+
+#: View/BaseTypes/index.ctp:25
+#: View/Courses/index.ctp:25
+#: View/Difficulties/index.ctp:26
+#: View/Ethnicities/index.ctp:26
+#: View/PreparationMethods/index.ctp:26
+#: View/PreparationTimes/index.ctp:26
+#: View/Recipes/index.ctp:92
+#: View/Sources/index.ctp:27
+msgid "Are you sure you want to delete %s?"
+msgstr "你确定要删除％s吗？"
+
+#: View/BaseTypes/index.ctp:32
+#: View/CoreIngredients/index.ctp:43
+#: View/Courses/index.ctp:32
+#: View/Difficulties/index.ctp:33
+#: View/Ethnicities/index.ctp:34
+#: View/Ingredients/index.ctp:72
+#: View/Locations/index.ctp:35
+#: View/PreparationMethods/index.ctp:33
+#: View/PreparationTimes/index.ctp:33
+#: View/Recipes/index.ctp:108
+#: View/Restaurants/index.ctp:64
+#: View/Sources/index.ctp:35
+#: View/Stores/index.ctp:26
+#: View/Units/index.ctp:39
+#: View/Users/index.ctp:43
+msgid "Page {:page} of {:pages}"
+msgstr "页面{：PAGE} {的：页}"
+
+#: View/BaseTypes/index.ctp:36
+#: View/CoreIngredients/index.ctp:46
+#: View/Courses/index.ctp:35
+#: View/Difficulties/index.ctp:36
+#: View/Ethnicities/index.ctp:38
+#: View/Ingredients/index.ctp:76
+#: View/Locations/index.ctp:38
+#: View/PreparationMethods/index.ctp:37
+#: View/PreparationTimes/index.ctp:36
+#: View/PriceRanges/index.ctp:41
+#: View/Recipes/index.ctp:112
+#: View/Restaurants/index.ctp:67
+#: View/Sources/index.ctp:38
+#: View/Stores/index.ctp:31
+#: View/Units/index.ctp:43
+#: View/Users/index.ctp:48
+msgid "previous"
+msgstr "前"
+
+#: View/BaseTypes/index.ctp:38
+#: View/CoreIngredients/index.ctp:48
+#: View/Courses/index.ctp:37
+#: View/Difficulties/index.ctp:38
+#: View/Ethnicities/index.ctp:40
+#: View/Ingredients/index.ctp:78
+#: View/Locations/index.ctp:40
+#: View/PreparationMethods/index.ctp:39
+#: View/PreparationTimes/index.ctp:38
+#: View/PriceRanges/index.ctp:43
+#: View/Recipes/index.ctp:114
+#: View/Restaurants/index.ctp:69
+#: View/Sources/index.ctp:40
+#: View/Stores/index.ctp:33
+#: View/Units/index.ctp:45
+#: View/Users/index.ctp:50
+msgid "next"
+msgstr "下一个"
+
+#: View/CoreIngredients/index.ctp:12
+#: View/Layouts/default.ctp:125
+msgid "Core Ingredients"
+msgstr "核心成分"
+
+#: View/CoreIngredients/index.ctp:15
+#: View/Ingredients/index.ctp:33
+msgid "Add Core Ingredient"
+msgstr "添加核心因素"
+
+#: View/CoreIngredients/index.ctp:16
+msgid "List Ingredients"
+msgstr "配料清单"
+
+#: View/CoreIngredients/index.ctp:34
+#: View/PriceRanges/index.ctp:27
+#: View/Restaurants/index.ctp:46
+#: View/Stores/index.ctp:18
+#: View/Units/index.ctp:28
+#: View/Users/index.ctp:26
+#: View/Users/view.ctp:5
+msgid "Are you sure you want to delete # %s?"
+msgstr "你确定要删除＃％s吗？"
+
+#: View/Courses/index.ctp:10
+msgid "Courses"
+msgstr "培训班"
+
+#: View/Courses/index.ctp:13
+#: View/Recipes/index.ctp:63
+msgid "Add Course"
+msgstr "添加课程"
+
+#: View/Difficulties/index.ctp:11
+msgid "Difficulties"
+msgstr "困难"
+
+#: View/Difficulties/index.ctp:14
+#: View/Recipes/index.ctp:69
+msgid "Add Difficulty"
+msgstr "添加难度"
+
+#: View/Ethnicities/index.ctp:11
+msgid "Ethnicities"
+msgstr "种族"
+
+#: View/Ethnicities/index.ctp:14
+#: View/Recipes/index.ctp:59
+msgid "Add Ethnicity"
+msgstr "加入种族"
+
+#: View/Import/index.ctp:2
+msgid "Import Recipes"
+msgstr "进口食谱"
+
+#: View/Import/index.ctp:3
+msgid "To import a meal master format file, browse for it and press submit to import.  Duplicate recipes names will not be imported."
+msgstr "要导入主餐格式文件，浏览并点击提交进口。重复的食谱名称将不会被导入。"
+
+#: View/Import/index.ctp:5
+msgid "Imported ingredients that do not exactly match existing ingredient names will be created as new ingredients."
+msgstr "进口成分不完全匹配现有的成分名称将被创建为新的成分。"
+
+#: View/Ingredients/edit.ctp:30
+msgid "Location In Store"
+msgstr "位置在商店"
+
+#: View/Ingredients/edit.ctp:31
+msgid "Measurement Type"
+msgstr "测量类型"
+
+#: View/Ingredients/edit.ctp:32
+msgid "Solid/Liquid"
+msgstr "固体/液体"
+
+#: View/Ingredients/index.ctp:24
+#: View/Layouts/default.ctp:67
+#: View/Recipes/view.ctp:116;174
+msgid "Ingredients"
+msgstr "主料"
+
+#: View/Ingredients/index.ctp:27
+msgid "Add Ingredient"
+msgstr "添加成分"
+
+#: View/Ingredients/index.ctp:32
+msgid "List Core Ingredients"
+msgstr "列出核心成分"
+
+#: View/Ingredients/index.ctp:34
+msgid "List Locations"
+msgstr "目录位置"
+
+#: View/Ingredients/index.ctp:35
+msgid "Add Location"
+msgstr "添加位置"
+
+#: View/Ingredients/index.ctp:36
+msgid "List Units"
+msgstr "单位名单"
+
+#: View/Ingredients/index.ctp:37
+#: View/Units/index.ctp:13
+msgid "Add Unit"
+msgstr "添加设备"
+
+#: View/Ingredients/index.ctp:54
+#: View/Locations/index.ctp:27
+msgid "Are you sure you want to delete \"%s\"?"
+msgstr "要删除“％s”是吗？"
+
+#: View/Layouts/default.ctp:57
+msgid "Browse your recipes"
+msgstr "浏览你的食谱"
+
+#: View/Layouts/default.ctp:57
+#: View/Recipes/index.ctp:48
+msgid "Recipes"
+msgstr "食谱"
+
+#: View/Layouts/default.ctp:61
+msgid "Manage your meal plans"
+msgstr "管理你的膳食计划"
+
+#: View/Layouts/default.ctp:61
+msgid "Meal Planner"
+msgstr "膳食规划"
+
+#: View/Layouts/default.ctp:64
+msgid "Create or Edit a shopping list"
+msgstr "创建或编辑一个购物清单"
+
+#: View/Layouts/default.ctp:64
+#: View/ShoppingLists/index.ctp:66
+#: View/ShoppingLists/instore.ctp:19
+#: View/ShoppingLists/online.ctp:83
+#: View/ShoppingLists/select.ctp:37
+msgid "Shopping List"
+msgstr "购物清单"
+
+#: View/Layouts/default.ctp:67
+msgid "Ingredients used in recipes"
+msgstr "食谱中使用的原料"
+
+#: View/Layouts/default.ctp:71
+msgid "List of your restaurants"
+msgstr "你的餐馆列表"
+
+#: View/Layouts/default.ctp:71
+#: View/Restaurants/index.ctp:12
+msgid "Restaurants"
+msgstr "餐馆"
+
+#: View/Layouts/default.ctp:74
+msgid "Administer Users"
+msgstr "管理用户"
+
+#: View/Layouts/default.ctp:74
+#: View/Users/edit.ctp:4
+#: View/Users/index.ctp:2
+msgid "Users"
+msgstr "用户"
+
+#: View/Layouts/default.ctp:88
+msgid "Sign in with your existing account"
+msgstr "用您的现有帐户"
+
+#: View/Layouts/default.ctp:88
+msgid "Sign in"
+msgstr "登入"
+
+#: View/Layouts/default.ctp:93
+msgid "Create a new account"
+msgstr "创建一个新帐户"
+
+#: View/Layouts/default.ctp:93
+#: View/Users/add.ctp:4
+msgid "Create Account"
+msgstr "创建账户"
+
+#: View/Layouts/default.ctp:98
+msgid "Logout"
+msgstr "注销"
+
+#: View/Layouts/default.ctp:102
+msgid "Edit your Account settings"
+msgstr "编辑您的帐户设置"
+
+#: View/Layouts/default.ctp:122
+#: View/Recipes/edit.ctp:339
+msgid "Ingredient"
+msgstr "成分"
+
+#: View/Layouts/default.ctp:123
+msgid "Location"
+msgstr "地点"
+
+#: View/Layouts/default.ctp:126
+msgid "Restaurant"
+msgstr "餐厅"
+
+#: View/Layouts/default.ctp:127
+#: View/PriceRanges/index.ctp:11
+msgid "Price Ranges"
+msgstr "价格范围"
+
+#: View/Layouts/default.ctp:128
+#: View/Recipes/view.ctp:51
+msgid "Ethnicity"
+msgstr "种族"
+
+#: View/Layouts/default.ctp:129
+#: View/Recipes/view.ctp:56
+msgid "Base Type"
+msgstr "基本类型"
+
+#: View/Layouts/default.ctp:130
+#: View/Recipes/view.ctp:61
+msgid "Course"
+msgstr "课程"
+
+#: View/Layouts/default.ctp:131
+#: View/Recipes/view.ctp:66
+msgid "Preparation Time"
+msgstr "准备时间"
+
+#: View/Layouts/default.ctp:132
+msgid "Preparation Method"
+msgstr "制备方法"
+
+#: View/Layouts/default.ctp:133
+#: View/Recipes/view.ctp:71
+msgid "Difficulty"
+msgstr "困难"
+
+#: View/Layouts/default.ctp:134
+#: View/Recipes/view.ctp:89
+msgid "Source"
+msgstr "来源"
+
+#: View/Layouts/default.ctp:135
+msgid "Meal"
+msgstr "餐"
+
+#: View/Layouts/error.ctp:19
+msgid "PHPRecipebook Exception"
+msgstr "PHPRecipebook异常"
+
+#: View/Locations/index.ctp:12
+msgid "Locations"
+msgstr "地点"
+
+#: View/Locations/index.ctp:15
+msgid "New Location"
+msgstr "新位置"
+
+#: View/MealPlans/edit.ctp:17
+msgid "recipe serves"
+msgstr "配方供应"
+
+#: View/MealPlans/edit.ctp:49
+#: View/Recipes/edit.ctp:281
+msgid "Recipe"
+msgstr "食谱"
+
+#: View/MealPlans/edit.ctp:53
+msgid "Enter Recipe Name"
+msgstr "输入配方名"
+
+#: View/MealPlans/edit.ctp:62
+msgid "Every other day"
+msgstr "隔日"
+
+#: View/MealPlans/edit.ctp:66
+#: View/Recipes/index.ctp:89
+#: View/ShoppingLists/index.ctp:102
+#: View/Users/index.ctp:22
+msgid "View"
+msgstr "视图"
+
+#: View/MealPlans/index.ctp:16
+msgid "Meal Plan - Weekly"
+msgstr "膳食安排 - 每周"
+
+#: View/MealPlans/index.ctp:19
+msgid "Add to Shopping List"
+msgstr "添加到购物清单"
+
+#: View/MealPlans/index.ctp:32
+msgid "Today"
+msgstr "今天"
+
+#: View/MealPlans/index.ctp:64
+msgid "Are you sure you want to delete meal \"%s\"?"
+msgstr "要删除餐“％s”是吗？"
+
+#: View/PreparationMethods/index.ctp:11
+msgid "Preparation Methods"
+msgstr "制备方法"
+
+#: View/PreparationMethods/index.ctp:14
+#: View/Recipes/index.ctp:67
+msgid "Add Preparation Method"
+msgstr "加入制备方法"
+
+#: View/PreparationTimes/index.ctp:11
+msgid "Preparation Times"
+msgstr "准备时间"
+
+#: View/PreparationTimes/index.ctp:14
+#: View/Recipes/index.ctp:65
+msgid "Add Preparation Time"
+msgstr "加入准备时间"
+
+#: View/PriceRanges/index.ctp:15
+msgid "New Price Range"
+msgstr "全新价格区间"
+
+#: View/PriceRanges/index.ctp:36
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "页面{：PAGE} {的：页}，{显示：当前}记录出来{：数}总，开始记录{：}开始，结束于{：年底}"
+
+#: View/RecipeLinkBox/index.ctp:2
+msgid "Recipe Box"
+msgstr "食谱盒"
+
+#: View/RecipeLinkBox/index.ctp:4
+msgid "By Course"
+msgstr "按课程"
+
+#: View/RecipeLinkBox/index.ctp:17
+msgid "By Base"
+msgstr "通过基地"
+
+#: View/RecipeLinkBox/index.ctp:30
+msgid "By Prep Method"
+msgstr "由制备方法"
+
+#: View/RecipeLinkBox/index.ctp:45
+msgid "Add A Recipe"
+msgstr "添加配方"
+
+#: View/Recipes/edit.ctp:24
+#: View/ShoppingLists/index.ctp:50
+msgid "Entered value is not a number/fraction, please try again."
+msgstr "输入的值不是一个数字/分数，请重试。"
+
+#: View/Recipes/edit.ctp:127
+msgid "Are you sure you wish to remove this item?"
+msgstr "你确定要删除这个项目吗？"
+
+#: View/Recipes/edit.ctp:262
+msgid "View Recipe"
+msgstr "查看食谱"
+
+#: View/Recipes/edit.ctp:264
+msgid "Edit Sources"
+msgstr "编辑源"
+
+#: View/Recipes/edit.ctp:269
+msgid "Edit Ethnicities"
+msgstr "编辑种族"
+
+#: View/Recipes/edit.ctp:270
+msgid "Edit Base Types"
+msgstr "编辑基本类型"
+
+#: View/Recipes/edit.ctp:271
+msgid "Edit Courses"
+msgstr "编辑课程"
+
+#: View/Recipes/edit.ctp:272
+msgid "Edit Preparation Times"
+msgstr "编辑准备时间"
+
+#: View/Recipes/edit.ctp:273
+msgid "Edit Difficulties"
+msgstr "编辑难点"
+
+#: View/Recipes/edit.ctp:336
+#: View/ShoppingLists/index.ctp:127
+#: View/ShoppingLists/instore.ctp:37
+#: View/ShoppingLists/online.ctp:94
+#: View/ShoppingLists/select.ctp:47
+msgid "Quantity"
+msgstr "数量"
+
+#: View/Recipes/edit.ctp:337
+#: View/ShoppingLists/index.ctp:128
+#: View/Units/index.ctp:10
+msgid "Units"
+msgstr "单位"
+
+#: View/Recipes/edit.ctp:338
+#: View/ShoppingLists/index.ctp:129
+msgid "Qualifier"
+msgstr "预选赛"
+
+#: View/Recipes/edit.ctp:340
+msgid "add new"
+msgstr "添加新"
+
+#: View/Recipes/edit.ctp:343
+msgid "Optional"
+msgstr "自选"
+
+#: View/Recipes/edit.ctp:349;408
+msgid "Unknown"
+msgstr "未知"
+
+#: View/Recipes/edit.ctp:369
+msgid "Order Ingredient - currently #"
+msgstr "为了成分 - 当前＃"
+
+#: View/Recipes/edit.ctp:391
+msgid "Add Another Ingredient"
+msgstr "添加其他成分"
+
+#: View/Recipes/edit.ctp:401
+msgid "Related Recipe Name"
+msgstr "相关方名称"
+
+#: View/Recipes/edit.ctp:402
+msgid "Required"
+msgstr "需要"
+
+#: View/Recipes/edit.ctp:427
+msgid "Order Recipe - currently #"
+msgstr "为了配方 - 当前＃"
+
+#: View/Recipes/edit.ctp:443
+msgid "Add Another Recipe"
+msgstr "添加另一个配方"
+
+#: View/Recipes/index.ctp:52
+msgid "Add Recipe"
+msgstr "添加配方"
+
+#: View/Recipes/index.ctp:53
+#: View/Recipes/view.ctp:45
+msgid "Import"
+msgstr "进口"
+
+#: View/Recipes/index.ctp:58
+msgid "List Ethnicities"
+msgstr "名单种族"
+
+#: View/Recipes/index.ctp:60
+msgid "List Base Types"
+msgstr "名单基本类型"
+
+#: View/Recipes/index.ctp:62
+msgid "List Courses"
+msgstr "课程表"
+
+#: View/Recipes/index.ctp:64
+msgid "List Preparation Times"
+msgstr "清单准备时间"
+
+#: View/Recipes/index.ctp:66
+msgid "List Preparation Methods"
+msgstr "名单制备方法"
+
+#: View/Recipes/index.ctp:68
+msgid "List Difficulties"
+msgstr "名单难点"
+
+#: View/Recipes/index.ctp:70
+msgid "List Sources"
+msgstr "来源名单"
+
+#: View/Recipes/index.ctp:71
+#: View/Sources/index.ctp:14
+msgid "Add Source"
+msgstr "添加源"
+
+#: View/Recipes/index.ctp:72
+#: View/Users/view.ctp:6
+msgid "List Users"
+msgstr "用户名单"
+
+#: View/Recipes/index.ctp:73
+#: View/Users/index.ctp:5
+msgid "Add User"
+msgstr "添加用户"
+
+#: View/Recipes/view.ctp:35
+msgid "Edit Recipe"
+msgstr "编辑食谱"
+
+#: View/Recipes/view.ctp:36
+msgid "Add to shopping list"
+msgstr "添加到购物清单"
+
+#: View/Recipes/view.ctp:38
+#: View/ShoppingLists/instore.ctp:74
+msgid "Print"
+msgstr "打印"
+
+#: View/Recipes/view.ctp:46
+msgid "Export"
+msgstr "出口"
+
+#: View/Recipes/view.ctp:76
+msgid "Serving Size"
+msgstr "份量"
+
+#: View/Recipes/view.ctp:84
+msgid "Comments"
+msgstr "评论"
+
+#: View/Recipes/view.ctp:97
+msgid "Source Description"
+msgstr "来源说明"
+
+#: View/Recipes/view.ctp:102
+msgid "Last Modified"
+msgstr "最后修改"
+
+#: View/Recipes/view.ctp:107
+#: View/Users/view.ctp:1
+msgid "User"
+msgstr "用户"
+
+#: View/Recipes/view.ctp:123
+msgid "(optional)"
+msgstr "（可选）"
+
+#: View/Recipes/view.ctp:160;190
+msgid "Directions"
+msgstr "方向"
+
+#: View/Recipes/view.ctp:171
+msgid "optional"
+msgstr "自选"
+
+#: View/Restaurants/index.ctp:16
+msgid "Add Restaurant"
+msgstr "添加餐厅"
+
+#: View/Restaurants/index.ctp:21
+msgid "List Price Ranges"
+msgstr "定价范围"
+
+#: View/Restaurants/index.ctp:22
+msgid "New Price Ranges"
+msgstr "新的价格范围"
+
+#: View/Setup/database.ctp:29
+msgid "Continue..."
+msgstr "继续..."
+
+#: View/Setup/finish.ctp:6
+msgid "Finish"
+msgstr "完"
+
+#: View/Setup/index.ctp:145
+msgid "New Install"
+msgstr "新安装"
+
+#: View/Setup/index.ctp:146
+msgid "Upgrade"
+msgstr "升级"
+
+#: View/Setup/upgrade.ctp:27
+msgid "Continue"
+msgstr "继续"
+
+#: View/ShoppingLists/index.ctp:69
+msgid "Clear List"
+msgstr "清除列表"
+
+#: View/ShoppingLists/index.ctp:70
+msgid "List Stores"
+msgstr "列表存储"
+
+#: View/ShoppingLists/index.ctp:71
+msgid "List Online Vendors"
+msgstr "名单网游厂商"
+
+#: View/ShoppingLists/index.ctp:89;126
+msgid "Action"
+msgstr "行动"
+
+#: View/ShoppingLists/index.ctp:90
+msgid "Recipe Name"
+msgstr "配方名"
+
+#: View/ShoppingLists/index.ctp:91
+msgid "Servings"
+msgstr "份"
+
+#: View/ShoppingLists/index.ctp:92
+msgid "Servings to buy"
+msgstr "份购买"
+
+#: View/ShoppingLists/index.ctp:107;143
+msgid "Are you sure you want to remove %s?"
+msgstr "你确定要删除％s吗？"
+
+#: View/ShoppingLists/index.ctp:130
+msgid "Ingredient Name"
+msgstr "成分名称"
+
+#: View/ShoppingLists/index.ctp:168
+msgid "Save"
+msgstr "保存"
+
+#: View/ShoppingLists/index.ctp:169
+msgid "Start Shopping"
+msgstr "开始购物"
+
+#: View/ShoppingLists/instore.ctp:20
+#: View/ShoppingLists/online.ctp:84
+#: View/ShoppingLists/select.ctp:38
+msgid "Select Items"
+msgstr "选择项目"
+
+#: View/ShoppingLists/instore.ctp:21
+msgid "In Store"
+msgstr "在商店"
+
+#: View/ShoppingLists/instore.ctp:36
+#: View/ShoppingLists/online.ctp:92
+#: View/ShoppingLists/select.ctp:46
+msgid "Select"
+msgstr "选择"
+
+#: View/ShoppingLists/instore.ctp:40
+#: View/ShoppingLists/online.ctp:97
+#: View/ShoppingLists/select.ctp:50
+#: View/Users/view.ctp:21
+msgid "Name"
+msgstr "名字"
+
+#: View/ShoppingLists/instore.ctp:75
+#: View/ShoppingLists/online.ctp:140
+msgid "Complete"
+msgstr "完成"
+
+#: View/ShoppingLists/online.ctp:41
+msgid "Adding "
+msgstr "添加"
+
+#: View/ShoppingLists/online.ctp:45
+msgid "Complete!"
+msgstr "完成！"
+
+#: View/ShoppingLists/online.ctp:85
+msgid "Online"
+msgstr "在线"
+
+#: View/ShoppingLists/online.ctp:93
+msgid "Product / ID"
+msgstr "产品/ ID"
+
+#: View/ShoppingLists/online.ctp:139
+msgid "Add All"
+msgstr "全部添加"
+
+#: View/ShoppingLists/select.ctp:40
+msgid "What Items do you already have?"
+msgstr "你已经有哪些项目？"
+
+#: View/Sources/index.ctp:11
+msgid "Sources"
+msgstr "来源"
+
+#: View/Stores/edit.ctp:2
+msgid "Stores "
+msgstr "商店"
+
+#: View/Stores/edit.ctp:3
+msgid "Add & Edit"
+msgstr "添加和编辑"
+
+#: View/Stores/index.ctp:3
+msgid "Stores"
+msgstr "商店"
+
+#: View/Stores/index.ctp:6
+msgid "New Store"
+msgstr "新店"
+
+#: View/Users/edit.ctp:8
+msgid "Account Settings"
+msgstr "账户设置"
+
+#: View/Users/edit.ctp:29
+msgid "Sunday"
+msgstr "星期天"
+
+#: View/Users/edit.ctp:30
+msgid "Monday"
+msgstr "星期一"
+
+#: View/Users/edit.ctp:31
+msgid "Tuesday"
+msgstr "星期二"
+
+#: View/Users/edit.ctp:32
+msgid "Wednesday"
+msgstr "星期三"
+
+#: View/Users/edit.ctp:33
+msgid "Thursday"
+msgstr "星期四"
+
+#: View/Users/edit.ctp:34
+msgid "Friday"
+msgstr "星期五"
+
+#: View/Users/edit.ctp:35
+msgid "Saturday"
+msgstr "星期六"
+
+#: View/Users/login.ctp:12
+msgid "Enter your username and password"
+msgstr "输入您的用户名和密码"
+
+#: View/Users/login.ctp:17
+msgid "Forgot password?"
+msgstr "忘记密码？"
+
+#: View/Users/login.ctp:19
+msgid "Login"
+msgstr "注册"
+
+#: View/Users/reset.ctp:2
+#: View/Users/reset_link.ctp:5
+msgid "Reset Password"
+msgstr "重设密码"
+
+#: View/Users/reset.ctp:10
+msgid "Enter your email address to received an email to reset your password."
+msgstr "请输入您的电子邮件地址收到一封电子邮件重设密码。"
+
+#: View/Users/reset.ctp:15
+msgid "Send"
+msgstr "发送"
+
+#: View/Users/reset_link.ctp:6
+msgid "Enter a new password to reset the account '"
+msgstr "输入新的密码重置帐户“"
+
+#: View/Users/view.ctp:4
+msgid "Edit User"
+msgstr "编辑用户"
+
+#: View/Users/view.ctp:5
+msgid "Delete User"
+msgstr "删除用户"
+
+#: View/Users/view.ctp:11
+msgid "Id"
+msgstr "ID"
+
+#: View/Users/view.ctp:16
+msgid "Username"
+msgstr "用户名"
+
+#: View/Users/view.ctp:26
+msgid "Access Level"
+msgstr "访问级别"
+
+#: View/Users/view.ctp:31
+msgid "Language"
+msgstr "语言"
+
+#: View/Users/view.ctp:36
+msgid "Country"
+msgstr "国家"
+
+#: View/Users/view.ctp:41
+msgid "Created"
+msgstr "创建"
+
+#: View/Users/view.ctp:46
+msgid "Last Login"
+msgstr "最后登录"
+
+#: View/Users/view.ctp:51
+msgid "Email"
+msgstr "电子邮件"
+
+#: View/Users/view.ctp:56
+msgid "Modified"
+msgstr "改性"
+
+#: Model/BaseType.php:validation for field name
+#: Model/CoreIngredient.php:validation for field name;validation for field short_description
+#: Model/Course.php:validation for field name
+#: Model/Ethnicity.php:validation for field name
+#: Model/Ingredient.php:validation for field name
+#: Model/PreparationTime.php:validation for field name
+#: Model/Recipe.php:validation for field name;validation for field system
+#: Model/Restaurant.php:validation for field name
+#: Model/ShoppingList.php:validation for field name
+#: Model/Store.php:validation for field name
+#: Model/Unit.php:validation for field name;validation for field abbreviation
+#: Model/User.php:validation for field username;validation for field password;validation for field name;validation for field language;validation for field country
+#: Model/Vendor.php:validation for field name
+#: Model/VendorProduct.php:validation for field name
+msgid "notEmpty"
+msgstr "notEmpty"
+
+#: Model/CoreIngredient.php:validation for field groupNumber
+#: Model/MealPlan.php:validation for field meal_name_id;validation for field recipe_id;validation for field servings
+#: Model/Unit.php:validation for field system;validation for field sort_order
+#: Model/User.php:validation for field access_level
+#: Model/VendorProduct.php:validation for field ingredient_id;validation for field vendor_id
+msgid "numeric"
+msgstr "数字"
+
+#: Model/MealPlan.php:validation for field mealday
+msgid "date"
+msgstr "日期"
+
+#: Model/Recipe.php:validation for field private
+msgid "boolean"
+msgstr "布尔"
+
+#: Model/User.php:validation for field email
+msgid "email"
+msgstr "电子邮件"

@@ -1,0 +1,2007 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Config/Schema/schema.php:19
+msgid "Beef"
+msgstr "쇠고기"
+
+#: Config/Schema/schema.php:20;74
+msgid "Bread"
+msgstr "빵"
+
+#: Config/Schema/schema.php:21
+msgid "Egg"
+msgstr "달걀"
+
+#: Config/Schema/schema.php:22
+msgid "Fruit"
+msgstr "과일"
+
+#: Config/Schema/schema.php:23
+msgid "Grain"
+msgstr "곡물"
+
+#: Config/Schema/schema.php:24
+msgid "Lamb"
+msgstr "양고기"
+
+#: Config/Schema/schema.php:25
+msgid "Other"
+msgstr "다른"
+
+#: Config/Schema/schema.php:26
+msgid "Pasta"
+msgstr "파스타"
+
+#: Config/Schema/schema.php:27
+msgid "Pork/Ham"
+msgstr "돼지 고기 / 햄"
+
+#: Config/Schema/schema.php:28
+msgid "Poultry"
+msgstr "가금류"
+
+#: Config/Schema/schema.php:29;106
+msgid "Seafood"
+msgstr "해산물"
+
+#: Config/Schema/schema.php:30
+msgid "Vegetable"
+msgstr "야채"
+
+#: Config/Schema/schema.php:35;115
+#: View/MealPlans/index.ctp:81
+msgid "Breakfast"
+msgstr "아침 식사"
+
+#: Config/Schema/schema.php:36
+msgid "Snack"
+msgstr "간식"
+
+#: Config/Schema/schema.php:37;116
+#: View/MealPlans/index.ctp:82
+msgid "Lunch"
+msgstr "점심"
+
+#: Config/Schema/schema.php:38
+msgid "Appetizer"
+msgstr "전채"
+
+#: Config/Schema/schema.php:39
+msgid "Side Dish"
+msgstr "반찬"
+
+#: Config/Schema/schema.php:40
+msgid "Entree"
+msgstr "앙트레"
+
+#: Config/Schema/schema.php:41;118
+#: View/MealPlans/index.ctp:84
+msgid "Dessert"
+msgstr "디저트"
+
+#: Config/Schema/schema.php:42
+msgid "Beverage"
+msgstr "음료수"
+
+#: Config/Schema/schema.php:48
+msgid "Easy"
+msgstr "쉽게"
+
+#: Config/Schema/schema.php:49
+msgid "Intermediate"
+msgstr "중간의"
+
+#: Config/Schema/schema.php:50
+msgid "Difficult"
+msgstr "어려운"
+
+#: Config/Schema/schema.php:51
+msgid "Expert"
+msgstr "전문가"
+
+#: Config/Schema/schema.php:56
+msgid "American"
+msgstr "미국 사람"
+
+#: Config/Schema/schema.php:57
+msgid "Chinese"
+msgstr "중국어"
+
+#: Config/Schema/schema.php:58
+msgid "German"
+msgstr "독일어"
+
+#: Config/Schema/schema.php:59
+msgid "Greek"
+msgstr "그리스의"
+
+#: Config/Schema/schema.php:60
+msgid "Indian"
+msgstr "인도의"
+
+#: Config/Schema/schema.php:61
+msgid "Italian"
+msgstr "이탈리아의"
+
+#: Config/Schema/schema.php:62
+msgid "Japanese"
+msgstr "일본의"
+
+#: Config/Schema/schema.php:63
+msgid "Mexican"
+msgstr "멕시코의"
+
+#: Config/Schema/schema.php:64
+msgid "Middle Eastern"
+msgstr "중동"
+
+#: Config/Schema/schema.php:65
+msgid "None"
+msgstr "없음"
+
+#: Config/Schema/schema.php:66
+msgid "Slavic"
+msgstr "슬라브"
+
+#: Config/Schema/schema.php:71
+msgid "Alcohol"
+msgstr "알코올"
+
+#: Config/Schema/schema.php:72
+msgid "Bakery"
+msgstr "제과점"
+
+#: Config/Schema/schema.php:73
+msgid "Beans"
+msgstr "콩"
+
+#: Config/Schema/schema.php:75
+msgid "Candy"
+msgstr "사탕"
+
+#: Config/Schema/schema.php:76
+msgid "Canned Fruit"
+msgstr "통조림 과일"
+
+#: Config/Schema/schema.php:77
+msgid "Canned Meat & Fish"
+msgstr "통조림 육류 및 생선"
+
+#: Config/Schema/schema.php:78
+msgid "Canned Vegetables"
+msgstr "야채 통조림"
+
+#: Config/Schema/schema.php:79
+msgid "Coffee, Tea & Cocoa"
+msgstr "커피, 차 및 코코아"
+
+#: Config/Schema/schema.php:80
+msgid "Condiments"
+msgstr "양념"
+
+#: Config/Schema/schema.php:81
+msgid "Cookies"
+msgstr "쿠키"
+
+#: Config/Schema/schema.php:82
+msgid "Crackers"
+msgstr "크래커"
+
+#: Config/Schema/schema.php:83
+msgid "Dairy"
+msgstr "낙농"
+
+#: Config/Schema/schema.php:84
+msgid "Deli"
+msgstr "조제 식품"
+
+#: Config/Schema/schema.php:85
+msgid "Drink mix"
+msgstr "음료 믹스"
+
+#: Config/Schema/schema.php:86
+msgid "Facial Tissue"
+msgstr "화장지"
+
+#: Config/Schema/schema.php:87
+msgid "Free"
+msgstr "무료"
+
+#: Config/Schema/schema.php:88
+msgid "Frozen Foods"
+msgstr "냉동 식품"
+
+#: Config/Schema/schema.php:89
+msgid "HABA"
+msgstr "HABA"
+
+#: Config/Schema/schema.php:90
+msgid "Hand Soap"
+msgstr "핸드 비누"
+
+#: Config/Schema/schema.php:91
+msgid "Hot & Cold Cereal"
+msgstr "핫 & 콜드 시리얼"
+
+#: Config/Schema/schema.php:92
+msgid "Household Cleaners"
+msgstr "가정용 세제"
+
+#: Config/Schema/schema.php:93
+msgid "Juice & Cocktail"
+msgstr "주스 및 칵테일"
+
+#: Config/Schema/schema.php:94
+msgid "Kosher/Ethnic"
+msgstr "에스닉 / 코셔"
+
+#: Config/Schema/schema.php:95
+msgid "Laundry Detergents"
+msgstr "세탁 세제"
+
+#: Config/Schema/schema.php:96
+msgid "Meat"
+msgstr "고기"
+
+#: Config/Schema/schema.php:97
+msgid "Natural & Organic"
+msgstr "자연 및 유기"
+
+#: Config/Schema/schema.php:98
+msgid "Oil/Vinegar/Dressings"
+msgstr "오일 / 식초 / 드레싱"
+
+#: Config/Schema/schema.php:99
+msgid "Pancakes & Syrup"
+msgstr "팬케이크 및 시럽"
+
+#: Config/Schema/schema.php:100
+msgid "Paper Serving Ware"
+msgstr "용지 도자기 봉사"
+
+#: Config/Schema/schema.php:101
+msgid "Pasta & Sauce"
+msgstr "파스타 & 소스"
+
+#: Config/Schema/schema.php:102
+msgid "Peanut Butter/Jelly/Honey"
+msgstr "땅콩 버터 / 젤리 / 꿀"
+
+#: Config/Schema/schema.php:103
+msgid "Produce"
+msgstr "생산"
+
+#: Config/Schema/schema.php:104
+msgid "Rice"
+msgstr "쌀"
+
+#: Config/Schema/schema.php:105
+msgid "Salty Snacks & Chips"
+msgstr "짠 스낵 & 칩스"
+
+#: Config/Schema/schema.php:107
+msgid "Soda pop"
+msgstr "소다 팝"
+
+#: Config/Schema/schema.php:108
+msgid "Soup"
+msgstr "수프"
+
+#: Config/Schema/schema.php:109
+msgid "Spices"
+msgstr "향료"
+
+#: Config/Schema/schema.php:110
+msgid "Toilet Paper"
+msgstr "화장지"
+
+#: Config/Schema/schema.php:117
+#: View/MealPlans/index.ctp:83
+msgid "Dinner"
+msgstr "저녁 식사"
+
+#: Config/Schema/schema.php:123
+msgid "Slow cooker"
+msgstr "슬로우 쿠커"
+
+#: Config/Schema/schema.php:124
+msgid "Microwave"
+msgstr "마이크로파"
+
+#: Config/Schema/schema.php:125
+msgid "BBQ"
+msgstr "BBQ"
+
+#: Config/Schema/schema.php:126
+msgid "Canning"
+msgstr "통조림 제조"
+
+#: Config/Schema/schema.php:131
+msgid "0 Minutes"
+msgstr "0 분"
+
+#: Config/Schema/schema.php:132
+msgid "1-10 Minutes"
+msgstr "1-10 분"
+
+#: Config/Schema/schema.php:133
+msgid "10-30 Minutes"
+msgstr "10 ~ 30 분"
+
+#: Config/Schema/schema.php:134
+msgid "30-60 Minutes"
+msgstr "30 ~ 60 분"
+
+#: Config/Schema/schema.php:135
+msgid "60+ Minutes"
+msgstr "60 분"
+
+#: Config/Schema/schema.php:140
+msgid "$0-$10"
+msgstr "$ 0- 10달러"
+
+#: Config/Schema/schema.php:141
+msgid "$10-$15"
+msgstr "$ 10 15달러"
+
+#: Config/Schema/schema.php:142
+msgid "$15-$20"
+msgstr "$ 15 20달러"
+
+#: Config/Schema/schema.php:143
+msgid "$20-$25"
+msgstr "$ 20 25달러"
+
+#: Config/Schema/schema.php:144
+msgid "$25-$30"
+msgstr "$ 25- 30달러"
+
+#: Config/Schema/schema.php:145
+msgid "$30+"
+msgstr "30달러 +"
+
+#: Config/Schema/schema.php:158
+#: View/Layouts/default.ctp:124
+#: View/ShoppingLists/instore.ctp:38
+#: View/ShoppingLists/online.ctp:95
+#: View/ShoppingLists/select.ctp:48
+msgid "Unit"
+msgstr "단위"
+
+#: Config/Schema/schema.php:159
+msgid "Slice"
+msgstr "조각"
+
+#: Config/Schema/schema.php:160
+msgid "Clove"
+msgstr "정향"
+
+#: Config/Schema/schema.php:161
+msgid "Pinch"
+msgstr "꼬집기"
+
+#: Config/Schema/schema.php:162
+msgid "Package"
+msgstr "꾸러미"
+
+#: Config/Schema/schema.php:163
+msgid "Can"
+msgstr "수"
+
+#: Config/Schema/schema.php:164
+msgid "Drop"
+msgstr "드롭"
+
+#: Config/Schema/schema.php:165
+msgid "Bunch"
+msgstr "다발"
+
+#: Config/Schema/schema.php:166
+msgid "Dash"
+msgstr "대시"
+
+#: Config/Schema/schema.php:167
+msgid "Carton"
+msgstr "판지 상자"
+
+#: Config/Schema/schema.php:168
+msgid "Cup"
+msgstr "컵"
+
+#: Config/Schema/schema.php:169
+msgid "Tablespoon"
+msgstr "스푼"
+
+#: Config/Schema/schema.php:170
+msgid "Teaspoon"
+msgstr "찻 숟가락"
+
+#: Config/Schema/schema.php:171
+msgid "Pound"
+msgstr "파운드"
+
+#: Config/Schema/schema.php:172
+msgid "Ounce"
+msgstr "온스"
+
+#: Config/Schema/schema.php:173
+msgid "Pint"
+msgstr "파인트"
+
+#: Config/Schema/schema.php:174
+msgid "Quart"
+msgstr "쿼트"
+
+#: Config/Schema/schema.php:175
+msgid "Gallon"
+msgstr "갤런"
+
+#: Config/Schema/schema.php:176
+msgid "Milligram"
+msgstr "밀리그램"
+
+#: Config/Schema/schema.php:177
+msgid "Centigram"
+msgstr "센티 그램"
+
+#: Config/Schema/schema.php:178
+msgid "Gram"
+msgstr "그램"
+
+#: Config/Schema/schema.php:179
+msgid "Kilogram"
+msgstr "킬로그램"
+
+#: Config/Schema/schema.php:180
+msgid "Milliliter"
+msgstr "밀리리터"
+
+#: Config/Schema/schema.php:181
+msgid "Centiliter"
+msgstr "Centiliter"
+
+#: Config/Schema/schema.php:182
+msgid "Liter"
+msgstr "리터"
+
+#: Config/Schema/schema.php:183
+msgid "Deciliter"
+msgstr "데시 리터"
+
+#: Config/Schema/schema.php:184
+msgid "Tablespoon_m"
+msgstr "Tablespoon_m"
+
+#: Config/Schema/schema.php:185
+msgid "Teaspoon_m"
+msgstr "Teaspoon_m"
+
+#: Controller/AppController.php:89
+msgid "Not Authorized."
+msgstr "권한이 없습니다."
+
+#: Controller/BaseTypesController.php:41;66
+msgid "Invalid base type"
+msgstr "잘못된 기본 유형"
+
+#: Controller/BaseTypesController.php:45
+msgid "The base type has been saved."
+msgstr "기본 유형이 저장되었습니다."
+
+#: Controller/BaseTypesController.php:48
+msgid "The base type could not be saved. Please, try again."
+msgstr "기본 유형을 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/BaseTypesController.php:70
+msgid "The base type has been deleted."
+msgstr "기본 유형이 삭제되었습니다."
+
+#: Controller/BaseTypesController.php:72
+msgid "The base type could not be deleted. Please, try again."
+msgstr "기본 유형은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/CoreIngredientsController.php:43;59;84
+msgid "Invalid core ingredient"
+msgstr "잘못된 핵심 성분"
+
+#: Controller/CoreIngredientsController.php:63
+msgid "The core ingredient has been saved."
+msgstr "핵심 성분은 저장되었습니다."
+
+#: Controller/CoreIngredientsController.php:66
+msgid "The core ingredient could not be saved. Please, try again."
+msgstr "핵심 성분은 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/CoreIngredientsController.php:88
+msgid "The core ingredient has been deleted."
+msgstr "핵심 성분은 삭제되었습니다."
+
+#: Controller/CoreIngredientsController.php:90
+msgid "The core ingredient could not be deleted. Please, try again."
+msgstr "핵심 성분은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/CoursesController.php:37;62
+msgid "Invalid course"
+msgstr "잘못된 과정"
+
+#: Controller/CoursesController.php:41
+msgid "The course has been saved."
+msgstr "이 과정은 저장되었습니다."
+
+#: Controller/CoursesController.php:44
+msgid "The course could not be saved. Please, try again."
+msgstr "이 과정은 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/CoursesController.php:66
+msgid "The course has been deleted."
+msgstr "이 과정은 삭제되었습니다."
+
+#: Controller/CoursesController.php:68
+msgid "The course could not be deleted. Please, try again."
+msgstr "이 과정은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/DifficultiesController.php:37;62
+msgid "Invalid difficulty"
+msgstr "잘못된 어려움"
+
+#: Controller/DifficultiesController.php:41
+msgid "The difficulty has been saved."
+msgstr "어려움은 저장되었습니다."
+
+#: Controller/DifficultiesController.php:44
+msgid "The difficulty could not be saved. Please, try again."
+msgstr "어려움은 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/DifficultiesController.php:66
+msgid "The difficulty has been deleted."
+msgstr "어려움은 삭제되었습니다."
+
+#: Controller/DifficultiesController.php:68
+msgid "The difficulty could not be deleted. Please, try again."
+msgstr "어려움은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/EthnicitiesController.php:43;58;83
+msgid "Invalid ethnicity"
+msgstr "잘못된 민족"
+
+#: Controller/EthnicitiesController.php:62
+msgid "The ethnicity has been saved."
+msgstr "민족 저장되었습니다."
+
+#: Controller/EthnicitiesController.php:65
+msgid "The ethnicity could not be saved. Please, try again."
+msgstr "민족을 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/EthnicitiesController.php:87
+msgid "The ethnicity has been deleted."
+msgstr "민족이 삭제되었습니다."
+
+#: Controller/EthnicitiesController.php:89
+msgid "The ethnicity could not be deleted. Please, try again."
+msgstr "민족은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/ImportController.php:22
+msgid "Could not open uploaded file, please try again."
+msgstr "업로드 된 파일을 열 수 없습니다, 다시 시도하십시오."
+
+#: Controller/IngredientsController.php:38
+msgid "Not Ingredient Owner"
+msgstr "하지 성분 소유자"
+
+#: Controller/IngredientsController.php:67;93
+#: Controller/ShoppingListsController.php:118
+msgid "Invalid ingredient"
+msgstr "잘못된 성분"
+
+#: Controller/IngredientsController.php:74
+msgid "The ingredient has been saved."
+msgstr "성분은 저장되었습니다."
+
+#: Controller/IngredientsController.php:77
+msgid "The ingredient could not be saved. Please, try again."
+msgstr "성분은 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/IngredientsController.php:97
+msgid "The ingredient has been deleted."
+msgstr "성분은 삭제되었습니다."
+
+#: Controller/IngredientsController.php:99
+msgid "The ingredient could not be deleted. Please, try again."
+msgstr "성분은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/LocationsController.php:44;69
+msgid "Invalid location"
+msgstr "잘못된 위치"
+
+#: Controller/LocationsController.php:48
+msgid "The location has been saved."
+msgstr "위치가 저장되었습니다."
+
+#: Controller/LocationsController.php:51
+msgid "The location could not be saved. Please, try again."
+msgstr "위치를 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/LocationsController.php:73
+msgid "The location has been deleted."
+msgstr "위치는 삭제되었습니다."
+
+#: Controller/LocationsController.php:75
+msgid "The location could not be deleted. Please, try again."
+msgstr "위치는 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/MealPlansController.php:32
+msgid "Not meal owner"
+msgstr "하지 식사 소유자"
+
+#: Controller/MealPlansController.php:99;154
+msgid "Invalid meal plan"
+msgstr "잘못된 식사 계획"
+
+#: Controller/MealPlansController.php:126
+msgid "The meal plan has been saved."
+msgstr "식사 계획이 저장되었습니다."
+
+#: Controller/MealPlansController.php:129
+msgid "The meal plan could not be saved. Please, try again."
+msgstr "식사 계획을 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/MealPlansController.php:158
+msgid "The meal plan has been deleted."
+msgstr "식사 계획이 삭제되었습니다."
+
+#: Controller/MealPlansController.php:160
+msgid "The meal plan could not be deleted. Please, try again."
+msgstr "식사 계획은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/MealPlansController.php:167
+msgid "Start date not defined"
+msgstr "시작 날짜 정의되지"
+
+#: Controller/MealPlansController.php:194
+msgid "Meal(s) added to shopping list."
+msgstr "식사 (들)의 쇼핑 목록에 추가됩니다."
+
+#: Controller/MealPlansController.php:196
+msgid "Meal(s) could not be added to shopping list. Please, try again."
+msgstr "식사 (들)의 쇼핑 목록에 추가 할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/PreparationMethodsController.php:37;62
+msgid "Invalid preparation method"
+msgstr "잘못된 제조 방법"
+
+#: Controller/PreparationMethodsController.php:41
+msgid "The preparation method has been saved."
+msgstr "제조 방법은 저장되었습니다."
+
+#: Controller/PreparationMethodsController.php:44
+msgid "The preparation method could not be saved. Please, try again."
+msgstr "제조 방법은 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/PreparationMethodsController.php:66
+msgid "The preparation method has been deleted."
+msgstr "제조 방법이 삭제되었습니다."
+
+#: Controller/PreparationMethodsController.php:68
+msgid "The preparation method could not be deleted. Please, try again."
+msgstr "제조 방법은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/PreparationTimesController.php:38;63
+msgid "Invalid preparation time"
+msgstr "잘못된 준비 시간"
+
+#: Controller/PreparationTimesController.php:42
+msgid "The preparation time has been saved."
+msgstr "준비 시간이 저장되었습니다."
+
+#: Controller/PreparationTimesController.php:45
+msgid "The preparation time could not be saved. Please, try again."
+msgstr "준비 시간은 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/PreparationTimesController.php:67
+msgid "The preparation time has been deleted."
+msgstr "준비 시간이 삭제되었습니다."
+
+#: Controller/PreparationTimesController.php:69
+msgid "The preparation time could not be deleted. Please, try again."
+msgstr "준비 시간은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/PriceRangesController.php:44;69
+msgid "Invalid price range"
+msgstr "잘못된 가격 범위"
+
+#: Controller/PriceRangesController.php:48
+msgid "The price range has been saved."
+msgstr "가격 범위가 저장되었습니다."
+
+#: Controller/PriceRangesController.php:51
+msgid "The price range could not be saved. Please, try again."
+msgstr "가격 범위를 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/PriceRangesController.php:73
+msgid "The price range has been deleted."
+msgstr "가격 범위가 삭제되었습니다."
+
+#: Controller/PriceRangesController.php:75
+msgid "The price range could not be deleted. Please, try again."
+msgstr "가격 범위를 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/RecipesController.php:46
+msgid "Not Recipe Owner"
+msgstr "하지 레시피 소유자"
+
+#: Controller/RecipesController.php:97;162;223
+#: Controller/ShoppingListsController.php:95
+msgid "Invalid recipe"
+msgstr "잘못된 조리법"
+
+#: Controller/RecipesController.php:169
+msgid "The recipe has been saved."
+msgstr "조리법은 저장되었습니다."
+
+#: Controller/RecipesController.php:171
+msgid "The recipe could not be saved. Please, try again."
+msgstr "레시피를 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/RecipesController.php:199
+msgid "The ingredient has been removed."
+msgstr "성분은 제거되었습니다."
+
+#: Controller/RecipesController.php:201
+msgid "The ingredient could not be removed. Please, try again."
+msgstr "성분은 제거 할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/RecipesController.php:207
+msgid "The related recipe has been removed."
+msgstr "관련 레시피가 제거되었습니다."
+
+#: Controller/RecipesController.php:209
+msgid "The related recipe could not be removed. Please, try again."
+msgstr "관련 레시피는 제거 할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/RecipesController.php:226
+msgid "The recipe has been deleted."
+msgstr "조리법은 삭제되었습니다."
+
+#: Controller/RecipesController.php:228
+msgid "The recipe could not be deleted. Please, try again."
+msgstr "조리법은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/RestaurantsController.php:44;72
+msgid "Invalid restaurant"
+msgstr "잘못된 레스토랑"
+
+#: Controller/RestaurantsController.php:48
+msgid "The restaurant has been saved."
+msgstr "레스토랑은 저장되었습니다."
+
+#: Controller/RestaurantsController.php:51
+msgid "The restaurant could not be saved. Please, try again."
+msgstr "레스토랑은 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/RestaurantsController.php:76
+msgid "The restaurant has been deleted."
+msgstr "레스토랑은 삭제되었습니다."
+
+#: Controller/RestaurantsController.php:78
+msgid "The restaurant could not be deleted. Please, try again."
+msgstr "레스토랑은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/SetupController.php:36
+msgid "Password must have a value."
+msgstr "암호 값이 있어야합니다."
+
+#: Controller/SetupController.php:42
+msgid "Password successfully saved"
+msgstr "비밀번호가 성공적으로 저장"
+
+#: Controller/SetupController.php:46
+#: Controller/UsersController.php:192;234
+msgid "The user could not be saved. Please, try again."
+msgstr "사용자는 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/SetupController.php:49
+#: Controller/UsersController.php:196;238
+msgid "Passwords did not match. Please, try again."
+msgstr "비밀번호가 일치하지 않았다. 다시 시도하십시오."
+
+#: Controller/ShoppingListsController.php:32
+msgid "Not List Owner or Editor"
+msgstr "소유자 또는 편집기를 나열하지"
+
+#: Controller/ShoppingListsController.php:43
+msgid "Invalid shopping list"
+msgstr "잘못된 쇼핑 목록"
+
+#: Controller/ShoppingListsController.php:48
+msgid "The shopping list has been saved."
+msgstr "쇼핑 목록이 저장되었습니다."
+
+#: Controller/ShoppingListsController.php:51
+msgid "The shopping list name could not be saved. Please, try again."
+msgstr "쇼핑 목록의 이름을 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/ShoppingListsController.php:67;82
+msgid "The item has been removed."
+msgstr "항목이 삭제되었습니다."
+
+#: Controller/ShoppingListsController.php:69;84
+msgid "The item could not be removed. Please, try again."
+msgstr "항목은 제거 할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/ShoppingListsController.php:72
+msgid "Invalid recipe item"
+msgstr "잘못된 레시피 아이템"
+
+#: Controller/ShoppingListsController.php:87
+msgid "Invalid ingredient item"
+msgstr "잘못된 성분 항목"
+
+#: Controller/ShoppingListsController.php:107
+msgid "Recipe added to list."
+msgstr "레시피 목록에 추가."
+
+#: Controller/ShoppingListsController.php:109
+msgid "Unable to add recipe to list."
+msgstr "목록에 레시피를 추가 할 수 없습니다."
+
+#: Controller/ShoppingListsController.php:131
+msgid "Ingredient added to list."
+msgstr "성분은 목록에 추가."
+
+#: Controller/ShoppingListsController.php:134
+msgid "Unable to add ingredient to list."
+msgstr "목록에 성분을 추가 할 수 없습니다."
+
+#: Controller/ShoppingListsController.php:142;152;202
+msgid "Invalid list"
+msgstr "잘못된 목록"
+
+#: Controller/ShoppingListsController.php:161
+msgid "Shopping done! List cleared."
+msgstr "쇼핑 완료! 목록 삭제."
+
+#: Controller/SourcesController.php:37;52;79
+msgid "Invalid source"
+msgstr "잘못된 소스"
+
+#: Controller/SourcesController.php:56
+msgid "The source has been saved."
+msgstr "소스가 저장되었습니다."
+
+#: Controller/SourcesController.php:59
+msgid "The source could not be saved. Please, try again."
+msgstr "소스를 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/SourcesController.php:83
+msgid "The source has been deleted."
+msgstr "소스는 삭제되었습니다."
+
+#: Controller/SourcesController.php:85
+msgid "The source could not be deleted. Please, try again."
+msgstr "소스는 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/StoresController.php:21;39
+msgid "Invalid store"
+msgstr "잘못된 저장"
+
+#: Controller/StoresController.php:25
+msgid "The store has been saved."
+msgstr "가게는 저장되었습니다."
+
+#: Controller/StoresController.php:28
+msgid "The store could not be saved. Please, try again."
+msgstr "가게를 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/StoresController.php:43
+msgid "The store has been deleted."
+msgstr "상점은 삭제되었습니다."
+
+#: Controller/StoresController.php:45
+msgid "The store could not be deleted. Please, try again."
+msgstr "상점은 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/UnitsController.php:44;59;84
+msgid "Invalid unit"
+msgstr "잘못된 장치"
+
+#: Controller/UnitsController.php:63
+msgid "The unit has been saved."
+msgstr "이 장치는 저장되었습니다."
+
+#: Controller/UnitsController.php:66
+msgid "The unit could not be saved. Please, try again."
+msgstr "이 장치는 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/UnitsController.php:88
+msgid "The unit has been deleted."
+msgstr "이 장치는 삭제되었습니다."
+
+#: Controller/UnitsController.php:90
+msgid "The unit could not be deleted. Please, try again."
+msgstr "이 장치는 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/UsersController.php:25
+msgid "Not Admininstrator"
+msgstr "하지 Admininstrator"
+
+#: Controller/UsersController.php:34
+msgid "Not allowed to edit another user."
+msgstr "다른 사용자가 편집 할 수 없습니다."
+
+#: Controller/UsersController.php:48
+msgid "Your account is currently locked. Use the password reset link to reset your password."
+msgstr "계정이 현재 잠겨 있습니다. 비밀번호를 재설정 암호 재설정 링크를 사용하십시오."
+
+#: Controller/UsersController.php:64
+msgid "Invalid username or password, try again"
+msgstr "잘못된 사용자 이름이나 암호, 다시 시도하십시오"
+
+#: Controller/UsersController.php:69
+msgid "Logged out."
+msgstr "로그 아웃."
+
+#: Controller/UsersController.php:95
+msgid "Your reset email is on the way!"
+msgstr "리셋 이메일이오고있다!"
+
+#: Controller/UsersController.php:98
+msgid "Could not send a reset email. Please contact support."
+msgstr "재설정 이메일을 보낼 수 없습니다. 지원 센터에 문의하십시오."
+
+#: Controller/UsersController.php:100
+msgid "Could not find your email address, try again."
+msgstr "이메일 주소를 찾을 수 없습니다, 다시 시도하십시오."
+
+#: Controller/UsersController.php:115
+msgid "Passwords are not set to same value. Please, try again."
+msgstr "암호는 같은 값으로 설정되어 있지 않습니다. 다시 시도하십시오."
+
+#: Controller/UsersController.php:121
+msgid "A new password is required. Please, try again."
+msgstr "새 암호가 필요합니다. 다시 시도하십시오."
+
+#: Controller/UsersController.php:130
+msgid "Password successfully reset. Login with your new password to continue."
+msgstr "비밀번호가 성공적으로 재설정합니다. 계속해서 새로운 비밀번호로 로그인합니다."
+
+#: Controller/UsersController.php:133
+msgid "The password could not be saved. Please, try again."
+msgstr "암호를 저장할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/UsersController.php:143
+msgid "Could not find reset information. Please try again."
+msgstr "리셋 정보를 찾을 수 없습니다. 다시 시도하십시오."
+
+#: Controller/UsersController.php:165;221;257
+msgid "Invalid user"
+msgstr "잘못된 사용자"
+
+#: Controller/UsersController.php:188
+msgid "The user has been saved."
+msgstr "사용자가 저장되었습니다."
+
+#: Controller/UsersController.php:231
+msgid "Settings saved.  Logout/Sign In maybe required for settings to take effect."
+msgstr "설정이 저장. 설정을 적용하려면에서 로그 아웃 / 로그인 어쩌면이 필요합니다."
+
+#: Controller/UsersController.php:261
+msgid "The user has been deleted."
+msgstr "사용자가 삭제되었습니다."
+
+#: Controller/UsersController.php:263
+msgid "The user could not be deleted. Please, try again."
+msgstr "사용자는 삭제할 수 없습니다. 다시 시도하십시오."
+
+#: Controller/Component/MealMasterComponent.php:99
+msgid "could not data file for reading"
+msgstr "독서 할 수없는 데이터 파일"
+
+#: Model/Recipe.php:173
+msgid "This recipe could not be saved. Please try again"
+msgstr "이 조리법은 저장할 수 없습니다. 다시 시도하십시오"
+
+#: Model/ShoppingList.php:52;74;85
+msgid "DEFAULT"
+msgstr "DEFAULT"
+
+#: Plugin/Upload/Model/Behavior/UploadBehavior.php:1078
+msgid "No filename after parsing. Function %s returned an invalid filename"
+msgstr "구문 분석 후 어떤 파일 이름이 없습니다. 함수 % s은 (는) 잘못된 파일 이름을 반환"
+
+#: View/BaseTypes/edit.ctp:12
+#: View/CoreIngredients/edit.ctp:14
+#: View/Courses/edit.ctp:12
+#: View/Difficulties/edit.ctp:12
+#: View/Ethnicities/edit.ctp:12
+#: View/Import/index.ctp:10
+#: View/Ingredients/edit.ctp:36
+#: View/Locations/edit.ctp:13
+#: View/MealPlans/edit.ctp:72
+#: View/PreparationMethods/edit.ctp:12
+#: View/PreparationTimes/edit.ctp:12
+#: View/PriceRanges/edit.ctp:12
+#: View/Recipes/edit.ctp:447
+#: View/Restaurants/edit.ctp:30
+#: View/Setup/password.ctp:24
+#: View/Sources/edit.ctp:14
+#: View/Stores/edit.ctp:12
+#: View/Units/edit.ctp:15
+#: View/Users/add.ctp:18
+#: View/Users/edit.ctp:45
+#: View/Users/reset_link.ctp:13
+msgid "Submit"
+msgstr "제출"
+
+#: View/BaseTypes/index.ctp:10
+msgid "Base Types"
+msgstr "자료 유형"
+
+#: View/BaseTypes/index.ctp:13
+#: View/Recipes/index.ctp:61
+msgid "Add Base Type"
+msgstr "자료 유형 추가"
+
+#: View/BaseTypes/index.ctp:18
+#: View/CoreIngredients/index.ctp:26
+#: View/Courses/index.ctp:18
+#: View/Difficulties/index.ctp:19
+#: View/Ethnicities/index.ctp:19
+#: View/Ingredients/index.ctp:43
+#: View/Locations/index.ctp:20
+#: View/PreparationMethods/index.ctp:19
+#: View/PreparationTimes/index.ctp:19
+#: View/PriceRanges/index.ctp:20
+#: View/Recipes/index.ctp:80
+#: View/Restaurants/index.ctp:29
+#: View/Sources/index.ctp:19
+#: View/Stores/index.ctp:11
+#: View/Units/index.ctp:18
+#: View/Users/index.ctp:10
+msgid "Actions"
+msgstr "행위"
+
+#: View/BaseTypes/index.ctp:24
+#: View/CoreIngredients/index.ctp:33
+#: View/Courses/index.ctp:24
+#: View/Difficulties/index.ctp:25
+#: View/Ethnicities/index.ctp:25
+#: View/Ingredients/index.ctp:53
+#: View/Locations/index.ctp:26
+#: View/MealPlans/edit.ctp:68
+#: View/PreparationMethods/index.ctp:25
+#: View/PreparationTimes/index.ctp:25
+#: View/PriceRanges/index.ctp:26
+#: View/Recipes/edit.ctp:289
+#: View/Recipes/index.ctp:91
+#: View/Restaurants/index.ctp:45
+#: View/ShoppingLists/index.ctp:103;139
+#: View/Sources/index.ctp:26
+#: View/Stores/index.ctp:17
+#: View/Units/index.ctp:27
+#: View/Users/edit.ctp:5
+#: View/Users/index.ctp:23
+msgid "Edit"
+msgstr "편집"
+
+#: View/BaseTypes/index.ctp:25
+#: View/CoreIngredients/index.ctp:34
+#: View/Courses/index.ctp:25
+#: View/Difficulties/index.ctp:26
+#: View/Ethnicities/index.ctp:26
+#: View/Ingredients/index.ctp:54
+#: View/Locations/index.ctp:27
+#: View/PreparationMethods/index.ctp:26
+#: View/PreparationTimes/index.ctp:26
+#: View/PriceRanges/index.ctp:27
+#: View/Recipes/edit.ctp:318;364;422
+#: View/Recipes/index.ctp:92
+#: View/Restaurants/index.ctp:46
+#: View/ShoppingLists/index.ctp:104;140
+#: View/Sources/index.ctp:27
+#: View/Stores/index.ctp:18
+#: View/Units/index.ctp:28
+#: View/Users/index.ctp:26
+msgid "Delete"
+msgstr "삭제"
+
+#: View/BaseTypes/index.ctp:25
+#: View/Courses/index.ctp:25
+#: View/Difficulties/index.ctp:26
+#: View/Ethnicities/index.ctp:26
+#: View/PreparationMethods/index.ctp:26
+#: View/PreparationTimes/index.ctp:26
+#: View/Recipes/index.ctp:92
+#: View/Sources/index.ctp:27
+msgid "Are you sure you want to delete %s?"
+msgstr "당신은 % s을 (를) 삭제 하시겠습니까?"
+
+#: View/BaseTypes/index.ctp:32
+#: View/CoreIngredients/index.ctp:43
+#: View/Courses/index.ctp:32
+#: View/Difficulties/index.ctp:33
+#: View/Ethnicities/index.ctp:34
+#: View/Ingredients/index.ctp:72
+#: View/Locations/index.ctp:35
+#: View/PreparationMethods/index.ctp:33
+#: View/PreparationTimes/index.ctp:33
+#: View/Recipes/index.ctp:108
+#: View/Restaurants/index.ctp:64
+#: View/Sources/index.ctp:35
+#: View/Stores/index.ctp:26
+#: View/Units/index.ctp:39
+#: View/Users/index.ctp:43
+msgid "Page {:page} of {:pages}"
+msgstr "페이지 {페이지}의 {페이지}"
+
+#: View/BaseTypes/index.ctp:36
+#: View/CoreIngredients/index.ctp:46
+#: View/Courses/index.ctp:35
+#: View/Difficulties/index.ctp:36
+#: View/Ethnicities/index.ctp:38
+#: View/Ingredients/index.ctp:76
+#: View/Locations/index.ctp:38
+#: View/PreparationMethods/index.ctp:37
+#: View/PreparationTimes/index.ctp:36
+#: View/PriceRanges/index.ctp:41
+#: View/Recipes/index.ctp:112
+#: View/Restaurants/index.ctp:67
+#: View/Sources/index.ctp:38
+#: View/Stores/index.ctp:31
+#: View/Units/index.ctp:43
+#: View/Users/index.ctp:48
+msgid "previous"
+msgstr "이전"
+
+#: View/BaseTypes/index.ctp:38
+#: View/CoreIngredients/index.ctp:48
+#: View/Courses/index.ctp:37
+#: View/Difficulties/index.ctp:38
+#: View/Ethnicities/index.ctp:40
+#: View/Ingredients/index.ctp:78
+#: View/Locations/index.ctp:40
+#: View/PreparationMethods/index.ctp:39
+#: View/PreparationTimes/index.ctp:38
+#: View/PriceRanges/index.ctp:43
+#: View/Recipes/index.ctp:114
+#: View/Restaurants/index.ctp:69
+#: View/Sources/index.ctp:40
+#: View/Stores/index.ctp:33
+#: View/Units/index.ctp:45
+#: View/Users/index.ctp:50
+msgid "next"
+msgstr "다음에"
+
+#: View/CoreIngredients/index.ctp:12
+#: View/Layouts/default.ctp:125
+msgid "Core Ingredients"
+msgstr "핵심 성분"
+
+#: View/CoreIngredients/index.ctp:15
+#: View/Ingredients/index.ctp:33
+msgid "Add Core Ingredient"
+msgstr "핵심 성분 추가"
+
+#: View/CoreIngredients/index.ctp:16
+msgid "List Ingredients"
+msgstr "목록 성분"
+
+#: View/CoreIngredients/index.ctp:34
+#: View/PriceRanges/index.ctp:27
+#: View/Restaurants/index.ctp:46
+#: View/Stores/index.ctp:18
+#: View/Units/index.ctp:28
+#: View/Users/index.ctp:26
+#: View/Users/view.ctp:5
+msgid "Are you sure you want to delete # %s?"
+msgstr "당신은 # % s을 (를) 삭제 하시겠습니까?"
+
+#: View/Courses/index.ctp:10
+msgid "Courses"
+msgstr "과정"
+
+#: View/Courses/index.ctp:13
+#: View/Recipes/index.ctp:63
+msgid "Add Course"
+msgstr "코스 추가"
+
+#: View/Difficulties/index.ctp:11
+msgid "Difficulties"
+msgstr "어려움"
+
+#: View/Difficulties/index.ctp:14
+#: View/Recipes/index.ctp:69
+msgid "Add Difficulty"
+msgstr "난이도 추가"
+
+#: View/Ethnicities/index.ctp:11
+msgid "Ethnicities"
+msgstr "민족성"
+
+#: View/Ethnicities/index.ctp:14
+#: View/Recipes/index.ctp:59
+msgid "Add Ethnicity"
+msgstr "인종 추가"
+
+#: View/Import/index.ctp:2
+msgid "Import Recipes"
+msgstr "가져 오기 조리법"
+
+#: View/Import/index.ctp:3
+msgid "To import a meal master format file, browse for it and press submit to import.  Duplicate recipes names will not be imported."
+msgstr ", 식사 마스터 포맷의 파일을 가져 그것을 찾아 가져올 제출 누릅니다. 중복 조리법 이름은 가져올 수 없습니다."
+
+#: View/Import/index.ctp:5
+msgid "Imported ingredients that do not exactly match existing ingredient names will be created as new ingredients."
+msgstr "정확하게 기존의 성분 이름과 일치하지 않는 수입 성분은 새로운 성분으로 만들어집니다."
+
+#: View/Ingredients/edit.ctp:30
+msgid "Location In Store"
+msgstr "저장 위치"
+
+#: View/Ingredients/edit.ctp:31
+msgid "Measurement Type"
+msgstr "측정 유형"
+
+#: View/Ingredients/edit.ctp:32
+msgid "Solid/Liquid"
+msgstr "고체 / 액체"
+
+#: View/Ingredients/index.ctp:24
+#: View/Layouts/default.ctp:67
+#: View/Recipes/view.ctp:116;174
+msgid "Ingredients"
+msgstr "성분"
+
+#: View/Ingredients/index.ctp:27
+msgid "Add Ingredient"
+msgstr "성분 추가"
+
+#: View/Ingredients/index.ctp:32
+msgid "List Core Ingredients"
+msgstr "핵심 성분 목록"
+
+#: View/Ingredients/index.ctp:34
+msgid "List Locations"
+msgstr "목록 위치"
+
+#: View/Ingredients/index.ctp:35
+msgid "Add Location"
+msgstr "위치 추가"
+
+#: View/Ingredients/index.ctp:36
+msgid "List Units"
+msgstr "목록 단위"
+
+#: View/Ingredients/index.ctp:37
+#: View/Units/index.ctp:13
+msgid "Add Unit"
+msgstr "단위 추가"
+
+#: View/Ingredients/index.ctp:54
+#: View/Locations/index.ctp:27
+msgid "Are you sure you want to delete \"%s\"?"
+msgstr "당신은 당신이 \"% s\"을 (를) 삭제 하시겠습니까?"
+
+#: View/Layouts/default.ctp:57
+msgid "Browse your recipes"
+msgstr "당신의 조리법을 찾아"
+
+#: View/Layouts/default.ctp:57
+#: View/Recipes/index.ctp:48
+msgid "Recipes"
+msgstr "조리법"
+
+#: View/Layouts/default.ctp:61
+msgid "Manage your meal plans"
+msgstr "식사 계획 관리"
+
+#: View/Layouts/default.ctp:61
+msgid "Meal Planner"
+msgstr "식사 계획"
+
+#: View/Layouts/default.ctp:64
+msgid "Create or Edit a shopping list"
+msgstr "만들기 또는 쇼핑 목록을 편집"
+
+#: View/Layouts/default.ctp:64
+#: View/ShoppingLists/index.ctp:66
+#: View/ShoppingLists/instore.ctp:19
+#: View/ShoppingLists/online.ctp:83
+#: View/ShoppingLists/select.ctp:37
+msgid "Shopping List"
+msgstr "쇼핑 목록"
+
+#: View/Layouts/default.ctp:67
+msgid "Ingredients used in recipes"
+msgstr "조리법에 사용되는 성분"
+
+#: View/Layouts/default.ctp:71
+msgid "List of your restaurants"
+msgstr "당신의 레스토랑 목록"
+
+#: View/Layouts/default.ctp:71
+#: View/Restaurants/index.ctp:12
+msgid "Restaurants"
+msgstr "레스토랑"
+
+#: View/Layouts/default.ctp:74
+msgid "Administer Users"
+msgstr "사용자를 관리"
+
+#: View/Layouts/default.ctp:74
+#: View/Users/edit.ctp:4
+#: View/Users/index.ctp:2
+msgid "Users"
+msgstr "사용자"
+
+#: View/Layouts/default.ctp:88
+msgid "Sign in with your existing account"
+msgstr "기존 계정으로 로그인"
+
+#: View/Layouts/default.ctp:88
+msgid "Sign in"
+msgstr "로그인"
+
+#: View/Layouts/default.ctp:93
+msgid "Create a new account"
+msgstr "새 계정 만들기"
+
+#: View/Layouts/default.ctp:93
+#: View/Users/add.ctp:4
+msgid "Create Account"
+msgstr "계정 만들기"
+
+#: View/Layouts/default.ctp:98
+msgid "Logout"
+msgstr "로그 아웃"
+
+#: View/Layouts/default.ctp:102
+msgid "Edit your Account settings"
+msgstr "당신의 계정 설정을 편집합니다"
+
+#: View/Layouts/default.ctp:122
+#: View/Recipes/edit.ctp:339
+msgid "Ingredient"
+msgstr "성분"
+
+#: View/Layouts/default.ctp:123
+msgid "Location"
+msgstr "위치"
+
+#: View/Layouts/default.ctp:126
+msgid "Restaurant"
+msgstr "레스토랑"
+
+#: View/Layouts/default.ctp:127
+#: View/PriceRanges/index.ctp:11
+msgid "Price Ranges"
+msgstr "가격 범위"
+
+#: View/Layouts/default.ctp:128
+#: View/Recipes/view.ctp:51
+msgid "Ethnicity"
+msgstr "인종"
+
+#: View/Layouts/default.ctp:129
+#: View/Recipes/view.ctp:56
+msgid "Base Type"
+msgstr "기본 유형"
+
+#: View/Layouts/default.ctp:130
+#: View/Recipes/view.ctp:61
+msgid "Course"
+msgstr "과정"
+
+#: View/Layouts/default.ctp:131
+#: View/Recipes/view.ctp:66
+msgid "Preparation Time"
+msgstr "준비 시간"
+
+#: View/Layouts/default.ctp:132
+msgid "Preparation Method"
+msgstr "제조 방법"
+
+#: View/Layouts/default.ctp:133
+#: View/Recipes/view.ctp:71
+msgid "Difficulty"
+msgstr "어려움"
+
+#: View/Layouts/default.ctp:134
+#: View/Recipes/view.ctp:89
+msgid "Source"
+msgstr "출처"
+
+#: View/Layouts/default.ctp:135
+msgid "Meal"
+msgstr "식사"
+
+#: View/Layouts/error.ctp:19
+msgid "PHPRecipebook Exception"
+msgstr "PHPRecipebook 예외"
+
+#: View/Locations/index.ctp:12
+msgid "Locations"
+msgstr "위치"
+
+#: View/Locations/index.ctp:15
+msgid "New Location"
+msgstr "새 위치"
+
+#: View/MealPlans/edit.ctp:17
+msgid "recipe serves"
+msgstr "레시피 제공"
+
+#: View/MealPlans/edit.ctp:49
+#: View/Recipes/edit.ctp:281
+msgid "Recipe"
+msgstr "조리법"
+
+#: View/MealPlans/edit.ctp:53
+msgid "Enter Recipe Name"
+msgstr "레시피 이름을 입력합니다"
+
+#: View/MealPlans/edit.ctp:62
+msgid "Every other day"
+msgstr "매일"
+
+#: View/MealPlans/edit.ctp:66
+#: View/Recipes/index.ctp:89
+#: View/ShoppingLists/index.ctp:102
+#: View/Users/index.ctp:22
+msgid "View"
+msgstr "전망"
+
+#: View/MealPlans/index.ctp:16
+msgid "Meal Plan - Weekly"
+msgstr "식사 계획 - 주간"
+
+#: View/MealPlans/index.ctp:19
+msgid "Add to Shopping List"
+msgstr "쇼핑 목록에 추가"
+
+#: View/MealPlans/index.ctp:32
+msgid "Today"
+msgstr "오늘"
+
+#: View/MealPlans/index.ctp:64
+msgid "Are you sure you want to delete meal \"%s\"?"
+msgstr "당신은 당신이 \"% s\"을 (를) 식사를 삭제 하시겠습니까?"
+
+#: View/PreparationMethods/index.ctp:11
+msgid "Preparation Methods"
+msgstr "준비 방법"
+
+#: View/PreparationMethods/index.ctp:14
+#: View/Recipes/index.ctp:67
+msgid "Add Preparation Method"
+msgstr "제조 방법을 추가"
+
+#: View/PreparationTimes/index.ctp:11
+msgid "Preparation Times"
+msgstr "준비 시간"
+
+#: View/PreparationTimes/index.ctp:14
+#: View/Recipes/index.ctp:65
+msgid "Add Preparation Time"
+msgstr "준비 시간 추가"
+
+#: View/PriceRanges/index.ctp:15
+msgid "New Price Range"
+msgstr "새로운 가격 범위"
+
+#: View/PriceRanges/index.ctp:36
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "페이지 {페이지}의 {페이지}, {표시 : 현재는}에 종료 : {시작} 기록에 시작, 총 {수}에서 기록 {끝}"
+
+#: View/RecipeLinkBox/index.ctp:2
+msgid "Recipe Box"
+msgstr "레시피 상자"
+
+#: View/RecipeLinkBox/index.ctp:4
+msgid "By Course"
+msgstr "과정으로"
+
+#: View/RecipeLinkBox/index.ctp:17
+msgid "By Base"
+msgstr "기본으로"
+
+#: View/RecipeLinkBox/index.ctp:30
+msgid "By Prep Method"
+msgstr "준비 방법으로"
+
+#: View/RecipeLinkBox/index.ctp:45
+msgid "Add A Recipe"
+msgstr "레시피 추가"
+
+#: View/Recipes/edit.ctp:24
+#: View/ShoppingLists/index.ctp:50
+msgid "Entered value is not a number/fraction, please try again."
+msgstr "입력 한 값이 숫자 / 분수없는, 다시 시도하십시오."
+
+#: View/Recipes/edit.ctp:127
+msgid "Are you sure you wish to remove this item?"
+msgstr "이 항목을 제거 할 확실하고 있습니까?"
+
+#: View/Recipes/edit.ctp:262
+msgid "View Recipe"
+msgstr "보기 레시피"
+
+#: View/Recipes/edit.ctp:264
+msgid "Edit Sources"
+msgstr "편집 소스"
+
+#: View/Recipes/edit.ctp:269
+msgid "Edit Ethnicities"
+msgstr "편집 민족성"
+
+#: View/Recipes/edit.ctp:270
+msgid "Edit Base Types"
+msgstr "편집 자료 유형"
+
+#: View/Recipes/edit.ctp:271
+msgid "Edit Courses"
+msgstr "편집 과정"
+
+#: View/Recipes/edit.ctp:272
+msgid "Edit Preparation Times"
+msgstr "편집 준비 시간"
+
+#: View/Recipes/edit.ctp:273
+msgid "Edit Difficulties"
+msgstr "편집 어려움"
+
+#: View/Recipes/edit.ctp:336
+#: View/ShoppingLists/index.ctp:127
+#: View/ShoppingLists/instore.ctp:37
+#: View/ShoppingLists/online.ctp:94
+#: View/ShoppingLists/select.ctp:47
+msgid "Quantity"
+msgstr "양"
+
+#: View/Recipes/edit.ctp:337
+#: View/ShoppingLists/index.ctp:128
+#: View/Units/index.ctp:10
+msgid "Units"
+msgstr "단위"
+
+#: View/Recipes/edit.ctp:338
+#: View/ShoppingLists/index.ctp:129
+msgid "Qualifier"
+msgstr "예선"
+
+#: View/Recipes/edit.ctp:340
+msgid "add new"
+msgstr "새로운 추가"
+
+#: View/Recipes/edit.ctp:343
+msgid "Optional"
+msgstr "선택"
+
+#: View/Recipes/edit.ctp:349;408
+msgid "Unknown"
+msgstr "알 수없는"
+
+#: View/Recipes/edit.ctp:369
+msgid "Order Ingredient - currently #"
+msgstr "주문 성분 - 현재 #"
+
+#: View/Recipes/edit.ctp:391
+msgid "Add Another Ingredient"
+msgstr "또 다른 성분을 추가"
+
+#: View/Recipes/edit.ctp:401
+msgid "Related Recipe Name"
+msgstr "관련 레시피 이름"
+
+#: View/Recipes/edit.ctp:402
+msgid "Required"
+msgstr "필수"
+
+#: View/Recipes/edit.ctp:427
+msgid "Order Recipe - currently #"
+msgstr "주문 레시피 - 현재 #"
+
+#: View/Recipes/edit.ctp:443
+msgid "Add Another Recipe"
+msgstr "또 다른 레시피 추가"
+
+#: View/Recipes/index.ctp:52
+msgid "Add Recipe"
+msgstr "레시피 추가"
+
+#: View/Recipes/index.ctp:53
+#: View/Recipes/view.ctp:45
+msgid "Import"
+msgstr "수입"
+
+#: View/Recipes/index.ctp:58
+msgid "List Ethnicities"
+msgstr "목록 민족성"
+
+#: View/Recipes/index.ctp:60
+msgid "List Base Types"
+msgstr "목록 자료 유형"
+
+#: View/Recipes/index.ctp:62
+msgid "List Courses"
+msgstr "목록 과정"
+
+#: View/Recipes/index.ctp:64
+msgid "List Preparation Times"
+msgstr "목록 준비 시간"
+
+#: View/Recipes/index.ctp:66
+msgid "List Preparation Methods"
+msgstr "목록 준비 방법"
+
+#: View/Recipes/index.ctp:68
+msgid "List Difficulties"
+msgstr "목록 어려움"
+
+#: View/Recipes/index.ctp:70
+msgid "List Sources"
+msgstr "목록 소스"
+
+#: View/Recipes/index.ctp:71
+#: View/Sources/index.ctp:14
+msgid "Add Source"
+msgstr "소스 추가"
+
+#: View/Recipes/index.ctp:72
+#: View/Users/view.ctp:6
+msgid "List Users"
+msgstr "목록의 사용자"
+
+#: View/Recipes/index.ctp:73
+#: View/Users/index.ctp:5
+msgid "Add User"
+msgstr "사용자 추가"
+
+#: View/Recipes/view.ctp:35
+msgid "Edit Recipe"
+msgstr "편집 레시피"
+
+#: View/Recipes/view.ctp:36
+msgid "Add to shopping list"
+msgstr "쇼핑 목록에 추가"
+
+#: View/Recipes/view.ctp:38
+#: View/ShoppingLists/instore.ctp:74
+msgid "Print"
+msgstr "인쇄"
+
+#: View/Recipes/view.ctp:46
+msgid "Export"
+msgstr "수출"
+
+#: View/Recipes/view.ctp:76
+msgid "Serving Size"
+msgstr "제공량"
+
+#: View/Recipes/view.ctp:84
+msgid "Comments"
+msgstr "댓글"
+
+#: View/Recipes/view.ctp:97
+msgid "Source Description"
+msgstr "소스 설명"
+
+#: View/Recipes/view.ctp:102
+msgid "Last Modified"
+msgstr "마지막으로 수정"
+
+#: View/Recipes/view.ctp:107
+#: View/Users/view.ctp:1
+msgid "User"
+msgstr "사용자"
+
+#: View/Recipes/view.ctp:123
+msgid "(optional)"
+msgstr "(선택 사항)"
+
+#: View/Recipes/view.ctp:160;190
+msgid "Directions"
+msgstr "오시는 길"
+
+#: View/Recipes/view.ctp:171
+msgid "optional"
+msgstr "선택"
+
+#: View/Restaurants/index.ctp:16
+msgid "Add Restaurant"
+msgstr "레스토랑 추가"
+
+#: View/Restaurants/index.ctp:21
+msgid "List Price Ranges"
+msgstr "리스트 가격 범위"
+
+#: View/Restaurants/index.ctp:22
+msgid "New Price Ranges"
+msgstr "새로운 가격 범위"
+
+#: View/Setup/database.ctp:29
+msgid "Continue..."
+msgstr "계속 ..."
+
+#: View/Setup/finish.ctp:6
+msgid "Finish"
+msgstr "끝"
+
+#: View/Setup/index.ctp:145
+msgid "New Install"
+msgstr "설치 새로운"
+
+#: View/Setup/index.ctp:146
+msgid "Upgrade"
+msgstr "업그레이드"
+
+#: View/Setup/upgrade.ctp:27
+msgid "Continue"
+msgstr "계속"
+
+#: View/ShoppingLists/index.ctp:69
+msgid "Clear List"
+msgstr "목록 지우기"
+
+#: View/ShoppingLists/index.ctp:70
+msgid "List Stores"
+msgstr "목록 저장"
+
+#: View/ShoppingLists/index.ctp:71
+msgid "List Online Vendors"
+msgstr "온라인 업체리스트"
+
+#: View/ShoppingLists/index.ctp:89;126
+msgid "Action"
+msgstr "행동"
+
+#: View/ShoppingLists/index.ctp:90
+msgid "Recipe Name"
+msgstr "레시피 이름"
+
+#: View/ShoppingLists/index.ctp:91
+msgid "Servings"
+msgstr "인분"
+
+#: View/ShoppingLists/index.ctp:92
+msgid "Servings to buy"
+msgstr "인분은 구매"
+
+#: View/ShoppingLists/index.ctp:107;143
+msgid "Are you sure you want to remove %s?"
+msgstr "당신은 % s을 (를) 제거 하시겠습니까?"
+
+#: View/ShoppingLists/index.ctp:130
+msgid "Ingredient Name"
+msgstr "성분명"
+
+#: View/ShoppingLists/index.ctp:168
+msgid "Save"
+msgstr "저장"
+
+#: View/ShoppingLists/index.ctp:169
+msgid "Start Shopping"
+msgstr "시작 쇼핑"
+
+#: View/ShoppingLists/instore.ctp:20
+#: View/ShoppingLists/online.ctp:84
+#: View/ShoppingLists/select.ctp:38
+msgid "Select Items"
+msgstr "항목 선택"
+
+#: View/ShoppingLists/instore.ctp:21
+msgid "In Store"
+msgstr "스토어에서"
+
+#: View/ShoppingLists/instore.ctp:36
+#: View/ShoppingLists/online.ctp:92
+#: View/ShoppingLists/select.ctp:46
+msgid "Select"
+msgstr "선택"
+
+#: View/ShoppingLists/instore.ctp:40
+#: View/ShoppingLists/online.ctp:97
+#: View/ShoppingLists/select.ctp:50
+#: View/Users/view.ctp:21
+msgid "Name"
+msgstr "이름"
+
+#: View/ShoppingLists/instore.ctp:75
+#: View/ShoppingLists/online.ctp:140
+msgid "Complete"
+msgstr "완전한"
+
+#: View/ShoppingLists/online.ctp:41
+msgid "Adding "
+msgstr "첨가"
+
+#: View/ShoppingLists/online.ctp:45
+msgid "Complete!"
+msgstr "완료!"
+
+#: View/ShoppingLists/online.ctp:85
+msgid "Online"
+msgstr "온라인으로"
+
+#: View/ShoppingLists/online.ctp:93
+msgid "Product / ID"
+msgstr "제품 / ID"
+
+#: View/ShoppingLists/online.ctp:139
+msgid "Add All"
+msgstr "모두 추가"
+
+#: View/ShoppingLists/select.ctp:40
+msgid "What Items do you already have?"
+msgstr "당신은 이미 어떤 항목을해야합니까?"
+
+#: View/Sources/index.ctp:11
+msgid "Sources"
+msgstr "소스"
+
+#: View/Stores/edit.ctp:2
+msgid "Stores "
+msgstr "상점"
+
+#: View/Stores/edit.ctp:3
+msgid "Add & Edit"
+msgstr "추가 및 편집"
+
+#: View/Stores/index.ctp:3
+msgid "Stores"
+msgstr "상점"
+
+#: View/Stores/index.ctp:6
+msgid "New Store"
+msgstr "새로운 매장"
+
+#: View/Users/edit.ctp:8
+msgid "Account Settings"
+msgstr "계정 설정"
+
+#: View/Users/edit.ctp:29
+msgid "Sunday"
+msgstr "일요일"
+
+#: View/Users/edit.ctp:30
+msgid "Monday"
+msgstr "월요일"
+
+#: View/Users/edit.ctp:31
+msgid "Tuesday"
+msgstr "화요일"
+
+#: View/Users/edit.ctp:32
+msgid "Wednesday"
+msgstr "수요일"
+
+#: View/Users/edit.ctp:33
+msgid "Thursday"
+msgstr "목요일"
+
+#: View/Users/edit.ctp:34
+msgid "Friday"
+msgstr "금요일"
+
+#: View/Users/edit.ctp:35
+msgid "Saturday"
+msgstr "토요일"
+
+#: View/Users/login.ctp:12
+msgid "Enter your username and password"
+msgstr "사용자 이름과 암호를 입력"
+
+#: View/Users/login.ctp:17
+msgid "Forgot password?"
+msgstr "비밀번호를 잊으셨습니까?"
+
+#: View/Users/login.ctp:19
+msgid "Login"
+msgstr "로그인"
+
+#: View/Users/reset.ctp:2
+#: View/Users/reset_link.ctp:5
+msgid "Reset Password"
+msgstr "암호 재설정"
+
+#: View/Users/reset.ctp:10
+msgid "Enter your email address to received an email to reset your password."
+msgstr "비밀번호를 재설정 할 수있는 이메일을받은 당신의 이메일 주소를 입력합니다."
+
+#: View/Users/reset.ctp:15
+msgid "Send"
+msgstr "보내기"
+
+#: View/Users/reset_link.ctp:6
+msgid "Enter a new password to reset the account '"
+msgstr "계정을 '재설정 새 암호를 입력"
+
+#: View/Users/view.ctp:4
+msgid "Edit User"
+msgstr "사용자 편집"
+
+#: View/Users/view.ctp:5
+msgid "Delete User"
+msgstr "사용자 삭제"
+
+#: View/Users/view.ctp:11
+msgid "Id"
+msgstr "신분증"
+
+#: View/Users/view.ctp:16
+msgid "Username"
+msgstr "사용자 이름"
+
+#: View/Users/view.ctp:26
+msgid "Access Level"
+msgstr "액세스 수준"
+
+#: View/Users/view.ctp:31
+msgid "Language"
+msgstr "언어"
+
+#: View/Users/view.ctp:36
+msgid "Country"
+msgstr "국가"
+
+#: View/Users/view.ctp:41
+msgid "Created"
+msgstr "생성"
+
+#: View/Users/view.ctp:46
+msgid "Last Login"
+msgstr "마지막 로그인"
+
+#: View/Users/view.ctp:51
+msgid "Email"
+msgstr "이메일"
+
+#: View/Users/view.ctp:56
+msgid "Modified"
+msgstr "수정"
+
+#: Model/BaseType.php:validation for field name
+#: Model/CoreIngredient.php:validation for field name;validation for field short_description
+#: Model/Course.php:validation for field name
+#: Model/Ethnicity.php:validation for field name
+#: Model/Ingredient.php:validation for field name
+#: Model/PreparationTime.php:validation for field name
+#: Model/Recipe.php:validation for field name;validation for field system
+#: Model/Restaurant.php:validation for field name
+#: Model/ShoppingList.php:validation for field name
+#: Model/Store.php:validation for field name
+#: Model/Unit.php:validation for field name;validation for field abbreviation
+#: Model/User.php:validation for field username;validation for field password;validation for field name;validation for field language;validation for field country
+#: Model/Vendor.php:validation for field name
+#: Model/VendorProduct.php:validation for field name
+msgid "notEmpty"
+msgstr "는 NotEmpty"
+
+#: Model/CoreIngredient.php:validation for field groupNumber
+#: Model/MealPlan.php:validation for field meal_name_id;validation for field recipe_id;validation for field servings
+#: Model/Unit.php:validation for field system;validation for field sort_order
+#: Model/User.php:validation for field access_level
+#: Model/VendorProduct.php:validation for field ingredient_id;validation for field vendor_id
+msgid "numeric"
+msgstr "숫자"
+
+#: Model/MealPlan.php:validation for field mealday
+msgid "date"
+msgstr "날짜"
+
+#: Model/Recipe.php:validation for field private
+msgid "boolean"
+msgstr "부울"
+
+#: Model/User.php:validation for field email
+msgid "email"
+msgstr "이메일"

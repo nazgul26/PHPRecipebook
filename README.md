@@ -18,6 +18,25 @@ Features:
 * Multi-User Support
 * Built using CakePHP v3
 
+### Currently Supported Languages / Translation Code
+* Chinese - zh
+* Danish - da
+* Dutch - nl
+* English - en
+* Estonian - et
+* French - fr
+* German - de
+* Hungarian - hu
+* Italian - it
+* Japanese - jp
+* Korean - ko
+* Norwegian - no
+* Portuguese - pt
+* Turkish - tr
+* Serbian - sr
+* Spanish - sp
+* Swedish - sv
+
 # Heroku Deployment
 
 The fastest way to get running is using a provider like Heroku.
@@ -50,13 +69,12 @@ Create a configuration file config/.env
 with contents (modify to fit your needs):
 
 ```
-
 export APP_NAME="PHPRecipeBook"
 export ALLOW_PUBLIC_ACCOUNT_CREATION = "false"
 export PRIVATE_COLLECTION = "false"
 export DEBUG="false"
 export APP_ENCODING="UTF-8"
-export APP_DEFAULT_LOCALE="en_US"
+export APP_DEFAULT_LOCALE="en"
 export APP_DEFAULT_TIMEZONE="UTC"
 export SECURITY_SALT="------ CHANGE TO RANDOM STRING ----------------------------"
 export DATABASE_URL="mysql://dbname:password@localhost/phprecipebook?encoding=utf8&timezone=UTC&cacheMetadata=true&quoteIdentifiers=false&persistent=false"
@@ -82,5 +100,6 @@ From the directory that the app was extracted to.  If you get any db errors doub
 ### Local Development
 
 Edit the ./.htaccess file and comment out the https redirect lines.
+
 
 
