@@ -36,6 +36,17 @@ class AttachmentsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+            'attachment' => [
+                'thumbnailSizes' => [
+                    'thumb' => '60w',
+                    'preview' => '200w'
+                ],
+                'thumbnailMethod' => 'php',
+                'deleteFolderOnDelete' => true
+            ],
+        ]);
+
         $this->belongsTo('Recipes', [
             'foreignKey' => 'recipe_id',
             'joinType' => 'INNER',

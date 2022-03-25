@@ -12,7 +12,7 @@ use Cake\Routing\Router;
 	<?php
 		echo $this->Html->meta('icon');
 		
-                echo $this->Html->css("https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css");
+                echo $this->Html->css("jquery-ui.css");
                 echo $this->Html->css("toastr.min");
                 echo $this->Html->css("jquery.qtip");
                 echo $this->Html->css("rateit");
@@ -20,8 +20,8 @@ use Cake\Routing\Router;
                 echo $this->Html->css('default');
                 echo $this->Html->css('print');
                 
-                echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js");
-                echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js");
+                echo $this->Html->script("jquery-3.6.0.min.js");
+                echo $this->Html->script("jquery-ui.min.js");
                 echo $this->Html->script("toastr.min.js");
                 echo $this->Html->script("jquery.qtip.js");
                 echo $this->Html->script("jquery.rateit.min.js");

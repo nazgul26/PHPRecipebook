@@ -9,6 +9,7 @@
         "cakephp/cakephp": "3.9.*",
         "cakephp/migrations": "^2.0.0",
         "cakephp/plugin-installer": "^1.0",
+        "josegonzalez/cakephp-upload": "^4.0",
         "mobiledetect/mobiledetectlib": "2.*"
     },
     "require-dev": {
