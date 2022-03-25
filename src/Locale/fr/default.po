@@ -1122,7 +1122,7 @@ msgstr "Effacer"
 #: View/Recipes/index.ctp:92
 #: View/Sources/index.ctp:27
 msgid "Are you sure you want to delete %s?"
-msgstr "Êtes-vous sûr de vouloir supprimer% s?"
+msgstr "Êtes-vous sûr de vouloir supprimer %s?"
 
 #: View/BaseTypes/index.ctp:32
 #: View/CoreIngredients/index.ctp:43
@@ -1202,7 +1202,7 @@ msgstr "Liste Ingrédients"
 #: View/Users/index.ctp:26
 #: View/Users/view.ctp:5
 msgid "Are you sure you want to delete # %s?"
-msgstr "Êtes-vous sûr de vouloir supprimer #% s?"
+msgstr "Êtes-vous sûr de vouloir supprimer # %s?"
 
 #: View/Courses/index.ctp:10
 msgid "Courses"
@@ -1774,7 +1774,7 @@ msgstr "Portions acheter"
 
 #: View/ShoppingLists/index.ctp:107;143
 msgid "Are you sure you want to remove %s?"
-msgstr "Êtes-vous sûr de vouloir supprimer% s?"
+msgstr "Êtes-vous sûr de vouloir supprimer %s?"
 
 #: View/ShoppingLists/index.ctp:130
 msgid "Ingredient Name"

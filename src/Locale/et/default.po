@@ -1122,7 +1122,7 @@ msgstr "Borrar"
 #: View/Recipes/index.ctp:92
 #: View/Sources/index.ctp:27
 msgid "Are you sure you want to delete %s?"
-msgstr "¿Seguro que quieres eliminar% s?"
+msgstr "¿Seguro que quieres eliminar %s?"
 
 #: View/BaseTypes/index.ctp:32
 #: View/CoreIngredients/index.ctp:43
@@ -1202,7 +1202,7 @@ msgstr "Lista de Ingredientes"
 #: View/Users/index.ctp:26
 #: View/Users/view.ctp:5
 msgid "Are you sure you want to delete # %s?"
-msgstr "¿Seguro que quieres borrar #% s?"
+msgstr "¿Seguro que quieres borrar # %s?"
 
 #: View/Courses/index.ctp:10
 msgid "Courses"
@@ -1778,7 +1778,7 @@ msgstr "Porciones para comprar"
 
 #: View/ShoppingLists/index.ctp:107;143
 msgid "Are you sure you want to remove %s?"
-msgstr "¿Seguro que quieres eliminar% s?"
+msgstr "¿Seguro que quieres eliminar %s?"
 
 #: View/ShoppingLists/index.ctp:130
 msgid "Ingredient Name"
