@@ -47,21 +47,28 @@
 	</tr>
 	<?php foreach ($ingredients as $ingredient): ?>
 	<tr>
-            	<td class="actions">
+        <td class="actions">
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $ingredient->id), array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog')); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $ingredient->id), ['confirm' => __('Are you sure you want to delete "{0}"?', $ingredient->name)]); ?>
 		</td>
 		<td><?php echo h($ingredient->name); ?>&nbsp;</td>
 		<td><?php echo h($ingredient->description); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($ingredient->location->name, 
+			<?php 
+				if (isset($ingredient->location)) {
+					echo $this->Html->link($ingredient->location->name, 
                                     array('controller' => 'locations', 'action' => 'edit', $ingredient->location->id) , 
-                                    array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog')); ?>
+                                    array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog')); 
+				}
+				?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($ingredient->unit->name, 
+			<?php 
+				if (isset($ingredient->unit)) {
+					echo $this->Html->link($ingredient->unit->name, 
                                 array('controller' => 'units', 'action' => 'edit', $ingredient->unit->id),
-                                array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog')); ?>
+                                array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog')); 
+				}?>
 		</td>
 	</tr>
 <?php endforeach; ?>
