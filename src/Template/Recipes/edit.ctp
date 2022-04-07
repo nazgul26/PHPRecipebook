@@ -409,9 +409,9 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
             $imageCount = (isset($recipe) && isset($recipe->image))? count($recipe->image) : 0;
   
             echo "<div id='imageSection'>";
-            echo $this->Form->control('Image.' . $imageCount . '.attachment', array('type' => 'file', 'label' => 'Add Image'));
-            echo $this->Form->control('Image.' . $imageCount . '.name', array('label' => 'Caption'));
-            echo $this->Form->hidden('Image.' . $imageCount . '.id');
+            echo $this->Form->control('new_attachments.attachment', array('type' => 'file', 'label' => 'Add Image'));
+            echo $this->Form->control('new_attachments.name', array('label' => 'Caption'));
+            echo $this->Form->hidden('new_attachment.id');
 
             echo "<div id='currentImages'>";
             for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {

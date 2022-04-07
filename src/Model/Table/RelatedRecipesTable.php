@@ -38,17 +38,18 @@ class RelatedRecipesTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('ParentRelatedRecipes', [
-            'className' => 'RelatedRecipes',
-            'foreignKey' => 'parent_id',
-        ]);
         $this->belongsTo('Recipes', [
             'foreignKey' => 'recipe_id',
             'joinType' => 'INNER',
         ]);
-        $this->hasMany('ChildRelatedRecipes', [
+        $this->belongsTo('ParentRelatedRecipes', [
             'className' => 'RelatedRecipes',
             'foreignKey' => 'parent_id',
+        ]);
+
+        $this->hasMany('ChildRelatedRecipes', [
+            'className' => 'RelatedRecipes',
+            'foreignKey' => 'recipe_id',
         ]);
     }
 
@@ -84,7 +85,7 @@ class RelatedRecipesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['parent_id'], 'ParentRelatedRecipes'));
+        //$rules->add($rules->existsIn(['parent_id'], 'Recipes'));
         $rules->add($rules->existsIn(['recipe_id'], 'Recipes'));
 
         return $rules;

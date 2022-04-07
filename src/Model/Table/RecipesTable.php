@@ -87,7 +87,7 @@ class RecipesTable extends Table
             'foreignKey' => 'recipe_id',
         ]);
         $this->hasMany('RelatedRecipes', [
-            'foreignKey' => 'recipe_id',
+            'foreignKey' => 'parent_id',
         ]);
         $this->hasMany('Reviews', [
             'foreignKey' => 'recipe_id',

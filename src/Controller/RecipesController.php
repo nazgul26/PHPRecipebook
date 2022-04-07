@@ -164,6 +164,7 @@ class RecipesController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $recipe = $this->Recipes->patchEntity($recipe, $this->request->getData());
+
             //TODO: Keep the original author just in case editor/admin edits
             $recipe->user_id = $this->Auth->user('id');
             if ($this->Recipes->save($recipe)) {
@@ -171,6 +172,17 @@ class RecipesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
+            
+            /*
+            NOTE: Helpful debug info
+            
+            $x = $recipe->getErrors();
+            if ($x) {
+                debug($recipe);
+                debug($x);
+                return false;
+            }
+            */
             $this->Flash->error(__('The recipe could not be saved. Please, try again.'));
         }
         $ethnicities = $this->Recipes->Ethnicities->find('list', ['limit' => 200, 'order' => ['Ethnicities.name']]);
