@@ -3,7 +3,7 @@
 
 PHPRecipeBook is a cookbook and meal planning software.
 
-<a href="https://warm-beyond-24755.herokuapp.com/">Demo site</a> (Create your own account)
+<a href="https://secure-hamlet-65587.herokuapp.com/">Demo site</a> (Create your own account)
 
 Demo Videos:
 * <a href="https://youtu.be/xNUBANz2aVI">Adding A Recipe</a>
