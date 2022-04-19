@@ -7,6 +7,7 @@ use Cake\Mailer\Email;
 use Cake\Utility\Security;
 use Cake\Utility\Text;
 use Cake\Routing\Router;
+use Cake\Core\Configure;
 
 class UsersController extends AppController
 {
@@ -18,12 +19,20 @@ class UsersController extends AppController
 
     public function beforeFilter($event) {
         parent::beforeFilter($event);
+        $allowPublicAccountCreation = env('ALLOW_PUBLIC_ACCOUNT_CREATION', false) == "true";
 
-        $this->Auth->allow([
-            'reset', 
-            'login',
-            'logout']);
-        
+        if ($allowPublicAccountCreation) {
+            $this->Auth->allow([
+                'add',
+                'reset', 
+                'login',
+                'logout']);
+        } else {
+            $this->Auth->allow([
+                'reset', 
+                'login',
+                'logout']);
+        }
     }
     
     public function index()
@@ -96,23 +105,32 @@ class UsersController extends AppController
         return $this->redirect($this->Auth->logout());
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+            $data = $this->request->getData();
+            if ($data['password1'] === $data['password2']) {
+                // only pass on the password to the Entity when there is a value (and it matches the confirm)
+                if (!empty($data['password2'])) {  
+                    $data['password'] = (new DefaultPasswordHasher)->hash($data['password2']);
+                }
 
-                return $this->redirect(['action' => 'index']);
+                $data['access_level'] = Configure::read('AuthRoles.author');
+                $data['country'] = 'us';
+
+                $user = $this->Users->patchEntity($user, $data);
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The account created. Login to continue.'));
+
+                    return $this->redirect(['controller'=> 'recipes', 'action' => 'index']);
+                }
+                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            } else {
+                $this->Flash->error(__('Passwords did not match. Please, try again.'));
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
-        }
+        } 
+           
         $this->set(compact('user'));
     }
 
