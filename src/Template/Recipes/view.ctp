@@ -106,9 +106,14 @@ if (isset($recipe->reviews)) {
 		</dd>
 		<dt><?php echo __('Serving Size'); ?></dt>
 		<dd>
-                    <input type="text" id="viewServings" value="<?php echo $servings;?>"/>
-                    <a id="viewRefresh" href="#"><?php echo __('Refresh');?></a> /
-                    <a id="doubleRefresh" href="#"><?php echo __('Double it');?></a>
+            <div>
+            <input type="text" id="viewServings" value="<?php echo $servings;?>"/>
+            
+            <a id="doubleRefresh" title="<?php echo __('Double it');?>" href="#">x 2</a>
+
+            <a id="viewRefresh" href="#">
+                <?php echo __('Refresh');?></a>
+            </div>
 		</dd>
         </dl>
 

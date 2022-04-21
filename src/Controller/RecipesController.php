@@ -65,7 +65,7 @@ class RecipesController extends AppController
         $this->set(compact('recipes'));
     }
 
-    public function view($id = null)
+    public function view($id = null, $servings=null)
     {
         $recipe = $this->Recipes->get($id, [
             'contain' => [
@@ -112,6 +112,7 @@ class RecipesController extends AppController
         }
 
         $this->set('recipe', $recipe);
+        $this->set('servings', $servings);
     }
 
     public function edit($id = null)
