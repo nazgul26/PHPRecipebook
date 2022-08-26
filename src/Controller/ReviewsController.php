@@ -36,13 +36,17 @@ class ReviewsController extends AppController
         if ($recipeId == null) {
             throw new NotFoundException(__('Missing review ID'));
         }
+
+        $this->loadModel('Recipes');
+        $recipe = $this->Recipes->get($recipeId);
     
         $this->paginate = [
             'contain' => ['Recipes', 'Users'],
+            'conditions' => ['Reviews.recipe_id =' => $recipeId]
         ];
         $reviews = $this->paginate($this->Reviews);
 
-        $this->set(compact('reviews'));
+        $this->set(compact('recipe', 'reviews', 'recipeId'));
     }
 
     public function view($id = null)
@@ -54,26 +58,49 @@ class ReviewsController extends AppController
         $this->set('review', $review);
     }
 
-    public function edit($id = null)
+    public function edit($recipeId = null, $id = null)
     {
-        $review = $this->Reviews->get($id, [
-            'contain' => [],
-        ]);
+        if ($recipeId == null) {
+            throw new NotFoundException(__('Missing recipe ID'));
+        }
+        if ($id != null && !$this->Reviews->exists($id)) {
+            throw new NotFoundException(__('Invalid review'));
+        }
+
+        $this->loadModel('Recipes');
+        $recipe = $this->Recipes->get($recipeId);
+
+        if ($id == null) {
+            $review = $this->Reviews->newEntity();
+        } else {
+            $review = $this->Reviews->get($id, ['contain' => [
+                'Users' => [
+                    'fields' => ['name', 'id']
+                    ]
+                ]
+            ]);
+        }
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $review = $this->Reviews->patchEntity($review, $this->request->getData());
-            if ($this->Reviews->save($review)) {
-                $this->Flash->success(__('The review has been saved.'));
+            $review->recipe_id = $recipeId;
+            $review->user_id = $this->Auth->user('id');
+            try {
+                if ($this->Reviews->save($review)) {
+                    $this->Flash->success(__('The review has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                    return $this->redirect(['action' => 'index', $recipeId]);
+                }
+                $this->Flash->error(__('The review could not be saved. Please, try again.'));
+            } catch (\Exception $e) {
+                $this->Flash->error(__('You have already entered a review for this recipe. Please edit or delete your existing review.'));
             }
-            $this->Flash->error(__('The review could not be saved. Please, try again.'));
         }
-        $recipes = $this->Reviews->Recipes->find('list', ['limit' => 200]);
-        $users = $this->Reviews->Users->find('list', ['limit' => 200]);
-        $this->set(compact('review', 'recipes', 'users'));
+
+        $this->set(compact('recipe', 'recipeId', 'review'));
     }
 
-    public function delete($id = null)
+    public function delete($recipeId = null, $id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $review = $this->Reviews->get($id);
@@ -83,6 +110,6 @@ class ReviewsController extends AppController
             $this->Flash->error(__('The review could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'index', $recipeId]);
     }
 }

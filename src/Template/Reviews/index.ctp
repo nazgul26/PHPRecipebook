@@ -1,4 +1,5 @@
 <?php 
+use Cake\Routing\Router;
 $baseUrl = Router::url('/');
 ?>
 <script type="text/javascript">
@@ -9,38 +10,38 @@ $baseUrl = Router::url('/');
         $('.rateit').rateit();
     });
 </script>
-<?php echo $this->Session->flash(); ?>
+<?= $this->Flash->render() ?>
 
 <ol class="breadcrumb">
-    <li><?php echo $this->Html->link($recipe['Recipe']['name'], array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxNavigation')); ?> </li>
+    <li><?php echo $this->Html->link($recipe->name, array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxNavigation')); ?> </li>
     <li class="active"><?php echo __('Reviews');?></li>
 </ol>
        
 <div class="reviews index">
     <?php foreach ($reviews as $review): ?>
     <div class="reviewCell">
-        <div class="rateit" data-rateit-value="<?php echo h($review['Review']['rating']);?>" data-rateit-ispreset="true" data-rateit-readonly="true"></div> 
-        <?php if (isset($review['User']['name'])) {
+        <div class="rateit" data-rateit-value="<?php echo h($review->rating);?>" data-rateit-ispreset="true" data-rateit-readonly="true"></div> 
+        <?php if (isset($review->user->name)) {
             echo __('By') . ' ';
-            echo $review['User']['name'] . ' ';
+            echo $review->user->name . ' ';
             echo __('on') . ' ';
-            echo $this->Time->niceShort($review['Review']['created']);
+            echo $this->Time->nice($review->created);
         } else {
             echo __('By Anonymous on Unknown Date');   
         }
         ?>
         <br/>
         <div class="reviewComment">
-            <?php if (isset($review['Review']['comments'])) {
-                echo h($review['Review']['comments']); 
+            <?php if (isset($review->comments)) {
+                echo h($review->comments); 
             } else {
                 echo __('No comments');
             }
             ?>
         </div>
         <?php if ($isEditor || ($loggedIn && $loggedInuserId == $review['User']['id'])) {
-            echo $this->Html->link(__('Edit'), array('action' => 'edit', $review['Review']['recipe_id'], $review['Review']['id']), array('class' => 'ajaxNavigation'));
-            echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $review['Review']['id']), null, __('Are you sure you want to delete this review?'));
+            echo $this->Html->link(__('Edit'), array('action' => 'edit', $review->recipe_id, $review->id), array('class' => 'ajaxNavigation'));
+            echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe->id, $review->id), ['confirm' => __('Are you sure you want to delete # {0}?', $review->id)]);
         }?>
     </div>
     <?php endforeach; ?>
