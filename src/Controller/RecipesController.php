@@ -86,7 +86,8 @@ class RecipesController extends AppController
                     ],
                     'Units' => [
                         'fields' => ['name', 'abbreviation']
-                    ]
+                    ],
+                    'sort' => ['IngredientMappings.sort_order' => 'ASC']
                 ],
                 'RelatedRecipes' => [
                     'Recipes' => [
@@ -94,10 +95,11 @@ class RecipesController extends AppController
                             'IngredientMappings' => [
                                 'Ingredients' => [
                                     'fields' => ['name']
-                            ],
-                            'Units' => [
-                                'fields' => ['name', 'abbreviation']
-                            ]
+                                ],
+                                'Units' => [
+                                    'fields' => ['name', 'abbreviation']
+                                ],
+                                'sort' => ['IngredientMappings.sort_order' => 'ASC']
                         ]
                     ] 
                 ],
@@ -143,7 +145,8 @@ class RecipesController extends AppController
                         ],
                         'Units' => [
                             'fields' => ['name', 'abbreviation']
-                        ]
+                        ],
+                        'sort' => ['IngredientMappings.sort_order' => 'ASC']
                     ],
                     'RelatedRecipes' => [
                         'Recipes' => [
@@ -154,7 +157,8 @@ class RecipesController extends AppController
                                 ],
                                 'Units' => [
                                     'fields' => ['name', 'abbreviation']
-                                ]
+                                ],
+                                'sort' => ['IngredientMappings.sort_order' => 'ASC']
                             ]
                         ] 
                     ],
@@ -170,21 +174,18 @@ class RecipesController extends AppController
             $recipe->user_id = $this->Auth->user('id');
             if ($this->Recipes->save($recipe)) {
                 $this->Flash->success(__('The recipe has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The recipe could not be saved. Please, try again.'));
             }
             
-            /*
-            NOTE: Helpful debug info
-            
-            $x = $recipe->getErrors();
+            //NOTE: Helpful debug info
+            /*$x = $recipe->getErrors();
             if ($x) {
                 debug($recipe);
                 debug($x);
                 return false;
-            }
-            */
-            $this->Flash->error(__('The recipe could not be saved. Please, try again.'));
+            }*/
         }
         $ethnicities = $this->Recipes->Ethnicities->find('list', ['limit' => 200, 'order' => ['Ethnicities.name']]);
         $baseTypes = $this->Recipes->BaseTypes->find('list', ['limit' => 200, 'order' => ['BaseTypes.name']]);
@@ -209,6 +210,15 @@ class RecipesController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function removeIngredientMapping($recipeId, $mappingId) {
+        $entity = $this->Recipes->IngredientMappings->get($mappingId);
+        if ($this->Recipes->IngredientMappings->delete($entity)) {
+            $this->Flash->success(__('The ingredient has been removed.'));
+        } else {
+            $this->Flash->error(__('The ingredient could not be removed. Please, try again.'));
+        }
     }
 
     public function findByBase($baseId) {

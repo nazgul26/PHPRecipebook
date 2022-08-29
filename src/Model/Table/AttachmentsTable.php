@@ -72,8 +72,8 @@ class AttachmentsTable extends Table
             ->notEmptyString('name');
 
         $validator
-            ->scalar('attachment')
-            ->maxLength('attachment', 255)
+            //->scalar('attachment')
+            //->maxLength('attachment', 255)
             ->requirePresence('attachment', 'create')
             ->notEmptyString('attachment');
 

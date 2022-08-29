@@ -153,7 +153,7 @@ if (isset($recipe->reviews)) {
         <hr/>
         <br/>
             <?php 
-                $imageCount = (isset($recipe) && $recipe->image)? count($recipe->image) : 0;
+                $imageCount = (isset($recipe) && $recipe->attachments)? count($recipe->attachments) : 0;
                 if ($imageCount > 0) {
                     echo '<div class="float50Section">';
 
@@ -195,10 +195,10 @@ if (isset($recipe->reviews)) {
             <?php 
             $baseUrl = Router::url('/');
             if ($imageCount > 0) {
-                $imageName = $recipe['Image'][0]['attachment'];
-                $imageDir = $recipe['Image'][0]['dir'];
+                $imageName = $recipe->attachments[0]->attachment;
+                $imageDir = $recipe->attachments[0]->dir;
                 $imagePreview =  preg_replace('/(.*)\.(.*)/i', 'preview_${1}.$2', $imageName);
-                $imageCaption = $recipe['Image'][0]['name'];
+                $imageCaption = $recipe->attachments[0]->name;
                 
                 echo "<div id='selectedRecipeImage'>";
                 echo '<a href="#"><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
@@ -208,11 +208,11 @@ if (isset($recipe->reviews)) {
                 if ($imageCount > 1) {
                     
                     for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
-                        $imageName = $recipe['Image'][$imageIndex]['attachment'];
-                        $imageDir = $recipe['Image'][$imageIndex]['dir'];
+                        $imageName = $recipe->attachments[$imageIndex]->attachment;
+                        $imageDir = $recipe->attachments[$imageIndex]->dir;
                         $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'thumb_${1}.$2', $imageName);
                         $imagePreview =  preg_replace('/(.*)\.(.*)/i', 'preview_${1}.$2', $imageName);
-                        $imageCaption = $recipe['Image'][$imageIndex]['name'];
+                        $imageCaption = $recipe->attachments[$imageIndex]['name'];
                         
                         $previewUrl = $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . $imagePreview;
                         echo '<a href="#" onclick=\'loadImage("' . $previewUrl. '", "'. $imageCaption . '");\'><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 

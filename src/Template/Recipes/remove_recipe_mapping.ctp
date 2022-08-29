@@ -1,1 +1,1 @@
-<?php echo $this->Session->flash(); ?> 
+<?= $this->Flash->render() ?>

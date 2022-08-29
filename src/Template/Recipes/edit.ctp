@@ -167,8 +167,6 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
                return;  // Not good if we get here
             }  
             
-            console.log("Regex:" + regMatch);
-
             // Don't delete the last table row
             if (thisRow.is(":last-child")) {
                 return;
@@ -406,21 +404,22 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
             echo $this->Form->control('preparation_time_id', array('empty'=>true));
             echo $this->Form->control('difficulty_id', array('empty'=>true));
             echo $this->Form->control('serving_size');
-            $imageCount = (isset($recipe) && isset($recipe->image))? count($recipe->image) : 0;
-  
+            $imageCount = (isset($recipe) && isset($recipe->attachments))? count($recipe->attachments) : 0;
+            $newImageIndex = $imageCount-1;
+
             echo "<div id='imageSection'>";
-            echo $this->Form->control('new_attachments.attachment', array('type' => 'file', 'label' => 'Add Image'));
-            echo $this->Form->control('new_attachments.name', array('label' => 'Caption'));
-            echo $this->Form->hidden('new_attachment.id');
+            echo $this->Form->control('attachments.'. $newImageIndex . '.attachment', array('type' => 'file', 'label' => 'Add Image'));
+            echo $this->Form->control('attachments.'. $newImageIndex . '.name', array('label' => 'Caption'));
+            echo $this->Form->hidden('attachment.'. $newImageIndex . '.id');
 
             echo "<div id='currentImages'>";
             for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
 
-                $imageName = $recipe['Image'][$imageIndex]['attachment'];
-                $imageDir = $recipe['Image'][$imageIndex]['dir'];
+                $imageName = $recipe->attachments[$imageIndex]->attachment;
+                $imageDir = $recipe->attachments[$imageIndex]->dir;
                 $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'thumb_${1}.$2', $imageName);
-                $imageCaption = $recipe['Image'][$imageIndex]['name'];
-                $imageId = $recipe['Image'][$imageIndex]['id'];
+                $imageCaption = $recipe->attachments[$imageIndex]->name;
+                $imageId = $recipe->attachments[$imageIndex]->id;
                 echo '<div class="recipeImage">';
                 echo $this->Form->hidden('Image.' . $imageIndex . '.id');
                 echo $this->Form->hidden('Image.' . $imageIndex . '.sort_order');
