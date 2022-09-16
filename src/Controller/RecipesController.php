@@ -221,6 +221,16 @@ class RecipesController extends AppController
         }
     }
 
+    public function deleteAttachment($recipeId, $id) {
+        $image = $this->Recipes->Attachments->get($id);
+        if ($this->Recipes->Attachments->delete($image)) {
+            $this->Flash->success(__('The image has been removed.'));
+        } else {
+            $this->Flash->error(__('The image could not be removed. Please, try again.'));
+        }
+        return $this->redirect(array('action' => 'edit', $recipeId));
+    }
+
     public function findByBase($baseId) {
 
         $this->filterConditions['Recipes.base_type_id'] = $baseId;

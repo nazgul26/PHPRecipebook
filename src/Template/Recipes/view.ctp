@@ -196,12 +196,12 @@ if (isset($recipe->reviews)) {
             $baseUrl = Router::url('/');
             if ($imageCount > 0) {
                 $imageName = $recipe->attachments[0]->attachment;
-                $imageDir = $recipe->attachments[0]->dir;
-                $imagePreview =  preg_replace('/(.*)\.(.*)/i', 'preview_${1}.$2', $imageName);
+                //$imageDir = $recipe->attachments[0]->dir;
+                $imagePreview =  preg_replace('/(.*)\.(.*)/i', '${1}.$2', $imageName);
                 $imageCaption = $recipe->attachments[0]->name;
                 
                 echo "<div id='selectedRecipeImage'>";
-                echo '<a href="#"><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
+                echo '<a href="#"><img src="' . $baseUrl . 'files/Attachments/attachment/' . 
                             $imagePreview . '" title="' . $imageCaption . '"/></a><br/>';
                 echo "</div>";
                 echo "<div id='previewImageOptions'>";
@@ -209,14 +209,14 @@ if (isset($recipe->reviews)) {
                     
                     for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
                         $imageName = $recipe->attachments[$imageIndex]->attachment;
-                        $imageDir = $recipe->attachments[$imageIndex]->dir;
-                        $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'thumb_${1}.$2', $imageName);
-                        $imagePreview =  preg_replace('/(.*)\.(.*)/i', 'preview_${1}.$2', $imageName);
+                        //$imageDir = "attachment";$recipe->attachments[$imageIndex]->dir;
+                        $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'thumbnail-${1}.$2', $imageName);
+                        $imagePreview =  preg_replace('/(.*)\.(.*)/i', '${1}.$2', $imageName);
                         $imageCaption = $recipe->attachments[$imageIndex]['name'];
                         
-                        $previewUrl = $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . $imagePreview;
-                        echo '<a href="#" onclick=\'loadImage("' . $previewUrl. '", "'. $imageCaption . '");\'><img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
-                                $imageThumb . '" title="' . $imageCaption . '"/></a>';
+                        $previewUrl = $baseUrl . 'files/Attachments/attachment/' . $imagePreview;
+                        $thumbailUrl = $baseUrl . 'files/Attachments/attachment/' . $imageThumb;
+                        echo '<a href="#" onclick=\'loadImage("' . $previewUrl. '", "'. $imageCaption . '");\'><img src="' . $thumbailUrl . '" title="' . $imageCaption . '"/></a>';
                     }
                     
                 }

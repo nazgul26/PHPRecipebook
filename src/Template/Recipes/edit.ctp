@@ -365,7 +365,7 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
 
 <div class="actions">
 	<ul>
-            <?php if (isset($recipe['Recipe']['id'])) :?>
+            <?php if (isset($recipe->id)) :?>
             <li><?php echo $this->Html->link(__('View Recipe'), array('action' => 'view', $recipe->id)); ?></li>
             <?php endif;?>
             <li><?php echo $this->Html->link(__('Edit Sources'), array('controller' => 'sources', 'action' => 'index'), array('class' => 'ajaxLink', 'targetId' => 'content')); ?>
@@ -416,15 +416,15 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
             for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
 
                 $imageName = $recipe->attachments[$imageIndex]->attachment;
-                $imageDir = $recipe->attachments[$imageIndex]->dir;
-                $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'thumb_${1}.$2', $imageName);
+                $imageDir = "attachment";//$recipe->attachments[$imageIndex]->dir;
+                $imageThumb =  preg_replace('/(.*)\.(.*)/i', 'thumbnail-${1}.$2', $imageName);
                 $imageCaption = $recipe->attachments[$imageIndex]->name;
                 $imageId = $recipe->attachments[$imageIndex]->id;
                 echo '<div class="recipeImage">';
                 echo $this->Form->hidden('Image.' . $imageIndex . '.id');
                 echo $this->Form->hidden('Image.' . $imageIndex . '.sort_order');
                 echo $this->Html->link(__('Delete'), array('action' => 'deleteAttachment',$recipeId, $imageId));
-                echo '<img src="' . $baseUrl . 'files/image/attachment/' .  $imageDir . '/' . 
+                echo '<img src="' . $baseUrl . 'files/Attachments/' .  $imageDir . '/' . 
                         $imageThumb . '" alt="' . $imageCaption . '"/>';
 
                 echo "</div>";
