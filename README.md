@@ -3,8 +3,6 @@
 
 PHPRecipeBook is a cookbook and meal planning software.
 
-<a href="https://secure-hamlet-65587.herokuapp.com/">Demo site</a> (Create your own account)
-
 Demo Videos:
 * <a href="https://youtu.be/xNUBANz2aVI">Adding A Recipe</a>
 * <a href="https://youtu.be/xZZJI407aSs">Meal Planning</a>
@@ -40,6 +38,8 @@ Features:
 # Heroku Deployment
 
 The fastest way to get running is using a provider like Heroku.
+
+NOTE: Heroku requires paid accounts for all access now.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 

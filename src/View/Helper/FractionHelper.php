@@ -34,7 +34,7 @@ class FractionHelper extends Helper {
                 // It is a whole number.
                 $this->whole = $value;
             }
-            if ($this->fraction != "") {
+            if (($this->fraction != "") && ($this->fraction != '0')) {
                 $returnValue = $this->whole != "" ? $this->whole . " " : "";
                 $returnValue .= $this->fraction;
                 return ($returnValue);
