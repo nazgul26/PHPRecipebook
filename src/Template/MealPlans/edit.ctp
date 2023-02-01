@@ -61,12 +61,12 @@ $baseUrl = Router::url('/');
         echo $this->Form->input('days', array('default' => 1, 'type' => 'number'));
         echo $this->Form->input('skip', ['label' => __('Every other day'), 'type' => 'checkbox', 'default' => true, 'style' => 'margin: 0;']);
 ?>
-    <?php if (isset($mealPlan->Recipe->id)):?>
+    <?php if (isset($mealPlan->recipe->id)):?>
     <div class="viewRecipe">
     <?php echo $this->Html->link(__('View'), array('controller'=>'recipes', 'action' => 'view', 
-            $mealPlan->Recipe->id)); ?>
+            $mealPlan->recipe->id)); ?>
            <?php echo $this->Html->link(__('Edit'), array('controller'=>'recipes', 'action' => 'edit', 
-            $mealPlan->Recipe->id)); ?>
+            $mealPlan->recipe->id)); ?>
     </div>  
     <?php endif;?>
  <?= $this->Form->submit(__('Submit')); ?>
