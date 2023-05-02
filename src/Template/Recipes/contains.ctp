@@ -70,13 +70,17 @@ $baseUrl = Router::url('/');
 	<?php foreach ($recipes as $recipe): ?>
 	<tr>
             <td class="actions">
-                <?php echo $this->Html->link(__('View'), array('action' => 'view', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); ?>
-                <?php if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe['User']['id'])):?>
-                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recipe['Recipe']['id']), array('class' => 'ajaxNavigation')); ?>
-                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe['Recipe']['id']), null, __('Are you sure you want to delete %s?', $recipe['Recipe']['name'])); ?>
+                <?php if (isset($recipe->private) && $recipe->private == 'true' && $loggedInuserId != $recipe->user->id && !$isEditor) {
+                    echo __('(private)');
+                } else {
+                    echo $this->Html->link(__('View'), array('action' => 'view', $recipe->id), array('class' => 'ajaxNavigation')); 
+                }
+                if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe->user->id)):?>
+                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $recipe->id), array('class' => 'ajaxNavigation')); ?>
+                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe->id), ['confirm' => __('Are you sure you want to delete {0}?', $recipe->name)]); ?>
                 <?php endif;?>
             </td>
-            <td><?php echo h($recipe['Recipe']['name']); ?>&nbsp;</td>
-            <td><?php echo $recipe[0]['matches'];?></td>
+            <td><?php echo h($recipe->name); ?>&nbsp;</td>
+            <td><?php echo $recipe->matches;?></td>
 	</tr>
 <?php endforeach; endif; ?>

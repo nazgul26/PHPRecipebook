@@ -305,28 +305,26 @@ class RecipesController extends AppController
         $this->loadModel('IngredientMappings');
         if ($this->request->is(array('post', 'put'))) {
             $ingredients = $this->request->data;
-            $results = $this->Recipes->find('all', array(
+            $filter = [];
+            foreach ($ingredients["data"] as $ingredientId) {
+                array_push($filter, ['IngredientMappings.ingredient_id' => $ingredientId]);
+            }
+            $query = $this->Recipes->find('all', [
                 'recursive' => 0,
-                'fields' => array(
+                'fields' => [
                 'id',
                 'name',
-                'COUNT(*) as matches'),
-                'group' => array('Recipe.id', 'Recipe.name'),
-                'joins' => array(
-                    array(
-                        'alias' => 'IngredientMapping',
-                        'table' => 'ingredient_mappings',
-                        'foreignKey' => false,
-                        'conditions' => array('IngredientMapping.recipe_id = Recipe.id'),
-                    ),
-                ),
-                'conditions' => array(
-                    'IngredientMapping.ingredient_id'=> $ingredients
-                ),
-                'limit' => 20,
-                'order' => array('matches DESC')
-            ));
-            $this->set('recipes', $results);       
+                'matches' => "count(*)"]
+            ]
+            )->innerJoinWith('IngredientMappings')
+            ->where(['OR' => $filter])
+            ->group(['Recipes.id', 'Recipes.name'])
+            ->order("matches DESC")
+            ->limit(20);
+            
+            $recipes = $query->toArray();
+
+            $this->set(compact('recipes'));       
         }
     }
 
