@@ -5,7 +5,7 @@ use App\Controller\AppController;
 
 class EthnicitiesController extends AppController
 {
-    public function index()
+    public function index(): void
     {
         $ethnicities = $this->paginate($this->Ethnicities);
         $this->set(compact('ethnicities'));
@@ -18,7 +18,7 @@ class EthnicitiesController extends AppController
         }
 
         if ($id == null) {
-            $ethnicity = $this->Ethnicities->newEntity();
+            $ethnicity = $this->Ethnicities->newEmptyEntity();
         } else {
             $ethnicity = $this->Ethnicities->get($id);
         }

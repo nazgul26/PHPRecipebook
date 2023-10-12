@@ -54,7 +54,7 @@ class RestaurantsController extends AppController
     }
 
     public function search() {
-        $term = $this->request->query('term');
+        $term = $this->request->getQuery('term');
         $conditions = [];
         if ($term)
         {

@@ -24,7 +24,7 @@ class CoursesController extends AppController
         }
 
         if ($id == null) {
-            $course = $this->Courses->newEntity();
+            $course = $this->Courses->newEmptyEntity();
         } else {
             $course = $this->Courses->get($id);
         }

@@ -31,7 +31,7 @@ class PriceRangesController extends AppController
         }
 
         if ($id == null) {
-            $priceRange = $this->PriceRanges->newEntity();
+            $priceRange = $this->PriceRanges->newEmptyEntity();
         } else {
             $priceRange = $this->PriceRanges->get($id);
         }

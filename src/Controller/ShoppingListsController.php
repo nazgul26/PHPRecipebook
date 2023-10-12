@@ -7,7 +7,7 @@ use App\Controller\AppController;
 class ShoppingListsController extends AppController
 {
     const SHOPPING_LIST = "ShoppingList"; // Session VAR
-    public $helpers = ['Fraction'];
+    //public $helpers = ['Fraction'];
     
     // Filter to hide recipes of other users
     public $filterConditions = [];
@@ -37,8 +37,6 @@ class ShoppingListsController extends AppController
     }
 
     public function index($id = null) {
-        $this->loadModel('Units');
-
         if ($id != null && !$this->ShoppingLists->exists($id)) {
                 throw new NotFoundException(__('Invalid shopping list'));
         }
@@ -61,7 +59,7 @@ class ShoppingListsController extends AppController
             $userId = $this->Auth->user('id');
             $shoppingList = $this->ShoppingLists->getList($userId, $id);
         }
-        $units = $this->Units->find('list');
+        $units = $this->fetchTable('Units')->find('list');
         $this->set(compact('units', 'shoppingList'));
     }
  
@@ -112,7 +110,7 @@ class ShoppingListsController extends AppController
         //  * Add Linked recipes
         //$saveResult = $this->ShoppingLists->ShoppingListRecipes->addToShoppingList($listId, $recipeId, $servings, $userId);
 
-        $item = $this->ShoppingLists->ShoppingListRecipes->newEntity();
+        $item = $this->ShoppingLists->ShoppingListRecipes->newEmptyEntity();
         $item->shopping_list_id = $listId;
         $item->recipe_id = $recipeId;
         $item->servings = $servings;
@@ -137,7 +135,7 @@ class ShoppingListsController extends AppController
             throw new NotFoundException(__('Invalid ingredient'));
         }
 
-        $item = $this->ShoppingLists->ShoppingListIngredients->newEntity();
+        $item = $this->ShoppingLists->ShoppingListIngredients->newEmptyEntity();
         $item->shopping_list_id = $listId;
         $item->ingredient_id = $ingredientId;
         $item->quantity = 1;
@@ -175,7 +173,7 @@ class ShoppingListsController extends AppController
             $postData = $this->request->getData();
 
             // Check if we are done and if so clear list and redirect.
-            if (isset($this->request->data['done']) && $this->request->data['done'] == "1") {
+            if (isset($postData['done']) && $postData['done'] == "1") {
                 $this->ShoppingLists->clearList($this->Auth->user('id'));
                 $this->Flash->success(__('Shopping done! List cleared.'));
                 return $this->redirect(array('action' => 'index', $listId));
@@ -191,8 +189,8 @@ class ShoppingListsController extends AppController
             // Figure out what store layout to use
             $stores = $this->Stores->find('list');
             $selectedStoreId = null;
-            if (isset($this->request->data['ShoppingList']['store_id'])) {
-                $selectedStoreId = $this->request->data['ShoppingList']['store_id'];
+            if (isset($postData['ShoppingList']['store_id'])) {
+                $selectedStoreId = $postData['ShoppingList']['store_id'];
             } else if (isset($stores) && $stores->count() > 0) {
                 $selectedStoreId = array_key_first($stores->toArray());
             }
@@ -244,7 +242,7 @@ class ShoppingListsController extends AppController
                         )
                 ])->first();
  
-            $this->request->data = $selectedVendor;
+            //$this->request->data = $selectedVendor;
             $this->set('selectedVendor', $selectedVendor);
         }
               

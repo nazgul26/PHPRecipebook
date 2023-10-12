@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\View\JsonView;
+use App\Model\Entity\ShoppingList;
 
 class RecipesController extends AppController
 {
@@ -9,7 +11,7 @@ class RecipesController extends AppController
     private $filterConditions = [];
     private $indexContains = ['Ethnicities', 'BaseTypes', 'Courses', 'PreparationTimes', 'Difficulties', 'Sources', 'Users', 'PreparationMethods'];
 
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
         $this->loadComponent('RequestHandler');
@@ -124,7 +126,7 @@ class RecipesController extends AppController
         }
 
         if ($id == null) {
-            $recipe = $this->Recipes->newEntity();
+            $recipe = $this->Recipes->newEmptyEntity();
         } else {
             $recipe = $this->Recipes->get($id, [
                 'contain' => [
@@ -260,7 +262,7 @@ class RecipesController extends AppController
     }
 
     public function search() {
-        $term = $this->request->query('term');
+        $term = $this->request->getQuery('term');
         if ($term)
         {
             $this->paginate = ['contain' => $this->indexContains];
@@ -273,10 +275,15 @@ class RecipesController extends AppController
         $this->render('index');
     }
 
+
+    public function viewClasses(): array
+    {
+        return [JsonView::class];
+    }
+
     public function autoCompleteSearch() {
         $searchResults = [];
-        $this->RequestHandler->renderAs($this, 'json');
-        $term = $this->request->query('term');
+        $term = $this->request->getQuery('term');
         if ($term)
         {
             $recipes = $this->Recipes->find('all', array(
@@ -297,14 +304,14 @@ class RecipesController extends AppController
             }
 
             $this->set(compact('searchResults'));
-            $this->set('_serialize', 'searchResults');
         }
     }
 
     public function contains() {
-        $this->loadModel('IngredientMappings');
+        //$this->fetchTable('IngredientMappings');
+        $shoppingList = new ShoppingList();
         if ($this->request->is(array('post', 'put'))) {
-            $ingredients = $this->request->data;
+            $ingredients = $this->request->getData();
             $filter = [];
             foreach ($ingredients["data"] as $ingredientId) {
                 array_push($filter, ['IngredientMappings.ingredient_id' => $ingredientId]);
@@ -324,8 +331,10 @@ class RecipesController extends AppController
             
             $recipes = $query->toArray();
 
-            $this->set(compact('recipes'));       
+            $this->set(compact('recipes', 'shoppingList'));
+            return;       
         }
+        $this->set(compact('shoppingList'));
     }
 
 }

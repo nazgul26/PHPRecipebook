@@ -71,7 +71,7 @@ class ReviewsController extends AppController
         $recipe = $this->Recipes->get($recipeId);
 
         if ($id == null) {
-            $review = $this->Reviews->newEntity();
+            $review = $this->Reviews->newEmptyEntity();
         } else {
             $review = $this->Reviews->get($id, ['contain' => [
                 'Users' => [

@@ -107,7 +107,7 @@ class MealPlansController extends AppController
         }
 
         if ($id == null) {
-            $mealPlan = $this->MealPlans->newEntity();
+            $mealPlan = $this->MealPlans->newEmptyEntity();
             $mealPlan->mealday = $mealDate;
         } else {
             $mealPlan = $this->MealPlans->get($id, ['contain' => ['Recipes']]);
@@ -134,7 +134,7 @@ class MealPlansController extends AppController
                     list($day, $month, $year) = $this->MealPlans->getNextDay($day, $month, $year);
                 }
                 
-                $mealPlan = $this->MealPlans->newEntity();
+                $mealPlan = $this->MealPlans->newEmptyEntity();
                 $requestData['mealday'] = $year . "-" . $month . "-" . $day;
                 $mealPlan = $this->MealPlans->patchEntity($mealPlan, $requestData);
                 
@@ -170,13 +170,13 @@ class MealPlansController extends AppController
         if ($date == null) {
             throw new BadRequestException(__('Start date not defined'));
         }   
-        $this->loadModel('ShoppingLists');
+        $shoppingTable = $this->fetchTable('ShoppingLists');
         $this->MealPlans->InitDate($date, $this->Auth->user('meal_plan_start_day'));
         $weekList = $this->MealPlans->getWeekDaysList();
         $meals = $this->getMeals($weekList);
         
         $userId = $this->Auth->user('id');
-        $list = $this->ShoppingLists->getList($userId);
+        $list = $shoppingTable->getList($userId);
         $listId = $list->id;
         $listItems = [];
         foreach ($meals as $item) {
@@ -190,7 +190,7 @@ class MealPlansController extends AppController
         }
         
         foreach ($listItems as $item) {
-            $listItem = $this->ShoppingLists->ShoppingListRecipes->newEntity();
+            $listItem = $shoppingTable->ShoppingListRecipes->newEmptyEntity();
             $listItem->shopping_list_id = $listId;
             $listItem->recipe_id = $item['id'];
             $listItem->servings = $item['servings'];
@@ -198,7 +198,7 @@ class MealPlansController extends AppController
     
             //Patch vs Add
             //$item = $this->ShoppingListRecipes->patchEntity($item, $newData);
-            $saveOk = $this->ShoppingLists->ShoppingListRecipes->save($listItem);
+            $saveOk = $shoppingTable->ShoppingListRecipes->save($listItem);
             
             /*$this->ShoppingLists->ShoppingListRecipes->addToShoppingList(
                     $listId, 

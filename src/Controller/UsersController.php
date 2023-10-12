@@ -11,7 +11,7 @@ use Cake\Core\Configure;
 
 class UsersController extends AppController
 {
-    public function initialize()
+    public function initialize() : void
     {
         parent::initialize();
         $this->loadComponent('String');
@@ -107,7 +107,7 @@ class UsersController extends AppController
 
     public function add()
     {
-        $user = $this->Users->newEntity();
+        $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
             if ($data['password1'] === $data['password2']) {

@@ -23,7 +23,7 @@ class BaseTypesController extends AppController
         }
 
         if ($id == null) {
-            $baseType = $this->BaseTypes->newEntity();
+            $baseType = $this->BaseTypes->newEmptyEntity();
         } else {
             $baseType = $this->BaseTypes->get($id);
         }

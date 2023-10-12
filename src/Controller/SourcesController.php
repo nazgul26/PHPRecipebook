@@ -27,7 +27,7 @@ class SourcesController extends AppController
         }
 
         if ($id == null) {
-            $source = $this->Sources->newEntity();
+            $source = $this->Sources->newEmptyEntity();
         } else {
             $source = $this->Sources->get($id);
         }

@@ -23,7 +23,7 @@ class DifficultiesController extends AppController {
         }
 
         if ($id == null) {
-            $difficulty = $this->Difficulties->newEntity();
+            $difficulty = $this->Difficulties->newEmptyEntity();
         } else {
             $difficulty = $this->Difficulties->get($id);
         }

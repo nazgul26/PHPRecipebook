@@ -23,7 +23,7 @@ class StoresController extends AppController
         }
 
         if ($id == null) {
-            $store = $this->Stores->newEntity();
+            $store = $this->Stores->newEmptyEntity();
         } else {
             $store = $this->Stores->get($id);
         }

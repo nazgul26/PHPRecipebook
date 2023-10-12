@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use App\Model\Entity\ListItem;
 
 /**
  * ShoppingLists Model
@@ -30,7 +31,7 @@ class ShoppingListsTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config)
+    public function initialize(array $config): void
     {
         parent::initialize($config);
 
@@ -42,8 +43,7 @@ class ShoppingListsTable extends Table
             'foreignKey' => 'user_id',
         ]);
 
-        $this->belongsTo('ListItems', [
-        ]);
+        //$this->belongsTo('ListItems', [        ]);
 
         $this->hasMany('ShoppingListIngredients', [
             'foreignKey' => 'shopping_list_id',
@@ -60,7 +60,7 @@ class ShoppingListsTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator) : Validator
     {
         $validator
             ->integer('id')
@@ -82,7 +82,7 @@ class ShoppingListsTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules) : RulesChecker
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
@@ -238,14 +238,15 @@ class ShoppingListsTable extends Table
                 }
             }
         } else {
-            $this->ListItems->id = $id;
-            $this->ListItems->name = $name;
-            $this->ListItems->unitId = $unitId;
-            $this->ListItems->quantity = $quantity * $scaling;
-            $this->ListItems->unitName = $unitName;
-            $this->ListItems->locationId = $locationId;
-            $this->ListItems->removed = false;
-            $list[$id] = array(clone $this->ListItems);
+            $item = new ListItem();
+            $item->id = $id;
+            $item->name = $name;
+            $item->unitId = $unitId;
+            $item->quantity = $quantity * $scaling;
+            $item->unitName = $unitName;
+            $item->locationId = $locationId;
+            $item->removed = false;
+            $list[$id] = array(clone $item);
         }
         return $list;
     }

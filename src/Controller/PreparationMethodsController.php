@@ -25,7 +25,7 @@ class PreparationMethodsController extends AppController
         }
 
         if ($id == null) {
-            $preparationMethod = $this->PreparationMethods->newEntity();
+            $preparationMethod = $this->PreparationMethods->newEmptyEntity();
         } else {
             $preparationMethod = $this->PreparationMethods->get($id);
         }

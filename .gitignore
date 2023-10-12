@@ -1,22 +1,52 @@
-tmp/cache/persistent/*
-!tmp/cache/persistent/empty
-tmp/cache/models/*
-!tmp/cache/models/empty
-tmp/cache/views/*
-!tmp/cache/views/empty
-!tmp/cache/empty
-logs/*
-!logs/empty
-!tmp/tests/empty
-tmp/sessions/*
-!tmp/sessions/empty
-!tmp/empty
-tmp/cache/twigView/*
-!temp/cache/twigView/empty
-/nbproject/private/
-webroot/files/
-sass/.sass-cache
-vendor/*
-.vscode/*
-config/.env
-tmp/debug_kit.sqlite
+# CakePHP specific files #
+##########################
+/config/app_local.php
+/config/.env
+/logs/*
+/tmp/*
+/vendor/*
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+# Icon must end with two \r
+Icon
+ehthumbs.db
+Thumbs.db
+.directory
+
+# Tool specific files #
+#######################
+# PHPUnit
+.phpunit.result.cache
+tests.sqlite
+# vim
+*~
+*.swp
+*.swo
+# sublime text & textmate
+*.sublime-*
+*.stTheme.cache
+*.tmlanguage.cache
+*.tmPreferences.cache
+# Eclipse
+.settings/*
+# JetBrains, aka PHPStorm, IntelliJ IDEA
+.idea/*
+# NetBeans
+nbproject/*
+# Visual Studio Code
+.vscode
+# nova
+.nova
+# Sass preprocessor
+.sass-cache/
+# node
+/node_modules/*
+# yarn
+yarn-debug.log
+yarn-error.log

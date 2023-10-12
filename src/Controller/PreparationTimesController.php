@@ -23,7 +23,7 @@ class PreparationTimesController extends AppController
         }
 
         if ($id == null) {
-            $preparationTime = $this->PreparationTimes->newEntity();
+            $preparationTime = $this->PreparationTimes->newEmptyEntity();
         } else {
             $preparationTime = $this->PreparationTimes->get($id);
         }

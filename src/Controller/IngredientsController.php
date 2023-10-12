@@ -7,7 +7,7 @@ class IngredientsController extends AppController
 {
     public $filterConditions = array();
 
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
         $this->loadComponent('RequestHandler');
@@ -58,7 +58,7 @@ class IngredientsController extends AppController
         }
 
         if ($id == null) {
-            $ingredient = $this->Ingredients->newEntity();
+            $ingredient = $this->Ingredients->newEmptyEntity();
         } else {
             $ingredient = $this->Ingredients->get($id);
         }
@@ -96,7 +96,7 @@ class IngredientsController extends AppController
     }
 
     public function search() {
-        $term = $this->request->query('term');
+        $term = $this->request->getQuery('term');
         $conditions = [];
         if ($term)
         {
@@ -120,7 +120,7 @@ class IngredientsController extends AppController
         $conditions = [];
         $this->RequestHandler->renderAs($this, 'json');
 
-        $term = $this->request->query('term');
+        $term = $this->request->getQuery('term');
         if ($term)
         {
             $conditions = array_merge($this->filterConditions, array('LOWER(Ingredients.name) LIKE' => '%' . trim(strtolower($term)) . '%'));

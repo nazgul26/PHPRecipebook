@@ -13,7 +13,7 @@ class UnitsController extends AppController
     public function index()
     {
         $units = $this->paginate($this->Units, [
-            'order' => ['Units.name']
+            'order' => ['Units.sort_order']
         ]);
         $this->set(compact('units'));
     }
@@ -25,7 +25,7 @@ class UnitsController extends AppController
         }
 
         if ($id == null) {
-            $unit = $this->Units->newEntity();
+            $unit = $this->Units->newEmptyEntity();
         } else {
             $unit = $this->Units->get($id);
         }

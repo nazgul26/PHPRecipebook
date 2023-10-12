@@ -6,35 +6,6 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-/**
- * Recipes Model
- *
- * @property \App\Model\Table\EthnicitiesTable&\Cake\ORM\Association\BelongsTo $Ethnicities
- * @property \App\Model\Table\BaseTypesTable&\Cake\ORM\Association\BelongsTo $BaseTypes
- * @property \App\Model\Table\CoursesTable&\Cake\ORM\Association\BelongsTo $Courses
- * @property \App\Model\Table\PreparationTimesTable&\Cake\ORM\Association\BelongsTo $PreparationTimes
- * @property \App\Model\Table\DifficultiesTable&\Cake\ORM\Association\BelongsTo $Difficulties
- * @property \App\Model\Table\SourcesTable&\Cake\ORM\Association\BelongsTo $Sources
- * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
- * @property \App\Model\Table\PreparationMethodsTable&\Cake\ORM\Association\BelongsTo $PreparationMethods
- * @property \App\Model\Table\AttachmentsTable&\Cake\ORM\Association\HasMany $Attachments
- * @property \App\Model\Table\IngredientMappingsTable&\Cake\ORM\Association\HasMany $IngredientMappings
- * @property \App\Model\Table\MealPlansTable&\Cake\ORM\Association\HasMany $MealPlans
- * @property \App\Model\Table\RelatedRecipesTable&\Cake\ORM\Association\HasMany $RelatedRecipes
- * @property \App\Model\Table\ReviewsTable&\Cake\ORM\Association\HasMany $Reviews
- * @property \App\Model\Table\ShoppingListRecipesTable&\Cake\ORM\Association\HasMany $ShoppingListRecipes
- *
- * @method \App\Model\Entity\Recipe get($primaryKey, $options = [])
- * @method \App\Model\Entity\Recipe newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Recipe[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Recipe|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Recipe saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Recipe patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Recipe[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Recipe findOrCreate($search, callable $callback = null, $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
- */
 class RecipesTable extends Table
 {
     /**
@@ -43,7 +14,7 @@ class RecipesTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config)
+    public function initialize(array $config): void
     {
         parent::initialize($config);
 
@@ -103,7 +74,7 @@ class RecipesTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator) : Validator
     {
         $validator
             ->integer('id')
@@ -166,7 +137,7 @@ class RecipesTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules) : RulesChecker
     {
         $rules->add($rules->existsIn(['ethnicity_id'], 'Ethnicities'));
         $rules->add($rules->existsIn(['base_type_id'], 'BaseTypes'));

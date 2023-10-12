@@ -1,4 +1,4 @@
-# PHPRecipebook 6.0
+# PHPRecipebook 6.x
 ---
 
 PHPRecipeBook is a cookbook and meal planning software.
@@ -14,7 +14,7 @@ Features:
 * Restaurant List
 * Shopping Lists
 * Multi-User Support
-* Built using CakePHP v3
+* Built using CakePHP v4
 
 ### Currently Supported Languages / Translation Code
 * Chinese - zh

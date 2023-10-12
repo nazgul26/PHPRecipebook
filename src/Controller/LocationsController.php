@@ -25,7 +25,7 @@ class LocationsController extends AppController
         }
 
         if ($id == null) {
-            $location = $this->Locations->newEntity();
+            $location = $this->Locations->newEmptyEntity();
         } else {
             $location = $this->Locations->get($id);
         }
