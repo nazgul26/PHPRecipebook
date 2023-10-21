@@ -61,7 +61,13 @@ That is it.  You can then start adding ingredients and recipes.
 The second and very common way to run a PHP application is paying for hosting a traditional web hosting provider.  This would provide a fixed cost each month to run your application.  Most likely the basic level of hosting on many providers will be sufficient for many years of growing your business.  We would recommend SiteGround (https://www.siteground.com/) if you don't have a preference to start with.
 
 To start you will need to have:
-    + PHP 7 (or higher) with ext-dom (sudo apt install php-xml)
+    + PHP 7 (or higher) with modules:
+      php-xml (sudo apt install php-xml)
+      php-intl
+      php-mbstring
+      php-curl
+      php-zip
+
     + MySQL with a local db user created.
 
 Create a configuration file config/.env
@@ -81,6 +87,15 @@ export DATABASE_URL="mysql://dbname:password@localhost/phprecipebook?encoding=ut
 export EMAIL_TRANSPORT_DEFAULT_URL="smtp://my@gmail.com:secret@smtp.gmail.com:587?tls=true"
 
 ```
+
+Enable mod_write in Apache:
+
+  sudo a2enmod rewrite
+  (edit apache site config to allow...)
+  sudo systemctl restart apache2
+
+  Good tutorial for Ubuntu - https://www.digitalocean.com/community/tutorials/how-to-rewrite-urls-with-mod_rewrite-for-apache-on-ubuntu-22-04
+  
 ### Directory Permissions
 
 * Make the <app install dir>/temp and logs folder in the application writable for web user.  example:
