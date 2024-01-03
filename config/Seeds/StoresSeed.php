@@ -3,7 +3,7 @@ use Migrations\AbstractSeed;
 
 class StoresSeed extends AbstractSeed
 {
-    public function run()
+    public function run() : void
     {               
         $data = [
             ['name' => 'default',

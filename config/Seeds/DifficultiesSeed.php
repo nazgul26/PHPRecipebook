@@ -3,7 +3,7 @@ use Migrations\AbstractSeed;
 
 class DifficultiesSeed extends AbstractSeed
 {
-    public function run()
+    public function run() : void
     {               
         $data = [
             ['name' => __('Easy')],

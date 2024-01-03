@@ -3,7 +3,7 @@ use Migrations\AbstractSeed;
 
 class EthnicitiesSeed extends AbstractSeed
 {
-    public function run()
+    public function run() : void
     {               
         $data = [
             ['name' => __('American')],

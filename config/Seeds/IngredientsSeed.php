@@ -6,7 +6,7 @@ use Migrations\AbstractSeed;
  */
 class IngredientsSeed extends AbstractSeed
 {
-    public function run()
+    public function run() : void
     {
         $data = [
             [

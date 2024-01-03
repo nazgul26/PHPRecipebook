@@ -3,7 +3,7 @@ use Migrations\AbstractSeed;
 
 class PreparationTimesSeed extends AbstractSeed
 {
-    public function run()
+    public function run() : void
     {               
         $data = [
             ['name' => __('0 Minutes')],

@@ -3,7 +3,7 @@ use Migrations\AbstractSeed;
 
 class UnitsSeed extends AbstractSeed
 {
-    public function run()
+    public function run() : void
     {               
         $data = [
             ['id' => 1, 'name' => __('Unit'), 'abbreviation' =>  'ea', 'system_type' => 0, 'sort_order' => 0],

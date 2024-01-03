@@ -3,7 +3,7 @@ use Migrations\AbstractSeed;
 
 class MealNamesSeed extends AbstractSeed
 {
-    public function run()
+    public function run() : void
     {               
         $data = [
             ['name' => __('Breakfast')],
