@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91a8153140ba9fc7b3c0f00b2b1c511a",
+    "content-hash": "d69a7b823be9d1b902555798d3dc2b34",
     "packages": [
         {
             "name": "cakephp/cakephp",
@@ -873,32 +873,34 @@
         },
         {
             "name": "mobiledetect/mobiledetectlib",
-            "version": "2.8.45",
+            "version": "4.8.06",
             "source": {
                 "type": "git",
                 "url": "https://github.com/serbanghita/Mobile-Detect.git",
-                "reference": "96aaebcf4f50d3d2692ab81d2c5132e425bca266"
+                "reference": "af088b54cecc13b3264edca7da93a89ba7aa2d9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/96aaebcf4f50d3d2692ab81d2c5132e425bca266",
-                "reference": "96aaebcf4f50d3d2692ab81d2c5132e425bca266",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/af088b54cecc13b3264edca7da93a89ba7aa2d9e",
+                "reference": "af088b54cecc13b3264edca7da93a89ba7aa2d9e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.0.0"
+                "php": ">=8.0",
+                "psr/simple-cache": "^2 || ^3"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8.36"
+                "friendsofphp/php-cs-fixer": "^v3.35.1",
+                "phpbench/phpbench": "^1.2",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.6",
+                "squizlabs/php_codesniffer": "^3.7"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Detection": "namespaced/"
-                },
-                "classmap": [
-                    "Mobile_Detect.php"
-                ]
+                "psr-4": {
+                    "Detection\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -923,7 +925,7 @@
             ],
             "support": {
                 "issues": "https://github.com/serbanghita/Mobile-Detect/issues",
-                "source": "https://github.com/serbanghita/Mobile-Detect/tree/2.8.45"
+                "source": "https://github.com/serbanghita/Mobile-Detect/tree/4.8.06"
             },
             "funding": [
                 {
@@ -931,7 +933,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-07T21:57:25+00:00"
+            "time": "2024-03-01T22:28:42+00:00"
         },
         {
             "name": "psr/container",
