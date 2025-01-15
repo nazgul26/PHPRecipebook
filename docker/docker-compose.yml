@@ -1,0 +1,37 @@
+name: phprecipebook
+
+services:
+
+  php:
+    image: phprecipebook-web:v6
+
+    volumes:
+      - "../:/var/www/html/"
+
+    ports:
+      - "8080:80"
+      - "443:443"
+  
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:latest
+    env_file: "docker-vars.env"
+    volumes:
+      - "../../phprecipebook-db:/var/lib/mysql"
+
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8001:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306

@@ -1,0 +1,24 @@
+services:
+  www:
+    image: php:apache
+
+    volumes:
+      - "../:/var/www/html/"
+
+    ports:
+      - "80:80"
+      - "443:443"
+  
+  db:
+    image: mysql:latest
+    env_file: "docker-vars.env"
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8001:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+
+

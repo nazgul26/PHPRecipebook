@@ -35,6 +35,52 @@ Features:
 * Spanish - sp
 * Swedish - sv
 
+# Docker Deployment
+
+Docker is a fast way to try out PHPRecipebook.
+
++ Install and Configure Docker.  Ensure Docker is running.
+
++ Download the latest release of PHPRecipebook and extract to a location on your computer.  The parent folder you extract to will be the root of your install.  
+
++ Create a configuration file phprecipebook/config/.env
+
+with contents (modify to fit your needs):
+
+```
+export APP_NAME="PHPRecipeBook"
+export ALLOW_PUBLIC_ACCOUNT_CREATION = "false"
+export PRIVATE_COLLECTION = "false"
+export DEBUG="false"
+export APP_ENCODING="UTF-8"
+export APP_DEFAULT_LOCALE="en"
+export APP_DEFAULT_TIMEZONE="UTC"
+export SECURITY_SALT="------ CHANGE TO RANDOM STRING ----------------------------"
+export DATABASE_URL="mysql://phpuser:RBAdm1n$@db/phprecipebook?encoding=utf8&timezone=UTC&cacheMetadata=true&quoteIdentifiers=false&persistent=false"
+export EMAIL_TRANSPORT_DEFAULT_URL="smtp://my@gmail.com:secret@smtp.gmail.com:587?tls=true"
+
+```
+
+Change the MySQL default password (RBAdm1n$) if your server/ports are exposed to the internet!  Update in the above .env and in \docker\docker-vars.env file.
+
++ Build Web Image - 
+  - cd docker
+  - docker build -t phprecipebook-web:v6 .
+
++ Compose / Start App - 
+  - docker compose up
+
++ Visit the app at http://localhost:8080, login with admin/passwd.
+
++ When upgrading PHPRecipebook you should save the .env file AND ensure a file called 'CONTAINER_FIRST_STARTUP' exists like it does prior to code update.  This will prevent Seed data from being attempted to be written twice!
+
+Debugging Notes:  
+- Change DEBUG to 'true' if app does not run
+- Check logs in output of Docker
+- Check log in /var/www/html/logs on php docker container.
+- Check the SQL using PHPMyAdmin at http://localhost:8001 , login with phpuser/RBAdm1n$
+
+
 # Heroku Deployment
 
 The fastest way to get running is using a provider like Heroku.
@@ -83,7 +129,7 @@ export APP_ENCODING="UTF-8"
 export APP_DEFAULT_LOCALE="en"
 export APP_DEFAULT_TIMEZONE="UTC"
 export SECURITY_SALT="------ CHANGE TO RANDOM STRING ----------------------------"
-export DATABASE_URL="mysql://dbname:password@localhost/phprecipebook?encoding=utf8&timezone=UTC&cacheMetadata=true&quoteIdentifiers=false&persistent=false"
+export DATABASE_URL="mysql://user:password@localhost/phprecipebook?encoding=utf8&timezone=UTC&cacheMetadata=true&quoteIdentifiers=false&persistent=false"
 export EMAIL_TRANSPORT_DEFAULT_URL="smtp://my@gmail.com:secret@smtp.gmail.com:587?tls=true"
 
 ```
