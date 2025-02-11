@@ -61,14 +61,14 @@ Recipe Box on Left.  This is the sidecar of the site.
 */
 #recipeLinkBox {
   float: left;
-  width: 200px;
+  width: auto;
   background-color: #00547d;
   border-radius: 10px 10px 10px 10px;
   border: 1px solid #00547d;
   -webkit-box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.698);
           box-shadow: 5px 5px 5px rgba(1, 1, 1, 0.698);
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .recipeBoxList {
@@ -80,7 +80,7 @@ Recipe Box on Left.  This is the sidecar of the site.
   clear: both;
   color: #333333;
   overflow: auto;
-  padding: 10px 20px 40px;
+  padding: 5px;
   border-radius: 0px 0px 5px 5px;
 }
 

@@ -8,9 +8,7 @@ function initApplication(initBaseUrl) {
     initNavigationHRef(contentId);
     initDialogs();
     setupSearchBox();
-    if ($(window).width() >= 1480) {
-      ajaxGet("recipeLinkBox/index", "recipeLinkBoxContainer");
-    } 
+    ajaxGet("recipeLinkBox/index", "recipeLinkBoxContainer");
     
     window.onpopstate = function (event) {
         if (event.state == null) 
