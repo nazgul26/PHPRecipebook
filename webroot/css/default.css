@@ -529,7 +529,7 @@ float60Section {
 }
 
 .btn {
-  -moz-user-select: none;
+  user-select: none;
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -714,7 +714,7 @@ p {
   margin: -1px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 800px) {
   .higherRes {
     display: none;
   }

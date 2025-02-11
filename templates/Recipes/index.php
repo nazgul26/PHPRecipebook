@@ -82,8 +82,9 @@
 	<tr>
             <th class="actions"><?php echo __('Actions'); ?></th>
             <th><?php echo $this->Paginator->sort('name'); ?></th>
-            <th><?php echo $this->Paginator->sort('comments'); ?></th>
+            <?php if ($loggedIn) { ?>
             <th><?php echo $this->Paginator->sort('user_id'); ?></th>
+            <?php } ?>
 			
 	</tr>
 	<?php foreach ($recipes as $recipe): ?>
@@ -100,16 +101,17 @@
                 <?php endif;?>
             </td>
             <td><?php echo h($recipe->name); ?>&nbsp;</td>
-            <td><?php echo h($recipe->comments); ?>&nbsp;</td>
+            <?php if ($loggedIn) { ?>
             <td>
                 <?php if (isset($recipe->user)) {
-                if ($isAdmin) {
-                    echo $this->Html->link($recipe->user->name, array('controller' => 'users', 'action' => 'view', $recipe->user->id));
-                } else {
-                    echo $recipe->name;
-                }
-            }?>
+                    if ($isAdmin) {
+                        echo $this->Html->link($recipe->user->name, array('controller' => 'users', 'action' => 'view', $recipe->user->id));
+                    } else {
+                        echo $recipe->user->name;
+                    }
+                } ?>
             </td>
+            <?php } ?>
 	</tr>
 <?php endforeach; ?>
 	</table>
