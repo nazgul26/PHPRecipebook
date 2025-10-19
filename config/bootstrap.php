@@ -187,37 +187,49 @@ ServerRequest::addDetector('tablet', function ($request) {
     return $detector->isTablet();
 });
 
-/*
- * You can enable default locale format parsing by adding calls
- * to `useLocaleParser()`. This enables the automatic conversion of
- * locale specific date formats. For details see
- * @link https://book.cakephp.org/4/en/core-libraries/internationalization-and-localization.html#parsing-localized-datetime-data
- */
-// \Cake\Database\TypeFactory::build('time')
-//    ->useLocaleParser();
-// \Cake\Database\TypeFactory::build('date')
-//    ->useLocaleParser();
-// \Cake\Database\TypeFactory::build('datetime')
-//    ->useLocaleParser();
-// \Cake\Database\TypeFactory::build('timestamp')
-//    ->useLocaleParser();
-// \Cake\Database\TypeFactory::build('datetimefractional')
-//    ->useLocaleParser();
-// \Cake\Database\TypeFactory::build('timestampfractional')
-//    ->useLocaleParser();
-// \Cake\Database\TypeFactory::build('datetimetimezone')
-//    ->useLocaleParser();
-// \Cake\Database\TypeFactory::build('timestamptimezone')
-//    ->useLocaleParser();
 
 // There is no time-specific type in Cake
 TypeFactory::map('time', StringType::class);
 
-/*
- * Custom Inflector rules, can be set to correctly pluralize or singularize
- * table, model, controller names or whatever other string is passed to the
- * inflection functions.
+/**
+ * Set some app constants.  These are not intended to be changed frequently.
  */
-//Inflector::rules('plural', ['/^(inflect)or$/i' => '\1ables']);
-//Inflector::rules('irregular', ['red' => 'redlings']);
-//Inflector::rules('uninflected', ['dontinflectme']);
+Configure::write('AuthRoles', array(
+    'author' => 30, // Basic User
+    'editor' => 60, // Can Edit other people content
+    'admin'  => 90 // Site Admin Level Access
+));
+
+// List for Binding to UI (yes I am lazy on this)
+Configure::write('AuthEditRoles', array(
+    30 => 'author', // Basic User
+    60 => 'editor', // Can Edit other people content
+    90 => 'admin' // Site Admin Level Access
+));
+
+Configure::write('MeasurementSystems', array(
+    0 => 'Static',
+    1 => 'Imperial',
+    2 => 'Metric'
+));
+
+Configure::write('Languages', array(
+    'eng' => 'English',
+    'zho' => 'Chinese',
+    'dan' => 'Danish',
+    'nld' => 'Dutch',
+    'est' => 'Estonian',
+    'fra' => 'French',
+    'deu' => 'German',
+    'hun' => 'Hungarian',
+    'ita' => 'Italian',
+    'jpn' => 'Japanese',
+    'kor' => 'Korean',
+    'nor' => 'Norwegian',
+    'por' => 'Portuguese',
+    'tur' => 'Turkish',
+    'srp' => 'Serbian',
+    'spa' => 'Spanish',
+    'swe' => 'Swedish'
+));
+
