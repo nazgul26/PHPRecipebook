@@ -18,10 +18,9 @@ class VendorProductsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Ingredients', 'Vendors', 'Users'],
-        ];
-        $vendorProducts = $this->paginate($this->VendorProducts);
+        $query = $this->VendorProducts->find()
+            ->contain(['Ingredients', 'Vendors', 'Users']);
+        $vendorProducts = $this->paginate($query);
 
         $this->set(compact('vendorProducts'));
     }
@@ -35,9 +34,7 @@ class VendorProductsController extends AppController
      */
     public function view($id = null)
     {
-        $vendorProduct = $this->VendorProducts->get($id, [
-            'contain' => ['Ingredients', 'Vendors', 'Users'],
-        ]);
+        $vendorProduct = $this->VendorProducts->get($id, contain: ['Ingredients', 'Vendors', 'Users']);
 
         $this->set(compact('vendorProduct'));
     }
@@ -59,9 +56,9 @@ class VendorProductsController extends AppController
             }
             $this->Flash->error(__('The vendor product could not be saved. Please, try again.'));
         }
-        $ingredients = $this->VendorProducts->Ingredients->find('list', ['limit' => 200])->all();
-        $vendors = $this->VendorProducts->Vendors->find('list', ['limit' => 200])->all();
-        $users = $this->VendorProducts->Users->find('list', ['limit' => 200])->all();
+        $ingredients = $this->VendorProducts->Ingredients->find('list', limit: 200)->all();
+        $vendors = $this->VendorProducts->Vendors->find('list', limit: 200)->all();
+        $users = $this->VendorProducts->Users->find('list', limit: 200)->all();
         $this->set(compact('vendorProduct', 'ingredients', 'vendors', 'users'));
     }
 
@@ -74,9 +71,7 @@ class VendorProductsController extends AppController
      */
     public function edit($id = null)
     {
-        $vendorProduct = $this->VendorProducts->get($id, [
-            'contain' => [],
-        ]);
+        $vendorProduct = $this->VendorProducts->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $vendorProduct = $this->VendorProducts->patchEntity($vendorProduct, $this->request->getData());
             if ($this->VendorProducts->save($vendorProduct)) {
@@ -86,9 +81,9 @@ class VendorProductsController extends AppController
             }
             $this->Flash->error(__('The vendor product could not be saved. Please, try again.'));
         }
-        $ingredients = $this->VendorProducts->Ingredients->find('list', ['limit' => 200])->all();
-        $vendors = $this->VendorProducts->Vendors->find('list', ['limit' => 200])->all();
-        $users = $this->VendorProducts->Users->find('list', ['limit' => 200])->all();
+        $ingredients = $this->VendorProducts->Ingredients->find('list', limit: 200)->all();
+        $vendors = $this->VendorProducts->Vendors->find('list', limit: 200)->all();
+        $users = $this->VendorProducts->Users->find('list', limit: 200)->all();
         $this->set(compact('vendorProduct', 'ingredients', 'vendors', 'users'));
     }
 

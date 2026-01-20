@@ -1,14 +1,13 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Controller\AppController;
 
 class CoursesController extends AppController
 {
-    public function beforeFilter($event) {
-        parent::beforeFilter($event);
-        $this->Auth->deny(); // Deny ALL, user must be logged in.
-    }
+    // Authentication required for all actions (default behavior in CakePHP 5)
 
     public function index()
     {
@@ -32,15 +31,15 @@ class CoursesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $course = $this->Courses->patchEntity($course, $this->request->getData());
             if ($this->Courses->save($course)) {
-                $this->Flash->success(__('The course has been saved.'), 
+                $this->Flash->success(__('The course has been saved.'),
                     ['params' => ['event' => 'saved.course']]);
 
                 return $this->redirect(array('action' => 'edit'));
             }
-            $this->Session->setFlash(__('The course could not be saved. Please, try again.'));
+            $this->Flash->error(__('The course could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('course')); 
+        $this->set(compact('course'));
     }
 
     public function delete($id = null)

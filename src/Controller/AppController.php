@@ -18,6 +18,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\EventInterface;
+use function Cake\Core\env;
 
 /**
  * Application Controller
@@ -25,10 +26,25 @@ use Cake\Event\EventInterface;
  * Add your application-wide methods in the class below, your controllers
  * will inherit them.
  *
- * @link https://book.cakephp.org/4/en/controllers.html#the-app-controller
+ * @link https://book.cakephp.org/5/en/controllers.html#the-app-controller
  */
 class AppController extends Controller
 {
+    /**
+     * @var bool
+     */
+    public $isAdmin = false;
+
+    /**
+     * @var bool
+     */
+    public $isEditor = false;
+
+    /**
+     * @var bool
+     */
+    public $isPrivateCollection = false;
+
     /**
      * Initialization hook method.
      *
@@ -42,67 +58,59 @@ class AppController extends Controller
     {
         parent::initialize();
 
-        $this->loadComponent('RequestHandler', [
-            'enableBeforeRedirect' => false,
-        ]);
+        //$this->loadComponent('RequestHandler', [
+        //    'enableBeforeRedirect' => false,
+        //]);
         $this->loadComponent('Flash');
-
-        $this->loadComponent('Auth', [
-            'authorize' => ['Controller'],
-            'loginRedirect' => [
-                'controller' => 'recipes',
-                'action' => 'index'
-            ],
-            'logoutRedirect' => [
-                'controller' => 'Users',
-                'action' => 'login'
-            ]
-        ]);
+        $this->loadComponent('Authentication.Authentication');
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.
-         * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
+         * see https://book.cakephp.org/5/en/controllers/components/form-protection.html
          */
         //$this->loadComponent('FormProtection');
     }
-    
-    public function beforeFilter(EventInterface $event) {
-        $this->loadModel('Users');
-        
+
+    public function beforeFilter(EventInterface $event): void
+    {
         parent::beforeFilter($event);
-        
+
         // Delete the default auth message.  Just show them the login page
         //  people will get the idea pretty quickly.
         $session = $this->getRequest()->getSession();
         $session->delete('Message.auth');
 
         if ($this->request->is('ajax')) {
-            $this->layout = 'ajax'; 
+            $this->viewBuilder()->setLayout('ajax');
         }
-        
+
         // Let everyone know about the user
-        $user = $this->Auth->user();
-        $this->set('loggedIn', $user != null);
-        $this->isAdmin = $this->Users->isAdmin($user);
-        $this->isEditor = $this->Users->isEditor($user);
+        $identity = $this->Authentication->getIdentity();
+        $user = $identity ? $identity->getOriginalData()->toArray() : null;
+
+        $usersTable = $this->fetchTable('Users');
+        $this->set('loggedIn', $user !== null);
+        $this->isAdmin = $usersTable->isAdmin($user);
+        $this->isEditor = $usersTable->isEditor($user);
         $this->isPrivateCollection = env('PRIVATE_COLLECTION', false) == "true";
-        $this->set('loggedInuserId', $this->Auth->user('id'));
+        $this->set('loggedInuserId', $identity?->get('id'));
         $this->set('isAdmin', $this->isAdmin);
         $this->set('isEditor', $this->isEditor);
         $this->set('allowAccountCreation', env('ALLOW_PUBLIC_ACCOUNT_CREATION', false) == "true");
     }
-    
-    public function isAuthorized($user) {
-        $this->loadModel('Users');
+
+    public function isAuthorized($user): bool
+    {
+        $usersTable = $this->fetchTable('Users');
         $controllerName = $this->request->getParam('controller');
 
         // Check Auth for Admin only Pages.
         if (in_array($controllerName, array(
-            'BaseTypes', 
-            'Courses', 
-            'Difficulties', 
-            'Ethnicities', 
-            'Locations', 
+            'BaseTypes',
+            'Courses',
+            'Difficulties',
+            'Ethnicities',
+            'Locations',
             'PreparationMethods',
             'PreparationTimes',
             'PriceRanges',
@@ -110,8 +118,8 @@ class AppController extends Controller
             'Stores',
             'Units',
             'Vendors'))) {
-            
-            if ($this->Users->isAdmin($user)) { 
+
+            if ($usersTable->isAdmin($user)) {
                 return true;
             }
             $this->Flash->error(__('Not Authorized.'));

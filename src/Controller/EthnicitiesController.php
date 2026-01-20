@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Controller\AppController;
 
 class EthnicitiesController extends AppController
 {
+    // Authentication required for all actions (default behavior in CakePHP 5)
+
     public function index(): void
     {
         $ethnicities = $this->paginate($this->Ethnicities);
@@ -26,7 +30,7 @@ class EthnicitiesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $ethnicity = $this->Ethnicities->patchEntity($ethnicity, $this->request->getData());
             if ($this->Ethnicities->save($ethnicity)) {
-                $this->Flash->success(__('The ethnicity has been saved.'), 
+                $this->Flash->success(__('The ethnicity has been saved.'),
                     ['params' => ['event' => 'saved.ethnicity']]);
 
                 return $this->redirect(array('action' => 'edit'));
@@ -34,7 +38,7 @@ class EthnicitiesController extends AppController
             $this->Flash->error(__('The ethnicity could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('ethnicity')); 
+        $this->set(compact('ethnicity'));
     }
 
     public function delete($id = null)

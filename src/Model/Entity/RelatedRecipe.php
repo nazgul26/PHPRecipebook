@@ -27,7 +27,7 @@ class RelatedRecipe extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'parent_id' => true,
         'recipe_id' => true,
         'required' => true,

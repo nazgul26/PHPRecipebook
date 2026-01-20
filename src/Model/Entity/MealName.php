@@ -22,7 +22,7 @@ class MealName extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'name' => true,
         'meal_plans' => true,
     ];

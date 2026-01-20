@@ -96,7 +96,7 @@ class ShoppingListRecipesTable extends Table
 
     public function addToShoppingList($listId, $recipeId, $servings, $userId) {
         $saveOk = false;
-        $existingItem = $this->find('all', ['ShoppingListRecipes.shopping_list_id' => $listId, 'ShoppingListRecipes.user_id' => $userId])->first();
+        $existingItem = $this->find()->where(['ShoppingListRecipes.shopping_list_id' => $listId, 'ShoppingListRecipes.user_id' => $userId])->first();
         //$itemId = $this->field('id', array('user_id' => $userId, 'recipe_id' => $recipeId));
         if (isset($existingItem)) {
             // Update Existing
@@ -121,21 +121,21 @@ class ShoppingListRecipesTable extends Table
         }
         
         if ($saveOk) {
-            $data = $this->Recipes->find('all', array(
-                'fields' => array('id'),
-                'contain' => array(
-                'RelatedRecipes' => array(
-                    'fields' => array('recipe_id')
-                )
-            ),
-            'conditions' => array('Recipes.id' => $recipeId)))
-            ->first();
+            $data = $this->Recipes->find()
+                ->select(['id'])
+                ->contain([
+                    'RelatedRecipes' => [
+                        'fields' => ['recipe_id']
+                    ]
+                ])
+                ->where(['Recipes.id' => $recipeId])
+                ->first();
 
             foreach ($data->related_recipes as $related) {
                 $relatedRecipeId = $related['recipe_id'];
                 $itemId = $this->field('id', array('user_id' => $userId, 'recipe_id' => $relatedRecipeId));
                 if (isset($itemId) && $itemId != "") {
-                    $data = $this->find('all', array('conditions' => array('ShoppingListRecipes.id' => $itemId)));
+                    $data = $this->find()->where(['ShoppingListRecipes.id' => $itemId]);
                     $data[0]["ShoppingListRecipes"]["servings"] += $servings;
                     $saveOk = $this->save($data[0]);
                 } else { 

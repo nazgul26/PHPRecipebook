@@ -1,20 +1,19 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Controller\AppController;
 
 class PreparationMethodsController extends AppController
 {
-    public function beforeFilter($event) {
-        parent::beforeFilter($event);
-        $this->Auth->deny(); // Deny ALL, user must be logged in.
-    }
-    
+    // Authentication required for all actions (default behavior in CakePHP 5)
+
     public function index()
     {
-        $preparationMethods = $this->paginate($this->PreparationMethods, [
-            'order' => ['PreparationMethods.name']
-        ]);
+        $query = $this->PreparationMethods->find()
+            ->orderBy(['PreparationMethods.name' => 'ASC']);
+        $preparationMethods = $this->paginate($query);
         $this->set(compact('preparationMethods'));
     }
 
@@ -33,7 +32,7 @@ class PreparationMethodsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $preparationMethod = $this->PreparationMethods->patchEntity($preparationMethod, $this->request->getData());
             if ($this->PreparationMethods->save($preparationMethod)) {
-                $this->Flash->success(__('The preparation method has been saved.'), 
+                $this->Flash->success(__('The preparation method has been saved.'),
                 ['params' => ['event' => 'saved.preparationMethod']]);
 
                 return $this->redirect(['action' => 'edit']);

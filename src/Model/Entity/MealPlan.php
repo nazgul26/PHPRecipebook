@@ -28,7 +28,7 @@ class MealPlan extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'mealday' => true,
         'meal_name_id' => true,
         'recipe_id' => true,

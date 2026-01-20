@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -12,10 +14,7 @@ use App\Controller\AppController;
  */
 class PriceRangesController extends AppController
 {
-    public function beforeFilter($event) {
-        parent::beforeFilter($event);
-        $this->Auth->deny(); // Deny ALL, user must be logged in.
-    }
+    // Authentication required for all actions (default behavior in CakePHP 5)
 
     public function index()
     {
@@ -39,7 +38,7 @@ class PriceRangesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $priceRange = $this->PriceRanges->patchEntity($priceRange, $this->request->getData());
             if ($this->PriceRanges->save($priceRange)) {
-                $this->Flash->success(__('The price range has been saved.'), 
+                $this->Flash->success(__('The price range has been saved.'),
                 ['params' => ['event' => 'saved.priceRange']]);
 
                 return $this->redirect(['action' => 'edit']);

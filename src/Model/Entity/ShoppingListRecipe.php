@@ -27,7 +27,7 @@ class ShoppingListRecipe extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'shopping_list_id' => true,
         'recipe_id' => true,
         'servings' => true,

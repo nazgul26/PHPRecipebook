@@ -30,7 +30,7 @@ class ShoppingListIngredient extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'shopping_list_id' => true,
         'ingredient_id' => true,
         'unit_id' => true,

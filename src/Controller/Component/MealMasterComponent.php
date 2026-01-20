@@ -9,37 +9,37 @@ use Cake\Controller\Component;
 
 class MealMasterComponent extends Component {
 
-    var $units;
+    protected $units;
     
-    var $MMCategories = array();
+    protected $MMCategories = array();
     
     /*
      * Keep track of the current recipe being examined
      */
-    var $importRecipes = array();
-    var $currentRecipe = NULL;
-    var $currentIngredient = NULL;
-    var $ingredientList = NULL;	
-    var $curRecipeString = NULL;
+    protected $importRecipes = array();
+    protected $currentRecipe = NULL;
+    protected $currentIngredient = NULL;
+    protected $ingredientList = NULL;
+    protected $curRecipeString = NULL;
     
     /*
      * Define some reg ex parts to look for
      */
-    
-    var $rxpHead = '/^(M{5,5}|-{5,5}).*Meal-Master/';
-    var $rxpEnd = '/^(M{20,200}|-{20,200}|-{5})/';
-    var $rxpTitle = '/^ *Title: .+/';
-    var $rxpCat = '/^ *Categories: .+/';
-    var $rxpYield = '/^ *(Yield:|Servings:) +[1-9][0-9]*/';
-    var $rxpWhitespaceOnly = '/^\\s+$/';
+
+    protected $rxpHead = '/^(M{5,5}|-{5,5}).*Meal-Master/';
+    protected $rxpEnd = '/^(M{20,200}|-{20,200}|-{5})/';
+    protected $rxpTitle = '/^ *Title: .+/';
+    protected $rxpCat = '/^ *Categories: .+/';
+    protected $rxpYield = '/^ *(Yield:|Servings:) +[1-9][0-9]*/';
+    protected $rxpWhitespaceOnly = '/^\\s+$/';
     // example group line: MMMMM----------------SAUCE-----------------
-    var $rxpGroup = '/^(MMMMM|-----).*(-)+$/';
-    var $rxpSeparator = '/^(MMMMM|-----)/';
-    
+    protected $rxpGroup = '/^(MMMMM|-----).*(-)+$/';
+    protected $rxpSeparator = '/^(MMMMM|-----)/';
+
     /*
      * Define the Units and there equiv in this program, they are looked up in unitdefs later
      */
-    var $MMUnits = array(
+    protected $MMUnits = array(
 			 'x' =>  'unit',		//Per serving
 			 'cn' => 'can',			//Can
 			 'pk' => 'package',		//Package
@@ -74,8 +74,8 @@ class MealMasterComponent extends Component {
     
     /*
      * Some MM units are really qualifiers
-     */ 
-    var $MMQualifiers = array(
+     */
+    protected $MMQualifiers = array(
                             'sm' => 'small',
                             'md' => 'medium',
                             'lg' => 'large'
@@ -86,20 +86,19 @@ class MealMasterComponent extends Component {
         @param $file The file to parse
     */
     function import($file) {
-        $this->Unit = ClassRegistry::init('Unit');
-        $this->units = $this->Unit->find('list');
-        
-        $this->BaseType = ClassRegistry::init('BaseType');
-        $this->bases = $this->BaseType->find('list');
-        
-        $this->Course = ClassRegistry::init('Course');
-        $this->courses = $this->Course->find('list');
-        
-        $this->Ethnicity = ClassRegistry::init('Ethnicity');
-        $this->ethnicities = $this->Ethnicity->find('list');
-        
-        
-        $this->Ingredient = ClassRegistry::init('Ingredient');
+        $this->Unit = $this->getController()->fetchTable('Units');
+        $this->units = $this->Unit->find('list')->toArray();
+
+        $this->BaseType = $this->getController()->fetchTable('BaseTypes');
+        $this->bases = $this->BaseType->find('list')->toArray();
+
+        $this->Course = $this->getController()->fetchTable('Courses');
+        $this->courses = $this->Course->find('list')->toArray();
+
+        $this->Ethnicity = $this->getController()->fetchTable('Ethnicities');
+        $this->ethnicities = $this->Ethnicity->find('list')->toArray();
+
+        $this->Ingredient = $this->getController()->fetchTable('Ingredients');
 
         if (!($fp = fopen($file, "r"))) {
             die(__('could not data file for reading'). "<br />");
@@ -457,7 +456,7 @@ class MealMasterComponent extends Component {
      */
     function addCategories($cat) {
         //print "Looking at categories:$cat<br/>";
-	$list = split(' ', $cat);
+	$list = explode(' ', $cat);
 	foreach ($list as $item) {
             //print "Looking at: $item<br/>";
 	    if ($key = $this->containsValue($this->bases, $item)) {

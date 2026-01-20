@@ -18,7 +18,7 @@ use Cake\ORM\Entity;
  * @property string|null $comments
  * @property string|null $source_description
  * @property float|null $recipe_cost
- * @property \Cake\I18n\FrozenDate|null $modified
+ * @property \Cake\I18n\DateTime|null $modified
  * @property string|resource|null $picture
  * @property string|null $picture_type
  * @property bool $private
@@ -53,7 +53,7 @@ class Recipe extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'name' => true,
         'ethnicity_id' => true,
         'base_type_id' => true,

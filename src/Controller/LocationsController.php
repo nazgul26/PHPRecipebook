@@ -1,20 +1,21 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Controller\AppController;
 
 class LocationsController extends AppController
 {
-    public function beforeFilter($event) {
-        parent::beforeFilter($event);
-        $this->Auth->deny(); // Deny ALL, user must be logged in.
-    }
+    public $filterConditions = [];
+
+    // Authentication required for all actions (default behavior in CakePHP 5)
 
     public function index()
     {
-        $locations = $this->paginate($this->Locations, [
-            'order' => ['Locations.name']
-        ]);
+        $query = $this->Locations->find()
+            ->orderBy(['Locations.name' => 'ASC']);
+        $locations = $this->paginate($query);
         $this->set(compact('locations'));
     }
 
@@ -33,7 +34,7 @@ class LocationsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $location = $this->Locations->patchEntity($location, $this->request->getData());
             if ($this->Locations->save($location)) {
-                $this->Flash->success(__('The location has been saved.'), 
+                $this->Flash->success(__('The location has been saved.'),
                 ['params' => ['event' => 'saved.location']]);
 
                 return $this->redirect(['action' => 'edit']);
@@ -56,20 +57,18 @@ class LocationsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function search() {
-        $term = $this->request->query('term');
-        if ($term)
-        {
+    public function search()
+    {
+        $term = $this->request->getQuery('term');
+        if ($term) {
             $conditions = array_merge($this->filterConditions, array('LOWER(Locations.name) LIKE' => '%' . trim(strtolower($term)) . '%'));
         } else {
             $conditions = $this->filterConditions;
         }
 
-        $this->paginate = [
-            'conditions' => array_merge($conditions)
-        ];
-
-        $locations = $this->paginate($this->Locations);
+        $query = $this->Locations->find()
+            ->where($conditions);
+        $locations = $this->paginate($query);
         $this->set(compact('locations'));
         $this->render('index');
     }

@@ -1,31 +1,34 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\EventInterface;
 
 class RestaurantsController extends AppController
 {
-    public function beforeFilter($event) {
+    public $filterConditions = [];
+
+    public function beforeFilter(EventInterface $event): void
+    {
         parent::beforeFilter($event);
-        $this->Auth->allow('index', 'search');
+        $this->Authentication->allowUnauthenticated(['index', 'search']);
     }
 
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['PriceRanges', 'Users'],
-            'order' => ['Restaurants.name']
-        ];
-        $restaurants = $this->paginate($this->Restaurants);
+        $query = $this->Restaurants->find()
+            ->contain(['PriceRanges', 'Users'])
+            ->orderBy(['Restaurants.name' => 'ASC']);
+        $restaurants = $this->paginate($query);
 
         $this->set(compact('restaurants'));
     }
 
     public function edit($id = null)
     {
-        $restaurant = $this->Restaurants->get($id, [
-            'contain' => [],
-        ]);
+        $restaurant = $this->Restaurants->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $restaurant = $this->Restaurants->patchEntity($restaurant, $this->request->getData());
             if ($this->Restaurants->save($restaurant)) {
@@ -35,8 +38,8 @@ class RestaurantsController extends AppController
             }
             $this->Flash->error(__('The restaurant could not be saved. Please, try again.'));
         }
-        $priceRanges = $this->Restaurants->PriceRanges->find('list', ['limit' => 200]);
-        $users = $this->Restaurants->Users->find('list', ['limit' => 200]);
+        $priceRanges = $this->Restaurants->PriceRanges->find('list', limit: 200);
+        $users = $this->Restaurants->Users->find('list', limit: 200);
         $this->set(compact('restaurant', 'priceRanges', 'users'));
     }
 
@@ -53,23 +56,21 @@ class RestaurantsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function search() {
+    public function search()
+    {
         $term = $this->request->getQuery('term');
         $conditions = [];
-        if ($term)
-        {
+        if ($term) {
             $conditions = array_merge($this->filterConditions, array('LOWER(Restaurants.name) LIKE' => '%' . trim(strtolower($term)) . '%'));
         } else {
             $conditions = $this->filterConditions;
         }
 
-        $this->paginate = [
-            'conditions' => array_merge($conditions),
-            'contain' => ['PriceRanges', 'Users'],
-            'order' => ['Restaurants.name']
-        ];
-
-        $restaurants = $this->paginate($this->Restaurants);
+        $query = $this->Restaurants->find()
+            ->contain(['PriceRanges', 'Users'])
+            ->where($conditions)
+            ->orderBy(['Restaurants.name' => 'ASC']);
+        $restaurants = $this->paginate($query);
         $this->set(compact('restaurants'));
         $this->render('index');
     }

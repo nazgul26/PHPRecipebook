@@ -1,15 +1,14 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Controller\AppController;
 
-class DifficultiesController extends AppController {
+class DifficultiesController extends AppController
+{
+    // Authentication required for all actions (default behavior in CakePHP 5)
 
-    public function beforeFilter($event) {
-        parent::beforeFilter($event);
-        $this->Auth->deny(); // Deny ALL, user must be logged in.
-    }
-    
     public function index()
     {
         $difficulties = $this->paginate($this->Difficulties);
@@ -31,7 +30,7 @@ class DifficultiesController extends AppController {
         if ($this->request->is(['patch', 'post', 'put'])) {
             $difficulty = $this->Difficulties->patchEntity($difficulty, $this->request->getData());
             if ($this->Difficulties->save($difficulty)) {
-                $this->Flash->success(__('The difficulty has been saved.'), 
+                $this->Flash->success(__('The difficulty has been saved.'),
                     ['params' => ['event' => 'saved.difficulty']]);
 
                 return $this->redirect(array('action' => 'edit'));
@@ -39,7 +38,7 @@ class DifficultiesController extends AppController {
             $this->Flash->error(__('The difficulty could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('difficulty')); 
+        $this->set(compact('difficulty'));
     }
 
     public function delete($id = null)

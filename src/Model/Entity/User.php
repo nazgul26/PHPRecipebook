@@ -1,8 +1,10 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Model\Entity;
 
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 use Cake\ORM\Entity;
-use Cake\Auth\DefaultPasswordHasher;
 
 class User extends Entity
 {
@@ -13,9 +15,9 @@ class User extends Entity
      * be mass assigned. For security purposes, it is advised to set '*' to false
      * (or remove it), and explicitly make individual fields accessible as needed.
      *
-     * @var array
+     * @var array<string, bool>
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'username' => true,
         'password' => true,
         'name' => true,
@@ -45,18 +47,23 @@ class User extends Entity
     /**
      * Fields that are excluded from JSON versions of the entity.
      *
-     * @var array
+     * @var array<string>
      */
-    protected $_hidden = [
+    protected array $_hidden = [
         'password',
     ];
 
-    // Not sure why not being called
-    /*protected function _setPassword($password)
+    /**
+     * Automatically hash the password when setting it.
+     *
+     * @param string $password The password to hash.
+     * @return string|null
+     */
+    protected function _setPassword(string $password): ?string
     {
         if (strlen($password) > 0) {
-          return (new DefaultPasswordHasher)->hash($password);
+            return (new DefaultPasswordHasher())->hash($password);
         }
-    }*/
-
+        return null;
+    }
 }

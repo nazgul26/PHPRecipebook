@@ -1,7 +1,10 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\EventInterface;
 
 /**
  * Reviews Controller
@@ -12,17 +15,17 @@ use App\Controller\AppController;
  */
 class ReviewsController extends AppController
 {
-    public function isAuthorized($user) {
+    public function isAuthorized($user): bool
+    {
         // The owner of a review can edit and delete it
         $action = $this->request->getParam('action');
         $passParam = $this->request->getParam('pass');
         if (in_array($action, array('edit', 'delete')) && isset($passParam[1])) {
             $reviewId = (int) $passParam[1];
-
-            if ($this->Users->isEditor($user) || $this->Reviews->isOwnedBy($reviewId, $user['id'])) {
+            $usersTable = $this->fetchTable('Users');
+            if ($usersTable->isEditor($user) || $this->Reviews->isOwnedBy($reviewId, $user['id'])) {
                 return true;
-            }
-            else {
+            } else {
                 $this->Flash->error(__('Not Review Owner'));
                 return false;
             }
@@ -32,28 +35,26 @@ class ReviewsController extends AppController
         return parent::isAuthorized($user);
     }
 
-    public function index($recipeId = null) {
+    public function index($recipeId = null)
+    {
         if ($recipeId == null) {
             throw new NotFoundException(__('Missing review ID'));
         }
 
-        $this->loadModel('Recipes');
-        $recipe = $this->Recipes->get($recipeId);
-    
-        $this->paginate = [
-            'contain' => ['Recipes', 'Users'],
-            'conditions' => ['Reviews.recipe_id =' => $recipeId]
-        ];
-        $reviews = $this->paginate($this->Reviews);
+        $recipesTable = $this->fetchTable('Recipes');
+        $recipe = $recipesTable->get($recipeId);
+
+        $query = $this->Reviews->find()
+            ->contain(['Recipes', 'Users'])
+            ->where(['Reviews.recipe_id =' => $recipeId]);
+        $reviews = $this->paginate($query);
 
         $this->set(compact('recipe', 'reviews', 'recipeId'));
     }
 
     public function view($id = null)
     {
-        $review = $this->Reviews->get($id, [
-            'contain' => ['Recipes', 'Users'],
-        ]);
+        $review = $this->Reviews->get($id, contain: ['Recipes', 'Users']);
 
         $this->set('review', $review);
     }
@@ -67,16 +68,15 @@ class ReviewsController extends AppController
             throw new NotFoundException(__('Invalid review'));
         }
 
-        $this->loadModel('Recipes');
-        $recipe = $this->Recipes->get($recipeId);
+        $recipesTable = $this->fetchTable('Recipes');
+        $recipe = $recipesTable->get($recipeId);
 
         if ($id == null) {
             $review = $this->Reviews->newEmptyEntity();
         } else {
-            $review = $this->Reviews->get($id, ['contain' => [
+            $review = $this->Reviews->get($id, contain: [
                 'Users' => [
                     'fields' => ['name', 'id']
-                    ]
                 ]
             ]);
         }
@@ -84,7 +84,7 @@ class ReviewsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $review = $this->Reviews->patchEntity($review, $this->request->getData());
             $review->recipe_id = $recipeId;
-            $review->user_id = $this->Auth->user('id');
+            $review->user_id = $this->Authentication->getIdentity()?->get('id');
             try {
                 if ($this->Reviews->save($review)) {
                     $this->Flash->success(__('The review has been saved.'));

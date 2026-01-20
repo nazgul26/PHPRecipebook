@@ -31,7 +31,7 @@ class IngredientMapping extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'recipe_id' => true,
         'ingredient_id' => true,
         'quantity' => true,

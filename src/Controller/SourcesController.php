@@ -1,22 +1,19 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Controller\AppController;
 
-
 class SourcesController extends AppController
 {
-    public function beforeFilter($event) {
-        parent::beforeFilter($event);
-        $this->Auth->deny(); // Deny ALL, user must be logged in.
-    }
+    // Authentication required for all actions (default behavior in CakePHP 5)
 
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users'],
-        ];
-        $sources = $this->paginate($this->Sources);
+        $query = $this->Sources->find()
+            ->contain(['Users']);
+        $sources = $this->paginate($query);
         $this->set(compact('sources'));
     }
 
@@ -35,7 +32,7 @@ class SourcesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $source = $this->Sources->patchEntity($source, $this->request->getData());
             if ($this->Sources->save($source)) {
-                $this->Flash->success(__('The source has been saved.'), 
+                $this->Flash->success(__('The source has been saved.'),
                 ['params' => ['event' => 'saved.source']]);
 
                 return $this->redirect(['action' => 'edit']);

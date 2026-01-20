@@ -3,7 +3,7 @@
 </h2>
 <div class="users form">
 <?= $this->Flash->render() ?>
-<?php echo $this->Form->create('User'); ?>
+<?php echo $this->Form->create(null); ?>
 
     <fieldset>
             <p>

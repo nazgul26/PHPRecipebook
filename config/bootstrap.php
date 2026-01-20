@@ -31,14 +31,16 @@ require __DIR__ . DIRECTORY_SEPARATOR . 'paths.php';
  */
 require CORE_PATH . 'config' . DS . 'bootstrap.php';
 
+// Load global helper functions (h, __, env, etc.) for CakePHP 5
+require CAKE . 'Core/functions_global.php';
+require CAKE . 'I18n/functions_global.php';
+
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Core\Configure\Engine\PhpConfig;
 use Cake\Database\Type\StringType;
 use Cake\Database\TypeFactory;
 use Cake\Datasource\ConnectionManager;
-use Cake\Error\ErrorTrap;
-use Cake\Error\ExceptionTrap;
 use Cake\Http\ServerRequest;
 use Cake\Log\Log;
 use Cake\Mailer\Mailer;
@@ -60,13 +62,13 @@ use Cake\Utility\Security;
  * security risks. See https://github.com/josegonzalez/php-dotenv#general-security-information
  * for more information for recommended practices.
 */
- if (!env('APP_NAME') && file_exists(CONFIG . '.env')) {
-     $dotenv = new \josegonzalez\Dotenv\Loader([CONFIG . '.env']);
-     $dotenv->parse()
-         ->putenv()
-         ->toEnv()
-         ->toServer();
- }
+if (!env('APP_NAME') && file_exists(CONFIG . '.env')) {
+    $dotenv = new \josegonzalez\Dotenv\Loader([CONFIG . '.env']);
+    $dotenv->parse()
+        ->putenv()
+        ->toEnv()
+        ->toServer();
+}
 
 /*
  * Read configuration file and inject configuration into various
@@ -120,10 +122,9 @@ mb_internal_encoding(Configure::read('App.encoding'));
 ini_set('intl.default_locale', Configure::read('App.defaultLocale'));
 
 /*
- * Register application error and exception handlers.
+ * In CakePHP 5, error and exception handling is configured through
+ * middleware in src/Application.php via ErrorHandlerMiddleware.
  */
-(new ErrorTrap(Configure::read('Error')))->register();
-(new ExceptionTrap(Configure::read('Error')))->register();
 
 /*
  * Include the CLI bootstrap overrides.

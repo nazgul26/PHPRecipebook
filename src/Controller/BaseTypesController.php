@@ -1,14 +1,13 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Controller\AppController;
 
 class BaseTypesController extends AppController
 {
-    public function beforeFilter($event) {
-        parent::beforeFilter($event);
-        $this->Auth->deny(); // Deny ALL, user must be logged in.
-    }
+    // Authentication required for all actions (default behavior in CakePHP 5)
 
     public function index()
     {
@@ -31,7 +30,7 @@ class BaseTypesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $baseType = $this->BaseTypes->patchEntity($baseType, $this->request->getData());
             if ($this->BaseTypes->save($baseType)) {
-                $this->Flash->success(__('The base type has been saved.'), 
+                $this->Flash->success(__('The base type has been saved.'),
                     ['params' => ['event' => 'saved.baseType']]);
 
                 return $this->redirect(array('action' => 'edit'));
@@ -39,7 +38,7 @@ class BaseTypesController extends AppController
             $this->Flash->error(__('The base type could not be saved. Please, try again.'));
         }
 
-        $this->set(compact('baseType')); 
+        $this->set(compact('baseType'));
     }
 
     public function delete($id = null)

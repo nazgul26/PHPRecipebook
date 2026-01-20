@@ -30,7 +30,7 @@ class VendorProduct extends Entity
      *
      * @var array<string, bool>
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'ingredient_id' => true,
         'vendor_id' => true,
         'code' => true,

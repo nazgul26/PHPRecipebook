@@ -99,32 +99,29 @@ class ShoppingListsTable extends Table
     }*/
     
     public function getList($userId, $listId=null) {
-        $options = array(
-            'contain' => array(
-                'ShoppingListRecipes.Recipes' => array(
-                    'fields' => array('id', 'name', 'serving_size')
-                ),
-                'ShoppingListIngredients.Ingredients' //TODO: ADD ASSOCIATION
-            )
-        );
+        $containOptions = [
+            'ShoppingListRecipes.Recipes' => [
+                'fields' => ['id', 'name', 'serving_size']
+            ],
+            'ShoppingListIngredients.Ingredients' //TODO: ADD ASSOCIATION
+        ];
 
         if ($listId == null) {
-            $search = [
-                'conditions' => [
-                    'name' => __('DEFAULT'), 
-                    'user_id' => $userId
-                ]
+            $conditions = [
+                'name' => __('DEFAULT'),
+                'user_id' => $userId
             ];
         } else {
-            $search = [
-                'conditions' => [
-                    'id' => $listId, 
-                    'user_id' => $userId
-                ]
+            $conditions = [
+                'id' => $listId,
+                'user_id' => $userId
             ];
         }
-        
-        $defaultList = $this->find('all', array_merge($options, $search))->limit(1);
+
+        $defaultList = $this->find()
+            ->contain($containOptions)
+            ->where($conditions)
+            ->limit(1);
 
         if (!isset($defaultList)) {
             $newData = array(
@@ -134,7 +131,10 @@ class ShoppingListsTable extends Table
             );
 
             if ($this->save($newData)) {
-                $defaultList = $this->find('all', array_merge($options, $search))->limit(1);
+                $defaultList = $this->find()
+                    ->contain($containOptions)
+                    ->where($conditions)
+                    ->limit(1);
             }
         }
 
@@ -151,36 +151,35 @@ class ShoppingListsTable extends Table
      *  in user.
      */
     public function getAllIngredients($listId, $userId) {
-        $search = array('conditions' => array('ShoppingLists.id'=> $listId, 'ShoppingLists.user_id' => $userId),
-            'contain' => array( 
+        return $this->find()
+            ->where(['ShoppingLists.id' => $listId, 'ShoppingLists.user_id' => $userId])
+            ->contain([
                 'ShoppingListIngredients' => [
                     'fields' => ['shopping_list_id', 'unit_id', 'quantity'],
-                    'Units' => array(
-                        'fields' => array('name')
-                    ),
+                    'Units' => [
+                        'fields' => ['name']
+                    ],
                     'Ingredients' => [
                         'fields' => ['id', 'name', 'location_id']
                     ]
                 ],
-                'ShoppingListRecipes' => array(
+                'ShoppingListRecipes' => [
                     'fields' => ['servings', 'shopping_list_id'],
-                    'Recipes' => array(
+                    'Recipes' => [
                         'fields' => ['id', 'name', 'serving_size'],
-                        'IngredientMappings' => array(
+                        'IngredientMappings' => [
                             'fields' => ['recipe_id', 'quantity'],
-                            'Units' => array(
-                                'fields' => array('name')
-                            ),
+                            'Units' => [
+                                'fields' => ['name']
+                            ],
                             'Ingredients' => [
                                 'fields' => ['id', 'name', 'location_id']
                             ]
-                        )
-                    )
-                )
-   
-            ));
-        
-        return $this->find('all', $search)->first();
+                        ]
+                    ]
+                ]
+            ])
+            ->first();
     }
     
     /*

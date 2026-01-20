@@ -7,8 +7,8 @@ use Cake\View\View;
 	These methods are used for converting a decimal such as .333 to a fraction (1/3)
 */
 class FractionHelper extends Helper {
-	var $whole;
-	var $fraction;
+	protected $whole;
+	protected $fraction;
 	/* *
 		Function that drives the conversion of a decimal to a fraction
 		@param $value decimal to convert

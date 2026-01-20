@@ -28,7 +28,7 @@ class Attachment extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'recipe_id' => true,
         'name' => true,
         'attachment' => true,

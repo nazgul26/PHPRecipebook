@@ -79,7 +79,7 @@ class LocationsTable extends Table
 
     public function orderShoppingListByLocation($list) {
         $sortedList = array();
-        $locations = $this->find('all', array('order' => array('name')));
+        $locations = $this->find()->orderBy(['name' => 'ASC']);
         foreach ($locations as $location) {
             foreach ($list as $item) {
                 if ($item[0]->locationId == $location->id) {

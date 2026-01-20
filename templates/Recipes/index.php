@@ -105,7 +105,7 @@
             <td>
                 <?php if (isset($recipe->user)) {
                     if ($isAdmin) {
-                        echo $this->Html->link($recipe->user->name, array('controller' => 'users', 'action' => 'view', $recipe->user->id));
+                        echo $this->Html->link($recipe->user->name, array('controller' => 'users', 'action' => 'edit', $recipe->user->id));
                     } else {
                         echo $recipe->user->name;
                     }

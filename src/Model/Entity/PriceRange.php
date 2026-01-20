@@ -22,7 +22,7 @@ class PriceRange extends Entity
      *
      * @var array
      */
-    protected $_accessible = [
+    protected array $_accessible = [
         'name' => true,
         'restaurants' => true,
     ];

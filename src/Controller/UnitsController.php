@@ -1,20 +1,19 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Controller\AppController;
 
 class UnitsController extends AppController
 {
-    public function beforeFilter($event) {
-        parent::beforeFilter($event);
-        $this->Auth->deny(); // Deny ALL, user must be logged in.
-    }
+    // Authentication required for all actions (default behavior in CakePHP 5)
 
     public function index()
     {
-        $units = $this->paginate($this->Units, [
-            'order' => ['Units.sort_order']
-        ]);
+        $query = $this->Units->find()
+            ->orderBy(['Units.sort_order' => 'ASC']);
+        $units = $this->paginate($query);
         $this->set(compact('units'));
     }
 
@@ -33,7 +32,7 @@ class UnitsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $unit = $this->Units->patchEntity($unit, $this->request->getData());
             if ($this->Units->save($unit)) {
-                $this->Flash->success(__('The unit has been saved.'), 
+                $this->Flash->success(__('The unit has been saved.'),
                 ['params' => ['event' => 'saved.unit']]);
 
                 return $this->redirect(['action' => 'edit']);
