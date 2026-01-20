@@ -89,14 +89,19 @@ class ShoppingListsTable extends Table
         return $rules;
     }
 
-    /*public function getDefaultListId($userId) {
-        $listId = $this->field('id', array('user_id' => $userId, 'name' => __('DEFAULT')));
-        if (!isset($listId) || $listId == "") {
-            $list = $this->getList($user);
-            $listId = $list['ShoppingList']['id'];
+    public function getDefaultListId($userId) {
+        $result = $this->find()
+            ->select(['id'])
+            ->where(['user_id' => $userId, 'name' => __('DEFAULT')])
+            ->first();
+
+        if ($result) {
+            return $result->id;
         }
-        return $listId;
-    }*/
+
+        $list = $this->getList($userId);
+        return $list ? $list->id : null;
+    }
     
     public function getList($userId, $listId=null) {
         $containOptions = [
@@ -143,7 +148,7 @@ class ShoppingListsTable extends Table
     }
     
     public function isOwnedBy($listId, $user) {
-        return $this->field('id', array('id' => $listId, 'user_id' => $user)) !== false;
+        return $this->exists(['id' => $listId, 'user_id' => $user]);
     }
     
     /*
