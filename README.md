@@ -58,6 +58,8 @@ export APP_DEFAULT_TIMEZONE="UTC"
 export SECURITY_SALT="------ CHANGE TO RANDOM STRING ----------------------------"
 export DATABASE_URL="mysql://phpuser:RBAdm1n$@db/phprecipebook?encoding=utf8&timezone=UTC&cacheMetadata=true&quoteIdentifiers=false&persistent=false"
 export EMAIL_TRANSPORT_DEFAULT_URL="smtp://my@gmail.com:secret@smtp.gmail.com:587?tls=true"
+export EMAIL_FROM_ADDRESS="noreply@phprecipebook.com"
+export EMAIL_FROM_NAME="PHP RecipeBook"
 
 ```
 
