@@ -591,6 +591,10 @@ float60Section {
   margin-left: 12em;
 }
 
+.input.checkbox label {
+  width: auto;
+}
+
 .reviewCell {
   border: 1px dashed gray;
   border-radius: 4px;

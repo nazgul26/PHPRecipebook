@@ -32,6 +32,7 @@ class User extends Entity
         'locked' => true,
         'reset_time' => true,
         'meal_plan_start_day' => true,
+        'dinner_reminders_enabled' => true,
         'ingredients' => true,
         'meal_plans' => true,
         'recipes' => true,

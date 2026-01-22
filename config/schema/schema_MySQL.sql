@@ -14,6 +14,7 @@ CREATE TABLE users (
 	`last_login` DATE,
 	`email` VARCHAR(64) NOT NULL UNIQUE,
 	`meal_plan_start_day` INT NOT NULL DEFAULT '0', -- Sunday is default
+	`dinner_reminders_enabled` INT NOT NULL DEFAULT '0',
 	`created` DATETIME,
 	`modified` DATETIME,
 	PRIMARY KEY (id)
@@ -111,7 +112,7 @@ CREATE TABLE recipes (
 	`comments` MEDIUMTEXT,
 	`source_id` INT REFERENCES sources(id) ON DELETE SET NULL,
 	`source_description` VARCHAR(200),
-	`modified` DATE,
+	`modified` DATETIME,
 	`image` VARCHAR(255),
 	`image_dir` VARCHAR(255),
 	`private` TINYINT(1) NOT NULL,

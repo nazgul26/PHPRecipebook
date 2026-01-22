@@ -167,6 +167,9 @@ unset($fullBaseUrl);
 
 Cache::setConfig(Configure::consume('Cache'));
 ConnectionManager::setConfig(Configure::consume('Datasources'));
+
+// Register PhpMailerTransport for smtp:// URLs before loading transport config
+TransportFactory::setDsnClassMap(['smtp' => \App\Mailer\Transport\PhpMailerTransport::class]);
 TransportFactory::setConfig(Configure::consume('EmailTransport'));
 Mailer::setConfig(Configure::consume('Email'));
 Log::setConfig(Configure::consume('Log'));

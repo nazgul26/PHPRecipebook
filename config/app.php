@@ -1,10 +1,10 @@
 <?php
 
+use App\Mailer\Transport\PhpMailerTransport;
 use Cake\Cache\Engine\FileEngine;
 use Cake\Database\Connection;
 use Cake\Database\Driver\Mysql;
 use Cake\Log\Engine\FileLog;
-use Cake\Mailer\Transport\MailTransport;
 
 use function Cake\Core\env;
 
@@ -230,24 +230,15 @@ return [
      */
     'EmailTransport' => [
         'default' => [
-            'className' => MailTransport::class,
-            /*
-             * The keys host, port, timeout, username, password, client and tls
-             * are used in SMTP transports
-             */
+            'className' => PhpMailerTransport::class,
             'host' => 'localhost',
-            'port' => 25,
+            'port' => 587,
             'timeout' => 30,
-            /*
-             * It is recommended to set these options through your environment or app_local.php
-             */
-            //'username' => null,
-            //'password' => null,
-            'client' => null,
-            'tls' => false,
+            'tls' => true,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ],
     ],
+
 
     /*
      * Email delivery profiles
