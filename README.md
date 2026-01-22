@@ -162,5 +162,43 @@ From the directory that the app was extracted to.  If you get any db errors doub
 
 Edit the ./.htaccess file and comment out the https redirect lines.
 
+### Send Dinner Reminders Job
+
+PHPRecipebook includes a command that sends email reminders to users about their dinner plans for the next day. Users must have dinner reminders enabled in their profile and have an email address configured to receive these emails.
+
+**Prerequisites:**
+- Email must be configured in your `.env` file (EMAIL_TRANSPORT_DEFAULT_URL).  
+- Email FROM_ADDRESS_EMAIL should also be properly configured to be in the domain your email server controls. 
+- The APP_DEFAULT_TIMEZONE should be set correctly for your location
+
+**Running manually:**
+
+```bash
+cd /var/www/html/phprecipebook
+bin/cake send_dinner_reminders
+```
+
+To preview what emails would be sent without actually sending them:
+
+```bash
+bin/cake send_dinner_reminders --dry-run
+```
+
+**Setting up a cron job:**
+
+To send reminders automatically each evening, add a cron job. For example, to run at 5:00 PM daily:
+
+```bash
+crontab -e
+```
+
+Add the following line (adjust the path and time as needed):
+
+```
+0 17 * * * cd /var/www/html/phprecipebook && bin/cake send_dinner_reminders >> /var/log/dinner_reminders.log 2>&1
+```
+
+This will run the job daily at 5:00 PM and log output to `/var/log/dinner_reminders.log`.
+
 
 
