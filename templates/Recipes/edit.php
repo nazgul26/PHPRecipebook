@@ -508,10 +508,8 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
                 <div id="ingredientDeleteResponse"></div>
                 <a href="#" id="AddMoreIngredientsLink"><?php echo __('Add Another Ingredient');?></a>
             </div>
-            <?php 
-            echo $this->Form->control('directions', array('escape' => true, 'rows' => '20', 'cols' => '20'));
-            ?>
-            
+            <?= $this->Form->control('directions', array('escape' => true, 'rows' => '20', 'cols' => '20', 'id' => 'directions-textarea')); ?>
+            <?= $this->Form->control('use_markdown', [ 'id' => 'use-markdown-toggle']); ?> 
             <div id="relatedRecipesSection">
                 <table id="sortableTable2">
                 <tr class="headerRow">
@@ -571,3 +569,56 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
     <textarea id="noteText" cols=30 rows=4>
     </textarea>
 </div>
+
+<?php
+$this->Html->css('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css', ['block' => true]);
+$this->Html->script('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js', ['block' => true]);
+?>
+
+<script type="text/javascript">
+$(function() {
+    var easyMDE = null;
+    var directionsTextarea = document.getElementById('directions-textarea');
+    var markdownToggle = document.getElementById('use-markdown-toggle');
+
+    function initEasyMDE() {
+        if (easyMDE === null && directionsTextarea) {
+            easyMDE = new EasyMDE({
+                element: directionsTextarea,
+                spellChecker: false,
+                status: false,
+                toolbar: [
+                    'bold', 'italic', 'heading', '|',
+                    'unordered-list', 'ordered-list', '|',
+                    'link', 'quote', 'code', '|',
+                    'preview', 'side-by-side', 'fullscreen', '|',
+                    'guide'
+                ]
+            });
+        }
+    }
+
+    function destroyEasyMDE() {
+        if (easyMDE !== null) {
+            easyMDE.toTextArea();
+            easyMDE = null;
+        }
+    }
+
+    function toggleMarkdownEditor() {
+        if (markdownToggle && markdownToggle.checked) {
+            initEasyMDE();
+        } else {
+            destroyEasyMDE();
+        }
+    }
+
+    // Initialize based on current checkbox state
+    if (markdownToggle) {
+        toggleMarkdownEditor();
+
+        // Listen for checkbox changes
+        markdownToggle.addEventListener('change', toggleMarkdownEditor);
+    }
+});
+</script>

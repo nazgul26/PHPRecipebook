@@ -227,7 +227,13 @@ if (isset($recipe->reviews)) {
         <div style="width: 100%;">
             <b><?php echo __('Directions'); ?></b>
 
-            <pre><?php echo h($recipe->directions); ?></pre>
+            <?php if ($recipe->use_markdown): ?>
+                <div class="markdown-content">
+                    <?= $this->Markdown->render($recipe->directions) ?>
+                </div>
+            <?php else: ?>
+                <pre><?php echo h($recipe->directions); ?></pre>
+            <?php endif; ?>
         </div>
         
         <?php foreach ($recipe->related_recipes as $related) :?>
@@ -266,10 +272,16 @@ if (isset($recipe->reviews)) {
                 <div class="float50Section">
                     <!-- placeholder for related recipe image -->
                 </div>
-                <div class="clear"/><br/>    
+                <div class="clear"/><br/>
                 <div style="width: 100%;">
                     <b><?php echo __('Directions'); ?></b>
-                    <pre><?php echo $related->recipe->directions;?></pre>
+                    <?php if ($related->recipe->use_markdown): ?>
+                        <div class="markdown-content">
+                            <?= $this->Markdown->render($related->recipe->directions) ?>
+                        </div>
+                    <?php else: ?>
+                        <pre><?php echo h($related->recipe->directions);?></pre>
+                    <?php endif; ?>
                 </div>
             </div>
         <?php endforeach; ?>

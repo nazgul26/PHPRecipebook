@@ -38,5 +38,6 @@ class AppView extends View
     public function initialize(): void
     {
     	$this->loadHelper('Fraction');
+    	$this->loadHelper('Markdown');
     }
 }

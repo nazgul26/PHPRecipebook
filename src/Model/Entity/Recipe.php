@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property int|null $difficulty_id
  * @property int|null $serving_size
  * @property string|null $directions
+ * @property bool $use_markdown
  * @property string|null $comments
  * @property string|null $source_description
  * @property float|null $recipe_cost
@@ -62,6 +63,7 @@ class Recipe extends Entity
         'difficulty_id' => true,
         'serving_size' => true,
         'directions' => true,
+        'use_markdown' => true,
         'comments' => true,
         'source_description' => true,
         'recipe_cost' => true,

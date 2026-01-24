@@ -213,7 +213,7 @@ label {
   display: block;
   font-size: 110%;
   margin-bottom: 3px;
-  width: 10em;
+  min-width: 10em;
   float: left;
 }
 
