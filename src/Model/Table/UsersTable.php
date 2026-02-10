@@ -77,6 +77,9 @@ class UsersTable extends Table
         $this->hasMany('Sources', [
             'foreignKey' => 'user_id',
         ]);
+        $this->hasMany('Tags', [
+            'foreignKey' => 'user_id',
+        ]);
         $this->hasMany('VendorProducts', [
             'foreignKey' => 'user_id',
         ]);

@@ -42,6 +42,8 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\RelatedRecipe[] $related_recipes
  * @property \App\Model\Entity\Review[] $reviews
  * @property \App\Model\Entity\ShoppingListRecipe[] $shopping_list_recipes
+ * @property \App\Model\Entity\Tag[] $tags
+ * @property string|null $tags_list
  */
 class Recipe extends Entity
 {
@@ -89,5 +91,7 @@ class Recipe extends Entity
         'related_recipes' => true,
         'reviews' => true,
         'shopping_list_recipes' => true,
+        'tags' => true,
+        'tags_list' => true,
     ];
 }

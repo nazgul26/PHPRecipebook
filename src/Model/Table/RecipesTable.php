@@ -66,6 +66,12 @@ class RecipesTable extends Table
         $this->hasMany('ShoppingListRecipes', [
             'foreignKey' => 'recipe_id',
         ]);
+        $this->belongsToMany('Tags', [
+            'foreignKey' => 'recipe_id',
+            'targetForeignKey' => 'tag_id',
+            'joinTable' => 'recipes_tags',
+            'saveStrategy' => 'replace',
+        ]);
     }
 
     /**

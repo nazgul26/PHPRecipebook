@@ -123,6 +123,19 @@ if (isset($recipe->reviews)) {
 			<?php echo h($recipe->comments); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Tags'); ?></dt>
+		<dd>
+            <?php
+                if (!empty($recipe->tags)) {
+                    $tagNames = [];
+                    foreach ($recipe->tags as $tag) {
+                        $tagNames[] = $tag->name;
+                    }
+                    echo h(implode(', ', $tagNames));
+                }
+            ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Source'); ?></dt>
 		<dd>
             <?php if (isset($recipe->source)) { ?>

@@ -98,6 +98,13 @@ CREATE TABLE sources (
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE tags (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(64),
+	`user_id` INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
+	PRIMARY KEY (id)
+);
+
 CREATE TABLE recipes (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(128) NOT NULL,
@@ -154,6 +161,14 @@ CREATE TABLE related_recipes (
 	`sort_order` INT,
     PRIMARY KEY (id, parent_id, recipe_id)
 );
+
+CREATE TABLE recipes_tags (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`recipe_id` INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
+	`tag_id` INT NOT NULL REFERENCES tags(id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+);
+
 
 CREATE TABLE shopping_lists (
 	`id` INT NOT NULL AUTO_INCREMENT,

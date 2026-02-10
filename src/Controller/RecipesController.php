@@ -109,7 +109,8 @@ class RecipesController extends AppController
                     ]
                 ]
             ],
-            'Reviews'
+            'Reviews',
+            'Tags'
         ]);
 
         // Keep Private recipes Private
@@ -168,15 +169,22 @@ class RecipesController extends AppController
                         ]
                     ]
                 ],
-                'Reviews'
+                'Reviews',
+                'Tags'
             ]);
+        }
+
+        if (!$this->request->is(['patch', 'post', 'put'])) {
+            $recipe->tags_list = $this->formatTagsList($recipe->tags ?? []);
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $recipe = $this->Recipes->patchEntity($recipe, $this->request->getData());
 
             //TODO: Keep the original author just in case editor/admin edits
-            $recipe->user_id = $this->Authentication->getIdentity()?->get('id');
+            $userId = (int) $this->Authentication->getIdentity()?->get('id');
+            $recipe->user_id = $userId;
+            $recipe->tags = $this->buildTagEntities($this->request->getData('tags_list'), $userId);
             if ($this->Recipes->save($recipe)) {
                 $this->Flash->success(__('The recipe has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -289,6 +297,81 @@ class RecipesController extends AppController
         $recipes = $this->paginate($query);
         $this->set(compact('recipes'));
         $this->render('index');
+    }
+
+    private function normalizeTagNames(?string $tagList): array
+    {
+        if ($tagList === null) {
+            return [];
+        }
+
+        $parts = preg_split('/[,\n;]/', $tagList);
+        $unique = [];
+
+        foreach ($parts as $part) {
+            $name = trim($part);
+            if ($name === '') {
+                continue;
+            }
+
+            $key = strtolower($name);
+            if (!isset($unique[$key])) {
+                $unique[$key] = $name;
+            }
+        }
+
+        return array_values($unique);
+    }
+
+    private function buildTagEntities(?string $tagList, int $userId): array
+    {
+        $tagNames = $this->normalizeTagNames($tagList);
+        if (empty($tagNames) || $userId === 0) {
+            return [];
+        }
+
+        $tagsTable = $this->fetchTable('Tags');
+        $lowerNames = array_map('strtolower', $tagNames);
+
+        $existingTags = $tagsTable->find()
+            ->where([
+                'Tags.user_id' => $userId,
+                'LOWER(Tags.name) IN' => $lowerNames,
+            ])
+            ->all();
+
+        $existingByKey = [];
+        foreach ($existingTags as $tag) {
+            $existingByKey[strtolower($tag->name)] = $tag;
+        }
+
+        $tagEntities = [];
+        foreach ($tagNames as $name) {
+            $key = strtolower($name);
+            if (isset($existingByKey[$key])) {
+                $tagEntities[] = $existingByKey[$key];
+                continue;
+            }
+
+            $tagEntities[] = $tagsTable->newEntity([
+                'name' => $name,
+                'user_id' => $userId,
+            ]);
+        }
+
+        return $tagEntities;
+    }
+
+    private function formatTagsList(array $tags): string
+    {
+        $names = [];
+        foreach ($tags as $tag) {
+            if (!empty($tag->name)) {
+                $names[] = $tag->name;
+            }
+        }
+
+        return implode(', ', $names);
     }
 
 

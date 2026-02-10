@@ -391,6 +391,11 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
             echo $this->Form->hidden('id');
             echo $this->Form->control('name');
             echo $this->Form->control('comments', array('escape' => true, 'rows' => '2'));
+            echo $this->Form->control('tags_list', [
+                'label' => __('Tags'),
+                'type' => 'text',
+                'placeholder' => __('comma-separated, e.g. quick, kid-friendly'),
+            ]);
             echo $this->Form->control('source_id', 
                     array('empty'=>true, 
                         'after' => $this->Html->link(__('Edit'), 
