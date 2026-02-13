@@ -1,21 +1,21 @@
 <script type="text/javascript">
-    $(function() {
-        $('#username').focus();
-    });
+    (function() {
+        var usernameEl = document.getElementById('username');
+        if (usernameEl) usernameEl.focus();
+    })();
 </script>
 <div class="users form">
 <?= $this->Flash->render() ?>
-<?php echo $this->Form->create(null); ?>
+<?= $this->Form->create(null) ?>
     <fieldset>
         <legend>
-            <?php echo __('Enter your username and password'); ?>
+            <?= __('Enter your username and password') ?>
         </legend>
-        <?php echo $this->Form->control('username', array('type' => 'text'));
-        echo $this->Form->control('password');
-    ?>
-    <?php echo $this->Html->link(__('Forgot password?'), array('action' => 'reset')); ?>   
+        <?= $this->Form->control('username', array('type' => 'text')) ?>
+        <?= $this->Form->control('password') ?>
+    <?= $this->Html->link(__('Forgot password?'), array('action' => 'reset')) ?>
     </fieldset>
 
-    <?= $this->Form->submit(__('Login')); ?>
+    <?= $this->Form->submit(__('Login')) ?>
     <?= $this->Form->end() ?>
 </div>

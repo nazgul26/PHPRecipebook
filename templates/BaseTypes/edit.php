@@ -1,15 +1,16 @@
 <script type="text/javascript">
-    $(function() {
-        $('.baseTypes .submit').hide();
-    });
- </script>
+    (function() {
+        var submitEl = document.querySelector('.baseTypes .submit');
+        if (submitEl) submitEl.classList.add('d-none');
+    })();
+</script>
 <div class="baseTypes form">
-<?php echo $this->Form->create($baseType, array('default' => false, 'targetId' => 'editBaseTypeDialog')); ?>
+<?= $this->Form->create($baseType, array('default' => false, 'targetId' => 'editBaseTypeDialog')) ?>
 <?php
     echo $this->Form->hidden('id');
-    echo $this->Form->input('name');
+    echo $this->Form->control('name');
 ?>
-<?= $this->Form->submit(__('Submit')); ?>
-<?php echo $this->Form->end(); ?>
+<?= $this->Form->submit(__('Submit')) ?>
+<?= $this->Form->end() ?>
 </div>
 <?= $this->Flash->render() ?>

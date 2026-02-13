@@ -1,15 +1,16 @@
 <script type="text/javascript">
-    $(function() {
-        $('.priceRanges .submit').hide();
-    });
+    (function() {
+        var submitEl = document.querySelector('.priceRanges .submit');
+        if (submitEl) submitEl.classList.add('d-none');
+    })();
 </script>
 <div class="priceRanges form">
-<?php echo $this->Form->create($priceRange, array('default' => false, 'targetId' => 'editPriceRangesDialog')); ?>
+<?= $this->Form->create($priceRange, array('default' => false, 'targetId' => 'editPriceRangesDialog')) ?>
 <?php
         echo $this->Form->hidden('id');
         echo $this->Form->control('name');
 ?>
-<?= $this->Form->submit(__('Submit')); ?>
-<?php echo $this->Form->end(); ?>
+<?= $this->Form->submit(__('Submit')) ?>
+<?= $this->Form->end() ?>
 </div>
 <?= $this->Flash->render() ?>

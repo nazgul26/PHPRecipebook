@@ -1,15 +1,16 @@
 <script type="text/javascript">
-    $(function() {
-        $('.courses .submit').hide();
-    });
+    (function() {
+        var submitEl = document.querySelector('.courses .submit');
+        if (submitEl) submitEl.classList.add('d-none');
+    })();
 </script>
 <div class="courses form">
-<?php echo $this->Form->create($course, array('default' => false, 'targetId' => 'editCourseDialog')); ?>
+<?= $this->Form->create($course, array('default' => false, 'targetId' => 'editCourseDialog')) ?>
 <?php
         echo $this->Form->hidden('id');
         echo $this->Form->control('name');
 ?>
-<?= $this->Form->submit(__('Submit')); ?>
-<?php echo $this->Form->end(); ?>
+<?= $this->Form->submit(__('Submit')) ?>
+<?= $this->Form->end() ?>
 </div>
 <?= $this->Flash->render() ?>

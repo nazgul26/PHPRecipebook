@@ -1,16 +1,16 @@
 <script type="text/javascript">
-    $(function() {
-        $('.locations .submit').hide();
-    });
+    (function() {
+        var submitEl = document.querySelector('.locations .submit');
+        if (submitEl) submitEl.classList.add('d-none');
+    })();
 </script>
 <div class="locations form">
-<?php echo $this->Form->create($location, array('default' => false, 'targetId' => 'editLocationDialog')); ?>
+<?= $this->Form->create($location, array('default' => false, 'targetId' => 'editLocationDialog')) ?>
 <?php
       echo $this->Form->hidden('id');
       echo $this->Form->control('name');
 ?>
-	</fieldset>
-<?= $this->Form->submit(__('Submit')); ?>
-<?php echo $this->Form->end(); ?>
+<?= $this->Form->submit(__('Submit')) ?>
+<?= $this->Form->end() ?>
 </div>
 <?= $this->Flash->render() ?>

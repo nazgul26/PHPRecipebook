@@ -1,34 +1,34 @@
 <script type="text/javascript">
-    $(function() {   
-        $(document).off("saved.ethnicity");
-        $(document).on("saved.ethnicity", function() {
-            $('#editEthnicityDialog').dialog('close');
+    (function() {
+        document.addEventListener("saved.ethnicity", function() {
+            closeModal('editEthnicityDialog');
             ajaxGet('ethnicities');
         });
-        
-    });
+    })();
 </script>
 <div class="ethnicities index">
-    <h2><?php echo __('Ethnicities'); ?></h2>
-    <div class="actions">
-        <ul>
-            <li><?php echo $this->Html->link(__('Add Ethnicity'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editEthnicityDialog'));?></li>
-        </ul>
+    <h2><?= __('Ethnicities') ?></h2>
+    <div class="actions-bar">
+        <?= $this->Html->link('<i class="bi bi-plus-circle"></i> ' . __('Add Ethnicity'), array('action' => 'edit'), array('escape' => false, 'class' => 'btn btn-primary btn-sm ajaxLink', 'targetId' => 'editEthnicityDialog')) ?>
     </div>
-    <table cellpadding="0" cellspacing="0">
+    <table class="table table-hover table-striped align-middle">
+    <thead>
     <tr>
-        <th class="actions"><?php echo __('Actions'); ?></th>
-        <th><?php echo $this->Paginator->sort('name'); ?></th>
+        <th class="actions"><?= __('Actions') ?></th>
+        <th><?= $this->Paginator->sort('name') ?></th>
     </tr>
+    </thead>
+    <tbody>
     <?php foreach ($ethnicities as $ethnicity): ?>
     <tr>
         <td class="actions">
-            <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $ethnicity->id), array('class' => 'ajaxLink', 'targetId' => 'editEthnicityDialog')); ?>
-            <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $ethnicity->id), ['confirm' => __('Are you sure you want to delete {0}?', $ethnicity->name)]); ?>
+            <?= $this->Html->link(__('Edit'), array('action' => 'edit', $ethnicity->id), array('class' => 'ajaxLink', 'targetId' => 'editEthnicityDialog')) ?>
+            <?= $this->Form->postLink(__('Delete'), array('action' => 'delete', $ethnicity->id), ['confirm' => __('Are you sure you want to delete {0}?', $ethnicity->name)]) ?>
         </td>
-        <td><?php echo h($ethnicity->name); ?>&nbsp;</td>
+        <td><?= h($ethnicity->name) ?>&nbsp;</td>
     </tr>
     <?php endforeach; ?>
+    </tbody>
     </table>
     <?= $this->element('pager') ?>
 </div>

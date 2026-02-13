@@ -4,14 +4,12 @@
  * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
-<div class="users index large-9 medium-8 columns content">
+<div class="users index">
     <h3><?= __('Users') ?></h3>
-    <div class="actions">
-        <ul>
-            <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
-        </ul>
+    <div class="actions-bar">
+        <?= $this->Html->link('<i class="bi bi-plus-circle"></i> ' . __('New User'), ['action' => 'add'], ['escape' => false, 'class' => 'btn btn-primary btn-sm']) ?>
     </div>
-    <table cellpadding="0" cellspacing="0">
+    <table class="table table-hover table-striped align-middle">
         <thead>
             <tr>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -19,7 +17,6 @@
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('access_level') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                
             </tr>
         </thead>
         <tbody>

@@ -1,10 +1,11 @@
 <script type="text/javascript">
-    $(function() {
-        $('.restaurants .submit').hide();
-    });
+    (function() {
+        var submitEl = document.querySelector('.restaurants .submit');
+        if (submitEl) submitEl.classList.add('d-none');
+    })();
 </script>
 <div class="restaurants form">
-<?php echo $this->Form->create($restaurant, ['default' => false, 'targetId' => 'editRestaurantDialog']); ?>
+<?= $this->Form->create($restaurant, ['default' => false, 'targetId' => 'editRestaurantDialog']) ?>
 <?php
         echo $this->Form->hidden('id');
         echo $this->Form->control('name');
@@ -27,7 +28,7 @@
         echo $this->Form->control('website');
         echo $this->Form->control('user_id');
 ?>
-<?= $this->Form->submit(__('Submit')); ?>
-<?php echo $this->Form->end(); ?>
+<?= $this->Form->submit(__('Submit')) ?>
+<?= $this->Form->end() ?>
 </div>
 <?= $this->Flash->render() ?>

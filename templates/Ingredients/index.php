@@ -1,77 +1,77 @@
 <script type="text/javascript">
-    $(function() {
-        setSearchBoxTarget('Ingredients');
-        
-        $(document).off("saved.ingredient");
-        $(document).on("saved.ingredient", function() {
-            $('#editIngredientDialog').dialog('close');
-            ajaxGet('ingredients');
-        });
-        
-        $(document).on("saved.location", function() {
-            $('#editLocationDialog').dialog('close');
-            ajaxGet('ingredients');
-        });
-        
-        $(document).on("saved.unit", function() {
-            $('#editUnitDialog').dialog('close');
-            ajaxGet('ingredients');
-        });
-        
+    setSearchBoxTarget('Ingredients');
+
+    document.addEventListener("saved.ingredient", function() {
+        closeModal('editIngredientDialog');
+        ajaxGet('ingredients');
+    });
+
+    document.addEventListener("saved.location", function() {
+        closeModal('editLocationDialog');
+        ajaxGet('ingredients');
+    });
+
+    document.addEventListener("saved.unit", function() {
+        closeModal('editUnitDialog');
+        ajaxGet('ingredients');
     });
 </script>
 <div class="ingredients index">
-	<h2><?php echo __('Ingredients'); ?></h2>
-        <div class="actions">
-	<ul>
-            <li><?php echo $this->Html->link(__('Add Ingredient'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog'));?></li>
-            <li><button id="moreActionLinks">More Actions...</button></li>
-	</ul>
-        <div style="display: none;">
-            <ul id="moreActionLinksContent">
-		<li><?php echo $this->Html->link(__('List Locations'), array('controller' => 'locations', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Location'), array('controller' => 'locations', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Units'), array('controller' => 'units', 'action' => 'index'), array('class' => 'ajaxNavigationLink')); ?> </li>
-		<li><?php echo $this->Html->link(__('Add Unit'), array('controller' => 'units', 'action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog')); ?> </li>
+	<h2><?= __('Ingredients') ?></h2>
+    <div class="actions-bar">
+        <?= $this->Html->link('<i class="bi bi-plus-circle"></i> ' . __('Add Ingredient'), ['action' => 'edit'], ['escape' => false, 'class' => 'btn btn-primary btn-sm ajaxLink', 'targetId' => 'editIngredientDialog']) ?>
+        <div class="dropdown d-inline-block">
+            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-gear"></i> <?= __('Manage') ?>
+            </button>
+            <ul class="dropdown-menu">
+                <li><?= $this->Html->link(__('List Locations'), ['controller' => 'locations', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
+                <li><?= $this->Html->link('<i class="bi bi-plus me-1"></i>' . __('Add Location'), ['controller' => 'locations', 'action' => 'edit'], ['escape' => false, 'class' => 'dropdown-item ajaxLink', 'targetId' => 'editLocationDialog']) ?></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><?= $this->Html->link(__('List Units'), ['controller' => 'units', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
+                <li><?= $this->Html->link('<i class="bi bi-plus me-1"></i>' . __('Add Unit'), ['controller' => 'units', 'action' => 'edit'], ['escape' => false, 'class' => 'dropdown-item ajaxLink', 'targetId' => 'editUnitDialog']) ?></li>
             </ul>
-        </div> 
         </div>
-	<table cellpadding="0" cellspacing="0">
+    </div>
+	<table class="table table-hover table-striped align-middle">
+	<thead>
 	<tr>
-            <th class="actions"><?php echo __('Actions'); ?></th>
-			<th><?php echo $this->Paginator->sort('name', null, array('direction' => 'asc', 'class' => 'ajaxLink')); ?></th>
-			<th><?php echo $this->Paginator->sort('description', null, array('class' => 'ajaxLink')); ?></th>
-			<th><?php echo $this->Paginator->sort('location_id', null, array('class' => 'ajaxLink')); ?></th>
-			<th><?php echo $this->Paginator->sort('unit_id', null, array('class' => 'ajaxLink')); ?></th>
-			
+        <th class="actions"><?= __('Actions') ?></th>
+        <th><?= $this->Paginator->sort('name', null, array('direction' => 'asc', 'class' => 'ajaxLink')) ?></th>
+        <th><?= $this->Paginator->sort('description', null, array('class' => 'ajaxLink')) ?></th>
+        <th><?= $this->Paginator->sort('location_id', null, array('class' => 'ajaxLink')) ?></th>
+        <th><?= $this->Paginator->sort('unit_id', null, array('class' => 'ajaxLink')) ?></th>
 	</tr>
+	</thead>
+	<tbody>
 	<?php foreach ($ingredients as $ingredient): ?>
 	<tr>
         <td class="actions">
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $ingredient->id), array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog')); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $ingredient->id), ['confirm' => __('Are you sure you want to delete "{0}"?', $ingredient->name)]); ?>
+			<?= $this->Html->link(__('Edit'), array('action' => 'edit', $ingredient->id), array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog')) ?>
+			<?= $this->Form->postLink(__('Delete'), array('action' => 'delete', $ingredient->id), ['confirm' => __('Are you sure you want to delete "{0}"?', $ingredient->name)]) ?>
 		</td>
-		<td><?php echo h($ingredient->name); ?>&nbsp;</td>
-		<td><?php echo h($ingredient->description); ?>&nbsp;</td>
+		<td><?= h($ingredient->name) ?>&nbsp;</td>
+		<td><?= h($ingredient->description) ?>&nbsp;</td>
 		<td>
-			<?php 
+			<?php
 				if (isset($ingredient->location)) {
-					echo $this->Html->link($ingredient->location->name, 
-                                    array('controller' => 'locations', 'action' => 'edit', $ingredient->location->id) , 
-                                    array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog')); 
+					echo $this->Html->link($ingredient->location->name,
+                        array('controller' => 'locations', 'action' => 'edit', $ingredient->location->id),
+                        array('class' => 'ajaxLink', 'targetId' => 'editLocationDialog'));
 				}
-				?>
+			?>
 		</td>
 		<td>
-			<?php 
+			<?php
 				if (isset($ingredient->unit)) {
-					echo $this->Html->link($ingredient->unit->name, 
-                                array('controller' => 'units', 'action' => 'edit', $ingredient->unit->id),
-                                array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog')); 
+					echo $this->Html->link($ingredient->unit->name,
+                        array('controller' => 'units', 'action' => 'edit', $ingredient->unit->id),
+                        array('class' => 'ajaxLink', 'targetId' => 'editUnitDialog'));
 				}?>
 		</td>
 	</tr>
 <?php endforeach; ?>
+	</tbody>
 	</table>
 	<?= $this->element('pager') ?>
 </div>

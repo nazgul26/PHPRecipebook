@@ -1,18 +1,19 @@
 <script type="text/javascript">
-    $(function() {
-        $('.units .submit').hide();
-    });
+    (function() {
+        var submitEl = document.querySelector('.units .submit');
+        if (submitEl) submitEl.classList.add('d-none');
+    })();
 </script>
 <div class="units form">
-<?php echo $this->Form->create($unit, array('default' => false, 'targetId' => 'editUnitDialog')); ?>
-<?php 
+<?= $this->Form->create($unit, array('default' => false, 'targetId' => 'editUnitDialog')) ?>
+<?php
     echo $this->Form->hidden('id');
     echo $this->Form->control('name');
     echo $this->Form->control('abbreviation');
-    echo $this->Form->control('system_type', 
-                    ['options' => 
+    echo $this->Form->control('system_type',
+                    ['options' =>
                         [
-                            '0' => __('Unit'), 
+                            '0' => __('Unit'),
                             '1' => __('USA'),
                             '2' => __('Metric')
                         ]
@@ -20,8 +21,7 @@
                     );
     echo $this->Form->control('sort_order');
 ?>
-<?= $this->Form->submit(__('Submit')); ?>
-<?php echo $this->Form->end(); ?>
+<?= $this->Form->submit(__('Submit')) ?>
+<?= $this->Form->end() ?>
 </div>
 <?= $this->Flash->render() ?>
-

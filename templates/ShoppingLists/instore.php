@@ -1,53 +1,53 @@
 <script type="text/javascript">
-    $(function() {
-        $('[shop-print]').click(function() {
+    (function() {
+        document.querySelector('[shop-print]')?.addEventListener('click', function(e) {
+            e.preventDefault();
             window.print();
-            return false;
         });
-        $('[shop-done]').click(function() {
-            $('#done').val("1");
-            $('#ShoppingListInstoreForm').submit();
+        document.querySelector('[shop-done]')?.addEventListener('click', function() {
+            document.getElementById('done').value = "1";
+            document.getElementById('ShoppingListInstoreForm').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
         });
-        
-        $('#store-id').change(function() {
-            $('#ShoppingListInstoreForm').submit();
+
+        document.getElementById('store-id')?.addEventListener('change', function() {
+            document.getElementById('ShoppingListInstoreForm').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
         });
-    });
+    })();
 </script>
-<?php //echo $this->element('sql_dump'); ?>
+<nav aria-label="breadcrumb">
 <ol class="breadcrumb">
-    <li><?php echo $this->Html->link(__('Shopping List'), array('action' => 'index', $listId), array('class' => 'ajaxNavigation')); ?> </li>
-    <li><?php echo $this->Html->link(__('Select Items'), array('action' => 'select', $listId), array('class' => 'ajaxNavigation')); ?> </li>
-    <li class="active"><?php echo __('In Store');?></li>
+    <li class="breadcrumb-item"><?= $this->Html->link(__('Shopping List'), array('action' => 'index', $listId), array('class' => 'ajaxNavigation')) ?></li>
+    <li class="breadcrumb-item"><?= $this->Html->link(__('Select Items'), array('action' => 'select', $listId), array('class' => 'ajaxNavigation')) ?></li>
+    <li class="breadcrumb-item active"><?= __('In Store') ?></li>
 </ol>
-<?php echo $this->Form->create(null, [ 'id' => 'ShoppingListInstoreForm']);?>
+</nav>
+<?= $this->Form->create(null, ['id' => 'ShoppingListInstoreForm']) ?>
 <input type="hidden" name="done" id="done" value="0" />
 <div id="selectStore">
-    <?php echo $this->Form->control('store_id',array('label'=>'Select Store', 'escape' => false)); ?>
+    <?= $this->Form->control('store_id', array('label'=>'Select Store', 'escape' => false)) ?>
 </div>
 
 <?php if (isset($removeIds)) :
     foreach ($removeIds as $id) : ?>
-    <input type="hidden" name="remove[]" value="<?php echo $id;?>" />
+    <input type="hidden" name="remove[]" value="<?= $id ?>" />
 <?php endforeach; endif;?>
-    
-<table id="instoreShoppingList">
-    <tr class="headerRow">
-        <th><?php echo __('Select');?></th>
-        <th><?php echo __('Quantity');?></th>
-        <th><?php echo __('Unit');?></th>
-        
-        <th><?php echo __('Name');?></th>
+
+<table class="table table-hover align-middle" id="instoreShoppingList">
+    <thead>
+    <tr>
+        <th><?= __('Select') ?></th>
+        <th><?= __('Quantity') ?></th>
+        <th><?= __('Unit') ?></th>
+        <th><?= __('Name') ?></th>
     </tr>
+    </thead>
     <tbody class="gridContent">
-    <?php 
+    <?php
     $locationName = "";
     foreach ($list as $i=>$ingredientType):
         foreach ($ingredientType as $j=>$item) :
-            if ($item->removed) {
-                continue;
-            }
-            
+            if ($item->removed) continue;
+
             $locationChanged = false;
             if ($locationName != $item->locationName) {
                 $locationName = $item->locationName;
@@ -56,21 +56,23 @@
     ?>
     <?php if ($locationChanged) :?>
         <tr class="storeLocation">
-            <td colspan="4"><div><?php echo ($locationChanged) ? $locationName : "";?></div></td>
+            <td colspan="4"><div><?= $locationName ?></div></td>
         </tr>
     <?php endif;?>
-        
+
     <tr row-click>
         <td><input type="checkbox" list-item/></td>
-        <td><?php echo $this->Fraction->toFraction($item->quantity);?></td>
-        <td><?php echo $item->unitName;?></td>
-        <td><b><?php echo $item->name;?></b></td>
+        <td><?= $this->Fraction->toFraction($item->quantity) ?></td>
+        <td><?= $item->unitName ?></td>
+        <td><strong><?= $item->name ?></strong></td>
     </tr>
-    <?php 
+    <?php
         endforeach;
     endforeach?>
     </tbody>
 </table>
-<button class="btn-primary" shop-print><?php echo __('Print');?></button>
-<button class="btn-primary" shop-done><?php echo __('Complete');?></button>
+<div class="d-flex gap-2">
+    <button class="btn btn-primary" shop-print><i class="bi bi-printer"></i> <?= __('Print') ?></button>
+    <button class="btn btn-secondary" shop-done><i class="bi bi-check-circle"></i> <?= __('Complete') ?></button>
+</div>
 </form>

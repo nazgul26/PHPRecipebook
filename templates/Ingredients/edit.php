@@ -1,12 +1,13 @@
 
 <script type="text/javascript">
-    $(function() {
-        $('.ingredients .submit').hide();    
-    });
+    (function() {
+        var submitEl = document.querySelector('.ingredients .submit');
+        if (submitEl) submitEl.classList.add('d-none');
+    })();
 </script>
 
 <div class="ingredients form">
-<?php echo $this->Form->create($ingredient, array('default' => false, 'targetId' => 'editIngredientDialog')); ?>
+<?= $this->Form->create($ingredient, array('default' => false, 'targetId' => 'editIngredientDialog')) ?>
 <?php
         echo $this->Form->hidden('id');
         echo $this->Form->control('name');
@@ -17,7 +18,7 @@
         echo $this->Form->hidden('system_type');
         echo $this->Form->hidden('user_id');
 ?>
-<?= $this->Form->submit(__('Submit')); ?>
-<?php echo $this->Form->end(); ?>
+<?= $this->Form->submit(__('Submit')) ?>
+<?= $this->Form->end() ?>
 </div>
 <?= $this->Flash->render() ?>

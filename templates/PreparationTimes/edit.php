@@ -1,15 +1,16 @@
 <script type="text/javascript">
-    $(function() {
-        $('.preparationTimes .submit').hide();
-    });
+    (function() {
+        var submitEl = document.querySelector('.preparationTimes .submit');
+        if (submitEl) submitEl.classList.add('d-none');
+    })();
 </script>
 <div class="preparationTimes form">
-<?php echo $this->Form->create($preparationTime, array('default' => false, 'targetId' => 'editPrepTimeDialog')); ?>
+<?= $this->Form->create($preparationTime, array('default' => false, 'targetId' => 'editPrepTimeDialog')) ?>
 <?php
         echo $this->Form->hidden('id');
         echo $this->Form->control('name');
 ?>
-<?= $this->Form->submit(__('Submit')); ?>
-<?php echo $this->Form->end(); ?>
+<?= $this->Form->submit(__('Submit')) ?>
+<?= $this->Form->end() ?>
 </div>
 <?= $this->Flash->render() ?>

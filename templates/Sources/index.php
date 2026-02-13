@@ -1,32 +1,34 @@
 <script type="text/javascript">
-    $(function() {
-        $(document).on("saved.source", function() {
-            $('#editSourceDialog').dialog('close');
+    (function() {
+        document.addEventListener("saved.source", function() {
+            closeModal('editSourceDialog');
             ajaxGet('sources');
-        }); 
-    });
+        });
+    })();
 </script>
 <div class="sources index">
-	<h2><?php echo __('Sources'); ?></h2>
-        <div class="actions">
-	<ul>
-		<li><?php echo $this->Html->link(__('Add Source'), array('action' => 'edit'), array('class' => 'ajaxLink', 'targetId' => 'editSourceDialog')); ?></li>
-	</ul>
-</div>
-	<table cellpadding="0" cellspacing="0">
+	<h2><?= __('Sources') ?></h2>
+    <div class="actions-bar">
+        <?= $this->Html->link('<i class="bi bi-plus-circle"></i> ' . __('Add Source'), array('action' => 'edit'), array('escape' => false, 'class' => 'btn btn-primary btn-sm ajaxLink', 'targetId' => 'editSourceDialog')) ?>
+    </div>
+	<table class="table table-hover table-striped align-middle">
+	<thead>
 	<tr>
-            <th class="actions"><?php echo __('Actions'); ?></th>
-            <th><?php echo $this->Paginator->sort('name'); ?></th>
+        <th class="actions"><?= __('Actions') ?></th>
+        <th><?= $this->Paginator->sort('name') ?></th>
 	</tr>
+	</thead>
+	<tbody>
 	<?php foreach ($sources as $source): ?>
 	<tr>
-            <td class="actions">
-                    <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $source->id), array('class' => 'ajaxLink', 'targetId' => 'editSourceDialog')); ?>
-                    <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $source->id), ['confirm' => __('Are you sure you want to delete %s?', $source->name)]); ?>
-            </td>
-            <td><?php echo h($source->name); ?>&nbsp;</td>
+        <td class="actions">
+            <?= $this->Html->link(__('Edit'), array('action' => 'edit', $source->id), array('class' => 'ajaxLink', 'targetId' => 'editSourceDialog')) ?>
+            <?= $this->Form->postLink(__('Delete'), array('action' => 'delete', $source->id), ['confirm' => __('Are you sure you want to delete %s?', $source->name)]) ?>
+        </td>
+        <td><?= h($source->name) ?>&nbsp;</td>
 	</tr>
-        <?php endforeach; ?>
+    <?php endforeach; ?>
+	</tbody>
 	</table>
 	<?= $this->element('pager') ?>
 </div>

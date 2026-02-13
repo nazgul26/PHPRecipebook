@@ -1,10 +1,9 @@
 <script type="text/javascript">
-    $(function() {
+    (function() {
         <?php if (isset($params['event'])) { ?>
-        var flashEvent = jQuery.Event("<?php echo h($params['event']);?>");
-        $(document).trigger(flashEvent);
+        document.dispatchEvent(new CustomEvent("<?= h($params['event']) ?>"));
         <?php }?>
 
-        toastr.success('<?php echo h($message);?>');
-    });
+        showToast('<?= h($message) ?>');
+    })();
 </script>
