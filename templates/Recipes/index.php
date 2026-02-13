@@ -70,7 +70,9 @@
 	<table class="table table-hover table-striped align-middle">
 	<thead>
 	<tr>
+            <?php if ($loggedIn) { ?>
             <th class="actions"><?= __('Actions') ?></th>
+            <?php } ?>
             <th><?= $this->Paginator->sort('name') ?></th>
             <?php if ($loggedIn) { ?>
             <th><?= $this->Paginator->sort('user_id') ?></th>
@@ -79,9 +81,13 @@
 	</thead>
 	<tbody>
 	<?php foreach ($recipes as $recipe): ?>
+        <?php
+            $canViewRecipe = !(isset($recipe->private) && $recipe->private == 'true' && $loggedInuserId != $recipe->user->id && !$isEditor);
+        ?>
 	<tr>
+            <?php if ($loggedIn) { ?>
             <td class="actions">
-                <?php if (isset($recipe->private) && $recipe->private == 'true' && $loggedInuserId != $recipe->user->id && !$isEditor) {
+                <?php if (!$canViewRecipe) {
                     echo __('(private)');
                 } else {
                     echo $this->Html->link(__('View'), array('action' => 'view', $recipe->id), array('class' => 'ajaxNavigation'));
@@ -91,7 +97,15 @@
                     <?= $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe->id), ['confirm' => __('Are you sure you want to delete {0}?', $recipe->name)]) ?>
                 <?php endif;?>
             </td>
-            <td><?= h($recipe->name) ?>&nbsp;</td>
+            <?php } ?>
+            <td>
+                <?php if (!$loggedIn && $canViewRecipe) {
+                    echo $this->Html->link(h($recipe->name), ['action' => 'view', $recipe->id], ['class' => 'ajaxNavigation', 'escape' => false]);
+                } else {
+                    echo h($recipe->name);
+                } ?>
+                &nbsp;
+            </td>
             <?php if ($loggedIn) { ?>
             <td>
                 <?php if (isset($recipe->user)) {
