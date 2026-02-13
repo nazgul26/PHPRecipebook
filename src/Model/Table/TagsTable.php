@@ -29,7 +29,7 @@ class TagsTable extends Table
         $this->belongsToMany('Recipes', [
             'foreignKey' => 'tag_id',
             'targetForeignKey' => 'recipe_id',
-            'joinTable' => 'recipes_tags',
+            'joinTable' => 'recipe_tags',
         ]);
     }
 

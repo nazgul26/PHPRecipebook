@@ -33,7 +33,7 @@ class CreateTagsTables extends AbstractMigration
             )
             ->create();
 
-        $this->table('recipes_tags')
+        $this->table('recipe_tags')
             ->addColumn('recipe_id', 'integer', [
                 'default' => null,
                 'limit' => null,

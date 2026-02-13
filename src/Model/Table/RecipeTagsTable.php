@@ -4,7 +4,7 @@ namespace App\Model\Table;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-class RecipesTagsTable extends Table
+class RecipeTagsTable extends Table
 {
     /**
      * Initialize method
@@ -16,7 +16,7 @@ class RecipesTagsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('recipes_tags');
+        $this->setTable('recipe_tags');
         $this->setPrimaryKey(['recipe_id', 'tag_id']);
 
         $this->belongsTo('Recipes', [

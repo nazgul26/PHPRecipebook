@@ -69,7 +69,7 @@ class RecipesTable extends Table
         $this->belongsToMany('Tags', [
             'foreignKey' => 'recipe_id',
             'targetForeignKey' => 'tag_id',
-            'joinTable' => 'recipes_tags',
+            'joinTable' => 'recipe_tags',
             'saveStrategy' => 'replace',
         ]);
     }

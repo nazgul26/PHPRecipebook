@@ -162,7 +162,7 @@ CREATE TABLE related_recipes (
     PRIMARY KEY (id, parent_id, recipe_id)
 );
 
-CREATE TABLE recipes_tags (
+CREATE TABLE recipe_tags (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`recipe_id` INT NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
 	`tag_id` INT NOT NULL REFERENCES tags(id) ON DELETE CASCADE,
