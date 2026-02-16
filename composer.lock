@@ -76,16 +76,16 @@
         },
         {
             "name": "cakephp/authorization",
-            "version": "3.4.2",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/authorization.git",
-                "reference": "6395003b7ff3928d58ad91e55d23031499a329f0"
+                "reference": "880c07b67e6c252bd24adbfec9930bd9e5b9a06b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/authorization/zipball/6395003b7ff3928d58ad91e55d23031499a329f0",
-                "reference": "6395003b7ff3928d58ad91e55d23031499a329f0",
+                "url": "https://api.github.com/repos/cakephp/authorization/zipball/880c07b67e6c252bd24adbfec9930bd9e5b9a06b",
+                "reference": "880c07b67e6c252bd24adbfec9930bd9e5b9a06b",
                 "shasum": ""
             },
             "require": {
@@ -97,11 +97,11 @@
                 "psr/http-server-middleware": "^1.0"
             },
             "require-dev": {
-                "cakephp/authentication": "^3.0",
+                "cakephp/authentication": "^3.0 || ^4.0",
                 "cakephp/bake": "^3.2",
                 "cakephp/cakephp": "^5.1",
                 "cakephp/cakephp-codesniffer": "^5.1",
-                "phpunit/phpunit": "^10.5.5 || ^11.1.3"
+                "phpunit/phpunit": "^10.5.58 || ^11.5.3 || ^12.4 || ^13.0"
             },
             "suggest": {
                 "cakephp/http": "To use \"RequestPolicyInterface\" (Not needed separately if using full CakePHP framework).",
@@ -137,7 +137,7 @@
                 "issues": "https://github.com/cakephp/authorization/issues",
                 "source": "https://github.com/cakephp/authorization"
             },
-            "time": "2025-07-29T14:41:00+00:00"
+            "time": "2026-02-14T19:54:38+00:00"
         },
         {
             "name": "cakephp/cakephp",
@@ -7032,12 +7032,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
