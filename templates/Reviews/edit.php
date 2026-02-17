@@ -20,8 +20,8 @@ $currentRating = isset($review->rating) ? $review->rating : 0;
 </script>
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><?= $this->Html->link($recipe->name, array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxNavigation')) ?></li>
-    <li class="breadcrumb-item"><?= $this->Html->link(__('Reviews'), array('controller' => 'reviews', 'action' => 'index', $recipeId), array('class' => 'ajaxNavigation')) ?></li>
+    <li class="breadcrumb-item"><?= $this->Html->link($recipe->name, array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxLink')) ?></li>
+    <li class="breadcrumb-item"><?= $this->Html->link(__('Reviews'), array('controller' => 'reviews', 'action' => 'index', $recipeId), array('class' => 'ajaxLink')) ?></li>
     <li class="breadcrumb-item active"><?= __('Add & Edit') ?></li>
 </ol>
 </nav>

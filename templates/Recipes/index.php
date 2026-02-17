@@ -42,7 +42,7 @@
         <?php if ($loggedIn): ?>
         <div class="actions-bar">
             <?= $this->Html->link('<i class="bi bi-plus-circle"></i> ' . __('Add Recipe'), ['action' => 'edit'], ['escape' => false, 'class' => 'btn btn-primary btn-sm']) ?>
-            <?= $this->Html->link('<i class="bi bi-search"></i> ' . __('Find By Ingredient(s)'), ['action' => 'contains'], ['escape' => false, 'class' => 'btn btn-outline-primary btn-sm ajaxNavigation']) ?>
+            <?= $this->Html->link('<i class="bi bi-search"></i> ' . __('Find By Ingredient(s)'), ['action' => 'contains'], ['escape' => false, 'class' => 'btn btn-outline-primary btn-sm ajaxLink']) ?>
             <?= $this->Html->link('<i class="bi bi-download"></i> ' . __('Import'), ['controller' => 'import'], ['escape' => false, 'class' => 'btn btn-outline-primary btn-sm']) ?>
 
             <div class="dropdown d-inline-block">
@@ -51,18 +51,18 @@
                 </button>
                 <ul class="dropdown-menu manage-dropdown">
                     <li><h6 class="dropdown-header"><i class="bi bi-tag me-1"></i><?= __('Classification') ?></h6></li>
-                    <li><?= $this->Html->link(__('Ethnicities'), ['controller' => 'ethnicities', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
-                    <li><?= $this->Html->link(__('Base Types'), ['controller' => 'base_types', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
-                    <li><?= $this->Html->link(__('Courses'), ['controller' => 'courses', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
+                    <li><?= $this->Html->link(__('Ethnicities'), ['controller' => 'ethnicities', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+                    <li><?= $this->Html->link(__('Base Types'), ['controller' => 'base_types', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+                    <li><?= $this->Html->link(__('Courses'), ['controller' => 'courses', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><h6 class="dropdown-header"><i class="bi bi-clock me-1"></i><?= __('Preparation') ?></h6></li>
-                    <li><?= $this->Html->link(__('Preparation Times'), ['controller' => 'preparation_times', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
-                    <li><?= $this->Html->link(__('Preparation Methods'), ['controller' => 'preparation_methods', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
-                    <li><?= $this->Html->link(__('Difficulties'), ['controller' => 'difficulties', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
+                    <li><?= $this->Html->link(__('Preparation Times'), ['controller' => 'preparation_times', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+                    <li><?= $this->Html->link(__('Preparation Methods'), ['controller' => 'preparation_methods', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+                    <li><?= $this->Html->link(__('Difficulties'), ['controller' => 'difficulties', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><h6 class="dropdown-header"><i class="bi bi-journal me-1"></i><?= __('Other') ?></h6></li>
-                    <li><?= $this->Html->link(__('Sources'), ['controller' => 'sources', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
-                    <li><?= $this->Html->link(__('Users'), ['controller' => 'users', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
+                    <li><?= $this->Html->link(__('Sources'), ['controller' => 'sources', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+                    <li><?= $this->Html->link(__('Users'), ['controller' => 'users', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
                 </ul>
             </div>
         </div>
@@ -90,17 +90,17 @@
                 <?php if (!$canViewRecipe) {
                     echo __('(private)');
                 } else {
-                    echo $this->Html->link(__('View'), array('action' => 'view', $recipe->id), array('class' => 'ajaxNavigation'));
+                    echo $this->Html->link(__('View'), array('action' => 'view', $recipe->id), array('class' => 'ajaxLink'));
                 }
                 if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe->user->id)):?>
-                    <?= $this->Html->link(__('Edit'), array('action' => 'edit', $recipe->id), array('class' => 'ajaxNavigation')) ?>
+                    <?= $this->Html->link(__('Edit'), array('action' => 'edit', $recipe->id), array('class' => 'ajaxLink')) ?>
                     <?= $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe->id), ['confirm' => __('Are you sure you want to delete {0}?', $recipe->name)]) ?>
                 <?php endif;?>
             </td>
             <?php } ?>
             <td>
                 <?php if (!$loggedIn && $canViewRecipe) {
-                    echo $this->Html->link(h($recipe->name), ['action' => 'view', $recipe->id], ['class' => 'ajaxNavigation', 'escape' => false]);
+                    echo $this->Html->link(h($recipe->name), ['action' => 'view', $recipe->id], ['class' => 'ajaxLink', 'escape' => false]);
                 } else {
                     echo h($recipe->name);
                 } ?>

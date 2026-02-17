@@ -38,7 +38,7 @@ $baseUrl = Router::url('/');
 </script>
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><?= $this->Html->link(__('Recipes'), array('action' => 'index'), array('class' => 'ajaxNavigation')) ?></li>
+    <li class="breadcrumb-item"><?= $this->Html->link(__('Recipes'), array('action' => 'index'), array('class' => 'ajaxLink')) ?></li>
     <li class="breadcrumb-item active"><?= __('Find By Ingredient(s)') ?></li>
 </ol>
 </nav>
@@ -91,10 +91,10 @@ $baseUrl = Router::url('/');
             <?php if (isset($recipe->private) && $recipe->private == 'true' && $loggedInuserId != $recipe->user->id && !$isEditor) {
                 echo __('(private)');
             } else {
-                echo $this->Html->link(__('View'), array('action' => 'view', $recipe->id), array('class' => 'ajaxNavigation'));
+                echo $this->Html->link(__('View'), array('action' => 'view', $recipe->id), array('class' => 'ajaxLink'));
             }
             if ($loggedIn  && ($isAdmin || $loggedInuserId == $recipe->user->id)):?>
-                <?= $this->Html->link(__('Edit'), array('action' => 'edit', $recipe->id), array('class' => 'ajaxNavigation')) ?>
+                <?= $this->Html->link(__('Edit'), array('action' => 'edit', $recipe->id), array('class' => 'ajaxLink')) ?>
                 <?= $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe->id), ['confirm' => __('Are you sure you want to delete {0}?', $recipe->name)]) ?>
             <?php endif;?>
         </td>

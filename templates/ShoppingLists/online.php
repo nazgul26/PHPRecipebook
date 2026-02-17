@@ -116,15 +116,15 @@ if (isset($selectedVendor)) {
 </script>
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><?= $this->Html->link(__('Shopping List'), array('action' => 'index', $listId), array('class' => 'ajaxNavigation')) ?></li>
-    <li class="breadcrumb-item"><?= $this->Html->link(__('Select Items'), array('action' => 'select', $listId), array('class' => 'ajaxNavigation')) ?></li>
+    <li class="breadcrumb-item"><?= $this->Html->link(__('Shopping List'), array('action' => 'index', $listId), array('class' => 'ajaxLink')) ?></li>
+    <li class="breadcrumb-item"><?= $this->Html->link(__('Select Items'), array('action' => 'select', $listId), array('class' => 'ajaxLink')) ?></li>
     <li class="breadcrumb-item active"><?= __('Online') ?></li>
 </ol>
 </nav>
 <div class="actions-bar">
     <?= $this->Html->link(__('Edit Products'),
         array('controller'=>'VendorProducts', 'action' => 'index'),
-        array('class' => 'btn btn-outline-primary btn-sm ajaxNavigation')) ?>
+        array('class' => 'btn btn-outline-primary btn-sm ajaxLink')) ?>
 </div>
 <?= $this->Form->create(null, ['id'=> 'ShoppingListForm', 'url' => array('controller' => 'ShoppingLists','action' => 'clear')]) ?>
 <?= $this->Form->control('vendor_id', array('label'=>'Select Vendor')) ?>

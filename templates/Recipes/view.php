@@ -88,8 +88,8 @@ if (isset($recipe->reviews)) {
                 <i class="bi bi-three-dots"></i> <?= __('More') ?>
             </button>
             <ul class="dropdown-menu">
-                <li><?= $this->Html->link('<i class="bi bi-download me-1"></i>' . __('Import'), ['controller' => 'import', 'action' => 'index'], ['escape' => false, 'class' => 'dropdown-item ajaxNavigation']) ?></li>
-                <li><?= $this->Html->link('<i class="bi bi-upload me-1"></i>' . __('Export'), ['controller' => 'export', 'action' => 'edit'], ['escape' => false, 'class' => 'dropdown-item ajaxNavigation']) ?></li>
+                <li><?= $this->Html->link('<i class="bi bi-download me-1"></i>' . __('Import'), ['controller' => 'import', 'action' => 'index'], ['escape' => false, 'class' => 'dropdown-item ajaxLink']) ?></li>
+                <li><?= $this->Html->link('<i class="bi bi-upload me-1"></i>' . __('Export'), ['controller' => 'export', 'action' => 'edit'], ['escape' => false, 'class' => 'dropdown-item ajaxLink']) ?></li>
             </ul>
         </div>
         <?php endif;?>
@@ -238,7 +238,7 @@ if (isset($recipe->reviews)) {
             <div class="relatedRecipe">
                 <span>
                 <?= $this->Html->link($related->recipe->name, array('controller' => 'recipes', 'action' => 'view', $related->recipe_id),
-                                array('class' => 'ajaxNavigation')) ?>
+                                array('class' => 'ajaxLink')) ?>
                         (<?= $related->required == "1" ? "required" : __('optional') ?>)
                 </span>
                 <div class="row mt-2">

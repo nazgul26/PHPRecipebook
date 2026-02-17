@@ -8,7 +8,7 @@ var baseUrl;
 function initApplication(initBaseUrl) {
     baseUrl = initBaseUrl;
     initAjaxHRef('content');
-    initNavigationHRef('content');
+    initNavigationHRef('navbarMain');
     initAjaxForms('content');
     setupSearchBox();
     loadRecipeBox();
@@ -188,8 +188,8 @@ function ajaxNavigate(actionUrl, title, targetId) {
     return false;
 }
 
-function initNavigationHRef(targetId) {
-    var findQuery = (targetId === undefined) ? "#content .ajaxNavigation" : "#" + targetId + " .ajaxNavigation";
+function initNavigationHRef(searchId) {
+    var findQuery = (searchId === undefined) ? "#content .ajaxLink" : "#" + searchId + " .ajaxLink";
     document.querySelectorAll(findQuery).forEach(function(el) {
         var targetItem = el;
         if (el.tagName !== 'A') targetItem = el.querySelector('a');
@@ -201,21 +201,21 @@ function initNavigationHRef(targetId) {
 
         targetItem.addEventListener('click', function(e) {
             e.preventDefault();
-            var tid = this.getAttribute('targetId');
+            var targetId = this.getAttribute('targetId');
             // Check if target is a modal
-            var isModal = tid && document.getElementById(tid) && document.getElementById(tid).classList.contains('modal');
+            var isModal = targetId && document.getElementById(targetId) && document.getElementById(targetId).classList.contains('modal');
             if (!isModal) {
                 // Close any open dropdowns
                 closeAllDropdowns();
             }
-            ajaxNavigate(this.getAttribute('href'), this.textContent, tid);
+            ajaxNavigate(this.getAttribute('href'), targetId);
             return false;
         });
     });
 }
 
-function initAjaxHRef(targetId) {
-    var findQuery = (targetId === undefined) ? "#content .ajaxLink" : "#" + targetId + " .ajaxLink";
+function initAjaxHRef(searchId) {
+    var findQuery = (searchId === undefined) ? "#content .ajaxLink" : "#" + searchId + " .ajaxLink";
     document.querySelectorAll(findQuery).forEach(function(el) {
         var targetItem = el;
         if (el.tagName !== 'A') targetItem = el.querySelector('a');
@@ -224,16 +224,15 @@ function initAjaxHRef(targetId) {
         // Avoid double-binding
         if (targetItem.dataset.ajaxBound) return;
         targetItem.dataset.ajaxBound = 'true';
-
         targetItem.addEventListener('click', function(e) {
             e.preventDefault();
-            var tid = this.getAttribute('targetId');
+            var targetId = this.getAttribute('targetId');
 
             // Check if target is a modal
-            if (tid) {
-                var targetEl = document.getElementById(tid);
+            if (targetId) {
+                var targetEl = document.getElementById(targetId);
                 if (targetEl && targetEl.classList.contains('modal')) {
-                    openModal(tid);
+                    openModal(targetId);
                 } else {
                     closeAllDropdowns();
                 }
@@ -241,7 +240,7 @@ function initAjaxHRef(targetId) {
                 closeAllDropdowns();
             }
 
-            ajaxGet(this.getAttribute('href'), tid || undefined);
+            ajaxNavigate(this.getAttribute('href'), targetId);
             return false;
         });
     });

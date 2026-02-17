@@ -43,30 +43,30 @@ use Cake\Routing\Router;
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link ajaxNavigation" href="<?= $baseUrl ?>recipes"
+                        <a class="nav-link ajaxLink" href="<?= $baseUrl ?>recipes"
                            title="<?= __('Browse your recipes') ?>"><?= __('Recipes') ?></a>
                     </li>
                     <?php if ($loggedIn) : ?>
                     <li class="nav-item">
-                        <a class="nav-link ajaxNavigation" href="<?= $baseUrl ?>mealPlans"
+                        <a class="nav-link ajaxLink" href="<?= $baseUrl ?>mealPlans"
                            title="<?= __('Manage your meal plans') ?>"><?= __('Meal Planner') ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ajaxNavigation" href="<?= $baseUrl ?>shoppingLists"
+                        <a class="nav-link ajaxLink" href="<?= $baseUrl ?>shoppingLists"
                            title="<?= __('Create or Edit a shopping list') ?>"><?= __('Shopping List') ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ajaxNavigation" href="<?= $baseUrl ?>ingredients"
+                        <a class="nav-link ajaxLink" href="<?= $baseUrl ?>ingredients"
                            title="<?= __('Ingredients used in recipes') ?>"><?= __('Ingredients') ?></a>
                     </li>
                     <?php endif; ?>
                     <li class="nav-item">
-                        <a class="nav-link ajaxNavigation" href="<?= $baseUrl ?>restaurants"
+                        <a class="nav-link ajaxLink" href="<?= $baseUrl ?>restaurants"
                            title="<?= __('List of your restaurants') ?>"><?= __('Restaurants') ?></a>
                     </li>
                     <?php if ($loggedIn) : ?>
                     <li class="nav-item">
-                        <a class="nav-link ajaxNavigation" href="<?= $baseUrl ?>users"
+                        <a class="nav-link ajaxLink" href="<?= $baseUrl ?>users"
                            title="<?= __('Administer Users') ?>"><?= __('Users') ?></a>
                     </li>
                     <?php endif; ?>
@@ -94,7 +94,7 @@ use Cake\Routing\Router;
                     <?php endif;?>
                     <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link ajaxNavigation" href="<?= $baseUrl ?>users/edit/<?= $loggedInuserId ?>"
+                        <a class="nav-link ajaxLink" href="<?= $baseUrl ?>users/edit/<?= $loggedInuserId ?>"
                            title="<?= __('Account settings') ?>">
                             <i class="bi bi-gear"></i>
                         </a>

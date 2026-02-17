@@ -1,6 +1,6 @@
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><?= $this->Html->link(__('Stores'), array('action' => 'index'), array('class' => 'ajaxNavigation')) ?></li>
+    <li class="breadcrumb-item"><?= $this->Html->link(__('Stores'), array('action' => 'index'), array('class' => 'ajaxLink')) ?></li>
     <li class="breadcrumb-item active"><?= __('Add & Edit') ?></li>
 </ol>
 </nav>

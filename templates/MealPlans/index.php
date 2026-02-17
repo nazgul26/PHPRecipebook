@@ -18,13 +18,13 @@
     <div class="d-flex align-items-center gap-3 mb-3">
         <?= $this->Html->link('<i class="bi bi-chevron-left"></i>',
                 array('action' => 'index', $previousWeek[1].'-'.$previousWeek[0].'-'.$previousWeek[2]),
-                array('class' => 'ajaxNavigation btn btn-outline-primary btn-sm', 'escape' => false)) ?>
+                array('class' => 'ajaxLink btn btn-outline-primary btn-sm', 'escape' => false)) ?>
 
         <strong><?= $startDate ?> - <?= $endDate ?></strong>
 
         <?= $this->Html->link('<i class="bi bi-chevron-right"></i>',
                 array('action' => 'index', $nextWeek[1].'-'.$nextWeek[0].'-'.$nextWeek[2]),
-                array('class' => 'ajaxNavigation btn btn-outline-primary btn-sm', 'escape' => false)) ?>
+                array('class' => 'ajaxLink btn btn-outline-primary btn-sm', 'escape' => false)) ?>
         <button id="loadToday" class="btn btn-outline-primary btn-sm"><?= __('Today') ?></button>
     </div>
 

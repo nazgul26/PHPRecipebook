@@ -43,7 +43,7 @@
         <?php if ($loggedIn) : ?>
         <div id="addRecipeLink">
             <?php echo $this->Html->link(__('Add A Recipe'), 
-                    array('controller' => 'recipes', 'action' => 'edit'), array('class' => 'ajaxNavigation')); 
+                    array('controller' => 'recipes', 'action' => 'edit'), array('class' => 'ajaxLink')); 
              ?> 
         </div>
         <?php endif;?>

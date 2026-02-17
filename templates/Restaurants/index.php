@@ -29,7 +29,7 @@
                 <i class="bi bi-gear"></i> <?= __('Manage') ?>
             </button>
             <ul class="dropdown-menu">
-                <li><?= $this->Html->link(__('List Price Ranges'), ['controller' => 'price-ranges', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
+                <li><?= $this->Html->link(__('List Price Ranges'), ['controller' => 'price-ranges', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
                 <li><?= $this->Html->link('<i class="bi bi-plus me-1"></i>' . __('Add Price Range'), ['controller' => 'price-ranges', 'action' => 'edit'], ['escape' => false, 'class' => 'dropdown-item ajaxLink', 'targetId' => 'editPriceRangesDialog']) ?></li>
             </ul>
         </div>

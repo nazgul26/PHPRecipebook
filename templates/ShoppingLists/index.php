@@ -81,8 +81,8 @@ $shoppingListId = isset($shoppingList->id) ? $shoppingList->id : "";
 <h2><?= __('Shopping List') ?></h2>
 <div class="actions-bar">
     <?= $this->Html->link(__('Clear List'), array('action' => 'clear'), array('class' => 'btn btn-outline-primary btn-sm ajaxLink')) ?>
-    <?= $this->Html->link(__('List Stores'), array('controller' => 'stores', 'action' => 'index'), array('class' => 'btn btn-outline-primary btn-sm ajaxNavigation')) ?>
-    <?= $this->Html->link(__('List Online Vendors'), array('controller' => 'vendors', 'action' => 'index'), array('class' => 'btn btn-outline-primary btn-sm ajaxNavigation')) ?>
+    <?= $this->Html->link(__('List Stores'), array('controller' => 'stores', 'action' => 'index'), array('class' => 'btn btn-outline-primary btn-sm ajaxLink')) ?>
+    <?= $this->Html->link(__('List Online Vendors'), array('controller' => 'vendors', 'action' => 'index'), array('class' => 'btn btn-outline-primary btn-sm ajaxLink')) ?>
 </div>
 <div class="shoppingList form">
 <?= $this->Form->create($shoppingList) ?>
@@ -122,8 +122,8 @@ $shoppingListId = isset($shoppingList->id) ? $shoppingList->id : "";
         ?>
         <tr>
             <td class="actions">
-                <?= $this->Html->link(__('View'), array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxNavigation')) ?>
-                <?= $this->Html->link(__('Edit'), array('controller' => 'recipes', 'action' => 'edit', $recipeId), array('class' => 'ajaxNavigation')) ?>
+                <?= $this->Html->link(__('View'), array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxLink')) ?>
+                <?= $this->Html->link(__('Edit'), array('controller' => 'recipes', 'action' => 'edit', $recipeId), array('class' => 'ajaxLink')) ?>
                 <?= $this->Html->link(__('Delete'), array('action' => 'deleteRecipe',
                         $shoppingListId,
                         $shoppingList->shopping_list_recipes[$mapIndex]['recipe_id']),
@@ -162,7 +162,7 @@ $shoppingListId = isset($shoppingList->id) ? $shoppingList->id : "";
         ?>
         <tr>
             <td class="actions">
-                <?= $this->Html->link(__('Edit'), array('controller' => 'ingredients', 'action' => 'edit', $ingredientId), array('class' => 'ajaxNavigation')) ?>
+                <?= $this->Html->link(__('Edit'), array('controller' => 'ingredients', 'action' => 'edit', $ingredientId), array('class' => 'ajaxLink')) ?>
                 <?= $this->Html->link(__('Delete'), array('action' => 'deleteIngredient',
                    $shoppingList->id,
                    $ingredientItemId), array('class' => 'ajaxLink'),

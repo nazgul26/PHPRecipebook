@@ -58,7 +58,9 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
 
         // Cleanup on submit
         var submitBtn = document.querySelector('input[type="submit"], button[type="submit"]');
+        console.log("tring to find button");
         if (submitBtn) {
+            console.log("Submit Button found, wiring up");
             submitBtn.addEventListener('click', function() {
                 // Cleanup empty ingredient rows
                 document.querySelectorAll('#sortableTable1 tr').forEach(function(row) {
@@ -391,13 +393,13 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
             <i class="bi bi-gear"></i> <?= __('Manage Lists') ?>
         </button>
         <ul class="dropdown-menu">
-            <li><?= $this->Html->link(__('Sources'), ['controller' => 'sources', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
-            <li><?= $this->Html->link(__('Ethnicities'), ['controller' => 'ethnicities', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
-            <li><?= $this->Html->link(__('Base Types'), ['controller' => 'base_types', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
-            <li><?= $this->Html->link(__('Courses'), ['controller' => 'courses', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
-            <li><?= $this->Html->link(__('Preparation Times'), ['controller' => 'preparation_times', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
-            <li><?= $this->Html->link(__('Difficulties'), ['controller' => 'difficulties', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
-            <li><?= $this->Html->link(__('Tags'), ['controller' => 'tags', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
+            <li><?= $this->Html->link(__('Sources'), ['controller' => 'sources', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Ethnicities'), ['controller' => 'ethnicities', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Base Types'), ['controller' => 'base_types', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Courses'), ['controller' => 'courses', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Preparation Times'), ['controller' => 'preparation_times', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Difficulties'), ['controller' => 'difficulties', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Tags'), ['controller' => 'tags', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
         </ul>
     </div>
 </div>
@@ -437,8 +439,8 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
             $newImageIndex = $imageCount-1;
 
             echo "<div id='imageSection'>";
-            echo $this->Form->control('attachments.'. $newImageIndex . '.attachment', array('type' => 'file', 'label' => 'Add Image'));
-            echo $this->Form->control('attachments.'. $newImageIndex . '.name', array('label' => 'Caption'));
+            echo $this->Form->control('attachments.'. $newImageIndex . '.attachment', array('type' => 'file', 'label' => 'Add Image', 'required' => false));
+            echo $this->Form->control('attachments.'. $newImageIndex . '.name', array('label' => 'Caption', 'required' => false));
             echo $this->Form->hidden('attachment.'. $newImageIndex . '.id');
 
             echo "<div id='currentImages' class='d-flex flex-wrap gap-3 mt-2'>";

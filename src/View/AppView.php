@@ -52,7 +52,8 @@ class AppView extends View
                 'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}" class="form-check-input"{{attrs}}>',
                 'checkboxWrapper' => '<div class="form-check">{{label}}</div>',
                 'error' => '<div class="invalid-feedback d-block">{{content}}</div>',
-                'submitContainer' => '<div class="submit">{{content}}</div>',
+                'inputSubmit' => '<input type="{{type}}" class="btn btn-primary"{{attrs}}/>',
+                'submitContainer' => '<div class="mt-4 mb-3">{{content}}</div>',
                 'nestingLabel' => '{{hidden}}<label class="form-check-label"{{attrs}}>{{input}}{{text}}</label>',
             ],
         ]);

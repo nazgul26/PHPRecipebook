@@ -40,7 +40,7 @@
 </script>
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><?= $this->Html->link(__('Shopping List'), array('action' => 'index', $listId), array('class' => 'ajaxNavigation')) ?></li>
+    <li class="breadcrumb-item"><?= $this->Html->link(__('Shopping List'), array('action' => 'index', $listId), array('class' => 'ajaxLink')) ?></li>
     <li class="breadcrumb-item active"><?= __('Select Items') ?></li>
 </ol>
 </nav>

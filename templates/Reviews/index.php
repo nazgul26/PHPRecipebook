@@ -25,7 +25,7 @@ $baseUrl = Router::url('/');
 
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><?= $this->Html->link($recipe->name, array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxNavigation')) ?></li>
+    <li class="breadcrumb-item"><?= $this->Html->link($recipe->name, array('controller' => 'recipes', 'action' => 'view', $recipeId), array('class' => 'ajaxLink')) ?></li>
     <li class="breadcrumb-item active"><?= __('Reviews') ?></li>
 </ol>
 </nav>
@@ -53,7 +53,7 @@ $baseUrl = Router::url('/');
             ?>
         </div>
         <?php if ($isEditor || ($loggedIn && $loggedInuserId == $review['User']['id'])) {
-            echo $this->Html->link(__('Edit'), array('action' => 'edit', $review->recipe_id, $review->id), array('class' => 'ajaxNavigation'));
+            echo $this->Html->link(__('Edit'), array('action' => 'edit', $review->recipe_id, $review->id), array('class' => 'ajaxLink'));
             echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe->id, $review->id), ['confirm' => __('Are you sure you want to delete # {0}?', $review->id)]);
         }?>
     </div>

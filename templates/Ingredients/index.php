@@ -25,10 +25,10 @@
                 <i class="bi bi-gear"></i> <?= __('Manage') ?>
             </button>
             <ul class="dropdown-menu">
-                <li><?= $this->Html->link(__('List Locations'), ['controller' => 'locations', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
+                <li><?= $this->Html->link(__('List Locations'), ['controller' => 'locations', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
                 <li><?= $this->Html->link('<i class="bi bi-plus me-1"></i>' . __('Add Location'), ['controller' => 'locations', 'action' => 'edit'], ['escape' => false, 'class' => 'dropdown-item ajaxLink', 'targetId' => 'editLocationDialog']) ?></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><?= $this->Html->link(__('List Units'), ['controller' => 'units', 'action' => 'index'], ['class' => 'dropdown-item ajaxNavigation']) ?></li>
+                <li><?= $this->Html->link(__('List Units'), ['controller' => 'units', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
                 <li><?= $this->Html->link('<i class="bi bi-plus me-1"></i>' . __('Add Unit'), ['controller' => 'units', 'action' => 'edit'], ['escape' => false, 'class' => 'dropdown-item ajaxLink', 'targetId' => 'editUnitDialog']) ?></li>
             </ul>
         </div>
