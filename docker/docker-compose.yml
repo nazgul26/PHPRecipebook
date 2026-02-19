@@ -3,24 +3,42 @@ name: phprecipebook
 services:
 
   php:
-    image: phprecipebook-web:v6
+    image: ilveroluca/phprecipebook:v6.7_cv0.1
+    user: www-data:www-data
 
-    volumes:
-      - "../:/var/www/html/"
+    environment:
+       # Default values. Override with --env-file on command line
+       APP_NAME: "PHPRecipeBook"
+       ALLOW_PUBLIC_ACCOUNT_CREATION :  "false"
+       PRIVATE_COLLECTION :  "false"
+       DEBUG: "${DEBUG}"
+       APP_ENCODING: "UTF-8"
+       APP_DEFAULT_LOCALE: "en"
+       APP_DEFAULT_TIMEZONE: "UTC"
+       SECURITY_SALT: "random-string"
+       DATABASE_URL: "mysql://phpuser:RBAdm1n$@db/phprecipebook?encoding=utf8&timezone=UTC&cacheMetadata=true&quoteIdentifiers=false&persistent=false"
+       EMAIL_TRANSPORT_DEFAULT_URL: "smtp://my@gmail.com:secret@smtp.gmail.com:587?tls=true"
+       EMAIL_FROM_ADDRESS: "noreply@phprecipebook.com"
+       EMAIL_FROM_NAME: "PHP RecipeBook"
+       #PHPRB_INSERT_SEEDS: "true"
 
     ports:
-      - "8080:80"
-      - "443:443"
-  
+      - "8080:8080"
+
     depends_on:
       db:
         condition: service_healthy
 
   db:
     image: mysql:latest
-    env_file: "docker-vars.env"
     volumes:
-      - "../../phprecipebook-db:/var/lib/mysql"
+      - phprecipebook_db:/var/lib/mysql
+    environment:
+      # Default values. Override with --env-file on command line
+      MYSQL_DATABASE: phprecipebook
+      MYSQL_USER: phpuser
+      MYSQL_PASSWORD: RBAdm1n$
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
 
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
@@ -35,3 +53,6 @@ services:
     environment:
       - PMA_HOST=db
       - PMA_PORT=3306
+
+volumes:
+  phprecipebook_db:
