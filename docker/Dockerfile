@@ -6,8 +6,6 @@
 
 FROM php:8.2-apache as base
 
-# Use the default production configuration provided with the base image
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 ENV DEBIAN_FRONTEND noninteractive
 
 
@@ -17,29 +15,26 @@ RUN apt-get update \
     libzip-dev \
     libpng16-16t64 \
     libpng-dev \
-    libxml2 \
-    libxml2-dev \
     libonig5 \
     libonig-dev \
-    libcurl4t64 \
-    libcurl4-openssl-dev \
     libicu76 \
     libicu-dev \
     libpq5 \
     libpq-dev \
  && docker-php-ext-install \
-      curl zip \
-      mysqli pdo pdo_mysql pdo_pgsql \
-      gd xml intl mbstring \
+      zip \
+      mysqli pdo_mysql pdo_pgsql \
+      gd intl \
  && apt-get remove -y --purge --auto-remove \
     libzip-dev \
     libpng-dev \
-    libxml2-dev \
     libonig-dev \
-    libcurl4-openssl-dev \
     libicu-dev \
     libpq-dev \
  && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Use the default production configuration provided with the base image
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 FROM base AS recipebook
 
