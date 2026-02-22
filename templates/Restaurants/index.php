@@ -1,22 +1,24 @@
 <script type="text/javascript">
-    setSearchBoxTarget('Restaurants');
+    onAppReady(function() {
+        setSearchBoxTarget('Restaurants');
 
-    document.addEventListener("saved.restaurant", function() {
-        closeModal('editRestaurantDialog');
-        ajaxGet('restaurants');
-    });
+        document.addEventListener("saved.restaurant", function() {
+            closeModal('editRestaurantDialog');
+            ajaxGet('restaurants');
+        });
 
-    // Address popovers
-    document.querySelectorAll('.addressPopover').forEach(function(el) {
-        var addressEl = el.closest('td').querySelector('address');
-        if (addressEl) {
-            new bootstrap.Popover(el, {
-                content: addressEl.innerHTML,
-                html: true,
-                trigger: 'click',
-                placement: 'bottom'
-            });
-        }
+        // Address popovers
+        document.querySelectorAll('.addressPopover').forEach(function(el) {
+            var addressEl = el.closest('td').querySelector('address');
+            if (addressEl) {
+                new bootstrap.Popover(el, {
+                    content: addressEl.innerHTML,
+                    html: true,
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+            }
+        });
     });
 </script>
 <div class="restaurants index">

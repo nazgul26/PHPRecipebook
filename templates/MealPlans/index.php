@@ -1,13 +1,15 @@
 <script type="text/javascript">
-    setSearchBoxTarget('Recipes');
+    onAppReady(function() {
+        setSearchBoxTarget('Recipes');
 
-    document.getElementById('loadToday')?.addEventListener('click', function() {
-        ajaxGet('MealPlans/index/<?= date('m-d-Y') ?>');
-    });
+        document.getElementById('loadToday')?.addEventListener('click', function() {
+            ajaxGet('MealPlans/index/<?= date('m-d-Y') ?>');
+        });
 
-    document.addEventListener("saved.meal", function() {
-        closeModal('editMealDialog');
-        ajaxGet('MealPlans/index/<?= $date ?>');
+        document.addEventListener("saved.meal", function() {
+            closeModal('editMealDialog');
+            ajaxGet('MealPlans/index/<?= $date ?>');
+        });
     });
 </script>
 <h2><?= __('Meal Plan - Weekly') ?></h2>

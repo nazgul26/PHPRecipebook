@@ -13,7 +13,7 @@ if (isset($selectedVendor)) {
     var TIME_TO_LOAD = 5000;
     var itemToRefresh = null;
 
-    (function() {
+    onAppReady(function() {
         document.addEventListener("saved.product", function() {
             closeModal('editProductDialog');
             var itemId = itemToRefresh.replace('SelectToAdd', '');
@@ -104,7 +104,7 @@ if (isset($selectedVendor)) {
                 setTimeout(function() { window.open('<?= $vendorHomePage ?? '' ?>', 'shopping'); }, TIME_TO_LOAD);
             }, timingCount);
         });
-    })();
+    });
 
     function rowClicked(checkBox) {
         if (checkBox.checked) {

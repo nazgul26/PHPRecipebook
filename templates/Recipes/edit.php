@@ -3,10 +3,235 @@ use Cake\Routing\Router;
 
 $recipeId = isset($recipe->id) ? $recipe->id : "";
 ?>
+
+<div class="actions-bar">
+    <?php if (isset($recipe->id)) :?>
+    <?= $this->Html->link(__('View Recipe'), array('action' => 'view', $recipe->id), ['class' => 'btn btn-outline-primary btn-sm']) ?>
+    <?php endif;?>
+    <div class="dropdown d-inline-block">
+        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-gear"></i> <?= __('Manage Lists') ?>
+        </button>
+        <ul class="dropdown-menu">
+            <li><?= $this->Html->link(__('Sources'), ['controller' => 'sources', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Ethnicities'), ['controller' => 'ethnicities', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Base Types'), ['controller' => 'base_types', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Courses'), ['controller' => 'courses', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Preparation Times'), ['controller' => 'preparation_times', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Difficulties'), ['controller' => 'difficulties', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+            <li><?= $this->Html->link(__('Tags'), ['controller' => 'tags', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
+        </ul>
+    </div>
+</div>
+<div class="recipes form">
+<?= $this->Form->create($recipe, array('type' => 'file')) ?>
+    <fieldset>
+            <legend><?= __('Recipe') ?></legend>
+            <?php
+            $baseUrl = Router::url('/');
+            echo $this->Form->hidden('id');
+            echo $this->Form->control('name');
+            echo $this->Form->control('comments', array('escape' => true, 'rows' => '2'));
+            echo $this->Form->control('source_id',
+                    array('empty'=>true,
+                        'after' => $this->Html->link(__('Edit'),
+                            array('controller' => 'sources', 'action' => 'index'),
+                            array('class' => 'nagivationLink', 'targetId' => 'content', 'id' => 'sourcesEditLink'))));
+            echo $this->Form->control('source_description');
+            ?>
+            <div id="tagsSection" class="mb-3">
+                <label for="tagInput" class="form-label"><?= __('Tags') ?></label>
+                <div class="d-flex flex-wrap align-items-center gap-1">
+                    <span id="tagPills"><?php if (isset($recipe->tags) && !empty($recipe->tags)): ?><?php foreach ($recipe->tags as $tag): ?><span class="tag-pill" data-tag-id="<?= $tag->id ?>"><?= h($tag->name) ?><a href="#" class="remove-tag" title="<?= __('Remove') ?>">&times;</a><input type="hidden" name="tags[_ids][]" value="<?= $tag->id ?>" /></span><?php endforeach; ?><?php endif; ?></span>
+                    <input type="text" id="tagInput" class="form-control form-control-sm" style="width: auto; min-width: 150px;" placeholder="<?= __('i.e vegan, kid-friendly') ?>" />
+                </div>
+                <input type="hidden" name="new_tags" id="newTagsInput" value="" />
+            </div>
+            <?php
+            echo $this->Form->control('course_id', array('empty'=>true));
+            echo $this->Form->control('base_type_id', array('empty'=>true));
+            echo $this->Form->control('preparation_method_id', array('empty'=>true));
+            echo $this->Form->control('ethnicity_id', array('empty'=>true));
+            echo $this->Form->control('preparation_time_id', array('empty'=>true));
+            echo $this->Form->control('difficulty_id', array('empty'=>true));
+            echo $this->Form->control('serving_size');
+            /*$imageCount = (isset($recipe) && isset($recipe->attachments))? count($recipe->attachments) : 0;
+            $newImageIndex = $imageCount-1;
+
+            echo "<div id='imageSection'>";
+            echo $this->Form->control('attachments.'. $newImageIndex . '.attachment', array('type' => 'file', 'label' => 'Add Image', 'required' => false));
+            echo $this->Form->control('attachments.'. $newImageIndex . '.name', array('label' => 'Caption', 'required' => false));
+            echo $this->Form->hidden('attachment.'. $newImageIndex . '.id');
+
+            echo "<div id='currentImages' class='d-flex flex-wrap gap-3 mt-2'>";
+            for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
+                $imageName = $recipe->attachments[$imageIndex]->attachment;
+                $imageDir = "attachment";
+                $imageThumb = preg_replace('/(.*)\.(.*)/i', 'thumbnail-${1}.$2', $imageName);
+                $imageCaption = $recipe->attachments[$imageIndex]->name;
+                $imageId = $recipe->attachments[$imageIndex]->id;
+                echo '<div class="recipeImage text-center">';
+                echo $this->Form->hidden('Image.' . $imageIndex . '.id');
+                echo $this->Form->hidden('Image.' . $imageIndex . '.sort_order');
+                echo $this->Html->link(__('Delete'), array('action' => 'deleteAttachment',$recipeId, $imageId), ['class' => 'small']);
+                echo '<br/><img src="' . $baseUrl . 'files/Attachments/' . $imageDir . '/' .
+                        $imageThumb . '" alt="' . $imageCaption . '" class="rounded mt-1"/>';
+                echo "</div>";
+            }
+            echo "</div>";
+            echo "<div class='clear'></div>";
+            echo "</div>";*/
+
+            echo $this->Form->control('private', array('options' => array('0' => 'No', '1' => 'Yes')));
+            echo $this->Form->control('system_type', array('options' => array('usa' => 'USA', 'metric' => 'Metric')));
+            echo $this->Form->hidden('user_id');
+            ?>
+            <div id="ingredientsSection">
+                <h6 class="mb-3"><i class="bi bi-list-check"></i> <?= __('Ingredients') ?></h6>
+                <table id="sortableTable1" class="table table-sm">
+                <tr class="headerRow">
+                    <th style="width: 40px;"></th>
+                    <th style="width: 40px;"></th>
+                    <th style="width: 40px;"></th>
+                    <th><?= __('Quantity') ?></th>
+                    <th><?= __('Units') ?></th>
+                    <th><?= __('Qualifier') ?></th>
+                    <th><?= __('Ingredient') ?> -
+                        <?= $this->Html->link(__('add new'), array('controller'=>'ingredients', 'action' => 'edit'),
+                                array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog', 'id'=>'addNewIngredientsLink')) ?>
+                    </th>
+                    <th><?= __('Optional') ?></th>
+                </tr>
+                <tbody class="gridContent">
+                <?php
+                $ingredientCount = (isset($recipe) && isset($recipe->ingredient_mappings))? count($recipe->ingredient_mappings) : 0;
+                for ($mapIndex = 0; $mapIndex <= $ingredientCount; $mapIndex++) {
+                    $currentSortOrder = __("Unknown");
+                    $extraItem = true;
+                    $itemId = "";
+                    if ($mapIndex < $ingredientCount) {
+                        $itemId = $recipe->ingredient_mappings[$mapIndex]->id;
+                        $currentSortOrder = $recipe->ingredient_mappings[$mapIndex]->sort_order;
+                        $extraItem = false;
+                    }
+                ?>
+                <tr class="<?= ($extraItem) ? "extraItem" : "" ?>">
+                    <td>
+                        <i class="bi bi-trash icon-action text-danger delete-action"
+                           data-ingredient-delete
+                           data-item-id="<?= $itemId ?>"
+                           title="<?= __('Delete') ?>"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-arrows-move icon-action move-handle"
+                           title="<?= __('Order Ingredient - currently #' . $currentSortOrder) ?>"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-chat-dots icon-action comment-action"
+                           data-row-id="<?= $mapIndex ?>"
+                           title="<?= __('Add or edit a note') ?>"></i>
+                    </td>
+                    <td>
+                        <?= $this->Form->hidden('ingredient_mappings.' . $mapIndex . '.id') ?>
+                        <?= $this->Form->hidden('ingredient_mappings.' . $mapIndex . '.recipe_id') ?>
+                        <?= $this->Form->hidden('ingredient_mappings.' . $mapIndex . '.ingredient_id') ?>
+                        <?= $this->Form->hidden('ingredient_mappings.' . $mapIndex . '.sort_order') ?>
+                        <?= $this->Form->hidden('ingredient_mappings.' . $mapIndex . '.note') ?>
+                        <?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.quantity', array('label' => false, 'type' => 'fraction')) ?></td>
+                    <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.unit_id', array('label' => false)) ?></td>
+                    <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.qualifier', array('label' => false, 'escape' => false)) ?></td>
+                    <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.ingredient.name', array('label' => false, 'escape' => false, 'type' => 'ui-widget')) ?></td>
+                    <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.optional', array('label' => false)) ?></td>
+                </tr>
+                <?php } ?>
+                </tbody>
+                </table>
+                <div id="ingredientDeleteResponse"></div>
+                <a href="#" id="AddMoreIngredientsLink" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-circle"></i> <?= __('Add Another Ingredient') ?></a>
+            </div>
+
+            <?= $this->Form->control('directions', array('escape' => true, 'rows' => '20', 'cols' => '20', 'id' => 'directions-textarea')) ?>
+            <?= $this->Form->control('use_markdown', ['id' => 'use-markdown-toggle']) ?>
+
+            <div id="relatedRecipesSection">
+                <h6 class="mb-3"><i class="bi bi-link-45deg"></i> <?= __('Related Recipes') ?></h6>
+                <table id="sortableTable2" class="table table-sm">
+                <tr class="headerRow">
+                    <th style="width: 40px;"></th>
+                    <th style="width: 40px;"></th>
+                    <th><?= __('Related Recipe Name') ?></th>
+                    <th><?= __('Required') ?></th>
+                </tr>
+                <tbody class="gridContent">
+                <?php
+                $relatedCount = (isset($recipe) && isset($recipe->related_recipes))? count($recipe->related_recipes) : 0;
+                for ($mapIndex = 0; $mapIndex <= $relatedCount; $mapIndex++) {
+                    $currentSortOrder = __("Unknown");
+                    $extraItem = true;
+                    $itemId = "";
+                    if ($mapIndex < $relatedCount) {
+                        $itemId = $recipe->related_recipes[$mapIndex]->id;
+                        $currentSortOrder = $recipe->related_recipes[$mapIndex]->sort_order;
+                        $extraItem = false;
+                    }
+                ?>
+                <tr class="<?= ($extraItem) ? "extraItem" : "" ?>">
+                    <td>
+                        <i class="bi bi-trash icon-action text-danger delete-action"
+                           data-item-id="<?= $itemId ?>"
+                           title="<?= __('Delete') ?>"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-arrows-move icon-action move-handle"
+                           title="<?= __('Order Recipe - currently #' . $currentSortOrder) ?>"></i>
+                    </td>
+                    <td>
+                        <?= $this->Form->hidden('related_recipes.' . $mapIndex . '.id') ?>
+                        <?= $this->Form->hidden('related_recipes.' . $mapIndex . '.parent_id') ?>
+                        <?= $this->Form->hidden('related_recipes.' . $mapIndex . '.recipe_id') ?>
+                        <?= $this->Form->hidden('related_recipes.' . $mapIndex . '.sort_order') ?>
+                        <?= $this->Form->control('related_recipes.' . $mapIndex . '.recipe.name', array('label' => false, 'escape' => false, 'type' => 'ui-widget')) ?></td>
+                    <td><?= $this->Form->control('related_recipes.' . $mapIndex . '.required', array('label' => false)) ?></td>
+                </tr>
+                <?php } ?>
+                </tbody>
+                </table>
+                <div id="recipeDeleteResponse"></div>
+                <a href="#" id="AddMoreRelatedRecipesLink" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-circle"></i> <?= __('Add Another Recipe') ?></a>
+            </div>
+    </fieldset>
+    <?= $this->Flash->render() ?>
+    <?= $this->Form->submit(__('Submit')) ?>
+    <?= $this->Form->end() ?>
+</div>
+
+<!-- Note edit modal (inline) -->
+<div class="modal fade" id="editNoteDialog" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><?= __('Note') ?></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="rowId"/>
+                <textarea id="noteText" class="form-control" cols=30 rows=4></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= __('Close') ?></button>
+                <button type="button" class="btn btn-primary modal-save-btn"><?= __('Save') ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script type="text/javascript">
     var recipeId = "<?= $recipeId ?>";
+    var newTagNames = [];
+    var easyMDE = null;
 
-    (function() {
+    onAppReady(function() {
         document.addEventListener("saved.ingredient", function() {
             closeModal('editIngredientDialog');
         });
@@ -14,6 +239,8 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
         // Sortable for ingredients
         var sortable1Body = document.querySelector('#sortableTable1 tbody.gridContent');
         if (sortable1Body) {
+
+            console.log("Sorting of Ingredients - OK");
             Sortable.create(sortable1Body, {
                 animation: 150,
                 handle: '.move-handle',
@@ -58,9 +285,7 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
 
         // Cleanup on submit
         var submitBtn = document.querySelector('input[type="submit"], button[type="submit"]');
-        console.log("tring to find button");
         if (submitBtn) {
-            console.log("Submit Button found, wiring up");
             submitBtn.addEventListener('click', function() {
                 // Cleanup empty ingredient rows
                 document.querySelectorAll('#sortableTable1 tr').forEach(function(row) {
@@ -121,7 +346,9 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
         initRowNote();
         initIngredientAutoComplete();
         initRelatedAutoCompleted();
-    })();
+        initTagging();
+        initMarkdown();
+    });
 
     function initIngredientAutoComplete() {
         reNumberIngredientsTable();
@@ -384,239 +611,29 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
     }
 </script>
 
-<div class="actions-bar">
-    <?php if (isset($recipe->id)) :?>
-    <?= $this->Html->link(__('View Recipe'), array('action' => 'view', $recipe->id), ['class' => 'btn btn-outline-primary btn-sm']) ?>
-    <?php endif;?>
-    <div class="dropdown d-inline-block">
-        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-gear"></i> <?= __('Manage Lists') ?>
-        </button>
-        <ul class="dropdown-menu">
-            <li><?= $this->Html->link(__('Sources'), ['controller' => 'sources', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
-            <li><?= $this->Html->link(__('Ethnicities'), ['controller' => 'ethnicities', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
-            <li><?= $this->Html->link(__('Base Types'), ['controller' => 'base_types', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
-            <li><?= $this->Html->link(__('Courses'), ['controller' => 'courses', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
-            <li><?= $this->Html->link(__('Preparation Times'), ['controller' => 'preparation_times', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
-            <li><?= $this->Html->link(__('Difficulties'), ['controller' => 'difficulties', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
-            <li><?= $this->Html->link(__('Tags'), ['controller' => 'tags', 'action' => 'index'], ['class' => 'dropdown-item ajaxLink']) ?></li>
-        </ul>
-    </div>
-</div>
-<div class="recipes form">
-<?= $this->Form->create($recipe, array('type' => 'file')) ?>
-    <fieldset>
-            <legend><?= __('Recipe') ?></legend>
-            <?php
-            $baseUrl = Router::url('/');
-            echo $this->Form->hidden('id');
-            echo $this->Form->control('name');
-            echo $this->Form->control('comments', array('escape' => true, 'rows' => '2'));
-            echo $this->Form->control('source_id',
-                    array('empty'=>true,
-                        'after' => $this->Html->link(__('Edit'),
-                            array('controller' => 'sources', 'action' => 'index'),
-                            array('class' => 'nagivationLink', 'targetId' => 'content', 'id' => 'sourcesEditLink'))));
-            echo $this->Form->control('source_description');
-            ?>
-            <div id="tagsSection" class="mb-3">
-                <label for="tagInput" class="form-label"><?= __('Tags') ?></label>
-                <div class="d-flex flex-wrap align-items-center gap-1">
-                    <span id="tagPills"><?php if (isset($recipe->tags) && !empty($recipe->tags)): ?><?php foreach ($recipe->tags as $tag): ?><span class="tag-pill" data-tag-id="<?= $tag->id ?>"><?= h($tag->name) ?><a href="#" class="remove-tag" title="<?= __('Remove') ?>">&times;</a><input type="hidden" name="tags[_ids][]" value="<?= $tag->id ?>" /></span><?php endforeach; ?><?php endif; ?></span>
-                    <input type="text" id="tagInput" class="form-control form-control-sm" style="width: auto; min-width: 150px;" placeholder="<?= __('i.e vegan, kid-friendly') ?>" />
-                </div>
-                <input type="hidden" name="new_tags" id="newTagsInput" value="" />
-            </div>
-            <?php
-            echo $this->Form->control('course_id', array('empty'=>true));
-            echo $this->Form->control('base_type_id', array('empty'=>true));
-            echo $this->Form->control('preparation_method_id', array('empty'=>true));
-            echo $this->Form->control('ethnicity_id', array('empty'=>true));
-            echo $this->Form->control('preparation_time_id', array('empty'=>true));
-            echo $this->Form->control('difficulty_id', array('empty'=>true));
-            echo $this->Form->control('serving_size');
-            $imageCount = (isset($recipe) && isset($recipe->attachments))? count($recipe->attachments) : 0;
-            $newImageIndex = $imageCount-1;
-
-            echo "<div id='imageSection'>";
-            echo $this->Form->control('attachments.'. $newImageIndex . '.attachment', array('type' => 'file', 'label' => 'Add Image', 'required' => false));
-            echo $this->Form->control('attachments.'. $newImageIndex . '.name', array('label' => 'Caption', 'required' => false));
-            echo $this->Form->hidden('attachment.'. $newImageIndex . '.id');
-
-            echo "<div id='currentImages' class='d-flex flex-wrap gap-3 mt-2'>";
-            for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
-                $imageName = $recipe->attachments[$imageIndex]->attachment;
-                $imageDir = "attachment";
-                $imageThumb = preg_replace('/(.*)\.(.*)/i', 'thumbnail-${1}.$2', $imageName);
-                $imageCaption = $recipe->attachments[$imageIndex]->name;
-                $imageId = $recipe->attachments[$imageIndex]->id;
-                echo '<div class="recipeImage text-center">';
-                echo $this->Form->hidden('Image.' . $imageIndex . '.id');
-                echo $this->Form->hidden('Image.' . $imageIndex . '.sort_order');
-                echo $this->Html->link(__('Delete'), array('action' => 'deleteAttachment',$recipeId, $imageId), ['class' => 'small']);
-                echo '<br/><img src="' . $baseUrl . 'files/Attachments/' . $imageDir . '/' .
-                        $imageThumb . '" alt="' . $imageCaption . '" class="rounded mt-1"/>';
-                echo "</div>";
-            }
-            echo "</div>";
-            echo "<div class='clear'></div>";
-            echo "</div>";
-
-            echo $this->Form->control('private', array('options' => array('0' => 'No', '1' => 'Yes')));
-            echo $this->Form->control('system_type', array('options' => array('usa' => 'USA', 'metric' => 'Metric')));
-            echo $this->Form->hidden('user_id');
-            ?>
-            <div id="ingredientsSection">
-                <h6 class="mb-3"><i class="bi bi-list-check"></i> <?= __('Ingredients') ?></h6>
-                <table id="sortableTable1" class="table table-sm">
-                <tr class="headerRow">
-                    <th style="width: 40px;"></th>
-                    <th style="width: 40px;"></th>
-                    <th style="width: 40px;"></th>
-                    <th><?= __('Quantity') ?></th>
-                    <th><?= __('Units') ?></th>
-                    <th><?= __('Qualifier') ?></th>
-                    <th><?= __('Ingredient') ?> -
-                        <?= $this->Html->link(__('add new'), array('controller'=>'ingredients', 'action' => 'edit'),
-                                array('class' => 'ajaxLink', 'targetId' => 'editIngredientDialog', 'id'=>'addNewIngredientsLink')) ?>
-                    </th>
-                    <th><?= __('Optional') ?></th>
-                </tr>
-                <tbody class="gridContent">
-                <?php
-                $ingredientCount = (isset($recipe) && isset($recipe->ingredient_mappings))? count($recipe->ingredient_mappings) : 0;
-                for ($mapIndex = 0; $mapIndex <= $ingredientCount; $mapIndex++) {
-                    $currentSortOrder = __("Unknown");
-                    $extraItem = true;
-                    $itemId = "";
-                    if ($mapIndex < $ingredientCount) {
-                        $itemId = $recipe->ingredient_mappings[$mapIndex]->id;
-                        $currentSortOrder = $recipe->ingredient_mappings[$mapIndex]->sort_order;
-                        $extraItem = false;
-                    }
-                ?>
-                <tr class="<?= ($extraItem) ? "extraItem" : "" ?>">
-                    <td>
-                        <i class="bi bi-trash icon-action text-danger delete-action"
-                           data-ingredient-delete
-                           data-item-id="<?= $itemId ?>"
-                           title="<?= __('Delete') ?>"></i>
-                    </td>
-                    <td>
-                        <i class="bi bi-arrows-move icon-action move-handle"
-                           title="<?= __('Order Ingredient - currently #' . $currentSortOrder) ?>"></i>
-                    </td>
-                    <td>
-                        <i class="bi bi-chat-dots icon-action comment-action"
-                           data-row-id="<?= $mapIndex ?>"
-                           title="<?= __('Add or edit a note') ?>"></i>
-                    </td>
-                    <td>
-                        <?= $this->Form->hidden('ingredient_mappings.' . $mapIndex . '.id') ?>
-                        <?= $this->Form->hidden('ingredient_mappings.' . $mapIndex . '.recipe_id') ?>
-                        <?= $this->Form->hidden('ingredient_mappings.' . $mapIndex . '.ingredient_id') ?>
-                        <?= $this->Form->hidden('ingredient_mappings.' . $mapIndex . '.sort_order') ?>
-                        <?= $this->Form->hidden('ingredient_mappings.' . $mapIndex . '.note') ?>
-                        <?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.quantity', array('label' => false, 'type' => 'fraction')) ?></td>
-                    <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.unit_id', array('label' => false)) ?></td>
-                    <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.qualifier', array('label' => false, 'escape' => false)) ?></td>
-                    <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.ingredient.name', array('label' => false, 'escape' => false, 'type' => 'ui-widget')) ?></td>
-                    <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.optional', array('label' => false)) ?></td>
-                </tr>
-                <?php } ?>
-                </tbody>
-                </table>
-                <div id="ingredientDeleteResponse"></div>
-                <a href="#" id="AddMoreIngredientsLink" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-circle"></i> <?= __('Add Another Ingredient') ?></a>
-            </div>
-
-            <?= $this->Form->control('directions', array('escape' => true, 'rows' => '20', 'cols' => '20', 'id' => 'directions-textarea')) ?>
-            <?= $this->Form->control('use_markdown', ['id' => 'use-markdown-toggle']) ?>
-
-            <div id="relatedRecipesSection">
-                <h6 class="mb-3"><i class="bi bi-link-45deg"></i> <?= __('Related Recipes') ?></h6>
-                <table id="sortableTable2" class="table table-sm">
-                <tr class="headerRow">
-                    <th style="width: 40px;"></th>
-                    <th style="width: 40px;"></th>
-                    <th><?= __('Related Recipe Name') ?></th>
-                    <th><?= __('Required') ?></th>
-                </tr>
-                <tbody class="gridContent">
-                <?php
-                $relatedCount = (isset($recipe) && isset($recipe->related_recipes))? count($recipe->related_recipes) : 0;
-                for ($mapIndex = 0; $mapIndex <= $relatedCount; $mapIndex++) {
-                    $currentSortOrder = __("Unknown");
-                    $extraItem = true;
-                    $itemId = "";
-                    if ($mapIndex < $relatedCount) {
-                        $itemId = $recipe->related_recipes[$mapIndex]->id;
-                        $currentSortOrder = $recipe->related_recipes[$mapIndex]->sort_order;
-                        $extraItem = false;
-                    }
-                ?>
-                <tr class="<?= ($extraItem) ? "extraItem" : "" ?>">
-                    <td>
-                        <i class="bi bi-trash icon-action text-danger delete-action"
-                           data-item-id="<?= $itemId ?>"
-                           title="<?= __('Delete') ?>"></i>
-                    </td>
-                    <td>
-                        <i class="bi bi-arrows-move icon-action move-handle"
-                           title="<?= __('Order Recipe - currently #' . $currentSortOrder) ?>"></i>
-                    </td>
-                    <td>
-                        <?= $this->Form->hidden('related_recipes.' . $mapIndex . '.id') ?>
-                        <?= $this->Form->hidden('related_recipes.' . $mapIndex . '.parent_id') ?>
-                        <?= $this->Form->hidden('related_recipes.' . $mapIndex . '.recipe_id') ?>
-                        <?= $this->Form->hidden('related_recipes.' . $mapIndex . '.sort_order') ?>
-                        <?= $this->Form->control('related_recipes.' . $mapIndex . '.recipe.name', array('label' => false, 'escape' => false, 'type' => 'ui-widget')) ?></td>
-                    <td><?= $this->Form->control('related_recipes.' . $mapIndex . '.required', array('label' => false)) ?></td>
-                </tr>
-                <?php } ?>
-                </tbody>
-                </table>
-                <div id="recipeDeleteResponse"></div>
-                <a href="#" id="AddMoreRelatedRecipesLink" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-circle"></i> <?= __('Add Another Recipe') ?></a>
-            </div>
-    </fieldset>
-    <?= $this->Flash->render() ?>
-    <?= $this->Form->submit(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
-
-<!-- Note edit modal (inline) -->
-<div class="modal fade" id="editNoteDialog" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"><?= __('Note') ?></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" id="rowId"/>
-                <textarea id="noteText" class="form-control" cols=30 rows=4></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= __('Close') ?></button>
-                <button type="button" class="btn btn-primary modal-save-btn"><?= __('Save') ?></button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <?php
 $this->Html->css('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css', ['block' => true]);
 $this->Html->script('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js', ['block' => true]);
 ?>
 
 <script type="text/javascript">
-(function() {
-    var easyMDE = null;
-    var directionsTextarea = document.getElementById('directions-textarea');
-    var markdownToggle = document.getElementById('use-markdown-toggle');
+    function initMarkdown() {
+        var markdownToggle = document.getElementById('use-markdown-toggle');
+        toggleMarkdownEditor();
+        markdownToggle.addEventListener('change', toggleMarkdownEditor);  
+    }
+
+    function toggleMarkdownEditor() {
+        var markdownToggle = document.getElementById('use-markdown-toggle');
+        if (markdownToggle && markdownToggle.checked) {
+            initEasyMDE();
+        } else {
+            destroyEasyMDE();
+        }
+    }
 
     function initEasyMDE() {
+        var directionsTextarea = document.getElementById('directions-textarea');
         if (easyMDE === null && directionsTextarea) {
             easyMDE = new EasyMDE({
                 element: directionsTextarea,
@@ -640,24 +657,53 @@ $this->Html->script('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js', 
         }
     }
 
-    function toggleMarkdownEditor() {
-        if (markdownToggle && markdownToggle.checked) {
-            initEasyMDE();
-        } else {
-            destroyEasyMDE();
-        }
-    }
-
-    if (markdownToggle) {
-        toggleMarkdownEditor();
-        markdownToggle.addEventListener('change', toggleMarkdownEditor);
-    }
-})();
 </script>
 
 <script type="text/javascript">
-(function() {
-    var newTagNames = [];
+    function initTagging() {
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('remove-tag')) {
+                e.preventDefault();
+                var pill = e.target.closest('.tag-pill');
+                var tagId = pill.dataset.tagId;
+                if (!tagId) {
+                    var name = pill.textContent.trim().replace(/\u00d7$/, '').trim();
+                    newTagNames = newTagNames.filter(function(n) { return n !== name; });
+                    updateNewTagsInput();
+                }
+                pill.remove();
+            }
+        });
+
+        var tagInput = document.getElementById('tagInput');
+        if (tagInput) {
+            initVanillaAutocomplete(tagInput, {
+                source: baseUrl + 'Tags/autoCompleteSearch',
+                minLength: 1,
+                autoFocus: false,
+                select: function(event, ui) {
+                    if (ui.item.create) {
+                        addTagPill('', ui.item.create);
+                    } else if (ui.item.id) {
+                        addTagPill(ui.item.id, ui.item.value);
+                    }
+                    tagInput.value = '';
+                    return false;
+                }
+            });
+
+            tagInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    var val = this.value.trim();
+                    if (val.length > 0) {
+                        addTagPill('', val);
+                        this.value = '';
+                    }
+                }
+            });
+        }
+    }
 
     function updateNewTagsInput() {
         document.getElementById('newTagsInput').value = newTagNames.join(',');
@@ -703,48 +749,4 @@ $this->Html->script('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js', 
 
         document.getElementById('tagPills').appendChild(pill);
     }
-
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('remove-tag')) {
-            e.preventDefault();
-            var pill = e.target.closest('.tag-pill');
-            var tagId = pill.dataset.tagId;
-            if (!tagId) {
-                var name = pill.textContent.trim().replace(/\u00d7$/, '').trim();
-                newTagNames = newTagNames.filter(function(n) { return n !== name; });
-                updateNewTagsInput();
-            }
-            pill.remove();
-        }
-    });
-
-    var tagInput = document.getElementById('tagInput');
-    if (tagInput) {
-        initVanillaAutocomplete(tagInput, {
-            source: baseUrl + 'Tags/autoCompleteSearch',
-            minLength: 1,
-            autoFocus: false,
-            select: function(event, ui) {
-                if (ui.item.create) {
-                    addTagPill('', ui.item.create);
-                } else if (ui.item.id) {
-                    addTagPill(ui.item.id, ui.item.value);
-                }
-                tagInput.value = '';
-                return false;
-            }
-        });
-
-        tagInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                var val = this.value.trim();
-                if (val.length > 0) {
-                    addTagPill('', val);
-                    this.value = '';
-                }
-            }
-        });
-    }
-})();
 </script>

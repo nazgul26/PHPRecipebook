@@ -1,10 +1,10 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         document.addEventListener("saved.preparationMethod", function() {
             closeModal('editPrepMethodDialog');
             ajaxGet('preparation-methods');
         });
-    })();
+    });
 </script>
 <div class="preparationMethods index">
 	<h2><?= __('Preparation Methods') ?></h2>

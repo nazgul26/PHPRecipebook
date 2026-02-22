@@ -1,10 +1,10 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         document.addEventListener("saved.ethnicity", function() {
             closeModal('editEthnicityDialog');
             ajaxGet('ethnicities');
         });
-    })();
+    });
 </script>
 <div class="ethnicities index">
     <h2><?= __('Ethnicities') ?></h2>

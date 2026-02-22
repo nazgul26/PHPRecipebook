@@ -1,10 +1,10 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         document.addEventListener("saved.preparationTime", function() {
             closeModal('editPrepTimeDialog');
             ajaxGet('preparation-times');
         });
-    })();
+    });
 </script>
 <div class="preparationTimes index">
 	<h2><?= __('Preparation Times') ?></h2>

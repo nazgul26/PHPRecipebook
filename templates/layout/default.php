@@ -128,6 +128,14 @@ use Cake\Routing\Router;
         <div class="offcanvas-body" id="recipeLinkBoxContainerMobile"></div>
     </div>
 
+    <script>
+        window.appScriptsReady = false;
+        function onAppReady(fn) {
+            if (window.appScriptsReady) { fn(); }
+            else { document.addEventListener('app:ready', fn, { once: true }); }
+        }
+    </script>
+
     <!-- Main Layout -->
     <div class="container-fluid main-layout py-3">
         <div class="row g-3">
@@ -183,19 +191,25 @@ use Cake\Routing\Router;
     </div>
     <?php endforeach; ?>
 
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            initApplication();
+        });
+        
+        // Global Variables
+        var baseUrl = "<?= $baseUrl ?>";
+        var applicationContext = "recipes";
+    </script>
+
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <!-- SortableJS -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
     <!-- App JS -->
     <?= $this->Html->script('app') ?>
-
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            initApplication("<?= $baseUrl ?>");
-        });
-        // Global Variables
-        var applicationContext = "recipes";
+    <script>
+        window.appScriptsReady = true;
+        document.dispatchEvent(new Event('app:ready'));
     </script>
 </body>
 </html>

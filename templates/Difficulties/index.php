@@ -1,10 +1,10 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         document.addEventListener("saved.difficulty", function() {
             closeModal('editDifficultyDialog');
             ajaxGet('difficulties');
         });
-    })();
+    });
 </script>
 <div class="difficulties index">
 	<h2><?= __('Difficulties') ?></h2>

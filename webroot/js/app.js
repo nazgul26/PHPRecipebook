@@ -3,12 +3,9 @@
  * Vanilla JS replacement for jQuery-based default.js
  */
 
-var baseUrl;
-
-function initApplication(initBaseUrl) {
-    baseUrl = initBaseUrl;
+function initApplication() {
     initAjaxHRef('content');
-    initNavigationHRef('navbarMain');
+    initAjaxHRef('navbarMain');
     initAjaxForms('content');
     setupSearchBox();
     loadRecipeBox();
@@ -79,7 +76,6 @@ function loadRecipeBox() {
 
 function initAjax(target) {
     initAjaxHRef(target);
-    initNavigationHRef(target);
     initAjaxForms(target);
 }
 
@@ -105,6 +101,7 @@ function executeScripts(container) {
 }
 
 function ajaxGet(location, target) {
+    console.log("Starging AJAX Request: " + location);
     target = (target === undefined) ? "content" : target;
     var targetEl = document.getElementById(target);
     if (!targetEl) return;
@@ -124,6 +121,7 @@ function ajaxGet(location, target) {
             return null;
         }
         if (!response.ok) {
+            console.log("Error With Data Returned for: " + location);
             return response.text().then(function(text) {
                 targetEl.innerHTML = text;
                 executeScripts(targetEl);
@@ -135,6 +133,7 @@ function ajaxGet(location, target) {
     .then(function(data) {
         if (data === null) return;
         targetEl.innerHTML = data;
+        console.log("Data Returned for: " + location);
         executeScripts(targetEl);
         initAjax(target);
     })
@@ -188,31 +187,6 @@ function ajaxNavigate(actionUrl, title, targetId) {
     return false;
 }
 
-function initNavigationHRef(searchId) {
-    var findQuery = (searchId === undefined) ? "#content .ajaxLink" : "#" + searchId + " .ajaxLink";
-    document.querySelectorAll(findQuery).forEach(function(el) {
-        var targetItem = el;
-        if (el.tagName !== 'A') targetItem = el.querySelector('a');
-        if (!targetItem) return;
-
-        // Avoid double-binding
-        if (targetItem.dataset.navBound) return;
-        targetItem.dataset.navBound = 'true';
-
-        targetItem.addEventListener('click', function(e) {
-            e.preventDefault();
-            var targetId = this.getAttribute('targetId');
-            // Check if target is a modal
-            var isModal = targetId && document.getElementById(targetId) && document.getElementById(targetId).classList.contains('modal');
-            if (!isModal) {
-                // Close any open dropdowns
-                closeAllDropdowns();
-            }
-            ajaxNavigate(this.getAttribute('href'), targetId);
-            return false;
-        });
-    });
-}
 
 function initAjaxHRef(searchId) {
     var findQuery = (searchId === undefined) ? "#content .ajaxLink" : "#" + searchId + " .ajaxLink";
@@ -436,6 +410,7 @@ function initVanillaAutocomplete(inputEl, options) {
     if (!inputEl) return;
 
     var sourceUrl = options.source;
+    console.log("URL" + sourceUrl);
     var minLength = options.minLength || 1;
     var onSelect = options.select;
     var onChange = options.change;

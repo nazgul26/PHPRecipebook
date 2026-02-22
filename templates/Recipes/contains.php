@@ -4,7 +4,7 @@ $baseUrl = Router::url('/');
 ?>
 
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         setSearchBoxTarget('Recipes');
 
         var acInput = document.getElementById('addIngredientAutocomplete');
@@ -34,7 +34,7 @@ $baseUrl = Router::url('/');
                 rows.forEach(function(row) { row.remove(); });
             });
         });
-    })();
+    });
 </script>
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">

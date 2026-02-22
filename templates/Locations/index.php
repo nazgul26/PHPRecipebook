@@ -1,12 +1,12 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         setSearchBoxTarget('Locations');
 
         document.addEventListener("saved.location", function() {
             closeModal('editLocationDialog');
             ajaxGet('locations');
         });
-    })();
+    });
 </script>
 <div class="locations index">
 	<h2><?= __('Locations') ?></h2>

@@ -1,39 +1,41 @@
 <script type="text/javascript">
-    setSearchBoxTarget('Recipes');
+    onAppReady(function() {
+        setSearchBoxTarget('Recipes');
 
-    document.addEventListener("saved.ethnicity", function() {
-        closeModal('editEthnicityDialog');
-        ajaxGet('recipes');
-    });
+        document.addEventListener("saved.ethnicity", function() {
+            closeModal('editEthnicityDialog');
+            ajaxGet('recipes');
+        });
 
-    document.addEventListener("saved.baseType", function() {
-        closeModal('editBaseTypeDialog');
-        ajaxGet('recipes');
-    });
+        document.addEventListener("saved.baseType", function() {
+            closeModal('editBaseTypeDialog');
+            ajaxGet('recipes');
+        });
 
-    document.addEventListener("saved.course", function() {
-        closeModal('editCourseDialog');
-        ajaxGet('recipes');
-    });
+        document.addEventListener("saved.course", function() {
+            closeModal('editCourseDialog');
+            ajaxGet('recipes');
+        });
 
-    document.addEventListener("saved.preparationTime", function() {
-        closeModal('editPrepTimeDialog');
-        ajaxGet('recipes');
-    });
+        document.addEventListener("saved.preparationTime", function() {
+            closeModal('editPrepTimeDialog');
+            ajaxGet('recipes');
+        });
 
-    document.addEventListener("saved.difficulty", function() {
-        closeModal('editDifficultyDialog');
-        ajaxGet('recipes');
-    });
+        document.addEventListener("saved.difficulty", function() {
+            closeModal('editDifficultyDialog');
+            ajaxGet('recipes');
+        });
 
-    document.addEventListener("saved.source", function() {
-        closeModal('editSourceDialog');
-        ajaxGet('recipes');
-    });
+        document.addEventListener("saved.source", function() {
+            closeModal('editSourceDialog');
+            ajaxGet('recipes');
+        });
 
-    document.addEventListener("saved.preparationMethod", function() {
-        closeModal('editPrepMethodDialog');
-        ajaxGet('recipes');
+        document.addEventListener("saved.preparationMethod", function() {
+            closeModal('editPrepMethodDialog');
+            ajaxGet('recipes');
+        });
     });
 </script>
 

@@ -1,10 +1,10 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         document.addEventListener("saved.source", function() {
             closeModal('editSourceDialog');
             ajaxGet('sources');
         });
-    })();
+    });
 </script>
 <div class="sources index">
 	<h2><?= __('Sources') ?></h2>

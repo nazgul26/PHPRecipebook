@@ -1,10 +1,10 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         document.addEventListener("saved.baseType", function() {
             closeModal('editBaseTypeDialog');
             ajaxGet('BaseTypes');
         });
-    })();
+    });
 </script>
 <div class="baseTypes index">
 	<h2><?= __('Base Types') ?></h2>

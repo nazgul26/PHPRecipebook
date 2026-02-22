@@ -1,19 +1,21 @@
 <script type="text/javascript">
-    setSearchBoxTarget('Ingredients');
+    onAppReady(function() {
+        setSearchBoxTarget('Ingredients');
 
-    document.addEventListener("saved.ingredient", function() {
-        closeModal('editIngredientDialog');
-        ajaxGet('ingredients');
-    });
+        document.addEventListener("saved.ingredient", function() {
+            closeModal('editIngredientDialog');
+            ajaxGet('ingredients');
+        });
 
-    document.addEventListener("saved.location", function() {
-        closeModal('editLocationDialog');
-        ajaxGet('ingredients');
-    });
+        document.addEventListener("saved.location", function() {
+            closeModal('editLocationDialog');
+            ajaxGet('ingredients');
+        });
 
-    document.addEventListener("saved.unit", function() {
-        closeModal('editUnitDialog');
-        ajaxGet('ingredients');
+        document.addEventListener("saved.unit", function() {
+            closeModal('editUnitDialog');
+            ajaxGet('ingredients');
+        });
     });
 </script>
 <div class="ingredients index">

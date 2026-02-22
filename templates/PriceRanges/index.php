@@ -1,10 +1,10 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         document.addEventListener("saved.priceRange", function() {
             closeModal('editPriceRangesDialog');
             ajaxGet('price-ranges');
         });
-    })();
+    });
 </script>
 
 <div class="priceRanges index">

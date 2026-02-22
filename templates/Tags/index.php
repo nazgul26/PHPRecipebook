@@ -1,12 +1,12 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         setSearchBoxTarget('Tags');
 
         document.addEventListener("saved.tag", function() {
             closeModal('editTagDialog');
             ajaxGet('tags');
         });
-    })();
+    });
 </script>
 <div class="tags index">
 	<h2><?= __('Tags') ?></h2>

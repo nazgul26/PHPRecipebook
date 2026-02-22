@@ -1,10 +1,10 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         document.addEventListener("saved.unit", function() {
             closeModal('editUnitDialog');
             ajaxGet('units');
         });
-    })();
+    });
 </script>
 <div class="units index">
     <h2><?= __('Units') ?></h2>

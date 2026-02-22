@@ -4,7 +4,7 @@ $baseUrl = Router::url('/');
 $shoppingListId = isset($shoppingList->id) ? $shoppingList->id : "";
 ?>
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         setSearchBoxTarget('Recipes');
 
         document.querySelector('[go-shopping]')?.addEventListener('click', function() {
@@ -73,7 +73,7 @@ $shoppingListId = isset($shoppingList->id) ? $shoppingList->id : "";
 
         var recipeRadio = document.getElementById('recipeSearch');
         if (recipeRadio) recipeRadio.dispatchEvent(new Event('change'));
-    })();
+    });
 </script>
 
 <?= $this->Flash->render() ?>
