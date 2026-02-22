@@ -75,5 +75,8 @@ RUN \
  && find ${RecipebookRoot}/tmp ${RecipebookRoot}/logs -type d -print0 | xargs -0 chmod u+rwx \
  && chmod u+x ${RecipebookRoot}/docker/web-start.sh
 
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8080/ || exit 1
+
 
 ENTRYPOINT ["/var/www/html/docker/web-start.sh"]
