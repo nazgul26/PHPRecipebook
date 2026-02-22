@@ -20,7 +20,6 @@ use Cake\Routing\Router;
 		echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">';
 
 		echo $this->Html->css('theme');
-		echo $this->Html->css('print');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

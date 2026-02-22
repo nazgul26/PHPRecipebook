@@ -121,7 +121,6 @@ function ajaxGet(location, target) {
             return null;
         }
         if (!response.ok) {
-            console.log("Error With Data Returned for: " + location);
             return response.text().then(function(text) {
                 targetEl.innerHTML = text;
                 executeScripts(targetEl);
@@ -133,7 +132,6 @@ function ajaxGet(location, target) {
     .then(function(data) {
         if (data === null) return;
         targetEl.innerHTML = data;
-        console.log("Data Returned for: " + location);
         executeScripts(targetEl);
         initAjax(target);
     })
@@ -225,6 +223,8 @@ function initAjaxForms(targetId) {
     document.querySelectorAll(findQuery).forEach(function(formEl) {
         // Avoid double-binding
         if (formEl.dataset.ajaxFormBound) return;
+        // Allow forms to opt out of AJAX handling
+        if (formEl.dataset.noAjax) return;
         formEl.dataset.ajaxFormBound = 'true';
 
         formEl.addEventListener('submit', function(e) {
@@ -410,7 +410,6 @@ function initVanillaAutocomplete(inputEl, options) {
     if (!inputEl) return;
 
     var sourceUrl = options.source;
-    console.log("URL" + sourceUrl);
     var minLength = options.minLength || 1;
     var onSelect = options.select;
     var onChange = options.change;

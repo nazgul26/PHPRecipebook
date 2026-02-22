@@ -1,12 +1,12 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         var usernameEl = document.getElementById('username');
         if (usernameEl) usernameEl.focus();
-    })();
+    });
 </script>
 <div class="users form">
 <?= $this->Flash->render() ?>
-<?= $this->Form->create(null) ?>
+<?= $this->Form->create(null, ['data-no-ajax' => true]) ?>
     <fieldset>
         <legend>
             <?= __('Enter your username and password') ?>
