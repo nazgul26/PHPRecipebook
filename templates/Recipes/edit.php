@@ -239,8 +239,6 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
         // Sortable for ingredients
         var sortable1Body = document.querySelector('#sortableTable1 tbody.gridContent');
         if (sortable1Body) {
-
-            console.log("Sorting of Ingredients - OK");
             Sortable.create(sortable1Body, {
                 animation: 150,
                 handle: '.move-handle',
@@ -262,7 +260,7 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
 
         // Fraction convert on ingredient quantity change
         document.getElementById('ingredientsSection')?.addEventListener('change', function(e) {
-            if (e.target.matches('.fraction input')) {
+            if (e.target.matches('input[type="fraction"]')) {
                 fractionConvert(e.target, "<?= __("Entered value is not a number/fraction, please try again.") ?>");
             }
         });

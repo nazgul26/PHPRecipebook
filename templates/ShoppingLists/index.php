@@ -59,7 +59,7 @@ $shoppingListId = isset($shoppingList->id) ? $shoppingList->id : "";
             });
         });
 
-        document.querySelectorAll('.fraction input').forEach(function(inp) {
+        document.querySelectorAll('input[type="fraction"]').forEach(function(inp) {
             inp.addEventListener('change', function() {
                 fractionConvert(this, "<?= __("Entered value is not a number/fraction, please try again.") ?>");
             });
