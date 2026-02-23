@@ -109,9 +109,11 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
                     $currentSortOrder = __("Unknown");
                     $extraItem = true;
                     $itemId = "";
+                    $noteValue = "";
                     if ($mapIndex < $ingredientCount) {
                         $itemId = $recipe->ingredient_mappings[$mapIndex]->id;
                         $currentSortOrder = $recipe->ingredient_mappings[$mapIndex]->sort_order;
+                        $noteValue = $recipe->ingredient_mappings[$mapIndex]->note ?? "";
                         $extraItem = false;
                     }
                 ?>
@@ -127,7 +129,7 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
                            title="<?= __('Order Ingredient - currently #' . $currentSortOrder) ?>"></i>
                     </td>
                     <td>
-                        <i class="bi bi-chat-dots icon-action comment-action"
+                        <i class="bi <?= !empty($noteValue) ? 'bi-chat-dots-fill' : 'bi-chat-dots' ?> icon-action comment-action"
                            data-row-id="<?= $mapIndex ?>"
                            title="<?= __('Add or edit a note') ?>"></i>
                     </td>
@@ -405,6 +407,8 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
                 newSaveBtn.addEventListener('click', function() {
                     var newNote = document.getElementById('noteText').value;
                     if (noteInput) noteInput.value = newNote;
+                    el.classList.toggle('bi-chat-dots-fill', newNote.trim().length > 0);
+                    el.classList.toggle('bi-chat-dots', newNote.trim().length === 0);
                     modal.hide();
                 });
 
