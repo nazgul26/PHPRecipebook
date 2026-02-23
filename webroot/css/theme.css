@@ -890,6 +890,10 @@ td.actions form {
     background: var(--cb-bg-warm-white);
 }
 
+.extraItem {
+    display: none;
+}
+
 /* Icons in ingredient grid */
 .icon-action {
     cursor: pointer;
