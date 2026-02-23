@@ -590,6 +590,7 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
                         inp.value = "";
                         if (idField) idField.value = "";
                     } else {
+                        inp.value = ui.item.value || ui.item.label || '';
                         if (idField) idField.value = ui.item.id;
                     }
                     return false;

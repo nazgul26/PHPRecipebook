@@ -205,6 +205,8 @@ function initAjaxHRef(searchId) {
                 var targetEl = document.getElementById(targetId);
                 if (targetEl && targetEl.classList.contains('modal')) {
                     openModal(targetId);
+                    ajaxGet(this.getAttribute('href'), targetId + 'Content');
+                    return false;
                 } else {
                     closeAllDropdowns();
                 }
@@ -419,6 +421,8 @@ function initVanillaAutocomplete(inputEl, options) {
     var activeIndex = -1;
     var items = [];
     var debounceTimer = null;
+    var lastSelectedItem = null;
+    var hasTyped = false;
 
     function createDropdown() {
         if (dropdown) return;
@@ -474,6 +478,9 @@ function initVanillaAutocomplete(inputEl, options) {
         var item = items[index];
         if (!item) return;
 
+        lastSelectedItem = item;
+        hasTyped = false;
+
         if (onSelect) {
             var result = onSelect({ target: inputEl }, { item: item });
             if (result !== false) {
@@ -486,6 +493,8 @@ function initVanillaAutocomplete(inputEl, options) {
     }
 
     inputEl.addEventListener('input', function() {
+        lastSelectedItem = null;
+        hasTyped = true;
         var val = this.value;
         if (val.length < minLength) {
             destroyDropdown();
@@ -535,7 +544,7 @@ function initVanillaAutocomplete(inputEl, options) {
 
     inputEl.addEventListener('blur', function() {
         setTimeout(function() {
-            if (onChange && items.length === 0) {
+            if (onChange && hasTyped && lastSelectedItem === null) {
                 onChange({ target: inputEl }, { item: null });
             }
             destroyDropdown();
