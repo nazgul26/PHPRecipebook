@@ -36,7 +36,7 @@ services:
       retries: 3
 
   db:
-    image: mysql:8.0
+    image: mysql:9.6
     restart: unless-stopped
     volumes:
       - phprecipebook_db:/var/lib/mysql
