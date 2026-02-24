@@ -42,10 +42,12 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
             <div id="tagsSection" class="mb-3">
                 <label for="tagInput" class="form-label"><?= __('Tags') ?></label>
                 <div class="d-flex flex-wrap align-items-center gap-1">
-                    <span id="tagPills"><?php if (isset($recipe->tags) && !empty($recipe->tags)): ?><?php foreach ($recipe->tags as $tag): ?><span class="tag-pill" data-tag-id="<?= $tag->id ?>"><?= h($tag->name) ?><a href="#" class="remove-tag" title="<?= __('Remove') ?>">&times;</a><input type="hidden" name="tags[_ids][]" value="<?= $tag->id ?>" /></span><?php endforeach; ?><?php endif; ?></span>
-                    <input type="text" id="tagInput" class="form-control form-control-sm" style="width: auto; min-width: 150px;" placeholder="<?= __('i.e vegan, kid-friendly') ?>" />
+                    <span id="tagPills"><?php if (isset($recipe->tags) && !empty($recipe->tags)): ?><?php foreach ($recipe->tags as $tag): ?><span class="tag-pill" data-tag-name="<?= h($tag->name) ?>"><?= h($tag->name) ?><a href="#" class="remove-tag" title="<?= __('Remove') ?>">&times;</a></span><?php endforeach; ?><?php endif; ?></span>
+                    <span style="position: relative; display: inline-block;">
+                        <input type="text" id="tagInput" class="form-control form-control-sm" style="width: auto; min-width: 150px;" placeholder="<?= __('i.e vegan, kid-friendly') ?>" />
+                    </span>
                 </div>
-                <input type="hidden" name="new_tags" id="newTagsInput" value="" />
+                <input type="hidden" name="tags_list" id="tagsListInput" value="<?= h($recipe->tags_list ?? '') ?>" />
             </div>
             <?php
             echo $this->Form->control('course_id', array('empty'=>true));
@@ -230,7 +232,6 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
 
 <script type="text/javascript">
     var recipeId = "<?= $recipeId ?>";
-    var newTagNames = [];
     var easyMDE = null;
 
     onAppReady(function() {
@@ -619,7 +620,11 @@ $this->Html->css('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css', ['
 $this->Html->script('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js', ['block' => true]);
 ?>
 
+
 <script type="text/javascript">
+    /* 
+        Markdown Editor setup and support
+    */
     function initMarkdown() {
         var markdownToggle = document.getElementById('use-markdown-toggle');
         toggleMarkdownEditor();
@@ -660,21 +665,15 @@ $this->Html->script('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js', 
         }
     }
 
-</script>
-
-<script type="text/javascript">
+    /* 
+    Tagging Feature to allow a recipe to have tags added.  Tags can be created by user. 
+    */
     function initTagging() {
         document.addEventListener('click', function(e) {
             if (e.target.classList.contains('remove-tag')) {
                 e.preventDefault();
-                var pill = e.target.closest('.tag-pill');
-                var tagId = pill.dataset.tagId;
-                if (!tagId) {
-                    var name = pill.textContent.trim().replace(/\u00d7$/, '').trim();
-                    newTagNames = newTagNames.filter(function(n) { return n !== name; });
-                    updateNewTagsInput();
-                }
-                pill.remove();
+                e.target.closest('.tag-pill').remove();
+                updateTagsList();
             }
         });
 
@@ -708,16 +707,19 @@ $this->Html->script('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js', 
         }
     }
 
-    function updateNewTagsInput() {
-        document.getElementById('newTagsInput').value = newTagNames.join(',');
+    function updateTagsList() {
+        var names = [];
+        document.querySelectorAll('#tagPills .tag-pill').forEach(function(pill) {
+            var name = pill.dataset.tagName;
+            if (name) names.push(name);
+        });
+        document.getElementById('tagsListInput').value = names.join(',');
     }
 
     function isTagAlreadyAdded(tagId, tagName) {
         var found = false;
         document.querySelectorAll('#tagPills .tag-pill').forEach(function(pill) {
-            var existingId = pill.dataset.tagId;
-            var existingName = pill.textContent.trim().replace(/\u00d7$/, '').trim();
-            if ((tagId && existingId == tagId) || (!tagId && existingName.toLowerCase() === tagName.toLowerCase())) {
+            if ((pill.dataset.tagName || '').toLowerCase() === tagName.toLowerCase()) {
                 found = true;
             }
         });
@@ -729,7 +731,7 @@ $this->Html->script('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js', 
 
         var pill = document.createElement('span');
         pill.className = 'tag-pill';
-        pill.dataset.tagId = tagId || '';
+        pill.dataset.tagName = tagName;
         pill.textContent = tagName + ' ';
 
         var removeLink = document.createElement('a');
@@ -739,17 +741,7 @@ $this->Html->script('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js', 
         removeLink.innerHTML = '&times;';
         pill.appendChild(removeLink);
 
-        if (tagId) {
-            var hidden = document.createElement('input');
-            hidden.type = 'hidden';
-            hidden.name = 'tags[_ids][]';
-            hidden.value = tagId;
-            pill.appendChild(hidden);
-        } else {
-            newTagNames.push(tagName);
-            updateNewTagsInput();
-        }
-
         document.getElementById('tagPills').appendChild(pill);
+        updateTagsList();
     }
 </script>

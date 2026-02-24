@@ -670,41 +670,115 @@ td.actions form {
     color: var(--cb-text-muted);
 }
 
-/* Tags */
+/* Tags — Colorful pill design */
+@keyframes pillPop {
+    0%   { transform: scale(0.5); opacity: 0; }
+    70%  { transform: scale(1.08); }
+    100% { transform: scale(1);   opacity: 1; }
+}
+
 .tag-label,
 .tag-pill {
-    display: inline-block;
-    background: var(--cb-bg-cream);
-    border: 1px solid var(--cb-border-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
     border-radius: 2rem;
-    padding: 0.2rem 0.75rem;
-    margin: 0.15rem;
-    font-size: 0.8rem;
-    color: var(--cb-text-secondary) !important;
-    font-weight: 600;
-    transition: all 0.15s ease;
+    padding: 0.3rem 0.85rem;
+    margin: 0.2rem 0.15rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border-width: 1.5px;
+    border-style: solid;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.55);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+}
+
+.tag-pill {
+    animation: pillPop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    cursor: default;
+    padding: 0.35rem 0.5rem 0.35rem 0.85rem;
+}
+
+/* 6 food-inspired hues, cycling via nth-of-type */
+/* 1 — Berry */
+.tag-label:nth-of-type(6n+1),
+#tagPills .tag-pill:nth-of-type(6n+1) {
+    background: linear-gradient(155deg, #ffe8f2 0%, #ffd0e3 100%);
+    color: #a2134e !important;
+    border-color: #f5a0c4;
+}
+/* 2 — Herb */
+.tag-label:nth-of-type(6n+2),
+#tagPills .tag-pill:nth-of-type(6n+2) {
+    background: linear-gradient(155deg, #e5f7ec 0%, #ccedda 100%);
+    color: #1a6638 !important;
+    border-color: #85c9a2;
+}
+/* 3 — Saffron */
+.tag-label:nth-of-type(6n+3),
+#tagPills .tag-pill:nth-of-type(6n+3) {
+    background: linear-gradient(155deg, #fff8d4 0%, #feecaa 100%);
+    color: #836200 !important;
+    border-color: #efca42;
+}
+/* 4 — Ocean */
+.tag-label:nth-of-type(6n+4),
+#tagPills .tag-pill:nth-of-type(6n+4) {
+    background: linear-gradient(155deg, #e3effe 0%, #ccdffe 100%);
+    color: #17419e !important;
+    border-color: #88b0f5;
+}
+/* 5 — Lavender */
+.tag-label:nth-of-type(6n+5),
+#tagPills .tag-pill:nth-of-type(6n+5) {
+    background: linear-gradient(155deg, #f1ecff 0%, #e2d5ff 100%);
+    color: #4d28a8 !important;
+    border-color: #af9cf5;
+}
+/* 6 — Tangerine */
+.tag-label:nth-of-type(6n+6),
+#tagPills .tag-pill:nth-of-type(6n+6) {
+    background: linear-gradient(155deg, #fff1e5 0%, #ffe1cb 100%);
+    color: #9a3e10 !important;
+    border-color: #f5a870;
 }
 
 .tag-label:hover {
-    background: var(--cb-primary-light);
-    border-color: var(--cb-primary);
-    color: var(--cb-text-primary) !important;
-}
-
-.tag-pill {
-    font-size: 0.85rem;
-    padding: 0.3rem 0.75rem;
-}
-
-.tag-pill .remove-tag {
-    margin-left: 0.35rem;
+    transform: translateY(-1px) scale(1.04);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.13), inset 0 1px 0 rgba(255,255,255,0.55);
     text-decoration: none;
-    font-weight: 700;
-    color: var(--cb-text-muted);
+}
+
+.tag-pill:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.13), inset 0 1px 0 rgba(255,255,255,0.55);
+}
+
+/* Remove button */
+.tag-pill .remove-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.1);
+    color: inherit !important;
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: background 0.15s ease, transform 0.18s ease;
+    margin-left: 0.1rem;
 }
 
 .tag-pill .remove-tag:hover {
-    color: var(--cb-primary);
+    background: rgba(0,0,0,0.22);
+    transform: scale(1.2) rotate(90deg);
+    color: inherit !important;
 }
 
 .tag-pill input[type="hidden"] {
@@ -960,6 +1034,8 @@ td.actions form {
 /* --- Autocomplete dropdown --- */
 .autocomplete-dropdown {
     position: absolute;
+    top: 100%;
+    left: 0;
     z-index: 1060;
     background: #fff;
     border: 1px solid var(--cb-border-color);
