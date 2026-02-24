@@ -1,9 +1,3 @@
-<script type="text/javascript">
-    (function() {
-        var submitEl = document.querySelector('.locations .submit');
-        if (submitEl) submitEl.classList.add('d-none');
-    })();
-</script>
 <div class="locations form">
 <?= $this->Form->create($location, array('default' => false, 'targetId' => 'editLocationDialog')) ?>
 <?php

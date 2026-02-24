@@ -182,8 +182,10 @@ use Cake\Routing\Router;
                 </div>
                 <div class="modal-body" id="<?= $modal['id'] ?>Content"></div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= __('Close') ?></button>
-                    <button type="button" class="btn btn-primary modal-save-btn"><?= __('Save') ?></button>
+                    <button type="button" class="btn btn-link text-secondary" data-bs-dismiss="modal"><?= __('Cancel') ?></button>
+                    <button type="button" class="btn btn-primary modal-save-btn">
+                        <i class="bi bi-check-lg me-1"></i><?= __('Save') ?>
+                    </button>
                 </div>
             </div>
         </div>

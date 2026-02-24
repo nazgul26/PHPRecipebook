@@ -1,9 +1,3 @@
-<script type="text/javascript">
-    (function() {
-        var submitEl = document.querySelector('.restaurants .submit');
-        if (submitEl) submitEl.classList.add('d-none');
-    })();
-</script>
 <div class="restaurants form">
 <?= $this->Form->create($restaurant, ['default' => false, 'targetId' => 'editRestaurantDialog']) ?>
 <?php

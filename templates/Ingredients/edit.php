@@ -1,11 +1,4 @@
 
-<script type="text/javascript">
-    (function() {
-        var submitEl = document.querySelector('.ingredients .submit');
-        if (submitEl) submitEl.classList.add('d-none');
-    })();
-</script>
-
 <div class="ingredients form">
 <?= $this->Form->create($ingredient, array('default' => false, 'targetId' => 'editIngredientDialog')) ?>
 <?php

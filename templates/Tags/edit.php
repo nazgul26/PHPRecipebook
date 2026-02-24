@@ -1,9 +1,3 @@
-<script type="text/javascript">
-    (function() {
-        var submitEl = document.querySelector('.tags .submit');
-        if (submitEl) submitEl.classList.add('d-none');
-    })();
-</script>
 
 <div class="tags form">
 <?= $this->Form->create($tag, array('default' => false, 'targetId' => 'editTagDialog')) ?>

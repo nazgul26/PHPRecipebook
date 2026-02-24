@@ -1,9 +1,3 @@
-<script type="text/javascript">
-    (function() {
-        var submitEl = document.querySelector('.sources .submit');
-        if (submitEl) submitEl.classList.add('d-none');
-    })();
-</script>
 <div class="sources form">
 <?= $this->Form->create($source, array('default' => false, 'targetId' => 'editSourceDialog')) ?>
 <?php

@@ -494,6 +494,18 @@ h3 {
     border-top: 1px solid var(--cb-border-color);
     background-color: var(--cb-bg-cream);
     border-radius: 0 0 var(--cb-border-radius) var(--cb-border-radius);
+    gap: 0.5rem;
+    padding: 0.85rem 1.25rem;
+}
+
+.modal-save-btn {
+    min-width: 100px;
+    transition: opacity 0.15s ease;
+}
+
+.modal-save-btn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
 }
 
 /* --- Bootstrap Override: Alerts --- */

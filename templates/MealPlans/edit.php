@@ -4,9 +4,6 @@ $baseUrl = Router::url('/');
 ?>
 <script type="text/javascript">
     (function() {
-        var submitEl = document.querySelector('.mealPlans .submit');
-        if (submitEl) submitEl.classList.add('d-none');
-
         // Update modal title
         var modalTitle = document.querySelector('#editMealDialog .modal-title');
         if (modalTitle) modalTitle.textContent = 'Meal - <?= $mealDate ?>';

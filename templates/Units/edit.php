@@ -1,9 +1,3 @@
-<script type="text/javascript">
-    (function() {
-        var submitEl = document.querySelector('.units .submit');
-        if (submitEl) submitEl.classList.add('d-none');
-    })();
-</script>
 <div class="units form">
 <?= $this->Form->create($unit, array('default' => false, 'targetId' => 'editUnitDialog')) ?>
 <?php

@@ -19,22 +19,7 @@ function initApplication() {
     // Modal save button handler
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('modal-save-btn')) {
-            var modalEl = e.target.closest('.modal');
-            if (modalEl) {
-                var bodyEl = modalEl.querySelector('.modal-body');
-                if (bodyEl) {
-                    var submitBtn = bodyEl.querySelector(':scope [type="submit"], :scope button.btn-primary');
-                    if (submitBtn) {
-                        submitBtn.click();
-                    } else {
-                        // Try submitting the form directly
-                        var form = bodyEl.querySelector('form');
-                        if (form) {
-                            form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
-                        }
-                    }
-                }
-            }
+            handleModalSave(e.target);
         }
     });
 }
@@ -134,6 +119,10 @@ function ajaxGet(location, target) {
         targetEl.innerHTML = data;
         executeScripts(targetEl);
         initAjax(target);
+        // If content landed inside a modal, hide form submit buttons immediately
+        if (targetEl.closest && targetEl.closest('.modal')) {
+            hideModalSubmitButtons(targetEl);
+        }
     })
     .catch(function(error) {
         console.error('ajaxGet error:', error);
@@ -143,6 +132,13 @@ function ajaxGet(location, target) {
 
 function ajaxPostForm(formEl) {
     var targetId = formEl.getAttribute('targetId') || 'content';
+
+    // If the target is a modal element, redirect to its body content div
+    // to preserve the modal chrome (header/footer) across saves
+    var targetEl = document.getElementById(targetId);
+    if (targetEl && targetEl.classList.contains('modal')) {
+        targetId = targetId + 'Content';
+    }
 
     fetch(formEl.getAttribute('action'), {
         method: 'POST',
@@ -237,12 +233,25 @@ function initAjaxForms(targetId) {
     });
 }
 
+function hideModalSubmitButtons(containerEl) {
+    containerEl.querySelectorAll('input[type="submit"]').forEach(function(el) {
+        el.classList.add('d-none');
+        // Also hide the wrapper div (submitContainer) to remove leftover padding
+        var parent = el.parentElement;
+        if (parent && parent.tagName === 'DIV' && parent.children.length === 1) {
+            parent.classList.add('d-none');
+        }
+    });
+}
+
 // Also bind forms inside modals
 function initModalForms(modalId) {
     var modalEl = document.getElementById(modalId);
     if (!modalEl) return;
     var contentEl = modalEl.querySelector('.modal-body');
     if (!contentEl) return;
+    // Hide form submit buttons — the modal footer Save button handles submission
+    hideModalSubmitButtons(contentEl);
     contentEl.querySelectorAll('form').forEach(function(formEl) {
         if (formEl.dataset.ajaxFormBound) return;
         formEl.dataset.ajaxFormBound = 'true';
@@ -265,6 +274,36 @@ function closeAllDropdowns() {
 /**
  * Modal Management
  */
+function handleModalSave(btn) {
+    var modalEl = btn.closest('.modal');
+    if (!modalEl) return;
+    var bodyEl = modalEl.querySelector('.modal-body');
+    if (!bodyEl) return;
+
+    // Loading state
+    var originalHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Saving\u2026';
+
+    function resetSaveBtn() {
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+    }
+
+    // Reset when modal closes (success path)
+    modalEl.addEventListener('hidden.bs.modal', resetSaveBtn, { once: true });
+
+    var submitBtn = bodyEl.querySelector(':scope [type="submit"], :scope button.btn-primary');
+    if (submitBtn) {
+        submitBtn.click();
+    } else {
+        var form = bodyEl.querySelector('form');
+        if (form) {
+            form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+        }
+    }
+}
+
 function openModal(dialogId) {
     var modalEl = document.getElementById(dialogId);
     if (!modalEl) return;
@@ -275,7 +314,6 @@ function openModal(dialogId) {
     modalEl.addEventListener('shown.bs.modal', function() {
         initModalForms(dialogId);
         initAjaxHRef(dialogId + 'Content');
-        initNavigationHRef(dialogId + 'Content');
     }, { once: true });
 }
 

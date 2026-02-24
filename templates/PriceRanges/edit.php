@@ -1,9 +1,3 @@
-<script type="text/javascript">
-    (function() {
-        var submitEl = document.querySelector('.priceRanges .submit');
-        if (submitEl) submitEl.classList.add('d-none');
-    })();
-</script>
 <div class="priceRanges form">
 <?= $this->Form->create($priceRange, array('default' => false, 'targetId' => 'editPriceRangesDialog')) ?>
 <?php
