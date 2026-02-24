@@ -3,7 +3,7 @@ name: phprecipebook
 services:
 
   php:
-    image: ilveroluca/phprecipebook:v6.7_cv0.1
+    image: ilveroluca/phprecipebook:v6.8_cv0.1
     user: www-data:www-data
 
     environment:

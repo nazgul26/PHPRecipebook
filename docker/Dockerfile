@@ -38,7 +38,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 FROM base AS recipebook
 
-ARG version=6.7
+ARG version=6.8
 ARG cv=0.1
 
 ENV RecipebookRoot=/var/www/html/
