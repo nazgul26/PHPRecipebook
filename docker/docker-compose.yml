@@ -25,6 +25,11 @@ services:
     ports:
       - "8080:8080"
 
+    tmpfs:
+      - /var/www/html/tmp:mode=750,uid=33,gid=33
+      - /var/www/html/logs:mode=750,uid=33,gid=33
+
+
     depends_on:
       db:
         condition: service_healthy
