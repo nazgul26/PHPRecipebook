@@ -235,6 +235,16 @@ class RecipesController extends AppController
         }
     }
 
+    public function removeRecipeMapping($recipeId, $mappingId)
+    {
+        $entity = $this->Recipes->RelatedRecipes->get($mappingId);
+        if ($this->Recipes->RelatedRecipes->delete($entity)) {
+            $this->Flash->success(__('The related recipe has been removed.'));
+        } else {
+            $this->Flash->error(__('The related recipe could not be removed. Please, try again.'));
+        }
+    }
+
     public function deleteAttachment($recipeId, $id)
     {
         $image = $this->Recipes->Attachments->get($id);
