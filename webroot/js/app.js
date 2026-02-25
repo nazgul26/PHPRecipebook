@@ -279,28 +279,43 @@ function handleModalSave(btn) {
     if (!modalEl) return;
     var bodyEl = modalEl.querySelector('.modal-body');
     if (!bodyEl) return;
-
-    // Loading state
+    var form = bodyEl.querySelector('form');
+    var submitBtn = bodyEl.querySelector(':scope [type="submit"], :scope button.btn-primary');
     var originalHtml = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Saving\u2026';
 
     function resetSaveBtn() {
         btn.disabled = false;
         btn.innerHTML = originalHtml;
     }
 
+    // Native HTML validation should keep the save button in default state.
+    if (form && !form.checkValidity()) {
+        form.reportValidity();
+        resetSaveBtn();
+        return;
+    }
+
+    // Loading state
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Saving\u2026';
+
     // Reset when modal closes (success path)
     modalEl.addEventListener('hidden.bs.modal', resetSaveBtn, { once: true });
 
-    var submitBtn = bodyEl.querySelector(':scope [type="submit"], :scope button.btn-primary');
-    if (submitBtn) {
-        submitBtn.click();
-    } else {
-        var form = bodyEl.querySelector('form');
-        if (form) {
+    if (form) {
+        if (typeof form.requestSubmit === 'function') {
+            if (submitBtn && submitBtn.form === form) {
+                form.requestSubmit(submitBtn);
+            } else {
+                form.requestSubmit();
+            }
+        } else if (submitBtn) {
+            submitBtn.click();
+        } else {
             form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
         }
+    } else {
+        resetSaveBtn();
     }
 }
 
