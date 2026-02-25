@@ -19,8 +19,11 @@ use Cake\Routing\Router;
 		// Bootstrap Icons
 		echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">';
 
-		echo $this->Html->css('theme');
+        // Markdown Editor
+        $this->Html->script('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js', ['block' => true]);
+		$this->Html->css('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css', ['block' => true]);
 
+        echo $this->Html->css('theme');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');

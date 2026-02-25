@@ -230,6 +230,7 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
 </div>
 
 
+
 <script type="text/javascript">
     var recipeId = "<?= $recipeId ?>";
     var easyMDE = null;
@@ -613,15 +614,7 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
             });
         });
     }
-</script>
 
-<?php
-$this->Html->css('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css', ['block' => true]);
-$this->Html->script('https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js', ['block' => true]);
-?>
-
-
-<script type="text/javascript">
     /* 
         Markdown Editor setup and support
     */
