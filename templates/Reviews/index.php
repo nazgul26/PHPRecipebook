@@ -3,7 +3,7 @@ use Cake\Routing\Router;
 $baseUrl = Router::url('/');
 ?>
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         document.querySelectorAll('[add-review]').forEach(function(el) {
             el.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -19,7 +19,7 @@ $baseUrl = Router::url('/');
                 readonly: true
             });
         });
-    })();
+    });
 </script>
 <?= $this->Flash->render() ?>
 
@@ -52,10 +52,12 @@ $baseUrl = Router::url('/');
             }
             ?>
         </div>
-        <?php if ($isEditor || ($loggedIn && $loggedInuserId == $review['User']['id'])) {
-            echo $this->Html->link(__('Edit'), array('action' => 'edit', $review->recipe_id, $review->id), array('class' => 'ajaxLink'));
-            echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $recipe->id, $review->id), ['confirm' => __('Are you sure you want to delete # {0}?', $review->id)]);
-        }?>
+        <?php if ($isEditor || ($loggedIn && $loggedInuserId == $review['User']['id'])): ?>
+        <div class="d-flex gap-2 mt-2">
+            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $review->recipe_id, $review->id], ['class' => 'btn btn-sm btn-outline-secondary ajaxLink']) ?>
+            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $recipe->id, $review->id], ['confirm' => __('Are you sure you want to delete # {0}?', $review->id), 'class' => 'btn btn-sm btn-outline-danger']) ?>
+        </div>
+        <?php endif; ?>
     </div>
     <?php endforeach; ?>
 

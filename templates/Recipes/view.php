@@ -22,7 +22,7 @@ if (isset($recipe->reviews)) {
 }
 ?>
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         // Star rating (read-only)
         var ratingEl = document.getElementById('recipeRating');
         if (ratingEl) {
@@ -57,7 +57,7 @@ if (isset($recipe->reviews)) {
             var newServings = document.getElementById('viewServings').value * 2;
             ajaxNavigate("recipes/view/<?= $recipeId ?>/" + newServings);
         });
-    })();
+    });
 
     function loadImage(imageUrl, caption) {
         var img = document.querySelector('#selectedRecipeImage img');

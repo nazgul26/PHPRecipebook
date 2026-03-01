@@ -2,7 +2,7 @@
 $currentRating = isset($review->rating) ? $review->rating : 0;
 ?>
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         var container = document.querySelector('.rateit');
         if (container) {
             createStarRating(container, {
@@ -16,7 +16,7 @@ $currentRating = isset($review->rating) ? $review->rating : 0;
                 }
             });
         }
-    })();
+    });
 </script>
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
