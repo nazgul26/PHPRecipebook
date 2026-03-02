@@ -193,12 +193,12 @@ class RecipesController extends AppController
             }
 
             //NOTE: Helpful debug info
-            /*$x = $recipe->getErrors();
+            $x = $recipe->getErrors();
             if ($x) {
-                debug($recipe);
+                //debug($recipe);
                 debug($x);
                 return false;
-            }*/
+            }
         }
         $ethnicities = $this->Recipes->Ethnicities->find('list', limit: 200)->orderBy(['Ethnicities.name' => 'ASC']);
         $baseTypes = $this->Recipes->BaseTypes->find('list', limit: 200)->orderBy(['BaseTypes.name' => 'ASC']);

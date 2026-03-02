@@ -109,12 +109,13 @@ That is it.  You can then start adding ingredients and recipes.
 The second and very common way to run a PHP application is paying for hosting a traditional web hosting provider.  This would provide a fixed cost each month to run your application.  Most likely the basic level of hosting on many providers will be sufficient for many years of growing your business.  We would recommend SiteGround (https://www.siteground.com/) if you don't have a preference to start with.
 
 To start you will need to have:
-    + PHP 7 (or higher) with modules:
+    + PHP 8 (or higher) with modules:
       php-xml (sudo apt install php-xml)
       php-intl
       php-mbstring
       php-curl
       php-zip
+      php-gd
 
     + MySQL with a local db user created.
 
@@ -153,6 +154,11 @@ Enable mod_write in Apache:
     - sudo chown -R www-data.www-data logs
 
   If you don't make <app install dir>/tmp writable by the web user the app will not run!
+
+* To support image uploads for recipes the following is also needed:
+    - mkdir -p webroot/files 
+    - sudo chown -R www-data:www-data webroot/files
+    - sudo chmod -R 775 webroot/files               
 
 ### Database Setup
 

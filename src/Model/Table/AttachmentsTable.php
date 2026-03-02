@@ -1,10 +1,14 @@
 <?php
 namespace App\Model\Table;
 
+use ArrayObject;
+use Cake\Datasource\EntityInterface;
+use Cake\Event\EventInterface;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Psr\Http\Message\UploadedFileInterface;
 
 /**
  * Attachments Model
@@ -46,25 +50,23 @@ class AttachmentsTable extends Table
                 /*'nameCallback' => function ($table, $entity, $data, $field, $settings) {
                     return strtolower($data->getClientFilename());
                 },*/
-                'transformer' => function (\Cake\Datasource\RepositoryInterface $table, \Cake\Datasource\EntityInterface $entity, $data, $field, $settings) {
-                    // get the extension from the file
-                    // there could be better ways to do this, and it will fail
-                    // if the file has no extension
-                    $extension = pathinfo($data['name'], PATHINFO_EXTENSION);
+                'transformer' => function (\Cake\Datasource\RepositoryInterface $table, \Cake\Datasource\EntityInterface $entity, $data, $field, $settings, $filename) {
+                    // $data is a PSR-7 UploadedFileInterface (plugin v8+)
+                    $extension = pathinfo($data->getClientFilename(), PATHINFO_EXTENSION);
                     // Store the thumbnail in a temporary file
                     $tmp = tempnam(sys_get_temp_dir(), 'upload') . '.' . $extension;
-                    // Use the Imagine library to DO THE THING
+                    // Use the Imagine library to create a thumbnail
                     $size = new \Imagine\Image\Box(40, 40);
                     $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
                     $imagine = new \Imagine\Gd\Imagine();
-                    // Save that modified file to our temp file
-                    $imagine->open($data['tmp_name'])
+                    $tmpName = $data->getStream()->getMetadata('uri');
+                    $imagine->open($tmpName)
                             ->thumbnail($size, $mode)
                             ->save($tmp);
-                    // Now return the original *and* the thumbnail
+                    // Return [source_path => destination_filename] for original and thumbnail
                     return [
-                        $data['tmp_name'] => $data['name'],
-                        $tmp => 'thumbnail-' . $data['name'],
+                        $tmpName => $filename,
+                        $tmp => 'thumbnail-' . $filename,
                     ];
                 },
                 'deleteCallback' => function ($path, $entity, $field, $settings) {
@@ -91,6 +93,25 @@ class AttachmentsTable extends Table
             'foreignKey' => 'recipe_id',
             'joinType' => 'INNER',
         ]);
+    }
+
+    /**
+     * Check that the upload directory is writable before the upload behavior
+     * attempts to write files, so a clear error is shown instead of a cryptic
+     * database type-mismatch error.
+     */
+    public function beforeSave(EventInterface $event, EntityInterface $entity, ArrayObject $options): void
+    {
+        if (!($entity->get('attachment') instanceof UploadedFileInterface)) {
+            return;
+        }
+
+        $uploadRoot = WWW_ROOT . 'files';
+        if (!is_dir($uploadRoot) || !is_writable($uploadRoot)) {
+            $entity->setError('attachment', [__('The image upload directory does not exist or is not writable. Please contact an administrator.')]);
+            $event->stopPropagation();
+            $event->setResult(false);
+        }
     }
 
     /**

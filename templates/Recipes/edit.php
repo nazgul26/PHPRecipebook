@@ -57,17 +57,21 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
             echo $this->Form->control('preparation_time_id', array('empty'=>true));
             echo $this->Form->control('difficulty_id', array('empty'=>true));
             echo $this->Form->control('serving_size');
-            /*$imageCount = (isset($recipe) && isset($recipe->attachments))? count($recipe->attachments) : 0;
-            $newImageIndex = $imageCount-1;
+
+            /* Image Upload */
+            $imageCount = (isset($recipe) && isset($recipe->attachments))? count($recipe->attachments) : 0;
+            $newImageIndex = $imageCount;
 
             echo "<div id='imageSection'>";
             echo $this->Form->control('attachments.'. $newImageIndex . '.attachment', array('type' => 'file', 'label' => 'Add Image', 'required' => false));
-            echo $this->Form->control('attachments.'. $newImageIndex . '.name', array('label' => 'Caption', 'required' => false));
+            echo $this->Form->control('attachments.'. $newImageIndex . '.name', array('label' => 'Caption', 'required' => true));
             echo $this->Form->hidden('attachment.'. $newImageIndex . '.id');
 
             echo "<div id='currentImages' class='d-flex flex-wrap gap-3 mt-2'>";
             for ($imageIndex = 0; $imageIndex < $imageCount; $imageIndex++) {
                 $imageName = $recipe->attachments[$imageIndex]->attachment;
+                if (!is_string($imageName)) continue; // Bad data or failure, skip.
+                
                 $imageDir = "attachment";
                 $imageThumb = preg_replace('/(.*)\.(.*)/i', 'thumbnail-${1}.$2', $imageName);
                 $imageCaption = $recipe->attachments[$imageIndex]->name;
@@ -75,14 +79,14 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
                 echo '<div class="recipeImage text-center">';
                 echo $this->Form->hidden('Image.' . $imageIndex . '.id');
                 echo $this->Form->hidden('Image.' . $imageIndex . '.sort_order');
-                echo $this->Html->link(__('Delete'), array('action' => 'deleteAttachment',$recipeId, $imageId), ['class' => 'small']);
+                echo $this->Html->link(__('Delete'), ['action' => 'deleteAttachment', $recipeId, $imageId], ['class' => 'small', 'onclick' => "return confirm('" . __('Are you sure you want to delete this image?') . "');"]);
                 echo '<br/><img src="' . $baseUrl . 'files/Attachments/' . $imageDir . '/' .
                         $imageThumb . '" alt="' . $imageCaption . '" class="rounded mt-1"/>';
                 echo "</div>";
             }
             echo "</div>";
             echo "<div class='clear'></div>";
-            echo "</div>";*/
+            echo "</div>";
 
             echo $this->Form->control('private', array('options' => array('0' => 'No', '1' => 'Yes')));
             echo $this->Form->control('system_type', array('options' => array('usa' => 'USA', 'metric' => 'Metric')));
@@ -329,14 +333,12 @@ $recipeId = isset($recipe->id) ? $recipe->id : "";
                 reNumberRelatedRecipesTable();
 
                 // Remove empty Add Image
-                var fileInput = document.querySelector('#imageSection .file input');
+                var fileInput = document.querySelector('#imageSection input[type="file"]');
                 if (fileInput && fileInput.value === "") {
-                    var imageId = fileInput.getAttribute('id').replace('Attachment', '');
                     fileInput.remove();
-                    var textInput = document.querySelector('#imageSection .text input');
+                    var textInput = document.querySelector('#imageSection input[type="text"]');
                     if (textInput) textInput.remove();
-                    var hiddenId = document.getElementById(imageId + 'Id');
-                    if (hiddenId) hiddenId.remove();
+                    document.querySelectorAll('#imageSection input[type="hidden"]').forEach(function(h) { h.remove(); });
                 }
                 return true;
             });

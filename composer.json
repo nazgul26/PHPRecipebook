@@ -11,6 +11,7 @@
         "cakephp/cakephp": "^5.3",
         "cakephp/migrations": "^4.0",
         "cakephp/plugin-installer": "^2.0",
+        "imagine/imagine": "^1.5",
         "josegonzalez/cakephp-upload": "^8.0",
         "league/commonmark": "^2.8",
         "mobiledetect/mobiledetectlib": "^4.8",
