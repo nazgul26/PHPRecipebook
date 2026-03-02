@@ -187,7 +187,7 @@ class RecipesController extends AppController
             $recipe->tags = $this->buildTagEntities($this->request->getData('tags_list'), $userId);
             if ($this->Recipes->save($recipe)) {
                 $this->Flash->success(__('The recipe has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                //return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The recipe could not be saved. Please, try again.'));
             }
