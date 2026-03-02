@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         document.querySelector('[shop-print]')?.addEventListener('click', function(e) {
             e.preventDefault();
             window.print();
@@ -12,7 +12,7 @@
         document.getElementById('store-id')?.addEventListener('change', function() {
             document.getElementById('ShoppingListInstoreForm').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
         });
-    })();
+    });
 </script>
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">

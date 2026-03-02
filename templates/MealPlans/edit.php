@@ -3,7 +3,7 @@ use Cake\Routing\Router;
 $baseUrl = Router::url('/');
 ?>
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         // Update modal title
         var modalTitle = document.querySelector('#editMealDialog .modal-title');
         if (modalTitle) modalTitle.textContent = 'Meal - <?= $mealDate ?>';
@@ -29,7 +29,7 @@ $baseUrl = Router::url('/');
         }
 
         document.getElementById('MealPlanDays')?.addEventListener('change', scaleServingsByDays);
-    })();
+    });
 
     function scaleServingsByDays() {
         var daysEl = document.getElementById('MealPlanDays');

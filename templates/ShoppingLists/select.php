@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         document.querySelectorAll('[list-item]').forEach(function(el) {
             el.addEventListener('click', function(e) {
                 e.stopPropagation();
@@ -18,7 +18,7 @@
         document.querySelector('[shop-online]')?.addEventListener('click', function() {
             loadShoppingStep('online');
         });
-    })();
+    });
 
     function loadShoppingStep(routeName) {
         document.getElementById('route').value = routeName;

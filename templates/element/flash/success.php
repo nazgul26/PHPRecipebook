@@ -1,9 +1,9 @@
 <script type="text/javascript">
-    (function() {
+    onAppReady(function() {
         <?php if (isset($params['event'])) { ?>
         document.dispatchEvent(new CustomEvent("<?= h($params['event']) ?>"));
         <?php }?>
 
         showToast('<?= h($message) ?>');
-    })();
+    });
 </script>
