@@ -130,7 +130,21 @@ function ajaxGet(location, target) {
     });
 }
 
-function ajaxPostForm(formEl) {
+function setBtnLoading(btn, label) {
+    if (!btn) return function() {};
+    var savedHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>'
+        + (label !== undefined ? label : savedHtml);
+    return function() {
+        if (btn.isConnected) {
+            btn.disabled = false;
+            btn.innerHTML = savedHtml;
+        }
+    };
+}
+
+function ajaxPostForm(formEl, btn) {
     var targetId = formEl.getAttribute('targetId') || 'content';
 
     // If the target is a modal element, redirect to its body content div
@@ -140,6 +154,8 @@ function ajaxPostForm(formEl) {
         targetId = targetId + 'Content';
     }
 
+    var restoreBtn = setBtnLoading(btn);
+
     fetch(formEl.getAttribute('action'), {
         method: 'POST',
         headers: { 'X-Requested-With': 'XMLHttpRequest' },
@@ -147,6 +163,7 @@ function ajaxPostForm(formEl) {
     })
     .then(function(response) {
         if (response.status === 403) {
+            restoreBtn();
             ajaxGet(baseUrl + "users/login", targetId);
             return null;
         }
@@ -163,6 +180,7 @@ function ajaxPostForm(formEl) {
     })
     .catch(function(error) {
         console.error('ajaxPostForm error:', error);
+        restoreBtn();
     });
 }
 
@@ -227,7 +245,8 @@ function initAjaxForms(targetId) {
 
         formEl.addEventListener('submit', function(e) {
             e.preventDefault();
-            ajaxPostForm(this);
+            var submitter = e.submitter || this.querySelector('[type="submit"]');
+            ajaxPostForm(this, submitter);
             return false;
         });
     });
@@ -281,23 +300,14 @@ function handleModalSave(btn) {
     if (!bodyEl) return;
     var form = bodyEl.querySelector('form');
     var submitBtn = bodyEl.querySelector(':scope [type="submit"], :scope button.btn-primary');
-    var originalHtml = btn.innerHTML;
 
-    function resetSaveBtn() {
-        btn.disabled = false;
-        btn.innerHTML = originalHtml;
-    }
-
-    // Native HTML validation should keep the save button in default state.
+    // Native HTML validation — loading state not set yet, no restore needed
     if (form && !form.checkValidity()) {
         form.reportValidity();
-        resetSaveBtn();
         return;
     }
 
-    // Loading state
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Saving\u2026';
+    var resetSaveBtn = setBtnLoading(btn, 'Saving\u2026');
 
     // Reset when modal closes (success path)
     modalEl.addEventListener('hidden.bs.modal', resetSaveBtn, { once: true });

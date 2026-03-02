@@ -65,7 +65,7 @@ $baseUrl = Router::url('/');
             </li>
         </ul>
         <div class="recipe-save-area">
-            <?= $this->Form->submit(__('Save Recipe'), ['class' => 'btn btn-primary btn-sm', 'id' => 'mainSaveBtn']) ?>
+            <button type="submit" class="btn btn-primary btn-sm" id="mainSaveBtn"><?= __('Save Recipe') ?></button>
         </div>
     </div>
 
