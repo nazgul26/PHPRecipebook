@@ -118,11 +118,7 @@ $baseUrl = Router::url('/');
         <!-- INGREDIENTS -->
         <div class="tab-pane fade" id="tab-ingredients" role="tabpanel" aria-labelledby="tab-ingredients-btn">
             <div id="ingredientsSection">
-                <h6 class="mb-3"><i class="bi bi-list-check"></i> <?= __('Ingredients') ?>
-                    &nbsp;<?= $this->Html->link(__('add new'), ['controller' => 'ingredients', 'action' => 'edit'],
-                        ['class' => 'ajaxLink btn btn-sm btn-outline-secondary', 'targetId' => 'editIngredientDialog', 'id' => 'addNewIngredientsLink']) ?>
-                </h6>
-                <table id="sortableTable1" class="table table-sm">
+                <table id="sortableTable1" class="table table-sm table-borderless">
                 <tr class="headerRow">
                     <th style="width: 40px;"></th>
                     <th style="width: 40px;"></th>
@@ -181,12 +177,14 @@ $baseUrl = Router::url('/');
                 </table>
                 <div id="ingredientDeleteResponse"></div>
                 <a href="#" id="AddMoreIngredientsLink" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-circle"></i> <?= __('Add Another Ingredient') ?></a>
+                &nbsp;<?= $this->Html->link(__('Add Source Ingredient'), ['controller' => 'ingredients', 'action' => 'edit'],
+                    ['class' => 'ajaxLink btn btn-sm btn-outline-secondary', 'targetId' => 'editIngredientDialog', 'id' => 'addNewIngredientsLink']) ?>
             </div>
         </div>
 
         <!-- DIRECTIONS -->
         <div class="tab-pane fade" id="tab-directions" role="tabpanel" aria-labelledby="tab-directions-btn">
-            <?= $this->Form->control('directions', ['escape' => true, 'rows' => '22', 'cols' => '20', 'id' => 'directions-textarea']) ?>
+            <?= $this->Form->control('', ['escape' => true, 'rows' => '22', 'cols' => '20', 'id' => 'directions-textarea']) ?>
             <?= $this->Form->control('use_markdown', ['id' => 'use-markdown-toggle']) ?>
         </div>
 
@@ -255,8 +253,7 @@ $baseUrl = Router::url('/');
         <!-- RELATED RECIPES -->
         <div class="tab-pane fade" id="tab-related" role="tabpanel" aria-labelledby="tab-related-btn">
             <div id="relatedRecipesSection">
-                <h6 class="mb-3"><i class="bi bi-link-45deg"></i> <?= __('Related Recipes') ?></h6>
-                <table id="sortableTable2" class="table table-sm">
+                <table id="sortableTable2" class="table table-sm table-borderless">
                 <tr class="headerRow">
                     <th style="width: 40px;"></th>
                     <th style="width: 40px;"></th>
