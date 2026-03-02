@@ -4,24 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57fc32842c1e8523c58844cf939faa40",
+    "content-hash": "d929d24a09a06b1831d4d9e7a4406f7a",
     "packages": [
         {
             "name": "cakephp/authentication",
-            "version": "3.3.4",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/authentication.git",
-                "reference": "85752168191e3a0b6d9318288b67e320b0b4d6f0"
+                "reference": "5c6afb1c6d858b25032d4d044bfecbb7ce4d6e57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/authentication/zipball/85752168191e3a0b6d9318288b67e320b0b4d6f0",
-                "reference": "85752168191e3a0b6d9318288b67e320b0b4d6f0",
+                "url": "https://api.github.com/repos/cakephp/authentication/zipball/5c6afb1c6d858b25032d4d044bfecbb7ce4d6e57",
+                "reference": "5c6afb1c6d858b25032d4d044bfecbb7ce4d6e57",
                 "shasum": ""
             },
             "require": {
                 "cakephp/http": "^5.0",
+                "cakephp/utility": "^5.0",
                 "laminas/laminas-diactoros": "^3.0",
                 "php": ">=8.1",
                 "psr/http-client": "^1.0",
@@ -32,8 +33,8 @@
             "require-dev": {
                 "cakephp/cakephp": "^5.1.0",
                 "cakephp/cakephp-codesniffer": "^5.0",
-                "firebase/php-jwt": "^6.2",
-                "phpunit/phpunit": "^10.5.32 || ^11.3.3 || ^12.0.9"
+                "firebase/php-jwt": "^7.0",
+                "phpunit/phpunit": "^10.5.58 || ^11.5.3 || ^12.4"
             },
             "suggest": {
                 "cakephp/cakephp": "Install full core to use \"CookieAuthenticator\".",
@@ -67,12 +68,12 @@
                 "middleware"
             ],
             "support": {
-                "docs": "https://book.cakephp.org/authentication/3/en/",
+                "docs": "https://book.cakephp.org/authentication/4/en/",
                 "forum": "https://discourse.cakephp.org/",
                 "issues": "https://github.com/cakephp/authentication/issues",
                 "source": "https://github.com/cakephp/authentication"
             },
-            "time": "2025-11-29T15:47:28+00:00"
+            "time": "2026-02-27T02:57:39+00:00"
         },
         {
             "name": "cakephp/authorization",
@@ -141,16 +142,16 @@
         },
         {
             "name": "cakephp/cakephp",
-            "version": "5.3.1",
+            "version": "5.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "ae91c0950fd1a4ee9b97b31a8db744721cdb9bd0"
+                "reference": "5c7abec3348523d6d1ef693e448eba50d9bc7eae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/ae91c0950fd1a4ee9b97b31a8db744721cdb9bd0",
-                "reference": "ae91c0950fd1a4ee9b97b31a8db744721cdb9bd0",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/5c7abec3348523d6d1ef693e448eba50d9bc7eae",
+                "reference": "5c7abec3348523d6d1ef693e448eba50d9bc7eae",
                 "shasum": ""
             },
             "require": {
@@ -203,7 +204,7 @@
                 "mikey179/vfsstream": "^1.6.12",
                 "mockery/mockery": "^1.6",
                 "paragonie/csp-builder": "^2.3 || ^3.0",
-                "phpunit/phpunit": "^11.5.3 || ^12.1.3"
+                "phpunit/phpunit": "^11.5.3 || ^12.1.3 || ^13.0"
             },
             "suggest": {
                 "ext-curl": "To enable more efficient network calls in Http\\Client.",
@@ -258,7 +259,7 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/cakephp"
             },
-            "time": "2026-01-14T05:03:03+00:00"
+            "time": "2026-02-25T04:07:32+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -7094,12 +7095,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.2"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
