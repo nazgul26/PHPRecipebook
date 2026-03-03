@@ -23,7 +23,6 @@ $baseUrl = Router::url('/');
                         info.style.display = 'block';
                     }
                     scaleServingsByDays();
-                    return false;
                 }
             });
         }
