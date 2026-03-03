@@ -1760,10 +1760,6 @@ msgstr ""
 msgid "List Stores"
 msgstr ""
 
-#: View/ShoppingLists/index.ctp:71
-msgid "List Online Vendors"
-msgstr ""
-
 #: View/ShoppingLists/index.ctp:89;126
 msgid "Action"
 msgstr ""
@@ -1781,7 +1777,7 @@ msgid "Servings to buy"
 msgstr ""
 
 #: View/ShoppingLists/index.ctp:107;143
-msgid "Are you sure you want to remove %s?"
+msgid "Are you sure you want to remove {0}?"
 msgstr ""
 
 #: View/ShoppingLists/index.ctp:130

@@ -82,7 +82,6 @@ $shoppingListId = isset($shoppingList->id) ? $shoppingList->id : "";
 <div class="actions-bar">
     <?= $this->Html->link(__('Clear List'), array('action' => 'clear'), array('class' => 'btn btn-outline-primary btn-sm ajaxLink')) ?>
     <?= $this->Html->link(__('List Stores'), array('controller' => 'stores', 'action' => 'index'), array('class' => 'btn btn-outline-primary btn-sm ajaxLink')) ?>
-    <?= $this->Html->link(__('List Online Vendors'), array('controller' => 'vendors', 'action' => 'index'), array('class' => 'btn btn-outline-primary btn-sm ajaxLink')) ?>
 </div>
 <div class="shoppingList form">
 <?= $this->Form->create($shoppingList) ?>
