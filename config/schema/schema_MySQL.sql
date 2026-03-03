@@ -198,6 +198,7 @@ CREATE TABLE shopping_list_ingredients (
     PRIMARY KEY (id)
 );
 
+-- Deprecated 3/1/2026
 CREATE TABLE vendors (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(64) NOT NULL UNIQUE,
@@ -217,6 +218,7 @@ CREATE TABLE vendor_products (
 	`user_id` INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
     PRIMARY KEY (id)
 );
+-- End deprecation
 
 CREATE TABLE meal_names (
 	`id` INT NOT NULL AUTO_INCREMENT,
