@@ -15,9 +15,6 @@
         document.querySelector('[shop-store]')?.addEventListener('click', function() {
             loadShoppingStep('instore');
         });
-        document.querySelector('[shop-online]')?.addEventListener('click', function() {
-            loadShoppingStep('online');
-        });
     });
 
     function loadShoppingStep(routeName) {
@@ -86,6 +83,5 @@
 </table>
 <div class="d-flex gap-2">
     <button class="btn btn-primary" shop-store><i class="bi bi-shop"></i> <?= __('Shop At Store') ?></button>
-    <button class="btn btn-secondary" shop-online><i class="bi bi-globe"></i> <?= __('Shop Online') ?></button>
 </div>
 </form>

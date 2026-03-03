@@ -19,7 +19,6 @@ use Cake\Core\Configure;
  * @property \App\Model\Table\ShoppingListRecipesTable&\Cake\ORM\Association\HasMany $ShoppingListRecipes
  * @property \App\Model\Table\ShoppingListsTable&\Cake\ORM\Association\HasMany $ShoppingLists
  * @property \App\Model\Table\SourcesTable&\Cake\ORM\Association\HasMany $Sources
- * @property \App\Model\Table\VendorProductsTable&\Cake\ORM\Association\HasMany $VendorProducts
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
@@ -78,9 +77,6 @@ class UsersTable extends Table
             'foreignKey' => 'user_id',
         ]);
         $this->hasMany('Tags', [
-            'foreignKey' => 'user_id',
-        ]);
-        $this->hasMany('VendorProducts', [
             'foreignKey' => 'user_id',
         ]);
     }

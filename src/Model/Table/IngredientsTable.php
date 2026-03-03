@@ -14,7 +14,6 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\IngredientMappingsTable&\Cake\ORM\Association\HasMany $IngredientMappings
  * @property \App\Model\Table\ShoppingListIngredientsTable&\Cake\ORM\Association\HasMany $ShoppingListIngredients
- * @property \App\Model\Table\VendorProductsTable&\Cake\ORM\Association\HasMany $VendorProducts
  *
  * @method \App\Model\Entity\Ingredient get($primaryKey, $options = [])
  * @method \App\Model\Entity\Ingredient newEntity($data = null, array $options = [])

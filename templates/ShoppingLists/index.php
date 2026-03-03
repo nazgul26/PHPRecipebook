@@ -48,12 +48,12 @@ $shoppingListId = isset($shoppingList->id) ? $shoppingList->id : "";
             radio.addEventListener('change', function() {
                 var selectedValue = document.querySelector('input[name=searchType]:checked').value;
                 if (selectedValue == "recipe") {
-                    ingredientAC.style.display = 'none';
-                    recipeAC.style.display = '';
+                    ingredientAC.parentNode.style.display = 'none';
+                    recipeAC.parentNode.style.display = '';
                     localStorage.setItem("shoppingListSearchType", "recipe");
                 } else {
-                    ingredientAC.style.display = '';
-                    recipeAC.style.display = 'none';
+                    ingredientAC.parentNode.style.display = '';
+                    recipeAC.parentNode.style.display = 'none';
                     localStorage.setItem("shoppingListSearchType", "ingredient");
                 }
             });
@@ -97,8 +97,12 @@ $shoppingListId = isset($shoppingList->id) ? $shoppingList->id : "";
                 <label for="ingredientSearch" class="form-check-label"><?= __('Ingredients') ?></label>
             </div>
             <span class="fw-bold"><?= __('Search') ?></span>
-            <input type="search" class="form-control form-control-sm" style="width: 300px;" id="addRecipeAutocomplete"/>
-            <input type="search" class="form-control form-control-sm" style="width: 300px; display:none;" id="addIngredientAutocomplete"/>
+            <div style="position: relative;">
+                <input type="search" class="form-control form-control-sm" style="width: 300px;" id="addRecipeAutocomplete"/>
+            </div>
+            <div style="position: relative; display:none;">
+                <input type="search" class="form-control form-control-sm" style="width: 300px;" id="addIngredientAutocomplete"/>
+            </div>
         </div>
     </fieldset>
 
@@ -127,7 +131,7 @@ $shoppingListId = isset($shoppingList->id) ? $shoppingList->id : "";
                 <?= $this->Html->link(__('Delete'), array('action' => 'deleteRecipe',
                         $shoppingListId,
                         $shoppingList->shopping_list_recipes[$mapIndex]['recipe_id']),
-                        ['confirm' => __('Are you sure you want to remove %s?', $recipeName)]) ?>
+                        ['confirm' => __('Are you sure you want to remove {0}?', $recipeName)]) ?>
                 <?= $this->Form->hidden('shopping_list_recipes.' . $mapIndex . '.id') ?>
                 <?= $this->Form->hidden('shopping_list_recipes.' . $mapIndex . '.recipe_id') ?>
                 <?= $this->Form->hidden('shopping_list_recipes.' . $mapIndex . '.shopping_list_id') ?>
@@ -165,8 +169,7 @@ $shoppingListId = isset($shoppingList->id) ? $shoppingList->id : "";
                 <?= $this->Html->link(__('Edit'), array('controller' => 'ingredients', 'action' => 'edit', $ingredientId), array('class' => 'ajaxLink')) ?>
                 <?= $this->Html->link(__('Delete'), array('action' => 'deleteIngredient',
                    $shoppingList->id,
-                   $ingredientItemId), array('class' => 'ajaxLink'),
-                   __('Are you sure you want to remove %s?', $ingredientName)) ?>
+                   $ingredientItemId), ['class' => 'ajaxLink', 'confirm' => __('Are you sure you want to remove {0}?', $ingredientName)]) ?>
             </td>
             <td>
                 <?= $this->Form->hidden('shopping_list_ingredients.' . $mapIndex . '.id') ?>
