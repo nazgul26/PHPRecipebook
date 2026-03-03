@@ -224,43 +224,6 @@ class ShoppingListsController extends AppController
         }
     }
 
-    public function online($listId = null)
-    {
-        if ($listId == null) {
-            throw new NotFoundException(__('Invalid list'));
-        }
-
-        $vendorsTable = $this->fetchTable('Vendors');
-
-        if ($this->request->is(array('post', 'put'))) {
-            $postData = $this->request->getData();
-            $removeIds = isset($postData['remove']) ? $postData['remove'] : null;
-            $ingredients = $this->removeSelectedItems($listId, $removeIds);
-            $this->set('list', $ingredients);
-            $this->set('listId', $listId);
-        }
-
-        $vendors = $vendorsTable->find('list');
-
-        // Load the first Vendor as the Selected one and filter to User setup mappings
-        if (isset($vendors)) {
-            $selectedVendorId = array_key_first($vendors->toArray());
-            $selectedVendor = $vendorsTable->find()
-                ->where(['Vendors.id' => $selectedVendorId])
-                ->contain([
-                    'VendorProducts' => [
-                        'conditions' => ['VendorProducts.user_id =' => $this->Authentication->getIdentity()?->get('id')]
-                    ]
-                ])
-                ->first();
-
-            //$this->request->data = $selectedVendor;
-            $this->set('selectedVendor', $selectedVendor);
-        }
-
-        $this->set('vendors', $vendors);
-    }
-
     public function clear()
     {
         $this->ShoppingLists->clearList($this->Authentication->getIdentity()?->get('id'));

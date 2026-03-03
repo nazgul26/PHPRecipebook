@@ -12,18 +12,7 @@
                 if (cb) rowClicked(cb);
             });
         });
-        document.querySelector('[shop-store]')?.addEventListener('click', function() {
-            loadShoppingStep('instore');
-        });
     });
-
-    function loadShoppingStep(routeName) {
-        document.getElementById('route').value = routeName;
-        var form = document.querySelector('form');
-        form.setAttribute('action', baseUrl + 'ShoppingLists/' + routeName + "/<?= $listId ?>");
-        form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
-        return false;
-    }
 
     function rowClicked(checkBox) {
         if (checkBox.checked) {
@@ -42,8 +31,7 @@
 </ol>
 </nav>
 <h2><?= __('What Items do you already have?') ?></h2>
-<?= $this->Form->create() ?>
-<input type="hidden" name="route" id="route"/>
+<?= $this->Form->create(null, ['url' => ['action' => 'instore', $listId]]) ?>
 <table class="table table-hover align-middle">
     <thead>
     <tr>
@@ -82,6 +70,6 @@
     </tbody>
 </table>
 <div class="d-flex gap-2">
-    <button class="btn btn-primary" shop-store><i class="bi bi-shop"></i> <?= __('Shop At Store') ?></button>
+    <?= $this->Form->button(__('Shop At Store'), ['class' => 'btn btn-primary', 'escape' => false]) ?>
 </div>
-</form>
+<?= $this->Form->end() ?>
