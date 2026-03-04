@@ -184,7 +184,7 @@ $baseUrl = Router::url('/');
 
         <!-- DIRECTIONS -->
         <div class="tab-pane fade" id="tab-directions" role="tabpanel" aria-labelledby="tab-directions-btn">
-            <?= $this->Form->control('', ['escape' => true, 'rows' => '22', 'cols' => '20', 'id' => 'directions-textarea']) ?>
+            <?= $this->Form->control('directions', ['escape' => true, 'rows' => '22', 'cols' => '20', 'id' => 'directions-textarea', 'label' => false]) ?>
             <?= $this->Form->control('use_markdown', ['id' => 'use-markdown-toggle']) ?>
         </div>
 
