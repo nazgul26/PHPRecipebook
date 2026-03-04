@@ -66,7 +66,8 @@ class RecipesController extends AppController
     {
         $query = $this->Recipes->find()
             ->contain($this->indexContains)
-            ->where($this->filterConditions);
+            ->where($this->filterConditions)
+            ->orderBy(['Recipes.name' => 'ASC']);
         $recipes = $this->paginate($query);
 
         $this->set(compact('recipes'));
