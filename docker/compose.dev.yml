@@ -1,0 +1,11 @@
+
+services:
+  php:
+    user: ${UID:-1000}:${GID:-1000}
+    volumes:
+      - "../:/var/www/html/"
+
+    tmpfs:
+      - /var/www/html/tmp:mode=750,uid=${UID:-1000},gid=${GID:-1000}
+      - /var/www/html/logs:mode=750,uid=${UID:-1000},gid=${GID:-1000}
+      #
