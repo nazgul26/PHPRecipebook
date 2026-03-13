@@ -80,3 +80,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 
 
 ENTRYPOINT ["/var/www/html/docker/web-start.sh"]
+RUN sed -i 's|use Cake\\Auth\\DefaultPasswordHasher;|use Authentication\\PasswordHasher\\DefaultPasswordHasher;|' \
+    "${RecipebookRoot}/config/Seeds/UsersSeed.php"

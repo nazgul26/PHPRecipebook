@@ -3,24 +3,16 @@ name: phprecipebook
 services:
 
   php:
-    image: ilveroluca/phprecipebook:v6.8_cv0.1
+    image: ilveroluca/phprecipebook:v7.0_cv0.1
     user: www-data:www-data
 
+    env_file: recipebook.env
+
     environment:
-       # Default values. Override with --env-file on command line
-       APP_NAME: "PHPRecipeBook"
-       ALLOW_PUBLIC_ACCOUNT_CREATION :  "false"
-       PRIVATE_COLLECTION :  "false"
-       DEBUG: "${DEBUG}"
-       APP_ENCODING: "UTF-8"
-       APP_DEFAULT_LOCALE: "en"
-       APP_DEFAULT_TIMEZONE: "UTC"
-       SECURITY_SALT: "random-string"
-       DATABASE_URL: "mysql://phpuser:RBAdm1n$@db/phprecipebook?encoding=utf8&timezone=UTC&cacheMetadata=true&quoteIdentifiers=false&persistent=false"
-       EMAIL_TRANSPORT_DEFAULT_URL: "smtp://my@gmail.com:secret@smtp.gmail.com:587?tls=true"
-       EMAIL_FROM_ADDRESS: "noreply@phprecipebook.com"
-       EMAIL_FROM_NAME: "PHP RecipeBook"
-       #PHPRB_INSERT_SEEDS: "true"
+       DEBUG: ${DEBUG:-false}
+       #APP_NAME: "PHPRecipeBook"
+       #APP_ENCODING: "UTF-8"
+       #APP_DEFAULT_TIMEZONE: "UTC"
 
     ports:
       - "8080:8080"
@@ -42,31 +34,10 @@ services:
       timeout: 10s
       retries: 3
 
-  db:
-    image: mysql:9.6
+
+  adminer:
+    image: adminer
     restart: unless-stopped
-    volumes:
-      - phprecipebook_db:/var/lib/mysql
-    environment:
-      # Default values. Override with --env-file on command line
-      MYSQL_DATABASE: phprecipebook
-      MYSQL_USER: phpuser
-      MYSQL_PASSWORD: RBAdm1n$
-      MYSQL_RANDOM_ROOT_PASSWORD: 1
-
-    healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 5s
-      retries: 10
-
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
     ports:
-      - "8001:80"
-    environment:
-      - PMA_HOST=db
-      - PMA_PORT=3306
-
-volumes:
-  phprecipebook_db:
+      - 8001:8080
+    profiles: ["debug"]
