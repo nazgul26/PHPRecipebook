@@ -81,9 +81,13 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 
 ENTRYPOINT ["/var/www/html/docker/web-start.sh"]
 
+# Temporary work-around for issue #170.
+RUN sed -i -e '/addColumn/s/\<blob\>/binary/g' \
+    "${RecipebookRoot}/config/Migrations/20210101154551_Initial.php"
+
 # Temporary work-around for issue #171.
-RUN sed -i 's|use Cake\\Auth\\DefaultPasswordHasher;|use Authentication\\PasswordHasher\\DefaultPasswordHasher;|' \
+RUN sed -i -e 's|use Cake\\Auth\\DefaultPasswordHasher;|use Authentication\\PasswordHasher\\DefaultPasswordHasher;|' \
     "${RecipebookRoot}/config/Seeds/UsersSeed.php"
 
-
+# Set default container user:group
 USER www-data:www-data
