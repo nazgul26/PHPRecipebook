@@ -3,10 +3,9 @@
 # Seeding application data to be done manually, if required (i.e. fresh
 # installation)
 
+FROM php:8.2-apache AS base
 
-FROM php:8.2-apache as base
-
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 
 RUN apt-get update \
@@ -36,36 +35,37 @@ RUN apt-get update \
 # Use the default production configuration provided with the base image
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-FROM base AS recipebook
+# Configure Apache to serve only HTTP via port 8080.
+# HTTPS can be more easily configured with a dedicated proxy, which can integrate logic for certificate management.
+RUN sed -i -e '/VirtualHost/s/:80\>/:8080/' /etc/apache2/sites-available/000-default.conf \
+ && echo 'Listen 8080' > /etc/apache2/ports.conf
+EXPOSE 8080
 
-ARG version=6.8
-ARG cv=0.1
+RUN a2enmod rewrite
+
+FROM base AS recipebook-release
+
+ARG version=7.0
 
 ENV RecipebookRoot=/var/www/html/
 
+# Retrieve the specified release archive and install it
 RUN \
     cd /tmp \
  && curl --fail --location --output /tmp/phprecipebook.tar.gz https://github.com/nazgul26/PHPRecipebook/releases/download/${version}/phprecipebook${version}.tgz   \
  && mkdir -p ${RecipebookRoot} \
  && tar -C ${RecipebookRoot} --strip-components=1 -xzpf /tmp/phprecipebook.tar.gz \
- && rm /tmp/phprecipebook.tar.gz \
-    "${RecipebookRoot}/docker/Dockerfile" \
-    "${RecipebookRoot}/docker/docker-compose.yml" \
-    "${RecipebookRoot}/docker/docker-vars.env"
+ && rm -f /tmp/phprecipebook.tar.gz \
+    ${RecipebookRoot}/docker/[Dd]ocker* \
+    ${RecipebookRoot}/docker/compose.* \
+    ${RecipebookRoot}/docker/*.env
 
-
-# Configure Apache to serve only HTTP via port 8080.
-# HTTPS can be more easily configured with a dedicated proxy, which can integrate logic for certificate management.
-COPY apache2/ports.conf /etc/apache2/
-RUN a2enmod rewrite
-
-RUN sed -i -e '/VirtualHost/s/:80\>/:8080/' /etc/apache2/sites-available/000-default.conf \
-  && sed -i -e '/Comment out/,/END/s/^/#/' "${RecipebookRoot}/.htaccess"
-
-EXPOSE 8080
+# Disable redirection to https in .htaccess
+RUN sed -i -e '/Comment out/,/END/s/^/#/' "${RecipebookRoot}/.htaccess"
 
 COPY web-start.sh ${RecipebookRoot}/docker/web-start.sh
 
+# set directory and file ownershipt and permissions
 RUN \
     chown -R root:root ${RecipebookRoot} \
  && chmod -R a-w ${RecipebookRoot} \
@@ -80,5 +80,10 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 
 
 ENTRYPOINT ["/var/www/html/docker/web-start.sh"]
+
+# Temporary work-around for issue #171.
 RUN sed -i 's|use Cake\\Auth\\DefaultPasswordHasher;|use Authentication\\PasswordHasher\\DefaultPasswordHasher;|' \
     "${RecipebookRoot}/config/Seeds/UsersSeed.php"
+
+
+USER www-data:www-data
