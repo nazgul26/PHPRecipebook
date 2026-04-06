@@ -362,7 +362,7 @@ class Initial extends AbstractMigration
                 'limit' => null,
                 'null' => true,
             ])
-            ->addColumn('picture', 'blob', [
+            ->addColumn('picture', 'binary', [
                 'default' => null,
                 'null' => true,
             ])
@@ -457,7 +457,7 @@ class Initial extends AbstractMigration
                 'limit' => null,
                 'null' => true,
             ])
-            ->addColumn('picture', 'blob', [
+            ->addColumn('picture', 'binary', [
                 'default' => null,
                 'null' => true,
             ])
