@@ -1,0 +1,120 @@
+name: phprecipebook
+
+# "Compose Extension": reusable part of the definition of the main app service
+x-php-app: &php-app
+    image: ilveroluca/phprecipebook:v7.0
+    # the uid:gid of the container has to match the uid and gid of the tmpfs mounts (below)
+    user: www-data:www-data
+
+    env_file: ${APP_ENV_FILE:-.env}
+    environment:
+       DEBUG: ${DEBUG:-false}
+       APP_NAME: "PHPRecipeBook"
+       APP_DEFAULT_TIMEZONE: "UTC"
+       APP_ENCODING: "UTF-8"
+       APP_DEFAULT_LOCALE: "en"
+       ALLOW_PUBLIC_ACCOUNT_CREATION :  "false"
+       PRIVATE_COLLECTION :  "false"
+
+    tmpfs:
+      # uid / gid = 33 refers to www-data.  Here the user / group name doesn't work
+      # and requires the numeric ID
+      - /var/www/html/tmp:mode=750,uid=33,gid=33
+      - /var/www/html/logs:mode=750,uid=33,gid=33
+
+    depends_on:
+      db-postgres:
+        condition: service_healthy
+        restart: true
+        required: false
+      db-mysql:
+        condition: service_healthy
+        restart: true
+        required: false
+
+
+services:
+  php:
+    <<: *php-app
+
+    ports:
+      - "8080:8080"
+
+    post_start:
+      - command: ["/var/www/html/bin/cake", "migrations", "migrate"]
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  app-seeding:
+    # Seed a new application with basic data.  Run manually with `docker compose run app-seeding`
+    profiles: ["no-service"]
+    <<: *php-app
+
+    entrypoint: ["/var/www/html/bin/cake", "migrations", "seed"]
+    depends_on:
+      php:
+        condition: service_healthy
+        required: true
+
+  db-mysql:
+    profiles: ["mysql"]
+    image: mysql:9.6
+    restart: unless-stopped
+
+    env_file: ${APP_ENV_FILE:-.env}
+    environment:
+      MYSQL_DATABASE: phprecipebook
+
+    volumes:
+      - phprecipebook:/var/lib/mysql
+
+    networks:
+      default:
+        aliases:
+          - db
+
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
+
+  db-postgres:
+    profiles: ["pgsql"]
+
+    image: postgres:18-alpine
+    restart: unless-stopped
+
+    shm_size: 128mb
+
+    env_file: ${APP_ENV_FILE:-.env}
+    environment:
+      POSTGRES_DB: phprecipebook
+
+    volumes:
+      - phprecipebook:/var/lib/postgresql/data
+      # To customize the postgresql configuration
+      #-  "$PWD/my-postgres.conf":/etc/postgresql/postgresql.conf
+
+    networks:
+      default:
+        aliases:
+          - db
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      timeout: 5s
+      retries: 10
+
+  adminer:
+    profiles: ["maintenance"]
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 8001:8080
+
+volumes:
+  phprecipebook:

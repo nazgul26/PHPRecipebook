@@ -1,13 +1,20 @@
 #!/bin/sh
 
-# Update Schema if needed
-/var/www/html/bin/cake migrations migrate
+set -o errexit
+set -o nounset
 
-CONTAINER_FIRST_STARTUP="CONTAINER_FIRST_STARTUP"
-if [ ! -e /var/www/html/$CONTAINER_FIRST_STARTUP ]; then
-    touch /var/www/html/$CONTAINER_FIRST_STARTUP
-    # Only run seed once
+# Run migrations, if requested
+if [ "${PHPRB_RUN_MIGRATIONS:-}" = "true" ]; then
+    echo "Running migrations" >&2
+    /var/www/html/bin/cake migrations migrate
+fi
+
+# Run seed if requested. Unless using a version of Cake that
+# avoics duplicate seeding, it's better to do this manually.
+if [ "${PHPRB_INSERT_SEEDS:-}" = "true" ]; then
+    echo "Seeding database" >&2
     /var/www/html/bin/cake migrations seed
 fi
 
-apache2ctl -DFOREGROUND
+echo "Starting apache2" >&2
+exec apache2ctl -DFOREGROUND
