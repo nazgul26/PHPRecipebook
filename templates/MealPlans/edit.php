@@ -23,6 +23,20 @@ $baseUrl = Router::url('/');
                         info.style.display = 'block';
                     }
                     scaleServingsByDays();
+
+                    // Auto-select meal name based on recipe course (matched by name)
+                    if (ui.item.course) {
+                        var courseName = ui.item.course.toLowerCase();
+                        var mealSelect = document.querySelector('select[name="meal_name_id"]');
+                        if (mealSelect) {
+                            for (var i = 0; i < mealSelect.options.length; i++) {
+                                if (mealSelect.options[i].text.toLowerCase() === courseName) {
+                                    mealSelect.selectedIndex = i;
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 }
             });
         }
@@ -47,10 +61,7 @@ $baseUrl = Router::url('/');
 
 <div class="mealPlans form">
 <?= $this->Form->create($mealPlan, ['default' => false, 'targetId' => 'editMealDialog']) ?>
-<?php
-    echo $this->Form->hidden('id');
-    echo $this->Form->control('meal_name_id');
-?>
+<?php echo $this->Form->hidden('id'); ?>
 <div class="mb-3">
     <label for="recipeAutocomplete" class="form-label"><?= __('Recipe') ?></label>
     <input type="text"
@@ -63,6 +74,7 @@ $baseUrl = Router::url('/');
 
 <?php
     echo $this->Form->hidden('recipe_id');
+    echo $this->Form->control('meal_name_id');
     echo $this->Form->control('mealday', ['default' => $mealPlan->mealday]);
     echo $this->Form->control('servings');
     echo $this->Form->control('days', array('default' => 1, 'type' => 'number'));

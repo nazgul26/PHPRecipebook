@@ -400,6 +400,7 @@ class RecipesController extends AppController
         if ($term) {
             $recipes = $this->Recipes->find()
                 ->select(['Recipes.id', 'Recipes.name', 'Recipes.serving_size'])
+                ->contain(['Courses' => ['fields' => ['id', 'name']]])
                 ->where(array_merge($this->filterConditions, ['LOWER(Recipes.name) LIKE ' => '%' . trim(strtolower($term)) . '%']));
 
             if ($recipes->count() > 0) {
@@ -407,11 +408,12 @@ class RecipesController extends AppController
                     $key = $item->name;
                     $value = $item->id;
                     $servings = $item->serving_size;
-                    array_push($searchResults, array('id' => $value, 'value' => strip_tags($key), 'servings' => $servings));
+                    $course = $item->course ? $item->course->name : '';
+                    array_push($searchResults, array('id' => $value, 'value' => strip_tags($key), 'servings' => $servings, 'course' => $course));
                 }
             } else {
                 $key = "No Results for '$term' Found";
-                array_push($searchResults, array('id' => '', 'value' => $key, 'servings' => '0'));
+                array_push($searchResults, array('id' => '', 'value' => $key, 'servings' => '0', 'course' => ''));
             }
 
             $this->set(compact('searchResults'));
