@@ -64,7 +64,7 @@ class ReviewsController extends AppController
         if ($recipeId == null) {
             throw new NotFoundException(__('Missing recipe ID'));
         }
-        if ($id != null && !$this->Reviews->exists($id)) {
+        if ($id != null && !$this->Reviews->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid review'));
         }
 
@@ -103,7 +103,7 @@ class ReviewsController extends AppController
     public function delete($recipeId = null, $id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $review = $this->Reviews->get($id);
+        $review = $this->Reviews->get(['id' => $id]);
         if ($this->Reviews->delete($review)) {
             $this->Flash->success(__('The review has been deleted.'));
         } else {

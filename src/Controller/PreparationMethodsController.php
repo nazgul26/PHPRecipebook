@@ -19,14 +19,14 @@ class PreparationMethodsController extends AppController
 
     public function edit($id = null)
     {
-        if ($id != null && !$this->PreparationMethods->exists($id)) {
+        if ($id != null && !$this->PreparationMethods->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid base type'));
         }
 
         if ($id == null) {
             $preparationMethod = $this->PreparationMethods->newEmptyEntity();
         } else {
-            $preparationMethod = $this->PreparationMethods->get($id);
+            $preparationMethod = $this->PreparationMethods->get(['id' => $id]);
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -45,7 +45,7 @@ class PreparationMethodsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $preparationMethod = $this->PreparationMethods->get($id);
+        $preparationMethod = $this->PreparationMethods->get(['id' => $id]);
         if ($this->PreparationMethods->delete($preparationMethod)) {
             $this->Flash->success(__('The preparation method has been deleted.'));
         } else {

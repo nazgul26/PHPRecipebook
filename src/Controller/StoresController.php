@@ -17,14 +17,14 @@ class StoresController extends AppController
 
     public function edit($id = null)
     {
-        if ($id != null && !$this->Stores->exists($id)) {
+        if ($id != null && !$this->Stores->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid store'));
         }
 
         if ($id == null) {
             $store = $this->Stores->newEmptyEntity();
         } else {
-            $store = $this->Stores->get($id);
+            $store = $this->Stores->get(['id' => $id]);
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -43,7 +43,7 @@ class StoresController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $store = $this->Stores->get($id);
+        $store = $this->Stores->get(['id' => $id]);
         if ($this->Stores->delete($store)) {
             $this->Flash->success(__('The store has been deleted.'));
         } else {

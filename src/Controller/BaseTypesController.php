@@ -17,14 +17,14 @@ class BaseTypesController extends AppController
 
     public function edit($id = null)
     {
-        if ($id != null && !$this->BaseTypes->exists($id)) {
+        if ($id != null && !$this->BaseTypes->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid base type'));
         }
 
         if ($id == null) {
             $baseType = $this->BaseTypes->newEmptyEntity();
         } else {
-            $baseType = $this->BaseTypes->get($id);
+            $baseType = $this->BaseTypes->get(['id' => $id]);
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -44,7 +44,7 @@ class BaseTypesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $baseType = $this->BaseTypes->get($id);
+        $baseType = $this->BaseTypes->get(['id' => $id]);
         if ($this->BaseTypes->delete($baseType)) {
             $this->Flash->success(__('The base type has been deleted.'));
         } else {
