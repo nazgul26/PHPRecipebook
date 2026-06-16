@@ -99,15 +99,15 @@ if (isset($recipe->reviews)) {
         <div class="col-md-6">
             <dl>
                 <dt><?= __('Ethnicity') ?></dt>
-                <dd><?= h($recipe->ethnicity->name) ?>&nbsp;</dd>
+                <dd><?= h($recipe->ethnicity?->name ?? '') ?>&nbsp;</dd>
                 <dt><?= __('Base Type') ?></dt>
-                <dd><?= h($recipe->base_type->name) ?>&nbsp;</dd>
+                <dd><?= h($recipe->base_type?->name ?? '') ?>&nbsp;</dd>
                 <dt><?= __('Course') ?></dt>
-                <dd><?= h($recipe->course->name) ?>&nbsp;</dd>
+                <dd><?= h($recipe->course?->name ?? '') ?>&nbsp;</dd>
                 <dt><?= __('Preparation Time') ?></dt>
-                <dd><?= h($recipe->preparation_time->name) ?>&nbsp;</dd>
+                <dd><?= h($recipe->preparation_time?->name ?? '') ?>&nbsp;</dd>
                 <dt><?= __('Difficulty') ?></dt>
-                <dd><?= h($recipe->difficulty->name) ?>&nbsp;</dd>
+                <dd><?= h($recipe->difficulty?->name ?? '') ?>&nbsp;</dd>
                 <dt><?= __('Serving Size') ?></dt>
                 <dd>
                     <div class="d-flex align-items-center gap-2">
