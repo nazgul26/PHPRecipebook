@@ -229,7 +229,7 @@ if (isset($recipe->reviews)) {
                 <?= $this->Markdown->render($recipe->directions) ?>
             </div>
         <?php else: ?>
-            <pre class="p-3 bg-light rounded"><?= h($recipe->directions) ?></pre>
+            <div class="p-3 bg-light rounded" style="white-space: pre-wrap;"><?= h($recipe->directions) ?></div>
         <?php endif; ?>
     </div>
 
