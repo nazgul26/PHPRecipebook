@@ -683,7 +683,7 @@ $baseUrl = Router::url('/');
             findInputFilter = "input[id$=-ingredient_id]";
         }
 
-        document.querySelectorAll(sectionId + " input[type='ui-widget']").forEach(function(inp) {
+        document.querySelectorAll(sectionId + " input[name$='[name]']").forEach(function(inp) {
             if (inp._autocompleteInit) return;
             inp._autocompleteInit = true;
             inp.type = 'text';

@@ -129,7 +129,7 @@ class RecipesController extends AppController
     public function edit($id = null)
     {
         if ($id != null && !$this->Recipes->exists(['id' => $id])) {
-            throw new NotFoundException(__('Invalid price range'));
+            throw new NotFoundException(__('Recipe ID not found'));
         }
 
         if ($id == null) {
