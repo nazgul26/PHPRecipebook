@@ -364,10 +364,15 @@ $baseUrl = Router::url('/');
 
         document.getElementById('AddMoreIngredientsLink')?.addEventListener('click', function(e) {
             e.preventDefault();
-            var extras = document.querySelectorAll('#ingredientsSection .extraItem input');
+            var extraRow = document.querySelector('#ingredientsSection .extraItem');
+            var extras = extraRow ? extraRow.querySelectorAll('input') : [];
             extras.forEach(function(inp) {
                 inp.dispatchEvent(new Event('change', { bubbles: true }));
             });
+            if (extraRow) {
+                var qtyInput = extraRow.querySelector('input[name$="[quantity]"]');
+                if (qtyInput) qtyInput.focus();
+            }
         });
 
         document.getElementById('AddMoreRelatedRecipesLink')?.addEventListener('click', function(e) {
