@@ -43,7 +43,7 @@ class ShoppingListsController extends AppController
 
     public function index($id = null)
     {
-        if ($id != null && !$this->ShoppingLists->exists($id)) {
+        if ($id != null && !$this->ShoppingLists->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid shopping list'));
         }
         if ($this->request->is(array('post', 'put'))) {

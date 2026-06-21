@@ -17,14 +17,14 @@ class PreparationTimesController extends AppController
 
     public function edit($id = null)
     {
-        if ($id != null && !$this->PreparationTimes->exists($id)) {
+        if ($id != null && !$this->PreparationTimes->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid base type'));
         }
 
         if ($id == null) {
             $preparationTime = $this->PreparationTimes->newEmptyEntity();
         } else {
-            $preparationTime = $this->PreparationTimes->get($id);
+            $preparationTime = $this->PreparationTimes->get(['id' => $id]);
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -43,7 +43,7 @@ class PreparationTimesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $preparationTime = $this->PreparationTimes->get($id);
+        $preparationTime = $this->PreparationTimes->get(['id' => $id]);
         if ($this->PreparationTimes->delete($preparationTime)) {
             $this->Flash->success(__('The preparation time has been deleted.'));
         } else {

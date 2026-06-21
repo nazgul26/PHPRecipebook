@@ -106,7 +106,7 @@ class MealPlansController extends AppController
     {
         if ($id == "undefined") $id = null;
 
-        if ($id != null && !$this->MealPlans->exists($id)) {
+        if ($id != null && !$this->MealPlans->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid meal plan'));
         }
 
@@ -161,7 +161,7 @@ class MealPlansController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $mealPlan = $this->MealPlans->get($id);
+        $mealPlan = $this->MealPlans->get(['id' => $id]);
         if ($this->MealPlans->delete($mealPlan)) {
             $this->Flash->success(__('The meal plan has been deleted.'));
         } else {

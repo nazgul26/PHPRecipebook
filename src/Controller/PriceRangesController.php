@@ -25,14 +25,14 @@ class PriceRangesController extends AppController
 
     public function edit($id = null)
     {
-        if ($id != null && !$this->PriceRanges->exists($id)) {
+        if ($id != null && !$this->PriceRanges->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid price range'));
         }
 
         if ($id == null) {
             $priceRange = $this->PriceRanges->newEmptyEntity();
         } else {
-            $priceRange = $this->PriceRanges->get($id);
+            $priceRange = $this->PriceRanges->get(['id' => $id]);
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -51,7 +51,7 @@ class PriceRangesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $priceRange = $this->PriceRanges->get($id);
+        $priceRange = $this->PriceRanges->get(['id' => $id]);
         if ($this->PriceRanges->delete($priceRange)) {
             $this->Flash->success(__('The price range has been deleted.'));
         } else {

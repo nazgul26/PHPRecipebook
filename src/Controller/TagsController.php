@@ -52,14 +52,14 @@ class TagsController extends AppController
 
     public function edit($id = null)
     {
-        if ($id != null && !$this->Tags->exists($id)) {
+        if ($id != null && !$this->Tags->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid tag'));
         }
 
         if ($id == null) {
             $tag = $this->Tags->newEmptyEntity();
         } else {
-            $tag = $this->Tags->get($id);
+            $tag = $this->Tags->get(['id' => $id]);
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -80,7 +80,7 @@ class TagsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $tag = $this->Tags->get($id);
+        $tag = $this->Tags->get(['id' => $id]);
         if ($this->Tags->delete($tag)) {
             $this->Flash->success(__('The tag has been deleted.'));
         } else {
