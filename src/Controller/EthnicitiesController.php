@@ -17,14 +17,14 @@ class EthnicitiesController extends AppController
 
     public function edit($id = null)
     {
-        if ($id != null && !$this->Ethnicities->exists($id)) {
+        if ($id != null && !$this->Ethnicities->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid ethnicity type'));
         }
 
         if ($id == null) {
             $ethnicity = $this->Ethnicities->newEmptyEntity();
         } else {
-            $ethnicity = $this->Ethnicities->get($id);
+            $ethnicity = $this->Ethnicities->get(['id' => $id]);
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -44,7 +44,7 @@ class EthnicitiesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $ethnicity = $this->Ethnicities->get($id);
+        $ethnicity = $this->Ethnicities->get(['id' => $id]);
         if ($this->Ethnicities->delete($ethnicity)) {
             $this->Flash->success(__('The ethnicity has been deleted.'));
         } else {

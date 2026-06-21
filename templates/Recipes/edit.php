@@ -169,7 +169,7 @@ $baseUrl = Router::url('/');
                         <?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.quantity', ['label' => false, 'type' => 'fraction']) ?></td>
                     <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.unit_id', ['label' => false]) ?></td>
                     <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.qualifier', ['label' => false, 'escape' => false]) ?></td>
-                    <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.ingredient.name', ['label' => false, 'escape' => false, 'type' => 'ui-widget']) ?></td>
+                    <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.ingredient.name', ['label' => false, 'escape' => false, 'type' => 'ui-widget', 'autocomplete' => 'off']) ?></td>
                     <td><?= $this->Form->control('ingredient_mappings.' . $mapIndex . '.optional', ['label' => false]) ?></td>
                 </tr>
                 <?php } ?>

@@ -151,7 +151,7 @@ class UsersController extends AppController
 
     public function edit($id = null)
     {
-        $user = $this->Users->get($id);
+        $user = $this->Users->get(['id' => $id]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
             if ($data['password1'] === $data['password2']) {
@@ -249,7 +249,7 @@ class UsersController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $user = $this->Users->get($id);
+        $user = $this->Users->get(['id' => $id]);
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('The user has been deleted.'));
         } else {

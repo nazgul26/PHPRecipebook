@@ -28,7 +28,7 @@ class RestaurantsController extends AppController
 
     public function edit($id = null)
     {
-        $restaurant = $this->Restaurants->get($id);
+        $restaurant = $this->Restaurants->get(['id' => $id]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $restaurant = $this->Restaurants->patchEntity($restaurant, $this->request->getData());
             if ($this->Restaurants->save($restaurant)) {
@@ -46,7 +46,7 @@ class RestaurantsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $restaurant = $this->Restaurants->get($id);
+        $restaurant = $this->Restaurants->get(['id' => $id]);
         if ($this->Restaurants->delete($restaurant)) {
             $this->Flash->success(__('The restaurant has been deleted.'));
         } else {

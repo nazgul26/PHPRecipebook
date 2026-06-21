@@ -216,7 +216,7 @@ class RecipesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $recipe = $this->Recipes->get($id);
+        $recipe = $this->Recipes->get(['id' => $id]);
         if ($this->Recipes->delete($recipe)) {
             $this->Flash->success(__('The recipe has been deleted.'));
         } else {
@@ -248,7 +248,7 @@ class RecipesController extends AppController
 
     public function deleteAttachment($recipeId, $id)
     {
-        $image = $this->Recipes->Attachments->get($id);
+        $image = $this->Recipes->Attachments->get(['id' => $id]);
         if ($this->Recipes->Attachments->delete($image)) {
             $this->Flash->success(__('The image has been removed.'));
         } else {

@@ -19,14 +19,14 @@ class SourcesController extends AppController
 
     public function edit($id = null)
     {
-        if ($id != null && !$this->Sources->exists($id)) {
+        if ($id != null && !$this->Sources->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid price range'));
         }
 
         if ($id == null) {
             $source = $this->Sources->newEmptyEntity();
         } else {
-            $source = $this->Sources->get($id);
+            $source = $this->Sources->get(['id' => $id]);
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -46,7 +46,7 @@ class SourcesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $source = $this->Sources->get($id);
+        $source = $this->Sources->get(['id' => $id]);
         if ($this->Sources->delete($source)) {
             $this->Flash->success(__('The source has been deleted.'));
         } else {

@@ -56,14 +56,14 @@ class IngredientsController extends AppController
 
     public function edit($id = null)
     {
-        if ($id != null && !$this->Ingredients->exists($id)) {
+        if ($id != null && !$this->Ingredients->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid ingredient type'));
         }
 
         if ($id == null) {
             $ingredient = $this->Ingredients->newEmptyEntity();
         } else {
-            $ingredient = $this->Ingredients->get($id);
+            $ingredient = $this->Ingredients->get(['id' => $id]);
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -88,7 +88,7 @@ class IngredientsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $ingredient = $this->Ingredients->get($id);
+        $ingredient = $this->Ingredients->get(['id' => $id]);
         if ($this->Ingredients->delete($ingredient)) {
             $this->Flash->success(__('The ingredient has been deleted.'));
         } else {

@@ -17,14 +17,14 @@ class DifficultiesController extends AppController
 
     public function edit($id = null)
     {
-        if ($id != null && !$this->Difficulties->exists($id)) {
+        if ($id != null && !$this->Difficulties->exists(['id' => $id])) {
             throw new NotFoundException(__('Invalid base type'));
         }
 
         if ($id == null) {
             $difficulty = $this->Difficulties->newEmptyEntity();
         } else {
-            $difficulty = $this->Difficulties->get($id);
+            $difficulty = $this->Difficulties->get(['id' => $id]);
         }
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -44,7 +44,7 @@ class DifficultiesController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $difficulty = $this->Difficulties->get($id);
+        $difficulty = $this->Difficulties->get(['id' => $id]);
         if ($this->Difficulties->delete($difficulty)) {
             $this->Flash->success(__('The difficulty has been deleted.'));
         } else {
