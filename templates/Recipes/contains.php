@@ -80,7 +80,7 @@ $baseUrl = Router::url('/');
 	<thead>
 	<tr>
         <th class="actions"><?= __('Actions') ?></th>
-        <th><?= $this->Paginator->sort('name') ?></th>
+        <th><?= __('Name') ?></th>
         <th><?= __('# of Matches') ?></th>
 	</tr>
 	</thead>
