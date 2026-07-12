@@ -1,7 +1,7 @@
 <?php
-use Migrations\AbstractMigration;
+use Migrations\BaseMigration;
 
-class AlterSystemOnUnits extends AbstractMigration
+class AlterSystemOnUnits extends BaseMigration
 {
     /**
      * Change Method.

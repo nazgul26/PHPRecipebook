@@ -122,7 +122,7 @@ CREATE TABLE recipes (
 	`modified` DATETIME,
 	`image` VARCHAR(255),
 	`image_dir` VARCHAR(255),
-	`private` TINYINT(1) NOT NULL,
+	`private` TINYINT(1) NOT NULL DEFAULT 0,
 	`system_type` VARCHAR(16) DEFAULT 'usa' NOT NULL,
 	`user_id` INT NULL REFERENCES users(id) ON DELETE SET DEFAULT ON UPDATE CASCADE,
 	PRIMARY KEY (id)

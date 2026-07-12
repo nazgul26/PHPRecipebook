@@ -1,7 +1,7 @@
 <?php
-use Migrations\AbstractMigration;
+use Migrations\BaseMigration;
 
-class CreateTagsTables extends AbstractMigration
+class CreateTagsTables extends BaseMigration
 {
     public function up()
     {
