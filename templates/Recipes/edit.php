@@ -85,7 +85,7 @@ $baseUrl = Router::url('/');
                     ['controller' => 'sources', 'action' => 'index'],
                     ['class' => 'nagivationLink', 'targetId' => 'content', 'id' => 'sourcesEditLink'])]);
             echo $this->Form->control('source_description');
-            echo $this->Form->control('private', ['options' => ['0' => 'No', '1' => 'Yes']]);
+            echo $this->Form->control('private', ['options' => ['0' => 'No', '1' => 'Yes'], 'required' => true]);
             echo $this->Form->control('system_type', ['options' => ['usa' => 'USA', 'metric' => 'Metric']]);
             ?>
         </div>
